@@ -587,6 +587,40 @@ h3 {
   padding: 8px 12px;
 }
 
+.stimulus-card {
+  background: #f4f1e8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 26px 0 0;
+  overflow: hidden;
+}
+
+.stimulus-label {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 14px 16px 0;
+  text-transform: uppercase;
+}
+
+.stimulus-card img {
+  aspect-ratio: 16 / 9;
+  display: block;
+  margin: 12px auto 0;
+  max-height: 420px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.stimulus-card figcaption {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 14px 16px 16px;
+}
+
 .context {
   color: var(--muted);
   font-size: 20px;

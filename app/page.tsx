@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -15,6 +16,12 @@ type Question = {
   domain: DomainId;
   difficulty: Difficulty;
   type: 'scenario' | 'media' | 'judgment';
+  stimulus?: {
+    src: string;
+    alt: string;
+    label: string;
+    caption: string;
+  };
   prompt: string;
   context: string;
   options: Option[];
@@ -147,6 +154,12 @@ const questionBank: Question[] = [
     difficulty: 'awareness',
     type: 'media',
     context: 'A social post shows a dramatic image of a flooded city and claims it happened this morning.',
+    stimulus: {
+      src: '/stimuli/flooded-street-authenticity.png',
+      alt: 'A realistic flooded city street with storefronts, cars, reflections, and subtle visual inconsistencies.',
+      label: 'Image authenticity task',
+      caption: 'Inspect the scene before deciding whether the post is safe to share.',
+    },
     prompt: 'What should you do before sharing it?',
     options: [
       { id: 'a', label: 'Share quickly because urgent posts need speed.', score: 10, feedback: 'Urgency increases the need for verification.' },
@@ -161,6 +174,12 @@ const questionBank: Question[] = [
     difficulty: 'applied',
     type: 'media',
     context: 'An image looks realistic, but the caption claims a specific company CEO endorsed a policy yesterday.',
+    stimulus: {
+      src: '/stimuli/flooded-street-authenticity.png',
+      alt: 'A realistic street image used as a visual provenance and caption-verification stimulus.',
+      label: 'Image-caption verification',
+      caption: 'The visual may be real-looking, but the claim attached to it still needs provenance.',
+    },
     prompt: 'Which evidence would be strongest before accepting the caption?',
     options: [
       { id: 'a', label: 'A repost from an anonymous account.', score: 10, feedback: 'Anonymous reposts are weak provenance.' },
@@ -245,6 +264,12 @@ const questionBank: Question[] = [
     difficulty: 'applied',
     type: 'judgment',
     context: 'A vendor promises 40% productivity gain from an AI tool but offers no baseline, pilot design, or adoption plan.',
+    stimulus: {
+      src: '/stimuli/productivity-chart-forensics.png',
+      alt: 'A dashboard showing AI Pilot productivity charts with a prominent plus forty-two percent claim and potentially misleading visual scaling.',
+      label: 'Chart forensics task',
+      caption: 'Review the chart presentation and the +42% claim before deciding how to treat the vendor evidence.',
+    },
     prompt: 'How should the claim be handled?',
     options: [
       { id: 'a', label: 'Accept it because vendor benchmarks are enough.', score: 20, feedback: 'Benchmarks need local validation.' },
@@ -681,6 +706,13 @@ export default function Home() {
               <span>{current.difficulty}</span>
               <span>{current.type}</span>
             </div>
+            {current.stimulus && (
+              <figure className="stimulus-card">
+                <div className="stimulus-label">{current.stimulus.label}</div>
+                <Image src={current.stimulus.src} alt={current.stimulus.alt} width={1680} height={945} />
+                <figcaption>{current.stimulus.caption}</figcaption>
+              </figure>
+            )}
             <p className="context">{current.context}</p>
             <h2>{current.prompt}</h2>
             <div className="options">
