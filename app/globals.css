@@ -285,7 +285,7 @@ h3 {
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .stats div {
@@ -465,6 +465,10 @@ h3 {
   margin-top: 30px;
 }
 
+.setup-columns.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .setup-columns h2 {
   font-size: 24px;
 }
@@ -472,6 +476,10 @@ h3 {
 .choice-grid {
   display: grid;
   gap: 10px;
+}
+
+.executive-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .choice-card {

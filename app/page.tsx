@@ -6,9 +6,10 @@ import Image from 'next/image';
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
 type Difficulty = 'awareness' | 'applied' | 'proficient';
-type AssessmentMode = 'free' | 'premium';
+type AssessmentMode = 'free' | 'premium' | 'executive';
 type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'technical' | 'operations';
 type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
+type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 
 type Option = { id: string; label: string; score: number; feedback: string };
 type Question = {
@@ -61,6 +62,15 @@ const industryLabels: Record<IndustryTrack, string> = {
   healthcare: 'Healthcare',
   retail: 'Retail & ecommerce',
   public: 'Public sector',
+};
+
+const executiveLabels: Record<ExecutiveRole, string> = {
+  ceo: 'CEO / Managing Director',
+  board: 'Board / Investor',
+  people: 'CHRO / People leader',
+  finance: 'CFO / Risk leader',
+  technology: 'CIO / CDO / CTO',
+  transformation: 'Transformation sponsor',
 };
 
 const questionBank: Question[] = [
@@ -308,6 +318,189 @@ const questionBank: Question[] = [
   },
 ];
 
+const executiveQuestionBank: Question[] = [
+  {
+    id: 'EXEC-D5-003',
+    domain: 'D5',
+    difficulty: 'applied',
+    type: 'media',
+    context: 'A vendor presents a board slide claiming a 42% productivity lift from an AI pilot, but the slide does not show baseline, sample size, adoption rate, or measurement period.',
+    stimulus: {
+      src: '/stimuli/productivity-chart-forensics.png',
+      alt: 'A dashboard showing AI Pilot productivity charts with a prominent plus forty-two percent claim and potentially misleading visual scaling.',
+      label: 'Executive chart forensics',
+      caption: 'Review the visual evidence before deciding whether the productivity claim is board-ready.',
+    },
+    prompt: 'What should an executive ask for before approving scale-up?',
+    options: [
+      { id: 'a', label: 'Approve scale-up because the chart shows a large gain.', score: 20, feedback: 'The chart alone is not enough evidence for an investment decision.' },
+      { id: 'b', label: 'Request baseline metrics, cohort design, adoption data, risk controls, and a decision gate.', score: 98, feedback: 'Correct. This turns a vendor claim into decision-grade evidence.' },
+      { id: 'c', label: 'Ask for a more polished board deck.', score: 25, feedback: 'Presentation quality does not solve weak evidence.' },
+      { id: 'd', label: 'Reject AI productivity pilots entirely.', score: 35, feedback: 'Too broad. The right move is disciplined validation.' },
+    ],
+  },
+  {
+    id: 'EXEC-D6-004',
+    domain: 'D6',
+    difficulty: 'proficient',
+    type: 'judgment',
+    context: 'An AI agent can draft supplier emails, update CRM records, and trigger finance approvals across departments.',
+    prompt: 'Which executive control model is strongest?',
+    options: [
+      { id: 'a', label: 'Give the agent broad access so teams can discover benefits quickly.', score: 15, feedback: 'Broad access creates preventable operational and accountability risk.' },
+      { id: 'b', label: 'Define decision rights, approval gates, audit logs, exception handling, and named human owners.', score: 98, feedback: 'Correct. Agentic workflows need authority boundaries and traceability.' },
+      { id: 'c', label: 'Let each department set controls independently.', score: 45, feedback: 'Local flexibility helps, but cross-functional agents need common governance.' },
+      { id: 'd', label: 'Pause all AI agent work until regulation is final.', score: 40, feedback: 'This may be too slow; governed pilots can proceed safely.' },
+    ],
+  },
+  {
+    id: 'EXEC-D4-005',
+    domain: 'D4',
+    difficulty: 'applied',
+    type: 'judgment',
+    context: 'A strategic AI vendor refuses to explain audit access, model monitoring, data retention, or subcontractor use.',
+    prompt: 'What is the best procurement response?',
+    options: [
+      { id: 'a', label: 'Proceed because the vendor is well known.', score: 25, feedback: 'Brand reputation does not replace AI-specific diligence.' },
+      { id: 'b', label: 'Require auditability, data-use terms, security evidence, monitoring commitments, and exit rights.', score: 98, feedback: 'Correct. These are core third-party AI risk controls.' },
+      { id: 'c', label: 'Ask legal to approve after launch.', score: 15, feedback: 'Governance controls belong before procurement and deployment.' },
+      { id: 'd', label: 'Use only the lowest-cost vendor.', score: 20, feedback: 'Cost cannot be the primary criterion for high-impact AI systems.' },
+    ],
+  },
+  {
+    id: 'EXEC-D3-003',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'media',
+    context: 'A realistic visual post claims a CEO announced layoffs after seeing an AI-generated forecast. The post is spreading quickly before market open.',
+    stimulus: {
+      src: '/stimuli/flooded-street-authenticity.png',
+      alt: 'A realistic image used as a visual provenance and caption-verification stimulus.',
+      label: 'Synthetic media response',
+      caption: 'The image can look persuasive while the attached claim still lacks provenance.',
+    },
+    prompt: 'What should leadership do before responding publicly?',
+    options: [
+      { id: 'a', label: 'Respond immediately to match the speed of the post.', score: 25, feedback: 'Speed matters, but an unverified response can amplify misinformation.' },
+      { id: 'b', label: 'Verify provenance through original channels, trusted reporting, metadata where available, and internal confirmation.', score: 98, feedback: 'Correct. Executive response should be fast and evidence-led.' },
+      { id: 'c', label: 'Ignore it until it disappears.', score: 35, feedback: 'Silence may be risky when market or employee trust is affected.' },
+      { id: 'd', label: 'Assume realistic visuals are authentic.', score: 10, feedback: 'Realistic visuals are not proof of authenticity.' },
+    ],
+  },
+  {
+    id: 'EXEC-D5-024',
+    domain: 'D5',
+    difficulty: 'proficient',
+    type: 'judgment',
+    context: 'The annual AI budget has ten proposed initiatives across automation, customer experience, analytics, and internal productivity.',
+    prompt: 'Which portfolio discipline best supports responsible investment?',
+    options: [
+      { id: 'a', label: 'Fund the flashiest initiatives first.', score: 15, feedback: 'Novelty is not a reliable investment criterion.' },
+      { id: 'b', label: 'Use value, feasibility, risk, data readiness, learning potential, and stage-gate evidence.', score: 98, feedback: 'Correct. This balances strategic value with execution discipline.' },
+      { id: 'c', label: 'Split the budget equally across all functions.', score: 45, feedback: 'Fairness by allocation can dilute strategic impact.' },
+      { id: 'd', label: 'Delegate the full portfolio to IT.', score: 35, feedback: 'AI value realization is cross-functional, not only technical.' },
+    ],
+  },
+  {
+    id: 'EXEC-D4-004',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'judgment',
+    context: 'A regulated workflow will use AI to recommend eligibility decisions, with human reviewers expected to approve exceptions.',
+    prompt: 'Which launch condition is most important?',
+    options: [
+      { id: 'a', label: 'Launch after a positive demo from the implementation team.', score: 20, feedback: 'A demo does not prove control readiness.' },
+      { id: 'b', label: 'Require bias testing, explainability, appeal path, monitoring, audit trail, and accountable human review.', score: 98, feedback: 'Correct. High-impact workflows need layered safeguards.' },
+      { id: 'c', label: 'Let reviewers decide controls case by case.', score: 35, feedback: 'Controls must be designed into the workflow.' },
+      { id: 'd', label: 'Avoid documenting the model so teams move faster.', score: 10, feedback: 'Lack of documentation weakens accountability and compliance.' },
+    ],
+  },
+  {
+    id: 'EXEC-D6-012',
+    domain: 'D6',
+    difficulty: 'proficient',
+    type: 'scenario',
+    context: 'An AI assistant sent incorrect customer guidance that affected a small but visible customer segment.',
+    prompt: 'Which executive response builds the most trust?',
+    options: [
+      { id: 'a', label: 'Blame the frontline team for accepting the AI output.', score: 10, feedback: 'Blame discourages learning and hides systemic control failures.' },
+      { id: 'b', label: 'Contain harm, notify affected stakeholders, explain remediation, fix controls, and share learning.', score: 98, feedback: 'Correct. Trust comes from accountability and visible improvement.' },
+      { id: 'c', label: 'Quietly patch the system without communicating.', score: 35, feedback: 'Hidden fixes may fail trust and disclosure obligations.' },
+      { id: 'd', label: 'Stop all customer-facing AI forever.', score: 40, feedback: 'A pause may be needed, but permanent retreat is not necessarily proportional.' },
+    ],
+  },
+  {
+    id: 'EXEC-D5-016',
+    domain: 'D5',
+    difficulty: 'applied',
+    type: 'scenario',
+    context: 'A vendor proposes a proprietary AI workflow that would embed core customer data, prompts, and operating logic inside its platform.',
+    prompt: 'What strategic risk should be reviewed first?',
+    options: [
+      { id: 'a', label: 'Whether the sales demo feels impressive.', score: 20, feedback: 'Demo quality is weak evidence for strategic dependency.' },
+      { id: 'b', label: 'Portability, data ownership, exit rights, integration cost, and capability dependency.', score: 98, feedback: 'Correct. These determine lock-in and long-term strategic control.' },
+      { id: 'c', label: 'Whether competitors use the same vendor.', score: 45, feedback: 'Peer adoption is useful context, not a decision rule.' },
+      { id: 'd', label: 'Only the first-year discount.', score: 15, feedback: 'Discounts can hide long-term total cost and dependency.' },
+    ],
+  },
+  {
+    id: 'EXEC-D1-003',
+    domain: 'D1',
+    difficulty: 'applied',
+    type: 'judgment',
+    context: 'A leadership team assumes an AI agent can safely chain tools autonomously because the underlying model passed a benchmark.',
+    prompt: 'What concept should the executive understand?',
+    options: [
+      { id: 'a', label: 'Benchmark performance does not define safe authority, tool permissions, or supervision.', score: 98, feedback: 'Correct. Agentic capability and operational authority are different concerns.' },
+      { id: 'b', label: 'All benchmarks are useless.', score: 35, feedback: 'Benchmarks can help, but they are incomplete evidence.' },
+      { id: 'c', label: 'Autonomous tools are always safe if they are popular.', score: 10, feedback: 'Popularity is not a control.' },
+      { id: 'd', label: 'The agent should never use tools.', score: 40, feedback: 'The issue is governed tool use, not a blanket ban.' },
+    ],
+  },
+  {
+    id: 'EXEC-D2-002',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'scenario',
+    context: 'A business unit adds an AI copilot to an existing approval workflow and reports that employees like it.',
+    prompt: 'What would make the implementation executive-ready?',
+    options: [
+      { id: 'a', label: 'User satisfaction alone.', score: 35, feedback: 'Satisfaction is useful but insufficient for workflow assurance.' },
+      { id: 'b', label: 'Defined review points, quality metrics, outcome measures, exception handling, and training.', score: 98, feedback: 'Correct. Workflow integration needs measurable controls and enablement.' },
+      { id: 'c', label: 'A larger launch announcement.', score: 15, feedback: 'Communication does not prove readiness.' },
+      { id: 'd', label: 'Letting each user decide how to apply the output.', score: 30, feedback: 'Unstructured use can create inconsistency and risk.' },
+    ],
+  },
+  {
+    id: 'EXEC-D3-002',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'judgment',
+    context: 'An AI-generated market report cites three sources, but the cited materials do not support the exact growth forecast used in the board recommendation.',
+    prompt: 'What is the strongest executive conclusion?',
+    options: [
+      { id: 'a', label: 'The forecast is decision-ready because sources are listed.', score: 20, feedback: 'Sources must support the exact claim.' },
+      { id: 'b', label: 'The recommendation has a citation-support gap and needs correction before board use.', score: 98, feedback: 'Correct. This identifies the evidence failure without overclaiming.' },
+      { id: 'c', label: 'The entire market report must be false.', score: 45, feedback: 'The specific claim is unsupported; other content may still be valid.' },
+      { id: 'd', label: 'Only the citation formatting needs editing.', score: 15, feedback: 'This is a substance issue, not formatting.' },
+    ],
+  },
+  {
+    id: 'EXEC-D6-018',
+    domain: 'D6',
+    difficulty: 'proficient',
+    type: 'scenario',
+    context: 'The board asks how leadership will stay competent enough to oversee AI as tools and risks change quickly.',
+    prompt: 'Which answer best demonstrates durable executive oversight?',
+    options: [
+      { id: 'a', label: 'Annual awareness training for all executives.', score: 45, feedback: 'Useful, but too thin for a fast-changing oversight domain.' },
+      { id: 'b', label: 'Quarterly executive learning, incident reviews, portfolio reviews, scenario drills, and named accountability.', score: 98, feedback: 'Correct. Oversight capability requires repeated practice and governance cadence.' },
+      { id: 'c', label: 'Rely entirely on external consultants.', score: 30, feedback: 'Experts help, but executives retain accountability.' },
+      { id: 'd', label: 'Delegate AI oversight to the most technical director.', score: 35, feedback: 'AI oversight needs business, risk, people, and technology judgment.' },
+    ],
+  },
+];
+
 const learningCatalog: Record<DomainId, { title: string; detail: string; format: string }> = {
   D1: { title: 'AI concepts in plain language', detail: 'Build a reliable mental model of LLMs, retrieval, hallucination, and model limits.', format: '45 min module' },
   D2: { title: 'Prompting and workflow lab', detail: 'Practice reusable prompt patterns, review checklists, and human-in-the-loop design.', format: '60 min lab' },
@@ -317,11 +510,22 @@ const learningCatalog: Record<DomainId, { title: string; detail: string; format:
   D6: { title: 'Human-AI collaboration routines', detail: 'Design review rituals, escalation paths, role clarity, and team learning loops.', format: '55 min module' },
 };
 
+const executiveLearningCatalog: Record<DomainId, { title: string; detail: string; format: string }> = {
+  D1: { title: 'Executive AI fluency briefing', detail: 'Clarify model limits, retrieval, agentic workflows, and where leadership judgment is still required.', format: '45 min briefing' },
+  D2: { title: 'AI operating workflow review', detail: 'Map review points, quality metrics, exception paths, and adoption measures for high-value workflows.', format: '60 min workshop' },
+  D3: { title: 'Board-grade evidence review', detail: 'Practice chart forensics, citation-support checks, synthetic media response, and confidence calibration.', format: '75 min simulation' },
+  D4: { title: 'AI governance and risk cadence', detail: 'Define risk appetite, committee mandate, vendor controls, audit evidence, and incident routines.', format: '90 min governance lab' },
+  D5: { title: 'AI portfolio value realization', detail: 'Prioritize use cases by value, feasibility, risk, data readiness, and stage-gate evidence.', format: '90 min executive workshop' },
+  D6: { title: 'Human-AI change leadership', detail: 'Build role clarity, trust loops, leadership messaging, capability plans, and accountability rituals.', format: '75 min leadership lab' },
+};
+
 const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, proficient: 2 };
 const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
   free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
   premium: { label: 'Premium diagnostic pilot', totalQuestions: 16, confidenceBase: 48, confidenceStep: 3 },
+  executive: { label: 'Executive assessment pilot', totalQuestions: 12, confidenceBase: 54, confidenceStep: 3 },
 };
+const executiveDomainSequence: DomainId[] = ['D5', 'D6', 'D4', 'D5', 'D4', 'D6', 'D5', 'D3', 'D4', 'D6', 'D1', 'D2'];
 
 function scoreToLevel(score: number) {
   if (score >= 82) return 'Proficient';
@@ -348,19 +552,30 @@ function getDomainScores(answers: Answer[]) {
   ) as Record<DomainId, number>;
 }
 
-function selectNextQuestion(answers: Answer[]) {
+function selectNextQuestion(answers: Answer[], assessmentMode: AssessmentMode = 'free') {
+  const bank = assessmentMode === 'executive' ? executiveQuestionBank : questionBank;
   const answered = new Set(answers.map((answer) => answer.question.id));
   const scores = getDomainScores(answers);
   const counts = emptyDomainScores();
   answers.forEach(({ question }) => {
     counts[question.domain].count += 1;
   });
+  const targetDomain =
+    assessmentMode === 'executive'
+      ? executiveDomainSequence[answers.length % executiveDomainSequence.length]
+      : undefined;
   const weakestDomain = (Object.keys(domains) as DomainId[]).sort(
     (a, b) => counts[a].count - counts[b].count || scores[a] - scores[b],
   )[0];
   const overall = answers.length ? answers.reduce((sum, answer) => sum + answer.option.score, 0) / answers.length : 62;
   const targetDifficulty: Difficulty = overall >= 78 ? 'proficient' : overall >= 55 ? 'applied' : 'awareness';
-  const candidates = questionBank.filter((question) => !answered.has(question.id));
+  const candidates = bank.filter((question) => !answered.has(question.id));
+  if (targetDomain) {
+    const executiveMatch =
+      candidates.find((question) => question.domain === targetDomain && question.difficulty === targetDifficulty) ||
+      candidates.find((question) => question.domain === targetDomain);
+    if (executiveMatch) return executiveMatch;
+  }
   return (
     candidates.find((question) => question.domain === weakestDomain && question.difficulty === targetDifficulty) ||
     candidates.find((question) => question.domain === weakestDomain) ||
@@ -422,13 +637,14 @@ function RadarChart({ scores }: { scores: Record<DomainId, number> }) {
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'results'>('home');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [audience, setAudience] = useState<Audience>('general');
   const [functionTrack, setFunctionTrack] = useState<FunctionTrack>('general');
   const [industryTrack, setIndustryTrack] = useState<IndustryTrack>('general');
+  const [executiveRole, setExecutiveRole] = useState<ExecutiveRole>('ceo');
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [current, setCurrent] = useState<Question>(() => selectNextQuestion([]));
+  const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
 
   const activeConfig = modeConfig[mode];
   const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), activeConfig.totalQuestions);
@@ -436,14 +652,14 @@ export default function Home() {
     const domainScores = getDomainScores(answers);
     const overall = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
     const sortedDomains = (Object.keys(domainScores) as DomainId[]).sort((a, b) => domainScores[a] - domainScores[b]);
-    const confidence = Math.min(mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
+    const confidence = Math.min(mode === 'executive' ? 96 : mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
     return { domainScores, overall, level: scoreToLevel(overall), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
   }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
 
   function startAssessment(nextMode: AssessmentMode) {
     setMode(nextMode);
     setAnswers([]);
-    setCurrent(selectNextQuestion([]));
+    setCurrent(selectNextQuestion([], nextMode));
     setStep('assessment');
   }
 
@@ -454,8 +670,10 @@ export default function Home() {
       setStep('results');
       return;
     }
-    setCurrent(selectNextQuestion(nextAnswers));
+    setCurrent(selectNextQuestion(nextAnswers, mode));
   }
+
+  const activeLearningCatalog = mode === 'executive' ? executiveLearningCatalog : learningCatalog;
 
   return (
     <main>
@@ -485,6 +703,7 @@ export default function Home() {
               <div className="hero-actions">
                 <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
                 <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
+                <button className="secondary" onClick={() => setStep('executiveOnboarding')}>Executive Assessment</button>
                 <a className="secondary" href="#process">See How It Works</a>
               </div>
             </div>
@@ -509,6 +728,7 @@ export default function Home() {
           <section className="stats" aria-label="MVP scope highlights">
             <div><strong>12</strong><span>free adaptive questions</span></div>
             <div><strong>16</strong><span>premium pilot questions</span></div>
+            <div><strong>12</strong><span>executive pilot questions</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>360+</strong><span>seeded pilot items</span></div>
           </section>
@@ -579,6 +799,7 @@ export default function Home() {
               <div className="hero-actions">
                 <button className="primary light" onClick={() => setStep('onboarding')}>Try Free Flow</button>
                 <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Pilot</button>
+                <button className="secondary invert" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>
               </div>
             </div>
             <div className="mock-result">
@@ -592,18 +813,21 @@ export default function Home() {
               <h2>Deeper diagnosis for people who want more than a score.</h2>
               <p>
                 The MVP premium pilot adds function and industry context, a longer adaptive run,
-                evidence review, precision language, and a richer learning plan.
+                evidence review, precision language, executive pathways, and a richer learning plan.
               </p>
             </div>
             <div className="premium-grid">
-              {['Function context', 'Industry scenarios', 'Skill-level gap signals', 'Premium learning plan'].map((item) => (
+              {['Function context', 'Industry scenarios', 'Executive assessment', 'Premium learning plan'].map((item) => (
                 <article className="info-card" key={item}>
                   <h3>{item}</h3>
                   <p>Pilot-grade now, designed for calibrated psychometrics after response data is collected.</p>
                 </article>
               ))}
             </div>
-            <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
+            <div className="hero-actions">
+              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
+              <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Start Executive Pilot</button>
+            </div>
           </section>
         </>
       )}
@@ -688,6 +912,42 @@ export default function Home() {
         </section>
       )}
 
+      {step === 'executiveOnboarding' && (
+        <section className="workspace">
+          <div className="workspace-header">
+            <p className="eyebrow">Executive assessment pilot</p>
+            <h1>Board-level AI readiness.</h1>
+            <p>Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.</p>
+          </div>
+          <div className="setup-columns single">
+            <div>
+              <h2>Executive role</h2>
+              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Executive role">
+                {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
+                  <button
+                    key={id}
+                    className={executiveRole === id ? 'choice-card selected' : 'choice-card'}
+                    onClick={() => setExecutiveRole(id)}
+                    role="radio"
+                    aria-checked={executiveRole === id}
+                  >
+                    {executiveLabels[id]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="premium-summary">
+            <strong>Executive pilot includes</strong>
+            <span>12 adaptive questions from the executive multimodal bank, chart and visual verification tasks, strategic governance scoring, radar graph, and personalized executive learning path.</span>
+          </div>
+          <div className="workspace-actions">
+            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
+            <button className="primary" onClick={() => startAssessment('executive')}>Begin Executive Assessment</button>
+          </div>
+        </section>
+      )}
+
       {step === 'assessment' && current && (
         <section className="assessment-shell">
           <div className="assessment-top">
@@ -731,16 +991,21 @@ export default function Home() {
         <section className="results-shell">
           <div className="results-hero">
             <div>
-              <p className="eyebrow">{mode === 'premium' ? 'Premium diagnostic pilot' : 'Indicative MVP result'}</p>
+              <p className="eyebrow">{mode === 'executive' ? 'Executive assessment pilot' : mode === 'premium' ? 'Premium diagnostic pilot' : 'Indicative MVP result'}</p>
               <h1>{results.overall}</h1>
               <p className="result-level">{results.level} AI readiness</p>
               <p>
-                Based on {answers.length} adaptive responses for {audienceLabels[audience].toLowerCase()}.
+                Based on {answers.length} adaptive responses for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase()}.
                 Confidence is pilot-grade: {results.confidence}%.
               </p>
               {mode === 'premium' && (
                 <p className="context-line">
                   Context: {functionLabels[functionTrack]} in {industryLabels[industryTrack].toLowerCase()}.
+                </p>
+              )}
+              {mode === 'executive' && (
+                <p className="context-line">
+                  Context: {executiveLabels[executiveRole]} profile, weighted toward D5 strategy, D4 governance, and D6 change leadership.
                 </p>
               )}
             </div>
@@ -760,23 +1025,23 @@ export default function Home() {
               ))}
             </article>
             <article className="result-card wide">
-              <h2>{mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
+              <h2>{mode === 'executive' ? 'Executive learning path' : mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
               <div className="learning-list">
                 {results.weakest.map((domain) => (
                   <div key={domain}>
-                    <span>{learningCatalog[domain].format}</span>
-                    <strong>{learningCatalog[domain].title}</strong>
-                    <p>{learningCatalog[domain].detail}</p>
+                    <span>{activeLearningCatalog[domain].format}</span>
+                    <strong>{activeLearningCatalog[domain].title}</strong>
+                    <p>{activeLearningCatalog[domain].detail}</p>
                   </div>
                 ))}
               </div>
             </article>
-            {mode === 'premium' && (
+            {(mode === 'premium' || mode === 'executive') && (
               <article className="result-card wide">
                 <h2>Evidence summary</h2>
                 <div className="evidence-grid">
-                  <p><strong>Adaptive coverage</strong> D1-D6 sampled with extra attention to low-confidence domains.</p>
-                  <p><strong>Scenario context</strong> Recommendations tuned for {functionLabels[functionTrack].toLowerCase()} and {industryLabels[industryTrack].toLowerCase()}.</p>
+                  <p><strong>Adaptive coverage</strong> {mode === 'executive' ? 'Executive-weighted D5/D4/D6 coverage plus D1-D3 calibration checks.' : 'D1-D6 sampled with extra attention to low-confidence domains.'}</p>
+                  <p><strong>Scenario context</strong> {mode === 'executive' ? `Recommendations tuned for ${executiveLabels[executiveRole].toLowerCase()} oversight decisions.` : `Recommendations tuned for ${functionLabels[functionTrack].toLowerCase()} and ${industryLabels[industryTrack].toLowerCase()}.`}</p>
                   <p><strong>Validation status</strong> Pilot-grade estimate. Full IRT calibration requires response data.</p>
                 </div>
               </article>
@@ -788,9 +1053,10 @@ export default function Home() {
               <p>Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.</p>
             </div>
             <div className="hero-actions">
-              <button className="primary" onClick={() => startAssessment(mode)}>Retake {mode === 'premium' ? 'Premium' : 'Free'} Assessment</button>
+              <button className="primary" onClick={() => startAssessment(mode)}>Retake {mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment</button>
               {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>}
               {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
+              {mode !== 'executive' && <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>}
             </div>
           </div>
         </section>
