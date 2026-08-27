@@ -46,6 +46,9 @@ export default defineConfig(async () => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
+    define: {
+      'process.env.__NEXT_APP_NAV_FAIL_HANDLING': 'false',
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
