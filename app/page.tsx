@@ -12,17 +12,33 @@ type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'ret
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 
 type Option = { id: string; label: string; score: number; feedback: string };
+type VisualStimulus = {
+  kind: 'dashboard' | 'report' | 'post' | 'portfolio' | 'risk' | 'memo';
+  title: string;
+  eyebrow: string;
+  caption: string;
+  points: string[];
+  callout?: string;
+};
+type RankItem = { id: string; label: string };
+type MatchPair = { id: string; left: string; correct: string; choices: string[] };
 type Question = {
   id: string;
   domain: DomainId;
   difficulty: Difficulty;
-  type: 'scenario' | 'media' | 'judgment';
+  type: 'scenario' | 'media' | 'judgment' | 'multi-select' | 'drag-order' | 'matching' | 'report-review' | 'narrative';
+  interaction?: 'single' | 'multi' | 'rank' | 'match';
   stimulus?: {
     src: string;
     alt: string;
     label: string;
     caption: string;
   };
+  visualStimulus?: VisualStimulus;
+  correctOptionIds?: string[];
+  rankItems?: RankItem[];
+  idealOrder?: string[];
+  matchPairs?: MatchPair[];
   prompt: string;
   context: string;
   options: Option[];
@@ -324,12 +340,15 @@ const executiveQuestionBank: Question[] = [
     domain: 'D5',
     difficulty: 'applied',
     type: 'media',
+    interaction: 'single',
     context: 'A vendor presents a board slide claiming a 42% productivity lift from an AI pilot, but the slide does not show baseline, sample size, adoption rate, or measurement period.',
-    stimulus: {
-      src: '/stimuli/productivity-chart-forensics.png',
-      alt: 'A dashboard showing AI Pilot productivity charts with a prominent plus forty-two percent claim and potentially misleading visual scaling.',
-      label: 'Executive chart forensics',
-      caption: 'Review the visual evidence before deciding whether the productivity claim is board-ready.',
+    visualStimulus: {
+      kind: 'dashboard',
+      eyebrow: 'Board dashboard extract',
+      title: 'AI Service Pilot: Productivity Claim',
+      callout: '+42%',
+      caption: 'The visual looks decisive, but the measurement design is incomplete.',
+      points: ['Pilot group: not disclosed', 'Baseline: not shown', 'Adoption rate: 38%', 'Error review: pending'],
     },
     prompt: 'What should an executive ask for before approving scale-up?',
     options: [
@@ -340,31 +359,75 @@ const executiveQuestionBank: Question[] = [
     ],
   },
   {
+    id: 'EXEC-D5-002',
+    domain: 'D5',
+    difficulty: 'applied',
+    type: 'multi-select',
+    interaction: 'multi',
+    context: 'The executive committee must choose which AI opportunities enter the next-quarter portfolio.',
+    visualStimulus: {
+      kind: 'portfolio',
+      eyebrow: 'Use-case portfolio',
+      title: 'Candidate AI Investments',
+      caption: 'Four ideas compete for executive sponsorship. Some are attractive but weak on readiness or risk.',
+      points: ['Customer response drafting: medium value, high readiness', 'Automated credit exceptions: high value, high risk', 'Meeting summaries: low value, high readiness', 'Pricing optimization: high value, data gaps'],
+    },
+    prompt: 'Select all criteria that should be used before prioritizing the portfolio.',
+    correctOptionIds: ['a', 'b', 'c', 'd'],
+    options: [
+      { id: 'a', label: 'Measurable business value and decision owner.', score: 25, feedback: 'Value and ownership are required.' },
+      { id: 'b', label: 'Data readiness and integration feasibility.', score: 25, feedback: 'Readiness determines whether value is achievable.' },
+      { id: 'c', label: 'Risk, compliance, and human-review needs.', score: 25, feedback: 'Risk-adjusted value matters at executive level.' },
+      { id: 'd', label: 'Pilot learning value and scale path.', score: 25, feedback: 'Learning and scale evidence prevent isolated experiments.' },
+      { id: 'e', label: 'Whether the idea sounds most innovative in a press release.', score: 0, feedback: 'Novelty is not a decision criterion.' },
+    ],
+  },
+  {
     id: 'EXEC-D6-004',
     domain: 'D6',
     difficulty: 'proficient',
-    type: 'judgment',
+    type: 'matching',
+    interaction: 'match',
     context: 'An AI agent can draft supplier emails, update CRM records, and trigger finance approvals across departments.',
-    prompt: 'Which executive control model is strongest?',
+    visualStimulus: {
+      kind: 'risk',
+      eyebrow: 'Agent authority map',
+      title: 'Cross-Department AI Agent',
+      caption: 'The agent touches communication, records, approvals, and exceptions.',
+      points: ['Supplier email draft', 'CRM update', 'Finance approval trigger', 'Customer exception escalation'],
+    },
+    prompt: 'Match each agent capability to the right executive control.',
+    matchPairs: [
+      { id: 'email', left: 'Draft supplier emails', correct: 'Human approval before external send', choices: ['Human approval before external send', 'Autonomous execution', 'No log required'] },
+      { id: 'crm', left: 'Update CRM records', correct: 'Audit log and rollback path', choices: ['Audit log and rollback path', 'Public announcement', 'Ignore until quarter end'] },
+      { id: 'finance', left: 'Trigger finance approval', correct: 'Named owner and threshold gate', choices: ['Named owner and threshold gate', 'Unlimited tool access', 'Vendor decides'] },
+    ],
     options: [
-      { id: 'a', label: 'Give the agent broad access so teams can discover benefits quickly.', score: 15, feedback: 'Broad access creates preventable operational and accountability risk.' },
-      { id: 'b', label: 'Define decision rights, approval gates, audit logs, exception handling, and named human owners.', score: 98, feedback: 'Correct. Agentic workflows need authority boundaries and traceability.' },
-      { id: 'c', label: 'Let each department set controls independently.', score: 45, feedback: 'Local flexibility helps, but cross-functional agents need common governance.' },
-      { id: 'd', label: 'Pause all AI agent work until regulation is final.', score: 40, feedback: 'This may be too slow; governed pilots can proceed safely.' },
+      { id: 'match', label: 'Match controls to agent capabilities.', score: 98, feedback: 'Strong executive oversight maps authority to control, owner, and evidence.' },
     ],
   },
   {
     id: 'EXEC-D4-005',
     domain: 'D4',
     difficulty: 'applied',
-    type: 'judgment',
+    type: 'report-review',
+    interaction: 'multi',
     context: 'A strategic AI vendor refuses to explain audit access, model monitoring, data retention, or subcontractor use.',
-    prompt: 'What is the best procurement response?',
+    visualStimulus: {
+      kind: 'report',
+      eyebrow: 'Vendor diligence excerpt',
+      title: 'AI Platform Proposal',
+      caption: 'The proposal promises rapid deployment but leaves several assurance fields blank.',
+      points: ['Audit rights: not provided', 'Retention period: vendor standard', 'Subprocessors: available after signature', 'Monitoring: roadmap item'],
+    },
+    prompt: 'Which concerns should block procurement until resolved?',
+    correctOptionIds: ['a', 'b', 'c', 'd'],
     options: [
-      { id: 'a', label: 'Proceed because the vendor is well known.', score: 25, feedback: 'Brand reputation does not replace AI-specific diligence.' },
-      { id: 'b', label: 'Require auditability, data-use terms, security evidence, monitoring commitments, and exit rights.', score: 98, feedback: 'Correct. These are core third-party AI risk controls.' },
-      { id: 'c', label: 'Ask legal to approve after launch.', score: 15, feedback: 'Governance controls belong before procurement and deployment.' },
-      { id: 'd', label: 'Use only the lowest-cost vendor.', score: 20, feedback: 'Cost cannot be the primary criterion for high-impact AI systems.' },
+      { id: 'a', label: 'No auditability or monitoring commitments.', score: 25, feedback: 'Auditability is a procurement gate.' },
+      { id: 'b', label: 'Unclear data retention and vendor data use.', score: 25, feedback: 'Data terms must be explicit.' },
+      { id: 'c', label: 'Unknown subprocessors and cross-border exposure.', score: 25, feedback: 'Third-party chain of custody matters.' },
+      { id: 'd', label: 'No exit rights or portability language.', score: 25, feedback: 'Executives should avoid hidden lock-in.' },
+      { id: 'e', label: 'The deck uses plain typography.', score: 0, feedback: 'Visual polish is not a risk control.' },
     ],
   },
   {
@@ -372,12 +435,20 @@ const executiveQuestionBank: Question[] = [
     domain: 'D3',
     difficulty: 'applied',
     type: 'media',
-    context: 'A realistic visual post claims a CEO announced layoffs after seeing an AI-generated forecast. The post is spreading quickly before market open.',
+    interaction: 'single',
+    context: 'A realistic social post claims a CEO announced layoffs after seeing an AI-generated forecast. The post is spreading quickly before market open.',
+    visualStimulus: {
+      kind: 'post',
+      eyebrow: 'Social media post',
+      title: 'Breaking: CEO confirms AI-driven layoffs',
+      caption: 'The post uses a realistic executive image, urgent wording, and no original source link.',
+      points: ['Source: anonymous repost', 'Timestamp: 06:12 before market open', 'Original video: not linked', 'Company channel: no matching statement'],
+    },
     stimulus: {
-      src: '/stimuli/flooded-street-authenticity.png',
-      alt: 'A realistic image used as a visual provenance and caption-verification stimulus.',
-      label: 'Synthetic media response',
-      caption: 'The image can look persuasive while the attached claim still lacks provenance.',
+      src: '/stimuli/executive-synthetic-post.svg',
+      alt: 'A social media style post claiming a CEO confirmed AI-driven layoffs, labeled with missing provenance clues.',
+      label: 'Synthetic media image',
+      caption: 'The image is the item stimulus: inspect the post, source, timing, and missing original link.',
     },
     prompt: 'What should leadership do before responding publicly?',
     options: [
@@ -391,36 +462,52 @@ const executiveQuestionBank: Question[] = [
     id: 'EXEC-D5-024',
     domain: 'D5',
     difficulty: 'proficient',
-    type: 'judgment',
+    type: 'drag-order',
+    interaction: 'rank',
     context: 'The annual AI budget has ten proposed initiatives across automation, customer experience, analytics, and internal productivity.',
-    prompt: 'Which portfolio discipline best supports responsible investment?',
+    prompt: 'Drag or reorder the executive stage gates into the strongest order for responsible AI investment.',
+    rankItems: [
+      { id: 'value', label: 'Define value hypothesis and owner' },
+      { id: 'readiness', label: 'Assess data, workflow, and risk readiness' },
+      { id: 'pilot', label: 'Run controlled pilot with success metrics' },
+      { id: 'scale', label: 'Scale only after evidence and controls pass' },
+    ],
+    idealOrder: ['value', 'readiness', 'pilot', 'scale'],
     options: [
-      { id: 'a', label: 'Fund the flashiest initiatives first.', score: 15, feedback: 'Novelty is not a reliable investment criterion.' },
-      { id: 'b', label: 'Use value, feasibility, risk, data readiness, learning potential, and stage-gate evidence.', score: 98, feedback: 'Correct. This balances strategic value with execution discipline.' },
-      { id: 'c', label: 'Split the budget equally across all functions.', score: 45, feedback: 'Fairness by allocation can dilute strategic impact.' },
-      { id: 'd', label: 'Delegate the full portfolio to IT.', score: 35, feedback: 'AI value realization is cross-functional, not only technical.' },
+      { id: 'rank', label: 'Order portfolio gates from hypothesis to scale.', score: 98, feedback: 'Strong. The sequence protects investment discipline.' },
     ],
   },
   {
     id: 'EXEC-D4-004',
     domain: 'D4',
     difficulty: 'proficient',
-    type: 'judgment',
+    type: 'matching',
+    interaction: 'match',
     context: 'A regulated workflow will use AI to recommend eligibility decisions, with human reviewers expected to approve exceptions.',
-    prompt: 'Which launch condition is most important?',
+    prompt: 'Match each regulated-workflow risk to the appropriate governance evidence.',
+    matchPairs: [
+      { id: 'fairness', left: 'Uneven outcomes across protected groups', correct: 'Bias test and remediation record', choices: ['Bias test and remediation record', 'Marketing launch plan', 'Seat-license count'] },
+      { id: 'appeal', left: 'User challenges AI-assisted decision', correct: 'Appeal path and human rationale', choices: ['Appeal path and human rationale', 'Vendor logo page', 'Internal hype metric'] },
+      { id: 'drift', left: 'Performance changes after launch', correct: 'Monitoring dashboard and review cadence', choices: ['Monitoring dashboard and review cadence', 'One-time demo', 'No evidence needed'] },
+    ],
     options: [
-      { id: 'a', label: 'Launch after a positive demo from the implementation team.', score: 20, feedback: 'A demo does not prove control readiness.' },
-      { id: 'b', label: 'Require bias testing, explainability, appeal path, monitoring, audit trail, and accountable human review.', score: 98, feedback: 'Correct. High-impact workflows need layered safeguards.' },
-      { id: 'c', label: 'Let reviewers decide controls case by case.', score: 35, feedback: 'Controls must be designed into the workflow.' },
-      { id: 'd', label: 'Avoid documenting the model so teams move faster.', score: 10, feedback: 'Lack of documentation weakens accountability and compliance.' },
+      { id: 'match', label: 'Match governance evidence to workflow risk.', score: 98, feedback: 'Correct matching shows governance fluency.' },
     ],
   },
   {
     id: 'EXEC-D6-012',
     domain: 'D6',
     difficulty: 'proficient',
-    type: 'scenario',
+    type: 'narrative',
+    interaction: 'single',
     context: 'An AI assistant sent incorrect customer guidance that affected a small but visible customer segment.',
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Incident narrative',
+      title: 'Customer Guidance Error',
+      caption: 'A response draft passed human review, reached 184 customers, and triggered conflicting advice across support channels.',
+      points: ['Impact: limited but visible', 'Root cause: weak exception review', 'Control: no rollback checklist', 'Employee concern: blame culture'],
+    },
     prompt: 'Which executive response builds the most trust?',
     options: [
       { id: 'a', label: 'Blame the frontline team for accepting the AI output.', score: 10, feedback: 'Blame discourages learning and hides systemic control failures.' },
@@ -433,50 +520,74 @@ const executiveQuestionBank: Question[] = [
     id: 'EXEC-D5-016',
     domain: 'D5',
     difficulty: 'applied',
-    type: 'scenario',
+    type: 'multi-select',
+    interaction: 'multi',
     context: 'A vendor proposes a proprietary AI workflow that would embed core customer data, prompts, and operating logic inside its platform.',
-    prompt: 'What strategic risk should be reviewed first?',
+    prompt: 'Select the strategic risks executives should review before signing.',
+    correctOptionIds: ['a', 'b', 'c'],
     options: [
-      { id: 'a', label: 'Whether the sales demo feels impressive.', score: 20, feedback: 'Demo quality is weak evidence for strategic dependency.' },
-      { id: 'b', label: 'Portability, data ownership, exit rights, integration cost, and capability dependency.', score: 98, feedback: 'Correct. These determine lock-in and long-term strategic control.' },
-      { id: 'c', label: 'Whether competitors use the same vendor.', score: 45, feedback: 'Peer adoption is useful context, not a decision rule.' },
-      { id: 'd', label: 'Only the first-year discount.', score: 15, feedback: 'Discounts can hide long-term total cost and dependency.' },
+      { id: 'a', label: 'Data ownership, retention, and reuse rights.', score: 33, feedback: 'Data rights determine long-term control.' },
+      { id: 'b', label: 'Portability, exit rights, and migration cost.', score: 33, feedback: 'Exit paths protect strategic flexibility.' },
+      { id: 'c', label: 'Dependency on vendor prompts, workflows, and model roadmap.', score: 33, feedback: 'Capability dependency can become lock-in.' },
+      { id: 'd', label: 'The charisma of the vendor presenter.', score: 0, feedback: 'A strong pitch is not diligence evidence.' },
     ],
   },
   {
     id: 'EXEC-D1-003',
     domain: 'D1',
     difficulty: 'applied',
-    type: 'judgment',
+    type: 'matching',
+    interaction: 'match',
     context: 'A leadership team assumes an AI agent can safely chain tools autonomously because the underlying model passed a benchmark.',
-    prompt: 'What concept should the executive understand?',
+    prompt: 'Match the executive misconception to the correct AI oversight concept.',
+    matchPairs: [
+      { id: 'benchmark', left: 'High benchmark score', correct: 'Capability signal, not safe authority', choices: ['Capability signal, not safe authority', 'Permission to automate everything', 'Legal approval'] },
+      { id: 'retrieval', left: 'Current policy answer', correct: 'Requires grounding in approved sources', choices: ['Requires grounding in approved sources', 'Model memory is enough', 'Ignore citations'] },
+      { id: 'agent', left: 'Tool-chaining agent', correct: 'Needs permissions, logs, and supervision', choices: ['Needs permissions, logs, and supervision', 'No human role remains', 'Only branding matters'] },
+    ],
     options: [
-      { id: 'a', label: 'Benchmark performance does not define safe authority, tool permissions, or supervision.', score: 98, feedback: 'Correct. Agentic capability and operational authority are different concerns.' },
-      { id: 'b', label: 'All benchmarks are useless.', score: 35, feedback: 'Benchmarks can help, but they are incomplete evidence.' },
-      { id: 'c', label: 'Autonomous tools are always safe if they are popular.', score: 10, feedback: 'Popularity is not a control.' },
-      { id: 'd', label: 'The agent should never use tools.', score: 40, feedback: 'The issue is governed tool use, not a blanket ban.' },
+      { id: 'match', label: 'Match concepts to misconceptions.', score: 98, feedback: 'Correct. Executive fluency means knowing what capability evidence does and does not prove.' },
     ],
   },
   {
     id: 'EXEC-D2-002',
     domain: 'D2',
     difficulty: 'applied',
-    type: 'scenario',
+    type: 'drag-order',
+    interaction: 'rank',
     context: 'A business unit adds an AI copilot to an existing approval workflow and reports that employees like it.',
-    prompt: 'What would make the implementation executive-ready?',
+    prompt: 'Drag or reorder the workflow integration steps before broad rollout.',
+    rankItems: [
+      { id: 'map', label: 'Map where AI enters the workflow' },
+      { id: 'review', label: 'Set human review and exception points' },
+      { id: 'measure', label: 'Measure quality, speed, adoption, and risk' },
+      { id: 'train', label: 'Train role owners and scale the pattern' },
+    ],
+    idealOrder: ['map', 'review', 'measure', 'train'],
     options: [
-      { id: 'a', label: 'User satisfaction alone.', score: 35, feedback: 'Satisfaction is useful but insufficient for workflow assurance.' },
-      { id: 'b', label: 'Defined review points, quality metrics, outcome measures, exception handling, and training.', score: 98, feedback: 'Correct. Workflow integration needs measurable controls and enablement.' },
-      { id: 'c', label: 'A larger launch announcement.', score: 15, feedback: 'Communication does not prove readiness.' },
-      { id: 'd', label: 'Letting each user decide how to apply the output.', score: 30, feedback: 'Unstructured use can create inconsistency and risk.' },
+      { id: 'rank', label: 'Order workflow steps from mapping to scale.', score: 98, feedback: 'Strong workflow governance starts with context, then controls, measures, and enablement.' },
     ],
   },
   {
     id: 'EXEC-D3-002',
     domain: 'D3',
     difficulty: 'applied',
-    type: 'judgment',
+    type: 'report-review',
+    interaction: 'single',
     context: 'An AI-generated market report cites three sources, but the cited materials do not support the exact growth forecast used in the board recommendation.',
+    visualStimulus: {
+      kind: 'report',
+      eyebrow: 'AI report excerpt',
+      title: 'Market Expansion Recommendation',
+      caption: 'The report lists sources, but the cited materials do not contain the stated 31% growth forecast.',
+      points: ['Claim: market will grow 31%', 'Source A: adoption barriers', 'Source B: 2023 survey, no forecast', 'Source C: vendor blog, no sample'],
+    },
+    stimulus: {
+      src: '/stimuli/executive-market-report.svg',
+      alt: 'A board report excerpt showing an unsupported thirty-one percent market growth forecast and weak citations.',
+      label: 'Report evidence image',
+      caption: 'The image is the item stimulus: compare the claim against the cited source notes.',
+    },
     prompt: 'What is the strongest executive conclusion?',
     options: [
       { id: 'a', label: 'The forecast is decision-ready because sources are listed.', score: 20, feedback: 'Sources must support the exact claim.' },
@@ -489,14 +600,98 @@ const executiveQuestionBank: Question[] = [
     id: 'EXEC-D6-018',
     domain: 'D6',
     difficulty: 'proficient',
-    type: 'scenario',
+    type: 'multi-select',
+    interaction: 'multi',
     context: 'The board asks how leadership will stay competent enough to oversee AI as tools and risks change quickly.',
-    prompt: 'Which answer best demonstrates durable executive oversight?',
+    prompt: 'Select the routines that belong in an executive AI oversight cadence.',
+    correctOptionIds: ['a', 'b', 'c', 'd'],
     options: [
-      { id: 'a', label: 'Annual awareness training for all executives.', score: 45, feedback: 'Useful, but too thin for a fast-changing oversight domain.' },
-      { id: 'b', label: 'Quarterly executive learning, incident reviews, portfolio reviews, scenario drills, and named accountability.', score: 98, feedback: 'Correct. Oversight capability requires repeated practice and governance cadence.' },
-      { id: 'c', label: 'Rely entirely on external consultants.', score: 30, feedback: 'Experts help, but executives retain accountability.' },
-      { id: 'd', label: 'Delegate AI oversight to the most technical director.', score: 35, feedback: 'AI oversight needs business, risk, people, and technology judgment.' },
+      { id: 'a', label: 'Quarterly AI portfolio and risk review.', score: 25, feedback: 'Portfolio review keeps investment and risk connected.' },
+      { id: 'b', label: 'Incident and near-miss learning review.', score: 25, feedback: 'Incidents are a leadership learning loop.' },
+      { id: 'c', label: 'Executive scenario drills for emerging AI risks.', score: 25, feedback: 'Scenario practice improves judgment under ambiguity.' },
+      { id: 'd', label: 'Named accountability for business, risk, technology, and people outcomes.', score: 25, feedback: 'Accountability must be shared but explicit.' },
+      { id: 'e', label: 'One annual inspirational keynote with no operating follow-up.', score: 0, feedback: 'Inspiration without cadence does not create oversight capability.' },
+    ],
+  },
+  {
+    id: 'EXEC-D4-010',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'drag-order',
+    interaction: 'rank',
+    context: 'An AI workflow exposed a confidential customer segment report to employees who did not need access.',
+    visualStimulus: {
+      kind: 'risk',
+      eyebrow: 'Incident log',
+      title: 'Confidential Report Exposure',
+      caption: 'The initial log shows broad permissions, unclear notification status, and no prevention owner.',
+      points: ['Access scope: 214 employees', 'Containment: partial', 'Customer impact: under review', 'Owner: not assigned'],
+    },
+    prompt: 'Drag or reorder the incident response actions into the best executive sequence.',
+    rankItems: [
+      { id: 'contain', label: 'Contain access and preserve audit evidence' },
+      { id: 'assess', label: 'Assess impact, legal obligations, and notification needs' },
+      { id: 'communicate', label: 'Communicate clearly to affected stakeholders' },
+      { id: 'prevent', label: 'Fix permissions, monitoring, and ownership' },
+    ],
+    idealOrder: ['contain', 'assess', 'communicate', 'prevent'],
+    options: [
+      { id: 'rank', label: 'Order incident actions from containment to prevention.', score: 98, feedback: 'Correct. Incident leadership starts with containment and evidence.' },
+    ],
+  },
+  {
+    id: 'EXEC-D5-021',
+    domain: 'D5',
+    difficulty: 'applied',
+    type: 'narrative',
+    interaction: 'single',
+    context: 'Employees hear that AI is a cost-cutting program, while the board hears it is a growth and quality program.',
+    prompt: 'Which executive narrative best supports adoption and trust?',
+    options: [
+      { id: 'a', label: 'AI will replace routine work, and details will come later.', score: 20, feedback: 'This increases fear and ambiguity.' },
+      { id: 'b', label: 'AI will target measurable customer, quality, and productivity outcomes while protecting accountability and learning.', score: 98, feedback: 'Correct. It connects value, trust, and human capability.' },
+      { id: 'c', label: 'AI is mainly an IT modernization project.', score: 35, feedback: 'That undersells business ownership and change leadership.' },
+      { id: 'd', label: 'AI messaging should wait until every answer is known.', score: 40, feedback: 'Leaders can communicate principles before every detail is final.' },
+    ],
+  },
+  {
+    id: 'EXEC-D6-016',
+    domain: 'D6',
+    difficulty: 'applied',
+    type: 'matching',
+    interaction: 'match',
+    context: 'Legal, IT, HR, and Operations disagree on whether a customer-support AI assistant should scale.',
+    prompt: 'Match each function to the concern it should own in the decision forum.',
+    matchPairs: [
+      { id: 'legal', left: 'Legal', correct: 'Disclosure, liability, and regulatory obligations', choices: ['Disclosure, liability, and regulatory obligations', 'System uptime only', 'Training attendance'] },
+      { id: 'it', left: 'IT / Data', correct: 'Security, integration, access, and monitoring', choices: ['Security, integration, access, and monitoring', 'Press release timing', 'Compensation policy'] },
+      { id: 'hr', left: 'HR / People', correct: 'Role impact, enablement, and adoption trust', choices: ['Role impact, enablement, and adoption trust', 'Vendor revenue', 'Database schema only'] },
+    ],
+    options: [
+      { id: 'match', label: 'Match functions to decision concerns.', score: 98, feedback: 'Strong executives create shared criteria without blurring ownership.' },
+    ],
+  },
+  {
+    id: 'EXEC-D3-005',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'media',
+    interaction: 'single',
+    context: 'A trend dashboard shows customer churn dropping after an AI assistant launch, but the y-axis is truncated and a pricing change happened at the same time.',
+    visualStimulus: {
+      kind: 'dashboard',
+      eyebrow: 'Churn dashboard',
+      title: 'AI Assistant Impact',
+      callout: 'Churn -18%',
+      caption: 'The visual implies causality, but the axis and concurrent pricing change complicate interpretation.',
+      points: ['Y-axis starts at 7%', 'AI launch: May', 'Pricing discount: May', 'No control group shown'],
+    },
+    prompt: 'What is the best executive interpretation?',
+    options: [
+      { id: 'a', label: 'AI definitely caused the full churn reduction.', score: 20, feedback: 'The visual overstates causality.' },
+      { id: 'b', label: 'The result is promising but needs causal analysis, controls, and baseline transparency.', score: 98, feedback: 'Correct. This is calibrated evidence judgment.' },
+      { id: 'c', label: 'The dashboard proves AI had no value.', score: 35, feedback: 'The evidence is weak, not necessarily negative.' },
+      { id: 'd', label: 'Hide the chart because it is imperfect.', score: 30, feedback: 'Improve the evidence rather than hiding uncertainty.' },
     ],
   },
 ];
@@ -523,9 +718,9 @@ const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, 
 const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
   free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
   premium: { label: 'Premium diagnostic pilot', totalQuestions: 16, confidenceBase: 48, confidenceStep: 3 },
-  executive: { label: 'Executive assessment pilot', totalQuestions: 12, confidenceBase: 54, confidenceStep: 3 },
+  executive: { label: 'Executive assessment pilot', totalQuestions: 16, confidenceBase: 54, confidenceStep: 3 },
 };
-const executiveDomainSequence: DomainId[] = ['D5', 'D6', 'D4', 'D5', 'D4', 'D6', 'D5', 'D3', 'D4', 'D6', 'D1', 'D2'];
+const executiveDomainSequence: DomainId[] = ['D5', 'D6', 'D4', 'D5', 'D4', 'D6', 'D5', 'D3', 'D4', 'D6', 'D1', 'D2', 'D4', 'D5', 'D6', 'D3'];
 
 function scoreToLevel(score: number) {
   if (score >= 82) return 'Proficient';
@@ -550,6 +745,31 @@ function getDomainScores(answers: Answer[]) {
   return Object.fromEntries(
     Object.entries(raw).map(([domain, value]) => [domain, value.count ? Math.round(value.points / value.count) : 50]),
   ) as Record<DomainId, number>;
+}
+
+function scoreMultiSelect(question: Question, selected: string[]) {
+  const correct = question.correctOptionIds ?? [];
+  const selectedSet = new Set(selected);
+  const correctSelected = correct.filter((id) => selectedSet.has(id)).length;
+  const wrongSelected = selected.filter((id) => !correct.includes(id)).length;
+  if (!selected.length) return 15;
+  if (correctSelected === correct.length && wrongSelected === 0) return 98;
+  const partial = Math.round((correctSelected / Math.max(correct.length, 1)) * 82);
+  return Math.max(20, partial - wrongSelected * 18);
+}
+
+function scoreOrder(question: Question, order: string[]) {
+  const ideal = question.idealOrder ?? [];
+  if (!ideal.length) return 60;
+  const exactPositions = ideal.filter((id, index) => order[index] === id).length;
+  return Math.max(25, Math.round((exactPositions / ideal.length) * 98));
+}
+
+function scoreMatches(question: Question, selections: Record<string, string>) {
+  const pairs = question.matchPairs ?? [];
+  if (!pairs.length) return 60;
+  const correct = pairs.filter((pair) => selections[pair.id] === pair.correct).length;
+  return Math.max(20, Math.round((correct / pairs.length) * 98));
 }
 
 function selectNextQuestion(answers: Answer[], assessmentMode: AssessmentMode = 'free') {
@@ -584,6 +804,26 @@ function selectNextQuestion(answers: Answer[], assessmentMode: AssessmentMode = 
         Math.abs(difficultyValue[a.difficulty] - difficultyValue[targetDifficulty]) -
         Math.abs(difficultyValue[b.difficulty] - difficultyValue[targetDifficulty]),
     )[0]
+  );
+}
+
+function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
+  return (
+    <figure className={`visual-stimulus ${stimulus.kind}`}>
+      <div className="visual-header">
+        <span>{stimulus.eyebrow}</span>
+        <strong>{stimulus.title}</strong>
+      </div>
+      <div className="visual-body">
+        {stimulus.callout && <div className="visual-callout">{stimulus.callout}</div>}
+        <div className="visual-lines">
+          {stimulus.points.map((point) => (
+            <p key={point}>{point}</p>
+          ))}
+        </div>
+      </div>
+      <figcaption>{stimulus.caption}</figcaption>
+    </figure>
   );
 }
 
@@ -645,6 +885,10 @@ export default function Home() {
   const [executiveRole, setExecutiveRole] = useState<ExecutiveRole>('ceo');
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
+  const [multiSelected, setMultiSelected] = useState<string[]>([]);
+  const [rankOrder, setRankOrder] = useState<string[]>([]);
+  const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const activeConfig = modeConfig[mode];
   const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), activeConfig.totalQuestions);
@@ -657,20 +901,79 @@ export default function Home() {
   }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
 
   function startAssessment(nextMode: AssessmentMode) {
+    const firstQuestion = selectNextQuestion([], nextMode);
     setMode(nextMode);
     setAnswers([]);
-    setCurrent(selectNextQuestion([], nextMode));
+    setCurrent(firstQuestion);
+    resetInteractionState(firstQuestion);
     setStep('assessment');
   }
 
-  function chooseOption(option: Option) {
+  function resetInteractionState(question: Question) {
+    setMultiSelected([]);
+    setRankOrder(question.rankItems?.map((item) => item.id) ?? []);
+    setMatchSelections({});
+    setDraggedIndex(null);
+  }
+
+  function submitAnswer(option: Option) {
     const nextAnswers = [...answers, { question: current, option }];
     setAnswers(nextAnswers);
     if (nextAnswers.length >= activeConfig.totalQuestions) {
       setStep('results');
       return;
     }
-    setCurrent(selectNextQuestion(nextAnswers, mode));
+    const nextQuestion = selectNextQuestion(nextAnswers, mode);
+    setCurrent(nextQuestion);
+    resetInteractionState(nextQuestion);
+  }
+
+  function chooseOption(option: Option) {
+    submitAnswer(option);
+  }
+
+  function toggleMultiOption(id: string) {
+    setMultiSelected((selected) => (selected.includes(id) ? selected.filter((value) => value !== id) : [...selected, id]));
+  }
+
+  function submitMultiSelect() {
+    const score = scoreMultiSelect(current, multiSelected);
+    submitAnswer({
+      id: multiSelected.join(',') || 'none',
+      label: multiSelected.length ? `Selected ${multiSelected.length} options` : 'No options selected',
+      score,
+      feedback: score >= 90 ? 'Strong multi-select judgment.' : 'Partial signal. Review which criteria are decision-grade and which are distractors.',
+    });
+  }
+
+  function moveRankItem(from: number, to: number) {
+    if (to < 0 || to >= rankOrder.length) return;
+    setRankOrder((order) => {
+      const nextOrder = [...order];
+      const [item] = nextOrder.splice(from, 1);
+      nextOrder.splice(to, 0, item);
+      return nextOrder;
+    });
+  }
+
+  function submitRankOrder() {
+    const score = scoreOrder(current, rankOrder);
+    submitAnswer({
+      id: rankOrder.join('>'),
+      label: 'Submitted ordered sequence',
+      score,
+      feedback: score >= 90 ? 'Strong sequencing judgment.' : 'Partial signal. Executive workflows need the right order, not only the right ingredients.',
+    });
+  }
+
+  function submitMatches() {
+    const score = scoreMatches(current, matchSelections);
+    submitAnswer({
+      id: Object.values(matchSelections).join('|') || 'unmatched',
+      label: 'Submitted matching response',
+      score,
+      feedback: score >= 90 ? 'Strong matching of risk to control.' : 'Partial signal. Revisit which owner, control, or evidence belongs with each risk.',
+    });
   }
 
   const activeLearningCatalog = mode === 'executive' ? executiveLearningCatalog : learningCatalog;
@@ -728,7 +1031,7 @@ export default function Home() {
           <section className="stats" aria-label="MVP scope highlights">
             <div><strong>12</strong><span>free adaptive questions</span></div>
             <div><strong>16</strong><span>premium pilot questions</span></div>
-            <div><strong>12</strong><span>executive pilot questions</span></div>
+            <div><strong>16</strong><span>executive pilot questions</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>360+</strong><span>seeded pilot items</span></div>
           </section>
@@ -939,7 +1242,7 @@ export default function Home() {
           </div>
           <div className="premium-summary">
             <strong>Executive pilot includes</strong>
-            <span>12 adaptive questions from the executive multimodal bank, chart and visual verification tasks, strategic governance scoring, radar graph, and personalized executive learning path.</span>
+            <span>16 adaptive questions from the executive multimodal bank, chart/report visuals, multi-select, drag-order, matching, narrative judgment, radar graph, and personalized executive learning path.</span>
           </div>
           <div className="workspace-actions">
             <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
@@ -973,16 +1276,87 @@ export default function Home() {
                 <figcaption>{current.stimulus.caption}</figcaption>
               </figure>
             )}
+            {current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
             <p className="context">{current.context}</p>
             <h2>{current.prompt}</h2>
-            <div className="options">
-              {current.options.map((option) => (
-                <button key={option.id} onClick={() => chooseOption(option)}>
-                  <span>{option.id.toUpperCase()}</span>
-                  {option.label}
-                </button>
-              ))}
-            </div>
+            {(current.interaction ?? 'single') === 'single' && (
+              <div className="options">
+                {current.options.map((option) => (
+                  <button key={option.id} onClick={() => chooseOption(option)}>
+                    <span>{option.id.toUpperCase()}</span>
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+            {current.interaction === 'multi' && (
+              <div className="interaction-panel">
+                <div className="options multi-options">
+                  {current.options.map((option) => (
+                    <button
+                      key={option.id}
+                      className={multiSelected.includes(option.id) ? 'selected' : ''}
+                      onClick={() => toggleMultiOption(option.id)}
+                      aria-pressed={multiSelected.includes(option.id)}
+                    >
+                      <span>{option.id.toUpperCase()}</span>
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+                <button className="primary submit-answer" onClick={submitMultiSelect}>Submit Selected Answers</button>
+              </div>
+            )}
+            {current.interaction === 'rank' && (
+              <div className="interaction-panel">
+                <div className="rank-list" aria-label="Drag-order response">
+                  {rankOrder.map((itemId, index) => {
+                    const item = current.rankItems?.find((rankItem) => rankItem.id === itemId);
+                    return (
+                      <div
+                        className="rank-item"
+                        draggable
+                        key={itemId}
+                        onDragStart={() => setDraggedIndex(index)}
+                        onDragOver={(event) => event.preventDefault()}
+                        onDrop={() => {
+                          if (draggedIndex !== null) moveRankItem(draggedIndex, index);
+                        }}
+                      >
+                        <span>{index + 1}</span>
+                        <strong>{item?.label}</strong>
+                        <div>
+                          <button onClick={() => moveRankItem(index, index - 1)} aria-label={`Move ${item?.label} up`}>Up</button>
+                          <button onClick={() => moveRankItem(index, index + 1)} aria-label={`Move ${item?.label} down`}>Down</button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <button className="primary submit-answer" onClick={submitRankOrder}>Submit Order</button>
+              </div>
+            )}
+            {current.interaction === 'match' && (
+              <div className="interaction-panel">
+                <div className="match-list">
+                  {current.matchPairs?.map((pair) => (
+                    <label className="match-row" key={pair.id}>
+                      <span>{pair.left}</span>
+                      <select
+                        value={matchSelections[pair.id] ?? ''}
+                        onChange={(event) => setMatchSelections((selections) => ({ ...selections, [pair.id]: event.target.value }))}
+                      >
+                        <option value="">Choose match</option>
+                        {pair.choices.map((choice) => (
+                          <option key={choice} value={choice}>{choice}</option>
+                        ))}
+                      </select>
+                    </label>
+                  ))}
+                </div>
+                <button className="primary submit-answer" onClick={submitMatches}>Submit Matches</button>
+              </div>
+            )}
           </article>
         </section>
       )}

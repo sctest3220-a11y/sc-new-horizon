@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic executive media post</title>
+  <desc id="desc">A social media style post claiming a CEO made an AI-driven layoff announcement, with provenance warnings.</desc>
+  <rect width="1440" height="900" fill="#f7f5ef"/>
+  <rect x="120" y="90" width="1200" height="720" rx="24" fill="#ffffff" stroke="#d8d6ca" stroke-width="4"/>
+  <rect x="120" y="90" width="1200" height="112" rx="24" fill="#17201d"/>
+  <text x="178" y="158" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">Executive Signal Watch</text>
+  <text x="178" y="244" fill="#b45f3a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">UNVERIFIED POST</text>
+  <text x="178" y="312" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Breaking: CEO confirms AI-driven layoffs</text>
+  <rect x="178" y="372" width="430" height="270" rx="18" fill="#e7e1d2"/>
+  <circle cx="288" cy="486" r="70" fill="#8da8b8"/>
+  <rect x="224" y="556" width="128" height="54" rx="18" fill="#3b6ea8"/>
+  <rect x="380" y="430" width="170" height="28" rx="14" fill="#ffffff"/>
+  <rect x="380" y="484" width="134" height="28" rx="14" fill="#ffffff"/>
+  <rect x="380" y="538" width="188" height="28" rx="14" fill="#ffffff"/>
+  <text x="650" y="416" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Post clues</text>
+  <text x="650" y="470" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="26">Source: anonymous repost</text>
+  <text x="650" y="520" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="26">Original video: not linked</text>
+  <text x="650" y="570" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="26">Company channel: no matching statement</text>
+  <text x="650" y="620" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="26">Timing: before market open</text>
+  <rect x="178" y="690" width="1084" height="72" rx="12" fill="#fff4ec" stroke="#e5baa0" stroke-width="2"/>
+  <text x="214" y="736" fill="#7a361d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Leadership task: verify provenance before public response.</text>
+</svg>

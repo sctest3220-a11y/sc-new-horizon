@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI-generated market report excerpt</title>
+  <desc id="desc">A board report excerpt with an unsupported 31 percent growth forecast and weak citations.</desc>
+  <rect width="1440" height="900" fill="#f7f5ef"/>
+  <rect x="104" y="72" width="1232" height="756" rx="20" fill="#ffffff" stroke="#d8d6ca" stroke-width="4"/>
+  <text x="160" y="150" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Market Expansion Recommendation</text>
+  <text x="160" y="204" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="24">AI-generated report excerpt for board review</text>
+  <rect x="160" y="252" width="500" height="190" rx="16" fill="#ece8dc"/>
+  <text x="198" y="328" fill="#a27a23" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">31%</text>
+  <text x="198" y="384" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">forecast growth claim</text>
+  <text x="198" y="422" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="22">No cited source contains this number</text>
+  <rect x="720" y="252" width="520" height="98" rx="14" fill="#f6f3ea" stroke="#d8d6ca" stroke-width="2"/>
+  <text x="754" y="292" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Source A</text>
+  <text x="754" y="326" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="22">Discusses adoption barriers, no forecast</text>
+  <rect x="720" y="374" width="520" height="98" rx="14" fill="#f6f3ea" stroke="#d8d6ca" stroke-width="2"/>
+  <text x="754" y="414" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Source B</text>
+  <text x="754" y="448" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="22">2023 survey, no market-size projection</text>
+  <rect x="720" y="496" width="520" height="98" rx="14" fill="#f6f3ea" stroke="#d8d6ca" stroke-width="2"/>
+  <text x="754" y="536" fill="#17201d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Source C</text>
+  <text x="754" y="570" fill="#65706b" font-family="Arial, Helvetica, sans-serif" font-size="22">Vendor blog, sample not disclosed</text>
+  <rect x="160" y="650" width="1080" height="86" rx="14" fill="#fff4ec" stroke="#e5baa0" stroke-width="2"/>
+  <text x="198" y="704" fill="#7a361d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Evidence task: identify citation-support mismatch before board decision.</text>
+</svg>
