@@ -5,6 +5,9 @@ import { useMemo, useState } from 'react';
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
 type Difficulty = 'awareness' | 'applied' | 'proficient';
+type AssessmentMode = 'free' | 'premium';
+type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'technical' | 'operations';
+type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
 
 type Option = { id: string; label: string; score: number; feedback: string };
 type Question = {
@@ -33,6 +36,24 @@ const audienceLabels: Record<Audience, string> = {
   educator: 'Educator',
   professional: 'Professional',
   team: 'Team member',
+};
+
+const functionLabels: Record<FunctionTrack, string> = {
+  general: 'General work',
+  people: 'HR & People',
+  finance: 'Finance',
+  marketing: 'Marketing & Sales',
+  technical: 'Engineering & Data',
+  operations: 'Operations & Support',
+};
+
+const industryLabels: Record<IndustryTrack, string> = {
+  general: 'General',
+  education: 'Education',
+  financial: 'Financial services',
+  healthcare: 'Healthcare',
+  retail: 'Retail & ecommerce',
+  public: 'Public sector',
 };
 
 const questionBank: Question[] = [
@@ -272,7 +293,10 @@ const learningCatalog: Record<DomainId, { title: string; detail: string; format:
 };
 
 const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, proficient: 2 };
-const totalQuestions = 12;
+const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
+  free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
+  premium: { label: 'Premium diagnostic pilot', totalQuestions: 16, confidenceBase: 48, confidenceStep: 3 },
+};
 
 function scoreToLevel(score: number) {
   if (score >= 82) return 'Proficient';
@@ -373,21 +397,26 @@ function RadarChart({ scores }: { scores: Record<DomainId, number> }) {
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'onboarding' | 'assessment' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'results'>('home');
+  const [mode, setMode] = useState<AssessmentMode>('free');
   const [audience, setAudience] = useState<Audience>('general');
+  const [functionTrack, setFunctionTrack] = useState<FunctionTrack>('general');
+  const [industryTrack, setIndustryTrack] = useState<IndustryTrack>('general');
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([]));
 
-  const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), totalQuestions);
+  const activeConfig = modeConfig[mode];
+  const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), activeConfig.totalQuestions);
   const results = useMemo(() => {
     const domainScores = getDomainScores(answers);
     const overall = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
     const sortedDomains = (Object.keys(domainScores) as DomainId[]).sort((a, b) => domainScores[a] - domainScores[b]);
-    const confidence = Math.min(88, 38 + answers.length * 4);
+    const confidence = Math.min(mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
     return { domainScores, overall, level: scoreToLevel(overall), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
-  }, [answers]);
+  }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
 
-  function startAssessment() {
+  function startAssessment(nextMode: AssessmentMode) {
+    setMode(nextMode);
     setAnswers([]);
     setCurrent(selectNextQuestion([]));
     setStep('assessment');
@@ -396,7 +425,7 @@ export default function Home() {
   function chooseOption(option: Option) {
     const nextAnswers = [...answers, { question: current, option }];
     setAnswers(nextAnswers);
-    if (nextAnswers.length >= totalQuestions) {
+    if (nextAnswers.length >= activeConfig.totalQuestions) {
       setStep('results');
       return;
     }
@@ -430,6 +459,7 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
+                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
                 <a className="secondary" href="#process">See How It Works</a>
               </div>
             </div>
@@ -452,10 +482,10 @@ export default function Home() {
           </section>
 
           <section className="stats" aria-label="MVP scope highlights">
-            <div><strong>12-20</strong><span>free adaptive questions</span></div>
+            <div><strong>12</strong><span>free adaptive questions</span></div>
+            <div><strong>16</strong><span>premium pilot questions</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>360+</strong><span>seeded pilot items</span></div>
-            <div><strong>40-80</strong><span>multimodal items</span></div>
           </section>
 
           <section id="platform" className="section two-column">
@@ -521,11 +551,34 @@ export default function Home() {
                 MVP results are indicative, not certification-grade. They show readiness patterns and recommend
                 practical learning actions while collecting evidence for future calibration.
               </p>
-              <button className="primary light" onClick={() => setStep('onboarding')}>Try the MVP Flow</button>
+              <div className="hero-actions">
+                <button className="primary light" onClick={() => setStep('onboarding')}>Try Free Flow</button>
+                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Pilot</button>
+              </div>
             </div>
             <div className="mock-result">
               <RadarChart scores={{ D1: 72, D2: 68, D3: 46, D4: 58, D5: 64, D6: 76 }} />
             </div>
+          </section>
+
+          <section className="section premium-section">
+            <div>
+              <p className="eyebrow">Premium assessment</p>
+              <h2>Deeper diagnosis for people who want more than a score.</h2>
+              <p>
+                The MVP premium pilot adds function and industry context, a longer adaptive run,
+                evidence review, precision language, and a richer learning plan.
+              </p>
+            </div>
+            <div className="premium-grid">
+              {['Function context', 'Industry scenarios', 'Skill-level gap signals', 'Premium learning plan'].map((item) => (
+                <article className="info-card" key={item}>
+                  <h3>{item}</h3>
+                  <p>Pilot-grade now, designed for calibrated psychometrics after response data is collected.</p>
+                </article>
+              ))}
+            </div>
+            <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
           </section>
         </>
       )}
@@ -553,7 +606,59 @@ export default function Home() {
           </div>
           <div className="workspace-actions">
             <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={startAssessment}>Begin 12-Question Assessment</button>
+            <button className="primary" onClick={() => startAssessment('free')}>Begin 12-Question Assessment</button>
+          </div>
+        </section>
+      )}
+
+      {step === 'premiumOnboarding' && (
+        <section className="workspace">
+          <div className="workspace-header">
+            <p className="eyebrow">Premium assessment pilot</p>
+            <h1>Add context for a deeper profile.</h1>
+            <p>Premium uses the same AILF spine, then adapts interpretation by function and industry.</p>
+          </div>
+          <div className="setup-columns">
+            <div>
+              <h2>Function</h2>
+              <div className="choice-grid" role="radiogroup" aria-label="Function track">
+                {(Object.keys(functionLabels) as FunctionTrack[]).map((id) => (
+                  <button
+                    key={id}
+                    className={functionTrack === id ? 'choice-card selected' : 'choice-card'}
+                    onClick={() => setFunctionTrack(id)}
+                    role="radio"
+                    aria-checked={functionTrack === id}
+                  >
+                    {functionLabels[id]}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2>Industry</h2>
+              <div className="choice-grid" role="radiogroup" aria-label="Industry track">
+                {(Object.keys(industryLabels) as IndustryTrack[]).map((id) => (
+                  <button
+                    key={id}
+                    className={industryTrack === id ? 'choice-card selected' : 'choice-card'}
+                    onClick={() => setIndustryTrack(id)}
+                    role="radio"
+                    aria-checked={industryTrack === id}
+                  >
+                    {industryLabels[id]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="premium-summary">
+            <strong>Premium pilot includes</strong>
+            <span>16 adaptive questions, function/industry context, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
+          </div>
+          <div className="workspace-actions">
+            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
+            <button className="primary" onClick={() => startAssessment('premium')}>Begin Premium Diagnostic</button>
           </div>
         </section>
       )}
@@ -562,12 +667,12 @@ export default function Home() {
         <section className="assessment-shell">
           <div className="assessment-top">
             <div>
-              <p className="eyebrow">Adaptive free assessment</p>
+              <p className="eyebrow">{activeConfig.label}</p>
               <h1>{domains[current.domain].short}</h1>
             </div>
             <div className="progress-block">
-              <span>Question {progress} of {totalQuestions}</span>
-              <div className="progress-track"><span style={{ width: `${(progress / totalQuestions) * 100}%` }} /></div>
+              <span>Question {progress} of {activeConfig.totalQuestions}</span>
+              <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
             </div>
           </div>
           <article className="question-card">
@@ -594,13 +699,18 @@ export default function Home() {
         <section className="results-shell">
           <div className="results-hero">
             <div>
-              <p className="eyebrow">Indicative MVP result</p>
+              <p className="eyebrow">{mode === 'premium' ? 'Premium diagnostic pilot' : 'Indicative MVP result'}</p>
               <h1>{results.overall}</h1>
               <p className="result-level">{results.level} AI readiness</p>
               <p>
                 Based on {answers.length} adaptive responses for {audienceLabels[audience].toLowerCase()}.
                 Confidence is pilot-grade: {results.confidence}%.
               </p>
+              {mode === 'premium' && (
+                <p className="context-line">
+                  Context: {functionLabels[functionTrack]} in {industryLabels[industryTrack].toLowerCase()}.
+                </p>
+              )}
             </div>
             <RadarChart scores={results.domainScores} />
           </div>
@@ -618,7 +728,7 @@ export default function Home() {
               ))}
             </article>
             <article className="result-card wide">
-              <h2>Recommended learning path</h2>
+              <h2>{mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
               <div className="learning-list">
                 {results.weakest.map((domain) => (
                   <div key={domain}>
@@ -629,6 +739,16 @@ export default function Home() {
                 ))}
               </div>
             </article>
+            {mode === 'premium' && (
+              <article className="result-card wide">
+                <h2>Evidence summary</h2>
+                <div className="evidence-grid">
+                  <p><strong>Adaptive coverage</strong> D1-D6 sampled with extra attention to low-confidence domains.</p>
+                  <p><strong>Scenario context</strong> Recommendations tuned for {functionLabels[functionTrack].toLowerCase()} and {industryLabels[industryTrack].toLowerCase()}.</p>
+                  <p><strong>Validation status</strong> Pilot-grade estimate. Full IRT calibration requires response data.</p>
+                </div>
+              </article>
+            )}
           </div>
           <div className="upgrade-panel">
             <div>
@@ -636,8 +756,9 @@ export default function Home() {
               <p>Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.</p>
             </div>
             <div className="hero-actions">
-              <button className="primary" onClick={startAssessment}>Retake Free Assessment</button>
-              <button className="secondary dark">Preview Premium</button>
+              <button className="primary" onClick={() => startAssessment(mode)}>Retake {mode === 'premium' ? 'Premium' : 'Free'} Assessment</button>
+              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>}
+              {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
             </div>
           </div>
         </section>
