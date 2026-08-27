@@ -49,6 +49,15 @@ export default defineConfig(async () => {
     define: {
       'process.env.__NEXT_APP_NAV_FAIL_HANDLING': 'false',
     },
+    optimizeDeps: {
+      rolldownOptions: {
+        transform: {
+          define: {
+            'process.env.__NEXT_APP_NAV_FAIL_HANDLING': 'false',
+          },
+        },
+      },
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
