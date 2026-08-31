@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Scheduling email and calendar check</title>
+  <desc id="desc">A simple email request next to a calendar slot, used to decide whether AI can draft a low-risk reply.</desc>
+  <rect width="1200" height="760" fill="#f4f1e8"/>
+  <rect x="72" y="72" width="1056" height="616" rx="28" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+  <rect x="72" y="72" width="1056" height="86" rx="28" fill="#226c6f"/>
+  <text x="116" y="126" fill="#fff" font-family="Arial, sans-serif" font-size="34" font-weight="700">Inbox: meeting request</text>
+  <rect x="116" y="205" width="610" height="408" rx="18" fill="#fbfaf5" stroke="#d8d6ca" stroke-width="2"/>
+  <text x="152" y="258" fill="#17201d" font-family="Arial, sans-serif" font-size="26" font-weight="700">From: Lina</text>
+  <text x="152" y="306" fill="#65706b" font-family="Arial, sans-serif" font-size="22">Can Tuesday at 2:00 PM work for a 30-minute check-in?</text>
+  <text x="152" y="362" fill="#65706b" font-family="Arial, sans-serif" font-size="22">If yes, please send the video link.</text>
+  <rect x="152" y="430" width="520" height="112" rx="14" fill="#eef7f6" stroke="#87c9bd" stroke-width="2"/>
+  <text x="184" y="474" fill="#226c6f" font-family="Arial, sans-serif" font-size="20" font-weight="700">AI draft idea</text>
+  <text x="184" y="512" fill="#17201d" font-family="Arial, sans-serif" font-size="21">Yes, Tuesday 2:00 PM works. I will send the link.</text>
+  <rect x="775" y="205" width="300" height="408" rx="18" fill="#17201d"/>
+  <text x="815" y="262" fill="#fff" font-family="Arial, sans-serif" font-size="28" font-weight="700">Calendar</text>
+  <rect x="815" y="306" width="220" height="58" rx="12" fill="#3f7d57"/>
+  <text x="846" y="343" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="700">Tue 2:00 open</text>
+  <rect x="815" y="388" width="220" height="58" rx="12" fill="#36423e"/>
+  <text x="856" y="425" fill="#c9d4cf" font-family="Arial, sans-serif" font-size="22">Video link?</text>
+  <circle cx="836" cy="500" r="13" fill="#a27a23"/>
+  <text x="864" y="508" fill="#fff" font-family="Arial, sans-serif" font-size="19">Human checks recipient + link</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI agent authority risk log</title>
+  <desc id="desc">Raw risk log listing agent tool permissions, decision authority, residual risk, and unresolved executive ownership.</desc>
+  <rect width="1200" height="760" fill="#f4f6f7"/>
+  <rect x="44" y="38" width="1112" height="682" fill="#ffffff" stroke="#263238" stroke-width="3"/>
+  <text x="78" y="86" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1e2b31">RISK LOG: ENTERPRISE SERVICE AGENT</text>
+  <text x="78" y="116" font-family="Arial, sans-serif" font-size="14" fill="#5a676d">Export from AI governance tracker | Status as of steering review</text>
+  <line x1="78" y1="140" x2="1124" y2="140" stroke="#1e2b31" stroke-width="2"/>
+
+  <g font-family="Arial, sans-serif" font-size="13" fill="#17242a">
+    <rect x="78" y="172" width="1046" height="54" fill="#dfe7eb"/>
+    <text x="94" y="205" font-weight="700">Risk ID</text>
+    <text x="180" y="205" font-weight="700">Agent authority</text>
+    <text x="430" y="205" font-weight="700">Current control</text>
+    <text x="650" y="205" font-weight="700">Residual exposure</text>
+    <text x="900" y="205" font-weight="700">Owner / status</text>
+
+    <rect x="78" y="226" width="1046" height="86" fill="#fffdf8" stroke="#c9d0d4"/>
+    <text x="94" y="260">R-17</text>
+    <text x="180" y="250">Drafts supplier emails and</text><text x="180" y="270">can attach source documents</text>
+    <text x="430" y="250">Prompt says "ask first"</text><text x="430" y="270">but no send gate in tool</text>
+    <text x="650" y="250">Confidential attachment may</text><text x="650" y="270">leave company workspace</text>
+    <text x="900" y="250">Procurement / open</text><text x="900" y="270">Legal review pending</text>
+
+    <rect x="78" y="312" width="1046" height="86" fill="#fff7f2" stroke="#c9d0d4"/>
+    <text x="94" y="346">R-21</text>
+    <text x="180" y="336">Updates CRM renewal risk</text><text x="180" y="356">field from call summaries</text>
+    <text x="430" y="336">Weekly sample QA</text><text x="430" y="356">after records change</text>
+    <text x="650" y="336">Bad summary can affect</text><text x="650" y="356">forecast and account action</text>
+    <text x="900" y="336">Sales Ops / amber</text><text x="900" y="356">Rollback not tested</text>
+
+    <rect x="78" y="398" width="1046" height="86" fill="#fffdf8" stroke="#c9d0d4"/>
+    <text x="94" y="432">R-24</text>
+    <text x="180" y="422">Starts refund exception</text><text x="180" y="442">workflow over threshold</text>
+    <text x="430" y="422">Manager notification</text><text x="430" y="442">sent after workflow start</text>
+    <text x="650" y="422">Customer harm and policy</text><text x="650" y="442">breach if exception is wrong</text>
+    <text x="900" y="422">CX / red</text><text x="900" y="442">Approval gate absent</text>
+
+    <rect x="78" y="484" width="1046" height="86" fill="#f5fbf7" stroke="#c9d0d4"/>
+    <text x="94" y="518">R-29</text>
+    <text x="180" y="508">Reads finance folder for</text><text x="180" y="528">vendor spend variance</text>
+    <text x="430" y="508">Folder access inherited</text><text x="430" y="528">from analyst role</text>
+    <text x="650" y="508">Overbroad visibility into</text><text x="650" y="528">non-project contracts</text>
+    <text x="900" y="508">Finance / amber</text><text x="900" y="528">Scope review scheduled</text>
+  </g>
+
+  <rect x="78" y="612" width="490" height="62" fill="#eef4f1" stroke="#8aa59a"/>
+  <text x="100" y="640" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#243833">Control pattern proposed</text>
+  <text x="100" y="662" font-family="Arial, sans-serif" font-size="14" fill="#243833">Policy text + quarterly QA; no technical permission redesign yet</text>
+  <rect x="612" y="612" width="512" height="62" fill="#f8eeee" stroke="#b77b7b"/>
+  <text x="634" y="640" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#5c2c2c">Executive question</text>
+  <text x="634" y="662" font-family="Arial, sans-serif" font-size="14" fill="#5c2c2c">Which authorities must be blocked, gated, logged, or owned?</text>
+</svg>

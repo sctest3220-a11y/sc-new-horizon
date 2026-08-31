@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic media evidence board</title>
+  <desc id="desc">A social media post, image metadata panel, reverse image search note, and source check board for synthetic media verification.</desc>
+  <rect width="980" height="620" fill="#f8f7f3"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#22272b">Viral Image Verification Board</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5e666d">Question target: judge image, caption, provenance, and sharing risk.</text>
+  <g font-family="Inter,Arial" fill="#22272b">
+    <rect x="42" y="120" width="360" height="430" rx="12" fill="#ffffff" stroke="#ccd6d8"/>
+    <text x="66" y="156" font-size="18" font-weight="700">@citywatch_th</text>
+    <rect x="66" y="180" width="312" height="190" fill="#b8c6c9"/>
+    <path d="M72 344 C145 292,220 372,378 240 L378 370 L66 370 Z" fill="#7d9a9e"/>
+    <circle cx="286" cy="228" r="34" fill="#f4d77c"/>
+    <text x="86" y="402" font-size="15">"Breaking: central station flooded today."</text>
+    <text x="86" y="432" font-size="13" fill="#9b3f1f">No date, no location, reposted 14,200 times</text>
+    <text x="86" y="464" font-size="13">Attached tag: #urgent #share</text>
+    <rect x="442" y="120" width="496" height="120" rx="10" fill="#ffffff" stroke="#ccd6d8"/>
+    <text x="466" y="154" font-size="18" font-weight="700">Metadata</text>
+    <text x="466" y="188" font-size="15">Created: 2024-10-18 15:30 UTC</text>
+    <text x="466" y="216" font-size="15" fill="#9b3f1f">Camera model missing; edited with generative-fill app</text>
+    <rect x="442" y="266" width="496" height="120" rx="10" fill="#ffffff" stroke="#ccd6d8"/>
+    <text x="466" y="300" font-size="18" font-weight="700">Reverse image search</text>
+    <text x="466" y="334" font-size="15">Near-match found on disaster blog from 2022</text>
+    <text x="466" y="362" font-size="15" fill="#9b3f1f">Caption location differs from the current post</text>
+    <rect x="442" y="412" width="496" height="138" rx="10" fill="#1f2933"/>
+    <text x="466" y="448" font-size="18" font-weight="700" fill="#ffffff">Best response evidence</text>
+    <text x="466" y="482" font-size="15" fill="#d7dde3">Do not label fake from pixels alone.</text>
+    <text x="466" y="512" font-size="15" fill="#ffd166">Say: source is unverified and caption is unsupported.</text>
+  </g>
+</svg>

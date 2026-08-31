@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Incident timeline for AI support workflow</title>
+  <desc id="desc">Timeline showing an AI support assistant denying a refund, escalation delays, incomplete monitoring, and a late executive report.</desc>
+  <rect width="1200" height="760" fill="#f5f7f8"/>
+  <rect x="60" y="42" width="1080" height="674" fill="#ffffff" stroke="#27343a" stroke-width="3"/>
+  <text x="94" y="92" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1e2a30">INCIDENT TIMELINE: AI SUPPORT REFUND WORKFLOW</text>
+  <text x="94" y="122" font-family="Arial, sans-serif" font-size="14" fill="#5d686e">Customer operations postmortem draft | Raw notes, not yet reconciled</text>
+  <line x1="94" y1="146" x2="1106" y2="146" stroke="#1e2a30" stroke-width="2"/>
+
+  <line x1="178" y1="218" x2="178" y2="612" stroke="#3d5964" stroke-width="5"/>
+  <g font-family="Arial, sans-serif" fill="#1e2a30">
+    <circle cx="178" cy="218" r="14" fill="#3f7d57"/>
+    <text x="220" y="211" font-size="17" font-weight="700">09:12 - Duplicate charge detected</text>
+    <text x="220" y="237" font-size="14">Ledger shows two captures within six minutes; policy permits immediate reversal after verification.</text>
+
+    <circle cx="178" cy="306" r="14" fill="#a27a23"/>
+    <text x="220" y="299" font-size="17" font-weight="700">09:18 - AI draft denies refund</text>
+    <text x="220" y="325" font-size="14">Draft cites "single authorization" despite payment log conflict; confidence displayed as 91%.</text>
+
+    <circle cx="178" cy="394" r="14" fill="#b45f3a"/>
+    <text x="220" y="387" font-size="17" font-weight="700">10:04 - Agent sends reply after batch approval</text>
+    <text x="220" y="413" font-size="14">Manager reviewed queue totals, not individual exception evidence; customer receives denial.</text>
+
+    <circle cx="178" cy="482" r="14" fill="#7b5ea7"/>
+    <text x="220" y="475" font-size="17" font-weight="700">13:31 - Social escalation reaches director</text>
+    <text x="220" y="501" font-size="14">Monitoring catches sentiment spike but not policy breach category; refund manually issued.</text>
+
+    <circle cx="178" cy="570" r="14" fill="#3b6ea8"/>
+    <text x="220" y="563" font-size="17" font-weight="700">Next day - Steering report lists "automation handled"</text>
+    <text x="220" y="589" font-size="14">Quality defect recorded separately from automation scorecard; coaching loop not assigned.</text>
+  </g>
+
+  <rect x="760" y="198" width="322" height="152" fill="#fff8e8" stroke="#c5a95b"/>
+  <text x="782" y="228" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#4c3710">Metrics Shown</text>
+  <text x="782" y="260" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">AHT: -23%</text>
+  <text x="782" y="288" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">Auto-resolution: 41%</text>
+  <text x="782" y="316" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">Exception defect rate: not segmented</text>
+
+  <rect x="760" y="384" width="322" height="152" fill="#f8eeee" stroke="#bd8585"/>
+  <text x="782" y="414" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#5a2929">Open Controls</text>
+  <text x="782" y="446" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">Confidence not tied to evidence type</text>
+  <text x="782" y="474" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">No mandatory review for refunds</text>
+  <text x="782" y="502" font-family="Arial, sans-serif" font-size="14" fill="#2c2c2c">Learning owner unassigned</text>
+
+  <rect x="760" y="570" width="322" height="48" fill="#eef4f1" stroke="#97afa5"/>
+  <text x="782" y="599" font-family="Arial, sans-serif" font-size="14" fill="#243832">Draft question: what should change before rollout?</text>
+</svg>

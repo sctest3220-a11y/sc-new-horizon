@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Suspicious login fraud stimulus</title>
+  <desc id="desc">Phishing login prompt with lookalike URL, countdown timer, password field, and one-time code request.</desc>
+  <rect width="1400" height="900" fill="#eef3f5"/>
+  <rect x="230" y="90" width="940" height="710" rx="26" fill="#ffffff" stroke="#ccd6d8" stroke-width="4"/>
+  <rect x="230" y="90" width="940" height="70" rx="26" fill="#17201d"/>
+  <circle cx="272" cy="126" r="9" fill="#ff6b5f"/>
+  <circle cx="304" cy="126" r="9" fill="#f7c948"/>
+  <circle cx="336" cy="126" r="9" fill="#67d6bb"/>
+  <rect x="390" y="110" width="690" height="32" rx="16" fill="#2b3733"/>
+  <text x="420" y="133" fill="#ffb79d" font-family="Arial, sans-serif" font-size="18" font-weight="700">https://secure-it.example.co-login.verify</text>
+  <text x="340" y="245" fill="#17201d" font-family="Arial, sans-serif" font-size="42" font-weight="850">IT Security Re-authentication</text>
+  <text x="340" y="300" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Your account will be locked unless you verify now.</text>
+  <rect x="340" y="342" width="720" height="64" rx="12" fill="#fff0e8" stroke="#b45f3a" stroke-width="3"/>
+  <text x="370" y="384" fill="#b45f3a" font-family="Arial, sans-serif" font-size="24" font-weight="850">05:00 minutes remaining</text>
+  <text x="340" y="465" fill="#17201d" font-family="Arial, sans-serif" font-size="20" font-weight="800">PASSWORD</text>
+  <rect x="340" y="485" width="720" height="58" rx="10" fill="#f7f5ef" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="370" y="522" fill="#9a9f9c" font-family="Arial, sans-serif" font-size="22">Enter password</text>
+  <text x="340" y="595" fill="#17201d" font-family="Arial, sans-serif" font-size="20" font-weight="800">ONE-TIME CODE</text>
+  <rect x="340" y="615" width="720" height="58" rx="10" fill="#f7f5ef" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="370" y="652" fill="#9a9f9c" font-family="Arial, sans-serif" font-size="22">Enter authenticator code</text>
+  <rect x="340" y="710" width="720" height="64" rx="12" fill="#226c6f"/>
+  <text x="585" y="752" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="850">Verify Account</text>
+  <text x="340" y="822" fill="#65706b" font-family="Arial, sans-serif" font-size="18">Need help? Reply to this message with your phone number.</text>
+</svg>

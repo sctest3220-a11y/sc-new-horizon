@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="660" viewBox="0 0 980 660" role="img" aria-labelledby="title desc">
+  <title id="title">AI school policy summary with source mismatch</title>
+  <desc id="desc">A realistic document review screen comparing a source policy excerpt with an AI-generated summary that changes exceptions and loses uncertainty.</desc>
+  <rect width="980" height="660" fill="#f3f5f8"/>
+  <rect x="48" y="42" width="884" height="576" rx="16" fill="#ffffff" stroke="#ced6e0"/>
+  <rect x="48" y="42" width="884" height="58" rx="16" fill="#eef3f7"/>
+  <text x="82" y="79" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">Document Review: Phone Use Policy</text>
+  <text x="702" y="79" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Draft generated 9:42 AM</text>
+  <rect x="82" y="132" width="384" height="430" rx="10" fill="#fbfcfe" stroke="#d7dee8"/>
+  <text x="108" y="164" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#263241">Source excerpt from student handbook</text>
+  <line x1="108" y1="184" x2="440" y2="184" stroke="#d7dee8"/>
+  <text x="108" y="220" font-family="Arial, sans-serif" font-size="15" fill="#263241">Students should keep mobile phones</text>
+  <text x="108" y="245" font-family="Arial, sans-serif" font-size="15" fill="#263241">silenced and stored during class.</text>
+  <text x="108" y="286" font-family="Arial, sans-serif" font-size="15" fill="#263241">Teachers may allow phone use for</text>
+  <text x="108" y="311" font-family="Arial, sans-serif" font-size="15" fill="#263241">translation, accessibility, timed quizzes,</text>
+  <text x="108" y="336" font-family="Arial, sans-serif" font-size="15" fill="#263241">or approved research activities.</text>
+  <rect x="98" y="266" width="346" height="88" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="108" y="393" font-family="Arial, sans-serif" font-size="15" fill="#263241">Staff should document repeated misuse</text>
+  <text x="108" y="418" font-family="Arial, sans-serif" font-size="15" fill="#263241">before escalating to the year lead.</text>
+  <text x="108" y="477" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Last updated: Aug 18</text>
+  <text x="108" y="501" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Approved by: Academic Council</text>
+  <rect x="514" y="132" width="384" height="430" rx="10" fill="#fbfcfe" stroke="#d7dee8"/>
+  <text x="540" y="164" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#263241">AI summary prepared for parent email</text>
+  <line x1="540" y1="184" x2="872" y2="184" stroke="#d7dee8"/>
+  <rect x="540" y="210" width="306" height="42" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="558" y="236" font-family="Arial, sans-serif" font-size="15" fill="#7f1d1d">Phones are banned throughout class time.</text>
+  <text x="540" y="289" font-family="Arial, sans-serif" font-size="15" fill="#263241">The school should tell families that</text>
+  <text x="540" y="314" font-family="Arial, sans-serif" font-size="15" fill="#263241">teachers will confiscate devices used</text>
+  <text x="540" y="339" font-family="Arial, sans-serif" font-size="15" fill="#263241">during lessons.</text>
+  <rect x="540" y="376" width="316" height="64" rx="8" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="558" y="402" font-family="Arial, sans-serif" font-size="14" fill="#9a3412">Missing exception: teacher-approved use</text>
+  <text x="558" y="424" font-family="Arial, sans-serif" font-size="14" fill="#9a3412">Missing process: document repeated misuse</text>
+  <rect x="540" y="476" width="316" height="42" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="558" y="502" font-family="Arial, sans-serif" font-size="14" fill="#3730a3">Suggested use: revise before sending</text>
+  <path d="M470 310 C493 310 493 310 516 310" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5"/>
+  <polygon points="516,310 506,304 506,316" fill="#94a3b8"/>
+  <text x="428" y="603" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Inspect whether the AI preserved source meaning, exceptions, date, and approved owner.</text>
+</svg>

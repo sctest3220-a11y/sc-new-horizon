@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Suspicious product listing</title>
+  <desc id="desc">A marketplace listing with an unrealistic product image, strange price, copied reviews, and seller warning signals.</desc>
+  <rect width="1200" height="760" fill="#f4f1e8"/>
+  <rect x="80" y="70" width="1040" height="620" rx="28" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+  <rect x="126" y="136" width="430" height="430" rx="24" fill="#e8eef1"/>
+  <circle cx="340" cy="306" r="126" fill="#b9c8cf"/>
+  <rect x="248" y="248" width="184" height="116" rx="22" fill="#7b5ea7"/>
+  <rect x="282" y="286" width="116" height="44" rx="10" fill="#fff"/>
+  <text x="208" y="618" fill="#65706b" font-family="Arial, sans-serif" font-size="22">Image has warped logo and inconsistent shadows</text>
+  <text x="622" y="156" fill="#17201d" font-family="Arial, sans-serif" font-size="34" font-weight="700">Pro AI Laptop Pro Max</text>
+  <text x="622" y="210" fill="#b45f3a" font-family="Arial, sans-serif" font-size="42" font-weight="800">$129 today only</text>
+  <rect x="622" y="250" width="400" height="70" rx="14" fill="#fff7ed" stroke="#e5a46b" stroke-width="2"/>
+  <text x="650" y="294" fill="#8e4526" font-family="Arial, sans-serif" font-size="22" font-weight="700">Seller created yesterday</text>
+  <rect x="622" y="348" width="400" height="70" rx="14" fill="#fff7ed" stroke="#e5a46b" stroke-width="2"/>
+  <text x="650" y="392" fill="#8e4526" font-family="Arial, sans-serif" font-size="22" font-weight="700">Reviews repeat same wording</text>
+  <rect x="622" y="446" width="400" height="70" rx="14" fill="#fdecea" stroke="#b45f3a" stroke-width="2"/>
+  <text x="650" y="490" fill="#8e4526" font-family="Arial, sans-serif" font-size="22" font-weight="700">Payment outside platform</text>
+</svg>

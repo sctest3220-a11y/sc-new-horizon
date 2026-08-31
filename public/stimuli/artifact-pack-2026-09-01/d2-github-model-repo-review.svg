@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Open model repository review</title>
+  <desc id="desc">A GitHub and model card style review screen with license, releases, issues, evaluations, and security notes.</desc>
+  <rect width="980" height="620" fill="#fbfbf8"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#17202a">Open Model Adoption Review</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5b626b">Question target: inspect repository/product signals before recommending an AI dependency.</text>
+  <g font-family="Inter,Arial" font-size="14" fill="#17202a">
+    <rect x="42" y="118" width="428" height="404" rx="10" fill="#ffffff" stroke="#d5dde0"/>
+    <text x="66" y="152" font-size="20" font-weight="700">github.com/acme-ai/doc-ranker</text>
+    <text x="66" y="188">Stars: 4,820  Forks: 310  Latest release: 11 months ago</text>
+    <text x="66" y="222">Open issues: 183  Security advisories: 1 unresolved</text>
+    <text x="66" y="256">Maintainers: 1 active, 3 inactive</text>
+    <text x="66" y="290" fill="#9b3f1f">Issue #612: prompt injection bypass in HTML parser</text>
+    <text x="66" y="324">PR #644: adds domain allowlist, no tests yet</text>
+    <text x="66" y="358">CI: failing on Python 3.12 dependency lock</text>
+    <text x="66" y="392">License: Apache-2.0 for code</text>
+    <text x="66" y="426" fill="#9b3f1f">Model weights: "research only" note in card</text>
+    <rect x="66" y="458" width="360" height="36" rx="6" fill="#f1f5f6"/>
+    <text x="82" y="481">Recommended action: require security review before pilot.</text>
+    <rect x="510" y="118" width="428" height="404" rx="10" fill="#ffffff" stroke="#d5dde0"/>
+    <text x="534" y="152" font-size="20" font-weight="700">Model card excerpt</text>
+    <text x="534" y="188">Task: long-document ranking</text>
+    <text x="534" y="222">Eval: LegalBench subset, English only</text>
+    <text x="534" y="256">Known limits: weak on Thai mixed-language PDFs</text>
+    <text x="534" y="290">Data: public web docs through 2025 Q2</text>
+    <text x="534" y="324" fill="#9b3f1f">No eval on customer-support tickets</text>
+    <text x="534" y="358">Latency: 1.9s/doc on A100; unknown on CPU</text>
+    <text x="534" y="392">Privacy: no telemetry when self-hosted</text>
+    <text x="534" y="426">Commercial use: unclear for bundled weights</text>
+    <rect x="534" y="458" width="360" height="36" rx="6" fill="#fff5df"/>
+    <text x="550" y="481">Adoption decision needs fit, license, and risk evidence.</text>
+  </g>
+</svg>

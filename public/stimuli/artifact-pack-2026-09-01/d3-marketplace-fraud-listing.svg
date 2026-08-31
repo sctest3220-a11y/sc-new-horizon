@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Marketplace fraud listing</title>
+  <desc id="desc">A marketplace listing with suspicious pricing, seller behavior, payment request, and review pattern.</desc>
+  <rect width="980" height="620" fill="#faf8f3"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#20252a">Marketplace Listing Review</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5d666b">Question target: identify fraud signals before buying or approving reimbursement.</text>
+  <g font-family="Inter,Arial" fill="#20252a">
+    <rect x="42" y="120" width="420" height="420" rx="12" fill="#ffffff" stroke="#d4dcde"/>
+    <rect x="70" y="150" width="364" height="200" fill="#e8ecec"/>
+    <rect x="128" y="198" width="250" height="104" rx="18" fill="#d0d7d8"/>
+    <circle cx="190" cy="250" r="28" fill="#9aa8aa"/>
+    <circle cx="316" cy="250" r="28" fill="#9aa8aa"/>
+    <text x="70" y="392" font-size="20" font-weight="700">NewPro Drone X9 - unopened</text>
+    <text x="70" y="426" font-size="26" font-weight="700" fill="#138a63">THB 8,900</text>
+    <text x="188" y="426" font-size="14" fill="#9b3f1f">Typical price: THB 31,000</text>
+    <text x="70" y="462" font-size="14">Seller: techclearance_771 | Account age: 3 days</text>
+    <text x="70" y="492" font-size="14" fill="#9b3f1f">Payment note: "bank transfer only, outside platform"</text>
+    <rect x="508" y="120" width="430" height="178" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="532" y="154" font-size="18" font-weight="700">Message thread</text>
+    <text x="532" y="188" font-size="14">Buyer: Can I inspect serial number?</text>
+    <text x="532" y="218" font-size="14">Seller: Too many buyers. Pay deposit in 10 min.</text>
+    <text x="532" y="248" font-size="14" fill="#9b3f1f">Seller: Warranty card will be sent after transfer.</text>
+    <rect x="508" y="326" width="430" height="214" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="532" y="360" font-size="18" font-weight="700">Review pattern</text>
+    <text x="532" y="394" font-size="14">12 five-star reviews posted within 21 minutes</text>
+    <text x="532" y="424" font-size="14">Repeated wording: "fast honest premium seller"</text>
+    <text x="532" y="454" font-size="14">No completed sales before today</text>
+    <text x="532" y="488" font-size="14" fill="#9b3f1f">Mismatch: listing image appears in 3 other cities</text>
+  </g>
+</svg>

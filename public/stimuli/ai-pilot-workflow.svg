@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI pilot workflow map</title>
+  <desc id="desc">A workflow map showing where AI enters a process and which checkpoints are missing.</desc>
+  <rect width="1200" height="760" fill="#f8f6ef"/>
+  <text x="90" y="102" fill="#17201d" font-family="Arial, sans-serif" font-size="40" font-weight="700">Workflow Map: AI Support Replies</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="90" y="180" width="190" height="100" rx="18" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+    <text x="128" y="239" fill="#17201d" font-size="23" font-weight="700">Ticket arrives</text>
+    <rect x="340" y="180" width="190" height="100" rx="18" fill="#eef7f6" stroke="#87c9bd" stroke-width="3"/>
+    <text x="386" y="223" fill="#226c6f" font-size="23" font-weight="700">AI drafts</text>
+    <text x="382" y="253" fill="#226c6f" font-size="18">No source check</text>
+    <rect x="590" y="180" width="190" height="100" rx="18" fill="#fff7ed" stroke="#e5a46b" stroke-width="3"/>
+    <text x="621" y="223" fill="#8e4526" font-size="23" font-weight="700">Agent sends?</text>
+    <text x="632" y="253" fill="#8e4526" font-size="18">Approval unclear</text>
+    <rect x="840" y="180" width="220" height="100" rx="18" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+    <text x="890" y="239" fill="#17201d" font-size="23" font-weight="700">Customer reply</text>
+    <path d="M280 230 H340 M530 230 H590 M780 230 H840" stroke="#65706b" stroke-width="5" marker-end="url(#arrow2)"/>
+    <rect x="185" y="402" width="840" height="130" rx="22" fill="#17201d"/>
+    <text x="230" y="454" fill="#fff" font-size="28" font-weight="700">Missing review loop</text>
+    <text x="230" y="498" fill="#c9d4cf" font-size="23">Sample tickets -> human review -> error taxonomy -> prompt/update -> monitor</text>
+  </g>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#65706b"/>
+    </marker>
+  </defs>
+</svg>

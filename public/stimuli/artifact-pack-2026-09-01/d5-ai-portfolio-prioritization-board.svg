@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">AI use-case portfolio prioritization board</title>
+  <desc id="desc">A portfolio board comparing AI use cases by value, risk, readiness, owner, and next gate.</desc>
+  <rect width="980" height="620" fill="#f7f8f5"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#20252a">AI Portfolio Review - Quarter Planning</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5d666b">Question target: choose the next pilot using risk-adjusted value, not excitement alone.</text>
+  <g font-family="Inter,Arial" font-size="14" fill="#20252a">
+    <rect x="42" y="120" width="896" height="420" rx="12" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="72" y="160" font-weight="700">Use case</text>
+    <text x="330" y="160" font-weight="700">Value</text>
+    <text x="440" y="160" font-weight="700">Data ready</text>
+    <text x="570" y="160" font-weight="700">Risk</text>
+    <text x="680" y="160" font-weight="700">Owner</text>
+    <text x="790" y="160" font-weight="700">Gate</text>
+    <line x1="72" y1="176" x2="890" y2="176" stroke="#d9e1e4"/>
+    <text x="72" y="214">Support reply drafting</text><text x="330" y="214">Medium</text><text x="440" y="214">High</text><text x="570" y="214">Medium</text><text x="680" y="214">CS Ops</text><text x="790" y="214">Pilot</text>
+    <text x="72" y="264">Autonomous refund approval</text><text x="330" y="264">High</text><text x="440" y="264">Medium</text><text x="570" y="264" fill="#9b3f1f">High</text><text x="680" y="264">Finance</text><text x="790" y="264">Control design</text>
+    <text x="72" y="314">Marketing image generation</text><text x="330" y="314">Low</text><text x="440" y="314">High</text><text x="570" y="314">Medium</text><text x="680" y="314">Brand</text><text x="790" y="314">Policy</text>
+    <text x="72" y="364">Board risk brief summarizer</text><text x="330" y="364">High</text><text x="440" y="364">High</text><text x="570" y="364">Medium</text><text x="680" y="364">Strategy</text><text x="790" y="364">Eval</text>
+    <text x="72" y="414">Hiring shortlist ranker</text><text x="330" y="414">Medium</text><text x="440" y="414">Low</text><text x="570" y="414" fill="#9b3f1f">High</text><text x="680" y="414">People</text><text x="790" y="414">Do not pilot</text>
+    <rect x="72" y="456" width="816" height="48" rx="6" fill="#fff5df"/>
+    <text x="94" y="487">Best decision: pilot narrow, measurable workflows; delay high-stakes automation until controls exist.</text>
+  </g>
+</svg>

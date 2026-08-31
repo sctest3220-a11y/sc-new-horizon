@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Raw AI agent audit log</title>
+  <desc id="desc">A raw audit log showing file access, external email draft, CRM write, finance approval request, and missing human approval.</desc>
+  <rect width="1200" height="760" fill="#101816"/>
+  <rect x="80" y="60" width="1040" height="640" rx="18" fill="#17201d" stroke="#40504a" stroke-width="3"/>
+  <text x="126" y="122" font-family="Menlo, Consolas, monospace" font-size="30" font-weight="700" fill="#ffffff">agent-run-8842.log</text>
+  <text x="126" y="164" font-family="Menlo, Consolas, monospace" font-size="18" fill="#9fb0aa">Objective: resolve supplier dispute | Agent: ops-assist-prod</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="20">
+    <text x="126" y="226" fill="#7ee0c3">09:14:22 READ</text>
+    <text x="302" y="226" fill="#dfe8e4">/shared/vendors/all_contracts/*</text>
+    <text x="848" y="226" fill="#f7c870">scope broad</text>
+    <text x="126" y="278" fill="#7ee0c3">09:15:03 DRAFT</text>
+    <text x="302" y="278" fill="#dfe8e4">email_to=supplier@example.com</text>
+    <text x="848" y="278" fill="#f7c870">no reviewer</text>
+    <text x="126" y="330" fill="#7ee0c3">09:16:44 WRITE</text>
+    <text x="302" y="330" fill="#dfe8e4">crm.case.status = “approved”</text>
+    <text x="848" y="330" fill="#ff9b84">system write</text>
+    <text x="126" y="382" fill="#7ee0c3">09:17:18 TOOL</text>
+    <text x="302" y="382" fill="#dfe8e4">finance.request_payment_release()</text>
+    <text x="848" y="382" fill="#ff9b84">approval missing</text>
+    <text x="126" y="456" fill="#ff9b84">WARN</text>
+    <text x="302" y="456" fill="#ffffff">policy threshold exceeded: external send + finance trigger</text>
+    <text x="126" y="508" fill="#ff9b84">WARN</text>
+    <text x="302" y="508" fill="#ffffff">rollback plan: none recorded</text>
+  </g>
+  <rect x="126" y="580" width="948" height="64" rx="12" fill="#24312d" stroke="#b45f3a" stroke-width="2"/>
+  <text x="156" y="620" font-family="Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#ffb199">Review question: which control should have stopped this chain?</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945">
+  <rect width="1680" height="945" fill="#f4f7f6"/>
+  <rect x="76" y="56" width="1528" height="832" rx="26" fill="#ffffff" stroke="#233b3d" stroke-width="3"/>
+  <text x="116" y="116" font-family="Arial" font-size="34" font-weight="700" fill="#17201d">AI Concept Workbench</text>
+  <text x="116" y="158" font-family="Arial" font-size="22" fill="#5f6f70">Inspect how six concepts change what an AI system can know, use, remember, or do.</text>
+  <g font-family="Arial">
+    <rect x="116" y="208" width="430" height="210" rx="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+    <text x="146" y="252" font-size="25" font-weight="700" fill="#155e75">LLM</text>
+    <text x="146" y="292" font-size="20" fill="#164e63">Generates language from learned patterns.</text>
+    <text x="146" y="326" font-size="20" fill="#164e63">Can sound fluent without current proof.</text>
+    <text x="146" y="374" font-size="18" fill="#0e7490">Watch for: hallucination, outdated facts.</text>
+    <rect x="624" y="208" width="430" height="210" rx="16" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="654" y="252" font-size="25" font-weight="700" fill="#3730a3">RAG</text>
+    <text x="654" y="292" font-size="20" fill="#3730a3">Retrieves approved source documents.</text>
+    <text x="654" y="326" font-size="20" fill="#3730a3">Answer quality depends on source fit.</text>
+    <text x="654" y="374" font-size="18" fill="#4f46e5">Watch for: missing citations, stale docs.</text>
+    <rect x="1132" y="208" width="430" height="210" rx="16" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+    <text x="1162" y="252" font-size="25" font-weight="700" fill="#166534">MCP / Tools</text>
+    <text x="1162" y="292" font-size="20" fill="#166534">Connects AI to files, apps, or actions.</text>
+    <text x="1162" y="326" font-size="20" fill="#166534">Adds authority beyond ordinary chat.</text>
+    <text x="1162" y="374" font-size="18" fill="#15803d">Watch for: permissions, logs, approvals.</text>
+    <rect x="116" y="486" width="430" height="210" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="146" y="530" font-size="25" font-weight="700" fill="#9a3412">Prompt</text>
+    <text x="146" y="570" font-size="20" fill="#9a3412">Instruction that frames task and output.</text>
+    <text x="146" y="604" font-size="20" fill="#9a3412">Better prompts include constraints.</text>
+    <text x="146" y="652" font-size="18" fill="#c2410c">Watch for: vague goals, no audience.</text>
+    <rect x="624" y="486" width="430" height="210" rx="16" fill="#fdf2f8" stroke="#db2777" stroke-width="2"/>
+    <text x="654" y="530" font-size="25" font-weight="700" fill="#9d174d">Context</text>
+    <text x="654" y="570" font-size="20" fill="#9d174d">Information provided for this task now.</text>
+    <text x="654" y="604" font-size="20" fill="#9d174d">Can be useful, sensitive, or excessive.</text>
+    <text x="654" y="652" font-size="18" fill="#be185d">Watch for: private data, irrelevant files.</text>
+    <rect x="1132" y="486" width="430" height="210" rx="16" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+    <text x="1162" y="530" font-size="25" font-weight="700" fill="#854d0e">Memory</text>
+    <text x="1162" y="570" font-size="20" fill="#854d0e">Stored preference or fact across sessions.</text>
+    <text x="1162" y="604" font-size="20" fill="#854d0e">Not the same as an approved source.</text>
+    <text x="1162" y="652" font-size="18" fill="#a16207">Watch for: retention, consent, accuracy.</text>
+  </g>
+  <rect x="116" y="760" width="1446" height="76" rx="14" fill="#17201d"/>
+  <text x="146" y="808" font-family="Arial" font-size="22" fill="#ffffff">Multi-part item: one artifact can test concept knowledge, practical workflow use, permission risk, and collaboration boundaries.</text>
+</svg>

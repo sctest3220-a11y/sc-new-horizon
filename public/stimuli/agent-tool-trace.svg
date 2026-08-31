@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI agent tool trace with risky actions</title>
+  <desc id="desc">An agent trace showing file search, email drafting, CRM update, and finance approval with missing approval gates.</desc>
+  <rect width="1200" height="760" fill="#f4f1e8"/>
+  <rect x="80" y="70" width="1040" height="620" rx="28" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="126" y="132" fill="#17201d" font-family="Arial, sans-serif" font-size="34" font-weight="700">Agent Trace</text>
+  <text x="126" y="168" fill="#65706b" font-family="Arial, sans-serif" font-size="21">Task: resolve customer dispute</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="126" y="230" width="210" height="92" rx="16" fill="#eef7f6" stroke="#87c9bd" stroke-width="2"/>
+    <text x="158" y="266" fill="#226c6f" font-size="20" font-weight="700">1. Read files</text>
+    <text x="158" y="296" fill="#17201d" font-size="18">Scope: all folders</text>
+    <rect x="388" y="230" width="210" height="92" rx="16" fill="#fff7ed" stroke="#e5a46b" stroke-width="2"/>
+    <text x="420" y="266" fill="#8e4526" font-size="20" font-weight="700">2. Draft email</text>
+    <text x="420" y="296" fill="#17201d" font-size="18">No review gate</text>
+    <rect x="650" y="230" width="210" height="92" rx="16" fill="#fff7ed" stroke="#e5a46b" stroke-width="2"/>
+    <text x="682" y="266" fill="#8e4526" font-size="20" font-weight="700">3. Update CRM</text>
+    <text x="682" y="296" fill="#17201d" font-size="18">Writes records</text>
+    <rect x="912" y="230" width="150" height="92" rx="16" fill="#fdecea" stroke="#b45f3a" stroke-width="2"/>
+    <text x="934" y="266" fill="#8e4526" font-size="20" font-weight="700">4. Approve</text>
+    <text x="934" y="296" fill="#17201d" font-size="18">Finance</text>
+    <path d="M336 276 H388 M598 276 H650 M860 276 H912" stroke="#65706b" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="126" y="410" width="936" height="90" rx="18" fill="#17201d"/>
+    <text x="162" y="464" fill="#fff" font-size="24" font-weight="700">Missing controls: least privilege, human approval, action log, rollback plan</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#65706b"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945" role="img" aria-labelledby="title desc">
+  <title id="title">Student AI study helper review</title>
+  <desc id="desc">A raw study-helper artifact showing a student prompt, AI response, source notes, and areas where the student needs to preserve learning ownership.</desc>
+  <rect width="1680" height="945" fill="#f4f6fb"/>
+  <rect x="70" y="60" width="1540" height="825" rx="28" fill="#fff" stroke="#cdd6e6" stroke-width="3"/>
+  <text x="110" y="118" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#17201d">Study Helper Review</text>
+  <text x="110" y="158" font-family="Arial, sans-serif" font-size="20" fill="#5f6878">Raw learning artifact. Decide whether AI is supporting understanding or replacing it.</text>
+  <rect x="110" y="210" width="480" height="550" rx="18" fill="#f8fbff" stroke="#b8c8e6" stroke-width="3"/>
+  <text x="140" y="258" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#3b6ea8">Student prompt</text>
+  <text x="140" y="308" font-family="Arial, sans-serif" font-size="22" fill="#17201d">"Write my 300-word answer</text>
+  <text x="140" y="342" font-family="Arial, sans-serif" font-size="22" fill="#17201d">on why cities flood after</text>
+  <text x="140" y="376" font-family="Arial, sans-serif" font-size="22" fill="#17201d">heavy rain. Make it sound</text>
+  <text x="140" y="410" font-family="Arial, sans-serif" font-size="22" fill="#17201d">like me and include examples."</text>
+  <line x1="140" y1="462" x2="548" y2="462" stroke="#cdd6e6" stroke-width="3"/>
+  <text x="140" y="510" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#3b6ea8">Class instruction</text>
+  <text x="140" y="558" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Explain runoff, drains, land</text>
+  <text x="140" y="590" font-family="Arial, sans-serif" font-size="21" fill="#17201d">use, and one local example.</text>
+  <text x="140" y="632" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Show sources and your own</text>
+  <text x="140" y="664" font-family="Arial, sans-serif" font-size="21" fill="#17201d">reasoning notes.</text>
+  <rect x="650" y="210" width="430" height="550" rx="18" fill="#fffdf7" stroke="#d9d2c0" stroke-width="3"/>
+  <text x="680" y="258" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#17201d">AI draft excerpt</text>
+  <text x="680" y="312" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Cities flood because rainwater</text>
+  <text x="680" y="344" font-family="Arial, sans-serif" font-size="20" fill="#17201d">cannot drain quickly. Causes</text>
+  <text x="680" y="376" font-family="Arial, sans-serif" font-size="20" fill="#17201d">include blocked drains, concrete</text>
+  <text x="680" y="408" font-family="Arial, sans-serif" font-size="20" fill="#17201d">surfaces, and rivers overflowing.</text>
+  <text x="680" y="472" font-family="Arial, sans-serif" font-size="20" fill="#17201d">In Bangkok, climate change and</text>
+  <text x="680" y="504" font-family="Arial, sans-serif" font-size="20" fill="#17201d">urbanization make flooding worse.</text>
+  <text x="680" y="568" font-family="Arial, sans-serif" font-size="20" fill="#17201d">No source links were included.</text>
+  <rect x="1140" y="210" width="400" height="550" rx="18" fill="#fff7f3" stroke="#e2b9a2" stroke-width="3"/>
+  <text x="1170" y="258" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#b45f3a">Reviewer notes</text>
+  <circle cx="1186" cy="312" r="8" fill="#b45f3a"/>
+  <text x="1210" y="320" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Prompt asks AI to do the work</text>
+  <circle cx="1186" cy="370" r="8" fill="#b45f3a"/>
+  <text x="1210" y="378" font-family="Arial, sans-serif" font-size="20" fill="#17201d">No student notes or examples</text>
+  <circle cx="1186" cy="428" r="8" fill="#a27a23"/>
+  <text x="1210" y="436" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Useful ideas, but needs sources</text>
+  <circle cx="1186" cy="486" r="8" fill="#3f7d57"/>
+  <text x="1210" y="494" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Could ask AI to quiz or critique</text>
+  <rect x="1170" y="560" width="320" height="116" rx="16" fill="#f8fbf8" stroke="#bad6ca" stroke-width="3"/>
+  <text x="1194" y="606" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#17201d">Better use</text>
+  <text x="1194" y="640" font-family="Arial, sans-serif" font-size="19" fill="#17201d">Explain my draft gaps and</text>
+  <text x="1194" y="668" font-family="Arial, sans-serif" font-size="19" fill="#17201d">ask me 3 source questions.</text>
+  <rect x="110" y="808" width="1430" height="44" rx="22" fill="#17201d"/>
+  <text x="140" y="837" font-family="Arial, sans-serif" font-size="19" font-weight="800" fill="#fff">Practical task: keep learning ownership while using AI for feedback, practice, and source checking.</text>
+</svg>

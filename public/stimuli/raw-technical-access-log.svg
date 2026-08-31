@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945">
+  <rect width="1680" height="945" fill="#0f172a"/>
+  <rect x="80" y="62" width="1520" height="820" rx="22" fill="#111827" stroke="#38bdf8" stroke-width="2"/>
+  <text x="120" y="122" font-family="Arial" font-size="34" font-weight="700" fill="#e0f2fe">Raw Tool Connector Access Log</text>
+  <text x="120" y="166" font-family="Arial" font-size="22" fill="#bae6fd">AI assistant attempted to automate incident triage across tools.</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="21" fill="#d1d5db">
+    <text x="130" y="240">09:12:03 READ   /prod/logs/payments/*                  allowed</text>
+    <text x="130" y="286">09:12:08 READ   /hr/performance/private_notes.csv      denied: outside scope</text>
+    <text x="130" y="332">09:12:14 POST   slack:#incident-room draft             allowed</text>
+    <text x="130" y="378">09:12:22 WRITE  jira:INC-448 priority=P1              allowed</text>
+    <text x="130" y="424">09:12:37 EMAIL  external:vendor-support@example.com   blocked: needs approval</text>
+    <text x="130" y="470">09:12:58 READ   secrets/payment_api_key.txt           denied: sensitive</text>
+    <text x="130" y="516">09:13:16 WRITE  status-page public update             blocked: human gate</text>
+  </g>
+  <rect x="120" y="610" width="650" height="126" fill="#172554" stroke="#60a5fa" stroke-width="2"/>
+  <text x="150" y="652" font-family="Arial" font-size="23" font-weight="700" fill="#dbeafe">Good control</text>
+  <text x="150" y="690" font-family="Arial" font-size="20" fill="#dbeafe">External email and public updates require human approval.</text>
+  <rect x="835" y="610" width="650" height="126" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="865" y="652" font-family="Arial" font-size="23" font-weight="700" fill="#fee2e2">Review needed</text>
+  <text x="865" y="690" font-family="Arial" font-size="20" fill="#fee2e2">The agent attempted HR notes and secrets beyond incident scope.</text>
+</svg>

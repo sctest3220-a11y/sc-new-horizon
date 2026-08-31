@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Suspicious invoice fraud stimulus</title>
+  <desc id="desc">Invoice image showing urgent payment pressure, changed bank details, mismatched email domain, and missing purchase order.</desc>
+  <rect width="1400" height="900" fill="#f7f5ef"/>
+  <rect x="110" y="70" width="1180" height="760" rx="18" fill="#fff" stroke="#d8d6ca" stroke-width="4"/>
+  <rect x="110" y="70" width="1180" height="110" rx="18" fill="#17201d"/>
+  <text x="155" y="138" fill="#ffffff" font-family="Arial, sans-serif" font-size="48" font-weight="800">INVOICE</text>
+  <text x="1070" y="126" fill="#67d6bb" font-family="Arial, sans-serif" font-size="26" font-weight="800">#INV-9041</text>
+  <text x="155" y="238" fill="#17201d" font-family="Arial, sans-serif" font-size="28" font-weight="800">From: NorthBridge Supplies</text>
+  <text x="155" y="282" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Sender: billing@northbrldge-payments.com</text>
+  <rect x="850" y="220" width="320" height="72" rx="12" fill="#fff0e8" stroke="#b45f3a" stroke-width="3"/>
+  <text x="882" y="266" fill="#b45f3a" font-family="Arial, sans-serif" font-size="24" font-weight="800">PAY TODAY ONLY</text>
+  <line x1="155" y1="330" x2="1180" y2="330" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="155" y="390" fill="#17201d" font-family="Arial, sans-serif" font-size="25" font-weight="700">Item</text>
+  <text x="900" y="390" fill="#17201d" font-family="Arial, sans-serif" font-size="25" font-weight="700">Amount</text>
+  <text x="155" y="450" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Classroom laptops and setup support</text>
+  <text x="900" y="450" fill="#65706b" font-family="Arial, sans-serif" font-size="24">$18,740.00</text>
+  <text x="155" y="510" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Purchase order</text>
+  <text x="900" y="510" fill="#b45f3a" font-family="Arial, sans-serif" font-size="24" font-weight="800">MISSING</text>
+  <rect x="155" y="570" width="1025" height="150" rx="14" fill="#f6f3ea" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="190" y="625" fill="#17201d" font-family="Arial, sans-serif" font-size="26" font-weight="800">Payment instructions changed</text>
+  <text x="190" y="672" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Wire to: NB Rapid Settlement Ltd.</text>
+  <text x="190" y="712" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Account ending: 9917 · Bank country: different from vendor record</text>
+  <rect x="155" y="750" width="1025" height="42" rx="8" fill="#fff0e8"/>
+  <text x="180" y="779" fill="#b45f3a" font-family="Arial, sans-serif" font-size="20" font-weight="800">Do not call old procurement contact. Reply to this email after transfer.</text>
+</svg>

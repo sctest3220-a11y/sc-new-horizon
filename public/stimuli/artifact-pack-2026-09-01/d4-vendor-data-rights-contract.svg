@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Vendor AI contract data-rights review</title>
+  <desc id="desc">A vendor contract excerpt showing data use, retention, subcontractor, audit, and opt-out clauses.</desc>
+  <rect width="980" height="620" fill="#f8f7f4"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#1f272b">Vendor Contract Excerpt - AI Analytics</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5d666b">Question target: spot vague clauses before uploading customer or employee data.</text>
+  <g font-family="Inter,Arial" fill="#1f272b" font-size="15">
+    <rect x="42" y="120" width="896" height="420" rx="12" fill="#ffffff" stroke="#d5dedf"/>
+    <text x="72" y="162" font-size="20" font-weight="700">Section 4. Data Use</text>
+    <text x="72" y="202">4.1 Customer may upload operational records, transcripts, emails, and survey data.</text>
+    <text x="72" y="238" fill="#9b3f1f">4.2 Vendor may use uploaded data to improve services and model performance.</text>
+    <text x="72" y="274">4.3 Data will be retained for the term of service plus a reasonable operational period.</text>
+    <text x="72" y="310" fill="#9b3f1f">4.4 Vendor may use approved subprocessors listed on request.</text>
+    <text x="72" y="346">4.5 Customer may request deletion subject to backup and legal limitations.</text>
+    <text x="72" y="382" fill="#9b3f1f">4.6 Audit report available under NDA, frequency not specified.</text>
+    <rect x="72" y="426" width="816" height="70" rx="8" fill="#f1f5f6"/>
+    <text x="96" y="456" font-weight="700">Reviewer note</text>
+    <text x="96" y="482">The clause does not clearly separate processing, training, retention, deletion, or subprocessor approval.</text>
+  </g>
+</svg>

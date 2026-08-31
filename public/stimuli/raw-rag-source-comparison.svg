@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945" role="img" aria-labelledby="title desc">
+  <title id="title">Source comparison packet for an AI answer</title>
+  <desc id="desc">A raw document artifact comparing approved policy sources with an AI answer that overstates what employees may do with public AI tools.</desc>
+  <rect width="1680" height="945" fill="#f5f1e7"/>
+  <rect x="58" y="54" width="1564" height="837" rx="28" fill="#fffdf7" stroke="#d9d2c0" stroke-width="3"/>
+  <text x="96" y="112" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#17201d">AI Policy Source Check</text>
+  <text x="96" y="154" font-family="Arial, sans-serif" font-size="20" fill="#6a655b">Raw sources vs. assistant answer. Review what is grounded, missing, or invented.</text>
+  <rect x="96" y="198" width="700" height="592" rx="18" fill="#f8fbf8" stroke="#bad6ca" stroke-width="3"/>
+  <text x="126" y="244" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#226c6f">Approved Source A: Employee AI Use Policy</text>
+  <text x="126" y="295" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#17201d">Section 3.2: Public AI tools</text>
+  <text x="126" y="338" font-family="Arial, sans-serif" font-size="22" fill="#17201d">Employees may use public AI tools for low-risk</text>
+  <text x="126" y="371" font-family="Arial, sans-serif" font-size="22" fill="#17201d">drafting only when no confidential, customer,</text>
+  <text x="126" y="404" font-family="Arial, sans-serif" font-size="22" fill="#17201d">financial, health, or HR data is included.</text>
+  <rect x="126" y="438" width="612" height="86" rx="14" fill="#fff4dd" stroke="#d7a23a" stroke-width="3"/>
+  <text x="154" y="474" font-family="Arial, sans-serif" font-size="21" font-weight="800" fill="#6f4c10">Required:</text>
+  <text x="154" y="504" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Use approved enterprise assistant for work records.</text>
+  <text x="126" y="584" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#17201d">Section 5.1: Sources</text>
+  <text x="126" y="626" font-family="Arial, sans-serif" font-size="22" fill="#17201d">Answers used for policy, customer, or legal decisions</text>
+  <text x="126" y="659" font-family="Arial, sans-serif" font-size="22" fill="#17201d">must cite the approved source and date.</text>
+  <text x="126" y="730" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#6a655b">Document owner: People Ops | Updated: 2026-06-12</text>
+  <rect x="884" y="198" width="700" height="592" rx="18" fill="#fff7f3" stroke="#e2b9a2" stroke-width="3"/>
+  <text x="914" y="244" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#b45f3a">Assistant Answer Draft</text>
+  <text x="914" y="300" font-family="Arial, sans-serif" font-size="23" fill="#17201d">"Employees can use any AI tool for work as long as</text>
+  <text x="914" y="334" font-family="Arial, sans-serif" font-size="23" fill="#17201d">they avoid sharing passwords. Public tools are fine</text>
+  <text x="914" y="368" font-family="Arial, sans-serif" font-size="23" fill="#17201d">for summarizing customer tickets and HR cases."</text>
+  <line x1="914" y1="418" x2="1538" y2="418" stroke="#e2b9a2" stroke-width="3"/>
+  <text x="914" y="466" font-family="Arial, sans-serif" font-size="21" font-weight="800" fill="#6f2517">Review notes</text>
+  <circle cx="930" cy="514" r="8" fill="#b45f3a"/>
+  <text x="954" y="522" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Overstates "any AI tool" vs. approved tool rule</text>
+  <circle cx="930" cy="565" r="8" fill="#b45f3a"/>
+  <text x="954" y="573" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Invents password-only limit; source lists more data</text>
+  <circle cx="930" cy="616" r="8" fill="#b45f3a"/>
+  <text x="954" y="624" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Customer tickets and HR cases conflict with policy</text>
+  <circle cx="930" cy="667" r="8" fill="#a27a23"/>
+  <text x="954" y="675" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Missing citation and source date</text>
+  <rect x="96" y="820" width="1488" height="36" rx="18" fill="#17201d"/>
+  <text x="126" y="844" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="#fff">Practical task: decide what is grounded, what is unsafe, and what follow-up prompt or workflow control is needed.</text>
+</svg>

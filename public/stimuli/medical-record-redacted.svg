@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Medical record privacy risk</title>
+  <desc id="desc">A lab report with personal identifiers visible and a public chatbot upload warning.</desc>
+  <rect width="1200" height="760" fill="#f8f6ef"/>
+  <rect x="90" y="70" width="660" height="620" rx="18" fill="#fff" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="132" y="136" fill="#17201d" font-family="Arial, sans-serif" font-size="34" font-weight="700">Lab Report</text>
+  <rect x="132" y="180" width="420" height="26" fill="#17201d"/>
+  <text x="574" y="204" fill="#b45f3a" font-family="Arial, sans-serif" font-size="23" font-weight="700">Name visible</text>
+  <rect x="132" y="238" width="310" height="24" fill="#17201d"/>
+  <text x="466" y="260" fill="#b45f3a" font-family="Arial, sans-serif" font-size="23" font-weight="700">Patient ID visible</text>
+  <line x1="132" y1="320" x2="710" y2="320" stroke="#d8d6ca" stroke-width="3"/>
+  <text x="132" y="372" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Glucose</text>
+  <text x="620" y="372" fill="#17201d" font-family="Arial, sans-serif" font-size="24" font-weight="700">High</text>
+  <text x="132" y="430" fill="#65706b" font-family="Arial, sans-serif" font-size="24">Creatinine</text>
+  <text x="620" y="430" fill="#17201d" font-family="Arial, sans-serif" font-size="24" font-weight="700">Normal</text>
+  <rect x="800" y="160" width="300" height="330" rx="28" fill="#17201d"/>
+  <text x="840" y="224" fill="#fff" font-family="Arial, sans-serif" font-size="28" font-weight="700">Public AI chat</text>
+  <rect x="840" y="270" width="220" height="78" rx="14" fill="#36423e"/>
+  <text x="868" y="318" fill="#fff" font-family="Arial, sans-serif" font-size="20">Upload report</text>
+  <rect x="840" y="378" width="220" height="60" rx="14" fill="#b45f3a"/>
+  <text x="870" y="416" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Privacy risk</text>
+</svg>

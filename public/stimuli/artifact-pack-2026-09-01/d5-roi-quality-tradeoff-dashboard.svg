@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">ROI and quality tradeoff dashboard</title>
+  <desc id="desc">A dashboard showing faster handling time but worse escalation, complaint, and rework metrics after AI rollout.</desc>
+  <rect width="980" height="620" fill="#f8f7f3"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#20252a">AI Support Pilot - ROI Review</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5d666b">Question target: evaluate benefits with quality and risk metrics, not time saved alone.</text>
+  <g font-family="Inter,Arial" fill="#20252a">
+    <rect x="42" y="122" width="200" height="116" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="64" y="158" font-size="15">Handle time</text>
+    <text x="64" y="204" font-size="36" font-weight="700" fill="#138a63">-32%</text>
+    <rect x="272" y="122" width="200" height="116" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="294" y="158" font-size="15">Escalations</text>
+    <text x="294" y="204" font-size="36" font-weight="700" fill="#9b3f1f">+19%</text>
+    <rect x="502" y="122" width="200" height="116" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="524" y="158" font-size="15">Complaint rate</text>
+    <text x="524" y="204" font-size="36" font-weight="700" fill="#9b3f1f">+11%</text>
+    <rect x="732" y="122" width="206" height="116" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="754" y="158" font-size="15">Rework tickets</text>
+    <text x="754" y="204" font-size="36" font-weight="700" fill="#9b3f1f">+24%</text>
+    <rect x="42" y="286" width="896" height="234" rx="10" fill="#ffffff" stroke="#d4dcde"/>
+    <text x="70" y="324" font-size="20" font-weight="700">AI-generated executive summary</text>
+    <text x="70" y="362" font-size="15">"Pilot saved 410 staff-hours and should be scaled to all queues."</text>
+    <text x="70" y="398" font-size="15" fill="#9b3f1f">Missing: complaint costs, refund leakage, rework effort, segment-level impact.</text>
+    <text x="70" y="434" font-size="15">Control group: no formal holdout; compared against last quarter seasonality.</text>
+    <text x="70" y="470" font-size="15">Recommended next measure: quality-adjusted ROI and customer harm review.</text>
+  </g>
+</svg>

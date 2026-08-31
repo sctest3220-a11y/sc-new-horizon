@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">AI screening fairness packet</title>
+  <desc id="desc">A candidate screening report showing model recommendation, evidence, proxy features, and fairness review flags.</desc>
+  <rect width="980" height="620" fill="#f7f6f1"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#22272b">AI Screening Packet - Sales Manager Role</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5e666d">Question target: distinguish useful evidence from unfair or poorly justified signals.</text>
+  <g font-family="Inter,Arial" fill="#22272b" font-size="14">
+    <rect x="42" y="120" width="428" height="420" rx="12" fill="#ffffff" stroke="#d2dcdf"/>
+    <text x="66" y="154" font-size="20" font-weight="700">Model ranking</text>
+    <text x="66" y="194">1. Candidate A - 88 fit score</text>
+    <text x="90" y="222">Evidence: enterprise sales quota 108%</text>
+    <text x="90" y="250" fill="#9b3f1f">Penalty removed? career break not explained</text>
+    <text x="66" y="294">2. Candidate B - 74 fit score</text>
+    <text x="90" y="322">Evidence: similar market, strong retention</text>
+    <text x="90" y="350" fill="#9b3f1f">Penalty: "non-traditional university"</text>
+    <text x="66" y="394">3. Candidate C - 71 fit score</text>
+    <text x="90" y="422">Evidence: partner channel wins</text>
+    <text x="90" y="450" fill="#9b3f1f">Penalty: address distance 32 km</text>
+    <rect x="510" y="120" width="428" height="420" rx="12" fill="#ffffff" stroke="#d2dcdf"/>
+    <text x="534" y="154" font-size="20" font-weight="700">Fairness review notes</text>
+    <text x="534" y="194">Validated against last year's hires only</text>
+    <text x="534" y="226">No adverse-impact check by gender, age, disability</text>
+    <text x="534" y="258">No candidate-facing explanation template</text>
+    <text x="534" y="290">Hiring manager can override but reason is optional</text>
+    <rect x="534" y="322" width="360" height="80" rx="8" fill="#fff0e8"/>
+    <text x="554" y="354" fill="#9b3f1f">Risk: proxy features may reproduce historical bias.</text>
+    <text x="554" y="382" fill="#9b3f1f">Control: audit, explainability, human review, logging.</text>
+    <text x="534" y="450">Best assessment answers should require evidence-based review, not blind acceptance or rejection.</text>
+  </g>
+</svg>

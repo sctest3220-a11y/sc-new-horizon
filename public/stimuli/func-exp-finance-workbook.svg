@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945">
+  <rect width="1680" height="945" fill="#f4f7fb"/>
+  <rect x="44" y="44" width="1592" height="857" rx="14" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
+  <text x="80" y="96" font-family="Arial" font-size="30" font-weight="700" fill="#111827">Finance Workbook - Q3 Close Variance Review</text>
+  <text x="80" y="132" font-family="Arial" font-size="18" fill="#667085">Sheet: MRR_Margin_Exceptions | Last refresh: 2026-08-27 06:10 | Source mix: ERP + billing export</text>
+
+  <rect x="80" y="172" width="1520" height="562" fill="#ffffff" stroke="#98a2b3"/>
+  <rect x="80" y="172" width="1520" height="42" fill="#e7eef8"/>
+  <text x="98" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Line</text>
+  <text x="236" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Account</text>
+  <text x="556" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Budget</text>
+  <text x="724" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Actual</text>
+  <text x="888" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Variance</text>
+  <text x="1064" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">AI note</text>
+  <text x="1382" y="200" font-family="Arial" font-size="16" font-weight="700" fill="#111827">Controller flag</text>
+
+  <g font-family="Arial" font-size="17" fill="#1f2937">
+    <text x="98" y="250">12</text><text x="236" y="250">New logo MRR</text><text x="556" y="250">$410,000</text><text x="724" y="250">$391,600</text><text x="888" y="250">-$18,400</text><text x="1064" y="250">Below plan; pipeline timing</text><text x="1382" y="250">normal accrual</text>
+    <text x="98" y="300">18</text><text x="236" y="300">Expansion MRR</text><text x="556" y="300">$285,000</text><text x="724" y="300">$246,200</text><text x="888" y="300">-$38,800</text><text x="1064" y="300">Likely churn risk</text><text x="1382" y="300">needs rev rec check</text>
+    <text x="98" y="350">23</text><text x="236" y="350">Support revenue</text><text x="556" y="350">$96,000</text><text x="724" y="350">$131,400</text><text x="888" y="350">+$35,400</text><text x="1064" y="350">Upside covers spend</text><text x="1382" y="350">one-time true-up</text>
+    <text x="98" y="400">34</text><text x="236" y="400">Paid media</text><text x="556" y="400">$122,000</text><text x="724" y="400">$149,500</text><text x="888" y="400">-$27,500</text><text x="1064" y="400">Primary miss driver</text><text x="1382" y="400">campaign spillover</text>
+    <text x="98" y="450">41</text><text x="236" y="450">Cloud compute</text><text x="556" y="450">$176,000</text><text x="724" y="450">$238,900</text><text x="888" y="450">-$62,900</text><text x="1064" y="450">Usage spike; ignore if growth</text><text x="1382" y="450">unapproved load test</text>
+    <text x="98" y="500">48</text><text x="236" y="500">Vendor credit</text><text x="556" y="500">$0</text><text x="724" y="500">$42,000</text><text x="888" y="500">+$42,000</text><text x="1064" y="500">Recurring savings</text><text x="1382" y="500">non-recurring credit</text>
+    <text x="98" y="550">55</text><text x="236" y="550">Contractor support</text><text x="556" y="550">$88,000</text><text x="724" y="550">$112,200</text><text x="888" y="550">-$24,200</text><text x="1064" y="550">Temporary queue coverage</text><text x="1382" y="550">ties to SLA backlog</text>
+    <text x="98" y="600">61</text><text x="236" y="600">Gross margin</text><text x="556" y="600">71.0%</text><text x="724" y="600">66.8%</text><text x="888" y="600">-4.2 pts</text><text x="1064" y="600">Marketing overspend</text><text x="1382" y="600">multi-driver bridge</text>
+  </g>
+  <g stroke="#d0d5dd" stroke-width="1">
+    <line x1="80" y1="264" x2="1600" y2="264"/><line x1="80" y1="314" x2="1600" y2="314"/><line x1="80" y1="364" x2="1600" y2="364"/><line x1="80" y1="414" x2="1600" y2="414"/><line x1="80" y1="464" x2="1600" y2="464"/><line x1="80" y1="514" x2="1600" y2="514"/><line x1="80" y1="564" x2="1600" y2="564"/><line x1="80" y1="614" x2="1600" y2="614"/>
+  </g>
+
+  <rect x="80" y="760" width="720" height="92" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="106" y="796" font-family="Arial" font-size="19" font-weight="700" fill="#92400e">AI-generated close comment</text>
+  <text x="106" y="826" font-family="Arial" font-size="18" fill="#92400e">"Paid media is the main cause; vendor savings should offset the remaining miss."</text>
+
+  <rect x="860" y="760" width="640" height="92" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="886" y="796" font-family="Arial" font-size="19" font-weight="700" fill="#166534">Reviewer note</text>
+  <text x="886" y="826" font-family="Arial" font-size="18" fill="#166534">Bridge should separate recurring operations, one-time credits, and revenue timing.</text>
+</svg>

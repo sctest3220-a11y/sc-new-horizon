@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Raw board packet page on AI scale readiness</title>
+  <desc id="desc">Board packet page with portfolio notes, ROI claims, missing baseline evidence, and governance conditions for an AI scaling decision.</desc>
+  <rect width="1200" height="760" fill="#f6f3ed"/>
+  <rect x="54" y="42" width="1092" height="676" fill="#fffdf8" stroke="#2f3a40" stroke-width="3"/>
+  <text x="86" y="92" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1d2a30">BOARD PACKET EXCERPT: AI SCALE READINESS</text>
+  <text x="86" y="124" font-family="Arial, sans-serif" font-size="14" fill="#5b676d">Strategy Committee pre-read | Confidential draft | Prepared for Q4 investment gate</text>
+  <line x1="86" y1="146" x2="1115" y2="146" stroke="#1d2a30" stroke-width="2"/>
+
+  <rect x="86" y="176" width="315" height="128" fill="#eef4f1" stroke="#5d7770"/>
+  <text x="108" y="210" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#203b36">Executive Claim</text>
+  <text x="108" y="250" font-family="Arial, sans-serif" font-size="50" font-weight="700" fill="#2e6b58">18 mo.</text>
+  <text x="240" y="247" font-family="Arial, sans-serif" font-size="16" fill="#263238">payback if scaled</text>
+  <text x="108" y="279" font-family="Arial, sans-serif" font-size="14" fill="#4f5d62">Assumes 64% adoption and no rework penalty</text>
+
+  <rect x="430" y="176" width="322" height="128" fill="#fff8e8" stroke="#9d7b2f"/>
+  <text x="452" y="210" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#4f3710">Evidence Gaps</text>
+  <text x="452" y="242" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Baseline: one month, seasonal peak</text>
+  <text x="452" y="269" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Quality audit: sampled only approved cases</text>
+  <text x="452" y="296" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Process owner: named after business case</text>
+
+  <rect x="781" y="176" width="334" height="128" fill="#f7eeee" stroke="#9f5b5b"/>
+  <text x="803" y="210" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#5a2525">Conditions Proposed</text>
+  <text x="803" y="242" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Release budget now; validate controls later</text>
+  <text x="803" y="269" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Vendor to define success metric</text>
+  <text x="803" y="296" font-family="Arial, sans-serif" font-size="15" fill="#2b2b2b">Board update after procurement signature</text>
+
+  <text x="86" y="356" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a30">Portfolio Page 12: Proposed AI Programs</text>
+  <rect x="86" y="378" width="1028" height="230" fill="#ffffff" stroke="#b8c0c4"/>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#1e2a2f">
+    <text x="112" y="413" font-weight="700">Use case</text>
+    <text x="350" y="413" font-weight="700">Value case</text>
+    <text x="538" y="413" font-weight="700">Readiness</text>
+    <text x="716" y="413" font-weight="700">Risk note</text>
+    <text x="946" y="413" font-weight="700">Gate</text>
+    <line x1="104" y1="426" x2="1096" y2="426" stroke="#c7ced2"/>
+    <text x="112" y="462">Claims triage copilot</text>
+    <text x="350" y="462">$4.1M run-rate</text>
+    <text x="538" y="462">Data uneven</text>
+    <text x="716" y="462">Customer harm if denial wrong</text>
+    <text x="946" y="462">Not defined</text>
+    <text x="112" y="507">Finance close assistant</text>
+    <text x="350" y="507">$1.6M cycle gain</text>
+    <text x="538" y="507">Workflow mapped</text>
+    <text x="716" y="507">Audit trail required</text>
+    <text x="946" y="507">CFO owner</text>
+    <text x="112" y="552">Manager coaching bot</text>
+    <text x="350" y="552">Attrition proxy</text>
+    <text x="538" y="552">Low evidence</text>
+    <text x="716" y="552">Sensitive people data</text>
+    <text x="946" y="552">Deferred</text>
+    <text x="112" y="590" fill="#6b3b3b">Margin note: "Can we announce broad deployment at analyst day?"</text>
+  </g>
+
+  <rect x="86" y="634" width="1028" height="45" fill="#eef1f3" stroke="#c7ced2"/>
+  <text x="108" y="662" font-family="Arial, sans-serif" font-size="15" fill="#29363b">Open decision: approve full funding, approve gated scale, or return for evidence package?</text>
+</svg>

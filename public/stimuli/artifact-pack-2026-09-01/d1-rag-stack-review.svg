@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">RAG assistant architecture review</title>
+  <desc id="desc">A product architecture diagram showing a retrieval augmented generation assistant with documents, embeddings, search, a model, tools, memory, and audit logs.</desc>
+  <rect width="980" height="620" fill="#f7f5ef"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#20252a">Support Assistant v0.8 - Architecture Review</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5b626b">Question target: identify where grounding, memory, and tool authority change the risk profile.</text>
+  <g font-family="Inter,Arial" font-size="15" fill="#20252a">
+    <rect x="42" y="126" width="178" height="78" rx="8" fill="#ffffff" stroke="#c9d4d6"/>
+    <text x="62" y="156" font-weight="700">Policy PDFs</text>
+    <text x="62" y="181">45 docs, updated daily</text>
+    <rect x="290" y="126" width="178" height="78" rx="8" fill="#ffffff" stroke="#c9d4d6"/>
+    <text x="310" y="156" font-weight="700">Embeddings</text>
+    <text x="310" y="181">Chunk size: 1,200 tokens</text>
+    <rect x="538" y="126" width="178" height="78" rx="8" fill="#ffffff" stroke="#c9d4d6"/>
+    <text x="558" y="156" font-weight="700">Retriever</text>
+    <text x="558" y="181">Top-k: 3, no freshness filter</text>
+    <rect x="786" y="126" width="150" height="78" rx="8" fill="#fff8e6" stroke="#d79a2b"/>
+    <text x="806" y="156" font-weight="700">LLM Answer</text>
+    <text x="806" y="181">Cites source IDs</text>
+    <path d="M220 165h70M468 165h70M716 165h70" stroke="#5b626b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="538" y="274" width="178" height="84" rx="8" fill="#ffffff" stroke="#c9d4d6"/>
+    <text x="558" y="304" font-weight="700">CRM Tool</text>
+    <text x="558" y="329">Can edit refund status</text>
+    <rect x="786" y="274" width="150" height="84" rx="8" fill="#ffecec" stroke="#d05252"/>
+    <text x="806" y="304" font-weight="700">Memory</text>
+    <text x="806" y="329">Stores full ticket text</text>
+    <path d="M864 204v70" stroke="#5b626b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M786 316h-70" stroke="#5b626b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="42" y="274" width="426" height="176" rx="10" fill="#ffffff" stroke="#c9d4d6"/>
+    <text x="66" y="310" font-size="18" font-weight="700">Observed test run</text>
+    <text x="66" y="342">User: "Refund the customer if policy allows."</text>
+    <text x="66" y="370">Retrieved chunks: Policy A-12, FAQ-03, Old promo page</text>
+    <text x="66" y="398" fill="#9b3f1f">Warning: promo page expired 14 months ago</text>
+    <text x="66" y="426" fill="#9b3f1f">Warning: CRM write tool enabled before manager approval</text>
+    <rect x="538" y="410" width="398" height="114" rx="10" fill="#1f2933"/>
+    <text x="562" y="442" font-size="18" font-weight="700" fill="#ffffff">Audit gap</text>
+    <text x="562" y="472" fill="#d7dde3">Answer says: "refund approved by current policy."</text>
+    <text x="562" y="500" fill="#ffd166">No source passage contains the approval condition.</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0 0L10 4L0 8Z" fill="#5b626b"/>
+    </marker>
+  </defs>
+</svg>

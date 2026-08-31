@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945" role="img" aria-labelledby="title desc">
+  <title id="title">Agent workflow plan with authority gates</title>
+  <desc id="desc">A raw workflow artifact showing an AI agent plan with tool actions, approval gates, logging, and escalation gaps.</desc>
+  <rect width="1680" height="945" fill="#eef4f2"/>
+  <rect x="64" y="58" width="1552" height="829" rx="28" fill="#fff" stroke="#cbd9d4" stroke-width="3"/>
+  <text x="104" y="116" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#17201d">Agent Workflow Plan: Customer Refunds</text>
+  <text x="104" y="156" font-family="Arial, sans-serif" font-size="20" fill="#61706b">Inspect tool authority, handoffs, logs, and decision points before approving the workflow.</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="104" y="214" width="300" height="140" rx="18" fill="#f7fbfb" stroke="#226c6f" stroke-width="3"/>
+    <text x="132" y="258" font-size="22" font-weight="800" fill="#226c6f">1. Intake</text>
+    <text x="132" y="298" font-size="20" fill="#17201d">Read customer email</text>
+    <text x="132" y="326" font-size="20" fill="#17201d">and order history</text>
+    <rect x="496" y="214" width="300" height="140" rx="18" fill="#f7fbfb" stroke="#3f7d57" stroke-width="3"/>
+    <text x="524" y="258" font-size="22" font-weight="800" fill="#3f7d57">2. Draft</text>
+    <text x="524" y="298" font-size="20" fill="#17201d">Classify case and</text>
+    <text x="524" y="326" font-size="20" fill="#17201d">draft response</text>
+    <rect x="888" y="214" width="300" height="140" rx="18" fill="#fff8e7" stroke="#a27a23" stroke-width="3"/>
+    <text x="916" y="258" font-size="22" font-weight="800" fill="#a27a23">3. Action</text>
+    <text x="916" y="298" font-size="20" fill="#17201d">Issue refund under</text>
+    <text x="916" y="326" font-size="20" fill="#17201d">$100 automatically</text>
+    <rect x="1280" y="214" width="260" height="140" rx="18" fill="#fff3ee" stroke="#b45f3a" stroke-width="3"/>
+    <text x="1308" y="258" font-size="22" font-weight="800" fill="#b45f3a">4. Notify</text>
+    <text x="1308" y="298" font-size="20" fill="#17201d">Send email and</text>
+    <text x="1308" y="326" font-size="20" fill="#17201d">update CRM</text>
+    <path d="M404 284H496" stroke="#8c978f" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M796 284H888" stroke="#8c978f" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M1188 284H1280" stroke="#8c978f" stroke-width="5" marker-end="url(#arrow)"/>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L8,3 z" fill="#8c978f"/>
+      </marker>
+    </defs>
+    <rect x="104" y="432" width="442" height="278" rx="18" fill="#f8fbf8" stroke="#bad6ca" stroke-width="3"/>
+    <text x="134" y="478" font-size="24" font-weight="800" fill="#17201d">Tool permissions</text>
+    <text x="134" y="526" font-size="21" fill="#17201d">CRM read/write: broad account access</text>
+    <text x="134" y="568" font-size="21" fill="#17201d">Payments: refunds up to $100</text>
+    <text x="134" y="610" font-size="21" fill="#17201d">Email: send external messages</text>
+    <text x="134" y="652" font-size="21" fill="#17201d">Docs: read policy folder</text>
+    <rect x="620" y="432" width="442" height="278" rx="18" fill="#fff8e7" stroke="#d7a23a" stroke-width="3"/>
+    <text x="650" y="478" font-size="24" font-weight="800" fill="#17201d">Current gates</text>
+    <text x="650" y="526" font-size="21" fill="#17201d">Human approval: only if refund &gt; $100</text>
+    <text x="650" y="568" font-size="21" fill="#17201d">Policy check: not logged</text>
+    <text x="650" y="610" font-size="21" fill="#17201d">Escalation: customer complaint only</text>
+    <text x="650" y="652" font-size="21" fill="#17201d">Rollback owner: blank</text>
+    <rect x="1136" y="432" width="404" height="278" rx="18" fill="#fff3ee" stroke="#e2b9a2" stroke-width="3"/>
+    <text x="1166" y="478" font-size="24" font-weight="800" fill="#17201d">Observed risks</text>
+    <text x="1166" y="526" font-size="21" fill="#17201d">Small refunds can accumulate</text>
+    <text x="1166" y="568" font-size="21" fill="#17201d">Email send is customer-facing</text>
+    <text x="1166" y="610" font-size="21" fill="#17201d">Broad CRM write scope</text>
+    <text x="1166" y="652" font-size="21" fill="#17201d">No exception learning loop</text>
+  </g>
+  <rect x="104" y="768" width="1436" height="52" rx="26" fill="#17201d"/>
+  <text x="136" y="802" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#fff">Practical task: choose what to automate, what to gate, and what evidence leaders need before scale.</text>
+</svg>

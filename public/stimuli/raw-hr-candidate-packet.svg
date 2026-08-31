@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945">
+  <rect width="1680" height="945" fill="#f6f4ef"/>
+  <rect x="72" y="58" width="1536" height="829" rx="26" fill="#fff" stroke="#2d3748" stroke-width="3"/>
+  <text x="112" y="118" font-family="Arial" font-size="34" font-weight="700" fill="#1f2937">Raw Candidate Screening Packet</text>
+  <text x="112" y="164" font-family="Arial" font-size="22" fill="#667085">AI summary: "Candidate A is the best culture fit and should advance."</text>
+  <rect x="112" y="205" width="680" height="590" fill="#f9fafb" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="142" y="252" font-family="Arial" font-size="26" font-weight="700" fill="#111827">Candidate A</text>
+  <text x="142" y="302" font-family="Arial" font-size="22" fill="#111827">Interview score: 3.4 / 5</text>
+  <text x="142" y="350" font-family="Arial" font-size="22" fill="#111827">Portfolio: missing work sample</text>
+  <text x="142" y="398" font-family="Arial" font-size="22" fill="#111827">Availability: immediate</text>
+  <text x="142" y="446" font-family="Arial" font-size="22" fill="#111827">Notes: "polished", "similar school background"</text>
+  <rect x="142" y="500" width="590" height="86" fill="#fff7ed" stroke="#fb923c" stroke-width="2"/>
+  <text x="164" y="535" font-family="Arial" font-size="20" font-weight="700" fill="#9a3412">Risk note</text>
+  <text x="164" y="565" font-family="Arial" font-size="19" fill="#9a3412">Culture fit phrase has no competency evidence attached.</text>
+  <rect x="888" y="205" width="610" height="590" fill="#f9fafb" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="918" y="252" font-family="Arial" font-size="26" font-weight="700" fill="#111827">Candidate B</text>
+  <text x="918" y="302" font-family="Arial" font-size="22" fill="#111827">Interview score: 4.2 / 5</text>
+  <text x="918" y="350" font-family="Arial" font-size="22" fill="#111827">Portfolio: 2 relevant case studies</text>
+  <text x="918" y="398" font-family="Arial" font-size="22" fill="#111827">Availability: 30 days</text>
+  <text x="918" y="446" font-family="Arial" font-size="22" fill="#111827">Notes: "strong examples", "needs onboarding"</text>
+  <rect x="918" y="500" width="530" height="86" fill="#ecfdf3" stroke="#22c55e" stroke-width="2"/>
+  <text x="940" y="535" font-family="Arial" font-size="20" font-weight="700" fill="#166534">Evidence note</text>
+  <text x="940" y="565" font-family="Arial" font-size="19" fill="#166534">Work sample supports skill claims; tradeoff is start date.</text>
+  <text x="112" y="842" font-family="Arial" font-size="22" fill="#475467">Inspect whether the AI recommendation is grounded in job-relevant evidence or biased proxy language.</text>
+</svg>

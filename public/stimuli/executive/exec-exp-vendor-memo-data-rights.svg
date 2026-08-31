@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Vendor memo on AI platform data rights</title>
+  <desc id="desc">Raw vendor memo with terms about model improvement, audit logs, subcontractors, retention, and support access.</desc>
+  <rect width="1200" height="760" fill="#f3f1ea"/>
+  <rect x="72" y="46" width="1056" height="662" fill="#fffefa" stroke="#374047" stroke-width="3"/>
+  <text x="106" y="94" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#202b31">VENDOR MEMO: ENTERPRISE GENAI PLATFORM TERMS</text>
+  <text x="106" y="124" font-family="Arial, sans-serif" font-size="14" fill="#616b70">From: Account Director | To: CIO, GC, CFO | Re: commercial close items</text>
+  <line x1="106" y1="148" x2="1094" y2="148" stroke="#202b31" stroke-width="2"/>
+
+  <g font-family="Arial, sans-serif" fill="#1d2529">
+    <text x="106" y="190" font-size="16" font-weight="700">Summary</text>
+    <text x="106" y="220" font-size="15">The platform is ready for enterprise rollout. Remaining security and data questions can be finalized in the first renewal cycle.</text>
+
+    <rect x="106" y="252" width="988" height="82" fill="#f6f8f9" stroke="#c8d0d4"/>
+    <text x="128" y="280" font-size="15" font-weight="700">1. Model improvement</text>
+    <text x="128" y="306" font-size="14">Customer prompts and outputs may be used to improve service quality unless an opt-out addendum is executed.</text>
+
+    <rect x="106" y="348" width="988" height="82" fill="#fff8ec" stroke="#d0b36a"/>
+    <text x="128" y="376" font-size="15" font-weight="700">2. Audit logs</text>
+    <text x="128" y="402" font-size="14">Admin logs are retained for 30 days by default; extended retention is available on an enterprise plan tier.</text>
+
+    <rect x="106" y="444" width="988" height="82" fill="#f8eeee" stroke="#c48989"/>
+    <text x="128" y="472" font-size="15" font-weight="700">3. Support access</text>
+    <text x="128" y="498" font-size="14">Vendor support may inspect customer workspaces to resolve incidents; approval workflow is configurable post-launch.</text>
+
+    <rect x="106" y="540" width="988" height="82" fill="#f6f8f9" stroke="#c8d0d4"/>
+    <text x="128" y="568" font-size="15" font-weight="700">4. Subprocessors</text>
+    <text x="128" y="594" font-size="14">New subprocessors are posted on the trust site; contract notice is best-effort for urgent service continuity changes.</text>
+  </g>
+
+  <rect x="106" y="648" width="470" height="34" fill="#eef4f1" stroke="#9eb3aa"/>
+  <text x="126" y="670" font-family="Arial, sans-serif" font-size="14" fill="#243832">Procurement note: discount expires Friday if signed without redlines.</text>
+  <rect x="624" y="648" width="470" height="34" fill="#f8eeee" stroke="#b98c8c"/>
+  <text x="644" y="670" font-family="Arial, sans-serif" font-size="14" fill="#5c2c2c">Open: data rights, retention, support access, subprocessor notice.</text>
+</svg>

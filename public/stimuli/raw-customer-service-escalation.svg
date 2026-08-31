@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945" role="img" aria-labelledby="title desc">
+  <title id="title">Customer service escalation queue with AI draft</title>
+  <desc id="desc">A customer service ticket artifact showing chat history, order data, sentiment, SLA risk, and an AI draft response that misses escalation signals.</desc>
+  <rect width="1680" height="945" fill="#eef4f2"/>
+  <rect x="64" y="58" width="1552" height="829" rx="28" fill="#fff" stroke="#cbd9d4" stroke-width="3"/>
+  <text x="104" y="118" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#17201d">Customer Service Escalation Queue</text>
+  <text x="104" y="158" font-family="Arial, sans-serif" font-size="20" fill="#61706b">Review the raw ticket before sending or approving the AI response.</text>
+  <rect x="104" y="214" width="580" height="536" rx="18" fill="#f8fbf8" stroke="#bad6ca" stroke-width="3"/>
+  <text x="134" y="260" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#226c6f">Customer thread</text>
+  <text x="134" y="318" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Customer: I was charged twice and</text>
+  <text x="134" y="350" font-family="Arial, sans-serif" font-size="21" fill="#17201d">the refund form keeps failing.</text>
+  <text x="134" y="414" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Agent bot: Please wait 7-10 days.</text>
+  <text x="134" y="478" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Customer: This is the third reply.</text>
+  <text x="134" y="510" font-family="Arial, sans-serif" font-size="21" fill="#17201d">I will dispute the charge today.</text>
+  <rect x="134" y="574" width="486" height="94" rx="16" fill="#fff7f3" stroke="#e2b9a2" stroke-width="3"/>
+  <text x="164" y="612" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#b45f3a">SLA and sentiment</text>
+  <text x="164" y="646" font-family="Arial, sans-serif" font-size="20" fill="#17201d">SLA breach in 2h · sentiment: high frustration</text>
+  <rect x="744" y="214" width="366" height="536" rx="18" fill="#f8fbff" stroke="#b8c8e6" stroke-width="3"/>
+  <text x="774" y="260" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#3b6ea8">Order evidence</text>
+  <text x="774" y="318" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Order: #TH-8841</text>
+  <text x="774" y="372" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Payment A: captured</text>
+  <text x="774" y="426" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Payment B: captured</text>
+  <text x="774" y="480" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Refund status: none</text>
+  <text x="774" y="534" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Policy: duplicate charge</text>
+  <text x="774" y="568" font-family="Arial, sans-serif" font-size="21" fill="#17201d">eligible after verification</text>
+  <rect x="1170" y="214" width="370" height="536" rx="18" fill="#fff7f3" stroke="#e2b9a2" stroke-width="3"/>
+  <text x="1200" y="260" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#b45f3a">AI draft</text>
+  <text x="1200" y="318" font-family="Arial, sans-serif" font-size="21" fill="#17201d">"Thanks for waiting.</text>
+  <text x="1200" y="352" font-family="Arial, sans-serif" font-size="21" fill="#17201d">Refunds can take 7-10</text>
+  <text x="1200" y="386" font-family="Arial, sans-serif" font-size="21" fill="#17201d">days. Please check again</text>
+  <text x="1200" y="420" font-family="Arial, sans-serif" font-size="21" fill="#17201d">next week."</text>
+  <line x1="1200" y1="470" x2="1492" y2="470" stroke="#e2b9a2" stroke-width="3"/>
+  <circle cx="1218" cy="524" r="8" fill="#b45f3a"/>
+  <text x="1242" y="532" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Misses duplicate capture</text>
+  <circle cx="1218" cy="578" r="8" fill="#b45f3a"/>
+  <text x="1242" y="586" font-family="Arial, sans-serif" font-size="20" fill="#17201d">Misses dispute risk</text>
+  <circle cx="1218" cy="632" r="8" fill="#a27a23"/>
+  <text x="1242" y="640" font-family="Arial, sans-serif" font-size="20" fill="#17201d">No escalation owner</text>
+  <rect x="104" y="806" width="1436" height="48" rx="24" fill="#17201d"/>
+  <text x="136" y="837" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#fff">Practical task: decide whether to send, revise, escalate, or verify before taking action.</text>
+</svg>

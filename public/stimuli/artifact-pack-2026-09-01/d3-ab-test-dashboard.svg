@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">A/B test dashboard with misleading lift</title>
+  <desc id="desc">A marketing experiment dashboard showing conversion lift, small sample size, uneven traffic, and quality warnings.</desc>
+  <rect width="980" height="620" fill="#f7f8f5"/>
+  <text x="42" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#1b2528">Campaign AI Copy Test</text>
+  <text x="42" y="84" font-family="Inter,Arial" font-size="15" fill="#5d686c">Question target: separate a tempting metric from reliable evidence.</text>
+  <g font-family="Inter,Arial" fill="#1b2528">
+    <rect x="42" y="122" width="276" height="116" rx="10" fill="#ffffff" stroke="#d1dadc"/>
+    <text x="66" y="160" font-size="16">Variant A conversion</text>
+    <text x="66" y="206" font-size="42" font-weight="700">4.2%</text>
+    <text x="180" y="206" font-size="14" fill="#5d686c">n=2,403</text>
+    <rect x="352" y="122" width="276" height="116" rx="10" fill="#ffffff" stroke="#d1dadc"/>
+    <text x="376" y="160" font-size="16">Variant B conversion</text>
+    <text x="376" y="206" font-size="42" font-weight="700" fill="#138a63">7.1%</text>
+    <text x="490" y="206" font-size="14" fill="#5d686c">n=169</text>
+    <rect x="662" y="122" width="276" height="116" rx="10" fill="#fff2e8" stroke="#da9d67"/>
+    <text x="686" y="160" font-size="16">AI recommendation</text>
+    <text x="686" y="196" font-size="20" font-weight="700">Scale Variant B now</text>
+    <text x="686" y="220" font-size="14">"69% higher conversion"</text>
+    <rect x="42" y="282" width="896" height="238" rx="10" fill="#ffffff" stroke="#d1dadc"/>
+    <text x="66" y="318" font-size="20" font-weight="700">Experiment details</text>
+    <text x="66" y="358" font-size="15">Traffic split: A 93%, B 7% due to routing bug</text>
+    <text x="66" y="392" font-size="15">Audience: B served mostly returning customers</text>
+    <text x="66" y="426" font-size="15">Lead quality: B has 38% lower qualified-lead rate after sales review</text>
+    <text x="66" y="460" font-size="15" fill="#9b3f1f">Warning: no statistical confidence interval shown</text>
+    <rect x="560" y="340" width="300" height="118" fill="#eef4f3"/>
+    <rect x="600" y="410" width="58" height="30" fill="#7aa6a1"/>
+    <rect x="700" y="364" width="58" height="76" fill="#138a63"/>
+    <text x="605" y="468" font-size="13">A</text>
+    <text x="705" y="468" font-size="13">B</text>
+    <text x="560" y="492" font-size="13" fill="#5d686c">Chart hides sample-size difference.</text>
+  </g>
+</svg>

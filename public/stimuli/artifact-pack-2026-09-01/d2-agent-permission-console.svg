@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Agent permission console</title>
+  <desc id="desc">A console showing an AI agent with email, CRM, repository, and billing permissions plus missing approval gates.</desc>
+  <rect width="980" height="620" fill="#f6f8f7"/>
+  <text x="44" y="54" font-family="Inter,Arial" font-size="28" font-weight="700" fill="#17202a">Agent Setup - Revenue Operations</text>
+  <text x="44" y="84" font-family="Inter,Arial" font-size="15" fill="#5b626b">Question target: choose the safest workflow and permission design before enabling the agent.</text>
+  <rect x="42" y="120" width="896" height="420" rx="12" fill="#ffffff" stroke="#cfd8dc"/>
+  <g font-family="Inter,Arial" font-size="15" fill="#17202a">
+    <text x="70" y="158" font-size="20" font-weight="700">Tools requested</text>
+    <text x="70" y="198">Gmail: read inbox, send mail as user</text>
+    <rect x="730" y="177" width="150" height="30" rx="15" fill="#ffe8e8"/>
+    <text x="755" y="198" fill="#a72f2f">High risk</text>
+    <text x="70" y="242">CRM: read all opportunities, update stage, create discount</text>
+    <rect x="730" y="221" width="150" height="30" rx="15" fill="#ffe8e8"/>
+    <text x="755" y="242" fill="#a72f2f">High risk</text>
+    <text x="70" y="286">GitHub: read product roadmap issues</text>
+    <rect x="730" y="265" width="150" height="30" rx="15" fill="#e9f7ef"/>
+    <text x="755" y="286" fill="#226b3a">Low risk</text>
+    <text x="70" y="330">Billing: apply customer credit up to THB 30,000</text>
+    <rect x="730" y="309" width="150" height="30" rx="15" fill="#ffe8e8"/>
+    <text x="755" y="330" fill="#a72f2f">High risk</text>
+    <line x1="70" y1="362" x2="880" y2="362" stroke="#d9e1e4"/>
+    <text x="70" y="398" font-size="20" font-weight="700">Current approval rule</text>
+    <text x="70" y="430">Agent may act automatically when confidence is above 0.72.</text>
+    <text x="70" y="462" fill="#9b3f1f">Missing: amount threshold, human approver, customer data minimization, rollback log.</text>
+    <rect x="70" y="486" width="810" height="34" rx="6" fill="#f1f5f6"/>
+    <text x="90" y="508">Last simulation: created 3 discounts and emailed 2 customers before manager review.</text>
+  </g>
+</svg>

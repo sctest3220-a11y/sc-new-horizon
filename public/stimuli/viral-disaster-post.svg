@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Viral disaster post with provenance gaps</title>
+  <desc id="desc">A social media post with a dramatic image, unknown source, urgent caption, and missing date or location evidence.</desc>
+  <rect width="1200" height="760" fill="#edf2f4"/>
+  <rect x="96" y="54" width="1008" height="652" rx="34" fill="#fff" stroke="#cfd8dc" stroke-width="3"/>
+  <circle cx="156" cy="124" r="30" fill="#7b5ea7"/>
+  <text x="204" y="118" fill="#17201d" font-family="Arial, sans-serif" font-size="26" font-weight="700">@urgent_updates_247</text>
+  <text x="204" y="150" fill="#b45f3a" font-family="Arial, sans-serif" font-size="20" font-weight="700">BREAKING: happening right now - share fast</text>
+  <rect x="136" y="192" width="928" height="370" rx="20" fill="#243b53"/>
+  <rect x="136" y="428" width="928" height="134" rx="20" fill="#4f7b8a"/>
+  <path d="M136 456 C260 390 330 455 430 398 C530 340 610 420 720 370 C830 320 930 390 1064 330 L1064 562 L136 562 Z" fill="#8fb7c7"/>
+  <rect x="234" y="300" width="120" height="176" fill="#d6d2c4"/>
+  <rect x="390" y="268" width="156" height="208" fill="#c7bda5"/>
+  <rect x="733" y="310" width="196" height="166" fill="#d9d0b8"/>
+  <rect x="778" y="350" width="58" height="126" fill="#7b5ea7"/>
+  <rect x="136" y="592" width="928" height="70" rx="16" fill="#fff7ed" stroke="#e5a46b" stroke-width="2"/>
+  <text x="170" y="637" fill="#8e4526" font-family="Arial, sans-serif" font-size="24" font-weight="700">Missing: original source, timestamp, location, trusted report</text>
+</svg>

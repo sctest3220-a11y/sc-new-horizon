@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="945" viewBox="0 0 1680 945">
+  <rect width="1680" height="945" fill="#f3f5f7"/>
+  <rect x="50" y="44" width="1580" height="858" rx="14" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
+  <text x="86" y="96" font-family="Arial" font-size="30" font-weight="700" fill="#111827">Operations Support Workflow + Agent Tool Log</text>
+  <text x="86" y="132" font-family="Arial" font-size="18" fill="#667085">Incident: duplicate renewal invoices | Queue: enterprise support | Agent run: OPS-7731</text>
+
+  <rect x="86" y="178" width="680" height="278" fill="#fbfcfe" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="116" y="218" font-family="Arial" font-size="22" font-weight="700" fill="#111827">Support ticket thread</text>
+  <text x="116" y="258" font-family="Arial" font-size="18" fill="#344054">Customer: "We were charged twice after your retry email. Please reverse one charge."</text>
+  <text x="116" y="294" font-family="Arial" font-size="18" fill="#344054">Billing event 09:14: auth failed | 09:16 retry sent | 09:18 capture succeeded</text>
+  <text x="116" y="330" font-family="Arial" font-size="18" fill="#344054">Billing event 09:21 manual retry by rep | 09:22 second capture succeeded</text>
+  <text x="116" y="366" font-family="Arial" font-size="18" fill="#344054">Policy snippet: duplicate captures may be refunded after payment verification.</text>
+  <text x="116" y="402" font-family="Arial" font-size="18" fill="#344054">AI draft: "Refund denied because the invoice was successfully paid."</text>
+
+  <rect x="828" y="178" width="704" height="278" fill="#fbfcfe" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="858" y="218" font-family="Arial" font-size="22" font-weight="700" fill="#111827">Workflow map</text>
+  <rect x="872" y="258" width="130" height="54" fill="#e0f2fe" stroke="#0284c7"/><text x="896" y="292" font-family="Arial" font-size="16" fill="#075985">Ticket</text>
+  <line x1="1002" y1="285" x2="1080" y2="285" stroke="#475467" stroke-width="3"/><polygon points="1080,285 1064,276 1064,294" fill="#475467"/>
+  <rect x="1080" y="258" width="150" height="54" fill="#e0f2fe" stroke="#0284c7"/><text x="1104" y="292" font-family="Arial" font-size="16" fill="#075985">AI triage</text>
+  <line x1="1230" y1="285" x2="1308" y2="285" stroke="#475467" stroke-width="3"/><polygon points="1308,285 1292,276 1292,294" fill="#475467"/>
+  <rect x="1308" y="258" width="150" height="54" fill="#fee2e2" stroke="#dc2626"/><text x="1328" y="292" font-family="Arial" font-size="16" fill="#991b1b">Send reply</text>
+  <text x="868" y="368" font-family="Arial" font-size="18" fill="#344054">Missing step: payment verification is optional in the current automation branch.</text>
+  <text x="868" y="404" font-family="Arial" font-size="18" fill="#344054">Manager request: reduce refund queue handling time by 30% without SLA regressions.</text>
+
+  <rect x="86" y="500" width="1446" height="286" fill="#ffffff" stroke="#98a2b3"/>
+  <rect x="86" y="500" width="1446" height="40" fill="#eef4ff"/>
+  <g font-family="Arial" font-size="16" font-weight="700" fill="#111827">
+    <text x="108" y="527">Time</text><text x="236" y="527">Tool</text><text x="430" y="527">Action</text><text x="748" y="527">Result</text><text x="970" y="527">Boundary</text><text x="1228" y="527">Reviewer note</text>
+  </g>
+  <g font-family="Arial" font-size="17" fill="#1f2937">
+    <text x="108" y="576">09:25</text><text x="236" y="576">billing_log</text><text x="430" y="576">read invoice events</text><text x="748" y="576">allowed</text><text x="970" y="576">ticket-scoped</text><text x="1228" y="576">needed evidence</text>
+    <text x="108" y="626">09:26</text><text x="236" y="626">crm_notes</text><text x="430" y="626">read renewal note</text><text x="748" y="626">allowed</text><text x="970" y="626">account-scoped</text><text x="1228" y="626">ok</text>
+    <text x="108" y="676">09:27</text><text x="236" y="676">refund_api</text><text x="430" y="676">issue $4,800 refund</text><text x="748" y="676">blocked</text><text x="970" y="676">approval required</text><text x="1228" y="676">preserve gate</text>
+    <text x="108" y="726">09:28</text><text x="236" y="726">email_send</text><text x="430" y="726">send denial draft</text><text x="748" y="726">blocked</text><text x="970" y="726">policy conflict</text><text x="1228" y="726">revise before send</text>
+  </g>
+  <rect x="86" y="824" width="1446" height="44" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
+  <text x="112" y="852" font-family="Arial" font-size="18" font-weight="700" fill="#991b1b">Open issue: the automation can draft from invoice-paid status before checking duplicate capture evidence.</text>
+</svg>
