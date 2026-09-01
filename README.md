@@ -142,3 +142,5 @@ Current seeded readiness bands:
 | Advanced | 82 | 100 |
 
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
+
+The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.

@@ -1087,6 +1087,65 @@ const broadCompetencyMap: Record<string, string[]> = {
   'D6-change': ['D6-trust-culture', 'D6-change-enablement', 'D6-learning-loops'],
 };
 
+const advancedQuestionFrames = [
+  { id: 'scale-gate', context: 'A cross-functional team wants to scale an AI workflow from a controlled pilot to three departments.', prompt: 'Which decision best demonstrates advanced judgment for this competency?' },
+  { id: 'incident-review', context: 'A recent AI-assisted workflow incident exposed unclear ownership, weak evidence, and a rushed approval path.', prompt: 'What should the review team do before restoring or expanding the workflow?' },
+  { id: 'vendor-approval', context: 'A vendor claims its AI capability is enterprise-ready, but the evidence package is incomplete and business sponsors are eager to proceed.', prompt: 'Which approval condition is strongest?' },
+  { id: 'board-brief', context: 'Leadership needs a short recommendation that balances value, user impact, data boundaries, and operational controls.', prompt: 'Which recommendation is most decision-ready?' },
+  { id: 'workflow-redesign', context: 'A team is redesigning a high-volume process so AI can assist without hiding uncertainty or weakening accountability.', prompt: 'Which redesign choice is strongest?' },
+  { id: 'measurement-plan', context: 'The pilot looks promising, but the team has not separated speed, quality, user trust, cost, and risk outcomes.', prompt: 'What measurement plan should govern the next phase?' },
+  { id: 'policy-conflict', context: 'Two internal policies point in different directions, and the AI system gives a confident recommendation anyway.', prompt: 'What is the best advanced response?' },
+  { id: 'data-boundary', context: 'The proposed workflow would combine customer, employee, vendor, and operational data across multiple tools.', prompt: 'Which control set best supports responsible use?' },
+  { id: 'capability-claim', context: 'A product owner argues that the newest model removes the need for the old review process.', prompt: 'Which challenge is most appropriate?' },
+  { id: 'continuous-improvement', context: 'The first deployment is live and teams are reporting mixed outcomes, edge cases, and workarounds.', prompt: 'What should the owner do next?' },
+] as const;
+
+function buildAdvancedCompetencyQuestion(competency: CompetencyDefinition, frame: (typeof advancedQuestionFrames)[number], index: number): Question {
+  const skillFocus = competency.skills.slice(0, 3).join(', ');
+  return {
+    id: `ADV-${competency.id.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
+    domain: competency.domain,
+    difficulty: 'advanced',
+    type: 'judgment',
+    interaction: 'single',
+    competencyIds: [competency.id],
+    skillIds: competency.skills,
+    evidenceMode: 'hybrid',
+    context: `${frame.context} Focus competency: ${competency.label}. Relevant skills: ${skillFocus}.`,
+    prompt: frame.prompt,
+    options: [
+      {
+        id: 'advanced-control',
+        label: `Define success criteria, evidence requirements, ownership, and review controls for ${competency.label.toLowerCase()} before scaling.`,
+        score: 98,
+        feedback: `Strong advanced evidence. The answer connects ${competency.label.toLowerCase()} to measurable outcomes, constraints, and accountable operation.`,
+      },
+      {
+        id: 'speed-first',
+        label: 'Scale the workflow now because early users reported speed improvements.',
+        score: 38,
+        feedback: 'Speed is useful, but advanced readiness requires quality, risk, ownership, and evidence checks before scale.',
+      },
+      {
+        id: 'tool-only',
+        label: 'Switch to a newer model or tool and assume the competency gap is resolved.',
+        score: 28,
+        feedback: 'Tool capability does not replace competency evidence, workflow design, or governance.',
+      },
+      {
+        id: 'block-without-learning',
+        label: 'Stop all AI use in this area without preserving evidence or defining a safer path.',
+        score: 46,
+        feedback: 'Caution may be appropriate, but advanced practice keeps evidence, learns from failure, and defines controlled next steps.',
+      },
+    ],
+  };
+}
+
+const advancedCompetencyQuestionBank: Question[] = Object.values(competencyDefinitions).flatMap((competency) =>
+  advancedQuestionFrames.map((frame, index) => buildAdvancedCompetencyQuestion(competency, frame, index)),
+);
+
 const freeAudiencePriorityCompetencies: Record<Audience, string[]> = {
   general: [
     'D1-core-concepts',
@@ -3927,6 +3986,7 @@ const questionBank: Question[] = [
   ...generalRelianceQuestions,
   ...functionalQuestionBank,
   ...competencyDepthQuestionBank,
+  ...advancedCompetencyQuestionBank,
   {
     id: 'COMP-D1-CONCEPTS-001',
     domain: 'D1',
@@ -7021,6 +7081,16 @@ const executiveQuestionBank: Question[] = [
   },
 ];
 
+const executiveAssessmentQuestionBank: Question[] = [
+  ...executiveQuestionBank,
+  ...advancedCompetencyQuestionBank,
+];
+
+const allAssessmentItems: Question[] = [
+  ...questionBank,
+  ...executiveQuestionBank,
+];
+
 const learningCatalog: Record<DomainId, { title: string; detail: string; format: string }> = {
   D1: { title: 'AI concepts in plain language', detail: 'Build a reliable mental model of LLMs, retrieval, hallucination, and model limits.', format: '45 min module' },
   D2: { title: 'Prompting and workflow lab', detail: 'Practice reusable prompt patterns, review checklists, and human-in-the-loop design.', format: '60 min lab' },
@@ -8621,7 +8691,7 @@ function getAdaptiveReadout(answers: Answer[], question: Question, assessmentMod
 }
 
 function getAssessmentBank(assessmentMode: AssessmentMode) {
-  return assessmentMode === 'executive' ? executiveQuestionBank : questionBank;
+  return assessmentMode === 'executive' ? executiveAssessmentQuestionBank : questionBank;
 }
 
 function seededValue(id: string, seed: number) {
@@ -9179,8 +9249,8 @@ export default function Home() {
   const [loggedResultId, setLoggedResultId] = useState<string | null>(null);
   const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
     getAgentWorkflowReport(
-      questionBank.length + executiveQuestionBank.length,
-      [...questionBank, ...executiveQuestionBank].filter((question) => question.stimulus || question.visualStimulus).length,
+      allAssessmentItems.length,
+      allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length,
       0,
     )
   ));
@@ -9189,10 +9259,10 @@ export default function Home() {
     () => ({ ...modeConfig[mode], totalQuestions: assessmentTargetTotal }),
     [assessmentTargetTotal, mode],
   );
-  const liveItemCount = questionBank.length + executiveQuestionBank.length;
-  const artifactItemCount = [...questionBank, ...executiveQuestionBank].filter((question) => question.stimulus || question.visualStimulus).length;
-  const multiPartItemCount = [...questionBank, ...executiveQuestionBank].filter((question) => question.interaction === 'parts').length;
-  const interactionCount = new Set([...questionBank, ...executiveQuestionBank].map((question) => question.interaction ?? 'single')).size;
+  const liveItemCount = allAssessmentItems.length;
+  const artifactItemCount = allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length;
+  const multiPartItemCount = allAssessmentItems.filter((question) => question.interaction === 'parts').length;
+  const interactionCount = new Set(allAssessmentItems.map((question) => question.interaction ?? 'single')).size;
   const scoreGroup = useMemo(
     () => getScoreGroup(mode, audience, functionTrack, industryTrack, executiveRole),
     [audience, executiveRole, functionTrack, industryTrack, mode],
@@ -10714,7 +10784,7 @@ export default function Home() {
           </div>
           <div className="premium-summary">
             <strong>Executive pilot includes</strong>
-            <span>20 adaptive questions from {executiveQuestionBank.length} executive seed items, chart/report visuals, multi-select, drag-order, matching, narrative judgment, target radar graph, and personalized executive learning path.</span>
+            <span>20 adaptive questions from {executiveAssessmentQuestionBank.length} executive and advanced competency items, chart/report visuals, multi-select, drag-order, matching, narrative judgment, target radar graph, and personalized executive learning path.</span>
           </div>
           <article className="profile-builder-card compact">
             <div>
