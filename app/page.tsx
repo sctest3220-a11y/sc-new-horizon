@@ -1031,6 +1031,13 @@ const difficultyLabels: Record<Difficulty, string> = {
   advanced: 'Advanced',
 };
 
+const difficultyReadinessBands: Record<Difficulty, { partial: number; max: number }> = {
+  awareness: { partial: 40, max: 68 },
+  applied: { partial: 58, max: 82 },
+  proficient: { partial: 72, max: 92 },
+  advanced: { partial: 82, max: 100 },
+};
+
 const difficultyDescriptions: Record<Difficulty, string> = {
   awareness: 'Recognize the concept, risk, or safe first step.',
   applied: 'Use the concept in a realistic task with evidence.',
@@ -7044,9 +7051,13 @@ const starterDomains: DomainId[] = ['D5', 'D4', 'D6', 'D3'];
 const minimumExecutiveInteractions: Partial<Record<NonNullable<Question['interaction']>, number>> = { multi: 3, rank: 2, match: 2 };
 const minimumGeneralInteractions: Partial<Record<NonNullable<Question['interaction']>, number>> = { multi: 2, rank: 1, match: 1, text: 1 };
 
-function scoreToLevel(score: number) {
-  if (score >= 85) return 'Advanced';
-  if (score >= 70) return 'Strong';
+function hasStrongEvidenceAtDifficulty(answers: Answer[], difficulty: Difficulty) {
+  return answers.some((answer) => answer.question.difficulty === difficulty && answer.option.score >= 82);
+}
+
+function scoreToLevel(score: number, answers: Answer[]) {
+  if (score >= 85 && hasStrongEvidenceAtDifficulty(answers, 'advanced')) return 'Advanced';
+  if (score >= 70 && hasStrongEvidenceAtDifficulty(answers, 'proficient')) return 'Proficient';
   if (score >= 55) return 'Applied';
   if (score >= 40) return 'Developing';
   return 'Limited';
@@ -7844,15 +7855,16 @@ function getDomainScores(answers: Answer[]) {
   answers.forEach(({ question, option, partScores }) => {
     if (partScores?.length) {
       partScores.forEach((partScore) => {
-        raw[partScore.domain].points += partScore.score;
+        raw[partScore.domain].points += getReadinessScore(partScore.score, question.difficulty);
         raw[partScore.domain].count += 1;
       });
       return;
     }
-    raw[question.domain].points += option.score;
+    const readinessScore = getReadinessScore(option.score, question.difficulty);
+    raw[question.domain].points += readinessScore;
     raw[question.domain].count += 1;
     (question.secondaryDomains ?? []).forEach((domain) => {
-      raw[domain].points += option.score * 0.35;
+      raw[domain].points += readinessScore * 0.35;
       raw[domain].count += 0.35;
     });
   });
@@ -7875,12 +7887,26 @@ function getDomainEvidenceSummary(answers: Answer[]) {
   });
 }
 
-function getScoreBandDescription(score: number) {
-  if (score >= 85) return 'Advanced evidence: strong performance across sampled tasks.';
-  if (score >= 70) return 'Strong evidence: mostly reliable practical judgment in sampled tasks.';
+function getScoreBandDescription(score: number, level: string) {
+  if (level === 'Advanced') return 'Advanced evidence: strong performance on advanced sampled tasks.';
+  if (score >= 85) return 'High score on sampled tasks, capped below Advanced until advanced items are answered strongly.';
+  if (level === 'Proficient') return 'Proficient evidence: mostly reliable practical judgment on harder sampled tasks.';
   if (score >= 55) return 'Applied evidence: usable skill with visible gaps.';
   if (score >= 40) return 'Developing evidence: inconsistent or incomplete performance.';
   return 'Limited evidence: answers show major gaps or unsafe choices in this sample.';
+}
+
+function getReadinessScore(rawScore: number, difficulty: Difficulty) {
+  const score = clamp(rawScore, 0, 100);
+  const band = difficultyReadinessBands[difficulty];
+  if (score <= 55) return Math.round((score / 55) * band.partial);
+  return Math.round(band.partial + ((score - 55) / 45) * (band.max - band.partial));
+}
+
+function getReadinessScoreSummary(rawScore: number, difficulty: Difficulty) {
+  const adjusted = getReadinessScore(rawScore, difficulty);
+  const band = difficultyReadinessBands[difficulty];
+  return `Rubric score ${rawScore}/100 on a ${difficultyLabels[difficulty].toLowerCase()} item becomes ${adjusted}/100 readiness evidence. This level can contribute between 0 and ${band.max}; harder items can earn higher readiness evidence, while easy items are capped below advanced readiness.`;
 }
 
 function getEvidenceSignals(answers: Answer[]) {
@@ -7890,12 +7916,13 @@ function getEvidenceSignals(answers: Answer[]) {
     if (answer.partScores?.length) {
       answer.partScores.forEach((partScore) => {
         const competencyId = getDefaultCompetencyId(partScore.domain, answer.question);
-        signals.push({ domain: partScore.domain, competencyId, score: partScore.score, mode });
+        signals.push({ domain: partScore.domain, competencyId, score: getReadinessScore(partScore.score, answer.question.difficulty), mode });
       });
       return;
     }
+    const readinessScore = getReadinessScore(answer.option.score, answer.question.difficulty);
     getQuestionMeasures(answer.question).forEach((competency) => {
-      signals.push({ domain: competency.domain, competencyId: competency.id, score: answer.option.score, mode });
+      signals.push({ domain: competency.domain, competencyId: competency.id, score: readinessScore, mode });
     });
   });
   return signals;
@@ -8091,7 +8118,7 @@ function buildQuestionSignalSnapshots(answers: Answer[]): QuestionSignalSnapshot
     type: answer.question.type,
     interaction: answer.question.interaction ?? 'single',
     evidenceMode: getEvidenceMode(answer.question),
-    score: answer.option.score,
+    score: getReadinessScore(answer.option.score, answer.question.difficulty),
     optionId: answer.option.id,
     rubricHitIds: answer.rubricHits?.map((criterion) => criterion.id),
     partScores: answer.partScores,
@@ -8448,15 +8475,16 @@ function getCorrectAnswerSummary(question: Question) {
 }
 
 function getCalibrationSummary(question: Question, answer: Answer) {
+  const readinessSummary = getReadinessScoreSummary(answer.option.score, question.difficulty);
   if (question.interaction === 'text') {
     const hitLabels = answer.rubricHits?.map((criterion) => criterion.label).join('; ') || 'No rubric criteria detected yet';
-    return `MVP rubric scoring: ${hitLabels}. Full calibration will use human review and pilot response data to tune difficulty, discrimination, and partial-credit thresholds.`;
+    return `MVP rubric scoring: ${hitLabels}. ${readinessSummary} Full calibration will use human review and pilot response data to tune difficulty, discrimination, and partial-credit thresholds.`;
   }
-  if (question.interaction === 'multi') return 'Multi-select calibration gives partial credit for correct criteria and subtracts for distractors. Future IRT calibration will estimate which options best separate ability levels.';
-  if (question.interaction === 'rank') return 'Rank-order calibration scores exact sequence positions. Later versions can use partial-order scoring and calibrated step weights.';
-  if (question.interaction === 'match') return 'Matching calibration scores the proportion of correct pairings. Later versions can estimate item difficulty per pair.';
-  if (question.interaction === 'parts') return 'Multi-part calibration scores each mini-question separately, then updates the relevant domain evidence. This lets one concept cluster route users into more precise adaptive follow-ups.';
-  return `Selected option score ${answer.option.score}/100. In the MVP this is expert-seeded; pilot data will later tune item difficulty b, discrimination a, and guessing c.`;
+  if (question.interaction === 'multi') return `Multi-select calibration gives partial credit for correct criteria and subtracts for distractors. ${readinessSummary} Future IRT calibration will estimate which options best separate ability levels.`;
+  if (question.interaction === 'rank') return `Rank-order calibration scores exact sequence positions. ${readinessSummary} Later versions can use partial-order scoring and calibrated step weights.`;
+  if (question.interaction === 'match') return `Matching calibration scores the proportion of correct pairings. ${readinessSummary} Later versions can estimate item difficulty per pair.`;
+  if (question.interaction === 'parts') return `Multi-part calibration scores each mini-question separately, then updates the relevant domain evidence. ${readinessSummary} This lets one concept cluster route users into more precise adaptive follow-ups.`;
+  return `Selected option score ${answer.option.score}/100. ${readinessSummary} In the MVP this is expert-seeded; pilot data will later tune item difficulty b, discrimination a, and guessing c.`;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -9175,7 +9203,7 @@ export default function Home() {
     const overall = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
     const sortedDomains = (Object.keys(domainScores) as DomainId[]).sort((a, b) => domainScores[a] - domainScores[b]);
     const confidence = Math.min(mode === 'executive' ? 96 : mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
-    return { domainScores, overall, level: scoreToLevel(overall), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
+    return { domainScores, overall, level: scoreToLevel(overall, answers), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
   }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
   const currentMeasures = useMemo(() => getQuestionMeasures(current), [current]);
   const currentSkills = useMemo(() => getQuestionSkillLabels(current), [current]);
@@ -11120,7 +11148,7 @@ export default function Home() {
                 Based on {answers.length} {mode === 'practice' ? 'practice activity' : 'adaptive responses'} for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase()}.
                 Evidence confidence is pilot-grade: {results.confidence}%.
               </p>
-              <p className="context-line">{getScoreBandDescription(results.overall)}</p>
+              <p className="context-line">{getScoreBandDescription(results.overall, results.level)}</p>
               {mode === 'premium' && (
                 <p className="context-line">
                   Context: {functionLabels[functionTrack]} in {industryLabels[industryTrack].toLowerCase()}.

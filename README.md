@@ -121,3 +121,24 @@ pnpm crawl:training
 - AI Watch is a curated/static MVP feed until the scheduled trend-refresh agent is backed by persistent content storage
 - MVP generated reports are local score/profile summaries; production AI-generated reports should move to server routes and ask users or tenants for their provider API key
 - MVP Agent Ops is a deterministic workflow simulation, except the optional `pnpm crawl:training` command can run a real Playwright crawl for admin review; production agents need durable cloud jobs, source connectors, persisted run state, retry limits, audit logs, course/source freshness checks, robots/terms review, and human approval gates
+
+## Scoring Model
+
+The assessment separates answer quality from readiness evidence.
+
+- Answer feedback shows the raw rubric or option score for the item.
+- Domain, competency, overall, analytics, and saved signal scores use difficulty-adjusted readiness evidence.
+- Easier items are capped below advanced readiness even when answered perfectly.
+- Harder items can award stronger readiness evidence, including meaningful credit for partially correct proficient or advanced work.
+- The final readiness label is evidence-gated: Advanced requires strong advanced-item evidence, and Proficient requires strong proficient-item evidence.
+
+Current seeded readiness bands:
+
+| Difficulty | Partial evidence anchor | Maximum readiness evidence |
+| --- | ---: | ---: |
+| Awareness | 40 | 68 |
+| Applied | 58 | 82 |
+| Proficient | 72 | 92 |
+| Advanced | 82 | 100 |
+
+This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
