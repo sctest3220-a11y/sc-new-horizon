@@ -15,6 +15,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - User profile builder and signal logging
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
+- Admin Agent Ops preview with supervised multi-agent workflow simulation, activity reports, draft outputs, and safety-cut handling for repeated loops
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
@@ -72,14 +73,13 @@ Recommended Vercel environment variables:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
-AI_PROVIDER=
-OPENAI_API_KEY=
-GEMINI_API_KEY=
-GROQ_API_KEY=
-OPENROUTER_API_KEY=
 ```
 
-The current report flow is mostly rule-based in the client MVP. Production AI-generated reports should run in server-side routes only, using secret Vercel environment variables. Do not expose LLM API keys in browser code.
+The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
+
+The MVP Agent Ops flow is also local and deterministic. It simulates an orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. The simulation demonstrates manual runs, activity logs, rejected duplicate output, admin-review queues, learning-catalog recommendations, and a safety cut when a draft loop repeats. It does not crawl the internet, publish content, or call an external AI provider.
+
+Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
 
 ## Supabase Tables
 
@@ -108,7 +108,10 @@ Production should add:
 pnpm lint
 pnpm build
 pnpm start
+pnpm crawl:training
 ```
+
+`pnpm crawl:training` runs the local Playwright Training and Course Scout against an allow-list of public AI learning sources and writes JSON/Markdown review reports to `.agent-drafts/`. It is intended for admin review testing only; nothing is published automatically.
 
 ## Current MVP Limitations
 
@@ -116,5 +119,5 @@ pnpm start
 - Admin auth is a preview surface until Supabase role claims and RLS policies are finalized
 - Local browser storage is still used as the primary MVP demo store when Supabase is not configured
 - AI Watch is a curated/static MVP feed until the scheduled trend-refresh agent is backed by persistent content storage
-- AI-generated premium reports should be moved to server routes before production use
-
+- MVP generated reports are local score/profile summaries; production AI-generated reports should move to server routes and ask users or tenants for their provider API key
+- MVP Agent Ops is a deterministic workflow simulation, except the optional `pnpm crawl:training` command can run a real Playwright crawl for admin review; production agents need durable cloud jobs, source connectors, persisted run state, retry limits, audit logs, course/source freshness checks, robots/terms review, and human approval gates

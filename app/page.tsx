@@ -216,6 +216,60 @@ type PersonalizedExplorationPlan = {
   concepts: string[];
   practice: string[];
 };
+type GeneratedReport = {
+  headline: string;
+  summary: string;
+  analysis: string[];
+  priorityDomains: Array<{ domain: DomainId; title: string; score: number; target: number; action: string }>;
+  competencyFocus: Array<{ id: string; label: string; score: number; evidenceCount: number; skills: string[] }>;
+  learningPath: string[];
+  tools: string[];
+  courses: LearningRecommendation[];
+  productionNote: string;
+};
+type AgentStatus = 'idle' | 'running' | 'review' | 'blocked' | 'complete';
+type AgentDefinition = {
+  id: string;
+  name: string;
+  role: string;
+  cadence: string;
+  guardrail: string;
+};
+type AgentActivity = {
+  step: number;
+  agent: string;
+  status: AgentStatus;
+  activity: string;
+  output: string;
+};
+type AgentWorkflowReport = {
+  generatedAt: string;
+  runId: string;
+  headline: string;
+  summary: string;
+  agents: Array<AgentDefinition & { status: AgentStatus; outputCount: number }>;
+  activityLog: AgentActivity[];
+  safetyEvents: string[];
+  outputs: string[];
+  recommendations: string[];
+  productionNote: string;
+};
+type DeveloperReportDemo = {
+  profile: string;
+  generatedAt: string;
+  overall: number;
+  level: string;
+  confidence: number;
+  scores: Record<DomainId, number>;
+  benchmarks: BenchmarkProfile[];
+  interpretation: string[];
+  strengths: string[];
+  gaps: string[];
+  learningPath: Array<{ phase: string; title: string; actions: string[] }>;
+  courses: Array<{ title: string; provider: string; url: string; fit: string; domains: DomainId[] }>;
+  tools: Array<{ category: string; items: string[] }>;
+  projects: string[];
+};
 
 let fallbackAssessmentSeed = 1000;
 
@@ -7137,6 +7191,355 @@ function getImprovementBrief(scores: Record<DomainId, number>, benchmarks: Bench
   });
 }
 
+function getGeneratedReport(
+  assessmentMode: AssessmentMode,
+  audience: Audience,
+  functionTrack: FunctionTrack,
+  industryTrack: IndustryTrack,
+  executiveRole: ExecutiveRole,
+  answers: Answer[],
+  results: { domainScores: Record<DomainId, number>; overall: number; level: string; weakest: DomainId[]; strongest: DomainId[]; confidence: number },
+  benchmarks: BenchmarkProfile[],
+  coverage: CompetencyCoverage[],
+  evidenceModeSummary: Array<{ mode: EvidenceMode; label: string; score: number; count: number }>,
+  improvementBrief: Array<{ domain: DomainId; score: number; target: number; gapText: string; action: string }>,
+  personalizedExploration: PersonalizedExplorationPlan,
+  courseRecommendations: LearningRecommendation[],
+): GeneratedReport {
+  const contextLabel = assessmentMode === 'executive'
+    ? executiveLabels[executiveRole]
+    : assessmentMode === 'premium'
+      ? `${functionLabels[functionTrack]} in ${industryLabels[industryTrack]}`
+      : audienceLabels[audience];
+  const strongest = results.strongest.map((domain) => `${domains[domain].short} (${results.domainScores[domain]})`).join(' and ');
+  const weakest = results.weakest.map((domain) => `${domains[domain].short} (${results.domainScores[domain]})`).join(' and ');
+  const targetProfile = benchmarks[0]?.label ?? 'research-informed target';
+  const practicalEvidence = evidenceModeSummary.find((item) => item.mode === 'doing');
+  const knowledgeEvidence = evidenceModeSummary.find((item) => item.mode === 'knowing');
+  const priorityCompetencies = coverage
+    .filter((competency) => competency.evidenceCount > 0)
+    .sort((left, right) => left.score - right.score || left.evidenceCount - right.evidenceCount)
+    .slice(0, 5);
+  const unsampledPriority = coverage.filter((competency) => competency.priority && competency.evidenceCount === 0).slice(0, 3);
+  const learningPath = [
+    `Start with ${domains[results.weakest[0]].short}: ${improvementBrief[0]?.action ?? `build practical evidence in ${domains[results.weakest[0]].name}`}`,
+    priorityCompetencies.length
+      ? `Practice ${priorityCompetencies[0].label.toLowerCase()} using artifact review, written rationale, and feedback loops.`
+      : 'Complete a longer diagnostic route to expose competency-level gaps before choosing advanced training.',
+    `Use ${personalizedExploration.tools.slice(0, 2).join(' and ')} on one low-risk workflow, then compare the output against source evidence.`,
+    courseRecommendations[0]
+      ? `Take ${courseRecommendations[0].title} from ${courseRecommendations[0].provider} as the first structured course.`
+      : 'Choose one starter course mapped to the weakest D1-D6 domains before retesting.',
+    'Retake a targeted deep dive after 2-4 weeks and look for higher evidence counts, fewer overrides, and stronger practical scores.',
+  ];
+
+  return {
+    headline: `${contextLabel} report: ${results.level} readiness with ${results.confidence}% pilot confidence`,
+    summary: `This MVP-generated report reads ${answers.length} assessment response${answers.length === 1 ? '' : 's'} against the ${targetProfile} profile. Current strengths are ${strongest}; the highest-priority gaps are ${weakest}. The overall score is ${results.overall}/100, so the next step should be targeted practice rather than broad tool adoption.`,
+    analysis: [
+      `Domain pattern: ${strongest} are currently stronger signals, while ${weakest} need more evidence or remediation before the profile should be treated as stable.`,
+      `Evidence mix: ${knowledgeEvidence?.count ?? 0} knowing signal${knowledgeEvidence?.count === 1 ? '' : 's'} at ${knowledgeEvidence?.count ? `${knowledgeEvidence.score}/100` : 'not sampled'} and ${practicalEvidence?.count ?? 0} doing signal${practicalEvidence?.count === 1 ? '' : 's'} at ${practicalEvidence?.count ? `${practicalEvidence.score}/100` : 'not sampled'}.`,
+      priorityCompetencies.length
+        ? `Competency risk: the lowest sampled competencies are ${priorityCompetencies.slice(0, 3).map((competency) => `${competency.label} (${competency.score})`).join(', ')}.`
+        : 'Competency risk: the current run did not sample enough competency-specific evidence for stable sub-scores.',
+      unsampledPriority.length
+        ? `Coverage caution: ${unsampledPriority.map((competency) => competency.label).join(', ')} are role-priority areas with no direct evidence yet.`
+        : 'Coverage note: role-priority competencies have at least some sampled evidence in this run.',
+    ],
+    priorityDomains: improvementBrief.map((item) => ({
+      domain: item.domain,
+      title: domains[item.domain].name,
+      score: item.score,
+      target: item.target,
+      action: item.action,
+    })),
+    competencyFocus: priorityCompetencies.map((competency) => ({
+      id: competency.id,
+      label: competency.label,
+      score: competency.score,
+      evidenceCount: competency.evidenceCount,
+      skills: competency.skills.slice(0, 4),
+    })),
+    learningPath,
+    tools: personalizedExploration.tools,
+    courses: courseRecommendations,
+    productionNote: 'MVP mode does not call an external AI API or use a browser-side key. Production can replace this local report generator with a server-side AI report service and ask each app user to connect or enter their own provider API key.',
+  };
+}
+
+const agentDefinitions: AgentDefinition[] = [
+  {
+    id: 'orchestrator',
+    name: 'Orchestrator',
+    role: 'Delegates work, monitors run state, checks approvals, and stops repeated loops.',
+    cadence: 'Manual for MVP; scheduled daily or weekly in production.',
+    guardrail: 'Max 8 workflow steps, max 3 repeated handoffs, every publish action stays in admin review.',
+  },
+  {
+    id: 'concept-scout',
+    name: 'AI Concepts Scout',
+    role: 'Finds durable AI concepts, model capabilities, tooling patterns, and ontology updates.',
+    cadence: 'Weekly concept refresh.',
+    guardrail: 'Requires source freshness, duplicate check, and ontology mapping before drafting updates.',
+  },
+  {
+    id: 'newsfeed',
+    name: 'AI Newsfeed Agent',
+    role: 'Builds short-lived AI Watch briefs from reputable current-news sources.',
+    cadence: 'Daily or weekly based on admin setting.',
+    guardrail: 'No publication without source, date, category, domain mapping, and review state.',
+  },
+  {
+    id: 'course-scout',
+    name: 'Training and Course Scout',
+    role: 'Finds current AI courses, certificates, tutorials, tools, and learning resources for each domain and role.',
+    cadence: 'Weekly catalog refresh, with manual runs before launches or major model releases.',
+    guardrail: 'Requires provider/source, level, price, freshness, role fit, domain mapping, and admin approval before recommendation.',
+  },
+  {
+    id: 'item-generator',
+    name: 'Assessment Item Generator',
+    role: 'Drafts new assessment questions and maps each draft to D1-D6 competencies and evidence modes.',
+    cadence: 'Manual batch for MVP; scheduled after content review process is stable.',
+    guardrail: 'No new ownership-choice cards; prioritize artifact review, matching, rank, multi-select, and written response formats.',
+  },
+  {
+    id: 'reviewer',
+    name: 'Reviewer and QA Agent',
+    role: 'Checks quality, duplicates, answerability, source notes, competency mapping, and publish readiness.',
+    cadence: 'Runs after every draft batch.',
+    guardrail: 'Rejects duplicates, weak distractors, ungrounded claims, and any stuck-loop output.',
+  },
+];
+
+function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, signalCount: number): AgentWorkflowReport {
+  const runId = `agent-run-${new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '')}`;
+  const activityLog: AgentActivity[] = [
+    {
+      step: 1,
+      agent: 'Orchestrator',
+      status: 'running',
+      activity: 'Started manual MVP simulation with safety cut enabled.',
+      output: 'Run budget set to 9 steps, duplicate threshold set to 2 repeated drafts, publish target set to admin review only.',
+    },
+    {
+      step: 2,
+      agent: 'AI Concepts Scout',
+      status: 'complete',
+      activity: 'Scanned simulated concept queue for durable AI literacy updates.',
+      output: '3 concept candidates drafted: agent identity, RAG evaluation drift, and tool-permission boundaries.',
+    },
+    {
+      step: 3,
+      agent: 'AI Newsfeed Agent',
+      status: 'review',
+      activity: 'Prepared short-lived AI Watch brief candidates from the simulated news queue.',
+      output: '4 news briefs routed to review with domain tags for D1, D2, D4, and D6.',
+    },
+    {
+      step: 4,
+      agent: 'Training and Course Scout',
+      status: 'review',
+      activity: 'Simulated a learning-catalog crawl for current AI training and online course options.',
+      output: '7 course/tool candidates routed to review with D1-D6, role fit, level, price, and freshness notes.',
+    },
+    {
+      step: 5,
+      agent: 'Assessment Item Generator',
+      status: 'running',
+      activity: 'Generated competency-depth item drafts from concept, news, and training-gap outputs.',
+      output: '6 draft items created across D1-D6 using matching, report-review, fraud review, rank/order, and written-response formats.',
+    },
+    {
+      step: 6,
+      agent: 'Assessment Item Generator',
+      status: 'blocked',
+      activity: 'Repeated a similar agent-boundary item twice while trying to fill the D2 queue.',
+      output: 'Safety cut stopped the loop and moved the duplicate draft to rejected state.',
+    },
+    {
+      step: 7,
+      agent: 'Reviewer and QA Agent',
+      status: 'complete',
+      activity: 'Reviewed all draft outputs for novelty, competency fit, and MVP policy constraints.',
+      output: '5 item drafts and 6 learning resources passed to admin review, 1 duplicate rejected, 0 ownership-choice cards added.',
+    },
+    {
+      step: 8,
+      agent: 'Orchestrator',
+      status: 'complete',
+      activity: 'Closed the run and produced an activity report.',
+      output: 'Manual run completed with item, news, concept, and learning-resource review queues populated and no production publishing.',
+    },
+  ];
+  return {
+    generatedAt: new Date().toLocaleString(),
+    runId,
+    headline: 'Agent workflow simulation: completed with one safety cut',
+    summary: `The MVP agent group completed a supervised dry run against the current prototype bank of ${itemCount} items, including ${artifactItemCount} artifact-backed items and ${signalCount} saved question signals. The run produced concept, news, training/course, and assessment-item drafts, then stopped one duplicate generation loop before it could pollute the question bank.`,
+    agents: agentDefinitions.map((agent) => {
+      const latest = [...activityLog].reverse().find((entry) => entry.agent === agent.name);
+      const outputCount = activityLog.filter((entry) => entry.agent === agent.name).length;
+      return { ...agent, status: latest?.status ?? 'idle', outputCount };
+    }),
+    activityLog,
+    safetyEvents: [
+      'Safety cut triggered when the item generator repeated a near-duplicate D2 agent-boundary draft twice.',
+      'The duplicate output was rejected instead of published or recycled into another generation step.',
+      'The run stopped below the 9-step workflow ceiling and did not call an external AI API.',
+    ],
+    outputs: [
+      '3 durable AI concept drafts for ontology review.',
+      '4 AI Watch news brief drafts for admin review.',
+      '6 training and online-course recommendations ready for learning-catalog review.',
+      '5 assessment item drafts ready for human QA across D1-D6.',
+      '1 rejected duplicate draft with reason: repeated concept, low novelty, already covered by existing agent-permission artifact.',
+    ],
+    recommendations: [
+      'Keep manual admin-triggered runs for MVP until persistent queues and database-backed draft states exist.',
+      'Add production run storage for agent steps, artifacts, rejected drafts, costs, and reviewer decisions.',
+      'Give the course scout an allow-list of trusted providers and require pricing, level, update date, and outcome mapping before recommendation.',
+      'Require human approval before concept, news, or assessment-item drafts become visible to learners.',
+      'Use server-side provider keys only in production; keep browser code free of AI API secrets.',
+    ],
+    productionNote: 'This is a local deterministic simulation that demonstrates orchestration behavior, reporting, and loop safety. Production should replace the simulator with scheduled cloud jobs, durable state, admin approvals, source connectors, and server-side AI provider adapters.',
+  };
+}
+
+const fullStackDeveloperReport: DeveloperReportDemo = {
+  profile: 'Full-stack developer',
+  generatedAt: '2026-09-01',
+  overall: 76,
+  level: 'Applied',
+  confidence: 88,
+  scores: {
+    D1: 78,
+    D2: 86,
+    D3: 72,
+    D4: 63,
+    D5: 70,
+    D6: 80,
+  },
+  benchmarks: [
+    {
+      label: 'Technical peer average',
+      detail: 'Example benchmark for full-stack developer pilots',
+      tone: 'peer',
+      scores: { D1: 72, D2: 74, D3: 66, D4: 58, D5: 61, D6: 69 },
+    },
+    {
+      label: 'Production-ready developer target',
+      detail: 'Research-informed target for AI-assisted product engineering',
+      tone: 'target',
+      scores: { D1: 82, D2: 88, D3: 84, D4: 82, D5: 78, D6: 84 },
+    },
+  ],
+  interpretation: [
+    'This developer is already productive with AI-assisted software work. D2 and D6 show strong practical use of AI tools, iterative collaboration, debugging support, implementation planning, and documentation support.',
+    'The primary risk is that tool fluency is ahead of production governance. D4 trails the target because the simulated user under-weighted data exposure, agent permissions, audit logs, vendor terms, and escalation design.',
+    'D3 is the next leverage point. Advanced AI engineering work increasingly depends on source evaluation, RAG quality checks, benchmark relevance, hallucinated API detection, and testable confidence rather than model enthusiasm.',
+  ],
+  strengths: [
+    'Applies AI tools to coding and workflow acceleration.',
+    'Structures prompts with context, constraints, and expected output.',
+    'Collaborates iteratively with AI during debugging and implementation.',
+    'Translates AI outputs into usable developer artifacts.',
+  ],
+  gaps: [
+    'Evaluate RAG/source quality before trusting generated answers.',
+    'Design agent permission boundaries and audit logs.',
+    'Separate demo success from production reliability.',
+    'Test AI-generated code for security, accessibility, maintainability, and hidden behavior changes.',
+  ],
+  learningPath: [
+    {
+      phase: 'Phase 1',
+      title: 'Tighten AI-assisted engineering discipline',
+      actions: [
+        'Create a repeatable prompt pattern for code generation: context, repo conventions, acceptance tests, edge cases, and review criteria.',
+        'Use AI to generate tests before implementation, then ask it to critique its own assumptions.',
+        'Create an AI code-review checklist covering security, typing, accessibility, performance, dependency risk, and behavior changes.',
+      ],
+    },
+    {
+      phase: 'Phase 2',
+      title: 'Build evaluation muscle',
+      actions: [
+        'Practice RAG/source comparison tasks with freshness, citation support, missing-source detection, and unsupported claims.',
+        'Create a small eval set for one app feature: golden answers, failure cases, expected citations, and regression checks.',
+        'Compare at least two model/tool setups on the same technical task and record where each fails.',
+      ],
+    },
+    {
+      phase: 'Phase 3',
+      title: 'Design bounded agentic workflows',
+      actions: [
+        'Prototype issue triage, test generation, documentation refresh, or dependency review as a bounded agent workflow.',
+        'Add read-only mode first, explicit approval before writes, action logs, retry ceilings, and rollback plans.',
+        'Add loop safety: max steps, repeated-output detection, timeout, and human escalation.',
+      ],
+    },
+    {
+      phase: 'Phase 4',
+      title: 'Move toward production readiness',
+      actions: [
+        'Keep provider keys server-side only with rotation, usage caps, and audit logs.',
+        'Add observability for AI calls: cost, latency, failure rate, accepted suggestions, rejected suggestions, and quality outcomes.',
+        'Document approved AI use patterns for the engineering team.',
+      ],
+    },
+  ],
+  courses: [
+    {
+      title: 'AI Code Review',
+      provider: 'DeepLearning.AI',
+      url: 'https://www.deeplearning.ai/courses/ai-code-review',
+      fit: 'Immediate fit for AI-assisted pull requests and review-agent design.',
+      domains: ['D2', 'D3', 'D4'],
+    },
+    {
+      title: 'ChatGPT Prompt Engineering for Developers',
+      provider: 'DeepLearning.AI',
+      url: 'https://www.deeplearning.ai/courses/chatgpt-prompt-eng',
+      fit: 'Good first course for structured prompting and developer task decomposition.',
+      domains: ['D1', 'D2', 'D6'],
+    },
+    {
+      title: 'Evaluating AI Agents',
+      provider: 'DeepLearning.AI',
+      url: 'https://www.deeplearning.ai/courses/evaluating-ai-agents',
+      fit: 'Directly addresses agent testing, confidence, and repeated-failure risk.',
+      domains: ['D3', 'D4', 'D5'],
+    },
+    {
+      title: 'Agentic AI',
+      provider: 'DeepLearning.AI',
+      url: 'https://www.deeplearning.ai/courses/agentic-ai',
+      fit: 'Useful for multi-step agent systems and workflow design.',
+      domains: ['D2', 'D5', 'D6'],
+    },
+    {
+      title: 'Advanced Retrieval for AI with Chroma',
+      provider: 'DeepLearning.AI',
+      url: 'https://www.deeplearning.ai/courses/advanced-retrieval-for-ai',
+      fit: 'Best match for improving RAG evaluation and retrieval-aware development.',
+      domains: ['D2', 'D3'],
+    },
+  ],
+  tools: [
+    { category: 'Coding assistants', items: ['ChatGPT', 'GitHub Copilot', 'Cursor', 'Windsurf', 'JetBrains AI'] },
+    { category: 'Agent frameworks', items: ['OpenAI Agents SDK', 'LangGraph', 'CrewAI', 'Pydantic', 'Zod'] },
+    { category: 'RAG and evals', items: ['Supabase pgvector', 'Chroma', 'RAGAS', 'promptfoo', 'custom golden-set tests'] },
+    { category: 'Production guardrails', items: ['Sentry', 'PostHog', 'OpenTelemetry', 'GitHub Advanced Security', 'secrets manager'] },
+  ],
+  projects: [
+    'Build an AI code-review assistant that summarizes diffs, suggests tests, and never approves its own changes.',
+    'Build a RAG evaluator for internal docs with citation checks and hallucination examples.',
+    'Build a bounded issue-triage agent with max steps, duplicate detection, audit logs, and human approval.',
+    'Add an AI usage dashboard tracking cost, latency, failure rate, safety cuts, and quality outcomes.',
+  ],
+};
+
 const scoreLogStorageKey = 'new-horizon-score-log-v1';
 const profileIdStorageKey = 'new-horizon-local-profile-id-v1';
 const profileSignalLogStorageKey = 'new-horizon-profile-signal-log-v1';
@@ -8699,7 +9102,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
@@ -8728,6 +9131,7 @@ export default function Home() {
   const [executiveRole, setExecutiveRole] = useState<ExecutiveRole>('ceo');
   const [selectedPreviewDomain, setSelectedPreviewDomain] = useState<DomainId>('D3');
   const [selectedRadarDomain, setSelectedRadarDomain] = useState<DomainId>('D1');
+  const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
@@ -8745,6 +9149,13 @@ export default function Home() {
     parseProfileSignalLog(readLocalStorage(profileSignalLogStorageKey))
   ));
   const [loggedResultId, setLoggedResultId] = useState<string | null>(null);
+  const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
+    getAgentWorkflowReport(
+      questionBank.length + executiveQuestionBank.length,
+      [...questionBank, ...executiveQuestionBank].filter((question) => question.stimulus || question.visualStimulus).length,
+      0,
+    )
+  ));
 
   const activeConfig = useMemo(
     () => ({ ...modeConfig[mode], totalQuestions: assessmentTargetTotal }),
@@ -8773,6 +9184,7 @@ export default function Home() {
   const evidenceModeSummary = useMemo(() => getEvidenceModeSummary(answers), [answers]);
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
   const adminAnalytics = useMemo(() => getAdminAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
+  const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
   const coveragePlan = useMemo(
     () => getCompetencyCoverage(competencyScores, mode, audience, functionTrack, industryTrack, executiveRole),
     [audience, competencyScores, executiveRole, functionTrack, industryTrack, mode],
@@ -8986,6 +9398,10 @@ export default function Home() {
     });
     syncAssessmentSessionToSupabase(authProfile, entry, profileSignalEntry);
     setLoggedResultId(resultId);
+  }
+
+  function runAgentWorkflowSimulation() {
+    setAgentWorkflowReport(getAgentWorkflowReport(liveItemCount, artifactItemCount, simulatedSignalCount));
   }
 
   function startAssessment(nextMode: AssessmentMode) {
@@ -9231,6 +9647,21 @@ export default function Home() {
 
   const activeLearningCatalog = mode === 'executive' ? executiveLearningCatalog : learningCatalog;
   const improvementBrief = getImprovementBrief(results.domainScores, benchmarkProfiles, activeLearningCatalog);
+  const generatedReport = getGeneratedReport(
+    mode,
+    audience,
+    functionTrack,
+    industryTrack,
+    executiveRole,
+    answers,
+    results,
+    benchmarkProfiles,
+    coveragePlan.coverage,
+    evidenceModeSummary,
+    improvementBrief,
+    personalizedExploration,
+    courseRecommendations,
+  );
 
   return (
     <main>
@@ -9296,8 +9727,10 @@ export default function Home() {
           <button onClick={() => setStep('dashboard')}>User Login</button>
           <button onClick={() => setStep('dashboard')}>User Dashboard</button>
           <button onClick={() => setStep('admin')}>Admin Login</button>
+          <button onClick={() => setStep('admin')}>Agent Ops</button>
           <button onClick={() => showHomeSection('platform')}>Platform</button>
           <button onClick={() => showHomeSection('labs')}>Learn by doing</button>
+          <button onClick={() => setStep('developerReport')}>Demo Report</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => showHomeSection('results')}>Results</button>
         </nav>
@@ -9717,6 +10150,71 @@ export default function Home() {
               </div>
 
               <div className="admin-grid">
+                <article className="admin-card admin-wide">
+                  <div className="admin-card-heading">
+                    <div>
+                      <span>Agent operations</span>
+                      <h2>Supervised workflow simulation</h2>
+                    </div>
+                    <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>Run simulation</button>
+                  </div>
+                  {agentWorkflowReport ? (
+                    <div className="agent-report">
+                      <div className="agent-report-hero">
+                        <div>
+                          <strong>{agentWorkflowReport.headline}</strong>
+                          <p>{agentWorkflowReport.summary}</p>
+                          <small>{agentWorkflowReport.runId} · {agentWorkflowReport.generatedAt}</small>
+                        </div>
+                      </div>
+                      <div className="agent-status-grid">
+                        {agentWorkflowReport.agents.map((agent) => (
+                          <div key={agent.id}>
+                            <span className={`agent-status ${agent.status}`}>{agent.status}</span>
+                            <strong>{agent.name}</strong>
+                            <p>{agent.role}</p>
+                            <small>{agent.cadence}</small>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="agent-report-columns">
+                        <div>
+                          <h3>Activity Log</h3>
+                          <ol className="agent-timeline">
+                            {agentWorkflowReport.activityLog.map((entry) => (
+                              <li key={`${entry.step}-${entry.agent}`}>
+                                <span>{entry.step}</span>
+                                <div>
+                                  <strong>{entry.agent}</strong>
+                                  <p>{entry.activity}</p>
+                                  <small>{entry.output}</small>
+                                </div>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                        <div>
+                          <h3>Safety Cut</h3>
+                          <div className="agent-list">
+                            {agentWorkflowReport.safetyEvents.map((event) => <p key={event}>{event}</p>)}
+                          </div>
+                          <h3>Outputs</h3>
+                          <div className="agent-list">
+                            {agentWorkflowReport.outputs.map((output) => <p key={output}>{output}</p>)}
+                          </div>
+                          <h3>Recommendations</h3>
+                          <div className="agent-list">
+                            {agentWorkflowReport.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
+                          </div>
+                        </div>
+                      </div>
+                      <p className="context-line">{agentWorkflowReport.productionNote}</p>
+                    </div>
+                  ) : (
+                    <p>No agent run has been generated yet.</p>
+                  )}
+                </article>
+
                 <article className="admin-card admin-wide">
                   <span>Domain trend</span>
                   <h2>Lowest average domains</h2>
@@ -10650,6 +11148,77 @@ export default function Home() {
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
               </div>
             </article>
+            <article className="result-card wide ai-generated-report">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">MVP generated report</p>
+                  <h2>{generatedReport.headline}</h2>
+                </div>
+                <span>No API key in MVP</span>
+              </div>
+              <p>{generatedReport.summary}</p>
+              <div className="report-section">
+                <h3>Detailed analysis</h3>
+                <div className="evidence-grid">
+                  {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
+                </div>
+              </div>
+              <div className="report-section">
+                <h3>Priority domains</h3>
+                <div className="improvement-brief">
+                  {generatedReport.priorityDomains.map((item) => (
+                    <div key={item.domain}>
+                      <span>{item.domain} · {item.title}</span>
+                      <strong>{item.score}/100 now · target {item.target}/100</strong>
+                      <p>{item.action}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="report-section">
+                <h3>Competency focus</h3>
+                <div className="competency-table compact">
+                  {generatedReport.competencyFocus.length ? generatedReport.competencyFocus.map((competency) => (
+                    <details key={competency.id} open>
+                      <summary>
+                        <span>{competency.id}</span>
+                        <strong>{competency.label}</strong>
+                        <b>{competency.score}/100</b>
+                        <small>{competency.evidenceCount} evidence · {competency.skills.join(', ')}</small>
+                      </summary>
+                    </details>
+                  )) : <p>Complete a longer route to unlock sampled competency focus.</p>}
+                </div>
+              </div>
+              <div className="report-section">
+                <h3>Learning path</h3>
+                <div className="learning-list">
+                  {generatedReport.learningPath.map((step, index) => (
+                    <div key={step}>
+                      <span>Step {index + 1}</span>
+                      <strong>{step}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="personalized-exploration">
+                <div>
+                  <span>Recommended tools to explore</span>
+                  <div className="profile-tag-grid">
+                    {generatedReport.tools.map((tool) => <span key={tool}>{tool}</span>)}
+                  </div>
+                </div>
+                <div>
+                  <span>Recommended courses</span>
+                  <div className="profile-tag-grid">
+                    {generatedReport.courses.slice(0, 4).map((course) => (
+                      <a key={course.id} href={course.url} target="_blank" rel="noreferrer">{course.provider}: {course.title}</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="context-line">{generatedReport.productionNote}</p>
+            </article>
             {showContinuationPanel && (
               <article className="result-card wide continuation-panel">
                 <div>
@@ -10964,6 +11533,141 @@ export default function Home() {
               {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
               {mode !== 'executive' && <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>}
             </div>
+          </div>
+        </section>
+      )}
+
+      {step === 'developerReport' && (
+        <section className="results-shell demo-report-shell">
+          <div className="results-hero demo-report-hero">
+            <div>
+              <p className="eyebrow">Generated report preview</p>
+              <h1>{fullStackDeveloperReport.overall}</h1>
+              <p className="result-level">{fullStackDeveloperReport.level} AI readiness</p>
+              <p>
+                Simulated premium technical-track report for a {fullStackDeveloperReport.profile.toLowerCase()}.
+                Evidence confidence is pilot-grade: {fullStackDeveloperReport.confidence}%.
+              </p>
+              <p className="context-line">
+                Strongest signal: D2 practical tooling. Priority development area: D4 risk, governance, permissions, audit logs, and production controls.
+              </p>
+            </div>
+            <RadarChart
+              scores={fullStackDeveloperReport.scores}
+              benchmarks={fullStackDeveloperReport.benchmarks}
+              selectedDomain={selectedDemoDomain}
+              onSelectDomain={setSelectedDemoDomain}
+            />
+          </div>
+
+          <div className="result-grid">
+            <article className="result-card wide demo-report-card">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Personalized AI report</p>
+                  <h2>Full-stack developer: applied readiness, production governance gap.</h2>
+                </div>
+                <span>Demo user</span>
+              </div>
+              <div className="evidence-grid">
+                {fullStackDeveloperReport.interpretation.map((item) => <p key={item}>{item}</p>)}
+              </div>
+            </article>
+
+            <article className="result-card demo-report-card">
+              <span>Strengths</span>
+              <h2>What is working</h2>
+              <div className="agent-list">
+                {fullStackDeveloperReport.strengths.map((strength) => <p key={strength}>{strength}</p>)}
+              </div>
+            </article>
+
+            <article className="result-card demo-report-card">
+              <span>Priority gaps</span>
+              <h2>What to improve</h2>
+              <div className="agent-list">
+                {fullStackDeveloperReport.gaps.map((gap) => <p key={gap}>{gap}</p>)}
+              </div>
+            </article>
+
+            <article className="result-card wide demo-report-card">
+              <h2>Domain scorecard</h2>
+              <div className="demo-domain-grid">
+                {(Object.keys(fullStackDeveloperReport.scores) as DomainId[]).map((domain) => {
+                  const target = fullStackDeveloperReport.benchmarks[1].scores[domain];
+                  const gap = target - fullStackDeveloperReport.scores[domain];
+                  return (
+                    <button
+                      key={domain}
+                      className={selectedDemoDomain === domain ? 'selected' : ''}
+                      type="button"
+                      onClick={() => setSelectedDemoDomain(domain)}
+                    >
+                      <span style={{ color: domains[domain].color }}>{domain} · {domains[domain].short}</span>
+                      <strong>{fullStackDeveloperReport.scores[domain]}/100</strong>
+                      <meter min="0" max="100" value={fullStackDeveloperReport.scores[domain]} />
+                      <small>{gap > 0 ? `${gap} points below target` : 'At or above target'}</small>
+                    </button>
+                  );
+                })}
+              </div>
+            </article>
+
+            <article className="result-card wide demo-report-card">
+              <h2>Personalized learning path</h2>
+              <div className="demo-learning-path">
+                {fullStackDeveloperReport.learningPath.map((phase) => (
+                  <div key={phase.phase}>
+                    <span>{phase.phase}</span>
+                    <strong>{phase.title}</strong>
+                    {phase.actions.map((action) => <p key={action}>{action}</p>)}
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="result-card wide demo-report-card">
+              <h2>Courses from latest Training Scout crawl</h2>
+              <div className="course-list">
+                {fullStackDeveloperReport.courses.map((course) => (
+                  <article key={course.url}>
+                    <span>{course.provider} · {course.domains.join(', ')}</span>
+                    <h3>{course.title}</h3>
+                    <p>{course.fit}</p>
+                    <a href={course.url} target="_blank" rel="noreferrer">Open course</a>
+                  </article>
+                ))}
+              </div>
+            </article>
+
+            <article className="result-card wide demo-report-card">
+              <h2>Tools and platforms to explore</h2>
+              <div className="personalized-exploration">
+                {fullStackDeveloperReport.tools.map((group) => (
+                  <div key={group.category}>
+                    <span>{group.category}</span>
+                    <div className="profile-tag-grid">
+                      {group.items.map((item) => <span key={item}>{item}</span>)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="result-card wide demo-report-card">
+              <h2>Practice projects</h2>
+              <div className="improvement-brief">
+                {fullStackDeveloperReport.projects.map((project, index) => (
+                  <div key={project}>
+                    <span>Project {index + 1}</span>
+                    <strong>{project}</strong>
+                  </div>
+                ))}
+              </div>
+              <p className="context-line">
+                MVP preview: this report uses simulated assessment evidence plus the local Playwright course crawl. Production should generate reports server-side with consented user data, stored report versions, audit logs, and provider-key controls.
+              </p>
+            </article>
           </div>
         </section>
       )}

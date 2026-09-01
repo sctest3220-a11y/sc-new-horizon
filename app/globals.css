@@ -1063,6 +1063,177 @@ h3 {
   line-height: 1.1;
 }
 
+.admin-card-heading {
+  align-items: start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.admin-card-heading > div {
+  display: grid;
+  gap: 8px;
+}
+
+.agent-report {
+  display: grid;
+  gap: 16px;
+}
+
+.agent-report-hero {
+  background: #17201d;
+  border-radius: 8px;
+  color: #fff;
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.agent-report-hero strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.agent-report-hero p {
+  color: rgba(255, 255, 255, 0.76);
+  margin-bottom: 8px;
+}
+
+.agent-report-hero small {
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 800;
+}
+
+.agent-status-grid,
+.agent-report-columns {
+  display: grid;
+  gap: 12px;
+}
+
+.agent-status-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.agent-status-grid > div,
+.agent-list p,
+.agent-timeline li {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.agent-status-grid > div {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.agent-status-grid strong {
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.agent-status-grid p,
+.agent-status-grid small,
+.agent-timeline p,
+.agent-timeline small,
+.agent-list p {
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.agent-status-grid small,
+.agent-timeline small {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.agent-status {
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 900;
+  justify-self: start;
+  letter-spacing: 0.06em;
+  padding: 5px 8px;
+  text-transform: uppercase;
+}
+
+.agent-status.idle {
+  background: #65706b;
+}
+
+.agent-status.running {
+  background: #226c6f;
+}
+
+.agent-status.review {
+  background: #8a5a16;
+}
+
+.agent-status.blocked {
+  background: #a13d2d;
+}
+
+.agent-status.complete {
+  background: #2f6f45;
+}
+
+.agent-report-columns {
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+}
+
+.agent-report-columns h3 {
+  margin: 10px 0 8px;
+}
+
+.agent-timeline {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agent-timeline li {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: 12px;
+}
+
+.agent-timeline li > span {
+  align-items: center;
+  background: var(--ink);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-flex;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.agent-timeline strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.agent-list {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.agent-list p {
+  padding: 10px 12px;
+}
+
 .admin-domain-bars,
 .admin-list,
 .admin-run-grid {
@@ -3159,6 +3330,156 @@ h3 {
   padding: 8px 10px;
 }
 
+.profile-tag-grid a {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 8px 10px;
+  text-decoration-color: rgba(34, 108, 111, 0.35);
+  text-underline-offset: 3px;
+}
+
+.report-heading {
+  align-items: start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.report-heading h2 {
+  margin-top: 4px;
+}
+
+.report-heading > span {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--teal);
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 850;
+  padding: 8px 10px;
+}
+
+.report-section {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.report-section h3 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.demo-report-shell {
+  gap: 20px;
+}
+
+.demo-report-hero {
+  align-items: center;
+}
+
+.demo-report-card {
+  overflow: hidden;
+}
+
+.demo-domain-grid,
+.demo-learning-path {
+  display: grid;
+  gap: 12px;
+}
+
+.demo-domain-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.demo-domain-grid button {
+  appearance: none;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  display: grid;
+  gap: 8px;
+  min-height: 150px;
+  padding: 14px;
+  text-align: left;
+}
+
+.demo-domain-grid button.selected {
+  background: #17201d;
+  border-color: #17201d;
+  color: #fff;
+}
+
+.demo-domain-grid button.selected small,
+.demo-domain-grid button.selected span {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.demo-domain-grid strong {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.demo-domain-grid meter {
+  height: 10px;
+  width: 100%;
+}
+
+.demo-domain-grid span,
+.demo-learning-path span {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demo-domain-grid small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.demo-learning-path {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.demo-learning-path > div {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.demo-learning-path span {
+  color: var(--teal);
+}
+
+.demo-learning-path strong {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.demo-learning-path p {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0;
+  padding: 10px;
+}
+
 .continuation-panel {
   align-items: center;
   background:
@@ -3895,6 +4216,8 @@ h3 {
 
   .lab-top,
   .lab-workbench,
+  .agent-status-grid,
+  .agent-report-columns,
   .dashboard-stats,
   .email-auth-row,
   .admin-domain-bars div,
@@ -3913,6 +4236,8 @@ h3 {
   .stats,
   .assessment-snapshot,
   .admin-kpi-grid,
+  .demo-domain-grid,
+  .demo-learning-path,
   .admin-list.compact,
   .card-grid,
   .activity-grid,
@@ -3965,6 +4290,7 @@ h3 {
 
   .workspace-actions,
   .assessment-top,
+  .admin-card-heading,
   .results-hero,
   .upgrade-panel,
   .profile-survey-header,
