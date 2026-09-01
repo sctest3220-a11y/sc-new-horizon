@@ -2281,12 +2281,21 @@ h3 {
   text-transform: uppercase;
 }
 
-.stimulus-card img {
-  aspect-ratio: 16 / 9;
+.stimulus-media {
+  align-items: start;
   background: #f8f6ef;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  margin: 12px 16px 0;
+  max-height: min(72vh, 760px);
+  overflow: auto;
+}
+
+.stimulus-card img {
   display: block;
-  margin: 12px auto 0;
-  max-height: 420px;
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
   width: 100%;
 }

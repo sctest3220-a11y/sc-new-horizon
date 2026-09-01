@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -8904,6 +8903,20 @@ function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
   );
 }
 
+function StimulusFigure({ stimulus }: { stimulus: NonNullable<Question['stimulus']> }) {
+  return (
+    <figure className="stimulus-card">
+      <div className="stimulus-label">{stimulus.label}</div>
+      <div className="stimulus-media">
+        {/* Preserve each SVG/PNG artifact's own aspect ratio instead of forcing a Next image size. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={stimulus.src} alt={stimulus.alt} loading="lazy" decoding="async" />
+      </div>
+      <figcaption>{stimulus.caption}</figcaption>
+    </figure>
+  );
+}
+
 function getQuestionFocus(question: Question) {
   if (question.type === 'fraud-detection') return 'Spot the suspicious points';
   if (question.type === 'report-review') return 'Find the unsupported claim';
@@ -10856,13 +10869,7 @@ export default function Home() {
               {current.type === 'reliance-decision' && (
                 <div className="reliance-stage">
                   <div>
-                    {current.stimulus && (
-                      <figure className="stimulus-card">
-                        <div className="stimulus-label">{current.stimulus.label}</div>
-                        <Image src={current.stimulus.src} alt={current.stimulus.alt} width={1680} height={945} />
-                        <figcaption>{current.stimulus.caption}</figcaption>
-                      </figure>
-                    )}
+                    {current.stimulus && <StimulusFigure stimulus={current.stimulus} />}
                     {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
@@ -10885,13 +10892,7 @@ export default function Home() {
               )}
               {current.type !== 'reliance-decision' && (
                 <>
-                  {current.stimulus && (
-                    <figure className="stimulus-card">
-                      <div className="stimulus-label">{current.stimulus.label}</div>
-                      <Image src={current.stimulus.src} alt={current.stimulus.alt} width={1680} height={945} />
-                      <figcaption>{current.stimulus.caption}</figcaption>
-                    </figure>
-                  )}
+                  {current.stimulus && <StimulusFigure stimulus={current.stimulus} />}
                   {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
