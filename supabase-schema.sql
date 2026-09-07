@@ -35,8 +35,41 @@ create table if not exists public.assessment_sessions (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.assessment_behavior_events (
+  id text primary key,
+  user_id uuid references auth.users(id) on delete cascade,
+  session_id text not null,
+  profile_id text not null,
+  event_type text not null,
+  group_key text not null,
+  payload jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists assessment_behavior_events_session_idx
+  on public.assessment_behavior_events (session_id, created_at);
+
+create index if not exists assessment_behavior_events_question_idx
+  on public.assessment_behavior_events ((payload->>'questionId'), event_type);
+
+create table if not exists public.assessment_feedback (
+  id text primary key,
+  user_id uuid references auth.users(id) on delete cascade,
+  session_id text not null,
+  profile_id text not null,
+  group_key text not null,
+  clarity text not null,
+  difficulty_fit text not null,
+  artifact_quality text not null,
+  length_fit text not null,
+  suggestions text not null default '',
+  created_at timestamptz not null default now()
+);
+
 alter table public.user_profiles enable row level security;
 alter table public.assessment_sessions enable row level security;
+alter table public.assessment_behavior_events enable row level security;
+alter table public.assessment_feedback enable row level security;
 
 create policy "Users can read own profile"
   on public.user_profiles for select
@@ -59,5 +92,28 @@ create policy "Users can insert own assessment sessions"
   on public.assessment_sessions for insert
   with check (auth.uid() = user_id);
 
+create policy "Users can read own behavior events"
+  on public.assessment_behavior_events for select
+  using (auth.uid() = user_id);
+
+create policy "Users can insert own behavior events"
+  on public.assessment_behavior_events for insert
+  with check (auth.uid() = user_id);
+
+create policy "Users can read own assessment feedback"
+  on public.assessment_feedback for select
+  using (auth.uid() = user_id);
+
+create policy "Users can insert own assessment feedback"
+  on public.assessment_feedback for insert
+  with check (auth.uid() = user_id);
+
+create policy "Users can update own assessment feedback"
+  on public.assessment_feedback for update
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
 -- Production admin analytics should use dedicated admin role claims,
--- tenant scoping, anonymized views, and audited server-side access.
+-- tenant scoping, anonymized views, and audited server-side access. Persona
+-- leaderboards must be served through a privacy-safe server-side aggregate;
+-- do not expose other users' raw assessment rows through client RLS policies.

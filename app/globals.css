@@ -4197,6 +4197,86 @@ h3 {
   margin: 0 0 8px;
 }
 
+.leaderboard-list,
+.question-analysis-list,
+.artifact-brief-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.leaderboard-list > div {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 52px minmax(0, 1fr) 90px 110px;
+  min-height: 48px;
+}
+
+.leaderboard-list > div.current {
+  background: #eef8f2;
+  border-left: 3px solid #23805a;
+  padding-left: 10px;
+}
+
+.leaderboard-list b {
+  font-size: 18px;
+}
+
+.feedback-survey-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 18px 0;
+}
+
+.feedback-survey-grid label {
+  display: grid;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 7px;
+}
+
+.feedback-survey-grid select {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  min-height: 44px;
+  padding: 0 10px;
+}
+
+.question-analysis-list details,
+.artifact-brief-list details {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+
+.question-analysis-list summary {
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 34px minmax(0, 1fr) 80px 150px;
+}
+
+.question-analysis-list details > p,
+.artifact-brief-list details > p {
+  margin: 10px 0 0;
+}
+
+.artifact-brief-list summary {
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.compact-kpis {
+  margin: 18px 0;
+}
+
 @media (max-width: 900px) {
   nav {
     display: none;
@@ -4276,6 +4356,12 @@ h3 {
   .feedback-grid,
   .criterion-list,
   .room-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-survey-grid,
+  .leaderboard-list > div,
+  .question-analysis-list summary {
     grid-template-columns: 1fr;
   }
 

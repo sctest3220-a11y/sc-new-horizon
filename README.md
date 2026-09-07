@@ -13,8 +13,12 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Domain drilldown into competency scores
 - Continue-assessment option after mandatory 12/20-question routes when confidence or coverage is weak
 - User profile builder and signal logging
+- Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
+- End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
+- Top-10 score leaderboard scoped to the user's assessment persona/group
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
+- Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
 - Admin Agent Ops preview with supervised multi-agent workflow simulation, activity reports, draft outputs, and safety-cut handling for repeated loops
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
@@ -95,6 +99,9 @@ Draft tables:
 Production should add:
 
 - item responses
+- behavior events and per-question elapsed time
+- assessment feedback surveys
+- privacy-safe persona leaderboard views
 - theta estimates
 - profile signals
 - learning path events
@@ -121,6 +128,8 @@ pnpm crawl:training
 - AI Watch is a curated/static MVP feed until the scheduled trend-refresh agent is backed by persistent content storage
 - MVP generated reports are local score/profile summaries; production AI-generated reports should move to server routes and ask users or tenants for their provider API key
 - MVP Agent Ops is a deterministic workflow simulation, except the optional `pnpm crawl:training` command can run a real Playwright crawl for admin review; production agents need durable cloud jobs, source connectors, persisted run state, retry limits, audit logs, course/source freshness checks, robots/terms review, and human approval gates
+- Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
+- The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
 
 ## Scoring Model
 
@@ -144,3 +153,13 @@ Current seeded readiness bands:
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
+
+## Assessment Quality Loop
+
+Each assessment session records question exposure, selected and expected answer identifiers, readiness score, domain, competencies, difficulty, interaction format, elapsed time, interaction count, revision count, and a derived hesitation signal. Session events also distinguish abandonment, completion of the mandatory route, acceptance or decline of optional questions, result views, and report-area engagement.
+
+After seeing the basic score, a short clarity, difficulty, artifact, and length survey unlocks the user's question-by-question evidence report. The report shows the response, expected evidence, time spent, behavioral signal, measured competencies, and local comparison data where enough attempts exist.
+
+The admin quality engine aggregates these signals into a supervised improvement queue. High confusion, long response time, weak discrimination, abandonment, poor artifact ratings, and route-level difficulty feedback can nominate questions, formats, profile fields, surveys, or artifacts for revision. This is a continuous-improvement system, not a claim of general intelligence: scored content remains versioned and reviewable so historical scores do not change silently.
+
+Legacy `reliance-decision` items now render as complete control-pattern scenarios instead of the simplified Human / AI / Both card format. The admin artifact backlog lists a realistic replacement brief and stable asset path for each unique document image so generated replacements remain relevant to their questions.
