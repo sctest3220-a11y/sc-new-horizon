@@ -16,6 +16,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
 - End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
 - Top-10 score leaderboard scoped to the user's assessment persona/group
+- Landing-page daily/weekly top-10 teaser and peer-insight cards to motivate users to see where they rank
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
@@ -32,6 +33,8 @@ The assessment now makes the optional continuation route much more visible. At t
 The recommendation explains why the user should continue. It considers pilot confidence, low-confidence sampled competencies, unsampled profile-priority competencies, planned coverage gaps, and profile signals. For content creators or marketing/media users, the follow-up route emphasizes deeper evidence around image/video AI, media provenance, prompt refinement, claim verification, IP/ethics, and campaign measurement. Technical, finance, and people/HR profiles receive their own targeted competency routes.
 
 Users now get a primary action to continue with the recommended targeted route, plus secondary options to view the report snapshot or choose a selected-domain deep dive. This is intended to improve score differentiation between casual/beginner users and advanced users whose abilities need harder, more profile-relevant evidence.
+
+Latest landing-page update: the home page now includes a daily/weekly peer challenge board with top-10 scores, visible peer groups, strongest domains, score-to-chase, hot-skill trends, and a call to take the test. The MVP uses local saved runs when available and fills with demo pilot rows until enough local data exists. Production should replace this with consented, privacy-safe server-side leaderboard views scoped by persona, organization, geography, or cohort.
 
 ## Tech Stack
 

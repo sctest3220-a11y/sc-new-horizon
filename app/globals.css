@@ -377,6 +377,204 @@ h3 {
   color: var(--muted);
 }
 
+.peer-board-section {
+  background:
+    linear-gradient(180deg, rgba(23, 32, 29, 0.04), rgba(237, 247, 246, 0.64)),
+    #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.period-toggle {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(112px, 1fr));
+  padding: 4px;
+}
+
+.period-toggle button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.period-toggle button.selected {
+  background: #17201d;
+  color: #fff;
+}
+
+.peer-board-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+}
+
+.peer-leaderboard-card,
+.peer-insight-card,
+.peer-cta-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(216, 214, 202, 0.92);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(23, 32, 29, 0.08);
+}
+
+.peer-leaderboard-card {
+  overflow: hidden;
+}
+
+.peer-card-heading {
+  align-items: start;
+  background: #17201d;
+  color: #fff;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.peer-card-heading span,
+.peer-insight-card span,
+.peer-cta-card span {
+  color: var(--teal);
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.peer-card-heading strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.peer-card-heading small {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.78);
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 10px;
+}
+
+.landing-leaderboard-list {
+  display: grid;
+}
+
+.landing-leaderboard-list > div {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 48px minmax(0, 1fr) 44px 58px;
+  min-height: 58px;
+  padding: 10px 16px;
+}
+
+.landing-leaderboard-list > div:last-child {
+  border-bottom: 0;
+}
+
+.landing-leaderboard-list > div.demo {
+  background: rgba(255, 248, 231, 0.42);
+}
+
+.landing-leaderboard-list b {
+  color: var(--teal);
+  font-size: 18px;
+}
+
+.landing-leaderboard-list span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.landing-leaderboard-list span strong {
+  color: var(--ink);
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.landing-leaderboard-list span small {
+  color: var(--muted);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.landing-leaderboard-list i {
+  background: rgba(34, 108, 111, 0.1);
+  border: 1px solid rgba(34, 108, 111, 0.18);
+  border-radius: 999px;
+  color: #164f52;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+  padding: 7px 8px;
+  text-align: center;
+}
+
+.landing-leaderboard-list em {
+  color: var(--ink);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  text-align: right;
+}
+
+.peer-insight-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.peer-insight-card,
+.peer-cta-card {
+  padding: 18px;
+}
+
+.peer-insight-card strong,
+.peer-cta-card strong {
+  color: var(--ink);
+  display: block;
+  font-size: clamp(24px, 4vw, 38px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.peer-insight-card p,
+.peer-cta-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.peer-cta-card {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 231, 0.96), rgba(237, 247, 246, 0.96)),
+    #fff;
+  border-color: rgba(180, 95, 58, 0.36);
+  grid-column: 1 / -1;
+}
+
 .section {
   padding: clamp(64px, 8vw, 112px) clamp(20px, 5vw, 72px);
 }
@@ -4396,6 +4594,7 @@ h3 {
   .admin-login,
   .admin-hero,
   .admin-grid,
+  .peer-board-grid,
   .news-hero,
   .news-layout,
   .two-column,
@@ -4468,6 +4667,8 @@ h3 {
   }
 
   .feedback-survey-grid,
+  .peer-insight-grid,
+  .period-toggle,
   .leaderboard-list > div,
   .question-analysis-list summary {
     grid-template-columns: 1fr;

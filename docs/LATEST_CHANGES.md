@@ -36,6 +36,21 @@ The report now gives users a clearer choice:
 
 This change is designed to improve score differentiation between beginner, intermediate, and advanced users by collecting harder and more role-relevant evidence before treating the profile as stable.
 
+## 2026-09-07: Landing Peer Leaderboard
+
+The landing page now includes a daily/weekly top-10 peer challenge board. It is designed to make visitors curious about where they would rank before they start the assessment.
+
+The board shows:
+
+- Top 10 scores for today or this week.
+- Persona or peer-group labels.
+- Each visible run's strongest domain.
+- A score-to-chase insight.
+- Hot-skill and active-peer-group trend cards.
+- A call to take the free test or choose a peer group in the premium flow.
+
+The MVP reads local saved score logs when available and uses demo pilot rows when there are not enough local runs yet. In production, this should move to consented, privacy-safe server-side leaderboard views with day/week aggregation by persona, group, organization, country, and cohort.
+
 ## Verification
 
 - `pnpm lint` passed.

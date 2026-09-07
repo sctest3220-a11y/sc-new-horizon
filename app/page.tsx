@@ -11,6 +11,7 @@ type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'ret
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type NewsFrequency = 'daily' | 'weekly' | 'monthly';
+type LandingLeaderboardPeriod = 'day' | 'week';
 type ContinuationFocus = {
   kind: 'confidence' | 'priority' | 'domain';
   label: string;
@@ -256,6 +257,16 @@ type ScoreLogEntry = {
   competencyScores?: Record<string, { score: number; evidenceCount: number }>;
   evidenceModeScores?: Record<EvidenceMode, { score: number; count: number }>;
   overall: number;
+};
+type LandingLeaderboardRow = {
+  id: string;
+  rank: number;
+  displayName: string;
+  groupLabel: string;
+  overall: number;
+  strongestDomain: DomainId;
+  createdAt: string;
+  source: 'local' | 'demo';
 };
 type CompetencyDefinition = { id: string; domain: DomainId; label: string; skills: string[] };
 type EvidenceSignal = { domain: DomainId; competencyId: string; score: number; mode: EvidenceMode };
@@ -7954,6 +7965,92 @@ function getPersonaLeaderboard(entries: ScoreLogEntry[], groupKey: string) {
     }));
 }
 
+const demoLandingLeaderboard: LandingLeaderboardRow[] = [
+  { id: 'demo-creator-1', rank: 1, displayName: 'Creator profile', groupLabel: 'Marketing / Retail', overall: 94, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-tech-1', rank: 2, displayName: 'Technical builder', groupLabel: 'Technical / General', overall: 91, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-finance-1', rank: 3, displayName: 'Finance operator', groupLabel: 'Finance / Financial services', overall: 89, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-board-1', rank: 4, displayName: 'Board readiness', groupLabel: 'Board member', overall: 87, strongestDomain: 'D4', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-people-1', rank: 5, displayName: 'People leader', groupLabel: 'People / General', overall: 85, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-sales-1', rank: 6, displayName: 'Sales workflow', groupLabel: 'Sales / Retail', overall: 83, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-student-1', rank: 7, displayName: 'Student explorer', groupLabel: 'Student', overall: 81, strongestDomain: 'D1', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-ops-1', rank: 8, displayName: 'Ops improver', groupLabel: 'Operations / General', overall: 79, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-cs-1', rank: 9, displayName: 'Support pilot', groupLabel: 'Customer service / General', overall: 76, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-general-1', rank: 10, displayName: 'General user', groupLabel: 'General user', overall: 73, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+];
+
+function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderboardPeriod): LandingLeaderboardRow[] {
+  const cutoffMs = new Date().getTime() - (period === 'day' ? 24 : 7 * 24) * 60 * 60 * 1000;
+  const liveRows = entries
+    .filter((entry) => entry.mode !== 'practice' && new Date(entry.createdAt).getTime() >= cutoffMs)
+    .sort((left, right) => right.overall - left.overall || right.createdAt.localeCompare(left.createdAt))
+    .slice(0, 10)
+    .map((entry, index): LandingLeaderboardRow => {
+      const strongestDomain = (Object.keys(entry.scores) as DomainId[])
+        .sort((left, right) => entry.scores[right] - entry.scores[left])[0] ?? 'D1';
+      return {
+        id: entry.id,
+        rank: index + 1,
+        displayName: entry.userEmail?.split('@')[0] || `${entry.groupLabel.replace(/ average$/i, '')} run`,
+        groupLabel: entry.groupLabel.replace(/ average$/i, ''),
+        overall: entry.overall,
+        strongestDomain,
+        createdAt: entry.createdAt,
+        source: 'local',
+      };
+    });
+  const rows = liveRows.length >= 5 ? liveRows : [...liveRows, ...demoLandingLeaderboard].slice(0, 10);
+  return rows.map((row, index) => ({ ...row, rank: index + 1 }));
+}
+
+function getLandingPeerInsights(entries: ScoreLogEntry[], rows: LandingLeaderboardRow[], period: LandingLeaderboardPeriod) {
+  const liveCount = rows.filter((row) => row.source === 'local').length;
+  const label = period === 'day' ? 'today' : 'this week';
+  const average = rows.length ? Math.round(rows.reduce((sum, row) => sum + row.overall, 0) / rows.length) : 0;
+  const topDomainCounts = rows.reduce((counts, row) => {
+    counts[row.strongestDomain] = (counts[row.strongestDomain] ?? 0) + 1;
+    return counts;
+  }, {} as Record<DomainId, number>);
+  const hottestDomain = (Object.keys(topDomainCounts) as DomainId[])
+    .sort((left, right) => topDomainCounts[right] - topDomainCounts[left])[0] ?? 'D3';
+  const groupCounts = rows.reduce((counts, row) => {
+    counts[row.groupLabel] = (counts[row.groupLabel] ?? 0) + 1;
+    return counts;
+  }, {} as Record<string, number>);
+  const activeGroup = Object.keys(groupCounts).sort((left, right) => groupCounts[right] - groupCounts[left])[0] ?? 'No group yet';
+  const localTop = entries.filter((entry) => entry.mode !== 'practice').sort((left, right) => right.overall - left.overall)[0];
+  return [
+    {
+      label: liveCount ? 'Live peer signal' : 'Demo peer signal',
+      value: liveCount ? `${liveCount}` : 'Pilot',
+      detail: liveCount
+        ? `${liveCount} local scored run${liveCount === 1 ? '' : 's'} in the ${label} leaderboard.`
+        : 'Complete the test to replace demo rows with your peer cohort.',
+    },
+    {
+      label: 'Score to chase',
+      value: rows[0] ? `${rows[0].overall}` : '90+',
+      detail: rows[0] ? `Current ${label} leader is strongest in ${rows[0].strongestDomain} ${domains[rows[0].strongestDomain].short}.` : 'Top scores require harder evidence, not only easy answers.',
+    },
+    {
+      label: 'Hot skill trend',
+      value: hottestDomain,
+      detail: `${hottestDomain} ${domains[hottestDomain].short} is the most common strength among visible top runs.`,
+    },
+    {
+      label: 'Active peer group',
+      value: activeGroup,
+      detail: localTop ? `Best local run so far: ${localTop.overall}/100.` : `Most visible ${label} cluster in the teaser board.`,
+    },
+    {
+      label: 'Advanced gap',
+      value: average >= 85 ? 'Narrow' : 'Open',
+      detail: average >= 85
+        ? 'The board is competitive; role-specific depth will matter.'
+        : 'A strong targeted route can move a user into the visible top tier.',
+    },
+  ];
+}
+
 function getQuestionBenchmarks(events: AssessmentBehaviorEvent[]) {
   const groups = new Map<string, AssessmentBehaviorEvent[]>();
   events.filter((event) => event.type === 'question_answered' && event.questionId).forEach((event) => {
@@ -9515,6 +9612,7 @@ export default function Home() {
   const [authEmail, setAuthEmail] = useState('');
   const [authMessage, setAuthMessage] = useState('');
   const [activeLabKind, setActiveLabKind] = useState<LabKind>('prompt');
+  const [landingLeaderboardPeriod, setLandingLeaderboardPeriod] = useState<LandingLeaderboardPeriod>('week');
   const [labDraft, setLabDraft] = useState('');
   const [labSelections, setLabSelections] = useState<string[]>([]);
   const [labOrder, setLabOrder] = useState<string[]>(labConfigs.workflow.idealOrder ?? []);
@@ -9620,6 +9718,14 @@ export default function Home() {
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
   const adminAnalytics = useMemo(() => getAdminAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
   const personaLeaderboard = useMemo(() => getPersonaLeaderboard(scoreLog, scoreGroup.key), [scoreGroup.key, scoreLog]);
+  const landingLeaderboard = useMemo(
+    () => getLandingLeaderboard(scoreLog, landingLeaderboardPeriod),
+    [landingLeaderboardPeriod, scoreLog],
+  );
+  const landingPeerInsights = useMemo(
+    () => getLandingPeerInsights(scoreLog, landingLeaderboard, landingLeaderboardPeriod),
+    [landingLeaderboard, landingLeaderboardPeriod, scoreLog],
+  );
   const questionBenchmarks = useMemo(() => getQuestionBenchmarks(behaviorLog), [behaviorLog]);
   const qualityInsights = useMemo(() => getQualityImprovementInsights(behaviorLog, assessmentFeedback), [assessmentFeedback, behaviorLog]);
   const detailedAnalysisUnlocked = assessmentFeedback.some((entry) => entry.sessionId === behaviorSessionId);
@@ -10436,6 +10542,73 @@ export default function Home() {
             <div><strong>{multiPartItemCount}</strong><span>multi-part clusters</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>{interactionCount}</strong><span>question formats</span></div>
+          </section>
+
+          <section className="section peer-board-section" aria-labelledby="peer-board-title">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Peer challenge</p>
+                <h2 id="peer-board-title">Where would you land today?</h2>
+                <p>
+                  Compare against the visible top 10 for the day or week, then take the assessment to see
+                  whether your strongest domain is enough to break into your peer group.
+                </p>
+              </div>
+              <div className="period-toggle" aria-label="Leaderboard period">
+                {(['day', 'week'] as LandingLeaderboardPeriod[]).map((period) => (
+                  <button
+                    key={period}
+                    type="button"
+                    className={landingLeaderboardPeriod === period ? 'selected' : ''}
+                    onClick={() => setLandingLeaderboardPeriod(period)}
+                  >
+                    {period === 'day' ? 'Today' : 'This week'}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="peer-board-grid">
+              <article className="peer-leaderboard-card">
+                <div className="peer-card-heading">
+                  <div>
+                    <span>Top 10</span>
+                    <strong>{landingLeaderboardPeriod === 'day' ? 'Daily board' : 'Weekly board'}</strong>
+                  </div>
+                  <small>{landingLeaderboard.some((row) => row.source === 'local') ? 'Local pilot data' : 'Demo until your first runs'}</small>
+                </div>
+                <div className="landing-leaderboard-list">
+                  {landingLeaderboard.map((row) => (
+                    <div key={row.id} className={row.source}>
+                      <b>#{row.rank}</b>
+                      <span>
+                        <strong>{row.displayName}</strong>
+                        <small>{row.groupLabel}</small>
+                      </span>
+                      <i>{row.strongestDomain}</i>
+                      <em>{row.overall}</em>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <div className="peer-insight-grid">
+                {landingPeerInsights.map((insight) => (
+                  <article key={insight.label} className="peer-insight-card">
+                    <span>{insight.label}</span>
+                    <strong>{insight.value}</strong>
+                    <p>{insight.detail}</p>
+                  </article>
+                ))}
+                <article className="peer-cta-card">
+                  <span>Find your rank</span>
+                  <strong>Can you beat your peer average?</strong>
+                  <p>Scores above 80 need stronger applied or advanced evidence, not just easy-item correctness.</p>
+                  <div className="hero-actions">
+                    <button className="primary" onClick={() => setStep('onboarding')}>Take the free test</button>
+                    <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Choose peer group</button>
+                  </div>
+                </article>
+              </div>
+            </div>
           </section>
 
           <section id="labs" className="section field-lab">
