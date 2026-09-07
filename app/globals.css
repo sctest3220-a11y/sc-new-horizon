@@ -2059,6 +2059,83 @@ h3 {
   padding: 9px 12px;
 }
 
+.profile-pulse-card {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 231, 0.96), rgba(255, 255, 255, 0.96)),
+    #fff;
+  border: 1px solid rgba(180, 95, 58, 0.32);
+  border-radius: 8px;
+  bottom: 18px;
+  box-shadow: 0 24px 70px rgba(23, 32, 29, 0.18);
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+  padding: 18px;
+  position: fixed;
+  right: 18px;
+  width: calc(100vw - 36px);
+  z-index: 35;
+}
+
+.profile-pulse-card h2 {
+  font-size: 24px;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.profile-pulse-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.profile-pulse-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-pulse-options button {
+  appearance: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  padding: 8px 10px;
+}
+
+.profile-pulse-options button.selected {
+  background: #17201d;
+  border-color: #17201d;
+  color: #fff;
+}
+
+.profile-pulse-actions {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(96px, 0.35fr) minmax(0, 0.65fr);
+}
+
+.profile-pulse-actions button {
+  justify-content: center;
+}
+
+.profile-pulse-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.profile-pulse-card small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .profile-context-card span,
 .profile-ontology-note span {
   color: var(--teal);
@@ -4669,6 +4746,7 @@ h3 {
   .feedback-survey-grid,
   .peer-insight-grid,
   .period-toggle,
+  .profile-pulse-actions,
   .leaderboard-list > div,
   .question-analysis-list summary {
     grid-template-columns: 1fr;
@@ -4712,6 +4790,13 @@ h3 {
   .section-heading-row {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .profile-pulse-card {
+    bottom: 10px;
+    max-width: none;
+    right: 10px;
+    width: calc(100vw - 20px);
   }
 
   .measure-details summary,

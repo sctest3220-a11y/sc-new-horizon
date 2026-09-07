@@ -8,11 +8,13 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
+- Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores
 - Continue-assessment option after mandatory 12/20-question routes when confidence or coverage is weak
 - User profile builder and signal logging
+- Optional landing-page profile pulse that asks for current AI interests and routes later questions accordingly
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
 - End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
 - Top-10 score leaderboard scoped to the user's assessment persona/group
@@ -166,6 +168,14 @@ Current seeded readiness bands:
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
+
+The live bank also includes generated market-trend items across every granular competency and all four difficulty levels. These items test practical understanding of current AI-market shifts: agentic AI, multimodal image/video workflows, context engineering and RAG quality, domain-specific models, benchmark caveats, responsible AI governance, sovereign/local data constraints, and workforce skill change.
+
+## Profile Ontology
+
+The profile model combines explicit profile survey answers, optional micro-survey pulses, selected assessment routes, answer behavior, report clicks, and competency outcomes. In the MVP, these signals are stored locally and used to route questions and recommendations. Production should keep this transparent to users, separate sensitive personal data from assessment evidence, and use consented server-side profile graphs with retention controls.
+
+The new landing profile pulse asks a single low-friction question about AI trend interests such as agents, image/video AI, RAG/context, governance, or new models. Selected interests become profile tags and competency targets, so the adaptive engine can prioritize more relevant questions without forcing a long onboarding survey.
 
 ## Continuation Recommendation
 

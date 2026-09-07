@@ -12,6 +12,12 @@ type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'tr
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type NewsFrequency = 'daily' | 'weekly' | 'monthly';
 type LandingLeaderboardPeriod = 'day' | 'week';
+type MicroProfilePulse = {
+  id: string;
+  title: string;
+  prompt: string;
+  options: Array<{ id: string; label: string; tag: string; competencyIds: string[] }>;
+};
 type ContinuationFocus = {
   kind: 'confidence' | 'priority' | 'domain';
   label: string;
@@ -678,6 +684,19 @@ const functionSurveyQuestions: Record<FunctionTrack, SurveyQuestion[]> = {
   ],
 };
 
+const microProfilePulse: MicroProfilePulse = {
+  id: 'ai-trend-interest-2026-09',
+  title: 'Tune your AI challenge',
+  prompt: 'Which AI trend should your test pay closer attention to?',
+  options: [
+    { id: 'agents', label: 'Agents and automation', tag: 'Pulse interest: agents and automation', competencyIds: ['D2-agentic-workflows', 'D2-tool-selection', 'D4-security-governance', 'D6-role-clarity'] },
+    { id: 'media', label: 'Image/video AI', tag: 'Pulse interest: image video and synthetic media', competencyIds: ['D2-prompt-design', 'D3-media-provenance', 'D4-fairness-ethics', 'D5-roi-metrics'] },
+    { id: 'rag', label: 'RAG and context', tag: 'Pulse interest: RAG context engineering and source quality', competencyIds: ['D1-ai-systems', 'D2-tool-selection', 'D3-source-verification', 'D3-data-chart-judgment'] },
+    { id: 'governance', label: 'Governance and risk', tag: 'Pulse interest: responsible AI governance risk and compliance', competencyIds: ['D4-regulatory-policy', 'D4-security-governance', 'D5-portfolio-prioritization', 'D6-role-clarity'] },
+    { id: 'models', label: 'New models and benchmarks', tag: 'Pulse interest: new models benchmarks and evals', competencyIds: ['D1-genai-mechanics', 'D1-capability-limits', 'D3-source-verification', 'D5-usecase-fit'] },
+  ],
+};
+
 const executiveSurveyQuestions: Record<ExecutiveRole, SurveyQuestion[]> = {
   ceo: [
     { id: 'exec-ai-priority', label: 'Where is AI most important this year?', options: ['Growth', 'Cost/productivity', 'Customer experience', 'Risk reduction', 'New products', 'Operating model'], multi: true },
@@ -1223,6 +1242,114 @@ function buildAdvancedCompetencyQuestion(competency: CompetencyDefinition, frame
 
 const advancedCompetencyQuestionBank: Question[] = Object.values(competencyDefinitions).flatMap((competency) =>
   advancedQuestionFrames.map((frame, index) => buildAdvancedCompetencyQuestion(competency, frame, index)),
+);
+
+const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string; prompt: string; best: string; partial: string; weak: string; trap: string }>> = {
+  awareness: [
+    {
+      id: 'agent-basics',
+      context: 'A teammate says the company should adopt AI agents because every new model can now take actions across tools.',
+      prompt: 'Which first question best checks whether the user understands this current AI trend?',
+      best: 'Ask what task the agent will perform, what tools it can access, what approval gates exist, and where a human remains accountable.',
+      partial: 'Ask which model is newest before deciding whether to try an agent.',
+      weak: 'Assume any chatbot with tool access is safe to run autonomously.',
+      trap: 'Adopt the agent because competitors are discussing agentic AI.',
+    },
+  ],
+  applied: [
+    {
+      id: 'multimodal-workflow',
+      context: 'A content team wants to use AI to generate campaign copy, short video drafts, and product images from a single brief.',
+      prompt: 'What practical setup best tests this capability without over-trusting the output?',
+      best: 'Create a source-backed brief, define brand/IP checks, review image and video claims separately, and measure revision rate before scaling.',
+      partial: 'Generate several variants and choose the one that looks most polished.',
+      weak: 'Use the same approval checklist for text, images, and video because they came from one model.',
+      trap: 'Skip provenance review because synthetic media is now normal in marketing.',
+    },
+    {
+      id: 'rag-context',
+      context: 'A team is moving from prompt-only chat to a RAG assistant over policies, tickets, and product documents.',
+      prompt: 'Which applied action best shows understanding of context engineering and retrieval quality?',
+      best: 'Test whether retrieved sources are current, relevant, cited, and sufficient for the answer before trusting the assistant.',
+      partial: 'Increase the context window and assume the answer will be grounded.',
+      weak: 'Fine-tune immediately before checking source quality.',
+      trap: 'Remove human review once the assistant includes citations.',
+    },
+  ],
+  proficient: [
+    {
+      id: 'governed-agent',
+      context: 'An operations group wants an AI agent to triage requests, update records, and trigger follow-up emails.',
+      prompt: 'Which response best handles the tradeoffs in current agent deployment?',
+      best: 'Start read-only, log every proposed action, require approval for customer-impacting writes, monitor failures, and expand authority only after evidence improves.',
+      partial: 'Let the agent handle low-value tasks and review a weekly sample.',
+      weak: 'Give the agent broad permissions so it can learn the workflow faster.',
+      trap: 'Measure success only by tickets closed per hour.',
+    },
+    {
+      id: 'benchmark-caveat',
+      context: 'A vendor shows high benchmark scores for a domain-specific model and claims it will outperform general models in your workflow.',
+      prompt: 'What is the strongest proficient evaluation response?',
+      best: 'Run a task-specific eval with your data, failure cases, cost/latency constraints, safety checks, and reviewer agreement before selecting the model.',
+      partial: 'Prefer the domain-specific model if its published benchmark is higher.',
+      weak: 'Reject all vendor benchmarks because they are marketing.',
+      trap: 'Choose the model with the largest context window.',
+    },
+  ],
+  advanced: [
+    {
+      id: 'operating-model',
+      context: 'Leadership wants to scale generative AI, agents, and multimodal workflows across functions while governance capacity is limited.',
+      prompt: 'Which advanced decision best reflects the 2026 AI market shift from experimentation to operating model?',
+      best: 'Create a tiered AI operating model with use-case intake, risk-based controls, eval evidence, incident review, role training, and measurable value gates.',
+      partial: 'Create one central approval committee for every AI request.',
+      weak: 'Let each team pick tools independently to move faster.',
+      trap: 'Delay all adoption until regulation is fully settled.',
+    },
+    {
+      id: 'sovereign-data',
+      context: 'A regional business wants AI systems that respect local language, sector rules, data residency, and vendor dependence concerns.',
+      prompt: 'What is the strongest advanced response?',
+      best: 'Compare model capability with data residency, language performance, auditability, vendor exit paths, and local regulatory obligations before designing the rollout.',
+      partial: 'Choose the strongest global model and translate outputs locally.',
+      weak: 'Use only local models even if they fail critical tasks.',
+      trap: 'Treat sovereignty as a hosting choice rather than an operating and governance requirement.',
+    },
+  ],
+};
+
+function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: Difficulty, trend: (typeof marketTrendFrames)[Difficulty][number], index: number): Question {
+  const focus = competency.skills.slice(0, 3).join(', ');
+  const difficultyLead = {
+    awareness: 'recognizes',
+    applied: 'uses',
+    proficient: 'handles tradeoffs in',
+    advanced: 'designs scalable controls for',
+  }[difficulty];
+  return {
+    id: `TREND-${competency.id.toUpperCase()}-${difficulty.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
+    domain: competency.domain,
+    difficulty,
+    type: 'judgment',
+    interaction: 'single',
+    competencyIds: [competency.id],
+    skillIds: [...new Set([...competency.skills, 'AI market trends', 'agentic AI', 'multimodal AI', 'evaluation'])],
+    evidenceMode: difficulty === 'awareness' ? 'knowing' : 'hybrid',
+    context: `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
+    prompt: trend.prompt,
+    options: [
+      { id: 'best', label: trend.best, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.` },
+      { id: 'partial', label: trend.partial, score: difficulty === 'awareness' ? 60 : difficulty === 'applied' ? 58 : 62, feedback: 'Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.' },
+      { id: 'weak', label: trend.weak, score: 28, feedback: 'Weak evidence. This over-trusts the technology or misses the practical control problem.' },
+      { id: 'trend-chasing', label: trend.trap, score: 18, feedback: 'Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.' },
+    ],
+  };
+}
+
+const marketTrendQuestionBank: Question[] = Object.values(competencyDefinitions).flatMap((competency) =>
+  (Object.keys(marketTrendFrames) as Difficulty[]).flatMap((difficulty) =>
+    marketTrendFrames[difficulty].map((trend, index) => buildMarketTrendQuestion(competency, difficulty, trend, index)),
+  ),
 );
 
 const freeAudiencePriorityCompetencies: Record<Audience, string[]> = {
@@ -4065,6 +4192,7 @@ const questionBank: Question[] = [
   ...generalRelianceQuestions,
   ...functionalQuestionBank,
   ...competencyDepthQuestionBank,
+  ...marketTrendQuestionBank,
   ...advancedCompetencyQuestionBank,
   {
     id: 'COMP-D1-CONCEPTS-001',
@@ -7706,6 +7834,7 @@ const profileSignalLogStorageKey = 'new-horizon-profile-signal-log-v1';
 const behaviorLogStorageKey = 'new-horizon-behavior-log-v1';
 const assessmentFeedbackStorageKey = 'new-horizon-assessment-feedback-v1';
 const authProfileStorageKey = 'new-horizon-auth-profile-v1';
+const profilePulseStorageKey = 'new-horizon-profile-pulse-v1';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 
@@ -8523,6 +8652,31 @@ function buildProfileTags(survey: Record<string, string[]>, questions: SurveyQue
     (survey[question.id] ?? []).map((answer) => `${question.label}: ${answer}`),
   );
   return [`Context: ${context}`, ...answerTags].slice(0, 14);
+}
+
+function getProfileTargetCompetencyIds(profileTags: string[], functionTrack: FunctionTrack, executiveRole: ExecutiveRole) {
+  const profileText = [functionTrack, executiveRole, ...profileTags].join(' ').toLowerCase();
+  const targets = [
+    ...(functionTrack === 'marketing' || /content|creator|creative|campaign|copy|seo|image|video|media|canva|adobe|firefly|midjourney|synthetic/.test(profileText)
+      ? ['D2-prompt-design', 'D2-output-refinement', 'D3-source-verification', 'D3-media-provenance', 'D4-fairness-ethics', 'D5-roi-metrics']
+      : []),
+    ...(functionTrack === 'technical' || /developer|github|copilot|agent|rag|api|model|eval|security|context/.test(profileText)
+      ? ['D1-ai-systems', 'D1-genai-mechanics', 'D2-tool-selection', 'D2-agentic-workflows', 'D3-source-verification', 'D4-security-governance']
+      : []),
+    ...(functionTrack === 'finance' || executiveRole === 'finance' || /finance|forecast|invoice|fraud|roi|budget|margin|audit/.test(profileText)
+      ? ['D3-data-chart-judgment', 'D3-fraud-detection', 'D4-security-governance', 'D5-roi-metrics', 'D5-portfolio-prioritization']
+      : []),
+    ...(functionTrack === 'people' || executiveRole === 'people' || /hr|people|hiring|policy|employee|workforce|training|skills/.test(profileText)
+      ? ['D3-source-verification', 'D4-data-privacy', 'D4-fairness-ethics', 'D6-role-clarity', 'D6-trust-culture', 'D6-change-enablement']
+      : []),
+    ...(/governance|risk|board|regulation|policy|responsible|compliance|audit/.test(profileText)
+      ? ['D4-regulatory-policy', 'D4-security-governance', 'D5-portfolio-prioritization', 'D6-role-clarity']
+      : []),
+    ...(/agent|automation|workflow|tool|connector|mcp/.test(profileText)
+      ? ['D2-tool-selection', 'D2-agentic-workflows', 'D4-security-governance', 'D6-role-clarity']
+      : []),
+  ];
+  return [...new Set(targets)].slice(0, 10);
 }
 
 function toCompetencyScoreMap(competencies: ReturnType<typeof getCompetencyScores>) {
@@ -9613,6 +9767,8 @@ export default function Home() {
   const [authMessage, setAuthMessage] = useState('');
   const [activeLabKind, setActiveLabKind] = useState<LabKind>('prompt');
   const [landingLeaderboardPeriod, setLandingLeaderboardPeriod] = useState<LandingLeaderboardPeriod>('week');
+  const [profilePulseOpen, setProfilePulseOpen] = useState(() => readLocalStorage(profilePulseStorageKey) !== 'dismissed');
+  const [profilePulseSelections, setProfilePulseSelections] = useState<string[]>([]);
   const [labDraft, setLabDraft] = useState('');
   const [labSelections, setLabSelections] = useState<string[]>([]);
   const [labOrder, setLabOrder] = useState<string[]>(labConfigs.workflow.idealOrder ?? []);
@@ -9744,6 +9900,7 @@ export default function Home() {
     }, []);
   }, []);
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
+  const userProfileTags = useMemo(() => userProfileSurvey?.tags ?? [], [userProfileSurvey]);
   const coveragePlan = useMemo(
     () => getCompetencyCoverage(competencyScores, mode, audience, functionTrack, industryTrack, executiveRole),
     [audience, competencyScores, executiveRole, functionTrack, industryTrack, mode],
@@ -9751,6 +9908,10 @@ export default function Home() {
   const selectedDomainCompetencies = useMemo(
     () => coveragePlan.coverage.filter((competency) => competency.domain === selectedRadarDomain),
     [coveragePlan.coverage, selectedRadarDomain],
+  );
+  const profileTargetCompetencyIds = useMemo(
+    () => getProfileTargetCompetencyIds(userProfileTags, functionTrack, executiveRole),
+    [executiveRole, functionTrack, userProfileTags],
   );
   const continuationTargets = useMemo(() => {
     const confidenceIds = coveragePlan.coverage
@@ -9770,7 +9931,6 @@ export default function Home() {
       domainIds,
     };
   }, [coveragePlan.coverage, selectedDomainCompetencies]);
-  const userProfileTags = useMemo(() => userProfileSurvey?.tags ?? [], [userProfileSurvey]);
   const continuationRecommendation = useMemo(() => getContinuationRecommendation({
     coverage: coveragePlan.coverage,
     continuationTargets,
@@ -10043,12 +10203,16 @@ export default function Home() {
     setAgentWorkflowReport(getAgentWorkflowReport(liveItemCount, artifactItemCount, simulatedSignalCount));
   }
 
-  function startAssessment(nextMode: AssessmentMode) {
+  function startAssessment(nextMode: AssessmentMode, targetCompetencyIds = profileTargetCompetencyIds) {
     const nextSeed = createAssessmentSeed();
     const nextSessionId = `session-${nextSeed.toString(36)}-${new Date().getTime().toString(36)}`;
     behaviorSessionIdRef.current = nextSessionId;
     setBehaviorSessionId(nextSessionId);
-    const firstQuestion = selectNextQuestion([], nextMode, nextSeed, { functionTrack, industryTrack });
+    const firstQuestion = selectNextQuestion([], nextMode, nextSeed, {
+      functionTrack,
+      industryTrack,
+      targetCompetencyIds,
+    });
     setMode(nextMode);
     setAssessmentSeed(nextSeed);
     setAssessmentTargetTotal(modeConfig[nextMode].totalQuestions);
@@ -10092,18 +10256,60 @@ export default function Home() {
     });
   }
 
+  function toggleProfilePulse(optionId: string) {
+    setProfilePulseSelections((selected) =>
+      selected.includes(optionId) ? selected.filter((id) => id !== optionId) : [...selected, optionId].slice(0, 3),
+    );
+  }
+
+  function dismissProfilePulse() {
+    writeLocalStorage(profilePulseStorageKey, 'dismissed');
+    setProfilePulseOpen(false);
+  }
+
+  function applyProfilePulse() {
+    const selectedOptions = microProfilePulse.options.filter((option) => profilePulseSelections.includes(option.id));
+    const pulseTags = selectedOptions.map((option) => option.tag);
+    const existing = userProfileSurvey ?? {
+      updatedAt: new Date().toISOString(),
+      context: 'Light profile pulse',
+      answers: {},
+      tags: [],
+    };
+    const profile: UserProfileSurvey = {
+      updatedAt: new Date().toISOString(),
+      context: existing.context,
+      answers: {
+        ...existing.answers,
+        [microProfilePulse.id]: selectedOptions.map((option) => option.label),
+      },
+      tags: [...new Set([...existing.tags, ...pulseTags])].slice(0, 18),
+    };
+    setUserProfileSurvey(profile);
+    writeLocalStorage(userProfileStorageKey, JSON.stringify(profile));
+    writeLocalStorage(profilePulseStorageKey, 'dismissed');
+    syncUserProfileToSupabase(authProfile, profile, localProfileId);
+    appendBehaviorEvent({
+      type: 'report_interest',
+      reportArea: 'coverage',
+      label: `Profile pulse: ${selectedOptions.map((option) => option.label).join(', ') || 'no selection'}`,
+    });
+    setProfilePulseOpen(false);
+  }
+
   function saveProfileSurvey() {
+    const tags = buildProfileTags(surveyAnswers, activeSurveyQuestions, activeSurveyContext);
     const profile: UserProfileSurvey = {
       updatedAt: new Date().toISOString(),
       context: activeSurveyContext,
       answers: surveyAnswers,
-      tags: buildProfileTags(surveyAnswers, activeSurveyQuestions, activeSurveyContext),
+      tags,
     };
     setUserProfileSurvey(profile);
     writeLocalStorage(userProfileStorageKey, JSON.stringify(profile));
     syncUserProfileToSupabase(authProfile, profile, localProfileId);
     setSurveyOpen(false);
-    startAssessment(surveyMode);
+    startAssessment(surveyMode, getProfileTargetCompetencyIds(tags, functionTrack, executiveRole));
   }
 
   function skipProfileSurvey() {
@@ -10232,7 +10438,7 @@ export default function Home() {
       functionTrack,
       industryTrack,
       targetDomain: continuationFocus?.targetDomain,
-      targetCompetencyIds: continuationFocus?.targetCompetencyIds,
+      targetCompetencyIds: continuationFocus?.targetCompetencyIds ?? profileTargetCompetencyIds,
       totalQuestions: activeConfig.totalQuestions,
     });
     setPendingQuestion(nextQuestion);
@@ -10473,6 +10679,36 @@ export default function Home() {
             </div>
           </section>
         </div>
+      )}
+      {step === 'home' && profilePulseOpen && (
+        <aside className="profile-pulse-card" aria-label="Optional profile pulse">
+          <div>
+            <p className="eyebrow">Optional profile pulse</p>
+            <h2>{microProfilePulse.title}</h2>
+            <p>{microProfilePulse.prompt}</p>
+          </div>
+          <div className="profile-pulse-options">
+            {microProfilePulse.options.map((option) => {
+              const selected = profilePulseSelections.includes(option.id);
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  className={selected ? 'selected' : ''}
+                  onClick={() => toggleProfilePulse(option.id)}
+                  aria-pressed={selected}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+          <div className="profile-pulse-actions">
+            <button type="button" className="secondary dark" onClick={dismissProfilePulse}>Skip</button>
+            <button type="button" className="primary" disabled={!profilePulseSelections.length} onClick={applyProfilePulse}>Tune my test</button>
+          </div>
+          <small>Used to route questions and recommendations in this browser.</small>
+        </aside>
       )}
       <header className="topbar">
         <button className="brand nav-reset" onClick={() => setStep('home')} aria-label="New Horizon home">

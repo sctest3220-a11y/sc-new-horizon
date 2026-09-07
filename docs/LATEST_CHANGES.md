@@ -51,6 +51,26 @@ The board shows:
 
 The MVP reads local saved score logs when available and uses demo pilot rows when there are not enough local runs yet. In production, this should move to consented, privacy-safe server-side leaderboard views with day/week aggregation by persona, group, organization, country, and cohort.
 
+## 2026-09-07: Market-Trend Question Expansion
+
+The question bank now includes generated market-trend items for every granular competency and all four difficulty levels. These questions are practical scenarios based on current AI-market shifts:
+
+- Agentic AI and tool-taking workflows.
+- Multimodal image/video/content generation.
+- RAG, context engineering, and source quality.
+- Domain-specific models and benchmark caveats.
+- Responsible AI governance and incident handling.
+- Data residency, local language, and vendor-dependence concerns.
+- Workforce skill shifts and operating-model change.
+
+The trend items are mapped to granular competencies, skills, difficulty, and evidence mode so adaptive routing can use them like the rest of the scored bank.
+
+## 2026-09-07: Transparent Profile Pulse
+
+The landing page now includes a small optional profile pulse that asks users which AI trend their assessment should pay closer attention to. Choices become local profile tags and competency targets for later adaptive routing.
+
+The product should keep this visible and consent-aware: implicit behavior signals can improve tailoring, but the platform should disclose how routing and recommendations use profile evidence.
+
 ## Verification
 
 - `pnpm lint` passed.
