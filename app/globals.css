@@ -3499,6 +3499,104 @@ h3 {
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
 }
 
+.continuation-panel.prominent,
+.continue-callout {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 231, 0.96), rgba(237, 247, 246, 0.96)),
+    #fff;
+  border: 2px solid rgba(111, 76, 16, 0.32);
+  box-shadow: 0 22px 54px rgba(23, 32, 29, 0.14);
+}
+
+.continuation-panel.prominent.recommended,
+.continue-callout.recommended {
+  border-color: rgba(180, 95, 58, 0.62);
+}
+
+.continuation-panel.prominent h2,
+.continue-callout h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.04;
+  margin: 4px 0 12px;
+}
+
+.continue-callout {
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  padding: clamp(20px, 4vw, 34px);
+}
+
+.continue-callout > p,
+.continuation-decision p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.continue-reasons,
+.continue-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.continue-reasons span {
+  background: #fff;
+  border: 1px solid rgba(180, 95, 58, 0.28);
+  border-radius: 8px;
+  color: #513b22;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.35;
+  padding: 9px 10px;
+}
+
+.continue-targets {
+  align-items: center;
+}
+
+.continue-targets strong,
+.continuation-decision strong {
+  color: var(--ink);
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.continue-targets span {
+  background: rgba(34, 108, 111, 0.1);
+  border: 1px solid rgba(34, 108, 111, 0.22);
+  border-radius: 999px;
+  color: #164f52;
+  font-size: 12px;
+  font-weight: 850;
+  padding: 7px 10px;
+}
+
+.continue-primary-actions {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(160px, 0.6fr);
+}
+
+.continue-primary-actions button,
+.continuation-decision button {
+  justify-content: center;
+}
+
+.continuation-decision {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(216, 214, 202, 0.92);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
 .continuation-panel > div:first-child p {
   color: var(--muted);
   font-size: 15px;
@@ -3539,8 +3637,17 @@ h3 {
 }
 
 .continuation-inline {
-  border: 1px solid rgba(34, 108, 111, 0.26);
-  box-shadow: 0 12px 26px rgba(20, 47, 49, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 248, 231, 0.96), rgba(255, 255, 255, 0.9)),
+    #fff;
+  border: 2px solid rgba(180, 95, 58, 0.5);
+  box-shadow: 0 16px 34px rgba(20, 47, 49, 0.12);
+}
+
+.continuation-inline strong {
+  color: #8a3232;
+  font-size: 54px;
+  margin-bottom: 6px;
 }
 
 .continuation-inline p {
@@ -4341,6 +4448,7 @@ h3 {
   .result-grid,
   .learning-list,
   .personalized-exploration,
+  .continue-primary-actions,
   .measure-grid,
   .measure-grid.compact,
   .evidence-mode-grid,

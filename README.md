@@ -154,6 +154,12 @@ This is still an MVP calibration model. Production scoring should tune item diff
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
 
+## Continuation Recommendation
+
+At the end of the mandatory route, the platform now shows a conspicuous continuation recommendation in both the final answer review and the test report. The recommendation is based on pilot confidence, sampled low-confidence competencies, unsampled profile-priority competencies, planned coverage gaps, and the user's profile signals.
+
+For example, content creators, marketers, or users whose profile mentions image, video, media, campaigns, creative variants, Canva, Adobe, Firefly, Midjourney, or synthetic media are routed toward deeper evidence for prompt refinement, media provenance, claim verification, IP/ethics, and campaign measurement. Technical, finance, and people/HR profiles receive similarly tuned follow-up targets. The primary action launches the recommended targeted route; users can still view the report snapshot or choose a domain deep dive.
+
 ## Assessment Quality Loop
 
 Each assessment session records question exposure, selected and expected answer identifiers, readiness score, domain, competencies, difficulty, interaction format, elapsed time, interaction count, revision count, and a derived hesitation signal. Session events also distinguish abandonment, completion of the mandatory route, acceptance or decline of optional questions, result views, and report-area engagement.

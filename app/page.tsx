@@ -17,6 +17,17 @@ type ContinuationFocus = {
   targetDomain?: DomainId;
   targetCompetencyIds?: string[];
 };
+type ContinuationRecommendation = {
+  kicker: string;
+  headline: string;
+  summary: string;
+  reasons: string[];
+  route: ContinuationFocus;
+  questionCount: number;
+  targetLabels: string[];
+  confidenceLabel: string;
+  urgency: 'recommended' | 'optional';
+};
 type SurveyQuestion = {
   id: string;
   label: string;
@@ -8290,6 +8301,113 @@ function getCompetencyCoverage(
   return { ...targets, coverage, sampled, priorityTotal, prioritySampled, plannedTotal, plannedSampled };
 }
 
+function getContinuationRecommendation({
+  coverage,
+  continuationTargets,
+  selectedDomain,
+  mode,
+  audience,
+  functionTrack,
+  industryTrack,
+  executiveRole,
+  profileTags,
+  confidence,
+}: {
+  coverage: CompetencyCoverage[];
+  continuationTargets: { confidenceIds: string[]; priorityGapIds: string[]; domainIds: string[] };
+  selectedDomain: DomainId;
+  mode: AssessmentMode;
+  audience: Audience;
+  functionTrack: FunctionTrack;
+  industryTrack: IndustryTrack;
+  executiveRole: ExecutiveRole;
+  profileTags: string[];
+  confidence: number;
+}): ContinuationRecommendation {
+  const profileText = [
+    mode,
+    audience,
+    functionTrack,
+    industryTrack,
+    executiveRole,
+    ...profileTags,
+  ].join(' ').toLowerCase();
+  const profileDeepDiveIds = [
+    ...(functionTrack === 'marketing' || /content|creator|creative|campaign|copy|seo|image|video|media|canva|adobe|firefly|midjourney|synthetic/.test(profileText)
+      ? ['D2-prompt-design', 'D2-output-refinement', 'D3-source-verification', 'D3-media-provenance', 'D4-fairness-ethics', 'D5-roi-metrics']
+      : []),
+    ...(functionTrack === 'technical' || /developer|github|copilot|agent|rag|api|model|security/.test(profileText)
+      ? ['D1-ai-systems', 'D2-tool-selection', 'D2-agentic-workflows', 'D3-source-verification', 'D4-security-governance']
+      : []),
+    ...(executiveRole === 'finance' || functionTrack === 'finance'
+      ? ['D3-data-chart-judgment', 'D3-fraud-detection', 'D4-security-governance', 'D5-roi-metrics', 'D5-portfolio-prioritization']
+      : []),
+    ...(executiveRole === 'people' || functionTrack === 'people'
+      ? ['D3-source-verification', 'D4-data-privacy', 'D4-fairness-ethics', 'D6-role-clarity', 'D6-trust-culture']
+      : []),
+  ];
+  const uniqueProfileIds = [...new Set(profileDeepDiveIds)];
+  const byId = new Map(coverage.map((competency) => [competency.id, competency]));
+  const lowConfidenceIds = coverage
+    .filter((competency) => competency.evidenceCount > 0 && (competency.confidence !== 'high' || competency.score < 70))
+    .map((competency) => competency.id);
+  const unsampledPriorityIds = continuationTargets.priorityGapIds;
+  const profileGapIds = uniqueProfileIds.filter((id) => {
+    const competency = byId.get(id);
+    return competency && (competency.evidenceCount === 0 || competency.confidence !== 'high' || competency.score < 76);
+  });
+  const targetIds = [...new Set([
+    ...profileGapIds,
+    ...unsampledPriorityIds,
+    ...continuationTargets.confidenceIds,
+    ...continuationTargets.domainIds,
+  ])].slice(0, 8);
+  const targetLabels = targetIds
+    .map((id) => byId.get(id)?.label)
+    .filter((label): label is string => Boolean(label))
+    .slice(0, 5);
+  const hasProfileRoute = profileGapIds.length > 0;
+  const hasPriorityGaps = unsampledPriorityIds.length > 0;
+  const lowConfidenceCount = lowConfidenceIds.length;
+  const unsampledPlannedCount = coverage.filter((competency) => competency.planned && competency.evidenceCount === 0).length;
+  const unsure = confidence < 86 || lowConfidenceCount > 0 || unsampledPriorityIds.length > 0;
+  const contextLabel = mode === 'executive'
+    ? executiveLabels[executiveRole]
+    : mode === 'premium'
+      ? `${functionLabels[functionTrack]} in ${industryLabels[industryTrack].toLowerCase()}`
+      : audienceLabels[audience];
+  const profileReason = hasProfileRoute
+    ? functionTrack === 'marketing' || /content|creator|creative|image|video|media/.test(profileText)
+      ? 'Your profile points to creative, image/video, campaign, or content work, so media provenance, claim checking, IP/ethics, prompt refinement, and campaign measurement need deeper evidence.'
+      : `Your ${contextLabel.toLowerCase()} profile has role-relevant competencies that still need stronger evidence.`
+    : '';
+  const reasons = [
+    confidence < 86 ? `Result confidence is ${confidence}%, so the platform should not treat the level estimate as fully stable yet.` : '',
+    lowConfidenceCount ? `${lowConfidenceCount} sampled competenc${lowConfidenceCount === 1 ? 'y is' : 'ies are'} still low or medium confidence.` : '',
+    hasPriorityGaps ? `${unsampledPriorityIds.length} profile-priority competenc${unsampledPriorityIds.length === 1 ? 'y was' : 'ies were'} not sampled in the mandatory route.` : '',
+    unsampledPlannedCount ? `${unsampledPlannedCount} planned baseline competenc${unsampledPlannedCount === 1 ? 'y has' : 'ies have'} no evidence yet.` : '',
+    profileReason,
+  ].filter(Boolean).slice(0, 4);
+  const route: ContinuationFocus = hasProfileRoute || hasPriorityGaps
+    ? { kind: 'priority', label: 'Profile-priority deep dive', targetCompetencyIds: targetIds.length ? targetIds : unsampledPriorityIds }
+    : lowConfidenceCount
+      ? { kind: 'confidence', label: 'Confidence calibration route', targetCompetencyIds: targetIds.length ? targetIds : continuationTargets.confidenceIds }
+      : { kind: 'domain', label: `${selectedDomain} deep dive`, targetDomain: selectedDomain, targetCompetencyIds: targetIds.length ? targetIds : continuationTargets.domainIds };
+  return {
+    kicker: unsure ? 'Recommended next step' : 'Optional deeper check',
+    headline: unsure ? 'Continue the test before finalizing this profile' : 'Continue for a sharper competency profile',
+    summary: unsure
+      ? `For ${contextLabel.toLowerCase()}, the next questions should focus on the evidence gaps that could change the level estimate.`
+      : `The current score is usable as a snapshot, but extra questions can separate good general AI users from advanced users in ${contextLabel.toLowerCase()}.`,
+    reasons: reasons.length ? reasons : ['The short route is a snapshot; deeper items improve score differentiation and competency-level confidence.'],
+    route,
+    questionCount: route.kind === 'priority' ? 8 : 6,
+    targetLabels,
+    confidenceLabel: confidence < 78 ? 'Low confidence' : confidence < 86 ? 'Medium confidence' : 'Pilot confidence',
+    urgency: unsure ? 'recommended' : 'optional',
+  };
+}
+
 function getSurveyQuestionsForProfile(assessmentMode: AssessmentMode, audience: Audience, functionTrack: FunctionTrack, executiveRole: ExecutiveRole) {
   if (assessmentMode === 'executive') return executiveSurveyQuestions[executiveRole];
   if (assessmentMode === 'premium') return functionSurveyQuestions[functionTrack];
@@ -9546,6 +9664,30 @@ export default function Home() {
       domainIds,
     };
   }, [coveragePlan.coverage, selectedDomainCompetencies]);
+  const userProfileTags = useMemo(() => userProfileSurvey?.tags ?? [], [userProfileSurvey]);
+  const continuationRecommendation = useMemo(() => getContinuationRecommendation({
+    coverage: coveragePlan.coverage,
+    continuationTargets,
+    selectedDomain: selectedRadarDomain,
+    mode,
+    audience,
+    functionTrack,
+    industryTrack,
+    executiveRole,
+    profileTags: userProfileTags,
+    confidence: results.confidence,
+  }), [
+    audience,
+    continuationTargets,
+    coveragePlan.coverage,
+    executiveRole,
+    functionTrack,
+    industryTrack,
+    mode,
+    results.confidence,
+    selectedRadarDomain,
+    userProfileTags,
+  ]);
   const previewDomainCompetencies = useMemo(
     () => getCompetenciesForDomain(selectedPreviewDomain),
     [selectedPreviewDomain],
@@ -9569,7 +9711,6 @@ export default function Home() {
     () => (groupAverageProfile ? [groupAverageProfile, ...benchmarkProfiles] : benchmarkProfiles),
     [benchmarkProfiles, groupAverageProfile],
   );
-  const userProfileTags = useMemo(() => userProfileSurvey?.tags ?? [], [userProfileSurvey]);
   const adaptiveReadout = useMemo(
     () => getAdaptiveReadout(answers, current, mode, activeConfig),
     [activeConfig, answers, current, mode],
@@ -11569,6 +11710,32 @@ export default function Home() {
                   })}
                 </div>
               )}
+              {!pendingQuestion && showContinuationPanel && (
+                <div className={`continue-callout ${continuationRecommendation.urgency}`}>
+                  <p className="eyebrow">{continuationRecommendation.kicker}</p>
+                  <h2>{continuationRecommendation.headline}</h2>
+                  <p>{continuationRecommendation.summary}</p>
+                  <div className="continue-reasons">
+                    {continuationRecommendation.reasons.map((reason) => <span key={reason}>{reason}</span>)}
+                  </div>
+                  {continuationRecommendation.targetLabels.length > 0 && (
+                    <div className="continue-targets">
+                      <strong>Next focus</strong>
+                      {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
+                    </div>
+                  )}
+                  <div className="continue-primary-actions">
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
+                    >
+                      Continue with {continuationRecommendation.questionCount} targeted questions
+                    </button>
+                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
+                  </div>
+                </div>
+              )}
             </article>
             <aside className="adaptive-panel" aria-label="Next adaptive step">
               <div className={`movement-card ${difficultyMovement.tone}`}>
@@ -11597,21 +11764,16 @@ export default function Home() {
               </div>
               {!pendingQuestion && showContinuationPanel && (
                 <div className="adaptive-card continuation-inline">
-                  <span>More evidence recommended</span>
-                  <p>
-                    Some competencies are still low-confidence or not sampled. Keep going now to give the system better evidence before finalizing the profile.
-                  </p>
+                  <span>{continuationRecommendation.confidenceLabel}</span>
+                  <strong>{continuationRecommendation.questionCount}</strong>
+                  <p>{continuationRecommendation.reasons[0]}</p>
                   <div className="continuation-actions">
                     <button
                       type="button"
                       className="primary"
-                      onClick={() => continueAssessment({
-                        kind: 'confidence',
-                        label: 'Better confidence route',
-                        targetCompetencyIds: continuationTargets.confidenceIds,
-                      })}
+                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
                     >
-                      Keep going: confidence
+                      Continue recommended route
                     </button>
                     <button
                       type="button"
@@ -11692,6 +11854,53 @@ export default function Home() {
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
               </div>
             </article>
+            {showContinuationPanel && (
+              <article className={`result-card wide continuation-panel prominent ${continuationRecommendation.urgency}`}>
+                <div>
+                  <p className="eyebrow">{continuationRecommendation.kicker}</p>
+                  <h2>{continuationRecommendation.headline}</h2>
+                  <p>{continuationRecommendation.summary}</p>
+                  <div className="continue-reasons">
+                    {continuationRecommendation.reasons.map((reason) => <span key={reason}>{reason}</span>)}
+                  </div>
+                </div>
+                <div className="continuation-decision">
+                  <strong>{continuationRecommendation.confidenceLabel}</strong>
+                  <p>{continuationRecommendation.questionCount} targeted questions can improve the score estimate and competency evidence.</p>
+                  {continuationRecommendation.targetLabels.length > 0 && (
+                    <div className="continue-targets">
+                      {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
+                    </div>
+                  )}
+                  <div className="continuation-actions">
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
+                    >
+                      Continue recommended route
+                    </button>
+                    <button
+                      type="button"
+                      className="secondary dark"
+                      onClick={() => continueAssessment({
+                        kind: 'domain',
+                        label: `${selectedRadarDomain} deep dive`,
+                        targetDomain: selectedRadarDomain,
+                        targetCompetencyIds: continuationTargets.domainIds,
+                      })}
+                    >
+                      Choose {selectedRadarDomain} deep dive
+                    </button>
+                  </div>
+                </div>
+                <div className="continuation-summary">
+                  <span>{continuationTargets.confidenceIds.length} confidence targets</span>
+                  <span>{continuationTargets.priorityGapIds.length} profile-priority gaps</span>
+                  <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
+                </div>
+              </article>
+            )}
             <article className="result-card wide leaderboard-card">
               <div className="report-heading">
                 <div>
@@ -11845,59 +12054,6 @@ export default function Home() {
               </div>
               <p className="context-line">{generatedReport.productionNote}</p>
             </article>
-            {showContinuationPanel && (
-              <article className="result-card wide continuation-panel">
-                <div>
-                  <h2>Keep going for a better profile</h2>
-                  <p>
-                    This result is a snapshot from the regular {modeConfig[mode].totalQuestions}-question assessment. Add targeted items to increase evidence counts,
-                    reduce unsampled gaps, and make competency scores more useful.
-                  </p>
-                </div>
-                <div className="continuation-actions">
-                  <button
-                    type="button"
-                    className="primary"
-                    onClick={() => continueAssessment({
-                      kind: 'confidence',
-                      label: 'Better confidence route',
-                      targetCompetencyIds: continuationTargets.confidenceIds,
-                    })}
-                  >
-                    Keep going: confidence
-                  </button>
-                  <button
-                    type="button"
-                    className="secondary dark"
-                    disabled={!continuationTargets.priorityGapIds.length}
-                    onClick={() => continueAssessment({
-                      kind: 'priority',
-                      label: 'Role-priority gap route',
-                      targetCompetencyIds: continuationTargets.priorityGapIds,
-                    }, 8)}
-                  >
-                    Keep going: role gaps
-                  </button>
-                  <button
-                    type="button"
-                    className="secondary dark"
-                    onClick={() => continueAssessment({
-                      kind: 'domain',
-                      label: `${selectedRadarDomain} deep dive`,
-                      targetDomain: selectedRadarDomain,
-                      targetCompetencyIds: continuationTargets.domainIds,
-                    })}
-                  >
-                    Keep going: {selectedRadarDomain} deep dive
-                  </button>
-                </div>
-                <div className="continuation-summary">
-                  <span>{continuationTargets.confidenceIds.length} confidence targets</span>
-                  <span>{continuationTargets.priorityGapIds.length} role-priority gaps</span>
-                  <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
-                </div>
-              </article>
-            )}
             <article className="result-card wide coverage-plan">
               <h2>Assessment coverage plan</h2>
               <p>{coveragePlan.testFrame}</p>
