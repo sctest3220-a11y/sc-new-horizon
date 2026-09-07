@@ -1,5 +1,22 @@
 # Latest Changes
 
+## 2026-09-08: Supervised Agent Jobs and Personalized Knowledge Prompts
+
+The Admin Agent Ops area now has a persisted supervised job loop instead of only a static simulation. Admins can run local agent jobs that read telemetry, assessment feedback, profile snapshots, item counts, and artifact counts, then create draft proposals for:
+
+- Question rewrites or new competency-depth items.
+- Realistic artifact replacement briefs.
+- Profile ontology updates.
+- Survey timing and wording improvements.
+- Learning recommendation refreshes.
+- AI Watch brief candidates.
+
+Each draft has a pending, approved, or rejected state. Admin decisions are stored locally with the run history. No scored assessment content is published automatically; approved proposals are still review decisions, not silent mutations of the live bank.
+
+The landing page, user dashboard, and report now include a personalized "Did you know?" prompt. The selected prompt uses profile tags, function/role context, weak domains, and assessment progress to teach a timely AI concept and invite the user into a deeper route, practice lab, profile update, or AI Watch.
+
+This keeps the continuous-improvement loop visible: telemetry and feedback can nominate improvements, but scoring content remains supervised, versionable, and reviewable.
+
 ## 2026-09-07: Assessment Continuation Recommendation
 
 Commit: `175e1b3 Improve assessment continuation recommendation`

@@ -22,7 +22,8 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
-- Admin Agent Ops preview with supervised multi-agent workflow simulation, activity reports, draft outputs, and safety-cut handling for repeated loops
+- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
+- Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
@@ -37,6 +38,10 @@ The recommendation explains why the user should continue. It considers pilot con
 Users now get a primary action to continue with the recommended targeted route, plus secondary options to view the report snapshot or choose a selected-domain deep dive. This is intended to improve score differentiation between casual/beginner users and advanced users whose abilities need harder, more profile-relevant evidence.
 
 Latest landing-page update: the home page now includes a daily/weekly peer challenge board with top-10 scores, visible peer groups, strongest domains, score-to-chase, hot-skill trends, and a call to take the test. The MVP uses local saved runs when available and fills with demo pilot rows until enough local data exists. Production should replace this with consented, privacy-safe server-side leaderboard views scoped by persona, organization, geography, or cohort.
+
+Latest Agent Ops update: admins can now run supervised local agent jobs from the Admin page. A run reads telemetry, assessment feedback, profile snapshots, item counts, and artifact counts, then creates reviewable draft proposals for question rewrites, artifact replacements, profile ontology updates, survey tuning, learning recommendations, and AI Watch briefs. Drafts can be approved or rejected locally; nothing is published into the scored assessment automatically.
+
+Latest personalization update: the landing page, user dashboard, and report include a profile-aware "Did you know?" prompt. The prompt is selected from user profile tags, weak domains, function/role context, and assessment signals. Clicks are logged as interest signals so later versions can learn which topics motivate users to explore deeper routes, labs, or AI Watch.
 
 ## Tech Stack
 
@@ -96,7 +101,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
 
-The MVP Agent Ops flow is also local and deterministic. It simulates an orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. The simulation demonstrates manual runs, activity logs, rejected duplicate output, admin-review queues, learning-catalog recommendations, and a safety cut when a draft loop repeats. It does not crawl the internet, publish content, or call an external AI provider.
+The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. Each proposal stays in pending review until an admin approves or rejects it. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
 
 Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
 
@@ -116,6 +121,7 @@ Production should add:
 - item responses
 - behavior events and per-question elapsed time
 - assessment feedback surveys
+- supervised agent runs and draft proposal review states
 - privacy-safe persona leaderboard views
 - theta estimates
 - profile signals
@@ -142,7 +148,7 @@ pnpm crawl:training
 - Local browser storage is still used as the primary MVP demo store when Supabase is not configured
 - AI Watch is a curated/static MVP feed until the scheduled trend-refresh agent is backed by persistent content storage
 - MVP generated reports are local score/profile summaries; production AI-generated reports should move to server routes and ask users or tenants for their provider API key
-- MVP Agent Ops is a deterministic workflow simulation, except the optional `pnpm crawl:training` command can run a real Playwright crawl for admin review; production agents need durable cloud jobs, source connectors, persisted run state, retry limits, audit logs, course/source freshness checks, robots/terms review, and human approval gates
+- MVP Agent Ops persists supervised local runs, but production agents still need durable cloud jobs, source connectors, server-side AI provider adapters, retry limits, audit logs, proposal diffing, content versioning, source freshness checks, robots/terms review, and human approval gates
 - Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
 - The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
 

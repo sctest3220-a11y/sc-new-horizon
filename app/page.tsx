@@ -18,6 +18,15 @@ type MicroProfilePulse = {
   prompt: string;
   options: Array<{ id: string; label: string; tag: string; competencyIds: string[] }>;
 };
+type DidYouKnowInsight = {
+  id: string;
+  domain: DomainId;
+  topic: string;
+  fact: string;
+  whyItMatters: string;
+  learnAction: 'news' | 'labs' | 'premium' | 'free';
+  competencyIds: string[];
+};
 type ContinuationFocus = {
   kind: 'confidence' | 'priority' | 'domain';
   label: string;
@@ -326,6 +335,28 @@ type AgentActivity = {
   status: AgentStatus;
   activity: string;
   output: string;
+};
+type AgentDraftStatus = 'pending' | 'approved' | 'rejected';
+type AgentDraftKind = 'question' | 'artifact' | 'profile' | 'survey' | 'learning' | 'news';
+type AgentDraftProposal = {
+  id: string;
+  kind: AgentDraftKind;
+  title: string;
+  summary: string;
+  rationale: string;
+  status: AgentDraftStatus;
+  sourceSignals: string[];
+  ownerAgent: string;
+};
+type SupervisedAgentRun = {
+  id: string;
+  createdAt: string;
+  status: 'review' | 'complete';
+  headline: string;
+  summary: string;
+  activityLog: AgentActivity[];
+  drafts: AgentDraftProposal[];
+  safetyEvents: string[];
 };
 type AgentWorkflowReport = {
   generatedAt: string;
@@ -696,6 +727,72 @@ const microProfilePulse: MicroProfilePulse = {
     { id: 'models', label: 'New models and benchmarks', tag: 'Pulse interest: new models benchmarks and evals', competencyIds: ['D1-genai-mechanics', 'D1-capability-limits', 'D3-source-verification', 'D5-usecase-fit'] },
   ],
 };
+
+const didYouKnowInsights: DidYouKnowInsight[] = [
+  {
+    id: 'dyk-agent-guardrails',
+    domain: 'D2',
+    topic: 'Agentic AI',
+    fact: 'AI agents are shifting from answering questions to taking actions across tools, which makes permission scope and approval gates part of basic AI literacy.',
+    whyItMatters: 'If your profile mentions agents, workflows, tools, or automation, the assessment should test whether you can design a bounded workflow rather than simply use a powerful model.',
+    learnAction: 'premium',
+    competencyIds: ['D2-tool-selection', 'D2-agentic-workflows', 'D4-security-governance', 'D6-role-clarity'],
+  },
+  {
+    id: 'dyk-media-provenance',
+    domain: 'D3',
+    topic: 'Image and video AI',
+    fact: 'Modern image and video generation can look polished while still carrying wrong claims, unclear rights, or missing provenance.',
+    whyItMatters: 'Creators and marketers need deeper checks for source, consent, IP, caption accuracy, and performance claims before publishing AI-assisted media.',
+    learnAction: 'labs',
+    competencyIds: ['D2-prompt-design', 'D3-media-provenance', 'D3-source-verification', 'D4-fairness-ethics'],
+  },
+  {
+    id: 'dyk-rag-context',
+    domain: 'D3',
+    topic: 'RAG and context engineering',
+    fact: 'A long context window is not the same as grounded knowledge; retrieval quality still depends on source freshness, relevance, citation support, and missing-document detection.',
+    whyItMatters: 'People using AI with files or internal knowledge bases should be tested on source quality, not just prompt wording.',
+    learnAction: 'premium',
+    competencyIds: ['D1-ai-systems', 'D2-tool-selection', 'D3-source-verification', 'D3-data-chart-judgment'],
+  },
+  {
+    id: 'dyk-benchmark-literacy',
+    domain: 'D1',
+    topic: 'Model benchmarks',
+    fact: 'A model leaderboard can hide important differences in task fit, contamination risk, safety behavior, latency, cost, and domain performance.',
+    whyItMatters: 'Strong users should know how to challenge “newer model is better” claims before choosing a tool for real work.',
+    learnAction: 'news',
+    competencyIds: ['D1-genai-mechanics', 'D1-capability-limits', 'D3-source-verification', 'D5-usecase-fit'],
+  },
+  {
+    id: 'dyk-governance-gap',
+    domain: 'D4',
+    topic: 'Responsible AI governance',
+    fact: 'Enterprise AI adoption is moving faster than governance in many organizations, especially where autonomous agents can act in operational systems.',
+    whyItMatters: 'If your work touches customer data, approvals, policy, money, or employee impact, the assessment should test controls, auditability, escalation, and accountability.',
+    learnAction: 'premium',
+    competencyIds: ['D4-data-privacy', 'D4-regulatory-policy', 'D4-security-governance', 'D6-role-clarity'],
+  },
+  {
+    id: 'dyk-roi-reimagination',
+    domain: 'D5',
+    topic: 'AI ROI',
+    fact: 'Many teams see productivity gains before they can prove business value, quality improvement, risk reduction, or workflow redesign.',
+    whyItMatters: 'A high readiness score should reflect whether users can separate demo appeal from measurable value and durable operating change.',
+    learnAction: 'premium',
+    competencyIds: ['D5-usecase-fit', 'D5-roi-metrics', 'D5-portfolio-prioritization', 'D5-transformation-strategy'],
+  },
+  {
+    id: 'dyk-human-agency',
+    domain: 'D6',
+    topic: 'Human-AI collaboration',
+    fact: 'AI fluency is increasingly about deciding who owns judgment, how teams challenge outputs, and how mistakes become learning loops.',
+    whyItMatters: 'If your score has collaboration or change gaps, learning more here can improve both practical use and trust.',
+    learnAction: 'labs',
+    competencyIds: ['D6-role-clarity', 'D6-trust-culture', 'D6-change-enablement', 'D6-learning-loops'],
+  },
+];
 
 const executiveSurveyQuestions: Record<ExecutiveRole, SurveyQuestion[]> = {
   ceo: [
@@ -7694,6 +7791,144 @@ function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, si
   };
 }
 
+function getSupervisedAgentRun(
+  itemCount: number,
+  artifactItemCount: number,
+  behaviorEvents: AssessmentBehaviorEvent[],
+  feedback: AssessmentFeedbackSurvey[],
+  profileSignals: ProfileSignalLogEntry[],
+): SupervisedAgentRun {
+  const quality = getQualityImprovementInsights(behaviorEvents, feedback);
+  const runId = `agent-run-${new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '')}`;
+  const poorArtifactCount = feedback.filter((entry) => entry.artifactQuality === 'poor' || entry.artifactQuality === 'mixed').length;
+  const confusingQuestion = quality.questionRows[0];
+  const recentProfileTags = [...new Set(profileSignals.flatMap((entry) => entry.profileTags ?? []))].slice(0, 8);
+  const lowContinuation = quality.mandatory > 0 && Math.round((quality.continued / quality.mandatory) * 100) < 35;
+  const drafts: AgentDraftProposal[] = [
+    {
+      id: `${runId}:question:${confusingQuestion?.questionId ?? 'coverage-gap'}`,
+      kind: 'question',
+      title: confusingQuestion ? `Rewrite or split ${confusingQuestion.questionId}` : 'Draft harder competency-depth questions for sparse signals',
+      summary: confusingQuestion
+        ? `Review the item because it shows ${confusingQuestion.confusionRate}% confusion, ${formatDuration(confusingQuestion.averageDurationMs)} average time, and ${confusingQuestion.averageScore}/100 average score.`
+        : 'Generate new applied and advanced items where item-level evidence is still sparse.',
+      rationale: 'Question drafts should improve discrimination by difficulty, evidence mode, domain, competency, and answerability before publication.',
+      status: 'pending',
+      sourceSignals: confusingQuestion
+        ? [`${confusingQuestion.attempts} attempts`, `${confusingQuestion.confusionRate}% confusing`, `${formatDuration(confusingQuestion.averageDurationMs)} average duration`]
+        : [`${itemCount} current items`, `${quality.questionRows.length} measured question rows`],
+      ownerAgent: 'Assessment Item Generator',
+    },
+    {
+      id: `${runId}:artifact:replacement`,
+      kind: 'artifact',
+      title: poorArtifactCount ? 'Replace weak or unrealistic artifacts' : 'Prepare realistic artifact refresh briefs',
+      summary: poorArtifactCount
+        ? `${poorArtifactCount} survey response${poorArtifactCount === 1 ? '' : 's'} rated artifacts mixed or poor. Prioritize realistic documents with consistent evidence.`
+        : `Maintain replacement briefs for ${artifactItemCount} artifact-backed items before scaling the bank.`,
+      rationale: 'Artifact quality directly affects whether users are being tested on real AI judgment or on interpreting artificial-looking screenshots.',
+      status: 'pending',
+      sourceSignals: [`${artifactItemCount} artifact-backed items`, `${poorArtifactCount} mixed/poor artifact ratings`],
+      ownerAgent: 'Reviewer and QA Agent',
+    },
+    {
+      id: `${runId}:profile:ontology`,
+      kind: 'profile',
+      title: 'Update profile ontology from user signals',
+      summary: recentProfileTags.length
+        ? `Candidate profile tags to normalize: ${recentProfileTags.join(', ')}.`
+        : 'No strong profile-tag cluster yet; keep collecting optional survey and behavior-derived signals.',
+      rationale: 'Profile ontology updates help route creators, operators, executives, students, and technical users toward the questions that best separate their skill levels.',
+      status: 'pending',
+      sourceSignals: [`${profileSignals.length} profile snapshots`, `${recentProfileTags.length} distinct recent tags`],
+      ownerAgent: 'AI Concepts Scout',
+    },
+    {
+      id: `${runId}:survey:friction`,
+      kind: 'survey',
+      title: lowContinuation ? 'Revise continuation prompt and quick survey timing' : 'Tune optional survey prompts',
+      summary: lowContinuation
+        ? `Only ${Math.round((quality.continued / quality.mandatory) * 100)}% continued after mandatory questions. Test a clearer reason and role-specific benefit.`
+        : 'Keep profile and feedback surveys short while collecting enough signal to personalize did-you-know prompts and deeper routes.',
+      rationale: 'Survey prompts should collect better profile evidence without interrupting assessment flow or hiding the value exchange.',
+      status: 'pending',
+      sourceSignals: [`${quality.mandatory} mandatory completions`, `${quality.continued} continuations`, `${feedback.length} feedback surveys`],
+      ownerAgent: 'Orchestrator',
+    },
+    {
+      id: `${runId}:learning:next-best`,
+      kind: 'learning',
+      title: 'Refresh learning recommendations for weak competencies',
+      summary: 'Map weak domains, did-you-know clicks, and report-interest clicks to the next practice lab, course, or premium route.',
+      rationale: 'Learning content should respond to demonstrated gaps and user curiosity, not just static domain labels.',
+      status: 'pending',
+      sourceSignals: [`${behaviorEvents.filter((event) => event.type === 'report_interest').length} report-interest clicks`, `${quality.started} started sessions`],
+      ownerAgent: 'Training and Course Scout',
+    },
+    {
+      id: `${runId}:news:watch`,
+      kind: 'news',
+      title: 'Prepare AI Watch brief candidates',
+      summary: 'Draft role-relevant briefs for agents, multimodal media, RAG, benchmarks, governance, ROI, and human-AI collaboration.',
+      rationale: 'AI Watch should keep assessment content aligned with market shifts while preserving source review and publish approval.',
+      status: 'pending',
+      sourceSignals: [`${recentProfileTags.length} profile interests`, `${behaviorEvents.length} behavior events`],
+      ownerAgent: 'AI Newsfeed Agent',
+    },
+  ];
+  const activityLog: AgentActivity[] = [
+    {
+      step: 1,
+      agent: 'Orchestrator',
+      status: 'running',
+      activity: 'Opened a supervised local run and loaded telemetry, profile snapshots, feedback, and artifact counts.',
+      output: `${behaviorEvents.length} behavior events, ${feedback.length} feedback surveys, ${profileSignals.length} profile snapshots loaded.`,
+    },
+    {
+      step: 2,
+      agent: 'Reviewer and QA Agent',
+      status: 'review',
+      activity: 'Ranked question and artifact candidates by confusion, duration, feedback quality, and evidence risk.',
+      output: confusingQuestion ? `${confusingQuestion.questionId} is the top review candidate.` : 'No high-volume question candidate yet; generated coverage-gap task.',
+    },
+    {
+      step: 3,
+      agent: 'Assessment Item Generator',
+      status: 'review',
+      activity: 'Created draft tasks for better item discrimination and practical formats.',
+      output: 'Drafts stay pending until an admin approves or rejects them.',
+    },
+    {
+      step: 4,
+      agent: 'AI Concepts Scout',
+      status: 'review',
+      activity: 'Mapped profile tags and trend interests into ontology-review candidates.',
+      output: recentProfileTags.length ? `${recentProfileTags.length} profile tags included.` : 'No strong profile cluster available yet.',
+    },
+    {
+      step: 5,
+      agent: 'Orchestrator',
+      status: 'complete',
+      activity: 'Closed the run in review state with publish protection enabled.',
+      output: `${drafts.length} draft proposals created; 0 published automatically.`,
+    },
+  ];
+  return {
+    id: runId,
+    createdAt: new Date().toISOString(),
+    status: 'review',
+    headline: 'Supervised agent run ready for admin review',
+    summary: `Generated ${drafts.length} reviewable proposals from ${behaviorEvents.length} behavior events, ${feedback.length} surveys, ${profileSignals.length} profile snapshots, ${itemCount} items, and ${artifactItemCount} artifact-backed items.`,
+    activityLog,
+    drafts,
+    safetyEvents: [
+      'Publish protection enabled: no scored item, profile field, survey, artifact, course, or news brief changes without approval.',
+      'Drafts preserve source signals so admins can see why each proposal exists.',
+      'Rejected drafts remain in the run history to prevent repeated low-quality loops.',
+    ],
+  };
+}
+
 const fullStackDeveloperReport: DeveloperReportDemo = {
   profile: 'Full-stack developer',
   generatedAt: '2026-09-01',
@@ -7835,6 +8070,7 @@ const behaviorLogStorageKey = 'new-horizon-behavior-log-v1';
 const assessmentFeedbackStorageKey = 'new-horizon-assessment-feedback-v1';
 const authProfileStorageKey = 'new-horizon-auth-profile-v1';
 const profilePulseStorageKey = 'new-horizon-profile-pulse-v1';
+const supervisedAgentRunsStorageKey = 'new-horizon-supervised-agent-runs-v1';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 
@@ -8055,6 +8291,17 @@ function parseScoreLog(raw: string | null): ScoreLogEntry[] {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
     return parsed.filter((entry): entry is ScoreLogEntry => Boolean(entry?.id && entry?.groupKey && entry?.scores));
+  } catch {
+    return [];
+  }
+}
+
+function parseSupervisedAgentRuns(raw: string | null): SupervisedAgentRun[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((entry): entry is SupervisedAgentRun => Boolean(entry?.id && entry?.drafts && entry?.activityLog));
   } catch {
     return [];
   }
@@ -8677,6 +8924,31 @@ function getProfileTargetCompetencyIds(profileTags: string[], functionTrack: Fun
       : []),
   ];
   return [...new Set(targets)].slice(0, 10);
+}
+
+function getPersonalizedDidYouKnow(
+  profileTags: string[],
+  weakestDomains: DomainId[],
+  functionTrack: FunctionTrack,
+  executiveRole: ExecutiveRole,
+  fallbackIndex = 0,
+) {
+  const profileText = [functionTrack, executiveRole, ...profileTags].join(' ').toLowerCase();
+  const profileTargets = getProfileTargetCompetencyIds(profileTags, functionTrack, executiveRole);
+  const scored = didYouKnowInsights.map((insight, index) => {
+    let score = didYouKnowInsights.length - index + fallbackIndex;
+    if (insight.competencyIds.some((id) => profileTargets.includes(id))) score += 40;
+    if (weakestDomains.includes(insight.domain)) score += 24;
+    if (/agent|automation|workflow|tool|connector|mcp/.test(profileText) && insight.id === 'dyk-agent-guardrails') score += 36;
+    if (/content|creator|creative|campaign|copy|seo|image|video|media|canva|adobe|firefly|midjourney|synthetic/.test(profileText) && insight.id === 'dyk-media-provenance') score += 36;
+    if (/rag|context|source|knowledge|document|file|citation/.test(profileText) && insight.id === 'dyk-rag-context') score += 36;
+    if (/benchmark|model|eval|leaderboard|capability/.test(profileText) && insight.id === 'dyk-benchmark-literacy') score += 36;
+    if (/governance|risk|privacy|policy|compliance|audit|board/.test(profileText) && insight.id === 'dyk-governance-gap') score += 36;
+    if (/roi|value|finance|budget|strategy|portfolio/.test(profileText) && insight.id === 'dyk-roi-reimagination') score += 36;
+    if (/people|hr|learning|training|change|manager|team/.test(profileText) && insight.id === 'dyk-human-agency') score += 36;
+    return { insight, score };
+  });
+  return scored.sort((left, right) => right.score - left.score)[0].insight;
 }
 
 function toCompetencyScoreMap(competencies: ReturnType<typeof getCompetencyScores>) {
@@ -9813,6 +10085,9 @@ export default function Home() {
   const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>(() => (
     parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey))
   ));
+  const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>(() => (
+    parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
+  ));
   const [feedbackDraft, setFeedbackDraft] = useState<Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'>>({
     clarity: 'clear',
     difficultyFit: 'right',
@@ -9900,6 +10175,19 @@ export default function Home() {
     }, []);
   }, []);
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
+  const latestSupervisedAgentRun = supervisedAgentRuns[0] ?? null;
+  const pendingAgentDraftCount = supervisedAgentRuns.reduce(
+    (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'pending').length,
+    0,
+  );
+  const approvedAgentDraftCount = supervisedAgentRuns.reduce(
+    (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'approved').length,
+    0,
+  );
+  const rejectedAgentDraftCount = supervisedAgentRuns.reduce(
+    (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'rejected').length,
+    0,
+  );
   const userProfileTags = useMemo(() => userProfileSurvey?.tags ?? [], [userProfileSurvey]);
   const coveragePlan = useMemo(
     () => getCompetencyCoverage(competencyScores, mode, audience, functionTrack, industryTrack, executiveRole),
@@ -9996,6 +10284,17 @@ export default function Home() {
       .filter((item) => focusDomains.has(item.domain as DomainId) || userProfileTags.join(' ').toLowerCase().includes(item.category.toLowerCase()))
       .slice(0, 4);
   }, [results.weakest, userProfileTags]);
+  const personalizedDidYouKnow = useMemo(
+    () => getPersonalizedDidYouKnow(userProfileTags, results.weakest, functionTrack, executiveRole, answers.length),
+    [answers.length, executiveRole, functionTrack, results.weakest, userProfileTags],
+  );
+  const secondaryDidYouKnow = useMemo(
+    () => didYouKnowInsights
+      .filter((insight) => insight.id !== personalizedDidYouKnow.id)
+      .filter((insight) => results.weakest.includes(insight.domain) || insight.competencyIds.some((id) => profileTargetCompetencyIds.includes(id)))
+      .slice(0, 2),
+    [personalizedDidYouKnow.id, profileTargetCompetencyIds, results.weakest],
+  );
   const showContinuationPanel = mode !== 'practice'
     && !continuationFocus
     && assessmentTargetTotal === modeConfig[mode].totalQuestions
@@ -10201,6 +10500,43 @@ export default function Home() {
 
   function runAgentWorkflowSimulation() {
     setAgentWorkflowReport(getAgentWorkflowReport(liveItemCount, artifactItemCount, simulatedSignalCount));
+  }
+
+  function runSupervisedAgentJobs() {
+    const nextRun = getSupervisedAgentRun(liveItemCount, artifactItemCount, behaviorLog, assessmentFeedback, profileSignalLog);
+    setSupervisedAgentRuns((existing) => {
+      const next = [nextRun, ...existing].slice(0, 25);
+      writeLocalStorage(supervisedAgentRunsStorageKey, JSON.stringify(next));
+      return next;
+    });
+    setAgentWorkflowReport(getAgentWorkflowReport(liveItemCount, artifactItemCount, simulatedSignalCount));
+  }
+
+  function updateAgentDraftStatus(runId: string, draftId: string, status: AgentDraftStatus) {
+    setSupervisedAgentRuns((existing) => {
+      const next = existing.map((run) => {
+        if (run.id !== runId) return run;
+        const drafts = run.drafts.map((draft) => (draft.id === draftId ? { ...draft, status } : draft));
+        const hasPending = drafts.some((draft) => draft.status === 'pending');
+        return {
+          ...run,
+          status: hasPending ? 'review' : 'complete',
+          drafts,
+          activityLog: [
+            ...run.activityLog,
+            {
+              step: run.activityLog.length + 1,
+              agent: 'Admin reviewer',
+              status: status === 'approved' ? 'complete' : status === 'rejected' ? 'blocked' : 'review',
+              activity: `${status === 'approved' ? 'Approved' : status === 'rejected' ? 'Rejected' : 'Reopened'} draft proposal.`,
+              output: drafts.find((draft) => draft.id === draftId)?.title ?? draftId,
+            },
+          ],
+        };
+      });
+      writeLocalStorage(supervisedAgentRunsStorageKey, JSON.stringify(next));
+      return next;
+    });
   }
 
   function startAssessment(nextMode: AssessmentMode, targetCompetencyIds = profileTargetCompetencyIds) {
@@ -10586,6 +10922,29 @@ export default function Home() {
     appendBehaviorEvent({ type: 'report_interest', reportArea: area, label: `${domain}: ${domains[domain].name}`, domain });
   }
 
+  function followDidYouKnow(insight: DidYouKnowInsight) {
+    appendBehaviorEvent({
+      type: 'report_interest',
+      reportArea: 'coverage',
+      label: `Did you know: ${insight.topic}`,
+      domain: insight.domain,
+      competencyIds: insight.competencyIds,
+    });
+    if (insight.learnAction === 'news') {
+      setStep('news');
+      return;
+    }
+    if (insight.learnAction === 'labs') {
+      showHomeSection('labs');
+      return;
+    }
+    if (insight.learnAction === 'premium') {
+      setStep('premiumOnboarding');
+      return;
+    }
+    setStep('onboarding');
+  }
+
   function submitPartAnswers() {
     const result = scoreParts(current, partSelections);
     submitAnswer(
@@ -10778,6 +11137,31 @@ export default function Home() {
             <div><strong>{multiPartItemCount}</strong><span>multi-part clusters</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>{interactionCount}</strong><span>question formats</span></div>
+          </section>
+
+          <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
+            <article className="did-you-know-card featured">
+              <div>
+                <p className="eyebrow">Did you know?</p>
+                <span>{personalizedDidYouKnow.domain} · {personalizedDidYouKnow.topic}</span>
+                <h2 id="did-you-know-title">{personalizedDidYouKnow.fact}</h2>
+                <p>{personalizedDidYouKnow.whyItMatters}</p>
+              </div>
+              <div className="did-you-know-actions">
+                <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
+                <button className="secondary dark" type="button" onClick={() => openProfileSurvey('free')}>Tune topics</button>
+              </div>
+            </article>
+            <div className="did-you-know-grid">
+              {(secondaryDidYouKnow.length ? secondaryDidYouKnow : didYouKnowInsights.filter((insight) => insight.id !== personalizedDidYouKnow.id).slice(0, 2)).map((insight) => (
+                <article key={insight.id} className="did-you-know-card compact">
+                  <span>{insight.domain} · {insight.topic}</span>
+                  <strong>{insight.fact}</strong>
+                  <p>{insight.whyItMatters}</p>
+                  <button className="text-button" type="button" onClick={() => followDidYouKnow(insight)}>Learn more</button>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="section peer-board-section" aria-labelledby="peer-board-title">
@@ -11113,6 +11497,17 @@ export default function Home() {
               </div>
             </article>
 
+            <article className="dashboard-card did-you-know-dashboard">
+              <span>Did you know?</span>
+              <h2>{personalizedDidYouKnow.topic}</h2>
+              <p>{personalizedDidYouKnow.fact}</p>
+              <small>{personalizedDidYouKnow.whyItMatters}</small>
+              <div className="dashboard-card-actions">
+                <button className="secondary dark" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
+                <button className="text-button" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Retune profile</button>
+              </div>
+            </article>
+
             <article className="dashboard-card learning-overview">
               <span>Learning path</span>
               <h2>Recommended courses</h2>
@@ -11213,10 +11608,68 @@ export default function Home() {
                   <div className="admin-card-heading">
                     <div>
                       <span>Agent operations</span>
-                      <h2>Supervised workflow simulation</h2>
+                      <h2>Supervised agent jobs</h2>
                     </div>
-                    <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>Run simulation</button>
+                    <div className="admin-action-row">
+                      <button className="primary" type="button" onClick={runSupervisedAgentJobs}>Run supervised jobs</button>
+                      <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>Run simulation only</button>
+                    </div>
                   </div>
+                  <div className="admin-kpi-grid compact-kpis agent-review-kpis">
+                    <div><span>Runs</span><strong>{supervisedAgentRuns.length}</strong><small>persisted local runs</small></div>
+                    <div><span>Pending</span><strong>{pendingAgentDraftCount}</strong><small>drafts needing review</small></div>
+                    <div><span>Approved</span><strong>{approvedAgentDraftCount}</strong><small>accepted proposals</small></div>
+                    <div><span>Rejected</span><strong>{rejectedAgentDraftCount}</strong><small>blocked proposals</small></div>
+                  </div>
+                  {latestSupervisedAgentRun && (
+                    <div className="supervised-run-panel">
+                      <div className="report-heading">
+                        <div>
+                          <p className="eyebrow">Latest supervised run</p>
+                          <h3>{latestSupervisedAgentRun.headline}</h3>
+                          <p>{latestSupervisedAgentRun.summary}</p>
+                          <small>{latestSupervisedAgentRun.id} · {new Date(latestSupervisedAgentRun.createdAt).toLocaleString()}</small>
+                        </div>
+                        <span>{latestSupervisedAgentRun.status}</span>
+                      </div>
+                      <div className="agent-draft-grid">
+                        {latestSupervisedAgentRun.drafts.map((draft) => (
+                          <article key={draft.id} className={`agent-draft-card ${draft.status}`}>
+                            <div>
+                              <span>{draft.kind} · {draft.ownerAgent}</span>
+                              <h4>{draft.title}</h4>
+                              <p>{draft.summary}</p>
+                              <small>{draft.rationale}</small>
+                            </div>
+                            <div className="source-signal-list">
+                              {draft.sourceSignals.map((signal) => <b key={signal}>{signal}</b>)}
+                            </div>
+                            <div className="draft-review-actions">
+                              <button
+                                className="secondary dark"
+                                type="button"
+                                disabled={draft.status === 'approved'}
+                                onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'approved')}
+                              >
+                                Approve
+                              </button>
+                              <button
+                                className="secondary dark"
+                                type="button"
+                                disabled={draft.status === 'rejected'}
+                                onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'rejected')}
+                              >
+                                Reject
+                              </button>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                      <div className="agent-list">
+                        {latestSupervisedAgentRun.safetyEvents.map((event) => <p key={event}>{event}</p>)}
+                      </div>
+                    </div>
+                  )}
                   {agentWorkflowReport ? (
                     <div className="agent-report">
                       <div className="agent-report-hero">
@@ -12261,6 +12714,18 @@ export default function Home() {
                 <p><strong>Your score</strong> A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.</p>
                 <p><strong>Group average</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
+              </div>
+            </article>
+            <article className="result-card wide did-you-know-report">
+              <div>
+                <p className="eyebrow">Did you know?</p>
+                <h2>{personalizedDidYouKnow.topic}</h2>
+                <p>{personalizedDidYouKnow.fact}</p>
+                <small>{personalizedDidYouKnow.whyItMatters}</small>
+              </div>
+              <div className="did-you-know-actions">
+                <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
+                <button className="secondary dark" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Improve personalization</button>
               </div>
             </article>
             {showContinuationPanel && (

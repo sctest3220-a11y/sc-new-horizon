@@ -158,6 +158,23 @@ nav button:hover {
   color: #fff;
 }
 
+.text-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  display: inline-flex;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  justify-content: flex-start;
+  min-height: 34px;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(29, 138, 132, 0.42);
+  text-underline-offset: 4px;
+}
+
 .hero {
   align-items: center;
   display: grid;
@@ -375,6 +392,82 @@ h3 {
 
 .stats span {
   color: var(--muted);
+}
+
+.did-you-know-section {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 16px;
+}
+
+.did-you-know-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(216, 214, 202, 0.92);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(23, 32, 29, 0.08);
+  display: grid;
+  gap: 12px;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.did-you-know-card.featured {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(237, 247, 246, 0.9), rgba(255, 248, 231, 0.72)),
+    #fff;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.3fr);
+}
+
+.did-you-know-card > span,
+.did-you-know-card div > span {
+  color: var(--teal);
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.did-you-know-card h2 {
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  max-width: 920px;
+}
+
+.did-you-know-card strong {
+  color: var(--ink);
+  display: block;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.did-you-know-card p,
+.did-you-know-card small {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.did-you-know-actions,
+.dashboard-card-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.did-you-know-actions {
+  align-content: center;
+}
+
+.did-you-know-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.did-you-know-card.compact {
+  box-shadow: none;
+  min-height: 100%;
 }
 
 .peer-board-section {
@@ -1066,13 +1159,41 @@ h3 {
 .profile-overview,
 .progress-overview,
 .learning-overview,
-.news-overview {
+.news-overview,
+.did-you-know-dashboard {
   grid-column: span 3;
 }
 
 .radar-overview,
 .recommendation-overview {
   grid-column: 1 / -1;
+}
+
+.did-you-know-dashboard {
+  background:
+    linear-gradient(140deg, rgba(255, 248, 231, 0.66), rgba(237, 247, 246, 0.78)),
+    #fff;
+}
+
+.did-you-know-dashboard small,
+.did-you-know-report small {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.did-you-know-report {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(237, 247, 246, 0.82), rgba(255, 248, 231, 0.58)),
+    #fff;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.28fr);
+}
+
+.did-you-know-report h2 {
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.05;
 }
 
 .dashboard-stats {
@@ -1271,6 +1392,124 @@ h3 {
 .admin-card-heading > div {
   display: grid;
   gap: 8px;
+}
+
+.admin-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.agent-review-kpis {
+  margin: 8px 0;
+}
+
+.supervised-run-panel {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.supervised-run-panel .report-heading {
+  align-items: start;
+}
+
+.supervised-run-panel h3 {
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.supervised-run-panel p,
+.supervised-run-panel small {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.supervised-run-panel .report-heading > span {
+  background: #8a5a16;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 7px 10px;
+  text-transform: uppercase;
+}
+
+.agent-draft-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agent-draft-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 5px solid #8a5a16;
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.agent-draft-card.approved {
+  border-left-color: #2f6f45;
+}
+
+.agent-draft-card.rejected {
+  border-left-color: #a13d2d;
+}
+
+.agent-draft-card span {
+  color: var(--teal);
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.agent-draft-card h4 {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.agent-draft-card p,
+.agent-draft-card small {
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.source-signal-list,
+.draft-review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.source-signal-list b {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 12px;
+  padding: 7px 9px;
+}
+
+.draft-review-actions button:disabled {
+  cursor: default;
+  opacity: 0.48;
 }
 
 .agent-report {
@@ -4672,6 +4911,8 @@ h3 {
   .admin-hero,
   .admin-grid,
   .peer-board-grid,
+  .did-you-know-card.featured,
+  .did-you-know-report,
   .news-hero,
   .news-layout,
   .two-column,
@@ -4690,6 +4931,7 @@ h3 {
   .lab-workbench,
   .agent-status-grid,
   .agent-report-columns,
+  .agent-draft-grid,
   .dashboard-stats,
   .email-auth-row,
   .admin-domain-bars div,
@@ -4701,6 +4943,7 @@ h3 {
   .progress-overview,
   .learning-overview,
   .news-overview,
+  .did-you-know-dashboard,
   .admin-card {
     grid-column: 1 / -1;
   }
@@ -4744,6 +4987,7 @@ h3 {
   }
 
   .feedback-survey-grid,
+  .did-you-know-grid,
   .peer-insight-grid,
   .period-toggle,
   .profile-pulse-actions,
