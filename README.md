@@ -29,6 +29,8 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Latest Change Report
 
+Latest artifact update: flood and disaster-misinformation questions now use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
+
 Latest synced update: `175e1b3 Improve assessment continuation recommendation`.
 
 The assessment now makes the optional continuation route much more visible. At the end of the last mandatory question, users see a large recommendation block before they move to the report. The same recommendation also appears near the top of the test report, immediately after score interpretation, so users understand that the first result is a snapshot and can choose whether to collect stronger evidence.

@@ -1,5 +1,17 @@
 # Latest Changes
 
+## 2026-09-08: Flood and Media Artifact Upgrade
+
+The flood/disaster misinformation items no longer rely on one repeated image. The assessment now uses three distinct artifact contexts:
+
+- A realistic social post showing flooding near a transit station.
+- A forwarded chat screenshot with vague same-day flood claims.
+- A claim-review dashboard comparing a viral post against weather, traffic-camera, alert, and source-history evidence.
+
+Several mismatched placeholder references were corrected as well. CEO or celebrity endorsement questions now use endorsement/listing artifacts instead of unrelated flood imagery.
+
+This improves artifact variety, realism, and relevance while preserving the intended skill: users must check provenance, date, location, source chain, and official evidence before sharing or acting.
+
 ## 2026-09-08: Supervised Agent Jobs and Personalized Knowledge Prompts
 
 The Admin Agent Ops area now has a persisted supervised job loop instead of only a static simulation. Admins can run local agent jobs that read telemetry, assessment feedback, profile snapshots, item counts, and artifact counts, then create draft proposals for:
