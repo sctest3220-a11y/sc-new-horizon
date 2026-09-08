@@ -8,6 +8,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
+- Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
@@ -29,7 +30,13 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Latest Change Report
 
-Latest artifact update: flood and disaster-misinformation questions now use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
+Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
+
+Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
+
+Latest evidence-completion update: after the standard 12-question or 20-question milestone, users can continue in targeted batches until planned and profile-priority competencies have high-confidence evidence or the safety cap is reached. This makes the full assessment more adaptive than a fixed-length quiz while still keeping a clear stopping rule.
+
+Latest telemetry/agent-review update: reports now show what telemetry is collected, why it matters, and what should improve next. Admin Agent Ops now emphasizes survey and trend analysis before edits; agents produce evidence-backed suggestions, and a human reviewer remains responsible for approving changes to scored questions, artifacts, profile fields, surveys, or learning recommendations.
 
 Latest synced update: `175e1b3 Improve assessment continuation recommendation`.
 

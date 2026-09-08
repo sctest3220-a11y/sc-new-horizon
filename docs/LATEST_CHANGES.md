@@ -1,5 +1,27 @@
 # Latest Changes
 
+## 2026-09-08: Artifact Reader, Evidence Completion, and Telemetry Review
+
+The assessment now includes a full-size artifact reader for every image/SVG/PNG stimulus. Users can open dense artifacts in a modal, zoom to 1x, 1.5x, or 2x, and open the source file in a new tab. Artifact-reader actions are logged with question id, domain, competency, difficulty, artifact path, action type, and zoom level, so admins can identify which diagrams or text-heavy screenshots are hard to read.
+
+The fixed 12-question and 20-question routes now act as milestones, not hard endpoints. After the normal route is complete, users can continue into an evidence-completion route that targets relevant competencies until planned/profile-priority areas have high-confidence evidence or the safety cap is reached.
+
+The result report now explains what telemetry is collected and how it is used:
+
+- Answered-question records with selected answer, expected answer/rubric, domain, competency, difficulty, and adjusted score.
+- Per-question time, interactions, revisions, and hesitation classification.
+- Artifact open, zoom, and external-file actions.
+- Abandonment, mandatory completion, optional continuation, and report-interest clicks.
+- Feedback survey results for clarity, difficulty, artifact quality, length, and suggestions.
+
+Admin now has a human review gate for agent improvements. Agents should analyze survey feedback, behavior trends, artifact legibility patterns, competency coverage, and cohort signals before suggesting edits. A human reviewer still approves, rejects, or rewrites proposals before scored items, artifacts, profile fields, or surveys change.
+
+New realistic artifacts were also added for:
+
+- Scheduling email and calendar review.
+- Customer support ticket with duplicate-charge evidence and weak AI draft.
+- Refund-agent workflow builder with missing approval gate, partial audit log, and missing rollback owner.
+
 ## 2026-09-08: Flood and Media Artifact Upgrade
 
 The flood/disaster misinformation items no longer rely on one repeated image. The assessment now uses three distinct artifact contexts:

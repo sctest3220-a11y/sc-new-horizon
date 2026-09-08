@@ -230,7 +230,7 @@ type AssessmentBehaviorEvent = {
   createdAt: string;
   profileId: string;
   sessionId: string;
-  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted';
+  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted' | 'artifact_opened' | 'artifact_zoomed' | 'artifact_external_opened';
   mode: AssessmentMode;
   audience?: Audience;
   functionTrack?: FunctionTrack;
@@ -255,6 +255,9 @@ type AssessmentBehaviorEvent = {
   selectedOptionId?: string;
   selectedAnswer?: string;
   correctOptionIds?: string[];
+  artifactSrc?: string;
+  artifactAction?: 'reader' | 'zoom' | 'external';
+  zoomLevel?: number;
 };
 type ScoreLogEntry = {
   id: string;
@@ -1963,8 +1966,8 @@ const generalRelianceQuestions: Question[] = [
       points: ['Email: Can Tuesday 2 PM work?', 'Calendar: open', 'Need: polite reply', 'Risk: low'],
     },
     stimulus: {
-      src: '/stimuli/scheduling-email.svg',
-      alt: 'Email request and calendar availability screenshot for a low-risk AI drafting decision.',
+      src: '/stimuli/realistic-scheduling-email.png',
+      alt: 'Realistic email and calendar screenshot with a client scheduling request, weak AI draft, and missing prompt details.',
       label: 'Email and calendar artifact',
       caption: 'Use the email and calendar evidence to decide how much of the reply can be delegated.',
     },
@@ -2960,7 +2963,7 @@ const competencyDepthQuestionBank: Question[] = [
     competencyIds: ['D2-prompting'],
     skillIds: ['prompt basics', 'role', 'format', 'constraints'],
     evidenceMode: 'knowing',
-    stimulus: { src: '/stimuli/scheduling-email.svg', alt: 'Scheduling email and rough prompt with missing constraints', label: 'Prompt checklist', caption: 'A weak prompt misses audience, constraints, and output format.' },
+    stimulus: { src: '/stimuli/realistic-scheduling-email.png', alt: 'Realistic email client and calendar artifact showing a weak scheduling prompt with missing constraints.', label: 'Prompt checklist', caption: 'A weak prompt misses audience, constraints, timezone, and output format.' },
     context: 'A user writes: “Make this email better.”',
     prompt: 'Which missing detail would most improve the prompt?',
     options: [
@@ -3040,8 +3043,8 @@ const competencyDepthQuestionBank: Question[] = [
     skillIds: ['agent setup', 'handoffs', 'review checkpoints', 'tool selection'],
     evidenceMode: 'doing',
     functionTracks: ['operations', 'customerService', 'sales'],
-    stimulus: { src: '/stimuli/raw-agent-workflow-plan.svg', alt: 'Agent workflow plan with tool access, approvals, logs, and rollout criteria', label: 'Agent workflow setup', caption: 'The workflow needs tool boundaries and review checkpoints before use.' },
-    context: 'An AI agent will summarize tickets and create follow-up tasks.',
+    stimulus: { src: '/stimuli/realistic-agent-workflow-builder.png', alt: 'Workflow builder screenshot showing a refund-response agent with broad permissions, missing approval gate, partial audit log, and no rollback owner.', label: 'Agent workflow setup', caption: 'The workflow needs tool boundaries, approval gates, audit logs, and rollback ownership before use.' },
+    context: 'An AI agent will summarize support tickets, draft emails, update CRM records, and create refund requests.',
     prompt: 'Which setup details are required?',
     correctOptionIds: ['tools', 'handoff', 'review', 'measure'],
     options: [
@@ -3444,7 +3447,7 @@ const competencyDepthQuestionBank: Question[] = [
     competencyIds: ['D6-collaboration'],
     skillIds: ['role clarity', 'human ownership'],
     evidenceMode: 'knowing',
-    stimulus: { src: '/stimuli/raw-support-ticket-thread.svg', alt: 'Support ticket with AI draft and human review note', label: 'AI draft review', caption: 'The user must identify who owns the final customer message.' },
+    stimulus: { src: '/stimuli/realistic-support-ticket-ai-draft.png', alt: 'Customer support console showing duplicate-charge evidence, SLA warning, policy notes, reviewer notes, and a weak AI draft response.', label: 'AI draft review', caption: 'The user must identify who owns the final customer message.' },
     context: 'AI drafts a reply for a sensitive customer complaint.',
     prompt: 'Who owns the final message?',
     options: [
@@ -3811,7 +3814,7 @@ const competencyDepthQuestionBank: Question[] = [
     competencyIds: ['D2-workflows', 'D6-collaboration'],
     skillIds: ['workflow mapping', 'handoffs', 'role clarity', 'review routine'],
     evidenceMode: 'doing',
-    stimulus: { src: '/stimuli/raw-support-ticket-thread.svg', alt: 'Support ticket thread with AI draft, payment evidence, policy note, and review comments', label: 'Support workflow redesign', caption: 'The item asks users to sequence a human-AI workflow, not just choose a reply.' },
+    stimulus: { src: '/stimuli/realistic-support-ticket-ai-draft.png', alt: 'Customer support console showing duplicate-charge evidence, SLA warning, policy notes, reviewer notes, and a weak AI draft response.', label: 'Support workflow redesign', caption: 'The item asks users to sequence a human-AI workflow, not just choose a reply.' },
     context: 'A support team wants AI to help with duplicate-charge tickets while preserving reviewer learning.',
     prompt: 'Order the workflow steps.',
     rankItems: [
@@ -4593,8 +4596,8 @@ const questionBank: Question[] = [
     skillIds: ['role clarity', 'review routines', 'challenge culture', 'learning ownership'],
     evidenceMode: 'doing',
     stimulus: {
-      src: '/stimuli/raw-support-ticket-thread.svg',
-      alt: 'Support thread showing AI draft, human override, customer risk note, and review comments',
+      src: '/stimuli/realistic-support-ticket-ai-draft.png',
+      alt: 'Customer support console showing duplicate-charge evidence, SLA warning, policy notes, reviewer notes, and a weak AI draft response.',
       label: 'Human-AI support review',
       caption: 'The team needs clear collaboration rules for AI drafts and human review.',
     },
@@ -5845,8 +5848,8 @@ const questionBank: Question[] = [
     interaction: 'single',
     context: 'A team wants to scale an AI support pilot because average handling time improved, but the raw ticket review shows quality risks in refund cases.',
     stimulus: {
-      src: '/stimuli/raw-support-ticket-thread.svg',
-      alt: 'Raw support ticket thread with duplicate payment evidence, policy exception, and flawed AI denial draft.',
+      src: '/stimuli/realistic-support-ticket-ai-draft.png',
+      alt: 'Customer support console showing duplicate-charge evidence, SLA warning, policy notes, reviewer notes, and a weak AI draft response.',
       label: 'Raw support evidence',
       caption: 'Inspect the operational evidence before deciding whether the pilot is ready to scale.',
     },
@@ -6210,8 +6213,8 @@ const questionBank: Question[] = [
     functionTracks: ['general', 'operations', 'technical', 'people', 'finance'],
     context: 'A team wants an AI agent to handle low-value refund requests, draft customer messages, and update CRM records.',
     stimulus: {
-      src: '/stimuli/raw-agent-workflow-plan.svg',
-      alt: 'Raw agent workflow plan showing customer refund intake, drafting, automatic action, notification, permissions, gates, and observed risks.',
+      src: '/stimuli/realistic-agent-workflow-builder.png',
+      alt: 'Workflow builder screenshot showing a refund-response agent with broad permissions, missing approval gate, partial audit log, and no rollback owner.',
       label: 'Agent workflow artifact',
       caption: 'Use the workflow plan to sequence a safe practical rollout.',
     },
@@ -6287,8 +6290,8 @@ const questionBank: Question[] = [
     functionTracks: ['operations', 'technical', 'finance'],
     context: 'Operations leaders are considering the refund agent shown in the workflow plan. Early demo results show faster handling but no verified customer-harm metric.',
     stimulus: {
-      src: '/stimuli/raw-agent-workflow-plan.svg',
-      alt: 'Agent workflow plan artifact with automatic refund action, broad CRM access, external email sends, weak gates, and missing rollback owner.',
+      src: '/stimuli/realistic-agent-workflow-builder.png',
+      alt: 'Workflow builder screenshot showing a refund-response agent with broad permissions, missing approval gate, partial audit log, and no rollback owner.',
       label: 'Agent value and risk review',
       caption: 'Use the raw workflow to recommend practical launch criteria.',
     },
@@ -7067,8 +7070,8 @@ const executiveQuestionBank: Question[] = [
     interaction: 'text',
     context: 'Operations leaders want to deploy AI-written customer replies, but the raw ticket shows the AI draft denied a valid duplicate-charge refund.',
     stimulus: {
-      src: '/stimuli/raw-support-ticket-thread.svg',
-      alt: 'Raw support ticket thread showing duplicate charge evidence and flawed AI denial draft.',
+      src: '/stimuli/realistic-support-ticket-ai-draft.png',
+      alt: 'Customer support console showing duplicate-charge evidence, SLA warning, policy notes, reviewer notes, and a weak AI draft response.',
       label: 'Raw service-quality artifact',
       caption: 'Inspect the customer case before writing the leadership response.',
     },
@@ -7314,8 +7317,8 @@ const executiveQuestionBank: Question[] = [
     functionTracks: ['operations', 'technical', 'finance'],
     context: 'The executive team is reviewing an agent workflow that can read customer records, issue small refunds, send messages, and update CRM.',
     stimulus: {
-      src: '/stimuli/raw-agent-workflow-plan.svg',
-      alt: 'Agent workflow plan showing customer refund automation, broad tool permissions, weak gates, observed risks, and missing rollback owner.',
+      src: '/stimuli/realistic-agent-workflow-builder.png',
+      alt: 'Workflow builder screenshot showing a refund-response agent with broad permissions, missing approval gate, partial audit log, and no rollback owner.',
       label: 'Executive agent workflow review',
       caption: 'Each mini-part tests a different executive readiness signal: tooling, governance, and value realization.',
     },
@@ -7923,6 +7926,7 @@ function getSupervisedAgentRun(
     drafts,
     safetyEvents: [
       'Publish protection enabled: no scored item, profile field, survey, artifact, course, or news brief changes without approval.',
+      'Survey feedback and behavior trends are analyzed before draft proposals can become platform edits.',
       'Drafts preserve source signals so admins can see why each proposal exists.',
       'Rejected drafts remain in the run history to prevent repeated low-quality loops.',
     ],
@@ -8881,6 +8885,71 @@ function getContinuationRecommendation({
   };
 }
 
+function getEvidenceCompletionReadout(coverage: CompetencyCoverage[], answerCount: number, maxQuestions: number) {
+  const targets = coverage
+    .filter((competency) => (competency.planned || competency.priority) && (competency.evidenceCount < 3 || competency.confidence !== 'high'))
+    .sort((left, right) => Number(right.priority) - Number(left.priority) || left.evidenceCount - right.evidenceCount || left.score - right.score)
+    .slice(0, 10);
+  const unsampled = targets.filter((competency) => competency.evidenceCount === 0).length;
+  const lowConfidence = targets.filter((competency) => competency.evidenceCount > 0 && competency.confidence !== 'high').length;
+  const remainingCapacity = Math.max(0, maxQuestions - answerCount);
+  const questionCount = Math.min(remainingCapacity, Math.max(4, Math.min(10, targets.length + Math.ceil(lowConfidence / 2))));
+  return {
+    complete: targets.length === 0,
+    targets,
+    targetIds: targets.map((competency) => competency.id),
+    unsampled,
+    lowConfidence,
+    questionCount,
+    remainingCapacity,
+    summary: targets.length
+      ? `${targets.length} relevant competenc${targets.length === 1 ? 'y still needs' : 'ies still need'} stronger evidence before the profile should be treated as high-confidence.`
+      : 'All planned and profile-priority competencies have high-confidence evidence for this route.',
+  };
+}
+
+function getTelemetryAnalysis(
+  behaviorEvents: AssessmentBehaviorEvent[],
+  answers: Answer[],
+  feedback: AssessmentFeedbackSurvey[],
+  coverage: CompetencyCoverage[],
+) {
+  const answeredEvents = behaviorEvents.filter((event) => event.type === 'question_answered');
+  const artifactEvents = behaviorEvents.filter((event) => event.type === 'artifact_opened' || event.type === 'artifact_zoomed' || event.type === 'artifact_external_opened');
+  const reportEvents = behaviorEvents.filter((event) => event.type === 'report_interest');
+  const confusingEvents = answeredEvents.filter((event) => event.hesitation === 'confusing' || event.hesitation === 'slow');
+  const averageDuration = answeredEvents.length ? getAverage(answeredEvents.map((event) => event.durationMs ?? 0)) : getAverage(answers.map((answer) => answer.behavior?.durationMs ?? 0));
+  const textAnswers = answers.filter((answer) => answer.textResponse?.trim()).length;
+  const artifactQuestions = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+  const highConfidenceRelevant = coverage.filter((competency) => (competency.planned || competency.priority) && competency.confidence === 'high').length;
+  const relevantTotal = coverage.filter((competency) => competency.planned || competency.priority).length;
+  const latestFeedback = feedback[0];
+  return {
+    trackedNow: [
+      `${answeredEvents.length || answers.length} answered-question records with selected answer, expected answer/rubric, domain, competency, difficulty, and adjusted score.`,
+      `${artifactEvents.length} artifact interaction events, including full-size opens, zoom use, and external file opens.`,
+      `${formatDuration(averageDuration)} average answer time across tracked question responses.`,
+      `${confusingEvents.length} slow/confusing answer events for item clarity and artifact-legibility review.`,
+      `${reportEvents.length} report-interest clicks showing which domains, competencies, courses, tools, continuation prompts, or did-you-know topics drew attention.`,
+      `${textAnswers} written responses and ${artifactQuestions} artifact-backed answered items in this run.`,
+    ],
+    resultUse: [
+      'Differentiate ability by correctness, difficulty-adjusted evidence, competency coverage, and confidence rather than raw score alone.',
+      'Find items where users are slow, revise repeatedly, open artifacts at high zoom, or answer incorrectly despite easy difficulty.',
+      'Detect whether users abandon, stop after mandatory questions, continue into deeper routes, or engage with report recommendations.',
+      `Estimate coverage strength: ${highConfidenceRelevant}/${relevantTotal || 1} relevant competencies currently have high-confidence evidence.`,
+    ],
+    improvements: [
+      'Track whether users open the full-size reader before answering correctly or incorrectly.',
+      'Track artifact zoom level by artifact path to identify screenshots, workflows, or diagrams that are too dense.',
+      'Add server-side cohort benchmarks for item difficulty, discrimination, median time, and confusion rate.',
+      'Ask a one-question post-item clarity pulse only after unusually long time or repeated answer changes.',
+      'Keep agent proposals in review: survey and trend analysis should produce suggestions first, then a human approves platform edits.',
+      latestFeedback ? `Latest survey signal: clarity ${latestFeedback.clarity}, difficulty ${latestFeedback.difficultyFit}, artifact quality ${latestFeedback.artifactQuality}.` : 'No feedback survey has been submitted in the current local log yet.',
+    ],
+  };
+}
+
 function getSurveyQuestionsForProfile(assessmentMode: AssessmentMode, audience: Audience, functionTrack: FunctionTrack, executiveRole: ExecutiveRole) {
   if (assessmentMode === 'executive') return executiveSurveyQuestions[executiveRole];
   if (assessmentMode === 'premium') return functionSurveyQuestions[functionTrack];
@@ -9720,17 +9789,70 @@ function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
   );
 }
 
-function StimulusFigure({ stimulus }: { stimulus: NonNullable<Question['stimulus']> }) {
+function StimulusFigure({
+  stimulus,
+  onArtifactAction,
+}: {
+  stimulus: NonNullable<Question['stimulus']>;
+  onArtifactAction?: (action: 'reader' | 'zoom' | 'external', zoomLevel?: number) => void;
+}) {
+  const [readerOpen, setReaderOpen] = useState(false);
+  const [zoom, setZoom] = useState(1.25);
+  function openReader() {
+    onArtifactAction?.('reader', zoom);
+    setReaderOpen(true);
+  }
+  function updateZoom(nextZoom: number) {
+    setZoom(nextZoom);
+    onArtifactAction?.('zoom', nextZoom);
+  }
+
   return (
-    <figure className="stimulus-card">
-      <div className="stimulus-label">{stimulus.label}</div>
-      <div className="stimulus-media">
-        {/* Preserve each SVG/PNG artifact's own aspect ratio instead of forcing a Next image size. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={stimulus.src} alt={stimulus.alt} loading="lazy" decoding="async" />
-      </div>
-      <figcaption>{stimulus.caption}</figcaption>
-    </figure>
+    <>
+      <figure className="stimulus-card">
+        <div className="stimulus-toolbar">
+          <div className="stimulus-label">{stimulus.label}</div>
+          <button type="button" className="secondary dark" onClick={openReader}>Read full size</button>
+        </div>
+        <button type="button" className="stimulus-media" onClick={openReader} aria-label={`Open ${stimulus.label} full size`}>
+          {/* Preserve each SVG/PNG artifact's own aspect ratio instead of forcing a Next image size. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={stimulus.src} alt={stimulus.alt} loading="lazy" decoding="async" />
+        </button>
+        <figcaption>{stimulus.caption}</figcaption>
+      </figure>
+      {readerOpen && (
+        <div className="artifact-reader-backdrop" role="presentation">
+          <section className="artifact-reader" role="dialog" aria-modal="true" aria-label={`${stimulus.label} full-size artifact`}>
+            <div className="artifact-reader-toolbar">
+              <div>
+                <span>Artifact reader</span>
+                <strong>{stimulus.label}</strong>
+              </div>
+              <div className="artifact-reader-actions">
+                {[1, 1.5, 2].map((nextZoom) => (
+                  <button
+                    key={nextZoom}
+                    type="button"
+                    className={zoom === nextZoom ? 'selected' : ''}
+                    onClick={() => updateZoom(nextZoom)}
+                  >
+                    {nextZoom}x
+                  </button>
+                ))}
+                <a className="secondary dark" href={stimulus.src} target="_blank" rel="noreferrer" onClick={() => onArtifactAction?.('external', zoom)}>Open file</a>
+                <button type="button" className="primary" onClick={() => setReaderOpen(false)}>Close</button>
+              </div>
+            </div>
+            <div className="artifact-reader-canvas">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={stimulus.src} alt={stimulus.alt} style={{ width: `${zoom * 100}%` }} />
+            </div>
+            <p>{stimulus.caption}</p>
+          </section>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -10242,6 +10364,18 @@ export default function Home() {
     selectedRadarDomain,
     userProfileTags,
   ]);
+  const evidenceCompletion = useMemo(
+    () => getEvidenceCompletionReadout(coveragePlan.coverage, answers.length, Math.min(60, allAssessmentItems.length)),
+    [answers.length, coveragePlan.coverage],
+  );
+  const showEvidenceCompletionPanel = mode !== 'practice'
+    && answers.length >= modeConfig[mode].totalQuestions
+    && !evidenceCompletion.complete
+    && evidenceCompletion.questionCount > 0;
+  const telemetryAnalysis = useMemo(
+    () => getTelemetryAnalysis(behaviorLog, answers, assessmentFeedback, coveragePlan.coverage),
+    [answers, assessmentFeedback, behaviorLog, coveragePlan.coverage],
+  );
   const previewDomainCompetencies = useMemo(
     () => getCompetenciesForDomain(selectedPreviewDomain),
     [selectedPreviewDomain],
@@ -10820,6 +10954,15 @@ export default function Home() {
     setStep('assessment');
   }
 
+  function continueEvidenceCompletion() {
+    if (!showEvidenceCompletionPanel) return;
+    continueAssessment({
+      kind: 'confidence',
+      label: 'Evidence completion route',
+      targetCompetencyIds: evidenceCompletion.targetIds,
+    }, evidenceCompletion.questionCount);
+  }
+
   function chooseOption(option: Option) {
     registerQuestionInteraction();
     submitAnswer(option);
@@ -10920,6 +11063,22 @@ export default function Home() {
   function selectReportDomain(domain: DomainId, area: AssessmentBehaviorEvent['reportArea'] = 'domain') {
     setSelectedRadarDomain(domain);
     appendBehaviorEvent({ type: 'report_interest', reportArea: area, label: `${domain}: ${domains[domain].name}`, domain });
+  }
+
+  function trackArtifactAction(question: Question, action: 'reader' | 'zoom' | 'external', zoomLevel?: number) {
+    appendBehaviorEvent({
+      type: action === 'reader' ? 'artifact_opened' : action === 'zoom' ? 'artifact_zoomed' : 'artifact_external_opened',
+      questionId: question.id,
+      domain: question.domain,
+      competencyIds: getQuestionMeasures(question).map((competency) => competency.id),
+      difficulty: question.difficulty,
+      interaction: question.interaction ?? 'single',
+      artifactSrc: question.stimulus?.src,
+      artifactAction: action,
+      zoomLevel,
+      answeredCount: answers.length,
+      targetCount: activeConfig.totalQuestions,
+    });
   }
 
   function followDidYouKnow(insight: DidYouKnowInsight) {
@@ -11760,6 +11919,44 @@ export default function Home() {
                   </div>
                 </article>
 
+                <article className="admin-card admin-wide telemetry-analysis-card">
+                  <div className="report-heading">
+                    <div>
+                      <p className="eyebrow">Human review gate</p>
+                      <h2>Analyze surveys and behavior before platform edits</h2>
+                    </div>
+                    <span>{pendingAgentDraftCount} pending drafts</span>
+                  </div>
+                  <p>
+                    Agents should use telemetry and survey trends to explain what should change, why it matters,
+                    and which users are affected. A human reviewer approves the next platform edit after seeing the evidence.
+                  </p>
+                  <div className="telemetry-grid">
+                    <div>
+                      <h3>Current signals</h3>
+                      {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
+                    </div>
+                    <div>
+                      <h3>Analysis questions</h3>
+                      {[
+                        'Which artifacts trigger zoom/open-file behavior and long answer time?',
+                        'Which questions look confusing because users revise often or answer slowly?',
+                        'Which competencies remain unsampled or low-confidence after 20 questions?',
+                        'Which survey comments point to unrealistic artifacts, unclear wording, or missing topics?',
+                      ].map((item) => <p key={item}>{item}</p>)}
+                    </div>
+                    <div>
+                      <h3>Human decision</h3>
+                      {[
+                        'Approve, reject, or rewrite each agent proposal.',
+                        'Version scored items so historical scores stay explainable.',
+                        'Review new artifacts for readability and relevance before release.',
+                        'Keep profile collection transparent and useful to the learner.',
+                      ].map((item) => <p key={item}>{item}</p>)}
+                    </div>
+                  </div>
+                </article>
+
                 <article className="admin-card admin-wide artifact-backlog">
                   <span>Artifact production</span>
                   <h2>Real-document replacement briefs</h2>
@@ -12317,7 +12514,7 @@ export default function Home() {
               {useRelianceStage && current.type === 'reliance-decision' && (
                 <div className="reliance-stage">
                   <div>
-                    {current.stimulus && <StimulusFigure stimulus={current.stimulus} />}
+                    {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
                     {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
@@ -12340,7 +12537,7 @@ export default function Home() {
               )}
               {!useRelianceStage && (
                 <>
-                  {current.stimulus && <StimulusFigure stimulus={current.stimulus} />}
+                  {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
                   {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
@@ -12598,6 +12795,28 @@ export default function Home() {
                   </div>
                 </div>
               )}
+              {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
+                <div className="continue-callout recommended">
+                  <p className="eyebrow">Evidence completion route</p>
+                  <h2>Keep going until relevant competencies are high-confidence</h2>
+                  <p>{evidenceCompletion.summary}</p>
+                  <div className="continue-reasons">
+                    <span>{evidenceCompletion.unsampled} relevant competencies still unsampled</span>
+                    <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
+                    <span>Maximum cap: {Math.min(60, allAssessmentItems.length)} total questions</span>
+                  </div>
+                  <div className="continue-targets">
+                    <strong>Next focus</strong>
+                    {evidenceCompletion.targets.slice(0, 5).map((competency) => <span key={competency.id}>{competency.label}</span>)}
+                  </div>
+                  <div className="continue-primary-actions">
+                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
+                      Add {evidenceCompletion.questionCount} evidence questions
+                    </button>
+                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
+                  </div>
+                </div>
+              )}
             </article>
             <aside className="adaptive-panel" aria-label="Next adaptive step">
               <div className={`movement-card ${difficultyMovement.tone}`}>
@@ -12666,6 +12885,18 @@ export default function Home() {
                     <span>{continuationTargets.confidenceIds.length} confidence targets</span>
                     <span>{continuationTargets.priorityGapIds.length} role-priority gaps</span>
                     <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
+                  </div>
+                </div>
+              )}
+              {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
+                <div className="adaptive-card continuation-inline">
+                  <span>Evidence completion</span>
+                  <strong>{evidenceCompletion.questionCount}</strong>
+                  <p>{evidenceCompletion.summary}</p>
+                  <div className="continuation-actions">
+                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
+                      Keep going
+                    </button>
                   </div>
                 </div>
               )}
@@ -12775,6 +13006,37 @@ export default function Home() {
                 </div>
               </article>
             )}
+            {showEvidenceCompletionPanel && (
+              <article className="result-card wide continuation-panel prominent recommended">
+                <div>
+                  <p className="eyebrow">Evidence completion</p>
+                  <h2>Continue beyond 20 until confidence is high</h2>
+                  <p>{evidenceCompletion.summary}</p>
+                  <div className="continue-reasons">
+                    <span>{evidenceCompletion.unsampled} relevant competencies unsampled</span>
+                    <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
+                    <span>{evidenceCompletion.remainingCapacity} question slots left before the safety cap</span>
+                  </div>
+                </div>
+                <div className="continuation-decision">
+                  <strong>Recommended if you want a fuller profile</strong>
+                  <p>The next batch targets planned and profile-priority competencies that still need repeated evidence.</p>
+                  <div className="continue-targets">
+                    {evidenceCompletion.targets.slice(0, 6).map((competency) => <span key={competency.id}>{competency.label}</span>)}
+                  </div>
+                  <div className="continuation-actions">
+                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
+                      Add {evidenceCompletion.questionCount} evidence questions
+                    </button>
+                  </div>
+                </div>
+                <div className="continuation-summary">
+                  <span>{coveragePlan.prioritySampled}/{coveragePlan.priorityTotal} priority sampled</span>
+                  <span>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal} planned sampled</span>
+                  <span>{coveragePlan.sampled}/24 total competencies sampled</span>
+                </div>
+              </article>
+            )}
             <article className="result-card wide leaderboard-card">
               <div className="report-heading">
                 <div>
@@ -12794,6 +13056,30 @@ export default function Home() {
                 )) : <p>Your completed run will establish this persona leaderboard.</p>}
               </div>
               <p className="context-line">MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.</p>
+            </article>
+            <article className="result-card wide telemetry-analysis-card">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Telemetry and result analysis</p>
+                  <h2>What the assessment tracks and why</h2>
+                </div>
+                <span>Local MVP log</span>
+              </div>
+              <div className="telemetry-grid">
+                <div>
+                  <h3>Currently tracked</h3>
+                  {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
+                </div>
+                <div>
+                  <h3>Used for analysis</h3>
+                  {telemetryAnalysis.resultUse.map((item) => <p key={item}>{item}</p>)}
+                </div>
+                <div>
+                  <h3>Improve next</h3>
+                  {telemetryAnalysis.improvements.map((item) => <p key={item}>{item}</p>)}
+                </div>
+              </div>
+              <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
             </article>
             <article className="result-card wide assessment-feedback-gate">
               <div className="report-heading">
