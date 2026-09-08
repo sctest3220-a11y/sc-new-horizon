@@ -179,6 +179,8 @@ The assessment separates answer quality from readiness evidence.
 - Easier items are capped below advanced readiness even when answered perfectly.
 - Harder items can award stronger readiness evidence, including meaningful credit for partially correct proficient or advanced work.
 - The final readiness label is evidence-gated: Advanced requires strong advanced-item evidence, and Proficient requires strong proficient-item evidence.
+- Blank or unattempted responses receive `0` raw score and `0` readiness evidence.
+- Correct answers are not automatically `100`; most expert-seeded top answers are `95` or `98` to leave room for calibration and more complete advanced evidence.
 
 Current seeded readiness bands:
 
@@ -190,6 +192,16 @@ Current seeded readiness bands:
 | Advanced | 82 | 100 |
 
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
+
+No-response handling:
+
+- Blank written response: `0`
+- Multi-select submitted with no choices: `0`
+- Matching submitted with no selected pairs: `0`
+- Unanswered mini-parts: `0` for each missing part
+- Partial credit begins only when the user submits actual scored evidence
+
+During test review, the platform shows a score explanation panel after each answer. It explains the raw answer score, the difficulty-adjusted readiness evidence, and the maximum evidence allowed by the item difficulty band.
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
 

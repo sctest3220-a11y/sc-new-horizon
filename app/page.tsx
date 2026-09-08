@@ -8669,9 +8669,25 @@ function getReadinessScore(rawScore: number, difficulty: Difficulty) {
 }
 
 function getReadinessScoreSummary(rawScore: number, difficulty: Difficulty) {
+  if (rawScore <= 0) return 'No response or no scored evidence becomes 0/100 readiness evidence.';
   const adjusted = getReadinessScore(rawScore, difficulty);
   const band = difficultyReadinessBands[difficulty];
   return `Rubric score ${rawScore}/100 on a ${difficultyLabels[difficulty].toLowerCase()} item becomes ${adjusted}/100 readiness evidence. This level can contribute between 0 and ${band.max}; harder items can earn higher readiness evidence, while easy items are capped below advanced readiness.`;
+}
+
+function getScoreExplanation(answer: Answer) {
+  const rawScore = answer.option.score;
+  const readinessScore = getReadinessScore(rawScore, answer.question.difficulty);
+  const band = difficultyReadinessBands[answer.question.difficulty];
+  const maxOptionScore = Math.max(...answer.question.options.map((option) => option.score), rawScore);
+  const isTopOption = rawScore === maxOptionScore && rawScore > 0;
+  return [
+    rawScore <= 0
+      ? 'Blank or unattempted responses receive 0 raw score and 0 readiness evidence.'
+      : `Raw answer score is ${rawScore}/100. ${isTopOption ? 'This is a top-scoring answer, but top answers are usually seeded as 95 or 98 rather than automatic 100.' : 'This reflects partial or incorrect evidence for this item.'}`,
+    `Difficulty adjustment converts this to ${readinessScore}/100 readiness evidence for ${difficultyLabels[answer.question.difficulty].toLowerCase()} difficulty.`,
+    `This difficulty band can contribute at most ${band.max}/100 readiness evidence, so easier correct answers cannot by themselves create an advanced result.`,
+  ];
 }
 
 function getEvidenceSignals(answers: Answer[]) {
@@ -9397,12 +9413,12 @@ function scoreParts(question: Question, selections: Record<string, string>) {
     return {
       partId: part.id,
       domain: part.domain,
-      score: selectedOption?.score ?? 15,
+      score: selectedOption?.score ?? 0,
     };
   });
   const score = partScores.length
     ? Math.round(partScores.reduce((sum, partScore) => sum + partScore.score, 0) / partScores.length)
-    : 15;
+    : 0;
   return { score, partScores };
 }
 
@@ -9411,7 +9427,7 @@ function scoreMultiSelect(question: Question, selected: string[]) {
   const selectedSet = new Set(selected);
   const correctSelected = correct.filter((id) => selectedSet.has(id)).length;
   const wrongSelected = selected.filter((id) => !correct.includes(id)).length;
-  if (!selected.length) return 15;
+  if (!selected.length) return 0;
   if (correctSelected === correct.length && wrongSelected === 0) return 98;
   const partial = Math.round((correctSelected / Math.max(correct.length, 1)) * 82);
   return Math.max(20, partial - wrongSelected * 18);
@@ -9427,6 +9443,7 @@ function scoreOrder(question: Question, order: string[]) {
 function scoreMatches(question: Question, selections: Record<string, string>) {
   const pairs = question.matchPairs ?? [];
   if (!pairs.length) return 60;
+  if (!Object.values(selections).some(Boolean)) return 0;
   const correct = pairs.filter((pair) => selections[pair.id] === pair.correct).length;
   return Math.max(20, Math.round((correct / pairs.length) * 98));
 }
@@ -9434,7 +9451,7 @@ function scoreMatches(question: Question, selections: Record<string, string>) {
 function scoreTextAnswer(question: Question, response: string) {
   const normalized = response.toLowerCase();
   const criteria = question.rubricCriteria ?? [];
-  if (!normalized.trim()) return { score: 10, hits: [] as RubricCriterion[] };
+  if (!normalized.trim()) return { score: 0, hits: [] as RubricCriterion[] };
   const hits = criteria.filter((criterion) => criterion.keywords.some((keyword) => normalized.includes(keyword)));
   const score = Math.min(98, Math.max(20, hits.reduce((sum, criterion) => sum + criterion.points, 0)));
   return { score, hits };
@@ -12871,6 +12888,10 @@ export default function Home() {
               <p className="eyebrow">Answer review</p>
               <h1>{lastAnswer.option.score}/100</h1>
               <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
+              <div className="score-explanation-panel" aria-label="Score explanation">
+                <span>Score explanation</span>
+                {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
+              </div>
               <div className="feedback-grid">
                 <div>
                   <span>Your answer</span>

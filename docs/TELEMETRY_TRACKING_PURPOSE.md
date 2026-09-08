@@ -72,6 +72,16 @@ Purpose:
 - calibrate partial credit over time
 - recommend targeted continuation questions
 
+Scoring rules to audit during testing:
+
+- Correct answers are not automatically `100`; many top options are seeded as `95` or `98`.
+- Blank written responses receive `0` raw score and `0` readiness evidence.
+- Multi-select submissions with no choices receive `0`.
+- Matching submissions with no selected pairs receive `0`.
+- Unanswered mini-parts receive `0` for each missing part.
+- Partial credit begins only when the user submits actual scored evidence.
+- The answer review shows a score explanation panel with raw score, readiness evidence, and the difficulty-band cap.
+
 ### Artifact Interaction Telemetry
 
 Artifact events store:

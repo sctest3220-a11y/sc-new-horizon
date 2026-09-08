@@ -99,6 +99,8 @@ Telemetry supports five product loops.
 
 The assessment separates raw correctness from readiness evidence. Easier items are capped below advanced readiness, while proficient and advanced items can produce stronger readiness evidence.
 
+Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Partial credit begins only when the user submits actual scored evidence.
+
 Telemetry helps estimate:
 
 - whether a score is based on enough evidence
