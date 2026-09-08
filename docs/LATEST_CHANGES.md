@@ -1,5 +1,14 @@
 # Latest Changes
 
+## 2026-09-08: In-Assessment Telemetry Help
+
+The assessment now shows lightweight help bubbles beside live measurement labels so users can understand what telemetry and psychometric signals mean during the test. Help topics cover progress, domain, difficulty, item type, interaction format, time on question, answer interactions, artifact use, scored evidence, theta, item difficulty `b`, discrimination `a`, guessing `c`, information, SEM, routing reason, and coverage confidence.
+
+Added separate repo documents for stakeholder review:
+
+- `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
+- `docs/TELEMETRY_TRACKING_PURPOSE.md`
+
 ## 2026-09-08: Telemetry and Agent Orchestration Documentation
 
 Added `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md` as the canonical repo reference for what telemetry is collected, why it is collected, how confidence and continuation use the evidence, how artifact readability signals are reviewed, and how supervised Agent Ops proposals move through human approval.

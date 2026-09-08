@@ -2,6 +2,11 @@
 
 New Horizon uses telemetry to make the assessment more accurate, more usable, and easier to improve. The product should remain transparent: telemetry can inform personalization and content quality, but scored content, rubrics, profile fields, survey wording, and published learning/news recommendations require human review before release.
 
+Focused companion documents:
+
+- `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
+- `docs/TELEMETRY_TRACKING_PURPOSE.md`
+
 ## Current Telemetry
 
 The MVP stores telemetry locally in browser storage and syncs to Supabase only when authentication and tables are configured.

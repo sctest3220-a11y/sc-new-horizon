@@ -30,7 +30,11 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Latest Change Report
 
-Detailed telemetry and agent documentation: [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md).
+Detailed telemetry and agent documentation:
+
+- [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
+- [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
+- [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
@@ -121,6 +125,8 @@ Production AI-generated reports should run in server-side routes only. At that s
 See:
 
 - `supabase-schema.sql`
+- `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
+- `docs/TELEMETRY_TRACKING_PURPOSE.md`
 - `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
 
 Draft tables:

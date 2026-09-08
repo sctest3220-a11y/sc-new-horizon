@@ -9862,6 +9862,15 @@ function StimulusFigure({
   );
 }
 
+function HelpBubble({ label, children }: { label: string; children: string }) {
+  return (
+    <span className="help-bubble">
+      <button type="button" aria-label={label}>?</button>
+      <span role="tooltip">{children}</span>
+    </span>
+  );
+}
+
 function getQuestionFocus(question: Question) {
   if (question.type === 'fraud-detection') return 'Spot the suspicious points';
   if (question.type === 'report-review') return 'Find the unsupported claim';
@@ -12484,15 +12493,60 @@ export default function Home() {
                   {continuationFocus && <p className="context-line">Continuation: {continuationFocus.label}</p>}
                 </div>
                 <div className="progress-block">
-                  <span>Question {progress} of {activeConfig.totalQuestions}</span>
+                  <span>
+                    Question {progress} of {activeConfig.totalQuestions}
+                    <HelpBubble label="Telemetry help: progress">
+                      Progress is logged so the system can tell whether users complete, abandon, or continue after required milestones.
+                    </HelpBubble>
+                  </span>
                   <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
                 </div>
               </div>
               <div className="question-meta">
-                <span>{current.domain}</span>
-                <span className={`difficulty-pill ${current.difficulty}`}>Difficulty: {difficultyLabels[current.difficulty]}</span>
-                <span>{current.type}</span>
-                <span>{current.interaction ?? 'single'}</span>
+                <span>
+                  {current.domain}
+                  <HelpBubble label="Telemetry help: domain">
+                    Domain identifies which D1-D6 capability area this question contributes evidence to.
+                  </HelpBubble>
+                </span>
+                <span className={`difficulty-pill ${current.difficulty}`}>
+                  Difficulty: {difficultyLabels[current.difficulty]}
+                  <HelpBubble label="Telemetry help: difficulty">
+                    Difficulty is stored with the answer so harder correct or partially correct work can count differently from easy work.
+                  </HelpBubble>
+                </span>
+                <span>
+                  {current.type}
+                  <HelpBubble label="Telemetry help: item type">
+                    Item type shows whether this is a report review, media check, fraud task, scenario, or similar evidence format.
+                  </HelpBubble>
+                </span>
+                <span>
+                  {current.interaction ?? 'single'}
+                  <HelpBubble label="Telemetry help: interaction format">
+                    Interaction format helps compare single choice, multi-select, matching, ranking, written, and multi-part questions fairly.
+                  </HelpBubble>
+                </span>
+              </div>
+              <div className="live-telemetry-strip" aria-label="Live telemetry help">
+                <span>
+                  Time on question
+                  <HelpBubble label="Telemetry help: time on question">
+                    Time is used to spot confusing wording, hard-to-read artifacts, and questions that need calibration review.
+                  </HelpBubble>
+                </span>
+                <span>
+                  Answer interactions
+                  <HelpBubble label="Telemetry help: answer interactions">
+                    Clicks, selections, revisions, and text edits help estimate hesitation and whether the question format is clear.
+                  </HelpBubble>
+                </span>
+                <span>
+                  Artifact use
+                  <HelpBubble label="Telemetry help: artifact use">
+                    Opening, zooming, or launching artifacts flags which screenshots, workflows, or documents may need larger or clearer versions.
+                  </HelpBubble>
+                </span>
               </div>
               <div className="question-focus-strip">
                 <span>{difficultyLabels[current.difficulty]} task</span>
@@ -12502,7 +12556,12 @@ export default function Home() {
               <details className="measure-details">
                 <summary>
                   <span>Scored evidence</span>
-                  <strong>{getEvidenceMode(current)} · {currentMeasures.map((measure) => measure.domain).join(' / ')}</strong>
+                  <strong>
+                    {getEvidenceMode(current)} · {currentMeasures.map((measure) => measure.domain).join(' / ')}
+                    <HelpBubble label="Telemetry help: scored evidence">
+                      Scored evidence records whether the item mostly tests knowing, doing, or a hybrid task, then maps it to competencies.
+                    </HelpBubble>
+                  </strong>
                 </summary>
                 <div className="measure-grid">
                   {currentMeasures.map((measure) => (
@@ -12685,29 +12744,67 @@ export default function Home() {
             </article>
             <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
               <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
-                <span>Current item difficulty</span>
+                <span>
+                  Current item difficulty
+                  <HelpBubble label="Telemetry help: current item difficulty">
+                    Current difficulty is the seeded challenge level for this item before large-scale pilot calibration.
+                  </HelpBubble>
+                </span>
                 <strong>{difficultyLabels[current.difficulty]}</strong>
                 <p>{difficultyDescriptions[current.difficulty]}</p>
               </div>
               <div className="adaptive-card highlight">
-                <span>Ability estimate theta</span>
+                <span>
+                  Ability estimate theta
+                  <HelpBubble label="Telemetry help: theta">
+                    Theta is a pilot ability estimate from prior answers. It helps choose harder, easier, or coverage-focused next questions.
+                  </HelpBubble>
+                </span>
                 <strong>{formatAbility(adaptiveReadout.theta)}</strong>
                 <p>Pilot estimate from {adaptiveReadout.answeredCount} answered items.</p>
               </div>
               <div className="indicator-grid">
-                <div><span>Target level</span><strong>{adaptiveReadout.targetDifficulty}</strong></div>
-                <div><span>Item b</span><strong>{formatAbility(adaptiveReadout.b)}</strong></div>
-                <div><span>Item a</span><strong>{adaptiveReadout.a.toFixed(2)}</strong></div>
-                <div><span>Guess c</span><strong>{adaptiveReadout.c.toFixed(2)}</strong></div>
-                <div><span>Info</span><strong>{adaptiveReadout.information}</strong></div>
-                <div><span>SEM</span><strong>{adaptiveReadout.sem}</strong></div>
+                <div>
+                  <span>Target level<HelpBubble label="Telemetry help: target level">Target level is the next difficulty pressure after the previous answer and coverage needs.</HelpBubble></span>
+                  <strong>{adaptiveReadout.targetDifficulty}</strong>
+                </div>
+                <div>
+                  <span>Item b<HelpBubble label="Telemetry help: item difficulty b">Item b is the seeded psychometric difficulty value used to compare the item with the current ability estimate.</HelpBubble></span>
+                  <strong>{formatAbility(adaptiveReadout.b)}</strong>
+                </div>
+                <div>
+                  <span>Item a<HelpBubble label="Telemetry help: item discrimination a">Item a estimates how strongly this item should separate lower and higher readiness users.</HelpBubble></span>
+                  <strong>{adaptiveReadout.a.toFixed(2)}</strong>
+                </div>
+                <div>
+                  <span>Guess c<HelpBubble label="Telemetry help: guessing c">Guess c is the estimated chance someone could get credit without the underlying skill, lower for richer formats.</HelpBubble></span>
+                  <strong>{adaptiveReadout.c.toFixed(2)}</strong>
+                </div>
+                <div>
+                  <span>Info<HelpBubble label="Telemetry help: item information">Information estimates how useful this item is for reducing uncertainty at the current ability level.</HelpBubble></span>
+                  <strong>{adaptiveReadout.information}</strong>
+                </div>
+                <div>
+                  <span>SEM<HelpBubble label="Telemetry help: standard error">SEM is standard error of measurement. Lower means the current estimate is becoming more stable.</HelpBubble></span>
+                  <strong>{adaptiveReadout.sem}</strong>
+                </div>
               </div>
               <div className="adaptive-card">
-                <span>Why this question?</span>
+                <span>
+                  Why this question?
+                  <HelpBubble label="Telemetry help: routing reason">
+                    Routing combines prior score, difficulty movement, domain coverage, and profile-priority competencies.
+                  </HelpBubble>
+                </span>
                 <p>{adaptiveReadout.adaptationReason}</p>
               </div>
               <div className="adaptive-card">
-                <span>Coverage pressure</span>
+                <span>
+                  Coverage pressure
+                  <HelpBubble label="Telemetry help: coverage confidence">
+                    Coverage confidence estimates whether enough relevant competencies have been tested to trust the result.
+                  </HelpBubble>
+                </span>
                 <p>Next target: {adaptiveReadout.targetDomain} · {domains[adaptiveReadout.targetDomain].short}. Confidence {adaptiveReadout.confidence}%.</p>
               </div>
               <div className="domain-meter-list">
