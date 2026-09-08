@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-08: Telemetry and Agent Orchestration Documentation
+
+Added `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md` as the canonical repo reference for what telemetry is collected, why it is collected, how confidence and continuation use the evidence, how artifact readability signals are reviewed, and how supervised Agent Ops proposals move through human approval.
+
+The companion Obsidian architecture note was also updated to keep the strategy view aligned with the repo implementation. Both documents emphasize that agents analyze telemetry, survey feedback, trends, coverage, and artifact signals before suggesting changes; humans still approve scored questions, rubrics, scoring parameters, profile ontology, surveys, learning recommendations, AI Watch items, and production artifact replacements.
+
 ## 2026-09-08: Artifact Reader, Evidence Completion, and Telemetry Review
 
 The assessment now includes a full-size artifact reader for every image/SVG/PNG stimulus. Users can open dense artifacts in a modal, zoom to 1x, 1.5x, or 2x, and open the source file in a new tab. Artifact-reader actions are logged with question id, domain, competency, difficulty, artifact path, action type, and zoom level, so admins can identify which diagrams or text-heavy screenshots are hard to read.

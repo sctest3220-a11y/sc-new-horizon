@@ -30,6 +30,8 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Latest Change Report
 
+Detailed telemetry and agent documentation: [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md).
+
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
 Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
@@ -119,6 +121,7 @@ Production AI-generated reports should run in server-side routes only. At that s
 See:
 
 - `supabase-schema.sql`
+- `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
 
 Draft tables:
 
