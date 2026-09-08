@@ -185,6 +185,7 @@ Draft proposal types:
 - `artifact`: replace or improve a stimulus.
 - `profile`: update profile ontology or routing tags.
 - `survey`: change survey wording, timing, or unlock value exchange.
+- `feedback`: summarize survey and behavior themes before recommending platform edits.
 - `learning`: refresh learning recommendations.
 - `news`: draft AI Watch briefs.
 
@@ -209,6 +210,12 @@ Finds courses, tutorials, tools, certificates, and practice resources. Recommend
 ### Assessment Item Generator
 
 Drafts new questions, answer keys, rubrics, partial-credit logic, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize artifact review, matching, multi-select, drag-order, written response, and concept clusters.
+
+### Feedback Analysis Agent
+
+Analyzes assessment survey ratings, free-text suggestions, abandonment, continuation choices, hesitation signals, long answer times, and artifact zoom/open behavior. It groups feedback into themes, estimates evidence strength, identifies affected users or personas, and recommends whether admins should monitor, rewrite, replace an artifact, recalibrate difficulty, adjust profile collection, or revise survey wording.
+
+This agent should produce suggestions before edits. It should not change scored content, survey questions, artifacts, profile fields, or scoring by itself.
 
 ### Reviewer and QA Agent
 
@@ -255,6 +262,7 @@ Recommended production tables:
 - `agent_steps`
 - `agent_draft_proposals`
 - `agent_review_decisions`
+- `feedback_theme_summaries`
 - `content_versions`
 - `source_records`
 - `audit_events`

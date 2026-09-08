@@ -4,6 +4,8 @@
 
 The assessment now shows lightweight help bubbles beside live measurement labels so users can understand what telemetry and psychometric signals mean during the test. Help topics cover progress, domain, difficulty, item type, interaction format, time on question, answer interactions, artifact use, scored evidence, theta, item difficulty `b`, discrimination `a`, guessing `c`, information, SEM, routing reason, and coverage confidence.
 
+Admin Agent Ops now includes an explicit Feedback Analysis Agent. It analyzes survey ratings, free-text suggestions, abandonment, continuation choices, hesitation, long answer times, and artifact zoom/open behavior before producing recommendations. Its draft proposals remain suggestions for human review, not automatic platform edits.
+
 Added separate repo documents for stakeholder review:
 
 - `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`

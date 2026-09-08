@@ -130,6 +130,7 @@ Purpose:
 - identify unrealistic artifacts
 - improve survey timing and wording
 - provide evidence for supervised agent proposals
+- feed the Feedback Analysis Agent, which summarizes themes and recommendations before humans approve platform edits
 
 ### Profile Signals
 

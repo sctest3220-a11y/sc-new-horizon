@@ -340,7 +340,7 @@ type AgentActivity = {
   output: string;
 };
 type AgentDraftStatus = 'pending' | 'approved' | 'rejected';
-type AgentDraftKind = 'question' | 'artifact' | 'profile' | 'survey' | 'learning' | 'news';
+type AgentDraftKind = 'question' | 'artifact' | 'profile' | 'survey' | 'feedback' | 'learning' | 'news';
 type AgentDraftProposal = {
   id: string;
   kind: AgentDraftKind;
@@ -7692,6 +7692,13 @@ const agentDefinitions: AgentDefinition[] = [
     guardrail: 'No new ownership-choice cards; prioritize artifact review, matching, rank, multi-select, and written response formats.',
   },
   {
+    id: 'feedback-analysis',
+    name: 'Feedback Analysis Agent',
+    role: 'Analyzes survey themes, free-text suggestions, abandonment, continuation choices, and confusing-item signals before recommending platform edits.',
+    cadence: 'Runs after every feedback batch and before scored content or survey changes are proposed.',
+    guardrail: 'Produces evidence-backed suggestions only; humans approve changes to questions, artifacts, profile fields, surveys, and scoring.',
+  },
+  {
     id: 'reviewer',
     name: 'Reviewer and QA Agent',
     role: 'Checks quality, duplicates, answerability, source notes, competency mapping, and publish readiness.',
@@ -7747,13 +7754,20 @@ function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, si
     },
     {
       step: 7,
+      agent: 'Feedback Analysis Agent',
+      status: 'review',
+      activity: 'Grouped survey feedback and behavior signals into review themes before recommending edits.',
+      output: 'Themes prepared for unclear wording, artifact realism, route length, continuation value, and missing profile signals.',
+    },
+    {
+      step: 8,
       agent: 'Reviewer and QA Agent',
       status: 'complete',
       activity: 'Reviewed all draft outputs for novelty, competency fit, and MVP policy constraints.',
       output: '5 item drafts and 6 learning resources passed to admin review, 1 duplicate rejected, 0 ownership-choice cards added.',
     },
     {
-      step: 8,
+      step: 9,
       agent: 'Orchestrator',
       status: 'complete',
       activity: 'Closed the run and produced an activity report.',
@@ -7856,7 +7870,23 @@ function getSupervisedAgentRun(
       rationale: 'Survey prompts should collect better profile evidence without interrupting assessment flow or hiding the value exchange.',
       status: 'pending',
       sourceSignals: [`${quality.mandatory} mandatory completions`, `${quality.continued} continuations`, `${feedback.length} feedback surveys`],
-      ownerAgent: 'Orchestrator',
+      ownerAgent: 'Feedback Analysis Agent',
+    },
+    {
+      id: `${runId}:feedback:themes`,
+      kind: 'feedback',
+      title: feedback.length ? 'Review feedback themes before changing the platform' : 'Wait for more survey responses before editing',
+      summary: feedback.length
+        ? `Analyze ${feedback.length} survey response${feedback.length === 1 ? '' : 's'} for repeated comments about clarity, difficulty, artifacts, length, and missing topics before any edit is made.`
+        : 'No completed feedback survey is available yet. Keep collecting response-level evidence and do not change survey or scored content based on anecdotes alone.',
+      rationale: 'Feedback analysis should summarize trends, affected users, evidence strength, and suggested next actions before admins approve platform changes.',
+      status: 'pending',
+      sourceSignals: [
+        `${feedback.length} feedback surveys`,
+        `${quality.confusingEvents} slow/confusing answer events`,
+        `${poorArtifactCount} mixed/poor artifact ratings`,
+      ],
+      ownerAgent: 'Feedback Analysis Agent',
     },
     {
       id: `${runId}:learning:next-best`,
@@ -7889,27 +7919,36 @@ function getSupervisedAgentRun(
     },
     {
       step: 2,
+      agent: 'Feedback Analysis Agent',
+      status: 'review',
+      activity: 'Analyzed survey themes, free-text suggestions, abandonment, and continuation behavior before platform edits.',
+      output: feedback.length
+        ? `${feedback.length} survey response${feedback.length === 1 ? '' : 's'} grouped for clarity, difficulty fit, artifact quality, length, and suggestions.`
+        : 'No survey responses yet; recommended continued collection before changing survey or scored content.',
+    },
+    {
+      step: 3,
       agent: 'Reviewer and QA Agent',
       status: 'review',
       activity: 'Ranked question and artifact candidates by confusion, duration, feedback quality, and evidence risk.',
       output: confusingQuestion ? `${confusingQuestion.questionId} is the top review candidate.` : 'No high-volume question candidate yet; generated coverage-gap task.',
     },
     {
-      step: 3,
+      step: 4,
       agent: 'Assessment Item Generator',
       status: 'review',
       activity: 'Created draft tasks for better item discrimination and practical formats.',
       output: 'Drafts stay pending until an admin approves or rejects them.',
     },
     {
-      step: 4,
+      step: 5,
       agent: 'AI Concepts Scout',
       status: 'review',
       activity: 'Mapped profile tags and trend interests into ontology-review candidates.',
       output: recentProfileTags.length ? `${recentProfileTags.length} profile tags included.` : 'No strong profile cluster available yet.',
     },
     {
-      step: 5,
+      step: 6,
       agent: 'Orchestrator',
       status: 'complete',
       activity: 'Closed the run in review state with publish protection enabled.',
@@ -8453,6 +8492,7 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
   const started = events.filter((event) => event.type === 'assessment_started').length;
   const continued = events.filter((event) => event.type === 'continuation_accepted').length;
   const mandatory = events.filter((event) => event.type === 'mandatory_completed').length;
+  const confusingEvents = events.filter((event) => event.type === 'question_answered' && event.hesitation === 'confusing').length;
   const poorArtifacts = feedback.filter((entry) => entry.artifactQuality === 'poor').length;
   const tooEasy = feedback.filter((entry) => entry.difficultyFit === 'too-easy').length;
   const recommendations = [
@@ -8462,7 +8502,7 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
     started ? `Completion health: ${Math.max(0, Math.round((1 - abandoned / started) * 100))}% of locally started sessions avoided recorded abandonment.` : 'Completion health will appear after sessions are started.',
     mandatory ? `Optional-depth conversion: ${Math.round(continued / mandatory * 100)}% continued after mandatory questions.` : 'Optional-depth conversion needs a completed mandatory route.',
   ];
-  return { questionRows: questionRows.slice(0, 10), recommendations, started, abandoned, mandatory, continued };
+  return { questionRows: questionRows.slice(0, 10), recommendations, started, abandoned, mandatory, continued, confusingEvents };
 }
 
 function formatDuration(durationMs = 0) {

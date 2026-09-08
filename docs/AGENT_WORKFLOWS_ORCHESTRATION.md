@@ -46,6 +46,21 @@ Finds courses, tutorials, certificates, tools, and practice resources. Drafts ne
 
 Drafts questions, answer keys, rubrics, partial-credit rules, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize practical formats such as artifact review, matching, multi-select, ranking, written response, and multi-part concept clusters.
 
+### Feedback Analysis Agent
+
+Analyzes assessment surveys, free-text suggestions, abandonment, continuation choices, hesitation signals, long answer times, artifact zoom/open behavior, and confusing-item patterns before recommending any platform edit.
+
+Outputs:
+
+- feedback theme summary
+- affected user/persona groups
+- affected domains, competencies, difficulties, and item formats
+- evidence strength and sample size
+- suggested action: monitor, rewrite, replace artifact, recalibrate difficulty, adjust profile question, or revise survey wording
+- human-review note explaining why the action should or should not proceed
+
+This agent should produce suggestions, not changes. It should help admins decide what to improve first and prevent single anecdotal comments from becoming premature platform edits.
+
 ### Reviewer and QA Agent
 
 Checks source support, duplicates, answerability, distractor quality, artifact realism, artifact readability, accessibility, privacy/risk issues, item-format balance, and readiness for human review.
@@ -81,6 +96,7 @@ Production orchestration should move from local browser storage to durable serve
 - `agent_steps`
 - `agent_draft_proposals`
 - `agent_review_decisions`
+- `feedback_theme_summaries`
 - `content_versions`
 - `source_records`
 - `audit_events`
