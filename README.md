@@ -203,6 +203,19 @@ No-response handling:
 
 During test review, the platform shows a score explanation panel after each answer. It explains the raw answer score, the difficulty-adjusted readiness evidence, and the maximum evidence allowed by the item difficulty band.
 
+Score derivation:
+
+1. Question raw score: selected option score, multi-select credit minus distractor penalty, matching accuracy, ranking exact-position accuracy, written rubric hits, or average mini-part score.
+2. Question readiness evidence: raw score is converted through the difficulty band. Awareness, Applied, Proficient, and Advanced items have different partial anchors and maximum contribution caps.
+3. Competency score: average readiness evidence from all question signals mapped to that competency.
+4. Domain score: average readiness evidence for the domain. Secondary-domain evidence contributes at `0.35` weight.
+5. Overall score: average of D1-D6 domain scores. Unsampled domains score `0` in the MVP.
+6. Readiness label: evidence-gated. Advanced requires `85+` overall plus strong advanced-item evidence; Proficient requires `70+` overall plus strong proficient-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, item discrimination `a`, difficulty `b`, guessing `c`, information, and SEM are currently telemetry/calibration signals. They affect routing, reporting, and future review, but they do not directly add or subtract score yet.
+
+Pilot confidence is a separate evidence-stability estimate, not a correctness score. In the current MVP it starts from the assessment-mode base (`38` free, `48` premium, `54` executive), adds the mode step for each answered item (`4`, `3`, and `3` respectively), and is capped at `88`, `94`, or `96`. Competency-level confidence is more granular: it reflects repeated evidence for that competency (`sampled once`, `early estimate`, or `stronger estimate`). The large number shown in a continuation card is the recommended follow-up question count, not confidence; the report now labels it explicitly as “questions” and shows the actual confidence percentage beside the recommendation.
+
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
 
 The live bank also includes generated market-trend items across every granular competency and all four difficulty levels. These items test practical understanding of current AI-market shifts: agentic AI, multimodal image/video workflows, context engineering and RAG quality, domain-specific models, benchmark caveats, responsible AI governance, sovereign/local data constraints, and workforce skill change.

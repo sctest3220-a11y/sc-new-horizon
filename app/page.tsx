@@ -289,6 +289,23 @@ type LandingLeaderboardRow = {
 type CompetencyDefinition = { id: string; domain: DomainId; label: string; skills: string[] };
 type EvidenceSignal = { domain: DomainId; competencyId: string; score: number; mode: EvidenceMode };
 type CompetencyScore = CompetencyDefinition & { score: number; evidenceCount: number; confidence: string };
+type QuestionScoreCalculation = {
+  questionId: string;
+  domain: DomainId;
+  competencies: string;
+  difficulty: Difficulty;
+  interaction: NonNullable<Question['interaction']>;
+  rawScore: number;
+  readinessScore: number;
+  calculation: string;
+};
+type DomainScoreCalculation = {
+  domain: DomainId;
+  points: number;
+  count: number;
+  score: number;
+  calculation: string;
+};
 type CompetencyCoverage = CompetencyScore & {
   planned: boolean;
   priority: boolean;
@@ -8690,6 +8707,72 @@ function getScoreExplanation(answer: Answer) {
   ];
 }
 
+function getRawScoreMethod(answer: Answer) {
+  const interaction = answer.question.interaction ?? 'single';
+  if (answer.option.score <= 0) return 'No response or no scored evidence = 0 raw.';
+  if (interaction === 'multi') return 'Raw = correct selections credit minus wrong-selection penalty.';
+  if (interaction === 'rank') return 'Raw = percent of steps in exact ideal position.';
+  if (interaction === 'match') return 'Raw = percent of correct pairings.';
+  if (interaction === 'parts') return 'Raw = average of mini-part option scores.';
+  if (interaction === 'text') return 'Raw = detected rubric criteria points.';
+  return 'Raw = selected option evidence score.';
+}
+
+function getQuestionScoreCalculations(answers: Answer[]): QuestionScoreCalculation[] {
+  return answers.map((answer) => {
+    const rawScore = answer.option.score;
+    const readinessScore = getReadinessScore(rawScore, answer.question.difficulty);
+    const band = difficultyReadinessBands[answer.question.difficulty];
+    const calculation = rawScore <= 0
+      ? '0 raw -> 0 readiness'
+      : rawScore <= 55
+        ? `round((${rawScore} / 55) * ${band.partial}) = ${readinessScore}`
+        : `round(${band.partial} + ((${rawScore} - 55) / 45) * (${band.max} - ${band.partial})) = ${readinessScore}`;
+    return {
+      questionId: answer.question.id,
+      domain: answer.question.domain,
+      competencies: getQuestionMeasures(answer.question).map((competency) => competency.label).join(', '),
+      difficulty: answer.question.difficulty,
+      interaction: answer.question.interaction ?? 'single',
+      rawScore,
+      readinessScore,
+      calculation,
+    };
+  });
+}
+
+function getDomainScoreCalculations(answers: Answer[]): DomainScoreCalculation[] {
+  const raw = emptyDomainScores();
+  answers.forEach(({ question, option, partScores }) => {
+    if (partScores?.length) {
+      partScores.forEach((partScore) => {
+        raw[partScore.domain].points += getReadinessScore(partScore.score, question.difficulty);
+        raw[partScore.domain].count += 1;
+      });
+      return;
+    }
+    const readinessScore = getReadinessScore(option.score, question.difficulty);
+    raw[question.domain].points += readinessScore;
+    raw[question.domain].count += 1;
+    (question.secondaryDomains ?? []).forEach((domain) => {
+      raw[domain].points += readinessScore * 0.35;
+      raw[domain].count += 0.35;
+    });
+  });
+  return (Object.keys(domains) as DomainId[]).map((domain) => {
+    const points = Number(raw[domain].points.toFixed(2));
+    const count = Number(raw[domain].count.toFixed(2));
+    const score = count ? Math.round(points / count) : 0;
+    return {
+      domain,
+      points,
+      count,
+      score,
+      calculation: count ? `round(${points} / ${count}) = ${score}` : 'No evidence = 0',
+    };
+  });
+}
+
 function getEvidenceSignals(answers: Answer[]) {
   const signals: EvidenceSignal[] = [];
   answers.forEach((answer) => {
@@ -10338,6 +10421,8 @@ export default function Home() {
   const currentMeasures = useMemo(() => getQuestionMeasures(current), [current]);
   const currentSkills = useMemo(() => getQuestionSkillLabels(current), [current]);
   const competencyScores = useMemo(() => getCompetencyScores(answers), [answers]);
+  const questionScoreCalculations = useMemo(() => getQuestionScoreCalculations(answers), [answers]);
+  const domainScoreCalculations = useMemo(() => getDomainScoreCalculations(answers), [answers]);
   const domainEvidenceSummary = useMemo(() => getDomainEvidenceSummary(answers), [answers]);
   const evidenceModeSummary = useMemo(() => getEvidenceModeSummary(answers), [answers]);
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
@@ -12890,6 +12975,7 @@ export default function Home() {
               <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
               <div className="score-explanation-panel" aria-label="Score explanation">
                 <span>Score explanation</span>
+                <p>{getRawScoreMethod(lastAnswer)}</p>
                 {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
               </div>
               <div className="feedback-grid">
@@ -13010,7 +13096,7 @@ export default function Home() {
               {!pendingQuestion && showContinuationPanel && (
                 <div className="adaptive-card continuation-inline">
                   <span>{continuationRecommendation.confidenceLabel}</span>
-                  <strong>{continuationRecommendation.questionCount}</strong>
+                  <strong>{continuationRecommendation.questionCount} questions</strong>
                   <p>{continuationRecommendation.reasons[0]}</p>
                   <div className="continuation-actions">
                     <button
@@ -13111,6 +13197,65 @@ export default function Home() {
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
               </div>
             </article>
+            <article className="result-card wide score-calculation-card">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Score calculation</p>
+                  <h2>How this result was derived</h2>
+                </div>
+                <span>{answers.length} answered item{answers.length === 1 ? '' : 's'}</span>
+              </div>
+              <div className="calculation-summary-grid">
+                <p><strong>Question</strong> Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.</p>
+                <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
+                <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
+                <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
+                <p><strong>Assessment</strong> Overall score is the average of D1-D6 domain scores: {Object.values(results.domainScores).join(' + ')} / 6 = {results.overall}.</p>
+                <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
+              </div>
+              <details className="calculation-details" open>
+                <summary>Question-level calculation</summary>
+                <div className="calculation-table">
+                  {questionScoreCalculations.map((row, index) => (
+                    <div key={`${row.questionId}-${index}`}>
+                      <span>Q{index + 1}</span>
+                      <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
+                      <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
+                      <small>{row.calculation}</small>
+                      <p>{row.competencies}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+              <details className="calculation-details" open>
+                <summary>Domain roll-up</summary>
+                <div className="calculation-table domain-calculation-table">
+                  {domainScoreCalculations.map((row) => (
+                    <div key={row.domain}>
+                      <span>{row.domain}</span>
+                      <strong>{domains[row.domain].short}</strong>
+                      <b>{row.score}/100</b>
+                      <small>{row.calculation}</small>
+                      <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : 'No sampled evidence in this run.'}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+              <details className="calculation-details">
+                <summary>Competency roll-up</summary>
+                <div className="calculation-table competency-calculation-table">
+                  {competencyScores.filter((competency) => competency.evidenceCount > 0).map((competency) => (
+                    <div key={competency.id}>
+                      <span>{competency.domain}</span>
+                      <strong>{competency.label}</strong>
+                      <b>{competency.score}/100</b>
+                      <small>{competency.evidenceCount} evidence · {competency.confidence} confidence</small>
+                      <p>Average readiness evidence from mapped question signals.</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </article>
             <article className="result-card wide did-you-know-report">
               <div>
                 <p className="eyebrow">Did you know?</p>
@@ -13134,7 +13279,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="continuation-decision">
-                  <strong>{continuationRecommendation.confidenceLabel}</strong>
+                  <strong>{continuationRecommendation.confidenceLabel}: {results.confidence}%</strong>
                   <p>{continuationRecommendation.questionCount} targeted questions can improve the score estimate and competency evidence.</p>
                   {continuationRecommendation.targetLabels.length > 0 && (
                     <div className="continue-targets">

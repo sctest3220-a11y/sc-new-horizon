@@ -3873,6 +3873,93 @@ h3 {
   margin-top: 18px;
 }
 
+.score-calculation-card {
+  display: grid;
+  gap: 16px;
+}
+
+.calculation-summary-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.calculation-summary-grid p,
+.calculation-details {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0;
+  padding: 14px;
+}
+
+.calculation-summary-grid p {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.calculation-summary-grid strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.calculation-details summary {
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.calculation-table {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.calculation-table > div {
+  align-items: start;
+  background: var(--panel-soft);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px 12px;
+  grid-template-columns: 52px minmax(0, 1.15fr) minmax(0, 0.8fr);
+  padding: 12px;
+}
+
+.calculation-table span {
+  align-items: center;
+  background: #17201d;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 900;
+  justify-content: center;
+  min-height: 28px;
+  padding: 5px 8px;
+}
+
+.calculation-table strong,
+.calculation-table b {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.calculation-table small,
+.calculation-table p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.calculation-table small {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.calculation-table p {
+  grid-column: 2 / -1;
+}
+
 .rubric-panel {
   margin-top: 14px;
 }

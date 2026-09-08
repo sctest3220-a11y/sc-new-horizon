@@ -101,6 +101,19 @@ The assessment separates raw correctness from readiness evidence. Easier items a
 
 Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Partial credit begins only when the user submits actual scored evidence.
 
+The product shows the score derivation during answer review and in the final report:
+
+1. Question raw score is derived from selected option, multi-select, matching, ranking, written rubric, or mini-part scoring.
+2. Raw score is converted into difficulty-adjusted readiness evidence.
+3. Competency score averages readiness evidence for mapped competency signals.
+4. Domain score averages readiness evidence by domain, with secondary domains weighted at `0.35`.
+5. Overall assessment score averages D1-D6 domain scores.
+6. Readiness label is evidence-gated by overall score and strong harder-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, guessing estimate `c`, item discrimination `a`, item difficulty `b`, information, and SEM are currently telemetry/calibration signals. They inform routing, confidence, and quality review, but they do not directly change score yet.
+
+The report's pilot-confidence percentage is currently an evidence-stability heuristic: mode base plus a mode-specific increment for each answered item, capped by mode (`38 + 4/item`, cap `88` for free; `48 + 3/item`, cap `94` for premium; `54 + 3/item`, cap `96` for executive). This is intentionally separate from correctness and readiness scoring. Competency confidence is based on repeated evidence for the mapped competency. A continuation card's prominent number is the recommended number of follow-up questions; the UI labels it as such and shows the confidence percentage separately.
+
 Telemetry helps estimate:
 
 - whether a score is based on enough evidence

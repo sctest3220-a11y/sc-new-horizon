@@ -4,6 +4,8 @@
 
 Blank written responses, empty multi-select submissions, blank matching submissions, and unanswered mini-parts now receive `0` raw score and `0` readiness evidence instead of a small floor score. The answer review now includes a score explanation panel showing raw score, difficulty-adjusted readiness evidence, and the maximum readiness evidence allowed by the item difficulty band.
 
+The final report now includes a score calculation card that shows question-level raw-to-readiness conversion, competency roll-up, domain roll-up, the D1-D6 overall formula, and a clear note that timing, hesitation, artifact use, item `a/b/c`, information, and SEM are telemetry/calibration signals rather than direct score modifiers in the MVP.
+
 ## 2026-09-08: In-Assessment Telemetry Help
 
 The assessment now shows lightweight help bubbles beside live measurement labels so users can understand what telemetry and psychometric signals mean during the test. Help topics cover progress, domain, difficulty, item type, interaction format, time on question, answer interactions, artifact use, scored evidence, theta, item difficulty `b`, discrimination `a`, guessing `c`, information, SEM, routing reason, and coverage confidence.
