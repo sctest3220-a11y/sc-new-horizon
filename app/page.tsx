@@ -9797,15 +9797,21 @@ function StimulusFigure({
   onArtifactAction?: (action: 'reader' | 'zoom' | 'external', zoomLevel?: number) => void;
 }) {
   const [readerOpen, setReaderOpen] = useState(false);
-  const [zoom, setZoom] = useState(1.25);
+  const [zoom, setZoom] = useState<'fit' | 1 | 1.5 | 2>('fit');
+  const zoomOptions: Array<'fit' | 1 | 1.5 | 2> = ['fit', 1, 1.5, 2];
+  const getZoomTelemetryValue = (nextZoom: 'fit' | 1 | 1.5 | 2) => nextZoom === 'fit' ? 0 : nextZoom;
   function openReader() {
-    onArtifactAction?.('reader', zoom);
+    setZoom('fit');
+    onArtifactAction?.('reader', getZoomTelemetryValue('fit'));
     setReaderOpen(true);
   }
-  function updateZoom(nextZoom: number) {
+  function updateZoom(nextZoom: 'fit' | 1 | 1.5 | 2) {
     setZoom(nextZoom);
-    onArtifactAction?.('zoom', nextZoom);
+    onArtifactAction?.('zoom', getZoomTelemetryValue(nextZoom));
   }
+  const readerImageStyle = zoom === 'fit'
+    ? undefined
+    : { width: `${zoom * 100}%` };
 
   return (
     <>
@@ -9830,23 +9836,23 @@ function StimulusFigure({
                 <strong>{stimulus.label}</strong>
               </div>
               <div className="artifact-reader-actions">
-                {[1, 1.5, 2].map((nextZoom) => (
+                {zoomOptions.map((nextZoom) => (
                   <button
                     key={nextZoom}
                     type="button"
                     className={zoom === nextZoom ? 'selected' : ''}
                     onClick={() => updateZoom(nextZoom)}
                   >
-                    {nextZoom}x
+                    {nextZoom === 'fit' ? 'Fit' : `${nextZoom}x`}
                   </button>
                 ))}
-                <a className="secondary dark" href={stimulus.src} target="_blank" rel="noreferrer" onClick={() => onArtifactAction?.('external', zoom)}>Open file</a>
+                <a className="secondary dark" href={stimulus.src} target="_blank" rel="noreferrer" onClick={() => onArtifactAction?.('external', getZoomTelemetryValue(zoom))}>Open file</a>
                 <button type="button" className="primary" onClick={() => setReaderOpen(false)}>Close</button>
               </div>
             </div>
-            <div className="artifact-reader-canvas">
+            <div className={`artifact-reader-canvas ${zoom === 'fit' ? 'fit-window' : ''}`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={stimulus.src} alt={stimulus.alt} style={{ width: `${zoom * 100}%` }} />
+              <img src={stimulus.src} alt={stimulus.alt} style={readerImageStyle} />
             </div>
             <p>{stimulus.caption}</p>
           </section>

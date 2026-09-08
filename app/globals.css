@@ -2963,6 +2963,9 @@ h3 {
     #ece8dc;
   background-position: 0 0, 0 10px;
   background-size: 20px 20px;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
   min-height: 0;
   overflow: auto;
   padding: clamp(12px, 2vw, 22px);
@@ -2975,6 +2978,16 @@ h3 {
   height: auto;
   margin: 0 auto;
   max-width: none;
+}
+
+.artifact-reader-canvas.fit-window {
+  align-items: center;
+}
+
+.artifact-reader-canvas.fit-window img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .artifact-reader > p {
