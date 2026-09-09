@@ -99,6 +99,13 @@ type AssessmentFeedbackSurvey = {
   lengthFit: 'short' | 'right' | 'long';
   suggestions: string;
 };
+const defaultAssessmentFeedbackDraft = (): Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'> => ({
+  clarity: 'clear',
+  difficultyFit: 'right',
+  artifactQuality: 'realistic',
+  lengthFit: 'right',
+  suggestions: '',
+});
 type ProfileSignalLogEntry = {
   id: string;
   profileId: string;
@@ -8512,10 +8519,19 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
   const confusingEvents = events.filter((event) => event.type === 'question_answered' && event.hesitation === 'confusing').length;
   const poorArtifacts = feedback.filter((entry) => entry.artifactQuality === 'poor').length;
   const tooEasy = feedback.filter((entry) => entry.difficultyFit === 'too-easy').length;
+  const suggestionText = feedback.map((entry) => entry.suggestions.toLowerCase()).join(' ');
+  const guessableAnswerSignals = ['guess', 'obvious', 'too easy', 'easy to guess', 'giveaway', 'distractor'].filter((term) => suggestionText.includes(term)).length;
+  const irrelevantArtifactSignals = ['artifact', 'irrelevant', 'not relevant', 'not relate', 'unrealistic', 'mock', 'not realistic'].filter((term) => suggestionText.includes(term)).length;
+  const ambiguousWritingSignals = ['ambiguous', 'unclear', 'written', 'writing', 'rubric', 'vague'].filter((term) => suggestionText.includes(term)).length;
+  const staleSurveySignals = ['previous user', 'left in the survey', 'not reset', 'stale', 'old comment'].filter((term) => suggestionText.includes(term)).length;
   const recommendations = [
     questionRows[0] ? `Review ${questionRows[0].questionId}: ${questionRows[0].confusionRate}% confusing, ${Math.round(questionRows[0].averageDurationMs / 1000)}s average.` : 'Collect more item-level attempts before rewriting questions.',
     poorArtifacts ? `Replace artifact sets: ${poorArtifacts} survey response${poorArtifacts === 1 ? '' : 's'} rated them poor.` : 'Continue monitoring artifact relevance and realism.',
     tooEasy ? `Increase decision complexity: ${tooEasy} respondent${tooEasy === 1 ? '' : 's'} found the route too easy.` : 'Difficulty feedback does not yet show a route-wide easy-item problem.',
+    guessableAnswerSignals ? 'Audit answer options: feedback mentions guessable or obvious answers. Replace giveaway distractors with plausible misconceptions and more artifact-dependent evidence.' : 'No explicit guessable-answer theme has been detected in survey text yet.',
+    irrelevantArtifactSignals ? 'Audit artifacts for relevance: feedback mentions irrelevant, unrealistic, or mock-looking artifacts. Require each artifact to contain evidence needed by the answer key.' : 'No explicit artifact-relevance theme has been detected in survey text yet.',
+    ambiguousWritingSignals ? 'Audit written-response prompts: feedback mentions ambiguity or vague rubric fit. Rewrite prompts to name task, context, expected evidence, and scoring lens.' : 'No explicit written-prompt ambiguity theme has been detected in survey text yet.',
+    staleSurveySignals ? 'Verify survey state reset: feedback mentions old comments being visible. Feedback draft should reset at new assessment start and after submission.' : 'No stale-survey-text theme has been detected in survey text yet.',
     started ? `Completion health: ${Math.max(0, Math.round((1 - abandoned / started) * 100))}% of locally started sessions avoided recorded abandonment.` : 'Completion health will appear after sessions are started.',
     mandatory ? `Optional-depth conversion: ${Math.round(continued / mandatory * 100)}% continued after mandatory questions.` : 'Optional-depth conversion needs a completed mandatory route.',
   ];
@@ -9513,22 +9529,22 @@ function scoreMultiSelect(question: Question, selected: string[]) {
   if (!selected.length) return 0;
   if (correctSelected === correct.length && wrongSelected === 0) return 98;
   const partial = Math.round((correctSelected / Math.max(correct.length, 1)) * 82);
-  return Math.max(20, partial - wrongSelected * 18);
+  return Math.max(0, partial - wrongSelected * 18);
 }
 
 function scoreOrder(question: Question, order: string[]) {
   const ideal = question.idealOrder ?? [];
-  if (!ideal.length) return 60;
+  if (!ideal.length || order.length !== ideal.length) return 0;
   const exactPositions = ideal.filter((id, index) => order[index] === id).length;
-  return Math.max(25, Math.round((exactPositions / ideal.length) * 98));
+  return Math.round((exactPositions / ideal.length) * 98);
 }
 
 function scoreMatches(question: Question, selections: Record<string, string>) {
   const pairs = question.matchPairs ?? [];
-  if (!pairs.length) return 60;
+  if (!pairs.length) return 0;
   if (!Object.values(selections).some(Boolean)) return 0;
   const correct = pairs.filter((pair) => selections[pair.id] === pair.correct).length;
-  return Math.max(20, Math.round((correct / pairs.length) * 98));
+  return Math.round((correct / pairs.length) * 98);
 }
 
 function scoreTextAnswer(question: Question, response: string) {
@@ -9536,7 +9552,8 @@ function scoreTextAnswer(question: Question, response: string) {
   const criteria = question.rubricCriteria ?? [];
   if (!normalized.trim()) return { score: 0, hits: [] as RubricCriterion[] };
   const hits = criteria.filter((criterion) => criterion.keywords.some((keyword) => normalized.includes(keyword)));
-  const score = Math.min(98, Math.max(20, hits.reduce((sum, criterion) => sum + criterion.points, 0)));
+  const evidencePoints = hits.reduce((sum, criterion) => sum + criterion.points, 0);
+  const score = hits.length ? Math.min(98, evidencePoints) : 0;
   return { score, hits };
 }
 
@@ -10368,11 +10385,7 @@ export default function Home() {
     parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
   ));
   const [feedbackDraft, setFeedbackDraft] = useState<Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'>>({
-    clarity: 'clear',
-    difficultyFit: 'right',
-    artifactQuality: 'realistic',
-    lengthFit: 'right',
-    suggestions: '',
+    ...defaultAssessmentFeedbackDraft(),
   });
   const [behaviorSessionId, setBehaviorSessionId] = useState(() => `session-${createAssessmentSeed().toString(36)}`);
   const behaviorSessionIdRef = useRef(behaviorSessionId);
@@ -10848,6 +10861,7 @@ export default function Home() {
     setContinuationFocus(null);
     setReportTab('report');
     setFeedbackPromptOpen(true);
+    setFeedbackDraft(defaultAssessmentFeedbackDraft());
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -11221,6 +11235,7 @@ export default function Home() {
     });
     syncAssessmentFeedbackToSupabase(authProfile, entry);
     appendBehaviorEvent({ type: 'assessment_feedback_submitted', answeredCount: answers.length, score: results.overall });
+    setFeedbackDraft(defaultAssessmentFeedbackDraft());
     setFeedbackPromptOpen(false);
   }
 
@@ -12887,7 +12902,7 @@ export default function Home() {
                       placeholder="Write 2-4 sentences with the evidence you would use in the real situation."
                     />
                   </label>
-                  <button className="primary submit-answer" onClick={submitTextAnswer}>Submit Written Answer</button>
+                  <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>
                 </div>
               )}
             </article>

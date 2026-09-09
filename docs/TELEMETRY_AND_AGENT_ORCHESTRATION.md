@@ -99,7 +99,7 @@ Telemetry supports five product loops.
 
 The assessment separates raw correctness from readiness evidence. Easier items are capped below advanced readiness, while proficient and advanced items can produce stronger readiness evidence.
 
-Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Partial credit begins only when the user submits actual scored evidence.
+Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Written responses with no rubric hits also receive `0`; the system should not award a courtesy floor for irrelevant text.
 
 The product shows the score derivation during answer review and in the final report:
 
@@ -111,6 +111,14 @@ The product shows the score derivation during answer review and in the final rep
 6. Readiness label is evidence-gated by overall score and strong harder-item evidence.
 
 Response time, hesitation, artifact zoom/open behavior, guessing estimate `c`, item discrimination `a`, item difficulty `b`, information, and SEM are currently telemetry/calibration signals. They inform routing, confidence, and quality review, but they do not directly change score yet.
+
+Guessing control rules:
+
+- Multi-select items should use all-that-apply scoring with wrong-selection penalties and no positive floor.
+- Matching items should score only the percentage of correct pairings and no positive floor.
+- Ranking items should score exact-position evidence and no positive floor.
+- Written items should score only detected rubric evidence; blank or unsupported text is `0`.
+- Single-choice items should be phased down for advanced evidence unless the distractors are genuinely plausible and artifact-dependent.
 
 The report's pilot-confidence percentage is currently an evidence-stability heuristic: mode base plus a mode-specific increment for each answered item, capped by mode (`38 + 4/item`, cap `88` for free; `48 + 3/item`, cap `94` for premium; `54 + 3/item`, cap `96` for executive). This is intentionally separate from correctness and readiness scoring. Competency confidence is based on repeated evidence for the mapped competency. A continuation card's prominent number is the recommended number of follow-up questions; the UI labels it as such and shows the confidence percentage separately.
 
@@ -169,6 +177,8 @@ Telemetry can nominate improvement candidates:
 - weak distractors
 - overly easy advanced items
 - unrealistic or illegible artifacts
+- artifacts that are decorative, irrelevant, or missing the evidence required by the answer key
+- written prompts that are too broad, ambiguous, or impossible to score consistently
 - bad competency mapping
 - missing profile fields
 - intrusive or low-value survey questions
@@ -225,6 +235,15 @@ Finds courses, tutorials, tools, certificates, and practice resources. Recommend
 ### Assessment Item Generator
 
 Drafts new questions, answer keys, rubrics, partial-credit logic, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize artifact review, matching, multi-select, drag-order, written response, and concept clusters.
+
+Item drafts are not ready for scored use unless they pass these checks:
+
+- The artifact is necessary to answer the question.
+- The artifact contains the same evidence referenced by the correct answer, distractors, rubric, and explanation.
+- The artifact looks like a plausible real-world work document, screenshot, message, chart, workflow, or source packet rather than a decorative mockup.
+- Distractors are plausible misconceptions, not obviously wrong wording patterns.
+- Written-response prompts name the task, context, expected evidence, and scoring lens clearly enough for repeatable rubric scoring.
+- Advanced items require synthesis, tradeoff judgment, verification, governance, or implementation reasoning; they cannot be answered by spotting generic "human, AI, or both" ownership language alone.
 
 ### Feedback Analysis Agent
 

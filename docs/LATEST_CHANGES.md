@@ -1,5 +1,18 @@
 # Latest Changes
 
+## 2026-09-09: Question Quality and Survey Reset Fix
+
+The assessment feedback form now resets at the start of each new assessment and after feedback submission. This prevents a previous user's free-text suggestion from remaining visible in the survey for the next run on the same browser/device.
+
+Scoring floors were tightened so guessing is no longer rewarded as partial evidence:
+
+- Written answers with no rubric hits now score `0` instead of receiving a default floor.
+- Blank written answers are disabled in the UI and still score `0` if submitted through another path.
+- Ranking and matching items no longer give minimum floor points for wrong or unsupported attempts.
+- Multi-select wrong-selection penalties can reduce the score to `0`.
+
+Question and artifact review should treat the following as publish blockers: obvious answer patterns, weak distractors, ambiguous written prompts, artifacts that are not needed to answer the item, artifacts that do not contain the evidence referenced by the answer key, and artifacts that look like decorative mockups rather than plausible work documents.
+
 ## 2026-09-09: Assessment Report Cleanup
 
 The assessment report now separates the learner-facing report from diagnostic details. The default Report tab prioritizes score interpretation, personalized summary, strengths, priority gaps, domain and competency scores, learning paths, tools/labs, courses, improvement actions, badges, and the persona leaderboard.
