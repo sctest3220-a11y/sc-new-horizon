@@ -13798,9 +13798,9 @@ export default function Home() {
               >
                 &times;
               </button>
-              <span>Unlock your evidence trail</span>
-              <strong>Answer 4 quick feedback questions</strong>
-              <p>Then view your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
+              <span>30-second exchange</span>
+              <strong>Unlock your detailed evidence trail</strong>
+              <p>Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
               <div className="profile-pulse-actions">
                 <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>Later</button>
                 <button

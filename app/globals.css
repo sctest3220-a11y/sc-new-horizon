@@ -2420,16 +2420,17 @@ h3 {
     #fff;
   border: 1px solid rgba(34, 108, 111, 0.28);
   border-radius: 8px;
-  bottom: 18px;
-  box-shadow: 0 24px 70px rgba(23, 32, 29, 0.18);
+  box-shadow: 0 34px 120px rgba(23, 32, 29, 0.32);
   display: grid;
-  gap: 10px;
-  max-width: 430px;
-  padding: 18px;
+  gap: 12px;
+  left: 50%;
+  max-width: 520px;
+  padding: 22px;
   position: fixed;
-  right: 18px;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: calc(100vw - 36px);
-  z-index: 35;
+  z-index: 70;
 }
 
 .feedback-nudge-card span {
@@ -2442,7 +2443,7 @@ h3 {
 
 .feedback-nudge-card strong {
   color: var(--ink);
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.08;
 }
 
@@ -4119,55 +4120,55 @@ h3 {
 }
 
 .report-order-generated {
-  order: 3;
-}
-
-.report-order-strengths {
   order: 4;
 }
 
-.report-order-gaps {
+.report-order-strengths {
   order: 5;
 }
 
-.report-order-domain {
+.report-order-gaps {
   order: 6;
 }
 
-.report-order-competencies {
+.report-order-domain {
   order: 7;
 }
 
-.report-order-learning {
+.report-order-competencies {
   order: 8;
 }
 
-.report-order-courses {
+.report-order-learning {
   order: 9;
 }
 
-.report-order-improve {
+.report-order-courses {
   order: 10;
 }
 
-.report-order-badges {
+.report-order-improve {
   order: 11;
 }
 
-.report-order-evidence-mode {
+.report-order-badges {
   order: 12;
 }
 
-.report-order-leaderboard {
+.report-order-evidence-mode {
   order: 13;
 }
 
-.report-order-dyk {
+.report-order-leaderboard {
   order: 14;
 }
 
-.report-order-survey {
+.report-order-dyk {
   order: 15;
+}
+
+.report-order-survey {
+  order: 3;
 }
 
 .result-card {
