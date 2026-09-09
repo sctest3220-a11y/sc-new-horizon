@@ -13099,8 +13099,10 @@ export default function Home() {
               {!pendingQuestion && showContinuationPanel && (
                 <div className="adaptive-card continuation-inline">
                   <span>{continuationRecommendation.confidenceLabel}</span>
-                  <strong>{continuationRecommendation.questionCount} questions</strong>
-                  <p>{continuationRecommendation.reasons[0]}</p>
+                  <strong>{results.confidence}%</strong>
+                  <p>
+                    {continuationRecommendation.reasons[0]} The recommended route adds {continuationRecommendation.questionCount} targeted questions.
+                  </p>
                   <div className="continuation-actions">
                     <button
                       type="button"
@@ -13144,8 +13146,10 @@ export default function Home() {
               {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
                 <div className="adaptive-card continuation-inline">
                   <span>Evidence completion</span>
-                  <strong>{evidenceCompletion.questionCount}</strong>
-                  <p>{evidenceCompletion.summary}</p>
+                  <strong>{results.confidence}%</strong>
+                  <p>
+                    {evidenceCompletion.summary} Add {evidenceCompletion.questionCount} evidence questions to improve coverage.
+                  </p>
                   <div className="continuation-actions">
                     <button type="button" className="primary" onClick={continueEvidenceCompletion}>
                       Keep going
