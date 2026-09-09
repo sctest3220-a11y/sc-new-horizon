@@ -262,7 +262,7 @@ type AssessmentBehaviorEvent = {
   selectedOptionId?: string;
   selectedAnswer?: string;
   correctOptionIds?: string[];
-  itemFeedbackKind?: 'like' | 'unclear' | 'comment';
+  itemFeedbackKind?: 'like' | 'unclear' | 'comment' | 'clear';
   itemFeedbackComment?: string;
   artifactSrc?: string;
   artifactAction?: 'reader' | 'zoom' | 'external';
@@ -10375,6 +10375,7 @@ export default function Home() {
   const [partSelections, setPartSelections] = useState<Record<string, string>>({});
   const [textResponse, setTextResponse] = useState('');
   const [questionFeedbackComment, setQuestionFeedbackComment] = useState('');
+  const [questionFeedbackDraft, setQuestionFeedbackDraft] = useState<Record<string, 'like' | 'unclear' | 'clear' | null>>({});
   const [questionFeedbackSubmitted, setQuestionFeedbackSubmitted] = useState<Record<string, 'like' | 'unclear' | 'comment'>>({});
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [lastAnswer, setLastAnswer] = useState<Answer | null>(null);
@@ -10706,9 +10707,18 @@ export default function Home() {
     if (revision) questionRevisionCountRef.current += 1;
   }
 
-  function submitQuestionFeedback(kind: 'like' | 'unclear' | 'comment', question = current) {
+  function toggleQuestionFeedbackDraft(questionId: string, kind: 'like' | 'unclear') {
+    setQuestionFeedbackDraft((existing) => ({
+      ...existing,
+      [questionId]: (existing[questionId] ?? questionFeedbackSubmitted[questionId] ?? null) === kind ? 'clear' : kind,
+    }));
+  }
+
+  function submitQuestionFeedback(question = current) {
     const comment = questionFeedbackComment.trim();
-    if (kind === 'comment' && !comment) return;
+    const selectedKind = questionFeedbackDraft[question.id];
+    const kind = selectedKind ?? (comment ? 'comment' : null);
+    if (!kind) return;
     appendBehaviorEvent({
       type: 'question_feedback',
       questionId: question.id,
@@ -10720,31 +10730,46 @@ export default function Home() {
       targetCount: activeConfig.totalQuestions,
       itemFeedbackKind: kind,
       itemFeedbackComment: comment || undefined,
-      label: kind === 'like' ? 'Question useful' : kind === 'unclear' ? 'Question or instruction unclear' : 'Question comment',
+      label: kind === 'like' ? 'Question useful' : kind === 'unclear' ? 'Question or instruction unclear' : kind === 'clear' ? 'Question feedback cleared' : 'Question comment',
     });
-    setQuestionFeedbackSubmitted((existing) => ({ ...existing, [question.id]: kind }));
+    setQuestionFeedbackSubmitted((existing) => {
+      const next = { ...existing };
+      if (kind === 'clear') {
+        delete next[question.id];
+      } else {
+        next[question.id] = kind;
+      }
+      return next;
+    });
+    setQuestionFeedbackDraft((existing) => ({ ...existing, [question.id]: null }));
     setQuestionFeedbackComment('');
   }
 
   function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
+    const draftKind = questionFeedbackDraft[question.id] ?? null;
+    const savedKind = questionFeedbackSubmitted[question.id];
+    const activeKind = draftKind === 'clear' ? null : draftKind ?? savedKind ?? null;
+    const hasDraftChange = draftKind !== null || Boolean(questionFeedbackComment.trim());
     return (
       <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
         <div>
           <span>Quick feedback</span>
-          <strong>{questionFeedbackSubmitted[question.id] ? 'Saved for item review' : placement === 'reveal' ? 'Was this item useful?' : 'Help improve this item'}</strong>
+          <strong>{savedKind && draftKind === null ? 'Saved for item review' : placement === 'reveal' ? 'Was this item useful?' : 'Help improve this item'}</strong>
         </div>
         <div className="question-feedback-actions">
           <button
             type="button"
-            className={questionFeedbackSubmitted[question.id] === 'like' ? 'selected' : ''}
-            onClick={() => submitQuestionFeedback('like', question)}
+            className={activeKind === 'like' ? 'selected' : ''}
+            aria-pressed={activeKind === 'like'}
+            onClick={() => toggleQuestionFeedbackDraft(question.id, 'like')}
           >
             Useful
           </button>
           <button
             type="button"
-            className={questionFeedbackSubmitted[question.id] === 'unclear' ? 'selected warning' : ''}
-            onClick={() => submitQuestionFeedback('unclear', question)}
+            className={activeKind === 'unclear' ? 'selected warning' : ''}
+            aria-pressed={activeKind === 'unclear'}
+            onClick={() => toggleQuestionFeedbackDraft(question.id, 'unclear')}
           >
             Unclear
           </button>
@@ -10760,10 +10785,10 @@ export default function Home() {
         <button
           type="button"
           className="secondary dark"
-          disabled={!questionFeedbackComment.trim()}
-          onClick={() => submitQuestionFeedback('comment', question)}
+          disabled={!hasDraftChange}
+          onClick={() => submitQuestionFeedback(question)}
         >
-          Save Note
+          {draftKind === 'clear' && !questionFeedbackComment.trim() ? 'Clear' : 'Save'}
         </button>
       </div>
     );

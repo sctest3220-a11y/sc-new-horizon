@@ -6,6 +6,8 @@ Each assessment item now includes a lightweight quick-feedback strip at the bott
 
 The feedback is stored as item-level telemetry with question id, domain, competency ids, difficulty, interaction type, current progress, feedback kind, and optional comment. Admin quality review can use this alongside timing, hesitation, artifact zoom/open behavior, and end-of-assessment survey results to prioritize specific question rewrites and artifact replacements.
 
+Useful/unclear selections are now editable before saving: users can click once to select, click again to unselect, then explicitly Save or Clear the item feedback.
+
 ## 2026-09-09: Question Quality and Survey Reset Fix
 
 The assessment feedback form now resets at the start of each new assessment and after feedback submission. This prevents a previous user's free-text suggestion from remaining visible in the survey for the next run on the same browser/device.
