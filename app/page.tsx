@@ -10706,24 +10706,67 @@ export default function Home() {
     if (revision) questionRevisionCountRef.current += 1;
   }
 
-  function submitQuestionFeedback(kind: 'like' | 'unclear' | 'comment') {
+  function submitQuestionFeedback(kind: 'like' | 'unclear' | 'comment', question = current) {
     const comment = questionFeedbackComment.trim();
     if (kind === 'comment' && !comment) return;
     appendBehaviorEvent({
       type: 'question_feedback',
-      questionId: current.id,
-      domain: current.domain,
-      competencyIds: getQuestionMeasures(current).map((competency) => competency.id),
-      difficulty: current.difficulty,
-      interaction: current.interaction ?? 'single',
+      questionId: question.id,
+      domain: question.domain,
+      competencyIds: getQuestionMeasures(question).map((competency) => competency.id),
+      difficulty: question.difficulty,
+      interaction: question.interaction ?? 'single',
       answeredCount: answers.length,
       targetCount: activeConfig.totalQuestions,
       itemFeedbackKind: kind,
       itemFeedbackComment: comment || undefined,
       label: kind === 'like' ? 'Question useful' : kind === 'unclear' ? 'Question or instruction unclear' : 'Question comment',
     });
-    setQuestionFeedbackSubmitted((existing) => ({ ...existing, [current.id]: kind }));
+    setQuestionFeedbackSubmitted((existing) => ({ ...existing, [question.id]: kind }));
     setQuestionFeedbackComment('');
+  }
+
+  function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
+    return (
+      <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
+        <div>
+          <span>Quick feedback</span>
+          <strong>{questionFeedbackSubmitted[question.id] ? 'Saved for item review' : placement === 'reveal' ? 'Was this item useful?' : 'Help improve this item'}</strong>
+        </div>
+        <div className="question-feedback-actions">
+          <button
+            type="button"
+            className={questionFeedbackSubmitted[question.id] === 'like' ? 'selected' : ''}
+            onClick={() => submitQuestionFeedback('like', question)}
+          >
+            Useful
+          </button>
+          <button
+            type="button"
+            className={questionFeedbackSubmitted[question.id] === 'unclear' ? 'selected warning' : ''}
+            onClick={() => submitQuestionFeedback('unclear', question)}
+          >
+            Unclear
+          </button>
+        </div>
+        <label>
+          <span>Optional note</span>
+          <input
+            value={questionFeedbackComment}
+            onChange={(event) => setQuestionFeedbackComment(event.target.value)}
+            placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+          />
+        </label>
+        <button
+          type="button"
+          className="secondary dark"
+          disabled={!questionFeedbackComment.trim()}
+          onClick={() => submitQuestionFeedback('comment', question)}
+        >
+          Save Note
+        </button>
+      </div>
+    );
   }
 
   useEffect(() => {
@@ -12743,44 +12786,6 @@ export default function Home() {
                   </HelpBubble>
                 </span>
               </div>
-              <div className="question-feedback-strip" aria-label="Question feedback">
-                <div>
-                  <span>Quick feedback</span>
-                  <strong>{questionFeedbackSubmitted[current.id] ? 'Saved for item review' : 'Help improve this item'}</strong>
-                </div>
-                <div className="question-feedback-actions">
-                  <button
-                    type="button"
-                    className={questionFeedbackSubmitted[current.id] === 'like' ? 'selected' : ''}
-                    onClick={() => submitQuestionFeedback('like')}
-                  >
-                    Useful
-                  </button>
-                  <button
-                    type="button"
-                    className={questionFeedbackSubmitted[current.id] === 'unclear' ? 'selected warning' : ''}
-                    onClick={() => submitQuestionFeedback('unclear')}
-                  >
-                    Unclear
-                  </button>
-                </div>
-                <label>
-                  <span>Optional note</span>
-                  <input
-                    value={questionFeedbackComment}
-                    onChange={(event) => setQuestionFeedbackComment(event.target.value)}
-                    placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
-                  />
-                </label>
-                <button
-                  type="button"
-                  className="secondary dark"
-                  disabled={!questionFeedbackComment.trim()}
-                  onClick={() => submitQuestionFeedback('comment')}
-                >
-                  Save Note
-                </button>
-              </div>
               <div className="question-focus-strip">
                 <span>{difficultyLabels[current.difficulty]} task</span>
                 <strong>{getQuestionFocus(current)}</strong>
@@ -12974,6 +12979,7 @@ export default function Home() {
                   <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>
                 </div>
               )}
+              {renderQuestionFeedback(current)}
             </article>
             <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
               <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
@@ -13110,6 +13116,7 @@ export default function Home() {
                   })}
                 </div>
               )}
+              {renderQuestionFeedback(lastAnswer.question, 'reveal')}
               {!pendingQuestion && showContinuationPanel && (
                 <div className={`continue-callout ${continuationRecommendation.urgency}`}>
                   <p className="eyebrow">{continuationRecommendation.kicker}</p>
