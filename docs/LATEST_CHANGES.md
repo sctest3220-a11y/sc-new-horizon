@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-09: Item Quality Gate
+
+Admin now shows an item quality gate for question-level feedback and behavior signals. Each question is classified as `keep`, `watch`, or `review` using unclear flags, issue comments, likes, timing, and confusion signals.
+
+Questions marked `review` are penalized in adaptive routing so the assessment stops favoring items with repeated negative feedback. They can still appear only when coverage pressure leaves no better alternative. Admin review should rewrite, replace the artifact, or retire these items before heavy scored use.
+
 ## 2026-09-09: Per-Question Feedback During Assessment
 
 Each assessment item now includes a lightweight quick-feedback strip at the bottom of the question card and again in answer review. Users can mark the current question as useful, flag the question or instruction as unclear, or leave an optional note such as artifact relevance, obvious answer options, ambiguous wording, or missing evidence.

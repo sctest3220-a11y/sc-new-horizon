@@ -8509,8 +8509,61 @@ function getQuestionBenchmarks(events: AssessmentBehaviorEvent[]) {
   }])) as Record<string, { attempts: number; averageScore: number; averageDurationMs: number; confusionRate: number }>;
 }
 
+function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
+  const benchmarks = getQuestionBenchmarks(events);
+  const feedbackEvents = events.filter((event) => event.type === 'question_feedback' && event.questionId);
+  const groups = new Map<string, AssessmentBehaviorEvent[]>();
+  feedbackEvents.forEach((event) => {
+    groups.set(event.questionId!, [...(groups.get(event.questionId!) ?? []), event]);
+  });
+  const issueTerms = ['guess', 'obvious', 'giveaway', 'artifact', 'irrelevant', 'not related', 'unnecessary', 'inconsistent', 'unclear', 'ambiguous', 'harsh', 'rubric'];
+  return [...new Set([...Object.keys(benchmarks), ...groups.keys()])].map((questionId) => {
+    const feedback = groups.get(questionId) ?? [];
+    const unclear = feedback.filter((event) => event.itemFeedbackKind === 'unclear').length;
+    const comments = feedback.filter((event) => event.itemFeedbackComment?.trim()).length;
+    const likes = feedback.filter((event) => event.itemFeedbackKind === 'like').length;
+    const issueComments = feedback.filter((event) => {
+      const text = event.itemFeedbackComment?.toLowerCase() ?? '';
+      return issueTerms.some((term) => text.includes(term));
+    }).length;
+    const benchmark = benchmarks[questionId];
+    const negativeSignals = unclear + issueComments + Math.max(0, comments - likes);
+    const status = negativeSignals >= 2 || (benchmark?.confusionRate ?? 0) >= 50
+      ? 'review'
+      : negativeSignals >= 1 || (benchmark?.confusionRate ?? 0) >= 25
+        ? 'watch'
+        : 'keep';
+    const action = status === 'review'
+      ? 'Quarantine for rewrite or artifact replacement before heavy scored use.'
+      : status === 'watch'
+        ? 'Monitor with more attempts and inspect wording/artifact fit.'
+        : 'Keep in active routing.';
+    return {
+      questionId,
+      attempts: benchmark?.attempts ?? 0,
+      averageScore: benchmark?.averageScore ?? 0,
+      averageDurationMs: benchmark?.averageDurationMs ?? 0,
+      confusionRate: benchmark?.confusionRate ?? 0,
+      feedbackCount: feedback.length,
+      unclear,
+      comments,
+      likes,
+      negativeSignals,
+      status,
+      action,
+    };
+  }).sort((left, right) => {
+    const statusWeight = { review: 2, watch: 1, keep: 0 };
+    return statusWeight[right.status] - statusWeight[left.status]
+      || right.negativeSignals - left.negativeSignals
+      || right.confusionRate - left.confusionRate
+      || right.averageDurationMs - left.averageDurationMs;
+  });
+}
+
 function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedback: AssessmentFeedbackSurvey[]) {
   const benchmarks = getQuestionBenchmarks(events);
+  const qualityRows = getQuestionQualityRows(events);
   const questionRows = Object.entries(benchmarks)
     .map(([questionId, row]) => ({ questionId, ...row }))
     .sort((left, right) => right.confusionRate - left.confusionRate || right.averageDurationMs - left.averageDurationMs);
@@ -8540,10 +8593,11 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
     irrelevantArtifactSignals ? 'Audit artifacts for relevance: feedback mentions irrelevant, unrealistic, or mock-looking artifacts. Require each artifact to contain evidence needed by the answer key.' : 'No explicit artifact-relevance theme has been detected in survey text yet.',
     ambiguousWritingSignals ? 'Audit written-response prompts: feedback mentions ambiguity or vague rubric fit. Rewrite prompts to name task, context, expected evidence, and scoring lens.' : 'No explicit written-prompt ambiguity theme has been detected in survey text yet.',
     staleSurveySignals ? 'Verify survey state reset: feedback mentions old comments being visible. Feedback draft should reset at new assessment start and after submission.' : 'No stale-survey-text theme has been detected in survey text yet.',
+    qualityRows.filter((row) => row.status === 'review').length ? `${qualityRows.filter((row) => row.status === 'review').length} question${qualityRows.filter((row) => row.status === 'review').length === 1 ? '' : 's'} should be quarantined for review based on item-level feedback or confusion.` : 'No questions meet the quarantine threshold yet.',
     started ? `Completion health: ${Math.max(0, Math.round((1 - abandoned / started) * 100))}% of locally started sessions avoided recorded abandonment.` : 'Completion health will appear after sessions are started.',
     mandatory ? `Optional-depth conversion: ${Math.round(continued / mandatory * 100)}% continued after mandatory questions.` : 'Optional-depth conversion needs a completed mandatory route.',
   ];
-  return { questionRows: questionRows.slice(0, 10), recommendations, started, abandoned, mandatory, continued, confusingEvents };
+  return { questionRows: questionRows.slice(0, 10), qualityRows: qualityRows.slice(0, 12), recommendations, started, abandoned, mandatory, continued, confusingEvents };
 }
 
 function formatDuration(durationMs = 0) {
@@ -9778,7 +9832,7 @@ function selectNextQuestion(
   answers: Answer[],
   assessmentMode: AssessmentMode = 'free',
   seed = 0,
-  profile: { functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number } = {},
+  profile: { functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
 ) {
   const bank = getAssessmentBank(assessmentMode);
   const answered = new Set(answers.map((answer) => answer.question.id));
@@ -9786,6 +9840,7 @@ function selectNextQuestion(
   const counts = getAnsweredDomainCounts(answers);
   const targetDomain = profile.targetDomain ?? (assessmentMode === 'executive' ? selectExecutiveDomain(answers) : undefined);
   const targetCompetencyIds = new Set(profile.targetCompetencyIds ?? []);
+  const flaggedQuestionIds = new Set(profile.flaggedQuestionIds ?? []);
   const weakestDomain = (Object.keys(domains) as DomainId[]).sort(
     (a, b) => counts[a].count - counts[b].count || scores[a] - scores[b],
   )[0];
@@ -9856,6 +9911,7 @@ function selectNextQuestion(
       if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
       if (visualCount < 5 && (question.stimulus || question.visualStimulus)) rank += 18;
       if (question.type === 'reliance-decision') rank -= 28;
+      if (flaggedQuestionIds.has(question.id)) rank -= 72;
       if (latestScore < 55 && question.difficulty === 'awareness') rank += 34;
       if (latestScore >= 82 && question.difficulty === 'proficient') rank += 34;
       return { question, rank };
@@ -9886,6 +9942,7 @@ function selectNextQuestion(
     if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
     if (visualCount < 4 && (question.stimulus || question.visualStimulus)) rank += 22;
     if (question.type === 'reliance-decision') rank -= 28;
+    if (flaggedQuestionIds.has(question.id)) rank -= 72;
     if (latestScore < 55 && question.difficulty === 'awareness') rank += 30;
     if (latestScore >= 82 && question.difficulty === 'proficient') rank += 30;
     return { question, rank };
@@ -10464,6 +10521,10 @@ export default function Home() {
   );
   const questionBenchmarks = useMemo(() => getQuestionBenchmarks(behaviorLog), [behaviorLog]);
   const qualityInsights = useMemo(() => getQualityImprovementInsights(behaviorLog, assessmentFeedback), [assessmentFeedback, behaviorLog]);
+  const flaggedQualityQuestionIds = useMemo(
+    () => qualityInsights.qualityRows.filter((row) => row.status === 'review').map((row) => row.questionId),
+    [qualityInsights.qualityRows],
+  );
   const detailedAnalysisUnlocked = assessmentFeedback.some((entry) => entry.sessionId === behaviorSessionId);
   const artifactReplacementBriefs = useMemo(() => {
     const seen = new Set<string>();
@@ -10952,6 +11013,7 @@ export default function Home() {
       functionTrack,
       industryTrack,
       targetCompetencyIds,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setMode(nextMode);
     setAssessmentSeed(nextSeed);
@@ -11184,6 +11246,7 @@ export default function Home() {
       targetDomain: continuationFocus?.targetDomain,
       targetCompetencyIds: continuationFocus?.targetCompetencyIds ?? profileTargetCompetencyIds,
       totalQuestions: activeConfig.totalQuestions,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setPendingQuestion(nextQuestion);
     setStep('feedback');
@@ -11215,6 +11278,7 @@ export default function Home() {
       targetDomain: focus.targetDomain,
       targetCompetencyIds: focus.targetCompetencyIds,
       totalQuestions: nextTargetTotal,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setAssessmentSeed(nextSeed);
     setAssessmentTargetTotal(nextTargetTotal);
@@ -12183,19 +12247,32 @@ export default function Home() {
                         {qualityInsights.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
                       </div>
                     </div>
-                    <div>
-                      <h3>Question candidates</h3>
-                      <div className="admin-list compact">
-                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
-                          <p key={row.questionId}>
-                            <strong>{row.questionId}</strong>
-                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
-                          </p>
-                        )) : <p>No item behavior data yet.</p>}
-                      </div>
-                    </div>
-                  </div>
-                </article>
+	                    <div>
+	                      <h3>Question candidates</h3>
+	                      <div className="admin-list compact">
+	                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
+	                          <p key={row.questionId}>
+	                            <strong>{row.questionId}</strong>
+	                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
+	                          </p>
+	                        )) : <p>No item behavior data yet.</p>}
+	                      </div>
+	                    </div>
+	                  </div>
+	                  <div className="quality-review-table">
+	                    <h3>Item quality gate</h3>
+	                    <div className="quality-review-rows">
+	                      {qualityInsights.qualityRows.length ? qualityInsights.qualityRows.map((row) => (
+	                        <div key={row.questionId} className={`quality-review-row ${row.status}`}>
+	                          <span>{row.status}</span>
+	                          <strong>{row.questionId}</strong>
+	                          <small>{row.feedbackCount} feedback · {row.unclear} unclear · {row.negativeSignals} negative signals · {row.confusionRate}% confusing</small>
+	                          <p>{row.action}</p>
+	                        </div>
+	                      )) : <p>No item-level feedback has been submitted yet.</p>}
+	                    </div>
+	                  </div>
+	                </article>
 
                 <article className="admin-card admin-wide telemetry-analysis-card">
                   <div className="report-heading">

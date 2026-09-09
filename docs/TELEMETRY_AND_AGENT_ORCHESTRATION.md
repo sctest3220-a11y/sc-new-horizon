@@ -188,6 +188,14 @@ Telemetry can nominate improvement candidates:
 - high abandonment points
 - report sections nobody engages with
 
+The admin quality gate classifies question candidates as:
+
+- `keep`: no meaningful negative signal yet; the item can stay in active routing.
+- `watch`: at least one negative or unclear signal; gather more attempts and inspect the item.
+- `review`: repeated unclear/comment signals or high confusion; quarantine for rewrite, artifact replacement, rubric tuning, or retirement before heavy scored use.
+
+Adaptive routing applies a penalty to `review` items so they are not favored while still allowing them as a fallback when competency coverage has no better alternative.
+
 ## Agent Orchestration
 
 Agent Ops is supervised. Agents analyze telemetry, survey feedback, trend signals, source material, and item-bank coverage, then propose improvements. They do not silently publish changes.
