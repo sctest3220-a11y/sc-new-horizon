@@ -237,7 +237,7 @@ type AssessmentBehaviorEvent = {
   createdAt: string;
   profileId: string;
   sessionId: string;
-  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted' | 'artifact_opened' | 'artifact_zoomed' | 'artifact_external_opened';
+  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'question_feedback' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted' | 'artifact_opened' | 'artifact_zoomed' | 'artifact_external_opened';
   mode: AssessmentMode;
   audience?: Audience;
   functionTrack?: FunctionTrack;
@@ -262,6 +262,8 @@ type AssessmentBehaviorEvent = {
   selectedOptionId?: string;
   selectedAnswer?: string;
   correctOptionIds?: string[];
+  itemFeedbackKind?: 'like' | 'unclear' | 'comment';
+  itemFeedbackComment?: string;
   artifactSrc?: string;
   artifactAction?: 'reader' | 'zoom' | 'external';
   zoomLevel?: number;
@@ -8517,15 +8519,21 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
   const continued = events.filter((event) => event.type === 'continuation_accepted').length;
   const mandatory = events.filter((event) => event.type === 'mandatory_completed').length;
   const confusingEvents = events.filter((event) => event.type === 'question_answered' && event.hesitation === 'confusing').length;
+  const questionFeedbackEvents = events.filter((event) => event.type === 'question_feedback');
+  const unclearQuestionFeedback = questionFeedbackEvents.filter((event) => event.itemFeedbackKind === 'unclear').length;
   const poorArtifacts = feedback.filter((entry) => entry.artifactQuality === 'poor').length;
   const tooEasy = feedback.filter((entry) => entry.difficultyFit === 'too-easy').length;
-  const suggestionText = feedback.map((entry) => entry.suggestions.toLowerCase()).join(' ');
+  const suggestionText = [
+    ...feedback.map((entry) => entry.suggestions),
+    ...questionFeedbackEvents.map((event) => event.itemFeedbackComment ?? ''),
+  ].join(' ').toLowerCase();
   const guessableAnswerSignals = ['guess', 'obvious', 'too easy', 'easy to guess', 'giveaway', 'distractor'].filter((term) => suggestionText.includes(term)).length;
   const irrelevantArtifactSignals = ['artifact', 'irrelevant', 'not relevant', 'not relate', 'unrealistic', 'mock', 'not realistic'].filter((term) => suggestionText.includes(term)).length;
   const ambiguousWritingSignals = ['ambiguous', 'unclear', 'written', 'writing', 'rubric', 'vague'].filter((term) => suggestionText.includes(term)).length;
   const staleSurveySignals = ['previous user', 'left in the survey', 'not reset', 'stale', 'old comment'].filter((term) => suggestionText.includes(term)).length;
   const recommendations = [
     questionRows[0] ? `Review ${questionRows[0].questionId}: ${questionRows[0].confusionRate}% confusing, ${Math.round(questionRows[0].averageDurationMs / 1000)}s average.` : 'Collect more item-level attempts before rewriting questions.',
+    unclearQuestionFeedback ? `Prioritize unclear items: ${unclearQuestionFeedback} question-level unclear flag${unclearQuestionFeedback === 1 ? '' : 's'} submitted during the assessment.` : 'No question-level unclear flags have been submitted yet.',
     poorArtifacts ? `Replace artifact sets: ${poorArtifacts} survey response${poorArtifacts === 1 ? '' : 's'} rated them poor.` : 'Continue monitoring artifact relevance and realism.',
     tooEasy ? `Increase decision complexity: ${tooEasy} respondent${tooEasy === 1 ? '' : 's'} found the route too easy.` : 'Difficulty feedback does not yet show a route-wide easy-item problem.',
     guessableAnswerSignals ? 'Audit answer options: feedback mentions guessable or obvious answers. Replace giveaway distractors with plausible misconceptions and more artifact-dependent evidence.' : 'No explicit guessable-answer theme has been detected in survey text yet.',
@@ -10366,6 +10374,8 @@ export default function Home() {
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
   const [partSelections, setPartSelections] = useState<Record<string, string>>({});
   const [textResponse, setTextResponse] = useState('');
+  const [questionFeedbackComment, setQuestionFeedbackComment] = useState('');
+  const [questionFeedbackSubmitted, setQuestionFeedbackSubmitted] = useState<Record<string, 'like' | 'unclear' | 'comment'>>({});
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [lastAnswer, setLastAnswer] = useState<Answer | null>(null);
   const [pendingQuestion, setPendingQuestion] = useState<Question | null>(null);
@@ -10696,6 +10706,26 @@ export default function Home() {
     if (revision) questionRevisionCountRef.current += 1;
   }
 
+  function submitQuestionFeedback(kind: 'like' | 'unclear' | 'comment') {
+    const comment = questionFeedbackComment.trim();
+    if (kind === 'comment' && !comment) return;
+    appendBehaviorEvent({
+      type: 'question_feedback',
+      questionId: current.id,
+      domain: current.domain,
+      competencyIds: getQuestionMeasures(current).map((competency) => competency.id),
+      difficulty: current.difficulty,
+      interaction: current.interaction ?? 'single',
+      answeredCount: answers.length,
+      targetCount: activeConfig.totalQuestions,
+      itemFeedbackKind: kind,
+      itemFeedbackComment: comment || undefined,
+      label: kind === 'like' ? 'Question useful' : kind === 'unclear' ? 'Question or instruction unclear' : 'Question comment',
+    });
+    setQuestionFeedbackSubmitted((existing) => ({ ...existing, [current.id]: kind }));
+    setQuestionFeedbackComment('');
+  }
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const recordAbandonment = () => {
@@ -11008,6 +11038,7 @@ export default function Home() {
     setMatchSelections({});
     setPartSelections({});
     setTextResponse('');
+    setQuestionFeedbackComment('');
     setDraggedIndex(null);
     questionStartedAtRef.current = new Date().getTime();
     questionStartedIsoRef.current = new Date().toISOString();
@@ -12711,6 +12742,44 @@ export default function Home() {
                     Opening, zooming, or launching artifacts flags which screenshots, workflows, or documents may need larger or clearer versions.
                   </HelpBubble>
                 </span>
+              </div>
+              <div className="question-feedback-strip" aria-label="Question feedback">
+                <div>
+                  <span>Quick feedback</span>
+                  <strong>{questionFeedbackSubmitted[current.id] ? 'Saved for item review' : 'Help improve this item'}</strong>
+                </div>
+                <div className="question-feedback-actions">
+                  <button
+                    type="button"
+                    className={questionFeedbackSubmitted[current.id] === 'like' ? 'selected' : ''}
+                    onClick={() => submitQuestionFeedback('like')}
+                  >
+                    Useful
+                  </button>
+                  <button
+                    type="button"
+                    className={questionFeedbackSubmitted[current.id] === 'unclear' ? 'selected warning' : ''}
+                    onClick={() => submitQuestionFeedback('unclear')}
+                  >
+                    Unclear
+                  </button>
+                </div>
+                <label>
+                  <span>Optional note</span>
+                  <input
+                    value={questionFeedbackComment}
+                    onChange={(event) => setQuestionFeedbackComment(event.target.value)}
+                    placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+                  />
+                </label>
+                <button
+                  type="button"
+                  className="secondary dark"
+                  disabled={!questionFeedbackComment.trim()}
+                  onClick={() => submitQuestionFeedback('comment')}
+                >
+                  Save Note
+                </button>
               </div>
               <div className="question-focus-strip">
                 <span>{difficultyLabels[current.difficulty]} task</span>

@@ -2795,6 +2795,95 @@ h3 {
   text-transform: uppercase;
 }
 
+.question-feedback-strip {
+  align-items: end;
+  background: #fffaf0;
+  border: 1px solid #ead9ac;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(220px, 1.4fr) auto;
+  margin-top: 10px;
+  padding: 10px 12px;
+}
+
+.question-feedback-strip > div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.question-feedback-strip > div:first-child span,
+.question-feedback-strip label span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.question-feedback-strip > div:first-child strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.question-feedback-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.question-feedback-actions button {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  min-height: 36px;
+  padding: 0 12px;
+}
+
+.question-feedback-actions button.selected {
+  background: #eaf7f0;
+  border-color: #81c9a2;
+  color: #17613a;
+}
+
+.question-feedback-actions button.warning,
+.question-feedback-actions button.selected.warning {
+  background: #fff1e8;
+  border-color: #efae82;
+  color: #8a431b;
+}
+
+.question-feedback-strip label {
+  display: grid;
+  gap: 5px;
+}
+
+.question-feedback-strip input {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font: inherit;
+  min-height: 38px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.question-feedback-strip > button {
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.question-feedback-strip button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .question-focus-strip {
   align-items: center;
   background: #17201d;
@@ -5505,9 +5594,14 @@ h3 {
   .peer-insight-grid,
   .period-toggle,
   .profile-pulse-actions,
+  .question-feedback-strip,
   .leaderboard-list > div,
   .question-analysis-list summary {
     grid-template-columns: 1fr;
+  }
+
+  .question-feedback-actions {
+    flex-wrap: wrap;
   }
 
   .lab-checklist,

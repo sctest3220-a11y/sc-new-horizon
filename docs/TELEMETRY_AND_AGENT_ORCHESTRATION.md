@@ -20,6 +20,7 @@ Captured events:
 - `assessment_started`: mode, audience, function, industry, executive role, target question count.
 - `question_shown`: question id, domain, competency ids, difficulty, interaction type, answered count, target count.
 - `question_answered`: selected answer, expected answer ids, readiness score, domain, competency ids, difficulty, interaction type, elapsed time, interaction count, revision count, hesitation classification.
+- `question_feedback`: item-level user feedback while the question is still visible; captures useful/unclear/comment signal, optional note, question id, domain, competency ids, difficulty, interaction type, answered count, and target count.
 - `assessment_abandoned`: active question, answered count, target count, profile context.
 - `mandatory_completed`: completion of the required 12-question or 20-question milestone.
 - `continuation_accepted`: chosen continuation route, route kind, target count, reason label.
@@ -174,6 +175,7 @@ Personalization should be explainable to users. The product should avoid hidden 
 Telemetry can nominate improvement candidates:
 
 - confusing question wording
+- question-level useful/unclear/comment feedback
 - weak distractors
 - overly easy advanced items
 - unrealistic or illegible artifacts
