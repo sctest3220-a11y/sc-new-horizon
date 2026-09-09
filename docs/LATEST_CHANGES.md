@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-09: Assessment Report Cleanup
+
+The assessment report now separates the learner-facing report from diagnostic details. The default Report tab prioritizes score interpretation, personalized summary, strengths, priority gaps, domain and competency scores, learning paths, tools/labs, courses, improvement actions, badges, and the persona leaderboard.
+
+The Test analysis tab now holds the deeper machinery: score calculation, telemetry, question-level evidence, coverage plan, profile signals, saved analytics, and source/evidence notes. Repeated generated-report sections were collapsed so users do not see the same learning path, courses, competency focus, and analysis repeated in multiple places.
+
 ## 2026-09-09: Score Explanation and No-Response Scoring
 
 Blank written responses, empty multi-select submissions, blank matching submissions, and unanswered mini-parts now receive `0` raw score and `0` readiness evidence instead of a small floor score. The answer review now includes a score explanation panel showing raw score, difficulty-adjusted readiness evidence, and the maximum readiness evidence allowed by the item difficulty band.

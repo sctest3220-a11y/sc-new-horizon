@@ -10340,6 +10340,7 @@ export default function Home() {
   const [selectedPreviewDomain, setSelectedPreviewDomain] = useState<DomainId>('D3');
   const [selectedRadarDomain, setSelectedRadarDomain] = useState<DomainId>('D1');
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
+  const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
@@ -10844,6 +10845,7 @@ export default function Home() {
     setAssessmentSeed(nextSeed);
     setAssessmentTargetTotal(modeConfig[nextMode].totalQuestions);
     setContinuationFocus(null);
+    setReportTab('report');
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -11078,6 +11080,7 @@ export default function Home() {
         appendBehaviorEvent({ type: 'continuation_declined', continuationKind: 'declined', answeredCount: answers.length, requiredCount: modeConfig[mode].totalQuestions });
       }
       logCompletedResults();
+      setReportTab('report');
       setStep('results');
       return;
     }
@@ -13188,8 +13191,28 @@ export default function Home() {
               onSelectDomain={setSelectedRadarDomain}
             />
           </div>
-          <div className="result-grid">
-            <article className="result-card wide comparison-note">
+          <div className="report-tabs" role="tablist" aria-label="Assessment report sections">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={reportTab === 'report'}
+              className={reportTab === 'report' ? 'selected' : ''}
+              onClick={() => setReportTab('report')}
+            >
+              Report
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={reportTab === 'analysis'}
+              className={reportTab === 'analysis' ? 'selected' : ''}
+              onClick={() => setReportTab('analysis')}
+            >
+              Test analysis
+            </button>
+          </div>
+          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
+            <article className="result-card wide comparison-note report-primary report-order-summary">
               <h2>Score interpretation</h2>
               <div className="evidence-grid">
                 <p><strong>Your score</strong> A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.</p>
@@ -13197,7 +13220,7 @@ export default function Home() {
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
               </div>
             </article>
-            <article className="result-card wide score-calculation-card">
+            <article className="result-card wide score-calculation-card analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Score calculation</p>
@@ -13256,7 +13279,7 @@ export default function Home() {
                 </div>
               </details>
             </article>
-            <article className="result-card wide did-you-know-report">
+            <article className="result-card wide did-you-know-report report-primary report-order-dyk">
               <div>
                 <p className="eyebrow">Did you know?</p>
                 <h2>{personalizedDidYouKnow.topic}</h2>
@@ -13269,7 +13292,7 @@ export default function Home() {
               </div>
             </article>
             {showContinuationPanel && (
-              <article className={`result-card wide continuation-panel prominent ${continuationRecommendation.urgency}`}>
+              <article className={`result-card wide continuation-panel prominent report-primary report-order-continuation ${continuationRecommendation.urgency}`}>
                 <div>
                   <p className="eyebrow">{continuationRecommendation.kicker}</p>
                   <h2>{continuationRecommendation.headline}</h2>
@@ -13316,7 +13339,7 @@ export default function Home() {
               </article>
             )}
             {showEvidenceCompletionPanel && (
-              <article className="result-card wide continuation-panel prominent recommended">
+              <article className="result-card wide continuation-panel prominent recommended report-primary report-order-continuation">
                 <div>
                   <p className="eyebrow">Evidence completion</p>
                   <h2>Continue beyond 20 until confidence is high</h2>
@@ -13346,7 +13369,7 @@ export default function Home() {
                 </div>
               </article>
             )}
-            <article className="result-card wide leaderboard-card">
+            <article className="result-card wide leaderboard-card report-primary report-order-leaderboard">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Persona leaderboard</p>
@@ -13366,7 +13389,7 @@ export default function Home() {
               </div>
               <p className="context-line">MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.</p>
             </article>
-            <article className="result-card wide telemetry-analysis-card">
+            <article className="result-card wide telemetry-analysis-card analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Telemetry and result analysis</p>
@@ -13390,7 +13413,7 @@ export default function Home() {
               </div>
               <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
             </article>
-            <article className="result-card wide assessment-feedback-gate">
+            <article className="result-card wide assessment-feedback-gate analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Question-level analysis</p>
@@ -13452,78 +13475,45 @@ export default function Home() {
                 </div>
               )}
             </article>
-            <article className="result-card wide ai-generated-report">
+            <article className="result-card wide ai-generated-report report-primary report-order-generated">
               <div className="report-heading">
                 <div>
-                  <p className="eyebrow">MVP generated report</p>
+                  <p className="eyebrow">Personalized AI report</p>
                   <h2>{generatedReport.headline}</h2>
                 </div>
-                <span>No API key in MVP</span>
+                <span>{scoreGroup.label.replace(/ average$/i, '')}</span>
               </div>
               <p>{generatedReport.summary}</p>
               <div className="report-section">
-                <h3>Detailed analysis</h3>
+                <h3>What this means</h3>
                 <div className="evidence-grid">
                   {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
                 </div>
               </div>
-              <div className="report-section">
-                <h3>Priority domains</h3>
-                <div className="improvement-brief">
-                  {generatedReport.priorityDomains.map((item) => (
-                    <div key={item.domain}>
-                      <span>{item.domain} · {item.title}</span>
-                      <strong>{item.score}/100 now · target {item.target}/100</strong>
-                      <p>{item.action}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="report-section">
-                <h3>Competency focus</h3>
-                <div className="competency-table compact">
-                  {generatedReport.competencyFocus.length ? generatedReport.competencyFocus.map((competency) => (
-                    <details key={competency.id} open>
-                      <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label })}>
-                        <span>{competency.id}</span>
-                        <strong>{competency.label}</strong>
-                        <b>{competency.score}/100</b>
-                        <small>{competency.evidenceCount} evidence · {competency.skills.join(', ')}</small>
-                      </summary>
-                    </details>
-                  )) : <p>Complete a longer route to unlock sampled competency focus.</p>}
-                </div>
-              </div>
-              <div className="report-section">
-                <h3>Learning path</h3>
-                <div className="learning-list">
-                  {generatedReport.learningPath.map((step, index) => (
-                    <div key={step}>
-                      <span>Step {index + 1}</span>
-                      <strong>{step}</strong>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="personalized-exploration">
-                <div>
-                  <span>Recommended tools to explore</span>
-                  <div className="profile-tag-grid">
-                    {generatedReport.tools.map((tool) => <span key={tool}>{tool}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Recommended courses</span>
-                  <div className="profile-tag-grid">
-                    {generatedReport.courses.slice(0, 4).map((course) => (
-                      <a key={course.id} href={course.url} target="_blank" rel="noreferrer">{course.provider}: {course.title}</a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="context-line">{generatedReport.productionNote}</p>
             </article>
-            <article className="result-card wide coverage-plan">
+            <article className="result-card wide report-primary report-order-domain">
+              <h2>Domain scorecard</h2>
+              <div className="demo-domain-grid">
+                {(Object.keys(results.domainScores) as DomainId[]).map((domain) => {
+                  const target = getTargetScore(domain, radarProfiles);
+                  const gap = target - results.domainScores[domain];
+                  return (
+                    <button
+                      key={domain}
+                      className={selectedRadarDomain === domain ? 'selected' : ''}
+                      type="button"
+                      onClick={() => selectReportDomain(domain, 'radar')}
+                    >
+                      <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
+                      <strong>{results.domainScores[domain]}/100</strong>
+                      <meter min="0" max="100" value={results.domainScores[domain]} />
+                      <small>{gap > 0 ? `${gap} points below target` : 'At or above target'}</small>
+                    </button>
+                  );
+                })}
+              </div>
+            </article>
+            <article className="result-card wide coverage-plan analysis-primary">
               <h2>Assessment coverage plan</h2>
               <p>{coveragePlan.testFrame}</p>
               <div className="coverage-stats">
@@ -13554,7 +13544,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide profile-insights">
+            <article className="result-card wide profile-insights analysis-primary">
               <h2>User profile signals</h2>
               {userProfileSurvey ? (
                 <>
@@ -13570,7 +13560,7 @@ export default function Home() {
                 <p>No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.</p>
               )}
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide analysis-primary">
               <h2>Domain evidence quality</h2>
               <div className="domain-evidence-grid">
                 {domainEvidenceSummary.map((item) => (
@@ -13587,7 +13577,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide domain-drilldown">
+            <article className="result-card wide domain-drilldown report-primary report-order-competencies">
               <h2>{domains[selectedRadarDomain].name} competency drilldown</h2>
               <p>{selectedRadarDomain} · {domains[selectedRadarDomain].name}</p>
               <div className="drilldown-domain-tabs" aria-label="Choose a domain for competency drilldown">
@@ -13618,7 +13608,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide score-analytics">
+            <article className="result-card wide score-analytics analysis-primary">
               <h2>Saved score analytics</h2>
               <div className="evidence-grid">
                 <p><strong>Saved runs</strong> {scoreLogAnalytics.totalRuns} completed assessment run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'} on this device.</p>
@@ -13636,19 +13626,19 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card">
+            <article className="result-card report-primary report-order-strengths">
               <h2>Strengths</h2>
               {results.strongest.map((domain) => (
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card">
+            <article className="result-card report-primary report-order-gaps">
               <h2>Priority gaps</h2>
               {results.weakest.map((domain) => (
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-evidence-mode">
               <h2>Knowledge vs practical skill</h2>
               <div className="evidence-mode-grid">
                 {evidenceModeSummary.map((item) => (
@@ -13660,7 +13650,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-badges">
               <h2>Readiness badges</h2>
               <div className="badge-grid">
                 {earnedBadges.map((badge) => (
@@ -13672,7 +13662,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide analysis-primary">
               <h2>Competency and skill scores</h2>
               <div className="competency-table">
                 {coveragePlan.coverage.map((competency) => (
@@ -13688,7 +13678,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-learning">
               <h2>{mode === 'executive' ? 'Executive learning path' : mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
               <div className="personalized-exploration">
                 <div>
@@ -13720,7 +13710,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-courses">
               <h2>Thailand course recommendations</h2>
               <div className="course-list">
                 {courseRecommendations.map((course) => (
@@ -13739,7 +13729,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-improve">
               <h2>Where to improve next</h2>
               <div className="improvement-brief">
                 {improvementBrief.map((item) => (
@@ -13752,7 +13742,7 @@ export default function Home() {
               </div>
             </article>
             {(mode === 'premium' || mode === 'executive') && (
-              <article className="result-card wide">
+              <article className="result-card wide analysis-primary">
                 <h2>Evidence summary</h2>
                 <div className="evidence-grid">
                   <p><strong>Adaptive coverage</strong> {mode === 'executive' ? 'Executive-weighted D5/D4/D6 coverage plus D1-D3 calibration checks.' : 'D1-D6 sampled with extra attention to low-confidence domains.'}</p>

@@ -4015,6 +4015,96 @@ h3 {
   margin-top: 18px;
 }
 
+.report-tabs {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 18px;
+  padding: 6px;
+}
+
+.report-tabs button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 10px 14px;
+}
+
+.report-tabs button.selected {
+  background: #17201d;
+  color: #fff;
+}
+
+.result-grid.show-report .analysis-primary,
+.result-grid.show-analysis .report-primary {
+  display: none;
+}
+
+.report-order-summary {
+  order: 1;
+}
+
+.report-order-continuation {
+  order: 2;
+}
+
+.report-order-generated {
+  order: 3;
+}
+
+.report-order-strengths {
+  order: 4;
+}
+
+.report-order-gaps {
+  order: 5;
+}
+
+.report-order-domain {
+  order: 6;
+}
+
+.report-order-competencies {
+  order: 7;
+}
+
+.report-order-learning {
+  order: 8;
+}
+
+.report-order-courses {
+  order: 9;
+}
+
+.report-order-improve {
+  order: 10;
+}
+
+.report-order-badges {
+  order: 11;
+}
+
+.report-order-evidence-mode {
+  order: 12;
+}
+
+.report-order-leaderboard {
+  order: 13;
+}
+
+.report-order-dyk {
+  order: 14;
+}
+
 .result-card {
   padding: 24px;
 }
