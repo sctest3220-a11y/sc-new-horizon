@@ -2414,6 +2414,67 @@ h3 {
   line-height: 1.35;
 }
 
+.feedback-nudge-card {
+  background:
+    linear-gradient(135deg, rgba(34, 108, 111, 0.12), rgba(255, 248, 231, 0.94)),
+    #fff;
+  border: 1px solid rgba(34, 108, 111, 0.28);
+  border-radius: 8px;
+  bottom: 18px;
+  box-shadow: 0 24px 70px rgba(23, 32, 29, 0.18);
+  display: grid;
+  gap: 10px;
+  max-width: 430px;
+  padding: 18px;
+  position: fixed;
+  right: 18px;
+  width: calc(100vw - 36px);
+  z-index: 35;
+}
+
+.feedback-nudge-card span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.feedback-nudge-card strong {
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.08;
+}
+
+.feedback-nudge-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0;
+  padding-right: 18px;
+}
+
+.nudge-close {
+  align-items: center;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+}
+
 .profile-context-card span,
 .profile-ontology-note span {
   color: var(--teal);
@@ -4103,6 +4164,10 @@ h3 {
 
 .report-order-dyk {
   order: 14;
+}
+
+.report-order-survey {
+  order: 15;
 }
 
 .result-card {

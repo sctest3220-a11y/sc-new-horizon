@@ -10341,6 +10341,7 @@ export default function Home() {
   const [selectedRadarDomain, setSelectedRadarDomain] = useState<DomainId>('D1');
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
+  const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
@@ -10846,6 +10847,7 @@ export default function Home() {
     setAssessmentTargetTotal(modeConfig[nextMode].totalQuestions);
     setContinuationFocus(null);
     setReportTab('report');
+    setFeedbackPromptOpen(true);
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -11081,6 +11083,7 @@ export default function Home() {
       }
       logCompletedResults();
       setReportTab('report');
+      setFeedbackPromptOpen(true);
       setStep('results');
       return;
     }
@@ -11218,6 +11221,7 @@ export default function Home() {
     });
     syncAssessmentFeedbackToSupabase(authProfile, entry);
     appendBehaviorEvent({ type: 'assessment_feedback_submitted', answeredCount: answers.length, score: results.overall });
+    setFeedbackPromptOpen(false);
   }
 
   function selectReportDomain(domain: DomainId, area: AssessmentBehaviorEvent['reportArea'] = 'domain') {
@@ -13417,17 +13421,17 @@ export default function Home() {
               </div>
               <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
             </article>
-            <article className="result-card wide assessment-feedback-gate analysis-primary">
+            <article id="assessment-feedback-survey" className="result-card wide assessment-feedback-gate report-primary report-order-survey">
               <div className="report-heading">
                 <div>
-                  <p className="eyebrow">Question-level analysis</p>
-                  <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Share quick feedback to unlock details.'}</h2>
+                  <p className="eyebrow">30-second feedback</p>
+                  <h2>{detailedAnalysisUnlocked ? 'Thanks. Your detailed evidence is unlocked.' : 'Help improve the assessment and unlock your detailed evidence.'}</h2>
                 </div>
-                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'About 30 seconds'}</span>
+                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Quick survey'}</span>
               </div>
               {!detailedAnalysisUnlocked ? (
                 <>
-                  <p>Your feedback improves question clarity, difficulty calibration, artifact realism, profile collection, and the follow-up survey.</p>
+                  <p>Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.</p>
                   <div className="feedback-survey-grid">
                     <label>Question clarity
                       <select value={feedbackDraft.clarity} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, clarity: event.target.value as AssessmentFeedbackSurvey['clarity'] }))}>
@@ -13454,6 +13458,26 @@ export default function Home() {
                     <textarea value={feedbackDraft.suggestions} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, suggestions: event.target.value }))} placeholder="Optional: name a confusing question, unrealistic artifact, or missing topic." />
                   </label>
                   <button className="primary" type="button" onClick={submitAssessmentFeedback}>Submit feedback and unlock analysis</button>
+                </>
+              ) : (
+                <>
+                  <p>Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.</p>
+                  <button className="secondary dark" type="button" onClick={() => setReportTab('analysis')}>Open detailed analysis</button>
+                </>
+              )}
+            </article>
+            <article className="result-card wide assessment-feedback-gate analysis-primary">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Question-level analysis</p>
+                  <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Feedback unlock required.'}</h2>
+                </div>
+                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Locked'}</span>
+              </div>
+              {!detailedAnalysisUnlocked ? (
+                <>
+                  <p>Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.</p>
+                  <button className="primary" type="button" onClick={() => setReportTab('report')}>Go to feedback survey</button>
                 </>
               ) : (
                 <div className="question-analysis-list">
@@ -13764,6 +13788,34 @@ export default function Home() {
               </article>
             )}
           </div>
+          {reportTab === 'report' && !detailedAnalysisUnlocked && feedbackPromptOpen && (
+            <aside className="feedback-nudge-card" aria-label="Feedback invitation">
+              <button
+                type="button"
+                className="nudge-close"
+                aria-label="Dismiss feedback invitation"
+                onClick={() => setFeedbackPromptOpen(false)}
+              >
+                &times;
+              </button>
+              <span>Unlock your evidence trail</span>
+              <strong>Answer 4 quick feedback questions</strong>
+              <p>Then view your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
+              <div className="profile-pulse-actions">
+                <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>Later</button>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={() => {
+                    setFeedbackPromptOpen(false);
+                    document.getElementById('assessment-feedback-survey')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }}
+                >
+                  Give feedback
+                </button>
+              </div>
+            </aside>
+          )}
           <div className="upgrade-panel">
             <div>
               <h2>Ready for a deeper profile?</h2>

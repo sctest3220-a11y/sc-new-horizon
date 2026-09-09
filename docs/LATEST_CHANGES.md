@@ -8,6 +8,8 @@ The Test analysis tab now holds the deeper machinery: score calculation, telemet
 
 Continuation prompts now show the pilot confidence percentage as the prominent value. Recommended follow-up question counts are described in the body text and action labels so users do not confuse “8 questions” with “8% confidence.”
 
+The user feedback survey now appears in the main Report tab instead of the Test analysis tab. A dismissible feedback nudge frames the survey as a clear value exchange: four quick feedback answers unlock question-by-question evidence, expected answers, timing, difficulty, and local comparison data.
+
 ## 2026-09-09: Score Explanation and No-Response Scoring
 
 Blank written responses, empty multi-select submissions, blank matching submissions, and unanswered mini-parts now receive `0` raw score and `0` readiness evidence instead of a small floor score. The answer review now includes a score explanation panel showing raw score, difficulty-adjusted readiness evidence, and the maximum readiness evidence allowed by the item difficulty band.
