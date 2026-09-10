@@ -1,8 +1,65 @@
 # Latest Changes
 
+## 2026-09-10: Artifact Relevance Gate
+
+Assessment artifacts are now gated before display. Several low-value or decorative concept/rollout artifacts are hidden when the question can be answered from the scenario and options without inspecting the image.
+
+The adaptive engine now counts only helpful displayed visuals when rewarding visual evidence coverage. Artifacts should be shown only when they contain evidence the user needs, clarify the scenario, or support realistic document inspection. Decorative artifacts, answer-giving artifacts, and generic diagrams should be removed or rewritten before scored use.
+
+## 2026-09-10: Thai and English Language Toggle
+
+The app now includes an `EN` / `TH` language switch in the top navigation. The preference is saved locally and reapplies as users move between landing, assessment, report, and admin views.
+
+Thai translation should use simple Thailand Thai phrasing while keeping technical terms such as AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, and Platform recognizable in English.
+
+## 2026-09-09: Item Quality Gate
+
+Admin now shows an item quality gate for question-level feedback and behavior signals. Each question is classified as `keep`, `watch`, or `review` using unclear flags, issue comments, likes, timing, and confusion signals.
+
+Questions marked `review` are penalized in adaptive routing so the assessment stops favoring items with repeated negative feedback. They can still appear only when coverage pressure leaves no better alternative. Admin review should rewrite, replace the artifact, or retire these items before heavy scored use.
+
+## 2026-09-09: Per-Question Feedback During Assessment
+
+Each assessment item now includes a lightweight quick-feedback strip at the bottom of the question card and again in answer review. Users can mark the current question as useful, flag the question or instruction as unclear, or leave an optional note such as artifact relevance, obvious answer options, ambiguous wording, or missing evidence.
+
+The feedback is stored as item-level telemetry with question id, domain, competency ids, difficulty, interaction type, current progress, feedback kind, and optional comment. Admin quality review can use this alongside timing, hesitation, artifact zoom/open behavior, and end-of-assessment survey results to prioritize specific question rewrites and artifact replacements.
+
+Useful/unclear selections are now editable before saving: users can click once to select, click again to unselect, then explicitly Save or Clear the item feedback.
+
+## 2026-09-09: Question Quality and Survey Reset Fix
+
+The assessment feedback form now resets at the start of each new assessment and after feedback submission. This prevents a previous user's free-text suggestion from remaining visible in the survey for the next run on the same browser/device.
+
+Scoring floors were tightened so guessing is no longer rewarded as partial evidence:
+
+- Written answers with no rubric hits now score `0` instead of receiving a default floor.
+- Blank written answers are disabled in the UI and still score `0` if submitted through another path.
+- Ranking and matching items no longer give minimum floor points for wrong or unsupported attempts.
+- Multi-select wrong-selection penalties can reduce the score to `0`.
+
+Question and artifact review should treat the following as publish blockers: obvious answer patterns, weak distractors, ambiguous written prompts, artifacts that are not needed to answer the item, artifacts that do not contain the evidence referenced by the answer key, and artifacts that look like decorative mockups rather than plausible work documents.
+
+## 2026-09-09: Assessment Report Cleanup
+
+The assessment report now separates the learner-facing report from diagnostic details. The default Report tab prioritizes score interpretation, personalized summary, strengths, priority gaps, domain and competency scores, learning paths, tools/labs, courses, improvement actions, badges, and the persona leaderboard.
+
+The Test analysis tab now holds the deeper machinery: score calculation, telemetry, question-level evidence, coverage plan, profile signals, saved analytics, and source/evidence notes. Repeated generated-report sections were collapsed so users do not see the same learning path, courses, competency focus, and analysis repeated in multiple places.
+
+Continuation prompts now show the pilot confidence percentage as the prominent value. Recommended follow-up question counts are described in the body text and action labels so users do not confuse “8 questions” with “8% confidence.”
+
+The user feedback survey now appears near the top of the main Report tab instead of the Test analysis tab. A dismissible pop-up frames the survey as a clear value exchange: four quick feedback answers unlock question-by-question evidence, expected answers, timing, difficulty, and local comparison data.
+
+## 2026-09-09: Score Explanation and No-Response Scoring
+
+Blank written responses, empty multi-select submissions, blank matching submissions, and unanswered mini-parts now receive `0` raw score and `0` readiness evidence instead of a small floor score. The answer review now includes a score explanation panel showing raw score, difficulty-adjusted readiness evidence, and the maximum readiness evidence allowed by the item difficulty band.
+
+The final report now includes a score calculation card that shows question-level raw-to-readiness conversion, competency roll-up, domain roll-up, the D1-D6 overall formula, and a clear note that timing, hesitation, artifact use, item `a/b/c`, information, and SEM are telemetry/calibration signals rather than direct score modifiers in the MVP.
+
 ## 2026-09-08: In-Assessment Telemetry Help
 
 The assessment now shows lightweight help bubbles beside live measurement labels so users can understand what telemetry and psychometric signals mean during the test. Help topics cover progress, domain, difficulty, item type, interaction format, time on question, answer interactions, artifact use, scored evidence, theta, item difficulty `b`, discrimination `a`, guessing `c`, information, SEM, routing reason, and coverage confidence.
+
+Admin Agent Ops now includes an explicit Feedback Analysis Agent. It analyzes survey ratings, free-text suggestions, abandonment, continuation choices, hesitation, long answer times, and artifact zoom/open behavior before producing recommendations. Its draft proposals remain suggestions for human review, not automatic platform edits.
 
 Added separate repo documents for stakeholder review:
 

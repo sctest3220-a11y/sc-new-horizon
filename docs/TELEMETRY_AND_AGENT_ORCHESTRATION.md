@@ -20,6 +20,7 @@ Captured events:
 - `assessment_started`: mode, audience, function, industry, executive role, target question count.
 - `question_shown`: question id, domain, competency ids, difficulty, interaction type, answered count, target count.
 - `question_answered`: selected answer, expected answer ids, readiness score, domain, competency ids, difficulty, interaction type, elapsed time, interaction count, revision count, hesitation classification.
+- `question_feedback`: item-level user feedback while the question is still visible; captures useful/unclear/comment signal, optional note, question id, domain, competency ids, difficulty, interaction type, answered count, and target count.
 - `assessment_abandoned`: active question, answered count, target count, profile context.
 - `mandatory_completed`: completion of the required 12-question or 20-question milestone.
 - `continuation_accepted`: chosen continuation route, route kind, target count, reason label.
@@ -99,6 +100,29 @@ Telemetry supports five product loops.
 
 The assessment separates raw correctness from readiness evidence. Easier items are capped below advanced readiness, while proficient and advanced items can produce stronger readiness evidence.
 
+Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Written responses with no rubric hits also receive `0`; the system should not award a courtesy floor for irrelevant text.
+
+The product shows the score derivation during answer review and in the final report:
+
+1. Question raw score is derived from selected option, multi-select, matching, ranking, written rubric, or mini-part scoring.
+2. Raw score is converted into difficulty-adjusted readiness evidence.
+3. Competency score averages readiness evidence for mapped competency signals.
+4. Domain score averages readiness evidence by domain, with secondary domains weighted at `0.35`.
+5. Overall assessment score averages D1-D6 domain scores.
+6. Readiness label is evidence-gated by overall score and strong harder-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, guessing estimate `c`, item discrimination `a`, item difficulty `b`, information, and SEM are currently telemetry/calibration signals. They inform routing, confidence, and quality review, but they do not directly change score yet.
+
+Guessing control rules:
+
+- Multi-select items should use all-that-apply scoring with wrong-selection penalties and no positive floor.
+- Matching items should score only the percentage of correct pairings and no positive floor.
+- Ranking items should score exact-position evidence and no positive floor.
+- Written items should score only detected rubric evidence; blank or unsupported text is `0`.
+- Single-choice items should be phased down for advanced evidence unless the distractors are genuinely plausible and artifact-dependent.
+
+The report's pilot-confidence percentage is currently an evidence-stability heuristic: mode base plus a mode-specific increment for each answered item, capped by mode (`38 + 4/item`, cap `88` for free; `48 + 3/item`, cap `94` for premium; `54 + 3/item`, cap `96` for executive). This is intentionally separate from correctness and readiness scoring. Competency confidence is based on repeated evidence for the mapped competency. A continuation card's prominent number is the recommended number of follow-up questions; the UI labels it as such and shows the confidence percentage separately.
+
 Telemetry helps estimate:
 
 - whether a score is based on enough evidence
@@ -151,15 +175,26 @@ Personalization should be explainable to users. The product should avoid hidden 
 Telemetry can nominate improvement candidates:
 
 - confusing question wording
+- question-level useful/unclear/comment feedback
 - weak distractors
 - overly easy advanced items
 - unrealistic or illegible artifacts
+- artifacts that are decorative, irrelevant, or missing the evidence required by the answer key
+- written prompts that are too broad, ambiguous, or impossible to score consistently
 - bad competency mapping
 - missing profile fields
 - intrusive or low-value survey questions
 - low continuation conversion
 - high abandonment points
 - report sections nobody engages with
+
+The admin quality gate classifies question candidates as:
+
+- `keep`: no meaningful negative signal yet; the item can stay in active routing.
+- `watch`: at least one negative or unclear signal; gather more attempts and inspect the item.
+- `review`: repeated unclear/comment signals or high confusion; quarantine for rewrite, artifact replacement, rubric tuning, or retirement before heavy scored use.
+
+Adaptive routing applies a penalty to `review` items so they are not favored while still allowing them as a fallback when competency coverage has no better alternative.
 
 ## Agent Orchestration
 
@@ -185,6 +220,7 @@ Draft proposal types:
 - `artifact`: replace or improve a stimulus.
 - `profile`: update profile ontology or routing tags.
 - `survey`: change survey wording, timing, or unlock value exchange.
+- `feedback`: summarize survey and behavior themes before recommending platform edits.
 - `learning`: refresh learning recommendations.
 - `news`: draft AI Watch briefs.
 
@@ -209,6 +245,21 @@ Finds courses, tutorials, tools, certificates, and practice resources. Recommend
 ### Assessment Item Generator
 
 Drafts new questions, answer keys, rubrics, partial-credit logic, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize artifact review, matching, multi-select, drag-order, written response, and concept clusters.
+
+Item drafts are not ready for scored use unless they pass these checks:
+
+- The artifact is necessary to answer the question.
+- The artifact contains the same evidence referenced by the correct answer, distractors, rubric, and explanation.
+- The artifact looks like a plausible real-world work document, screenshot, message, chart, workflow, or source packet rather than a decorative mockup.
+- Distractors are plausible misconceptions, not obviously wrong wording patterns.
+- Written-response prompts name the task, context, expected evidence, and scoring lens clearly enough for repeatable rubric scoring.
+- Advanced items require synthesis, tradeoff judgment, verification, governance, or implementation reasoning; they cannot be answered by spotting generic "human, AI, or both" ownership language alone.
+
+### Feedback Analysis Agent
+
+Analyzes assessment survey ratings, free-text suggestions, abandonment, continuation choices, hesitation signals, long answer times, and artifact zoom/open behavior. It groups feedback into themes, estimates evidence strength, identifies affected users or personas, and recommends whether admins should monitor, rewrite, replace an artifact, recalibrate difficulty, adjust profile collection, or revise survey wording.
+
+This agent should produce suggestions before edits. It should not change scored content, survey questions, artifacts, profile fields, or scoring by itself.
 
 ### Reviewer and QA Agent
 
@@ -255,6 +306,7 @@ Recommended production tables:
 - `agent_steps`
 - `agent_draft_proposals`
 - `agent_review_decisions`
+- `feedback_theme_summaries`
 - `content_versions`
 - `source_records`
 - `audit_events`

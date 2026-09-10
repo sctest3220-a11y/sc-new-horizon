@@ -12,6 +12,7 @@ type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'tr
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type NewsFrequency = 'daily' | 'weekly' | 'monthly';
 type LandingLeaderboardPeriod = 'day' | 'week';
+type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
   id: string;
   title: string;
@@ -99,6 +100,13 @@ type AssessmentFeedbackSurvey = {
   lengthFit: 'short' | 'right' | 'long';
   suggestions: string;
 };
+const defaultAssessmentFeedbackDraft = (): Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'> => ({
+  clarity: 'clear',
+  difficultyFit: 'right',
+  artifactQuality: 'realistic',
+  lengthFit: 'right',
+  suggestions: '',
+});
 type ProfileSignalLogEntry = {
   id: string;
   profileId: string;
@@ -230,7 +238,7 @@ type AssessmentBehaviorEvent = {
   createdAt: string;
   profileId: string;
   sessionId: string;
-  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted' | 'artifact_opened' | 'artifact_zoomed' | 'artifact_external_opened';
+  type: 'assessment_started' | 'question_shown' | 'question_answered' | 'question_feedback' | 'assessment_abandoned' | 'mandatory_completed' | 'continuation_accepted' | 'continuation_declined' | 'results_viewed' | 'report_interest' | 'assessment_feedback_submitted' | 'artifact_opened' | 'artifact_zoomed' | 'artifact_external_opened';
   mode: AssessmentMode;
   audience?: Audience;
   functionTrack?: FunctionTrack;
@@ -255,6 +263,8 @@ type AssessmentBehaviorEvent = {
   selectedOptionId?: string;
   selectedAnswer?: string;
   correctOptionIds?: string[];
+  itemFeedbackKind?: 'like' | 'unclear' | 'comment' | 'clear';
+  itemFeedbackComment?: string;
   artifactSrc?: string;
   artifactAction?: 'reader' | 'zoom' | 'external';
   zoomLevel?: number;
@@ -289,6 +299,23 @@ type LandingLeaderboardRow = {
 type CompetencyDefinition = { id: string; domain: DomainId; label: string; skills: string[] };
 type EvidenceSignal = { domain: DomainId; competencyId: string; score: number; mode: EvidenceMode };
 type CompetencyScore = CompetencyDefinition & { score: number; evidenceCount: number; confidence: string };
+type QuestionScoreCalculation = {
+  questionId: string;
+  domain: DomainId;
+  competencies: string;
+  difficulty: Difficulty;
+  interaction: NonNullable<Question['interaction']>;
+  rawScore: number;
+  readinessScore: number;
+  calculation: string;
+};
+type DomainScoreCalculation = {
+  domain: DomainId;
+  points: number;
+  count: number;
+  score: number;
+  calculation: string;
+};
 type CompetencyCoverage = CompetencyScore & {
   planned: boolean;
   priority: boolean;
@@ -340,7 +367,7 @@ type AgentActivity = {
   output: string;
 };
 type AgentDraftStatus = 'pending' | 'approved' | 'rejected';
-type AgentDraftKind = 'question' | 'artifact' | 'profile' | 'survey' | 'learning' | 'news';
+type AgentDraftKind = 'question' | 'artifact' | 'profile' | 'survey' | 'feedback' | 'learning' | 'news';
 type AgentDraftProposal = {
   id: string;
   kind: AgentDraftKind;
@@ -499,6 +526,205 @@ const executiveLabels: Record<ExecutiveRole, string> = {
 };
 
 const userProfileStorageKey = 'new-horizon-user-profile-v1';
+const languageStorageKey = 'new-horizon-language-v1';
+
+const thaiUiCopy: Record<string, string> = {
+  'User Login': 'เข้าสู่ระบบผู้ใช้',
+  'User Dashboard': 'แดชบอร์ดผู้ใช้',
+  'Admin Login': 'เข้าสู่ระบบ Admin',
+  'Agent Ops': 'Agent Ops',
+  'Platform': 'Platform',
+  'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
+  'Demo Report': 'ตัวอย่าง Report',
+  'AI Watch': 'AI Watch',
+  'Results': 'ผลลัพธ์',
+  'Start': 'เริ่ม',
+  'AI-powered readiness assessment': 'แบบประเมินความพร้อมด้าน AI',
+  'Measure practical AI readiness.': 'วัดความพร้อมด้าน AI ที่ใช้ได้จริง',
+  'New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts, verify sources, choose safe workflows, govern agents, and turn scores into learning paths.': 'New Horizon คือ Assessment Platform แบบปรับตามผู้ใช้ เพื่อวัดความสามารถด้าน AI ที่ใช้ได้จริง: ตรวจ artifact, เช็กแหล่งข้อมูล, เลือก Workflow ที่ปลอดภัย, กำกับ Agent และแปลงคะแนนเป็นเส้นทางการเรียนรู้',
+  'Start Free Assessment': 'เริ่ม Assessment ฟรี',
+  'Start Premium Pilot': 'เริ่ม Premium Pilot',
+  'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
+  'See How It Works': 'ดูวิธีทำงาน',
+  'Adaptive assessment platform': 'Assessment Platform แบบปรับตามผู้ใช้',
+  'Artifacts, scoring, radar, learning paths': 'Artifact, คะแนน, Radar, เส้นทางการเรียนรู้',
+  'Raw artifacts': 'Artifact ดิบ',
+  'Invoices, reports, policies, source packets, workflows': 'Invoice, Report, Policy, Source Packet, Workflow',
+  'Question formats': 'รูปแบบคำถาม',
+  'Single, multi-select, matching, drag-order, written response, mini-parts': 'ตัวเลือกเดียว, หลายตัวเลือก, จับคู่, เรียงลำดับ, เขียนตอบ, คำถามย่อย',
+  'Adaptive engine': 'Adaptive Engine',
+  'Domain coverage plus difficulty up/down after each answer': 'ครอบคลุม Domain และปรับระดับความยากหลังแต่ละคำตอบ',
+  'Decision output': 'ผลลัพธ์เพื่อใช้ตัดสินใจ',
+  'D1-D6 radar, group average, research target, learning path': 'Radar D1-D6, ค่าเฉลี่ยกลุ่ม, เป้าหมายวิจัย, Learning Path',
+  'Example task': 'ตัวอย่างงาน',
+  'Inspect a raw policy packet. What did the AI overstate, omit, or make unsafe?': 'ตรวจ Policy Packet ดิบ: AI พูดเกินจริง ตกหล่น หรือทำให้ไม่ปลอดภัยตรงไหน?',
+  'live seed items': 'คำถามเริ่มต้นที่ใช้งานอยู่',
+  'artifact-backed items': 'คำถามที่มี Artifact ประกอบ',
+  'multi-part clusters': 'ชุดคำถามหลายส่วน',
+  'AILF domains': 'AILF Domains',
+  'question formats': 'รูปแบบคำถาม',
+  'Did you know?': 'รู้ไหม?',
+  'Learn more': 'เรียนรู้เพิ่ม',
+  'Tune topics': 'ปรับหัวข้อให้ตรงกับคุณ',
+  'Peer challenge': 'ท้าทายกับกลุ่มใกล้เคียง',
+  'Where would you land today?': 'วันนี้คุณจะอยู่ตรงไหน?',
+  'Compare against the visible top 10 for the day or week, then take the assessment to see whether your strongest domain is enough to break into your peer group.': 'เทียบกับ Top 10 รายวันหรือรายสัปดาห์ แล้วทำ Assessment เพื่อดูว่า Domain ที่คุณถนัดพอจะติดอันดับในกลุ่มเดียวกันไหม',
+  'Today': 'วันนี้',
+  'This week': 'สัปดาห์นี้',
+  'Top 10': 'Top 10',
+  'Daily board': 'อันดับรายวัน',
+  'Weekly board': 'อันดับรายสัปดาห์',
+  'Local pilot data': 'ข้อมูล Pilot ในเครื่องนี้',
+  'Demo until your first runs': 'ข้อมูลตัวอย่างจนกว่าจะมีผลของคุณ',
+  'Find your rank': 'ดูอันดับของคุณ',
+  'Can you beat your peer average?': 'คุณทำคะแนนสูงกว่าค่าเฉลี่ยของกลุ่มได้ไหม?',
+  'Scores above 80 need stronger applied or advanced evidence, not just easy-item correctness.': 'คะแนนเกิน 80 ต้องมีหลักฐานระดับ Applied หรือ Advanced ไม่ใช่แค่ตอบข้อที่ง่ายถูก',
+  'Take the free test': 'ทำแบบทดสอบฟรี',
+  'Choose peer group': 'เลือกกลุ่มเปรียบเทียบ',
+  'Practice the activities the assessment is built from.': 'ลองทำกิจกรรมที่เป็นพื้นฐานของ Assessment',
+  'Each activity box maps to a practical assessment format. Users do not just read about AI; they inspect, repair, verify, sequence, match, and explain.': 'แต่ละกิจกรรมเชื่อมกับรูปแบบคำถามจริง ผู้ใช้ไม่ได้แค่อ่านเรื่อง AI แต่ต้องตรวจ แก้ เช็ก เรียงลำดับ จับคู่ และอธิบายเหตุผล',
+  'The platform': 'Platform นี้',
+  'A field test for the way people actually use AI.': 'Field Test สำหรับวิธีที่คนใช้ AI จริง',
+  'New Horizon turns AI readiness into observable behavior. Users inspect messy artifacts, make judgment calls, explain evidence, and see how their choices change the next task.': 'New Horizon แปลงความพร้อมด้าน AI ให้เป็นพฤติกรรมที่สังเกตได้ ผู้ใช้ตรวจ artifact ที่ไม่สมบูรณ์ ตัดสินใจ อธิบายหลักฐาน และเห็นว่าคำตอบเปลี่ยนคำถามถัดไปอย่างไร',
+  'Evidence over opinion': 'หลักฐานสำคัญกว่าความเห็น',
+  'The assessment asks users to prove what they trust, reject, revise, or escalate.': 'Assessment ให้ผู้ใช้พิสูจน์ว่าอะไรควรเชื่อ ปฏิเสธ แก้ไข หรือส่งต่อให้คนรับผิดชอบ',
+  'Adaptive under the hood': 'ระบบปรับคำถามอยู่เบื้องหลัง',
+  'Difficulty and domain focus move as the score estimate and coverage gaps change.': 'ระดับความยากและ Domain จะเปลี่ยนตามคะแนนโดยประมาณและช่องว่างของหลักฐาน',
+  'Useful after the score': 'มีประโยชน์หลังรู้คะแนน',
+  'Results point to competencies, practical skills, benchmarks, and real learning options.': 'ผลลัพธ์ชี้ไปที่ Competency, ทักษะใช้งานจริง, Benchmark และทางเลือกการเรียนรู้',
+  'Progress system': 'ระบบความก้าวหน้า',
+  'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
+  'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
+  'Simple process': 'ขั้นตอนง่าย',
+  'One clear flow from assessment to action.': 'จาก Assessment ไปสู่การลงมือทำอย่างชัดเจน',
+  'Build a light profile': 'สร้าง Profile แบบสั้น',
+  'Choose your audience, role, tools, interests, and peer-tool awareness.': 'เลือกกลุ่มผู้ใช้ บทบาท เครื่องมือ ความสนใจ และความคุ้นเคยกับเครื่องมือ',
+  'Answer adaptive scenarios': 'ตอบสถานการณ์ที่ปรับตามคุณ',
+  'Questions create domain, competency, skill, difficulty, and behavior signals.': 'คำถามสร้างสัญญาณด้าน Domain, Competency, ทักษะ, ระดับความยาก และพฤติกรรม',
+  'Decide whether to keep going': 'ตัดสินใจว่าจะทำต่อไหม',
+  'If confidence or coverage is weak, add targeted questions before final results.': 'ถ้าความมั่นใจหรือความครอบคลุมยังต่ำ ระบบจะแนะนำคำถามเจาะจงก่อนสรุปผล',
+  'Follow a learning path': 'ไปตาม Learning Path',
+  'See tools, concepts, labs, and courses matched to your profile and gaps.': 'ดู Tool, Concept, Lab และ Course ที่ตรงกับ Profile และช่องว่างของคุณ',
+  'AILF framework pack': 'ชุด Framework AILF',
+  'Six domains of AI readiness.': '6 Domains ของความพร้อมด้าน AI',
+  'Your results': 'ผลลัพธ์ของคุณ',
+  'Radar profile, gaps, and next steps.': 'Radar Profile, ช่องว่าง และขั้นตอนถัดไป',
+  'MVP results are indicative, not certification-grade. They show readiness patterns and recommend practical learning actions while collecting evidence for future calibration.': 'ผล MVP เป็นข้อมูลเบื้องต้น ยังไม่ใช่การรับรองอย่างเป็นทางการ ใช้ดูรูปแบบความพร้อมและแนะนำการเรียนรู้ พร้อมเก็บหลักฐานเพื่อปรับเทียบในอนาคต',
+  'Try Free Flow': 'ลองแบบฟรี',
+  'Try Premium Pilot': 'ลอง Premium Pilot',
+  'Try Executive Pilot': 'ลอง Executive Pilot',
+  'Competency map': 'แผนที่ Competency',
+  'Premium assessment': 'Premium Assessment',
+  'Deeper diagnosis for people who want more than a score.': 'วิเคราะห์ลึกขึ้นสำหรับคนที่ต้องการมากกว่าคะแนน',
+  'Continue with Google': 'ดำเนินการต่อด้วย Google',
+  'Continue as guest': 'ดำเนินการต่อแบบ Guest',
+  'Admin login': 'เข้าสู่ระบบ Admin',
+  'Assessment intelligence console.': 'Console วิเคราะห์ Assessment',
+  'Admin authentication': 'ยืนยันตัวตน Admin',
+  'Admin identity detected': 'พบตัวตน Admin',
+  'Open admin dashboard preview': 'เปิดตัวอย่าง Admin Dashboard',
+  'Admin dashboard': 'Admin Dashboard',
+  'Assessment analytics across users and groups.': 'Analytics ของ Assessment ตามผู้ใช้และกลุ่ม',
+  'Sign out preview': 'ออกจากโหมดตัวอย่าง',
+  'Started': 'เริ่มแล้ว',
+  'Continued': 'ทำต่อ',
+  'tracked sessions': 'Session ที่ติดตาม',
+  'optional depth': 'การทำต่อแบบเจาะลึก',
+  'Question candidates': 'รายการคำถามที่ควรตรวจ',
+  'Item quality gate': 'Quality Gate ของคำถาม',
+  'No item-level feedback has been submitted yet.': 'ยังไม่มี Feedback ระดับคำถาม',
+  'No item behavior data yet.': 'ยังไม่มีข้อมูลพฤติกรรมของคำถาม',
+  'Start Full Assessment': 'เริ่ม Assessment เต็ม',
+  'Start with a broad profile.': 'เริ่มจาก Profile ภาพรวม',
+  'Build Profile and Begin 12-Question Assessment': 'สร้าง Profile และเริ่ม Assessment 12 ข้อ',
+  'Build Profile and Begin Executive Assessment': 'สร้าง Profile และเริ่ม Executive Assessment',
+  'Optional profile pulse': 'คำถาม Profile สั้นๆ',
+  'Skip': 'ข้าม',
+  'Tune my test': 'ปรับ Test ให้ตรงกับฉัน',
+  'Used to route questions and recommendations in this browser.': 'ใช้เพื่อจัดเส้นทางคำถามและคำแนะนำใน Browser นี้',
+  'Profile graph seed': 'ข้อมูลเริ่มต้นของ Profile Graph',
+  'Tool choices, workflows, risk concerns, artifacts, role, function, and industry become tags that can later connect to competencies, courses, question routing, and cohort analytics.': 'Tool, Workflow, ความเสี่ยง, Artifact, บทบาท, Function และ Industry จะกลายเป็น Tag เพื่อเชื่อมกับ Competency, Course, การเลือกคำถาม และ Cohort Analytics',
+  'Skip for now': 'ข้ามตอนนี้',
+  'Save profile and start': 'บันทึก Profile แล้วเริ่ม',
+  'Continue to Next Question': 'ไปคำถามถัดไป',
+  'View Results': 'ดูผลลัพธ์',
+  'Continue recommended route': 'ทำต่อตามเส้นทางที่แนะนำ',
+  'Continue beyond 20 until confidence is high': 'ทำต่อเกิน 20 ข้อจน Confidence สูง',
+  'Report': 'Report',
+  'Analysis': 'Analysis',
+  'Assessment': 'Assessment',
+  'Submit feedback and unlock analysis': 'ส่ง Feedback เพื่อเปิด Analysis',
+  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
+  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Feedback สั้นๆ ในแท็บ Report เพื่อเปิดข้อมูลรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Go to feedback survey': 'ไปที่ Feedback Survey',
+  'Assessment length': 'ความยาว Assessment',
+  'Back to Activities': 'กลับไปที่กิจกรรม',
+  'Start Full Free Assessment': 'เริ่ม Assessment ฟรีแบบเต็ม',
+  'Retake Free Assessment': 'ทำ Free Assessment ใหม่',
+  'Retake Premium Assessment': 'ทำ Premium Assessment ใหม่',
+  'Retake Executive Assessment': 'ทำ Executive Assessment ใหม่',
+  'Useful': 'มีประโยชน์',
+  'Unclear': 'ไม่ชัดเจน',
+  'Comment': 'Comment',
+  'Question feedback': 'Feedback ของคำถาม',
+  'Save feedback': 'บันทึก Feedback',
+  'Update feedback': 'อัปเดต Feedback',
+  'Answer review': 'Review คำตอบ',
+  'Correct answer': 'คำตอบที่ถูกต้อง',
+  'Your answer': 'คำตอบของคุณ',
+  'Score calculation': 'วิธีคำนวณคะแนน',
+};
+
+const englishUiCopyByThai = Object.fromEntries(Object.entries(thaiUiCopy).map(([english, thai]) => [thai, english]));
+
+function translateUiText(value: string, language: AppLanguage) {
+  if (language === 'en') return englishUiCopyByThai[value] ?? value;
+  return thaiUiCopy[value] ?? value;
+}
+
+function translateTextNodeValue(value: string, language: AppLanguage) {
+  const trimmed = value.trim();
+  if (!trimmed) return value;
+  const translated = translateUiText(trimmed, language);
+  if (translated === trimmed) return value;
+  return value.replace(trimmed, translated);
+}
+
+function translateAttributeValue(value: string, language: AppLanguage) {
+  const trimmed = value.trim();
+  if (!trimmed) return value;
+  const translated = translateUiText(trimmed, language);
+  if (!translated) return value;
+  return translated;
+}
+
+function applyUiLanguage(language: AppLanguage) {
+  if (typeof document === 'undefined') return;
+  document.documentElement.lang = language === 'th' ? 'th' : 'en';
+  document.documentElement.dataset.appLanguage = language;
+  const blockedTags = new Set(['SCRIPT', 'STYLE', 'TEXTAREA']);
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || blockedTags.has(parent.tagName) || parent.closest('[data-no-translate]')) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const textNodes: Text[] = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+  textNodes.forEach((node) => {
+    node.nodeValue = translateTextNodeValue(node.nodeValue ?? '', language);
+  });
+  document.querySelectorAll<HTMLElement>('[placeholder], [aria-label], [title]').forEach((element) => {
+    (['placeholder', 'aria-label', 'title'] as const).forEach((attribute) => {
+      const value = element.getAttribute(attribute);
+      if (!value) return;
+      element.setAttribute(attribute, translateAttributeValue(value, language));
+    });
+  });
+}
 
 const broadSurveyQuestions: SurveyQuestion[] = [
   {
@@ -7692,6 +7918,13 @@ const agentDefinitions: AgentDefinition[] = [
     guardrail: 'No new ownership-choice cards; prioritize artifact review, matching, rank, multi-select, and written response formats.',
   },
   {
+    id: 'feedback-analysis',
+    name: 'Feedback Analysis Agent',
+    role: 'Analyzes survey themes, free-text suggestions, abandonment, continuation choices, and confusing-item signals before recommending platform edits.',
+    cadence: 'Runs after every feedback batch and before scored content or survey changes are proposed.',
+    guardrail: 'Produces evidence-backed suggestions only; humans approve changes to questions, artifacts, profile fields, surveys, and scoring.',
+  },
+  {
     id: 'reviewer',
     name: 'Reviewer and QA Agent',
     role: 'Checks quality, duplicates, answerability, source notes, competency mapping, and publish readiness.',
@@ -7747,13 +7980,20 @@ function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, si
     },
     {
       step: 7,
+      agent: 'Feedback Analysis Agent',
+      status: 'review',
+      activity: 'Grouped survey feedback and behavior signals into review themes before recommending edits.',
+      output: 'Themes prepared for unclear wording, artifact realism, route length, continuation value, and missing profile signals.',
+    },
+    {
+      step: 8,
       agent: 'Reviewer and QA Agent',
       status: 'complete',
       activity: 'Reviewed all draft outputs for novelty, competency fit, and MVP policy constraints.',
       output: '5 item drafts and 6 learning resources passed to admin review, 1 duplicate rejected, 0 ownership-choice cards added.',
     },
     {
-      step: 8,
+      step: 9,
       agent: 'Orchestrator',
       status: 'complete',
       activity: 'Closed the run and produced an activity report.',
@@ -7856,7 +8096,23 @@ function getSupervisedAgentRun(
       rationale: 'Survey prompts should collect better profile evidence without interrupting assessment flow or hiding the value exchange.',
       status: 'pending',
       sourceSignals: [`${quality.mandatory} mandatory completions`, `${quality.continued} continuations`, `${feedback.length} feedback surveys`],
-      ownerAgent: 'Orchestrator',
+      ownerAgent: 'Feedback Analysis Agent',
+    },
+    {
+      id: `${runId}:feedback:themes`,
+      kind: 'feedback',
+      title: feedback.length ? 'Review feedback themes before changing the platform' : 'Wait for more survey responses before editing',
+      summary: feedback.length
+        ? `Analyze ${feedback.length} survey response${feedback.length === 1 ? '' : 's'} for repeated comments about clarity, difficulty, artifacts, length, and missing topics before any edit is made.`
+        : 'No completed feedback survey is available yet. Keep collecting response-level evidence and do not change survey or scored content based on anecdotes alone.',
+      rationale: 'Feedback analysis should summarize trends, affected users, evidence strength, and suggested next actions before admins approve platform changes.',
+      status: 'pending',
+      sourceSignals: [
+        `${feedback.length} feedback surveys`,
+        `${quality.confusingEvents} slow/confusing answer events`,
+        `${poorArtifactCount} mixed/poor artifact ratings`,
+      ],
+      ownerAgent: 'Feedback Analysis Agent',
     },
     {
       id: `${runId}:learning:next-best`,
@@ -7889,27 +8145,36 @@ function getSupervisedAgentRun(
     },
     {
       step: 2,
+      agent: 'Feedback Analysis Agent',
+      status: 'review',
+      activity: 'Analyzed survey themes, free-text suggestions, abandonment, and continuation behavior before platform edits.',
+      output: feedback.length
+        ? `${feedback.length} survey response${feedback.length === 1 ? '' : 's'} grouped for clarity, difficulty fit, artifact quality, length, and suggestions.`
+        : 'No survey responses yet; recommended continued collection before changing survey or scored content.',
+    },
+    {
+      step: 3,
       agent: 'Reviewer and QA Agent',
       status: 'review',
       activity: 'Ranked question and artifact candidates by confusion, duration, feedback quality, and evidence risk.',
       output: confusingQuestion ? `${confusingQuestion.questionId} is the top review candidate.` : 'No high-volume question candidate yet; generated coverage-gap task.',
     },
     {
-      step: 3,
+      step: 4,
       agent: 'Assessment Item Generator',
       status: 'review',
       activity: 'Created draft tasks for better item discrimination and practical formats.',
       output: 'Drafts stay pending until an admin approves or rejects them.',
     },
     {
-      step: 4,
+      step: 5,
       agent: 'AI Concepts Scout',
       status: 'review',
       activity: 'Mapped profile tags and trend interests into ontology-review candidates.',
       output: recentProfileTags.length ? `${recentProfileTags.length} profile tags included.` : 'No strong profile cluster available yet.',
     },
     {
-      step: 5,
+      step: 6,
       agent: 'Orchestrator',
       status: 'complete',
       activity: 'Closed the run in review state with publish protection enabled.',
@@ -8444,8 +8709,61 @@ function getQuestionBenchmarks(events: AssessmentBehaviorEvent[]) {
   }])) as Record<string, { attempts: number; averageScore: number; averageDurationMs: number; confusionRate: number }>;
 }
 
+function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
+  const benchmarks = getQuestionBenchmarks(events);
+  const feedbackEvents = events.filter((event) => event.type === 'question_feedback' && event.questionId);
+  const groups = new Map<string, AssessmentBehaviorEvent[]>();
+  feedbackEvents.forEach((event) => {
+    groups.set(event.questionId!, [...(groups.get(event.questionId!) ?? []), event]);
+  });
+  const issueTerms = ['guess', 'obvious', 'giveaway', 'artifact', 'irrelevant', 'not related', 'unnecessary', 'inconsistent', 'unclear', 'ambiguous', 'harsh', 'rubric'];
+  return [...new Set([...Object.keys(benchmarks), ...groups.keys()])].map((questionId) => {
+    const feedback = groups.get(questionId) ?? [];
+    const unclear = feedback.filter((event) => event.itemFeedbackKind === 'unclear').length;
+    const comments = feedback.filter((event) => event.itemFeedbackComment?.trim()).length;
+    const likes = feedback.filter((event) => event.itemFeedbackKind === 'like').length;
+    const issueComments = feedback.filter((event) => {
+      const text = event.itemFeedbackComment?.toLowerCase() ?? '';
+      return issueTerms.some((term) => text.includes(term));
+    }).length;
+    const benchmark = benchmarks[questionId];
+    const negativeSignals = unclear + issueComments + Math.max(0, comments - likes);
+    const status = negativeSignals >= 2 || (benchmark?.confusionRate ?? 0) >= 50
+      ? 'review'
+      : negativeSignals >= 1 || (benchmark?.confusionRate ?? 0) >= 25
+        ? 'watch'
+        : 'keep';
+    const action = status === 'review'
+      ? 'Quarantine for rewrite or artifact replacement before heavy scored use.'
+      : status === 'watch'
+        ? 'Monitor with more attempts and inspect wording/artifact fit.'
+        : 'Keep in active routing.';
+    return {
+      questionId,
+      attempts: benchmark?.attempts ?? 0,
+      averageScore: benchmark?.averageScore ?? 0,
+      averageDurationMs: benchmark?.averageDurationMs ?? 0,
+      confusionRate: benchmark?.confusionRate ?? 0,
+      feedbackCount: feedback.length,
+      unclear,
+      comments,
+      likes,
+      negativeSignals,
+      status,
+      action,
+    };
+  }).sort((left, right) => {
+    const statusWeight = { review: 2, watch: 1, keep: 0 };
+    return statusWeight[right.status] - statusWeight[left.status]
+      || right.negativeSignals - left.negativeSignals
+      || right.confusionRate - left.confusionRate
+      || right.averageDurationMs - left.averageDurationMs;
+  });
+}
+
 function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedback: AssessmentFeedbackSurvey[]) {
   const benchmarks = getQuestionBenchmarks(events);
+  const qualityRows = getQuestionQualityRows(events);
   const questionRows = Object.entries(benchmarks)
     .map(([questionId, row]) => ({ questionId, ...row }))
     .sort((left, right) => right.confusionRate - left.confusionRate || right.averageDurationMs - left.averageDurationMs);
@@ -8453,16 +8771,33 @@ function getQualityImprovementInsights(events: AssessmentBehaviorEvent[], feedba
   const started = events.filter((event) => event.type === 'assessment_started').length;
   const continued = events.filter((event) => event.type === 'continuation_accepted').length;
   const mandatory = events.filter((event) => event.type === 'mandatory_completed').length;
+  const confusingEvents = events.filter((event) => event.type === 'question_answered' && event.hesitation === 'confusing').length;
+  const questionFeedbackEvents = events.filter((event) => event.type === 'question_feedback');
+  const unclearQuestionFeedback = questionFeedbackEvents.filter((event) => event.itemFeedbackKind === 'unclear').length;
   const poorArtifacts = feedback.filter((entry) => entry.artifactQuality === 'poor').length;
   const tooEasy = feedback.filter((entry) => entry.difficultyFit === 'too-easy').length;
+  const suggestionText = [
+    ...feedback.map((entry) => entry.suggestions),
+    ...questionFeedbackEvents.map((event) => event.itemFeedbackComment ?? ''),
+  ].join(' ').toLowerCase();
+  const guessableAnswerSignals = ['guess', 'obvious', 'too easy', 'easy to guess', 'giveaway', 'distractor'].filter((term) => suggestionText.includes(term)).length;
+  const irrelevantArtifactSignals = ['artifact', 'irrelevant', 'not relevant', 'not relate', 'unrealistic', 'mock', 'not realistic'].filter((term) => suggestionText.includes(term)).length;
+  const ambiguousWritingSignals = ['ambiguous', 'unclear', 'written', 'writing', 'rubric', 'vague'].filter((term) => suggestionText.includes(term)).length;
+  const staleSurveySignals = ['previous user', 'left in the survey', 'not reset', 'stale', 'old comment'].filter((term) => suggestionText.includes(term)).length;
   const recommendations = [
     questionRows[0] ? `Review ${questionRows[0].questionId}: ${questionRows[0].confusionRate}% confusing, ${Math.round(questionRows[0].averageDurationMs / 1000)}s average.` : 'Collect more item-level attempts before rewriting questions.',
+    unclearQuestionFeedback ? `Prioritize unclear items: ${unclearQuestionFeedback} question-level unclear flag${unclearQuestionFeedback === 1 ? '' : 's'} submitted during the assessment.` : 'No question-level unclear flags have been submitted yet.',
     poorArtifacts ? `Replace artifact sets: ${poorArtifacts} survey response${poorArtifacts === 1 ? '' : 's'} rated them poor.` : 'Continue monitoring artifact relevance and realism.',
     tooEasy ? `Increase decision complexity: ${tooEasy} respondent${tooEasy === 1 ? '' : 's'} found the route too easy.` : 'Difficulty feedback does not yet show a route-wide easy-item problem.',
+    guessableAnswerSignals ? 'Audit answer options: feedback mentions guessable or obvious answers. Replace giveaway distractors with plausible misconceptions and more artifact-dependent evidence.' : 'No explicit guessable-answer theme has been detected in survey text yet.',
+    irrelevantArtifactSignals ? 'Audit artifacts for relevance: feedback mentions irrelevant, unrealistic, or mock-looking artifacts. Require each artifact to contain evidence needed by the answer key.' : 'No explicit artifact-relevance theme has been detected in survey text yet.',
+    ambiguousWritingSignals ? 'Audit written-response prompts: feedback mentions ambiguity or vague rubric fit. Rewrite prompts to name task, context, expected evidence, and scoring lens.' : 'No explicit written-prompt ambiguity theme has been detected in survey text yet.',
+    staleSurveySignals ? 'Verify survey state reset: feedback mentions old comments being visible. Feedback draft should reset at new assessment start and after submission.' : 'No stale-survey-text theme has been detected in survey text yet.',
+    qualityRows.filter((row) => row.status === 'review').length ? `${qualityRows.filter((row) => row.status === 'review').length} question${qualityRows.filter((row) => row.status === 'review').length === 1 ? '' : 's'} should be quarantined for review based on item-level feedback or confusion.` : 'No questions meet the quarantine threshold yet.',
     started ? `Completion health: ${Math.max(0, Math.round((1 - abandoned / started) * 100))}% of locally started sessions avoided recorded abandonment.` : 'Completion health will appear after sessions are started.',
     mandatory ? `Optional-depth conversion: ${Math.round(continued / mandatory * 100)}% continued after mandatory questions.` : 'Optional-depth conversion needs a completed mandatory route.',
   ];
-  return { questionRows: questionRows.slice(0, 10), recommendations, started, abandoned, mandatory, continued };
+  return { questionRows: questionRows.slice(0, 10), qualityRows: qualityRows.slice(0, 12), recommendations, started, abandoned, mandatory, continued, confusingEvents };
 }
 
 function formatDuration(durationMs = 0) {
@@ -8629,9 +8964,91 @@ function getReadinessScore(rawScore: number, difficulty: Difficulty) {
 }
 
 function getReadinessScoreSummary(rawScore: number, difficulty: Difficulty) {
+  if (rawScore <= 0) return 'No response or no scored evidence becomes 0/100 readiness evidence.';
   const adjusted = getReadinessScore(rawScore, difficulty);
   const band = difficultyReadinessBands[difficulty];
   return `Rubric score ${rawScore}/100 on a ${difficultyLabels[difficulty].toLowerCase()} item becomes ${adjusted}/100 readiness evidence. This level can contribute between 0 and ${band.max}; harder items can earn higher readiness evidence, while easy items are capped below advanced readiness.`;
+}
+
+function getScoreExplanation(answer: Answer) {
+  const rawScore = answer.option.score;
+  const readinessScore = getReadinessScore(rawScore, answer.question.difficulty);
+  const band = difficultyReadinessBands[answer.question.difficulty];
+  const maxOptionScore = Math.max(...answer.question.options.map((option) => option.score), rawScore);
+  const isTopOption = rawScore === maxOptionScore && rawScore > 0;
+  return [
+    rawScore <= 0
+      ? 'Blank or unattempted responses receive 0 raw score and 0 readiness evidence.'
+      : `Raw answer score is ${rawScore}/100. ${isTopOption ? 'This is a top-scoring answer, but top answers are usually seeded as 95 or 98 rather than automatic 100.' : 'This reflects partial or incorrect evidence for this item.'}`,
+    `Difficulty adjustment converts this to ${readinessScore}/100 readiness evidence for ${difficultyLabels[answer.question.difficulty].toLowerCase()} difficulty.`,
+    `This difficulty band can contribute at most ${band.max}/100 readiness evidence, so easier correct answers cannot by themselves create an advanced result.`,
+  ];
+}
+
+function getRawScoreMethod(answer: Answer) {
+  const interaction = answer.question.interaction ?? 'single';
+  if (answer.option.score <= 0) return 'No response or no scored evidence = 0 raw.';
+  if (interaction === 'multi') return 'Raw = correct selections credit minus wrong-selection penalty.';
+  if (interaction === 'rank') return 'Raw = percent of steps in exact ideal position.';
+  if (interaction === 'match') return 'Raw = percent of correct pairings.';
+  if (interaction === 'parts') return 'Raw = average of mini-part option scores.';
+  if (interaction === 'text') return 'Raw = detected rubric criteria points.';
+  return 'Raw = selected option evidence score.';
+}
+
+function getQuestionScoreCalculations(answers: Answer[]): QuestionScoreCalculation[] {
+  return answers.map((answer) => {
+    const rawScore = answer.option.score;
+    const readinessScore = getReadinessScore(rawScore, answer.question.difficulty);
+    const band = difficultyReadinessBands[answer.question.difficulty];
+    const calculation = rawScore <= 0
+      ? '0 raw -> 0 readiness'
+      : rawScore <= 55
+        ? `round((${rawScore} / 55) * ${band.partial}) = ${readinessScore}`
+        : `round(${band.partial} + ((${rawScore} - 55) / 45) * (${band.max} - ${band.partial})) = ${readinessScore}`;
+    return {
+      questionId: answer.question.id,
+      domain: answer.question.domain,
+      competencies: getQuestionMeasures(answer.question).map((competency) => competency.label).join(', '),
+      difficulty: answer.question.difficulty,
+      interaction: answer.question.interaction ?? 'single',
+      rawScore,
+      readinessScore,
+      calculation,
+    };
+  });
+}
+
+function getDomainScoreCalculations(answers: Answer[]): DomainScoreCalculation[] {
+  const raw = emptyDomainScores();
+  answers.forEach(({ question, option, partScores }) => {
+    if (partScores?.length) {
+      partScores.forEach((partScore) => {
+        raw[partScore.domain].points += getReadinessScore(partScore.score, question.difficulty);
+        raw[partScore.domain].count += 1;
+      });
+      return;
+    }
+    const readinessScore = getReadinessScore(option.score, question.difficulty);
+    raw[question.domain].points += readinessScore;
+    raw[question.domain].count += 1;
+    (question.secondaryDomains ?? []).forEach((domain) => {
+      raw[domain].points += readinessScore * 0.35;
+      raw[domain].count += 0.35;
+    });
+  });
+  return (Object.keys(domains) as DomainId[]).map((domain) => {
+    const points = Number(raw[domain].points.toFixed(2));
+    const count = Number(raw[domain].count.toFixed(2));
+    const score = count ? Math.round(points / count) : 0;
+    return {
+      domain,
+      points,
+      count,
+      score,
+      calculation: count ? `round(${points} / ${count}) = ${score}` : 'No evidence = 0',
+    };
+  });
 }
 
 function getEvidenceSignals(answers: Answer[]) {
@@ -9357,12 +9774,12 @@ function scoreParts(question: Question, selections: Record<string, string>) {
     return {
       partId: part.id,
       domain: part.domain,
-      score: selectedOption?.score ?? 15,
+      score: selectedOption?.score ?? 0,
     };
   });
   const score = partScores.length
     ? Math.round(partScores.reduce((sum, partScore) => sum + partScore.score, 0) / partScores.length)
-    : 15;
+    : 0;
   return { score, partScores };
 }
 
@@ -9371,32 +9788,34 @@ function scoreMultiSelect(question: Question, selected: string[]) {
   const selectedSet = new Set(selected);
   const correctSelected = correct.filter((id) => selectedSet.has(id)).length;
   const wrongSelected = selected.filter((id) => !correct.includes(id)).length;
-  if (!selected.length) return 15;
+  if (!selected.length) return 0;
   if (correctSelected === correct.length && wrongSelected === 0) return 98;
   const partial = Math.round((correctSelected / Math.max(correct.length, 1)) * 82);
-  return Math.max(20, partial - wrongSelected * 18);
+  return Math.max(0, partial - wrongSelected * 18);
 }
 
 function scoreOrder(question: Question, order: string[]) {
   const ideal = question.idealOrder ?? [];
-  if (!ideal.length) return 60;
+  if (!ideal.length || order.length !== ideal.length) return 0;
   const exactPositions = ideal.filter((id, index) => order[index] === id).length;
-  return Math.max(25, Math.round((exactPositions / ideal.length) * 98));
+  return Math.round((exactPositions / ideal.length) * 98);
 }
 
 function scoreMatches(question: Question, selections: Record<string, string>) {
   const pairs = question.matchPairs ?? [];
-  if (!pairs.length) return 60;
+  if (!pairs.length) return 0;
+  if (!Object.values(selections).some(Boolean)) return 0;
   const correct = pairs.filter((pair) => selections[pair.id] === pair.correct).length;
-  return Math.max(20, Math.round((correct / pairs.length) * 98));
+  return Math.round((correct / pairs.length) * 98);
 }
 
 function scoreTextAnswer(question: Question, response: string) {
   const normalized = response.toLowerCase();
   const criteria = question.rubricCriteria ?? [];
-  if (!normalized.trim()) return { score: 10, hits: [] as RubricCriterion[] };
+  if (!normalized.trim()) return { score: 0, hits: [] as RubricCriterion[] };
   const hits = criteria.filter((criterion) => criterion.keywords.some((keyword) => normalized.includes(keyword)));
-  const score = Math.min(98, Math.max(20, hits.reduce((sum, criterion) => sum + criterion.points, 0)));
+  const evidencePoints = hits.reduce((sum, criterion) => sum + criterion.points, 0);
+  const score = hits.length ? Math.min(98, evidencePoints) : 0;
   return { score, hits };
 }
 
@@ -9502,7 +9921,7 @@ function getDifficultyMovement(answer: Answer | null, nextQuestion: Question | n
 function itemDiscrimination(question: Question) {
   const interaction = question.interaction ?? 'single';
   const base = { single: 0.85, multi: 1.05, rank: 1.15, match: 1.1, text: 1.25, parts: 1.2 }[interaction];
-  return question.stimulus || question.visualStimulus ? base + 0.1 : base;
+  return hasHelpfulVisualEvidence(question) ? base + 0.1 : base;
 }
 
 function itemGuessing(question: Question) {
@@ -9598,6 +10017,29 @@ function optionDisplayLetter(index: number) {
   return String.fromCharCode(65 + index);
 }
 
+const hiddenArtifactQuestionIds = new Set([
+  'DEPTH-D5-STRATEGY-052',
+  'DEPTH-D6-COLLAB-055',
+  'DEPTH-D6-CHANGE-058',
+  'MATCH-AI-COMPONENTS-061',
+  'DEPTH-EXP-D1-D2-086',
+  'DEPTH-EXP-D1-CONCEPTS-090',
+  'COMP-D1-CONCEPTS-001',
+  'COMP-D2-WORKFLOW-004',
+  'EXEC-D6-LOOP-019',
+  'EXEC-EXP-D1-CAL-001',
+  'MULTI-CONCEPT-EXEC-001',
+]);
+
+function getDisplayStimulus(question: Question) {
+  if (!question.stimulus || hiddenArtifactQuestionIds.has(question.id)) return undefined;
+  return question.stimulus;
+}
+
+function hasHelpfulVisualEvidence(question: Question) {
+  return Boolean(getDisplayStimulus(question) || question.visualStimulus);
+}
+
 function selectExecutiveDomain(answers: Answer[]) {
   if (answers.length < starterDomains.length) return starterDomains[answers.length];
   const scores = getDomainScores(answers);
@@ -9613,7 +10055,7 @@ function selectNextQuestion(
   answers: Answer[],
   assessmentMode: AssessmentMode = 'free',
   seed = 0,
-  profile: { functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number } = {},
+  profile: { functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
 ) {
   const bank = getAssessmentBank(assessmentMode);
   const answered = new Set(answers.map((answer) => answer.question.id));
@@ -9621,6 +10063,7 @@ function selectNextQuestion(
   const counts = getAnsweredDomainCounts(answers);
   const targetDomain = profile.targetDomain ?? (assessmentMode === 'executive' ? selectExecutiveDomain(answers) : undefined);
   const targetCompetencyIds = new Set(profile.targetCompetencyIds ?? []);
+  const flaggedQuestionIds = new Set(profile.flaggedQuestionIds ?? []);
   const weakestDomain = (Object.keys(domains) as DomainId[]).sort(
     (a, b) => counts[a].count - counts[b].count || scores[a] - scores[b],
   )[0];
@@ -9677,7 +10120,7 @@ function selectNextQuestion(
       },
       {} as Record<NonNullable<Question['interaction']>, number>,
     );
-    const visualCount = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+    const visualCount = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
     const scoredCandidates = selectableCandidates.map((question) => {
       const interaction = question.interaction ?? 'single';
       const difficultyDistance = Math.abs(difficultyValue[question.difficulty] - difficultyValue[targetDifficulty]);
@@ -9689,8 +10132,9 @@ function selectNextQuestion(
       rank += Math.max(0, executiveDomainTargets[question.domain] - counts[question.domain].count) * 10;
       rank += 34 - difficultyDistance * 12;
       if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
-      if (visualCount < 5 && (question.stimulus || question.visualStimulus)) rank += 18;
+      if (visualCount < 5 && hasHelpfulVisualEvidence(question)) rank += 18;
       if (question.type === 'reliance-decision') rank -= 28;
+      if (flaggedQuestionIds.has(question.id)) rank -= 72;
       if (latestScore < 55 && question.difficulty === 'awareness') rank += 34;
       if (latestScore >= 82 && question.difficulty === 'proficient') rank += 34;
       return { question, rank };
@@ -9705,7 +10149,7 @@ function selectNextQuestion(
     },
     {} as Record<NonNullable<Question['interaction']>, number>,
   );
-  const visualCount = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+  const visualCount = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
   const scoredCandidates = selectableCandidates.map((question) => {
     const interaction = question.interaction ?? 'single';
     const difficultyDistance = Math.abs(difficultyValue[question.difficulty] - difficultyValue[targetDifficulty]);
@@ -9719,8 +10163,9 @@ function selectNextQuestion(
     if (assessmentMode === 'premium' && question.industryTracks?.includes(profile.industryTrack ?? 'general')) rank += 16;
     rank += 30 - difficultyDistance * 10;
     if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
-    if (visualCount < 4 && (question.stimulus || question.visualStimulus)) rank += 22;
+    if (visualCount < 4 && hasHelpfulVisualEvidence(question)) rank += 22;
     if (question.type === 'reliance-decision') rank -= 28;
+    if (flaggedQuestionIds.has(question.id)) rank -= 72;
     if (latestScore < 55 && question.difficulty === 'awareness') rank += 30;
     if (latestScore >= 82 && question.difficulty === 'proficient') rank += 30;
     return { question, rank };
@@ -10168,6 +10613,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 
 export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
@@ -10200,6 +10646,8 @@ export default function Home() {
   const [selectedPreviewDomain, setSelectedPreviewDomain] = useState<DomainId>('D3');
   const [selectedRadarDomain, setSelectedRadarDomain] = useState<DomainId>('D1');
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
+  const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
+  const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
@@ -10207,6 +10655,9 @@ export default function Home() {
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
   const [partSelections, setPartSelections] = useState<Record<string, string>>({});
   const [textResponse, setTextResponse] = useState('');
+  const [questionFeedbackComment, setQuestionFeedbackComment] = useState('');
+  const [questionFeedbackDraft, setQuestionFeedbackDraft] = useState<Record<string, 'like' | 'unclear' | 'clear' | null>>({});
+  const [questionFeedbackSubmitted, setQuestionFeedbackSubmitted] = useState<Record<string, 'like' | 'unclear' | 'comment'>>({});
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [lastAnswer, setLastAnswer] = useState<Answer | null>(null);
   const [pendingQuestion, setPendingQuestion] = useState<Question | null>(null);
@@ -10226,11 +10677,7 @@ export default function Home() {
     parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
   ));
   const [feedbackDraft, setFeedbackDraft] = useState<Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'>>({
-    clarity: 'clear',
-    difficultyFit: 'right',
-    artifactQuality: 'realistic',
-    lengthFit: 'right',
-    suggestions: '',
+    ...defaultAssessmentFeedbackDraft(),
   });
   const [behaviorSessionId, setBehaviorSessionId] = useState(() => `session-${createAssessmentSeed().toString(36)}`);
   const behaviorSessionIdRef = useRef(behaviorSessionId);
@@ -10253,7 +10700,7 @@ export default function Home() {
   const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
     getAgentWorkflowReport(
       allAssessmentItems.length,
-      allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length,
+      allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length,
       0,
     )
   ));
@@ -10263,7 +10710,7 @@ export default function Home() {
     [assessmentTargetTotal, mode],
   );
   const liveItemCount = allAssessmentItems.length;
-  const artifactItemCount = allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length;
+  const artifactItemCount = allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length;
   const multiPartItemCount = allAssessmentItems.filter((question) => question.interaction === 'parts').length;
   const interactionCount = new Set(allAssessmentItems.map((question) => question.interaction ?? 'single')).size;
   const scoreGroup = useMemo(
@@ -10281,6 +10728,8 @@ export default function Home() {
   const currentMeasures = useMemo(() => getQuestionMeasures(current), [current]);
   const currentSkills = useMemo(() => getQuestionSkillLabels(current), [current]);
   const competencyScores = useMemo(() => getCompetencyScores(answers), [answers]);
+  const questionScoreCalculations = useMemo(() => getQuestionScoreCalculations(answers), [answers]);
+  const domainScoreCalculations = useMemo(() => getDomainScoreCalculations(answers), [answers]);
   const domainEvidenceSummary = useMemo(() => getDomainEvidenceSummary(answers), [answers]);
   const evidenceModeSummary = useMemo(() => getEvidenceModeSummary(answers), [answers]);
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
@@ -10296,6 +10745,10 @@ export default function Home() {
   );
   const questionBenchmarks = useMemo(() => getQuestionBenchmarks(behaviorLog), [behaviorLog]);
   const qualityInsights = useMemo(() => getQualityImprovementInsights(behaviorLog, assessmentFeedback), [assessmentFeedback, behaviorLog]);
+  const flaggedQualityQuestionIds = useMemo(
+    () => qualityInsights.qualityRows.filter((row) => row.status === 'review').map((row) => row.questionId),
+    [qualityInsights.qualityRows],
+  );
   const detailedAnalysisUnlocked = assessmentFeedback.some((entry) => entry.sessionId === behaviorSessionId);
   const artifactReplacementBriefs = useMemo(() => {
     const seen = new Set<string>();
@@ -10312,6 +10765,16 @@ export default function Home() {
     }, []);
   }, []);
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
+
+  useEffect(() => {
+    writeLocalStorage(languageStorageKey, appLanguage);
+    applyUiLanguage(appLanguage);
+    const observer = new MutationObserver(() => {
+      window.requestAnimationFrame(() => applyUiLanguage(appLanguage));
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [appLanguage, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
   const latestSupervisedAgentRun = supervisedAgentRuns[0] ?? null;
   const pendingAgentDraftCount = supervisedAgentRuns.reduce(
     (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'pending').length,
@@ -10463,6 +10926,7 @@ export default function Home() {
     () => shuffledBySeed(current.options, assessmentSeed, `${current.id}:options`, (option) => option.id),
     [assessmentSeed, current],
   );
+  const currentDisplayStimulus = getDisplayStimulus(current);
   const displayedMatchPairs = useMemo(
     () => shuffledBySeed(current.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
     [assessmentSeed, current],
@@ -10537,6 +11001,93 @@ export default function Home() {
   function registerQuestionInteraction(revision = false) {
     questionInteractionCountRef.current += 1;
     if (revision) questionRevisionCountRef.current += 1;
+  }
+
+  function toggleQuestionFeedbackDraft(questionId: string, kind: 'like' | 'unclear') {
+    setQuestionFeedbackDraft((existing) => ({
+      ...existing,
+      [questionId]: (existing[questionId] ?? questionFeedbackSubmitted[questionId] ?? null) === kind ? 'clear' : kind,
+    }));
+  }
+
+  function submitQuestionFeedback(question = current) {
+    const comment = questionFeedbackComment.trim();
+    const selectedKind = questionFeedbackDraft[question.id];
+    const kind = selectedKind ?? (comment ? 'comment' : null);
+    if (!kind) return;
+    appendBehaviorEvent({
+      type: 'question_feedback',
+      questionId: question.id,
+      domain: question.domain,
+      competencyIds: getQuestionMeasures(question).map((competency) => competency.id),
+      difficulty: question.difficulty,
+      interaction: question.interaction ?? 'single',
+      answeredCount: answers.length,
+      targetCount: activeConfig.totalQuestions,
+      itemFeedbackKind: kind,
+      itemFeedbackComment: comment || undefined,
+      label: kind === 'like' ? 'Question useful' : kind === 'unclear' ? 'Question or instruction unclear' : kind === 'clear' ? 'Question feedback cleared' : 'Question comment',
+    });
+    setQuestionFeedbackSubmitted((existing) => {
+      const next = { ...existing };
+      if (kind === 'clear') {
+        delete next[question.id];
+      } else {
+        next[question.id] = kind;
+      }
+      return next;
+    });
+    setQuestionFeedbackDraft((existing) => ({ ...existing, [question.id]: null }));
+    setQuestionFeedbackComment('');
+  }
+
+  function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
+    const draftKind = questionFeedbackDraft[question.id] ?? null;
+    const savedKind = questionFeedbackSubmitted[question.id];
+    const activeKind = draftKind === 'clear' ? null : draftKind ?? savedKind ?? null;
+    const hasDraftChange = draftKind !== null || Boolean(questionFeedbackComment.trim());
+    return (
+      <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
+        <div>
+          <span>Quick feedback</span>
+          <strong>{savedKind && draftKind === null ? 'Saved for item review' : placement === 'reveal' ? 'Was this item useful?' : 'Help improve this item'}</strong>
+        </div>
+        <div className="question-feedback-actions">
+          <button
+            type="button"
+            className={activeKind === 'like' ? 'selected' : ''}
+            aria-pressed={activeKind === 'like'}
+            onClick={() => toggleQuestionFeedbackDraft(question.id, 'like')}
+          >
+            Useful
+          </button>
+          <button
+            type="button"
+            className={activeKind === 'unclear' ? 'selected warning' : ''}
+            aria-pressed={activeKind === 'unclear'}
+            onClick={() => toggleQuestionFeedbackDraft(question.id, 'unclear')}
+          >
+            Unclear
+          </button>
+        </div>
+        <label>
+          <span>Optional note</span>
+          <input
+            value={questionFeedbackComment}
+            onChange={(event) => setQuestionFeedbackComment(event.target.value)}
+            placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+          />
+        </label>
+        <button
+          type="button"
+          className="secondary dark"
+          disabled={!hasDraftChange}
+          onClick={() => submitQuestionFeedback(question)}
+        >
+          {draftKind === 'clear' && !questionFeedbackComment.trim() ? 'Clear' : 'Save'}
+        </button>
+      </div>
+    );
   }
 
   useEffect(() => {
@@ -10697,11 +11248,15 @@ export default function Home() {
       functionTrack,
       industryTrack,
       targetCompetencyIds,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setMode(nextMode);
     setAssessmentSeed(nextSeed);
     setAssessmentTargetTotal(modeConfig[nextMode].totalQuestions);
     setContinuationFocus(null);
+    setReportTab('report');
+    setFeedbackPromptOpen(true);
+    setFeedbackDraft(defaultAssessmentFeedbackDraft());
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -10848,6 +11403,7 @@ export default function Home() {
     setMatchSelections({});
     setPartSelections({});
     setTextResponse('');
+    setQuestionFeedbackComment('');
     setDraggedIndex(null);
     questionStartedAtRef.current = new Date().getTime();
     questionStartedIsoRef.current = new Date().toISOString();
@@ -10925,6 +11481,7 @@ export default function Home() {
       targetDomain: continuationFocus?.targetDomain,
       targetCompetencyIds: continuationFocus?.targetCompetencyIds ?? profileTargetCompetencyIds,
       totalQuestions: activeConfig.totalQuestions,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setPendingQuestion(nextQuestion);
     setStep('feedback');
@@ -10936,6 +11493,8 @@ export default function Home() {
         appendBehaviorEvent({ type: 'continuation_declined', continuationKind: 'declined', answeredCount: answers.length, requiredCount: modeConfig[mode].totalQuestions });
       }
       logCompletedResults();
+      setReportTab('report');
+      setFeedbackPromptOpen(true);
       setStep('results');
       return;
     }
@@ -10954,6 +11513,7 @@ export default function Home() {
       targetDomain: focus.targetDomain,
       targetCompetencyIds: focus.targetCompetencyIds,
       totalQuestions: nextTargetTotal,
+      flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setAssessmentSeed(nextSeed);
     setAssessmentTargetTotal(nextTargetTotal);
@@ -11073,6 +11633,8 @@ export default function Home() {
     });
     syncAssessmentFeedbackToSupabase(authProfile, entry);
     appendBehaviorEvent({ type: 'assessment_feedback_submitted', answeredCount: answers.length, score: results.overall });
+    setFeedbackDraft(defaultAssessmentFeedbackDraft());
+    setFeedbackPromptOpen(false);
   }
 
   function selectReportDomain(domain: DomainId, area: AssessmentBehaviorEvent['reportArea'] = 'domain') {
@@ -11259,7 +11821,22 @@ export default function Home() {
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => showHomeSection('results')}>Results</button>
         </nav>
-        <button className="small-button" onClick={() => setStep('onboarding')}>Start</button>
+        <div className="topbar-actions">
+          <div className="language-toggle" aria-label="Language">
+            {(['en', 'th'] as AppLanguage[]).map((language) => (
+              <button
+                key={language}
+                type="button"
+                className={appLanguage === language ? 'selected' : ''}
+                onClick={() => setAppLanguage(language)}
+                aria-pressed={appLanguage === language}
+              >
+                {language === 'en' ? 'EN' : 'TH'}
+              </button>
+            ))}
+          </div>
+          <button className="small-button" onClick={() => setStep('onboarding')}>Start</button>
+        </div>
       </header>
 
       {step === 'home' && (
@@ -11920,19 +12497,32 @@ export default function Home() {
                         {qualityInsights.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
                       </div>
                     </div>
-                    <div>
-                      <h3>Question candidates</h3>
-                      <div className="admin-list compact">
-                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
-                          <p key={row.questionId}>
-                            <strong>{row.questionId}</strong>
-                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
-                          </p>
-                        )) : <p>No item behavior data yet.</p>}
-                      </div>
-                    </div>
-                  </div>
-                </article>
+	                    <div>
+	                      <h3>Question candidates</h3>
+	                      <div className="admin-list compact">
+	                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
+	                          <p key={row.questionId}>
+	                            <strong>{row.questionId}</strong>
+	                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
+	                          </p>
+	                        )) : <p>No item behavior data yet.</p>}
+	                      </div>
+	                    </div>
+	                  </div>
+	                  <div className="quality-review-table">
+	                    <h3>Item quality gate</h3>
+	                    <div className="quality-review-rows">
+	                      {qualityInsights.qualityRows.length ? qualityInsights.qualityRows.map((row) => (
+	                        <div key={row.questionId} className={`quality-review-row ${row.status}`}>
+	                          <span>{row.status}</span>
+	                          <strong>{row.questionId}</strong>
+	                          <small>{row.feedbackCount} feedback · {row.unclear} unclear · {row.negativeSignals} negative signals · {row.confusionRate}% confusing</small>
+	                          <p>{row.action}</p>
+	                        </div>
+	                      )) : <p>No item-level feedback has been submitted yet.</p>}
+	                    </div>
+	                  </div>
+	                </article>
 
                 <article className="admin-card admin-wide telemetry-analysis-card">
                   <div className="report-heading">
@@ -12579,8 +13169,8 @@ export default function Home() {
               {useRelianceStage && current.type === 'reliance-decision' && (
                 <div className="reliance-stage">
                   <div>
-                    {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                    {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                    {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                    {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
                     <span>Make the call</span>
@@ -12602,8 +13192,8 @@ export default function Home() {
               )}
               {!useRelianceStage && (
                 <>
-                  {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                  {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                  {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                  {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>
@@ -12738,9 +13328,10 @@ export default function Home() {
                       placeholder="Write 2-4 sentences with the evidence you would use in the real situation."
                     />
                   </label>
-                  <button className="primary submit-answer" onClick={submitTextAnswer}>Submit Written Answer</button>
+                  <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>
                 </div>
               )}
+              {renderQuestionFeedback(current)}
             </article>
             <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
               <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
@@ -12831,6 +13422,11 @@ export default function Home() {
               <p className="eyebrow">Answer review</p>
               <h1>{lastAnswer.option.score}/100</h1>
               <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
+              <div className="score-explanation-panel" aria-label="Score explanation">
+                <span>Score explanation</span>
+                <p>{getRawScoreMethod(lastAnswer)}</p>
+                {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
+              </div>
               <div className="feedback-grid">
                 <div>
                   <span>Your answer</span>
@@ -12872,6 +13468,7 @@ export default function Home() {
                   })}
                 </div>
               )}
+              {renderQuestionFeedback(lastAnswer.question, 'reveal')}
               {!pendingQuestion && showContinuationPanel && (
                 <div className={`continue-callout ${continuationRecommendation.urgency}`}>
                   <p className="eyebrow">{continuationRecommendation.kicker}</p>
@@ -12949,8 +13546,10 @@ export default function Home() {
               {!pendingQuestion && showContinuationPanel && (
                 <div className="adaptive-card continuation-inline">
                   <span>{continuationRecommendation.confidenceLabel}</span>
-                  <strong>{continuationRecommendation.questionCount}</strong>
-                  <p>{continuationRecommendation.reasons[0]}</p>
+                  <strong>{results.confidence}%</strong>
+                  <p>
+                    {continuationRecommendation.reasons[0]} The recommended route adds {continuationRecommendation.questionCount} targeted questions.
+                  </p>
                   <div className="continuation-actions">
                     <button
                       type="button"
@@ -12994,8 +13593,10 @@ export default function Home() {
               {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
                 <div className="adaptive-card continuation-inline">
                   <span>Evidence completion</span>
-                  <strong>{evidenceCompletion.questionCount}</strong>
-                  <p>{evidenceCompletion.summary}</p>
+                  <strong>{results.confidence}%</strong>
+                  <p>
+                    {evidenceCompletion.summary} Add {evidenceCompletion.questionCount} evidence questions to improve coverage.
+                  </p>
                   <div className="continuation-actions">
                     <button type="button" className="primary" onClick={continueEvidenceCompletion}>
                       Keep going
@@ -13041,8 +13642,28 @@ export default function Home() {
               onSelectDomain={setSelectedRadarDomain}
             />
           </div>
-          <div className="result-grid">
-            <article className="result-card wide comparison-note">
+          <div className="report-tabs" role="tablist" aria-label="Assessment report sections">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={reportTab === 'report'}
+              className={reportTab === 'report' ? 'selected' : ''}
+              onClick={() => setReportTab('report')}
+            >
+              Report
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={reportTab === 'analysis'}
+              className={reportTab === 'analysis' ? 'selected' : ''}
+              onClick={() => setReportTab('analysis')}
+            >
+              Test analysis
+            </button>
+          </div>
+          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
+            <article className="result-card wide comparison-note report-primary report-order-summary">
               <h2>Score interpretation</h2>
               <div className="evidence-grid">
                 <p><strong>Your score</strong> A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.</p>
@@ -13050,7 +13671,66 @@ export default function Home() {
                 <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
               </div>
             </article>
-            <article className="result-card wide did-you-know-report">
+            <article className="result-card wide score-calculation-card analysis-primary">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Score calculation</p>
+                  <h2>How this result was derived</h2>
+                </div>
+                <span>{answers.length} answered item{answers.length === 1 ? '' : 's'}</span>
+              </div>
+              <div className="calculation-summary-grid">
+                <p><strong>Question</strong> Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.</p>
+                <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
+                <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
+                <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
+                <p><strong>Assessment</strong> Overall score is the average of D1-D6 domain scores: {Object.values(results.domainScores).join(' + ')} / 6 = {results.overall}.</p>
+                <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
+              </div>
+              <details className="calculation-details" open>
+                <summary>Question-level calculation</summary>
+                <div className="calculation-table">
+                  {questionScoreCalculations.map((row, index) => (
+                    <div key={`${row.questionId}-${index}`}>
+                      <span>Q{index + 1}</span>
+                      <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
+                      <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
+                      <small>{row.calculation}</small>
+                      <p>{row.competencies}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+              <details className="calculation-details" open>
+                <summary>Domain roll-up</summary>
+                <div className="calculation-table domain-calculation-table">
+                  {domainScoreCalculations.map((row) => (
+                    <div key={row.domain}>
+                      <span>{row.domain}</span>
+                      <strong>{domains[row.domain].short}</strong>
+                      <b>{row.score}/100</b>
+                      <small>{row.calculation}</small>
+                      <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : 'No sampled evidence in this run.'}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+              <details className="calculation-details">
+                <summary>Competency roll-up</summary>
+                <div className="calculation-table competency-calculation-table">
+                  {competencyScores.filter((competency) => competency.evidenceCount > 0).map((competency) => (
+                    <div key={competency.id}>
+                      <span>{competency.domain}</span>
+                      <strong>{competency.label}</strong>
+                      <b>{competency.score}/100</b>
+                      <small>{competency.evidenceCount} evidence · {competency.confidence} confidence</small>
+                      <p>Average readiness evidence from mapped question signals.</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </article>
+            <article className="result-card wide did-you-know-report report-primary report-order-dyk">
               <div>
                 <p className="eyebrow">Did you know?</p>
                 <h2>{personalizedDidYouKnow.topic}</h2>
@@ -13063,7 +13743,7 @@ export default function Home() {
               </div>
             </article>
             {showContinuationPanel && (
-              <article className={`result-card wide continuation-panel prominent ${continuationRecommendation.urgency}`}>
+              <article className={`result-card wide continuation-panel prominent report-primary report-order-continuation ${continuationRecommendation.urgency}`}>
                 <div>
                   <p className="eyebrow">{continuationRecommendation.kicker}</p>
                   <h2>{continuationRecommendation.headline}</h2>
@@ -13073,7 +13753,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="continuation-decision">
-                  <strong>{continuationRecommendation.confidenceLabel}</strong>
+                  <strong>{continuationRecommendation.confidenceLabel}: {results.confidence}%</strong>
                   <p>{continuationRecommendation.questionCount} targeted questions can improve the score estimate and competency evidence.</p>
                   {continuationRecommendation.targetLabels.length > 0 && (
                     <div className="continue-targets">
@@ -13110,7 +13790,7 @@ export default function Home() {
               </article>
             )}
             {showEvidenceCompletionPanel && (
-              <article className="result-card wide continuation-panel prominent recommended">
+              <article className="result-card wide continuation-panel prominent recommended report-primary report-order-continuation">
                 <div>
                   <p className="eyebrow">Evidence completion</p>
                   <h2>Continue beyond 20 until confidence is high</h2>
@@ -13140,7 +13820,7 @@ export default function Home() {
                 </div>
               </article>
             )}
-            <article className="result-card wide leaderboard-card">
+            <article className="result-card wide leaderboard-card report-primary report-order-leaderboard">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Persona leaderboard</p>
@@ -13160,7 +13840,7 @@ export default function Home() {
               </div>
               <p className="context-line">MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.</p>
             </article>
-            <article className="result-card wide telemetry-analysis-card">
+            <article className="result-card wide telemetry-analysis-card analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Telemetry and result analysis</p>
@@ -13184,17 +13864,17 @@ export default function Home() {
               </div>
               <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
             </article>
-            <article className="result-card wide assessment-feedback-gate">
+            <article id="assessment-feedback-survey" className="result-card wide assessment-feedback-gate report-primary report-order-survey">
               <div className="report-heading">
                 <div>
-                  <p className="eyebrow">Question-level analysis</p>
-                  <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Share quick feedback to unlock details.'}</h2>
+                  <p className="eyebrow">30-second feedback</p>
+                  <h2>{detailedAnalysisUnlocked ? 'Thanks. Your detailed evidence is unlocked.' : 'Help improve the assessment and unlock your detailed evidence.'}</h2>
                 </div>
-                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'About 30 seconds'}</span>
+                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Quick survey'}</span>
               </div>
               {!detailedAnalysisUnlocked ? (
                 <>
-                  <p>Your feedback improves question clarity, difficulty calibration, artifact realism, profile collection, and the follow-up survey.</p>
+                  <p>Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.</p>
                   <div className="feedback-survey-grid">
                     <label>Question clarity
                       <select value={feedbackDraft.clarity} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, clarity: event.target.value as AssessmentFeedbackSurvey['clarity'] }))}>
@@ -13223,6 +13903,26 @@ export default function Home() {
                   <button className="primary" type="button" onClick={submitAssessmentFeedback}>Submit feedback and unlock analysis</button>
                 </>
               ) : (
+                <>
+                  <p>Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.</p>
+                  <button className="secondary dark" type="button" onClick={() => setReportTab('analysis')}>Open detailed analysis</button>
+                </>
+              )}
+            </article>
+            <article className="result-card wide assessment-feedback-gate analysis-primary">
+              <div className="report-heading">
+                <div>
+                  <p className="eyebrow">Question-level analysis</p>
+                  <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Feedback unlock required.'}</h2>
+                </div>
+                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Locked'}</span>
+              </div>
+              {!detailedAnalysisUnlocked ? (
+                <>
+                  <p>Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.</p>
+                  <button className="primary" type="button" onClick={() => setReportTab('report')}>Go to feedback survey</button>
+                </>
+              ) : (
                 <div className="question-analysis-list">
                   {answers.map((answer, index) => {
                     const benchmark = questionBenchmarks[answer.question.id];
@@ -13246,78 +13946,45 @@ export default function Home() {
                 </div>
               )}
             </article>
-            <article className="result-card wide ai-generated-report">
+            <article className="result-card wide ai-generated-report report-primary report-order-generated">
               <div className="report-heading">
                 <div>
-                  <p className="eyebrow">MVP generated report</p>
+                  <p className="eyebrow">Personalized AI report</p>
                   <h2>{generatedReport.headline}</h2>
                 </div>
-                <span>No API key in MVP</span>
+                <span>{scoreGroup.label.replace(/ average$/i, '')}</span>
               </div>
               <p>{generatedReport.summary}</p>
               <div className="report-section">
-                <h3>Detailed analysis</h3>
+                <h3>What this means</h3>
                 <div className="evidence-grid">
                   {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
                 </div>
               </div>
-              <div className="report-section">
-                <h3>Priority domains</h3>
-                <div className="improvement-brief">
-                  {generatedReport.priorityDomains.map((item) => (
-                    <div key={item.domain}>
-                      <span>{item.domain} · {item.title}</span>
-                      <strong>{item.score}/100 now · target {item.target}/100</strong>
-                      <p>{item.action}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="report-section">
-                <h3>Competency focus</h3>
-                <div className="competency-table compact">
-                  {generatedReport.competencyFocus.length ? generatedReport.competencyFocus.map((competency) => (
-                    <details key={competency.id} open>
-                      <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label })}>
-                        <span>{competency.id}</span>
-                        <strong>{competency.label}</strong>
-                        <b>{competency.score}/100</b>
-                        <small>{competency.evidenceCount} evidence · {competency.skills.join(', ')}</small>
-                      </summary>
-                    </details>
-                  )) : <p>Complete a longer route to unlock sampled competency focus.</p>}
-                </div>
-              </div>
-              <div className="report-section">
-                <h3>Learning path</h3>
-                <div className="learning-list">
-                  {generatedReport.learningPath.map((step, index) => (
-                    <div key={step}>
-                      <span>Step {index + 1}</span>
-                      <strong>{step}</strong>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="personalized-exploration">
-                <div>
-                  <span>Recommended tools to explore</span>
-                  <div className="profile-tag-grid">
-                    {generatedReport.tools.map((tool) => <span key={tool}>{tool}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Recommended courses</span>
-                  <div className="profile-tag-grid">
-                    {generatedReport.courses.slice(0, 4).map((course) => (
-                      <a key={course.id} href={course.url} target="_blank" rel="noreferrer">{course.provider}: {course.title}</a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="context-line">{generatedReport.productionNote}</p>
             </article>
-            <article className="result-card wide coverage-plan">
+            <article className="result-card wide report-primary report-order-domain">
+              <h2>Domain scorecard</h2>
+              <div className="demo-domain-grid">
+                {(Object.keys(results.domainScores) as DomainId[]).map((domain) => {
+                  const target = getTargetScore(domain, radarProfiles);
+                  const gap = target - results.domainScores[domain];
+                  return (
+                    <button
+                      key={domain}
+                      className={selectedRadarDomain === domain ? 'selected' : ''}
+                      type="button"
+                      onClick={() => selectReportDomain(domain, 'radar')}
+                    >
+                      <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
+                      <strong>{results.domainScores[domain]}/100</strong>
+                      <meter min="0" max="100" value={results.domainScores[domain]} />
+                      <small>{gap > 0 ? `${gap} points below target` : 'At or above target'}</small>
+                    </button>
+                  );
+                })}
+              </div>
+            </article>
+            <article className="result-card wide coverage-plan analysis-primary">
               <h2>Assessment coverage plan</h2>
               <p>{coveragePlan.testFrame}</p>
               <div className="coverage-stats">
@@ -13348,7 +14015,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide profile-insights">
+            <article className="result-card wide profile-insights analysis-primary">
               <h2>User profile signals</h2>
               {userProfileSurvey ? (
                 <>
@@ -13364,7 +14031,7 @@ export default function Home() {
                 <p>No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.</p>
               )}
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide analysis-primary">
               <h2>Domain evidence quality</h2>
               <div className="domain-evidence-grid">
                 {domainEvidenceSummary.map((item) => (
@@ -13381,7 +14048,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide domain-drilldown">
+            <article className="result-card wide domain-drilldown report-primary report-order-competencies">
               <h2>{domains[selectedRadarDomain].name} competency drilldown</h2>
               <p>{selectedRadarDomain} · {domains[selectedRadarDomain].name}</p>
               <div className="drilldown-domain-tabs" aria-label="Choose a domain for competency drilldown">
@@ -13412,7 +14079,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide score-analytics">
+            <article className="result-card wide score-analytics analysis-primary">
               <h2>Saved score analytics</h2>
               <div className="evidence-grid">
                 <p><strong>Saved runs</strong> {scoreLogAnalytics.totalRuns} completed assessment run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'} on this device.</p>
@@ -13430,19 +14097,19 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card">
+            <article className="result-card report-primary report-order-strengths">
               <h2>Strengths</h2>
               {results.strongest.map((domain) => (
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card">
+            <article className="result-card report-primary report-order-gaps">
               <h2>Priority gaps</h2>
               {results.weakest.map((domain) => (
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-evidence-mode">
               <h2>Knowledge vs practical skill</h2>
               <div className="evidence-mode-grid">
                 {evidenceModeSummary.map((item) => (
@@ -13454,7 +14121,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-badges">
               <h2>Readiness badges</h2>
               <div className="badge-grid">
                 {earnedBadges.map((badge) => (
@@ -13466,7 +14133,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide analysis-primary">
               <h2>Competency and skill scores</h2>
               <div className="competency-table">
                 {coveragePlan.coverage.map((competency) => (
@@ -13482,7 +14149,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-learning">
               <h2>{mode === 'executive' ? 'Executive learning path' : mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
               <div className="personalized-exploration">
                 <div>
@@ -13514,7 +14181,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-courses">
               <h2>Thailand course recommendations</h2>
               <div className="course-list">
                 {courseRecommendations.map((course) => (
@@ -13533,7 +14200,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide">
+            <article className="result-card wide report-primary report-order-improve">
               <h2>Where to improve next</h2>
               <div className="improvement-brief">
                 {improvementBrief.map((item) => (
@@ -13546,7 +14213,7 @@ export default function Home() {
               </div>
             </article>
             {(mode === 'premium' || mode === 'executive') && (
-              <article className="result-card wide">
+              <article className="result-card wide analysis-primary">
                 <h2>Evidence summary</h2>
                 <div className="evidence-grid">
                   <p><strong>Adaptive coverage</strong> {mode === 'executive' ? 'Executive-weighted D5/D4/D6 coverage plus D1-D3 calibration checks.' : 'D1-D6 sampled with extra attention to low-confidence domains.'}</p>
@@ -13564,6 +14231,34 @@ export default function Home() {
               </article>
             )}
           </div>
+          {reportTab === 'report' && !detailedAnalysisUnlocked && feedbackPromptOpen && (
+            <aside className="feedback-nudge-card" aria-label="Feedback invitation">
+              <button
+                type="button"
+                className="nudge-close"
+                aria-label="Dismiss feedback invitation"
+                onClick={() => setFeedbackPromptOpen(false)}
+              >
+                &times;
+              </button>
+              <span>30-second exchange</span>
+              <strong>Unlock your detailed evidence trail</strong>
+              <p>Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
+              <div className="profile-pulse-actions">
+                <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>Later</button>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={() => {
+                    setFeedbackPromptOpen(false);
+                    document.getElementById('assessment-feedback-survey')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }}
+                >
+                  Give feedback
+                </button>
+              </div>
+            </aside>
+          )}
           <div className="upgrade-panel">
             <div>
               <h2>Ready for a deeper profile?</h2>
