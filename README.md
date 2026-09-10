@@ -5,6 +5,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
+- Home-page tabs for global AI framework mapping and transparent scoring/adaptive-testing logic
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
@@ -25,6 +26,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
 - Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
 - Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
+- Global framework crosswalk mapping D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
@@ -41,6 +43,9 @@ Detailed telemetry and agent documentation:
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
+- [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
+
+Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
 
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
@@ -136,6 +141,7 @@ See:
 - `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
 - `docs/TELEMETRY_TRACKING_PURPOSE.md`
 - `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
+- `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`
 
 Draft tables:
 

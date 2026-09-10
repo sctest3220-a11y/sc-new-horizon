@@ -1,5 +1,15 @@
 # Latest Changes
 
+## 2026-09-11: Global Framework and Scoring Home Tabs
+
+The home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`.
+
+The `Scoring model` section explains how the platform derives results from raw answer evidence, difficulty-adjusted readiness evidence, competency roll-ups, domain roll-ups, the D1-D6 overall score, confidence, and continuation recommendations. It also shows the current seeded readiness bands for Awareness, Applied, Proficient, and Advanced items.
+
+The `Global frameworks` section maps New Horizon D1-D6 to reputable international frameworks and research, including UNESCO AI competency frameworks, the OECD/European Commission AI Literacy Framework, NIST AI RMF, EU AI Act Article 4, DigComp 2.2, ISO/IEC 42001, Singapore AI Verify / MGF GenAI, and AI literacy research.
+
+Added `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` as the source-of-truth documentation for the framework mapping. Future changes to domains, competencies, scoring, adaptive routing, telemetry, or admin agent prompts should keep the home-page tabs, report explanations, README, latest-change log, and crosswalk document aligned.
+
 ## 2026-09-11: Thai Context and Saved Label Fixes
 
 Adjusted Thai leaderboard copy from the overly literal "วันนี้คุณจะอยู่ตรงไหน?" to "วันนี้คะแนนของคุณจะอยู่ตรงไหน?" so the meaning is clear in context.

@@ -749,6 +749,46 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.home-menu-tabs {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 clamp(20px, 5vw, 72px) 24px;
+}
+
+.home-menu-tabs a {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  display: grid;
+  gap: 8px;
+  min-height: 122px;
+  padding: 18px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-menu-tabs a:hover,
+.home-menu-tabs a:focus-visible {
+  border-color: rgba(34, 108, 111, 0.46);
+  box-shadow: 0 14px 38px rgba(23, 32, 29, 0.09);
+  transform: translateY(-2px);
+}
+
+.home-menu-tabs span {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.home-menu-tabs p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .activity-grid {
   display: grid;
   gap: 14px;
@@ -1073,6 +1113,92 @@ h3 {
 
 .band {
   background: rgba(236, 232, 220, 0.55);
+}
+
+.scoring-model-section,
+.global-framework-section {
+  scroll-margin-top: 92px;
+}
+
+.score-model-grid,
+.framework-crosswalk-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.score-model-card {
+  min-height: 170px;
+}
+
+.difficulty-band-table {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 18px;
+  overflow: hidden;
+}
+
+.difficulty-band-table > div {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  padding: 13px 16px;
+}
+
+.difficulty-band-table > div:first-child {
+  background: #17201d;
+  color: #ffffff;
+}
+
+.difficulty-band-table > div + div {
+  border-top: 1px solid var(--line);
+}
+
+.framework-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  border-top: 5px solid #226c6f;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.framework-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.framework-card h3,
+.framework-card p {
+  margin: 0;
+}
+
+.framework-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.framework-source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.framework-source-list a {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 9px 12px;
+  text-decoration: none;
 }
 
 .dashboard-shell {
@@ -5654,6 +5780,7 @@ h3 {
   }
 
   .stats,
+  .home-menu-tabs,
   .assessment-snapshot,
   .admin-kpi-grid,
   .demo-domain-grid,
@@ -5687,6 +5814,8 @@ h3 {
   .reliance-options,
   .feedback-grid,
   .criterion-list,
+  .score-model-grid,
+  .framework-crosswalk-grid,
   .room-grid {
     grid-template-columns: 1fr;
   }
@@ -5697,6 +5826,7 @@ h3 {
   .period-toggle,
   .profile-pulse-actions,
   .question-feedback-strip,
+  .difficulty-band-table > div,
   .quality-review-row,
   .leaderboard-list > div,
   .question-analysis-list summary {

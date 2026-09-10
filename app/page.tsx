@@ -488,6 +488,64 @@ const domains: Record<DomainId, { name: string; short: string; color: string }> 
   D6: { name: 'Human-AI Collaboration', short: 'Collaboration', color: '#3b6ea8' },
 };
 
+const globalFrameworkCrosswalk = [
+  {
+    domain: 'D1' as DomainId,
+    mapsTo: 'UNESCO AI competency frameworks, OECD/EC AI Literacy Framework, DigComp 2.2, Long & Magerko AI literacy',
+    emphasis: 'AI vocabulary, model behavior, GenAI mechanics, capabilities, limitations, data, and system concepts.',
+    improveNext: 'Add more lifecycle questions about how systems are designed, monitored, and retired.',
+  },
+  {
+    domain: 'D2' as DomainId,
+    mapsTo: 'OECD/EC AI Literacy Framework, DigComp problem solving/content creation, DEC AI Literacy/Readiness, IBM AI skills',
+    emphasis: 'Practical tool use, prompt design, workflow integration, output refinement, and job-relevant application.',
+    improveNext: 'Separate nontechnical tool fluency from technical build/integration pathways more explicitly.',
+  },
+  {
+    domain: 'D3' as DomainId,
+    mapsTo: 'DigComp information/data evaluation, OECD critical evaluation, UNESCO ethics/safe use, Long & Magerko critical interpretation',
+    emphasis: 'Source checking, media provenance, chart judgment, benchmark skepticism, fraud detection, and evidence review.',
+    improveNext: 'Increase realistic artifacts where the correct decision depends on inspecting source quality and provenance.',
+  },
+  {
+    domain: 'D4' as DomainId,
+    mapsTo: 'NIST AI RMF, ISO/IEC 42001, EU AI Act Article 4, AI Verify/MGF GenAI, UNESCO ethics',
+    emphasis: 'Privacy, fairness, rights, policy fluency, security controls, auditability, human oversight, and governance.',
+    improveNext: 'Add explicit role-based AI Act literacy, affected-person impact, accessibility, and sustainability evidence.',
+  },
+  {
+    domain: 'D5' as DomainId,
+    mapsTo: 'NIST AI RMF Map/Measure/Manage, ISO/IEC 42001 risk/opportunity management, IBM contextual AI knowledge',
+    emphasis: 'Use-case fit, ROI/KPI design, portfolio prioritization, risk-adjusted value, scale gates, and operating model.',
+    improveNext: 'Add more executive and industry scenarios that distinguish demo appeal from durable business value.',
+  },
+  {
+    domain: 'D6' as DomainId,
+    mapsTo: 'UNESCO human-centred mindset, OECD agency/attitudes, EU AI Act context-of-use literacy, AI Verify human agency/oversight, DEC human-centricity',
+    emphasis: 'Human-AI role clarity, accountability, challenge culture, change enablement, coaching, and learning loops.',
+    improveNext: 'Add more collaboration evidence for managers, creators, educators, and frontline teams using AI daily.',
+  },
+];
+
+const frameworkSourceLinks = [
+  { label: 'UNESCO AI competency frameworks', url: 'https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=66813' },
+  { label: 'OECD/EC AI Literacy Framework', url: 'https://www.oecd.org/en/publications/empowering-learners-for-the-age-of-ai_65cd27d4-en.html' },
+  { label: 'NIST AI RMF', url: 'https://www.nist.gov/itl/ai-risk-management-framework' },
+  { label: 'EU AI Act Article 4', url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-4' },
+  { label: 'DigComp 2.2', url: 'https://joint-research-centre.ec.europa.eu/oldpage-digcomp/digcomp-framework_en' },
+  { label: 'ISO/IEC 42001', url: 'https://www.iso.org/standard/42001' },
+  { label: 'AI Verify Foundation', url: 'https://aiverifyfoundation.sg/what-is-ai-verify/' },
+];
+
+const scoringModelExplainers = [
+  ['1. Raw answer evidence', 'Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.'],
+  ['2. Difficulty adjustment', 'Raw score is converted into readiness evidence through difficulty bands. Easy items are capped below advanced readiness; proficient and advanced items can contribute more.'],
+  ['3. Competency roll-up', 'Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.'],
+  ['4. Domain roll-up', 'Domain score averages readiness evidence for that domain. Secondary-domain evidence counts at 0.35 weight so cross-domain questions help without overpowering the primary domain.'],
+  ['5. Overall score', 'The MVP overall score is the average of D1-D6 domain scores. Unsampled domains do not receive a free midpoint score.'],
+  ['6. Confidence and continuation', 'Confidence is based on coverage, repeated evidence, item information, SEM, and whether profile-priority competencies were sampled. Low confidence triggers targeted continuation.'],
+];
+
 const audienceLabels: Record<Audience, string> = {
   general: 'General',
   student: 'Student',
@@ -535,6 +593,8 @@ const thaiUiCopy: Record<string, string> = {
   'Home': 'หน้าแรก',
   'Assessment': 'Assessment',
   'Practice': 'Practice',
+  'Scoring': 'Scoring',
+  'Frameworks': 'Frameworks',
   'Dashboard': 'Dashboard',
   'Admin': 'Admin',
   'Agent Ops': 'Agent Ops',
@@ -551,6 +611,7 @@ const thaiUiCopy: Record<string, string> = {
   'Start Premium Pilot': 'เริ่ม Premium Pilot',
   'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
   'See How It Works': 'ดูวิธีทำงาน',
+  'Scoring model': 'Scoring Model',
   'Adaptive assessment platform': 'Assessment Platform แบบปรับตามผู้ใช้',
   'Artifacts, scoring, radar, learning paths': 'Artifact, คะแนน, Radar, เส้นทางการเรียนรู้',
   'Raw artifacts': 'Artifact ดิบ',
@@ -568,6 +629,12 @@ const thaiUiCopy: Record<string, string> = {
   'multi-part clusters': 'ชุดคำถามหลายส่วน',
   'AILF domains': 'AILF Domains',
   'question formats': 'รูปแบบคำถาม',
+  'Home guide menu': 'เมนูแนะนำหน้าแรก',
+  'How answers, difficulty, competencies, domains, and confidence become the score.': 'คำตอบ ระดับความยาก Competency Domain และ Confidence กลายเป็นคะแนนอย่างไร',
+  'Global frameworks': 'Framework ระดับโลก',
+  'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.': 'New Horizon เชื่อมกับ UNESCO, OECD, NIST, EU AI Act, DigComp, ISO และ AI Verify อย่างไร',
+  'Adaptive testing': 'Adaptive Testing',
+  'Why the test continues when coverage or confidence is not strong enough.': 'ทำไมระบบจึงแนะนำให้ทำต่อเมื่อ Coverage หรือ Confidence ยังไม่พอ',
   'Did you know?': 'รู้ไหม?',
   'Learn more': 'เรียนรู้เพิ่ม',
   'Tune topics': 'ปรับหัวข้อให้ตรงกับคุณ',
@@ -597,6 +664,32 @@ const thaiUiCopy: Record<string, string> = {
   'Difficulty and domain focus move as the score estimate and coverage gaps change.': 'ระดับความยากและ Domain จะเปลี่ยนตามคะแนนโดยประมาณและช่องว่างของหลักฐาน',
   'Useful after the score': 'มีประโยชน์หลังรู้คะแนน',
   'Results point to competencies, practical skills, benchmarks, and real learning options.': 'ผลลัพธ์ชี้ไปที่ Competency, ทักษะใช้งานจริง, Benchmark และทางเลือกการเรียนรู้',
+  'Scoring and adaptive testing': 'Scoring และ Adaptive Testing',
+  'Scores reward harder evidence, not just correct guesses.': 'คะแนนให้คุณค่ากับหลักฐานที่ยากขึ้น ไม่ใช่แค่การเดาถูก',
+  'New Horizon separates raw answer correctness from readiness evidence. The same raw score contributes differently depending on difficulty, competency coverage, and confidence.': 'New Horizon แยกคะแนนคำตอบดิบออกจาก Readiness Evidence คะแนนดิบเท่ากันอาจมีผลต่างกันตามระดับความยาก Coverage ของ Competency และ Confidence',
+  'Transparent MVP logic': 'Logic ของ MVP แบบโปร่งใส',
+  '1. Raw answer evidence': '1. หลักฐานจากคำตอบดิบ',
+  'Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.': 'แต่ละข้อเริ่มจากตัวเลือก ความถูกต้องของการจับคู่/เรียงลำดับ คะแนนหลายตัวเลือก Rubric ของคำตอบเขียน หรือคะแนนคำถามย่อย คำตอบว่างได้ 0',
+  '2. Difficulty adjustment': '2. ปรับตามระดับความยาก',
+  'Raw score is converted into readiness evidence through difficulty bands. Easy items are capped below advanced readiness; proficient and advanced items can contribute more.': 'คะแนนดิบถูกแปลงเป็น Readiness Evidence ผ่าน Difficulty Band ข้อง่ายมีเพดานต่ำกว่า Advanced ส่วนข้อ Proficient และ Advanced ให้หลักฐานได้มากกว่า',
+  '3. Competency roll-up': '3. สรุปตาม Competency',
+  'Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.': 'แต่ละสัญญาณคะแนนเชื่อมกับหนึ่งหรือหลาย Competency คะแนน Competency คือค่าเฉลี่ยของ Readiness Evidence ที่เก็บได้',
+  '4. Domain roll-up': '4. สรุปตาม Domain',
+  'Domain score averages readiness evidence for that domain. Secondary-domain evidence counts at 0.35 weight so cross-domain questions help without overpowering the primary domain.': 'คะแนน Domain คือค่าเฉลี่ยของ Readiness Evidence ใน Domain นั้น Evidence ของ Secondary Domain ใช้น้ำหนัก 0.35 เพื่อช่วยสะท้อนข้อข้าม Domain โดยไม่กลบ Domain หลัก',
+  '5. Overall score': '5. คะแนนรวม',
+  'The MVP overall score is the average of D1-D6 domain scores. Unsampled domains do not receive a free midpoint score.': 'คะแนนรวมของ MVP คือค่าเฉลี่ย Domain D1-D6 Domain ที่ยังไม่ได้ทดสอบจะไม่ได้คะแนนกลางฟรี',
+  '6. Confidence and continuation': '6. Confidence และการทำต่อ',
+  'Confidence is based on coverage, repeated evidence, item information, SEM, and whether profile-priority competencies were sampled. Low confidence triggers targeted continuation.': 'Confidence มาจาก Coverage หลักฐานซ้ำ Item Information, SEM และ Competency สำคัญตาม Profile ถูกทดสอบหรือยัง Confidence ต่ำจะทำให้ระบบแนะนำข้อถัดไปแบบเจาะจง',
+  'Difficulty readiness bands': 'Difficulty Readiness Bands',
+  'Partial anchor': 'Partial Anchor',
+  'Maximum readiness': 'Readiness สูงสุด',
+  'Global framework crosswalk': 'แผนที่เทียบ Framework ระดับโลก',
+  'Mapped to reputable AI literacy, governance, and readiness frameworks.': 'เชื่อมกับ Framework ด้าน AI Literacy, Governance และ Readiness ที่น่าเชื่อถือ',
+  'New Horizon is not claiming certification equivalence. It uses these frameworks as a crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.': 'New Horizon ไม่ได้อ้างว่าเทียบเท่า Certificate แต่ใช้ Framework เหล่านี้เป็น Crosswalk เพื่อให้ Domain, Competency, คำถาม, telemetry และการปรับปรุงมีฐานอ้างอิงระดับโลก',
+  'D1-D6 crosswalk': 'Crosswalk D1-D6',
+  'Maps to': 'เชื่อมกับ',
+  'Tests': 'ทดสอบ',
+  'Improve next': 'ปรับปรุงต่อ',
   'Progress system': 'ระบบความก้าวหน้า',
   'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
   'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
@@ -12002,6 +12095,8 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <button onClick={() => setStep('home')}>Home</button>
           <button onClick={() => setStep('onboarding')}>Assessment</button>
+          <button onClick={() => showHomeSection('scoring-model')}>Scoring</button>
+          <button onClick={() => showHomeSection('global-frameworks')}>Frameworks</button>
           <button onClick={() => showHomeSection('labs')}>Practice</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => setStep('dashboard')}>Dashboard</button>
@@ -12040,6 +12135,7 @@ export default function Home() {
                 <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
                 <button className="secondary" onClick={() => setStep('executiveOnboarding')}>Executive Assessment</button>
                 <a className="secondary" href="#process">See How It Works</a>
+                <a className="secondary" href="#scoring-model">Scoring model</a>
               </div>
             </div>
             <div className="hero-panel" aria-label="Assessment preview">
@@ -12074,6 +12170,19 @@ export default function Home() {
             <div><strong>{multiPartItemCount}</strong><span>multi-part clusters</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>{interactionCount}</strong><span>question formats</span></div>
+          </section>
+
+          <section className="home-menu-tabs" aria-label="Home guide menu">
+            {[
+              ['Scoring model', 'How answers, difficulty, competencies, domains, and confidence become the score.', 'scoring-model'],
+              ['Global frameworks', 'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.', 'global-frameworks'],
+              ['Adaptive testing', 'Why the test continues when coverage or confidence is not strong enough.', 'process'],
+            ].map(([title, body, target]) => (
+              <a key={title} href={`#${target}`}>
+                <span>{title}</span>
+                <p>{body}</p>
+              </a>
+            ))}
           </section>
 
           <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
@@ -12220,6 +12329,72 @@ export default function Home() {
                   <h3>{title}</h3>
                   <p>{body}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="scoring-model" className="section scoring-model-section">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Scoring and adaptive testing</p>
+                <h2>Scores reward harder evidence, not just correct guesses.</h2>
+                <p>
+                  New Horizon separates raw answer correctness from readiness evidence. The same raw score
+                  contributes differently depending on difficulty, competency coverage, and confidence.
+                </p>
+              </div>
+              <span>Transparent MVP logic</span>
+            </div>
+            <div className="score-model-grid">
+              {scoringModelExplainers.map(([title, body]) => (
+                <article className="info-card score-model-card" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="difficulty-band-table" role="table" aria-label="Difficulty readiness bands">
+              <div role="row">
+                <strong role="columnheader">Difficulty</strong>
+                <strong role="columnheader">Partial anchor</strong>
+                <strong role="columnheader">Maximum readiness</strong>
+              </div>
+              {(Object.keys(difficultyReadinessBands) as Difficulty[]).map((difficulty) => (
+                <div role="row" key={difficulty}>
+                  <span role="cell">{difficultyLabels[difficulty]}</span>
+                  <span role="cell">{difficultyReadinessBands[difficulty].partial}/100</span>
+                  <span role="cell">{difficultyReadinessBands[difficulty].max}/100</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="global-frameworks" className="section global-framework-section band">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Global framework crosswalk</p>
+                <h2>Mapped to reputable AI literacy, governance, and readiness frameworks.</h2>
+                <p>
+                  New Horizon is not claiming certification equivalence. It uses these frameworks as a
+                  crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.
+                </p>
+              </div>
+              <span>D1-D6 crosswalk</span>
+            </div>
+            <div className="framework-crosswalk-grid">
+              {globalFrameworkCrosswalk.map((row) => (
+                <article className="framework-card" key={row.domain} style={{ borderTopColor: domains[row.domain].color }}>
+                  <span>{row.domain} · {domains[row.domain].name}</span>
+                  <h3>{domains[row.domain].short}</h3>
+                  <p><strong>Maps to</strong> {row.mapsTo}</p>
+                  <p><strong>Tests</strong> {row.emphasis}</p>
+                  <p><strong>Improve next</strong> {row.improveNext}</p>
+                </article>
+              ))}
+            </div>
+            <div className="framework-source-list">
+              {frameworkSourceLinks.map((source) => (
+                <a key={source.label} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
               ))}
             </div>
           </section>
