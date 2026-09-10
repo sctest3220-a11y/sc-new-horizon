@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-11: Navigation and Thai Copy Cleanup
+
+The top navigation is simplified to `Home`, `Assessment`, `Practice`, `AI Watch`, `Dashboard`, and `Admin`. Secondary pages such as Agent Ops, demo reports, platform explanation, and detailed results now sit inside their relevant flows instead of crowding the main navigation.
+
+Audience wording is simplified: `General public` is now `General`, `Professional` is now `Work`, and `Team member` is now `Team`. Thai translation coverage was expanded across onboarding, assessment controls, report tabs, feedback survey, score explanations, telemetry labels, and report sections. Thai copy remains simple and keeps technical terms such as AI, Workflow, Agent, Domain, Competency, Assessment, telemetry, and Platform recognizable.
+
 ## 2026-09-10: Artifact Relevance Gate
 
 Assessment artifacts are now gated before display. Several low-value or decorative concept/rollout artifacts are hidden when the question can be answered from the scenario and options without inspecting the image.

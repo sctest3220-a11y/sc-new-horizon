@@ -489,11 +489,11 @@ const domains: Record<DomainId, { name: string; short: string; color: string }> 
 };
 
 const audienceLabels: Record<Audience, string> = {
-  general: 'General public',
+  general: 'General',
   student: 'Student',
   educator: 'Educator',
-  professional: 'Professional',
-  team: 'Team member',
+  professional: 'Work',
+  team: 'Team',
 };
 
 const functionLabels: Record<FunctionTrack, string> = {
@@ -532,6 +532,11 @@ const thaiUiCopy: Record<string, string> = {
   'User Login': 'เข้าสู่ระบบผู้ใช้',
   'User Dashboard': 'แดชบอร์ดผู้ใช้',
   'Admin Login': 'เข้าสู่ระบบ Admin',
+  'Home': 'หน้าแรก',
+  'Assessment': 'Assessment',
+  'Practice': 'Practice',
+  'Dashboard': 'Dashboard',
+  'Admin': 'Admin',
   'Agent Ops': 'Agent Ops',
   'Platform': 'Platform',
   'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
@@ -673,6 +678,178 @@ const thaiUiCopy: Record<string, string> = {
   'Correct answer': 'คำตอบที่ถูกต้อง',
   'Your answer': 'คำตอบของคุณ',
   'Score calculation': 'วิธีคำนวณคะแนน',
+  'Optional profile survey': 'Profile Survey แบบสั้น',
+  'Personalize your assessment.': 'ปรับ Assessment ให้เหมาะกับคุณ',
+  'Question': 'คำถาม',
+  'Difficulty': 'ระดับความยาก',
+  'Artifacts': 'Artifact',
+  'Question clarity': 'ความชัดเจนของคำถาม',
+  'Suggestions for improvement': 'ข้อเสนอแนะ',
+  'Clear': 'ชัดเจน',
+  'Some were unclear': 'บางข้อไม่ชัดเจน',
+  'Confusing': 'สับสน',
+  'About right': 'กำลังดี',
+  'Too easy': 'ง่ายเกินไป',
+  'Too hard': 'ยากเกินไป',
+  'Realistic and relevant': 'สมจริงและเกี่ยวข้อง',
+  'Mixed quality': 'คุณภาพปนกัน',
+  'Poor or irrelevant': 'ไม่ดีหรือไม่เกี่ยวข้อง',
+  'Too short': 'สั้นเกินไป',
+  'Too long': 'ยาวเกินไป',
+  'Summary': 'สรุป',
+  'Question review': 'Review คำถาม',
+  'Score interpretation': 'คำอธิบายคะแนน',
+  'How this result was derived': 'คะแนนนี้คำนวณอย่างไร',
+  'Question-level calculation': 'การคำนวณรายคำถาม',
+  'Domain roll-up': 'สรุปตาม Domain',
+  'Competency roll-up': 'สรุปตาม Competency',
+  'Score explanation': 'คำอธิบายคะแนน',
+  'Expected answer': 'คำตอบที่คาดหวัง',
+  'Rubric and calibration': 'Rubric และการปรับเทียบ',
+  'Measured competencies': 'Competency ที่วัด',
+  'Detected': 'พบแล้ว',
+  'Missing': 'ยังขาด',
+  'Make the call': 'ตัดสินใจ',
+  'Task brief': 'โจทย์สั้น',
+  'Scenario': 'สถานการณ์',
+  'Submit Selected Answers': 'ส่งคำตอบที่เลือก',
+  'Submit Order': 'ส่งลำดับ',
+  'Submit Matches': 'ส่งคำตอบจับคู่',
+  'Choose match': 'เลือกคู่ที่ตรงกัน',
+  'Your written answer': 'คำตอบแบบเขียน',
+  'Submit Written Answer': 'ส่งคำตอบแบบเขียน',
+  'Artifact reader': 'ตัวอ่าน Artifact',
+  'Read full size': 'ดูขนาดใหญ่',
+  'Open file': 'เปิดไฟล์',
+  'Close': 'ปิด',
+  'Fit': 'พอดีหน้าจอ',
+  'Quick feedback': 'Feedback สั้นๆ',
+  'Artifact irrelevant, answer too obvious, wording unclear...': 'Artifact ไม่เกี่ยวข้อง, คำตอบเดาง่าย, คำถามไม่ชัดเจน...',
+  'Helpful': 'มีประโยชน์',
+  'Question or instruction unclear': 'คำถามหรือคำสั่งไม่ชัดเจน',
+  'Question useful': 'คำถามมีประโยชน์',
+  'Question feedback cleared': 'ล้าง Feedback ของคำถามแล้ว',
+  'Question comment': 'Comment ของคำถาม',
+  'General': 'General',
+  'Student': 'นักเรียน/นักศึกษา',
+  'Educator': 'ผู้สอน',
+  'Work': 'งาน',
+  'Team': 'ทีม',
+  'General work': 'งานทั่วไป',
+  'Financial services': 'บริการการเงิน',
+  'Healthcare': 'Healthcare',
+  'Retail & ecommerce': 'Retail & ecommerce',
+  'Public sector': 'ภาครัฐ',
+  'Engineering & Data': 'Engineering & Data',
+  'Customer Service': 'Customer Service',
+  'Function': 'Function',
+  'Industry': 'Industry',
+  'Back': 'กลับ',
+  'Premium assessment pilot': 'Premium Assessment Pilot',
+  'Add context for a deeper profile.': 'เพิ่มบริบทเพื่อให้ Profile ลึกขึ้น',
+  'Premium uses the same AILF spine, then adapts interpretation by function and industry.': 'Premium ใช้โครง AILF เดียวกัน แล้วปรับการตีความตาม Function และ Industry',
+  'Build Profile and Begin Premium Diagnostic': 'สร้าง Profile และเริ่ม Premium Diagnostic',
+  'Board-level AI readiness.': 'ความพร้อมด้าน AI ระดับ Board',
+  'Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.': 'Executive mode ใช้ Question Bank แบบหลายรูปแบบ และให้น้ำหนักกับ Strategy, Governance และ Change Leadership',
+  'Executive role': 'บทบาทผู้บริหาร',
+  'Executive pilot includes': 'Executive Pilot มี',
+  'Premium pilot includes': 'Premium Pilot มี',
+  'Profile builder': 'Profile Builder',
+  'Premium profile signals': 'สัญญาณ Profile สำหรับ Premium',
+  'Executive profile signals': 'สัญญาณ Profile สำหรับ Executive',
+  'Tool awareness': 'ความคุ้นเคยกับ Tool',
+  'Learning intent': 'เป้าหมายการเรียนรู้',
+  'AI priorities': 'AI Priorities',
+  'Risk agenda': 'ประเด็นความเสี่ยง',
+  'Board/value signals': 'สัญญาณ Board/Value',
+  'Telemetry and result analysis': 'Telemetry และการวิเคราะห์ผล',
+  'What the assessment tracks and why': 'Assessment เก็บอะไร และใช้ทำไม',
+  'Currently tracked': 'สิ่งที่เก็บตอนนี้',
+  'Used for analysis': 'ใช้วิเคราะห์',
+  'Improve next': 'ควรปรับปรุงต่อ',
+  'Local MVP log': 'Log ในเครื่อง',
+  '30-second feedback': 'Feedback 30 วินาที',
+  'Help improve the assessment and unlock your detailed evidence.': 'ช่วยปรับปรุง Assessment และปลดล็อกหลักฐานแบบละเอียด',
+  'Thanks. Your detailed evidence is unlocked.': 'ขอบคุณ ตอนนี้ปลดล็อกหลักฐานแบบละเอียดแล้ว',
+  'Quick survey': 'Survey สั้น',
+  'Unlocked': 'ปลดล็อกแล้ว',
+  'Locked': 'ล็อกอยู่',
+  'Your detailed evidence is unlocked.': 'หลักฐานแบบละเอียดของคุณถูกปลดล็อกแล้ว',
+  'Feedback unlock required.': 'ต้องส่ง Feedback ก่อน',
+  'Give feedback': 'ให้ Feedback',
+  'Later': 'ไว้ทีหลัง',
+  'Unlock your detailed evidence trail': 'ปลดล็อกเส้นทางหลักฐานแบบละเอียด',
+  'Tell us what you already use, what similar people in your role are exploring, and what you may want to learn next. New Horizon uses these signals to tune examples, learning paths, and cohort analysis.': 'บอกเราว่าคุณใช้ Tool อะไรอยู่ คนในบทบาทคล้ายกันกำลังสนใจอะไร และคุณอยากเรียนรู้อะไรต่อ New Horizon จะใช้สัญญาณเหล่านี้เพื่อปรับตัวอย่าง Learning Path และ Cohort Analysis',
+  'Assessment complete. Results are ready.': 'Assessment เสร็จแล้ว ผลลัพธ์พร้อมดู',
+  'Keep going': 'ทำต่อ',
+  'Evidence completion': 'เก็บหลักฐานให้ครบขึ้น',
+  'Score interpretation': 'คำอธิบายคะแนน',
+  'Your score': 'คะแนนของคุณ',
+  'Group average': 'ค่าเฉลี่ยกลุ่ม',
+  'Target profile': 'Target Profile',
+  'A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.': 'เป็นค่าประมาณจากตัวอย่างคำตอบ ยังไม่ใช่คะแนน Psychometric ที่ผ่านการ Validate แล้ว Domain ที่ยังไม่ได้ทดสอบจะไม่ถูกเติมคะแนนกลางให้อัตโนมัติ',
+  'Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.': 'คะแนนดิบมาจากตัวเลือกที่เลือก Rubric ที่เข้าเงื่อนไข การจับคู่ การเรียงลำดับ หลายตัวเลือก หรือคะแนนคำถามย่อย',
+  'Raw score is converted into readiness evidence using the item difficulty band.': 'คะแนนดิบถูกแปลงเป็น Readiness Evidence ตามระดับความยากของคำถาม',
+  'Competency score is the average readiness evidence for all signals mapped to that competency.': 'คะแนน Competency คือค่าเฉลี่ยของ Readiness Evidence ที่ผูกกับ Competency นั้น',
+  'Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.': 'คะแนน Domain คือ Readiness Points หารด้วยจำนวนหลักฐาน โดย Secondary Domain คิดน้ำหนัก 0.35',
+  'Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.': 'เวลา ความลังเล ค่า item `a/b/c`, information และ SEM เป็น Telemetry/Calibration Signals ตอนนี้ยังไม่บวกหรือลบคะแนนโดยตรง',
+  'Average readiness evidence from mapped question signals.': 'ค่าเฉลี่ย Readiness Evidence จากสัญญาณคำถามที่เชื่อมไว้',
+  'Improve personalization': 'ปรับ Personalization ให้ดีขึ้น',
+  'Recommended if you want a fuller profile': 'แนะนำถ้าคุณต้องการ Profile ที่ครบขึ้น',
+  'The next batch targets planned and profile-priority competencies that still need repeated evidence.': 'ชุดถัดไปจะเจาะ Competency ตามแผนและตาม Profile ที่ยังต้องการหลักฐานซ้ำ',
+  'Add': 'เพิ่ม',
+  'evidence questions': 'คำถามเก็บหลักฐาน',
+  'Persona leaderboard': 'อันดับตาม Persona',
+  'Your completed run will establish this persona leaderboard.': 'ผลที่คุณทำเสร็จจะเริ่มสร้างอันดับ Persona นี้',
+  'MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.': 'MVP จัดอันดับ Run ที่บันทึกในเครื่องนี้สำหรับ Persona เดียวกัน เวอร์ชัน Production ควรใช้ข้อมูล Cohort บน Server ที่ได้รับความยินยอม และชื่อที่ปลอดภัยต่อ Privacy',
+  'Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.': 'บอกเราว่าคำถามชัดเจน สมจริง และมีประโยชน์ไหม แล้ว Report จะปลดล็อกหลักฐานรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.': 'Feedback ของคุณถูกบันทึกเพื่อ Review คุณภาพคำถามแล้ว ตอนนี้เปิด Question review เพื่อดูว่าแต่ละคำถามส่งผลต่อคะแนนอย่างไรได้',
+  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
+  'Question-level analysis': 'Analysis รายคำถาม',
+  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Survey สั้นๆ ในแท็บ Summary เพื่อปลดล็อกหลักฐานรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Optional: name a confusing question, unrealistic artifact, or missing topic.': 'ใส่เพิ่มเติมได้ เช่น คำถามที่สับสน Artifact ที่ไม่สมจริง หรือหัวข้อที่ยังขาด',
+  'Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.': 'ตอบ Feedback สั้นๆ 4 ข้อ เพื่อดูคำตอบของคุณ หลักฐานที่คาดหวัง เวลา ระดับความยาก และข้อมูลเปรียบเทียบของแต่ละข้อ',
+  'Ready for a deeper profile?': 'พร้อมสร้าง Profile ที่ลึกขึ้นไหม?',
+  'Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.': 'ปลดล็อก Skill-level Analysis บริบทตามบทบาท Multimodal Review และ Premium Diagnostic ต่อเนื่อง',
+  'Try Free Version': 'ลองเวอร์ชันฟรี',
+  'Personalized AI report': 'Personalized AI Report',
+  'What this means': 'ความหมายของผลนี้',
+  'Domain scorecard': 'Scorecard ตาม Domain',
+  'Assessment coverage plan': 'แผนความครอบคลุมของ Assessment',
+  'User profile signals': 'สัญญาณ User Profile',
+  'No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.': 'ยังไม่ได้บันทึก Profile Survey แบบเสริม Assessment ยังทำงานได้ แต่ Personalization จะอิงจาก Audience, Function, Industry หรือ Role ที่เลือกเท่านั้น',
+  'Domain evidence quality': 'คุณภาพหลักฐานตาม Domain',
+  'Saved score analytics': 'Analytics ของคะแนนที่บันทึก',
+  'Strengths': 'จุดแข็ง',
+  'Priority gaps': 'ช่องว่างสำคัญ',
+  'Knowledge vs practical skill': 'ความรู้เทียบกับทักษะใช้งานจริง',
+  'Readiness badges': 'Readiness Badges',
+  'Competency and skill scores': 'คะแนน Competency และ Skill',
+  'Tools to explore': 'Tool ที่ควรลอง',
+  'Concepts to strengthen': 'Concept ที่ควรเสริม',
+  'Practice next': 'ควรฝึกต่อ',
+  'Thailand course recommendations': 'Course แนะนำในไทย',
+  'Where to improve next': 'ควรปรับปรุงตรงไหนต่อ',
+  'Evidence summary': 'สรุปหลักฐาน',
+  'Adaptive coverage': 'Adaptive Coverage',
+  'Scenario context': 'บริบทของสถานการณ์',
+  'Target status': 'สถานะเป้าหมาย',
+  'Format': 'รูปแบบ',
+  'Price': 'ราคา',
+  'Maps to': 'เชื่อมกับ',
+  'Scored evidence': 'หลักฐานที่นำไปคิดคะแนน',
+  'Time on question': 'เวลาต่อคำถาม',
+  'Answer interactions': 'การโต้ตอบกับคำตอบ',
+  'Artifact use': 'การใช้ Artifact',
+  'Target level': 'ระดับเป้าหมาย',
+  'Item b': 'Item b',
+  'Item a': 'Item a',
+  'Guess c': 'Guess c',
+  'Info': 'Info',
+  'SEM': 'SEM',
+  'Next step': 'ขั้นตอนถัดไป',
+  'Updated theta': 'Theta ล่าสุด',
+  'Next focus': 'Focus ถัดไป',
 };
 
 const englishUiCopyByThai = Object.fromEntries(Object.entries(thaiUiCopy).map(([english, thai]) => [thai, english]));
@@ -11811,15 +11988,12 @@ export default function Home() {
           <span>New Horizon</span>
         </button>
         <nav aria-label="Primary navigation">
-          <button onClick={() => setStep('dashboard')}>User Login</button>
-          <button onClick={() => setStep('dashboard')}>User Dashboard</button>
-          <button onClick={() => setStep('admin')}>Admin Login</button>
-          <button onClick={() => setStep('admin')}>Agent Ops</button>
-          <button onClick={() => showHomeSection('platform')}>Platform</button>
-          <button onClick={() => showHomeSection('labs')}>Learn by doing</button>
-          <button onClick={() => setStep('developerReport')}>Demo Report</button>
+          <button onClick={() => setStep('home')}>Home</button>
+          <button onClick={() => setStep('onboarding')}>Assessment</button>
+          <button onClick={() => showHomeSection('labs')}>Practice</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
-          <button onClick={() => showHomeSection('results')}>Results</button>
+          <button onClick={() => setStep('dashboard')}>Dashboard</button>
+          <button onClick={() => setStep('admin')}>Admin</button>
         </nav>
         <div className="topbar-actions">
           <div className="language-toggle" aria-label="Language">
@@ -13650,7 +13824,7 @@ export default function Home() {
               className={reportTab === 'report' ? 'selected' : ''}
               onClick={() => setReportTab('report')}
             >
-              Report
+              Summary
             </button>
             <button
               type="button"
@@ -13659,7 +13833,7 @@ export default function Home() {
               className={reportTab === 'analysis' ? 'selected' : ''}
               onClick={() => setReportTab('analysis')}
             >
-              Test analysis
+              Question review
             </button>
           </div>
           <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
