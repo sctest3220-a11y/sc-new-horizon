@@ -72,6 +72,27 @@ Purpose:
 - calibrate partial credit over time
 - recommend targeted continuation questions
 
+Scoring rules to audit during testing:
+
+- Correct answers are not automatically `100`; many top options are seeded as `95` or `98`.
+- Blank written responses receive `0` raw score and `0` readiness evidence.
+- Multi-select submissions with no choices receive `0`.
+- Matching submissions with no selected pairs receive `0`.
+- Unanswered mini-parts receive `0` for each missing part.
+- Partial credit begins only when the user submits actual scored evidence.
+- The answer review shows a score explanation panel with raw score, readiness evidence, and the difficulty-band cap.
+
+Score derivation shown in the product:
+
+1. Question raw score comes from selected option score, multi-select scoring, matching accuracy, ranking accuracy, written rubric hits, or mini-part averages.
+2. Raw score is converted into difficulty-adjusted readiness evidence with the seeded difficulty band.
+3. Competency score is the average readiness evidence from all mapped signals.
+4. Domain score is readiness points divided by evidence count. Secondary domains count at `0.35` weight.
+5. Overall score is the average of D1-D6 domain scores.
+6. Readiness label is evidence-gated: Advanced requires strong advanced-item evidence; Proficient requires strong proficient-item evidence.
+
+Response time, hesitation, artifact use, item `a/b/c`, information, and SEM are tracked for calibration and quality review. They do not directly change the score in the current MVP.
+
 ### Artifact Interaction Telemetry
 
 Artifact events store:
@@ -130,6 +151,9 @@ Purpose:
 - identify unrealistic artifacts
 - improve survey timing and wording
 - provide evidence for supervised agent proposals
+- feed the Feedback Analysis Agent, which summarizes themes and recommendations before humans approve platform edits
+
+Confidence note: the report-level pilot confidence is currently a separate evidence-stability heuristic, calculated from the assessment-mode base plus answered-item increments and capped by mode (`38 + 4/item`, cap `88` free; `48 + 3/item`, cap `94` premium; `54 + 3/item`, cap `96` executive). It is not the user's score and is not derived from the large follow-up-question number shown in the continuation card. Competency confidence uses repeated evidence for each mapped competency.
 
 ### Profile Signals
 

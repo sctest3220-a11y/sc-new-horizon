@@ -28,6 +28,12 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
+## Language Support
+
+The app supports English and Thai through the `EN` / `TH` toggle in the top navigation. The selected language is stored in local browser storage with `new-horizon-language-v1`.
+
+Thai copy should be simple, natural Thailand Thai. Do not translate core technical terms that users need to recognize in the market or tools, including AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, Platform, and Assessment.
+
 ## Latest Change Report
 
 Detailed telemetry and agent documentation:
@@ -39,6 +45,8 @@ Detailed telemetry and agent documentation:
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
 Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
+
+Latest artifact relevance update: the assessment now hides several low-value concept/rollout artifacts when the scenario and answer options already contain enough evidence. Adaptive routing also counts only helpful displayed visuals, so the system does not reward decorative images as artifact-backed evidence. Future artifacts should either contain necessary evidence, make the scenario clearer, or simulate realistic document inspection.
 
 Latest evidence-completion update: after the standard 12-question or 20-question milestone, users can continue in targeted batches until planned and profile-priority competencies have high-confidence evidence or the safety cap is reached. This makes the full assessment more adaptive than a fixed-length quiz while still keeping a clear stopping rule.
 
@@ -179,6 +187,8 @@ The assessment separates answer quality from readiness evidence.
 - Easier items are capped below advanced readiness even when answered perfectly.
 - Harder items can award stronger readiness evidence, including meaningful credit for partially correct proficient or advanced work.
 - The final readiness label is evidence-gated: Advanced requires strong advanced-item evidence, and Proficient requires strong proficient-item evidence.
+- Blank or unattempted responses receive `0` raw score and `0` readiness evidence.
+- Correct answers are not automatically `100`; most expert-seeded top answers are `95` or `98` to leave room for calibration and more complete advanced evidence.
 
 Current seeded readiness bands:
 
@@ -190,6 +200,29 @@ Current seeded readiness bands:
 | Advanced | 82 | 100 |
 
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
+
+No-response handling:
+
+- Blank written response: `0`
+- Multi-select submitted with no choices: `0`
+- Matching submitted with no selected pairs: `0`
+- Unanswered mini-parts: `0` for each missing part
+- Partial credit begins only when the user submits actual scored evidence
+
+During test review, the platform shows a score explanation panel after each answer. It explains the raw answer score, the difficulty-adjusted readiness evidence, and the maximum evidence allowed by the item difficulty band.
+
+Score derivation:
+
+1. Question raw score: selected option score, multi-select credit minus distractor penalty, matching accuracy, ranking exact-position accuracy, written rubric hits, or average mini-part score.
+2. Question readiness evidence: raw score is converted through the difficulty band. Awareness, Applied, Proficient, and Advanced items have different partial anchors and maximum contribution caps.
+3. Competency score: average readiness evidence from all question signals mapped to that competency.
+4. Domain score: average readiness evidence for the domain. Secondary-domain evidence contributes at `0.35` weight.
+5. Overall score: average of D1-D6 domain scores. Unsampled domains score `0` in the MVP.
+6. Readiness label: evidence-gated. Advanced requires `85+` overall plus strong advanced-item evidence; Proficient requires `70+` overall plus strong proficient-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, item discrimination `a`, difficulty `b`, guessing `c`, information, and SEM are currently telemetry/calibration signals. They affect routing, reporting, and future review, but they do not directly add or subtract score yet.
+
+Pilot confidence is a separate evidence-stability estimate, not a correctness score. In the current MVP it starts from the assessment-mode base (`38` free, `48` premium, `54` executive), adds the mode step for each answered item (`4`, `3`, and `3` respectively), and is capped at `88`, `94`, or `96`. Competency-level confidence is more granular: it reflects repeated evidence for that competency (`sampled once`, `early estimate`, or `stronger estimate`). The large number shown in a continuation card is the recommended follow-up question count, not confidence; the report now labels it explicitly as “questions” and shows the actual confidence percentage beside the recommendation.
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
 
