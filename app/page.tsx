@@ -2137,6 +2137,584 @@ const generalRelianceQuestions: Question[] = [
   },
 ];
 
+// Horizon45 'AI or Me?' reliance deck (horizon-field-lab.pages.dev/reliance), imported 2026-09-10.
+// 26 of 27 cards; 'scheduling-reply' skipped because REL-G-D2-001 already covers that scenario.
+// Unlike the legacy reliance items, the best answer varies (AI / Human / Shared), so scores are set per option.
+const horizonRelianceQuestions: Question[] = [
+  {
+    id: 'REL-H-D2-001',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection', 'D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Summarize a 40-page report into 5 bullet points',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Report: 40 pages', 'Deadline: board meeting in 2 hours', 'Need: 5 highlights', 'Risk: low, verifiable'],
+    },
+    context: 'Summarize a 40-page report into 5 bullet points. You have 2 hours before a board meeting. A 40-page industry analysis just landed in your inbox. The team needs the highlights now — not tomorrow.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'Doing it by hand under a two-hour deadline spends the one thing you lack. AI can condense; you skim to verify.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Reasonable, but heavier than needed. A quick skim of the source is enough verification for a summary you can check yourself.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Condensing text you can still verify is squarely inside AI\'s frontier. Skim the source to confirm nothing critical was dropped.' },
+    ],
+  }, // horizon:summarize-report · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D4-002',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-fairness-ethics', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Decide which employee to lay off',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Team: 8 people, 1 position cut', 'Evidence: HR performance files', 'Choice: no obvious answer', 'Impact: someone\'s livelihood'],
+    },
+    context: 'Decide which employee to lay off. Budget cuts are final. One position from your team of eight must go. HR has pulled every performance file. There\'s no obvious choice — and someone\'s livelihood depends on it.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. High-stakes, accountable, and legally exposed. AI can summarize records, but the decision and its consequences are yours — delegating it invites bias and liability.' },
+      { ...relianceOptions.together, score: 45, feedback: 'AI may summarize the files, but if it shapes the ranking you import bias into a decision you must personally defend.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. Delegating a legally exposed, high-stakes people decision invites bias and liability.' },
+    ],
+  }, // horizon:layoff-decision · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-003',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Translate a casual email into English',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Message: short, informal, Thai', 'Need: quick English reply', 'Binding: no', 'Purpose: schedule a call'],
+    },
+    context: 'Translate a casual email into English. A supplier sent a short, informal message in Thai. You need it in English to reply quickly. Nothing is legally binding — it\'s scheduling a call.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'You can, but it is slow for a low-stakes note. Everyday translation is exactly where AI is reliable.' },
+      { ...relianceOptions.together, score: 65, feedback: 'Fine, though a quick sense-check of the output is all the review this needs.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Everyday translation is a strong AI use. The stakes are low and you can sense-check the result yourself.' },
+    ],
+  }, // horizon:translate-casual · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D3-004',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D4-regulatory-policy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Translate a contract that will be signed',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Document: 12-page service agreement', 'Signing: next week', 'Risk: one bad clause voids the deal', 'Reviewer: qualified human needed'],
+    },
+    context: 'Translate a contract that will be signed. A 12-page service agreement needs Thai translation before both parties sign next week. One mistranslated clause could make the whole deal unenforceable.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe but slow and costly. AI can draft while a qualified reviewer checks every clause.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. Let AI draft, but a qualified human must review. One mistranslated clause in a binding document can cost far more than the time saved.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. One mistranslated clause in a binding document can make the whole deal unenforceable.' },
+    ],
+  }, // horizon:translate-contract · axis: evidence judgment · key: Shared with AI
+  {
+    id: 'REL-H-D6-005',
+    domain: 'D6',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D6-trust-culture'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a condolence note to a grieving friend',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Friend: closest, lost father suddenly', 'Timing: today', 'Need: something that is clearly from you', 'Risk: trust'],
+    },
+    context: 'Write a condolence note to a grieving friend. Your closest friend just lost their father unexpectedly. They need to hear from you today — not a template, but something that feels like it came from you.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. The value here is that it came from you. AI can phrase grief fluently, but the point of the message is human presence, not polish.' },
+      { ...relianceOptions.together, score: 45, feedback: 'Even a light AI draft hollows out the point: the message has to come from you, not be polished for you.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'AI can phrase grief fluently, but a templated note defeats the purpose of human presence.' },
+    ],
+  }, // horizon:condolence-note · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D4-006',
+    domain: 'D4',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D1-capability-limits', 'D4-data-privacy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Diagnose a rash from a photo to decide treatment',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Symptom: rash on arm, 2 days', 'Evidence: one clear photo', 'Decision: is it serious, what to do', 'Risk: health'],
+    },
+    context: 'Diagnose a rash from a photo to decide treatment. A rash appeared on your arm two days ago. You have a clear photo. You want to know if it\'s serious and what to do — before deciding whether to see a doctor.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. Medical diagnosis from an image is outside reliable AI use for treatment decisions. Use it for questions to ask — then see a clinician.' },
+      { ...relianceOptions.together, score: 50, feedback: 'Only as a way to prepare questions for a clinician. Treatment decisions from a photo are outside reliable AI use.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. Image-based diagnosis for treatment decisions is outside reliable AI use; see a clinician.' },
+    ],
+  }, // horizon:diagnose-rash · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-007',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a standard form-validation function',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Function: form validation', 'Checks: required, email, password length', 'Pattern: common, written many times', 'Verification: tests'],
+    },
+    context: 'Write a standard form-validation function. You need a validation function: required fields, email format check, minimum password length. It\'s a common pattern you\'ve written manually a dozen times before.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'You have written this a dozen times. Well-trodden, testable code is a strong AI use; your tests verify it.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Fine, but the tests already do the verification. Heavy human review adds little here.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Well-trodden, testable code is a strong AI use. You run it and the tests tell you instantly if it\'s wrong.' },
+    ],
+  }, // horizon:boilerplate-code · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D2-008',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Brainstorm 20 product names to choose from',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Product: new SaaS, launches next month', 'Need: 20 candidate names', 'Decision: team vote', 'Budget: no agency'],
+    },
+    context: 'Brainstorm 20 product names to choose from. A new SaaS product launches next month. You need a shortlist of 20 candidate names for the team to vote on. No budget for a naming agency.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'Slow for a divergent, low-stakes task. Let AI generate volume; you stay the judge.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Acceptable, though the human role here is simply choosing, not co-writing the list.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Divergent, low-stakes idea generation plays to AI\'s strength. You stay the judge of which one is right.' },
+    ],
+  }, // horizon:brainstorm-names · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D3-009',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D1-capability-limits'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Find legal precedents to cite in a court filing',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Filing: due tomorrow morning', 'Need: 3 case citations', 'Requirement: real, verifiable, current', 'Risk: sanctions'],
+    },
+    context: 'Find legal precedents to cite in a court filing. A court filing is due tomorrow morning. You need three specific case citations to support your legal argument — and they must be real, verifiable, and current.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI — including specialized legal research tools — regularly invents plausible-sounding cases that don\'t exist. Multiple lawyers have been suspended for filing them. You can use AI to surface potentially relevant cases, but you must personally verify every citation in the official legal database before any filing. The stakes and the signature are yours.' },
+      { ...relianceOptions.together, score: 55, feedback: 'Acceptable only if every citation is personally verified in the official database before filing. AI surfaces candidates; it does not confirm them.' },
+      { ...relianceOptions.ai, score: 0, feedback: 'Dangerous. AI regularly invents plausible cases that do not exist, and lawyers have been sanctioned for filing them.' },
+    ],
+  }, // horizon:legal-precedents · axis: evidence judgment · key: Human-owned
+  {
+    id: 'REL-H-D2-010',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Proofread an email for grammar and clarity',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Email: two-paragraph proposal', 'Recipient: new client', 'Content: already right', 'Need: polish grammar and tighten'],
+    },
+    context: 'Proofread an email for grammar and clarity. You drafted a two-paragraph proposal email to a new client. The content is right — you just want the grammar polished and the sentences tightened before you hit send.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'You can, but grammar and clarity polishing is reliable AI work and the result is self-evident when you read it.' },
+      { ...relianceOptions.together, score: 72, feedback: 'Fine. Reading the result and keeping what sounds like you is all the human step needs to be.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Grammar and clarity polishing is reliable and self-evident. You read the result and keep what sounds like you.' },
+    ],
+  }, // horizon:proofread-grammar · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D3-011',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D4-regulatory-policy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Calculate and file your taxes',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Deadline: 3 days', 'Income: freelance, dividends, side business', 'Deductions: several unclear', 'Risk: penalties'],
+    },
+    context: 'Calculate and file your taxes. Tax filing deadline is in three days. You have income from multiple sources this year — freelance, dividends, and a side business. Several deductions are unclear.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI can explain rules and organize the numbers before you verify against official sources or an accountant.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can explain rules and organize numbers, but it gets figures and current law wrong. Use it to prepare, then verify against official sources or an accountant before filing.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. AI gets figures and current tax law wrong; filing unverified output is your liability.' },
+    ],
+  }, // horizon:file-taxes · axis: evidence judgment · key: Shared with AI
+  {
+    id: 'REL-H-D2-012',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection', 'D2-agentic-workflows'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Extract data from 200 receipts into a spreadsheet',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Input: 200 paper receipts', 'Output: spreadsheet rows', 'Deadline: month-end', 'Manual cost: full workday'],
+    },
+    context: 'Extract data from 200 receipts into a spreadsheet. The accounting team needs all expense data from 200 paper receipts entered into a spreadsheet before month-end. Doing it manually would take a full workday.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 35, feedback: 'A full workday of manual entry when structured extraction is exactly what AI accelerates.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a spot-check of a sample against originals, not parallel entry.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Repetitive structured extraction is exactly what AI accelerates — scan, extract, structured rows in minutes. Spot-check a sample against the originals; OCR errors on handwritten numbers are the main failure mode. See the Learn section (Build an OCR Pipeline) for a step-by-step guide.' },
+    ],
+  }, // horizon:extract-receipts · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D5-013',
+    domain: 'D5',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D5-transformation-strategy', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Set your company\'s five-year strategy',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Horizon: 5 years', 'Meeting: leadership, this week', 'Market: shifting', 'Team: competing views'],
+    },
+    context: 'Set your company\'s five-year strategy. Your leadership team is meeting this week to set direction for the next five years. Markets are shifting. Your team has competing views. The call will shape everything that follows.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. Strategy depends on context, values, and accountability AI doesn\'t hold. Use it to pressure-test options — but own the call.' },
+      { ...relianceOptions.together, score: 55, feedback: 'Use AI to pressure-test options, but the call itself depends on context, values, and accountability that AI does not hold.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. Strategy is owned by accountable leaders, not delegated to a model.' },
+    ],
+  }, // horizon:company-strategy · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-014',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a wedding speech that sounds like you',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Event: wedding in 2 weeks', 'Role: best man', 'Blocker: blank page for 3 days', 'Asset: real stories'],
+    },
+    context: 'Write a wedding speech that sounds like you. The wedding is in two weeks. You\'re the best man and you\'ve been staring at a blank page for three days. You have real stories — you just can\'t make them flow.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Owning it is right, but three days of blank page suggests AI structure would help you get the real stories flowing.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives you a structure to beat blank-page fear, but the stories and voice must be yours or the room will feel it.' },
+      { ...relianceOptions.ai, score: 15, feedback: 'The room will feel it. Stories and voice must be yours.' },
+    ],
+  }, // horizon:wedding-speech · axis: iteration and repair · key: Shared with AI
+  {
+    id: 'REL-H-D4-015',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-fairness-ethics', 'D4-security-governance'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Decide if a loan applicant is creditworthy',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Volume: 800 applications/day', 'Model: AI risk score per case', 'Proposal: automate approvals', 'Human review: none'],
+    },
+    context: 'Decide if a loan applicant is creditworthy. Your bank processes 800 loan applications per day. An AI model scores each one. The proposal is to automate approvals without any human reviewing individual decisions.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 55, feedback: 'Human review of 800 applications a day is unrealistic. The answer is scoring plus accountable human oversight, not no model.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. Models can score risk, but unaudited automation has produced illegal discrimination. A human must be accountable and able to explain every decision.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. Unaudited automated approvals have produced illegal discrimination; a human must be able to explain every decision.' },
+    ],
+  }, // horizon:credit-decision · axis: risk handling · key: Shared with AI
+  {
+    id: 'REL-H-D2-016',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Recommend a movie to watch tonight',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Time: Sunday evening, tired', 'Goal: something good', 'Effort so far: 15 minutes scrolling', 'Risk: none'],
+    },
+    context: 'Recommend a movie to watch tonight. Sunday evening, you\'re tired, and you want something genuinely good. You\'ve scrolled Netflix for 15 minutes and given up.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'You already spent 15 minutes scrolling. Low-stakes personal taste is a perfect lightweight AI use.' },
+      { ...relianceOptions.together, score: 60, feedback: 'Fine, but there is nothing to verify. Worst case you switch films.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Low-stakes, reversible, personal taste — a perfect lightweight AI use. Worst case, you switch films.' },
+    ],
+  }, // horizon:movie-rec · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D6-017',
+    domain: 'D6',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D4-fairness-ethics'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write performance reviews for your team',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Reviews: 8 people, due Friday', 'Evidence: rough notes', 'Standard: fair, specific, defensible', 'Risk: trust and bias'],
+    },
+    context: 'Write performance reviews for your team. Year-end reviews are due Friday. You manage eight people and have rough notes on each — but the written reviews need to be fair, specific, and defensible.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can tidy your notes so your time goes to fairness and specifics.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can tidy your notes, but fairness and specifics must come from you. Generic AI praise erodes trust and can encode bias across a team.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Generic AI praise erodes trust and can encode bias across a team. Fairness must come from you.' },
+    ],
+  }, // horizon:performance-reviews · axis: handoff clarity · key: Shared with AI
+  {
+    id: 'REL-H-D6-018',
+    domain: 'D6',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Negotiate your own salary in the room',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Offer: lower than expected', 'Setting: face to face, right now', 'Prep: could have used AI beforehand', 'Skill: live read of the other person'],
+    },
+    context: 'Negotiate your own salary in the room. Your manager just made an offer. It\'s lower than you expected. You\'re sitting across from them right now — the silence is yours to fill.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI can prep your case beforehand, but the live read of the other person is human work. Reliance research calls this knowing when not to delegate.' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI can prepare your case beforehand, but in the room the live read of the other person is yours.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Not possible or wise. The silence in the room is yours to fill.' },
+    ],
+  }, // horizon:salary-negotiation · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D4-019',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-regulatory-policy', 'D4-data-privacy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Draft a privacy policy for your website',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['App: launches next month', 'Data: emails, location, payment', 'Requirement: PDPA-compliant policy', 'Risk: legal liability'],
+    },
+    context: 'Draft a privacy policy for your website. You\'re launching a new app next month that collects user emails, location data, and payment info. Legal says you need a PDPA-compliant privacy policy before launch.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI gives a solid template. The human work is matching PDPA obligations to what you actually collect.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives a solid template, but PDPA compliance is specific to what you actually collect. A wrong policy is a legal liability, not a formality.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'A wrong policy is a legal liability, not a formality. PDPA compliance is specific to your data.' },
+    ],
+  }, // horizon:privacy-policy · axis: risk handling · key: Shared with AI
+  {
+    id: 'REL-H-D6-020',
+    domain: 'D6',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D4-security-governance'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write the public apology after your data breach',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Breach: 50,000 users\' records', 'Media: already asking', 'Deadline: statement today', 'Requirement: accurate, accountable, human'],
+    },
+    context: 'Write the public apology after your data breach. Your company confirmed a data breach affecting 50,000 users\' personal records. Media is already asking. You need a public statement out today — accurate, accountable, and human.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can structure the statement fast while you own facts, accountability, and tone.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can structure the statement, but accountability, facts, and tone are existential here. A tone-deaf or inaccurate apology deepens the crisis.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. A tone-deaf or inaccurate apology deepens the crisis; accountability cannot be outsourced.' },
+    ],
+  }, // horizon:breach-apology · axis: handoff clarity · key: Shared with AI
+  {
+    id: 'REL-H-D2-021',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Transcribe a one-hour meeting recording',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Recording: 1-hour strategy session', 'Need: full transcript for minutes', 'Detail: names, action items, exact wording', 'Risk: names and numbers'],
+    },
+    context: 'Transcribe a one-hour meeting recording. You just finished a one-hour strategy session. A recording exists. Someone needs the full transcript for the minutes — names, action items, exact wording of key decisions.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 30, feedback: 'Manual transcription of an hour of audio is a poor use of time. Speech-to-text is a mature AI strength.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a skim for names and numbers, not parallel transcription.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Speech-to-text is a mature AI strength. Skim for names and numbers, which are where transcription slips.' },
+    ],
+  }, // horizon:transcribe-meeting · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D3-022',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D5-usecase-fit'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Judge whether a vendor\'s AI claims are real',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Claim: \'reduces procurement time by 60%\'', 'Ask: 3-year contract', 'Evidence: one slide', 'Missing: data, demo, independent test'],
+    },
+    context: 'Judge whether a vendor\'s AI claims are real. A vendor\'s deck says their AI \'reduces procurement time by 60%\'. They want you to sign a 3-year contract. You\'ve seen the slide — but no data, no demo, no independent test.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Circular. Asking AI whether an AI claim is real is not evidence; demand data and a live demo.' },
+    ],
+  }, // horizon:judge-vendor-claims · axis: evidence judgment · key: Human-owned
+  {
+    id: 'REL-H-D2-023',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement', 'D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Generate logo concepts to explore directions',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Business: new consultancy', 'Stage: before briefing a designer', 'Need: 10–20 visual directions', 'Goal: find the right territory'],
+    },
+    context: 'Generate logo concepts to explore directions. You\'re starting a new consultancy. Before briefing a designer, you want to explore 10–20 visual directions quickly — just to know what territory feels right.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'Slow for fast exploration. Let AI generate directions, then bring a designer to finish.' },
+      { ...relianceOptions.together, score: 65, feedback: 'Fine, but at this stage the human role is choosing a direction, not co-designing.' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Exploring visual directions fast is a great AI use. Pick a direction, then bring a designer to finish what will represent you for years.' },
+    ],
+  }, // horizon:logo-concepts · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D4-024',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-regulatory-policy', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Sign off on the company\'s financial statements',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Statements: year-end, prepared by accountants', 'Filing: tomorrow', 'Signature: yours', 'Accountability: legal'],
+    },
+    context: 'Sign off on the company\'s financial statements. Year-end financial statements are ready. The accountants have done their work. Your name goes on the signature line — and filing is tomorrow.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. A signature is legal accountability that cannot be delegated to software. AI may help prepare; only a responsible human can attest.' },
+      { ...relianceOptions.together, score: 45, feedback: 'AI may help prepare and check, but attestation is legal accountability that cannot be shared with software.' },
+      { ...relianceOptions.ai, score: 0, feedback: 'Impossible and unlawful. A signature is personal legal accountability.' },
+    ],
+  }, // horizon:signoff-financials · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-025',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write the first draft of a blog post',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Piece: 600-word explainer on AI risk', 'Audience: non-technical', 'Deadline: end of day', 'Blocker: blank page for an hour'],
+    },
+    context: 'Write the first draft of a blog post. You need a 600-word explainer on AI risk for a non-technical audience by end of day. You know the subject well — but you\'ve been staring at the blank page for an hour.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 55, feedback: 'You know the subject, but an hour of blank page says AI can beat it. Your edit is what makes it publishable.' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI beats the blank page, but a draft is not a decision. Your edit — the facts, the angle, the voice — is what makes it worth publishing.' },
+      { ...relianceOptions.ai, score: 20, feedback: 'A draft is not a decision. Facts, angle, and voice need your edit before publishing.' },
+    ],
+  }, // horizon:first-draft-blog · axis: iteration and repair · key: Shared with AI
+  {
+    id: 'REL-H-D3-026',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D1-capability-limits'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Confirm whether a breaking news claim is true',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      points: ['Claim: major tech company collapsed', 'Source: viral post', 'Timing: last hour, unconfirmed by outlets', 'Pressure: colleagues reacting'],
+    },
+    context: 'Confirm whether a breaking news claim is true. A viral post says a major tech company just collapsed. Your colleagues are already reacting. It happened in the last hour — before any major outlets have confirmed.',
+    prompt: 'Who should do the task?',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI may not know recent events and will state guesses confidently. Check primary sources yourself before you share or act.' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI may not know last-hour events and will guess confidently. It can suggest what to check, but you must open primary sources.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. AI may not know recent events and will state guesses confidently.' },
+    ],
+  }, // horizon:verify-news · axis: evidence judgment · key: Human-owned
+];
+
 const executiveRelianceQuestions: Question[] = [
   {
     id: 'REL-E-D5-001',
@@ -4290,6 +4868,7 @@ const competencyDepthQuestionBank: Question[] = [
 
 const questionBank: Question[] = [
   ...generalRelianceQuestions,
+  ...horizonRelianceQuestions,
   ...functionalQuestionBank,
   ...competencyDepthQuestionBank,
   ...marketTrendQuestionBank,

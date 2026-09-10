@@ -1,5 +1,18 @@
 # Latest Changes
 
+## 2026-09-10: Horizon "AI or Me?" Reliance Deck Imported
+
+Added `horizonRelianceQuestions` (26 `reliance-decision` items, ids `REL-H-*`) to the general question bank, imported from the Horizon Field Lab "Appropriate reliance" swipe deck (`horizon-field-lab.pages.dev/reliance`). The full inventory, including Thai text, wildcard cards, and the deck's own scoring rules, is documented in the project workspace (`Horizon_Reliance_Deck_Question_Inventory`).
+
+Differences from the legacy reliance items:
+
+- The best answer varies by scenario (9 AI-led, 9 human-owned, 8 shared) instead of always being "Shared with AI", so the format now discriminates over-reliance from under-reliance.
+- Each option carries its own score and feedback; the best option (98) reuses the deck's evidence-based rationale, and partial-credit options explain the trade-off.
+- Items are tagged with `competencyIds` across D2 tool selection and output refinement, D3 source verification, D4 fairness, privacy, regulatory and governance controls, D5 strategy, and D6 role clarity.
+- Horizon's `scheduling-reply` card was not imported because `REL-G-D2-001` already covers that scenario with an artifact.
+
+The adaptive router still shows at most one `reliance-decision` item per sitting, so this widens the pool rather than lengthening the assessment. Verified: lint clean, production build passes, 252 unique question ids; the 16 pre-existing TypeScript errors on the branch are unchanged.
+
 ## 2026-09-08: In-Assessment Telemetry Help
 
 The assessment now shows lightweight help bubbles beside live measurement labels so users can understand what telemetry and psychometric signals mean during the test. Help topics cover progress, domain, difficulty, item type, interaction format, time on question, answer interactions, artifact use, scored evidence, theta, item difficulty `b`, discrimination `a`, guessing `c`, information, SEM, routing reason, and coverage confidence.
