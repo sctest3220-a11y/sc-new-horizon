@@ -46,6 +46,8 @@ Latest artifact update: the assessment now includes a full-size artifact reader 
 
 Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
 
+Latest artifact relevance update: the assessment now hides several low-value concept/rollout artifacts when the scenario and answer options already contain enough evidence. Adaptive routing also counts only helpful displayed visuals, so the system does not reward decorative images as artifact-backed evidence. Future artifacts should either contain necessary evidence, make the scenario clearer, or simulate realistic document inspection.
+
 Latest evidence-completion update: after the standard 12-question or 20-question milestone, users can continue in targeted batches until planned and profile-priority competencies have high-confidence evidence or the safety cap is reached. This makes the full assessment more adaptive than a fixed-length quiz while still keeping a clear stopping rule.
 
 Latest telemetry/agent-review update: reports now show what telemetry is collected, why it matters, and what should improve next. Admin Agent Ops now emphasizes survey and trend analysis before edits; agents produce evidence-backed suggestions, and a human reviewer remains responsible for approving changes to scored questions, artifacts, profile fields, surveys, or learning recommendations.

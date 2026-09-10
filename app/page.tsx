@@ -9921,7 +9921,7 @@ function getDifficultyMovement(answer: Answer | null, nextQuestion: Question | n
 function itemDiscrimination(question: Question) {
   const interaction = question.interaction ?? 'single';
   const base = { single: 0.85, multi: 1.05, rank: 1.15, match: 1.1, text: 1.25, parts: 1.2 }[interaction];
-  return question.stimulus || question.visualStimulus ? base + 0.1 : base;
+  return hasHelpfulVisualEvidence(question) ? base + 0.1 : base;
 }
 
 function itemGuessing(question: Question) {
@@ -10017,6 +10017,29 @@ function optionDisplayLetter(index: number) {
   return String.fromCharCode(65 + index);
 }
 
+const hiddenArtifactQuestionIds = new Set([
+  'DEPTH-D5-STRATEGY-052',
+  'DEPTH-D6-COLLAB-055',
+  'DEPTH-D6-CHANGE-058',
+  'MATCH-AI-COMPONENTS-061',
+  'DEPTH-EXP-D1-D2-086',
+  'DEPTH-EXP-D1-CONCEPTS-090',
+  'COMP-D1-CONCEPTS-001',
+  'COMP-D2-WORKFLOW-004',
+  'EXEC-D6-LOOP-019',
+  'EXEC-EXP-D1-CAL-001',
+  'MULTI-CONCEPT-EXEC-001',
+]);
+
+function getDisplayStimulus(question: Question) {
+  if (!question.stimulus || hiddenArtifactQuestionIds.has(question.id)) return undefined;
+  return question.stimulus;
+}
+
+function hasHelpfulVisualEvidence(question: Question) {
+  return Boolean(getDisplayStimulus(question) || question.visualStimulus);
+}
+
 function selectExecutiveDomain(answers: Answer[]) {
   if (answers.length < starterDomains.length) return starterDomains[answers.length];
   const scores = getDomainScores(answers);
@@ -10097,7 +10120,7 @@ function selectNextQuestion(
       },
       {} as Record<NonNullable<Question['interaction']>, number>,
     );
-    const visualCount = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+    const visualCount = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
     const scoredCandidates = selectableCandidates.map((question) => {
       const interaction = question.interaction ?? 'single';
       const difficultyDistance = Math.abs(difficultyValue[question.difficulty] - difficultyValue[targetDifficulty]);
@@ -10109,7 +10132,7 @@ function selectNextQuestion(
       rank += Math.max(0, executiveDomainTargets[question.domain] - counts[question.domain].count) * 10;
       rank += 34 - difficultyDistance * 12;
       if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
-      if (visualCount < 5 && (question.stimulus || question.visualStimulus)) rank += 18;
+      if (visualCount < 5 && hasHelpfulVisualEvidence(question)) rank += 18;
       if (question.type === 'reliance-decision') rank -= 28;
       if (flaggedQuestionIds.has(question.id)) rank -= 72;
       if (latestScore < 55 && question.difficulty === 'awareness') rank += 34;
@@ -10126,7 +10149,7 @@ function selectNextQuestion(
     },
     {} as Record<NonNullable<Question['interaction']>, number>,
   );
-  const visualCount = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+  const visualCount = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
   const scoredCandidates = selectableCandidates.map((question) => {
     const interaction = question.interaction ?? 'single';
     const difficultyDistance = Math.abs(difficultyValue[question.difficulty] - difficultyValue[targetDifficulty]);
@@ -10140,7 +10163,7 @@ function selectNextQuestion(
     if (assessmentMode === 'premium' && question.industryTracks?.includes(profile.industryTrack ?? 'general')) rank += 16;
     rank += 30 - difficultyDistance * 10;
     if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
-    if (visualCount < 4 && (question.stimulus || question.visualStimulus)) rank += 22;
+    if (visualCount < 4 && hasHelpfulVisualEvidence(question)) rank += 22;
     if (question.type === 'reliance-decision') rank -= 28;
     if (flaggedQuestionIds.has(question.id)) rank -= 72;
     if (latestScore < 55 && question.difficulty === 'awareness') rank += 30;
@@ -10677,7 +10700,7 @@ export default function Home() {
   const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
     getAgentWorkflowReport(
       allAssessmentItems.length,
-      allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length,
+      allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length,
       0,
     )
   ));
@@ -10687,7 +10710,7 @@ export default function Home() {
     [assessmentTargetTotal, mode],
   );
   const liveItemCount = allAssessmentItems.length;
-  const artifactItemCount = allAssessmentItems.filter((question) => question.stimulus || question.visualStimulus).length;
+  const artifactItemCount = allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length;
   const multiPartItemCount = allAssessmentItems.filter((question) => question.interaction === 'parts').length;
   const interactionCount = new Set(allAssessmentItems.map((question) => question.interaction ?? 'single')).size;
   const scoreGroup = useMemo(
@@ -10903,6 +10926,7 @@ export default function Home() {
     () => shuffledBySeed(current.options, assessmentSeed, `${current.id}:options`, (option) => option.id),
     [assessmentSeed, current],
   );
+  const currentDisplayStimulus = getDisplayStimulus(current);
   const displayedMatchPairs = useMemo(
     () => shuffledBySeed(current.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
     [assessmentSeed, current],
@@ -13145,8 +13169,8 @@ export default function Home() {
               {useRelianceStage && current.type === 'reliance-decision' && (
                 <div className="reliance-stage">
                   <div>
-                    {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                    {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                    {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                    {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
                     <span>Make the call</span>
@@ -13168,8 +13192,8 @@ export default function Home() {
               )}
               {!useRelianceStage && (
                 <>
-                  {current.stimulus && <StimulusFigure stimulus={current.stimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                  {!current.stimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                  {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                  {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>

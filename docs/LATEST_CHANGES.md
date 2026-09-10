@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-10: Artifact Relevance Gate
+
+Assessment artifacts are now gated before display. Several low-value or decorative concept/rollout artifacts are hidden when the question can be answered from the scenario and options without inspecting the image.
+
+The adaptive engine now counts only helpful displayed visuals when rewarding visual evidence coverage. Artifacts should be shown only when they contain evidence the user needs, clarify the scenario, or support realistic document inspection. Decorative artifacts, answer-giving artifacts, and generic diagrams should be removed or rewritten before scored use.
+
 ## 2026-09-10: Thai and English Language Toggle
 
 The app now includes an `EN` / `TH` language switch in the top navigation. The preference is saved locally and reapplies as users move between landing, assessment, report, and admin views.
