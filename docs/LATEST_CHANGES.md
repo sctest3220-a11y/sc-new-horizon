@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-10: Per-Question Thai Localisation Model
+
+The question bank can now carry Thai text on each item instead of relying on the interface-string dictionary. New optional fields: `contextTh`, `promptTh`, `translationStatus` on `Question`; `labelTh`, `feedbackTh` on `Option`; Thai variants for artifact alt/label/caption, visual-card title/eyebrow/caption/points, and rank-item labels. `localizeQuestion()` overlays them at render time with English fallback and only for items that have a `translationStatus`, so partially translated content never mixes languages within one question. Ids, scores, keys, and telemetry are unchanged; the feedback panel re-localises the stored answer when the language toggle changes.
+
+Seeded the 26 Horizon reliance items (`REL-H-*`) as `draft`: scenario and best-answer rationale from the deck's Thai, plus drafted Thai for shared reliance option labels, partial-credit feedback, and visual-card points. See `docs/LOCALISATION.md` for the model, status workflow, style rules, and batch process.
+
+Verified: lint clean, production build passes, VM test of `localizeQuestion` (ids/scores identical across languages, untranslated items returned untouched), browser smoke test with the Thai toggle shows no runtime errors. 18 pre-existing TypeScript errors unchanged.
+
 ## 2026-09-10: Question Bank Audit Round 1 Applied
 
 Reviewers completed `exports/New_Horizon_Question_Bank_Audit_Completed.xlsx` (660 questions, 2,552 choices, 41 artifacts). Outcome: 619 Keep / 41 Revise / 0 Remove; every answer key confirmed; 30 items rated "too hard" for their band because of scenario length. Changes applied from the verdicts:
