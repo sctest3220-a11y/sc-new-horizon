@@ -12,6 +12,7 @@ type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'tr
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type NewsFrequency = 'daily' | 'weekly' | 'monthly';
 type LandingLeaderboardPeriod = 'day' | 'week';
+type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
   id: string;
   title: string;
@@ -525,6 +526,205 @@ const executiveLabels: Record<ExecutiveRole, string> = {
 };
 
 const userProfileStorageKey = 'new-horizon-user-profile-v1';
+const languageStorageKey = 'new-horizon-language-v1';
+
+const thaiUiCopy: Record<string, string> = {
+  'User Login': 'เข้าสู่ระบบผู้ใช้',
+  'User Dashboard': 'แดชบอร์ดผู้ใช้',
+  'Admin Login': 'เข้าสู่ระบบ Admin',
+  'Agent Ops': 'Agent Ops',
+  'Platform': 'Platform',
+  'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
+  'Demo Report': 'ตัวอย่าง Report',
+  'AI Watch': 'AI Watch',
+  'Results': 'ผลลัพธ์',
+  'Start': 'เริ่ม',
+  'AI-powered readiness assessment': 'แบบประเมินความพร้อมด้าน AI',
+  'Measure practical AI readiness.': 'วัดความพร้อมด้าน AI ที่ใช้ได้จริง',
+  'New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts, verify sources, choose safe workflows, govern agents, and turn scores into learning paths.': 'New Horizon คือ Assessment Platform แบบปรับตามผู้ใช้ เพื่อวัดความสามารถด้าน AI ที่ใช้ได้จริง: ตรวจ artifact, เช็กแหล่งข้อมูล, เลือก Workflow ที่ปลอดภัย, กำกับ Agent และแปลงคะแนนเป็นเส้นทางการเรียนรู้',
+  'Start Free Assessment': 'เริ่ม Assessment ฟรี',
+  'Start Premium Pilot': 'เริ่ม Premium Pilot',
+  'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
+  'See How It Works': 'ดูวิธีทำงาน',
+  'Adaptive assessment platform': 'Assessment Platform แบบปรับตามผู้ใช้',
+  'Artifacts, scoring, radar, learning paths': 'Artifact, คะแนน, Radar, เส้นทางการเรียนรู้',
+  'Raw artifacts': 'Artifact ดิบ',
+  'Invoices, reports, policies, source packets, workflows': 'Invoice, Report, Policy, Source Packet, Workflow',
+  'Question formats': 'รูปแบบคำถาม',
+  'Single, multi-select, matching, drag-order, written response, mini-parts': 'ตัวเลือกเดียว, หลายตัวเลือก, จับคู่, เรียงลำดับ, เขียนตอบ, คำถามย่อย',
+  'Adaptive engine': 'Adaptive Engine',
+  'Domain coverage plus difficulty up/down after each answer': 'ครอบคลุม Domain และปรับระดับความยากหลังแต่ละคำตอบ',
+  'Decision output': 'ผลลัพธ์เพื่อใช้ตัดสินใจ',
+  'D1-D6 radar, group average, research target, learning path': 'Radar D1-D6, ค่าเฉลี่ยกลุ่ม, เป้าหมายวิจัย, Learning Path',
+  'Example task': 'ตัวอย่างงาน',
+  'Inspect a raw policy packet. What did the AI overstate, omit, or make unsafe?': 'ตรวจ Policy Packet ดิบ: AI พูดเกินจริง ตกหล่น หรือทำให้ไม่ปลอดภัยตรงไหน?',
+  'live seed items': 'คำถามเริ่มต้นที่ใช้งานอยู่',
+  'artifact-backed items': 'คำถามที่มี Artifact ประกอบ',
+  'multi-part clusters': 'ชุดคำถามหลายส่วน',
+  'AILF domains': 'AILF Domains',
+  'question formats': 'รูปแบบคำถาม',
+  'Did you know?': 'รู้ไหม?',
+  'Learn more': 'เรียนรู้เพิ่ม',
+  'Tune topics': 'ปรับหัวข้อให้ตรงกับคุณ',
+  'Peer challenge': 'ท้าทายกับกลุ่มใกล้เคียง',
+  'Where would you land today?': 'วันนี้คุณจะอยู่ตรงไหน?',
+  'Compare against the visible top 10 for the day or week, then take the assessment to see whether your strongest domain is enough to break into your peer group.': 'เทียบกับ Top 10 รายวันหรือรายสัปดาห์ แล้วทำ Assessment เพื่อดูว่า Domain ที่คุณถนัดพอจะติดอันดับในกลุ่มเดียวกันไหม',
+  'Today': 'วันนี้',
+  'This week': 'สัปดาห์นี้',
+  'Top 10': 'Top 10',
+  'Daily board': 'อันดับรายวัน',
+  'Weekly board': 'อันดับรายสัปดาห์',
+  'Local pilot data': 'ข้อมูล Pilot ในเครื่องนี้',
+  'Demo until your first runs': 'ข้อมูลตัวอย่างจนกว่าจะมีผลของคุณ',
+  'Find your rank': 'ดูอันดับของคุณ',
+  'Can you beat your peer average?': 'คุณทำคะแนนสูงกว่าค่าเฉลี่ยของกลุ่มได้ไหม?',
+  'Scores above 80 need stronger applied or advanced evidence, not just easy-item correctness.': 'คะแนนเกิน 80 ต้องมีหลักฐานระดับ Applied หรือ Advanced ไม่ใช่แค่ตอบข้อที่ง่ายถูก',
+  'Take the free test': 'ทำแบบทดสอบฟรี',
+  'Choose peer group': 'เลือกกลุ่มเปรียบเทียบ',
+  'Practice the activities the assessment is built from.': 'ลองทำกิจกรรมที่เป็นพื้นฐานของ Assessment',
+  'Each activity box maps to a practical assessment format. Users do not just read about AI; they inspect, repair, verify, sequence, match, and explain.': 'แต่ละกิจกรรมเชื่อมกับรูปแบบคำถามจริง ผู้ใช้ไม่ได้แค่อ่านเรื่อง AI แต่ต้องตรวจ แก้ เช็ก เรียงลำดับ จับคู่ และอธิบายเหตุผล',
+  'The platform': 'Platform นี้',
+  'A field test for the way people actually use AI.': 'Field Test สำหรับวิธีที่คนใช้ AI จริง',
+  'New Horizon turns AI readiness into observable behavior. Users inspect messy artifacts, make judgment calls, explain evidence, and see how their choices change the next task.': 'New Horizon แปลงความพร้อมด้าน AI ให้เป็นพฤติกรรมที่สังเกตได้ ผู้ใช้ตรวจ artifact ที่ไม่สมบูรณ์ ตัดสินใจ อธิบายหลักฐาน และเห็นว่าคำตอบเปลี่ยนคำถามถัดไปอย่างไร',
+  'Evidence over opinion': 'หลักฐานสำคัญกว่าความเห็น',
+  'The assessment asks users to prove what they trust, reject, revise, or escalate.': 'Assessment ให้ผู้ใช้พิสูจน์ว่าอะไรควรเชื่อ ปฏิเสธ แก้ไข หรือส่งต่อให้คนรับผิดชอบ',
+  'Adaptive under the hood': 'ระบบปรับคำถามอยู่เบื้องหลัง',
+  'Difficulty and domain focus move as the score estimate and coverage gaps change.': 'ระดับความยากและ Domain จะเปลี่ยนตามคะแนนโดยประมาณและช่องว่างของหลักฐาน',
+  'Useful after the score': 'มีประโยชน์หลังรู้คะแนน',
+  'Results point to competencies, practical skills, benchmarks, and real learning options.': 'ผลลัพธ์ชี้ไปที่ Competency, ทักษะใช้งานจริง, Benchmark และทางเลือกการเรียนรู้',
+  'Progress system': 'ระบบความก้าวหน้า',
+  'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
+  'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
+  'Simple process': 'ขั้นตอนง่าย',
+  'One clear flow from assessment to action.': 'จาก Assessment ไปสู่การลงมือทำอย่างชัดเจน',
+  'Build a light profile': 'สร้าง Profile แบบสั้น',
+  'Choose your audience, role, tools, interests, and peer-tool awareness.': 'เลือกกลุ่มผู้ใช้ บทบาท เครื่องมือ ความสนใจ และความคุ้นเคยกับเครื่องมือ',
+  'Answer adaptive scenarios': 'ตอบสถานการณ์ที่ปรับตามคุณ',
+  'Questions create domain, competency, skill, difficulty, and behavior signals.': 'คำถามสร้างสัญญาณด้าน Domain, Competency, ทักษะ, ระดับความยาก และพฤติกรรม',
+  'Decide whether to keep going': 'ตัดสินใจว่าจะทำต่อไหม',
+  'If confidence or coverage is weak, add targeted questions before final results.': 'ถ้าความมั่นใจหรือความครอบคลุมยังต่ำ ระบบจะแนะนำคำถามเจาะจงก่อนสรุปผล',
+  'Follow a learning path': 'ไปตาม Learning Path',
+  'See tools, concepts, labs, and courses matched to your profile and gaps.': 'ดู Tool, Concept, Lab และ Course ที่ตรงกับ Profile และช่องว่างของคุณ',
+  'AILF framework pack': 'ชุด Framework AILF',
+  'Six domains of AI readiness.': '6 Domains ของความพร้อมด้าน AI',
+  'Your results': 'ผลลัพธ์ของคุณ',
+  'Radar profile, gaps, and next steps.': 'Radar Profile, ช่องว่าง และขั้นตอนถัดไป',
+  'MVP results are indicative, not certification-grade. They show readiness patterns and recommend practical learning actions while collecting evidence for future calibration.': 'ผล MVP เป็นข้อมูลเบื้องต้น ยังไม่ใช่การรับรองอย่างเป็นทางการ ใช้ดูรูปแบบความพร้อมและแนะนำการเรียนรู้ พร้อมเก็บหลักฐานเพื่อปรับเทียบในอนาคต',
+  'Try Free Flow': 'ลองแบบฟรี',
+  'Try Premium Pilot': 'ลอง Premium Pilot',
+  'Try Executive Pilot': 'ลอง Executive Pilot',
+  'Competency map': 'แผนที่ Competency',
+  'Premium assessment': 'Premium Assessment',
+  'Deeper diagnosis for people who want more than a score.': 'วิเคราะห์ลึกขึ้นสำหรับคนที่ต้องการมากกว่าคะแนน',
+  'Continue with Google': 'ดำเนินการต่อด้วย Google',
+  'Continue as guest': 'ดำเนินการต่อแบบ Guest',
+  'Admin login': 'เข้าสู่ระบบ Admin',
+  'Assessment intelligence console.': 'Console วิเคราะห์ Assessment',
+  'Admin authentication': 'ยืนยันตัวตน Admin',
+  'Admin identity detected': 'พบตัวตน Admin',
+  'Open admin dashboard preview': 'เปิดตัวอย่าง Admin Dashboard',
+  'Admin dashboard': 'Admin Dashboard',
+  'Assessment analytics across users and groups.': 'Analytics ของ Assessment ตามผู้ใช้และกลุ่ม',
+  'Sign out preview': 'ออกจากโหมดตัวอย่าง',
+  'Started': 'เริ่มแล้ว',
+  'Continued': 'ทำต่อ',
+  'tracked sessions': 'Session ที่ติดตาม',
+  'optional depth': 'การทำต่อแบบเจาะลึก',
+  'Question candidates': 'รายการคำถามที่ควรตรวจ',
+  'Item quality gate': 'Quality Gate ของคำถาม',
+  'No item-level feedback has been submitted yet.': 'ยังไม่มี Feedback ระดับคำถาม',
+  'No item behavior data yet.': 'ยังไม่มีข้อมูลพฤติกรรมของคำถาม',
+  'Start Full Assessment': 'เริ่ม Assessment เต็ม',
+  'Start with a broad profile.': 'เริ่มจาก Profile ภาพรวม',
+  'Build Profile and Begin 12-Question Assessment': 'สร้าง Profile และเริ่ม Assessment 12 ข้อ',
+  'Build Profile and Begin Executive Assessment': 'สร้าง Profile และเริ่ม Executive Assessment',
+  'Optional profile pulse': 'คำถาม Profile สั้นๆ',
+  'Skip': 'ข้าม',
+  'Tune my test': 'ปรับ Test ให้ตรงกับฉัน',
+  'Used to route questions and recommendations in this browser.': 'ใช้เพื่อจัดเส้นทางคำถามและคำแนะนำใน Browser นี้',
+  'Profile graph seed': 'ข้อมูลเริ่มต้นของ Profile Graph',
+  'Tool choices, workflows, risk concerns, artifacts, role, function, and industry become tags that can later connect to competencies, courses, question routing, and cohort analytics.': 'Tool, Workflow, ความเสี่ยง, Artifact, บทบาท, Function และ Industry จะกลายเป็น Tag เพื่อเชื่อมกับ Competency, Course, การเลือกคำถาม และ Cohort Analytics',
+  'Skip for now': 'ข้ามตอนนี้',
+  'Save profile and start': 'บันทึก Profile แล้วเริ่ม',
+  'Continue to Next Question': 'ไปคำถามถัดไป',
+  'View Results': 'ดูผลลัพธ์',
+  'Continue recommended route': 'ทำต่อตามเส้นทางที่แนะนำ',
+  'Continue beyond 20 until confidence is high': 'ทำต่อเกิน 20 ข้อจน Confidence สูง',
+  'Report': 'Report',
+  'Analysis': 'Analysis',
+  'Assessment': 'Assessment',
+  'Submit feedback and unlock analysis': 'ส่ง Feedback เพื่อเปิด Analysis',
+  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
+  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Feedback สั้นๆ ในแท็บ Report เพื่อเปิดข้อมูลรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Go to feedback survey': 'ไปที่ Feedback Survey',
+  'Assessment length': 'ความยาว Assessment',
+  'Back to Activities': 'กลับไปที่กิจกรรม',
+  'Start Full Free Assessment': 'เริ่ม Assessment ฟรีแบบเต็ม',
+  'Retake Free Assessment': 'ทำ Free Assessment ใหม่',
+  'Retake Premium Assessment': 'ทำ Premium Assessment ใหม่',
+  'Retake Executive Assessment': 'ทำ Executive Assessment ใหม่',
+  'Useful': 'มีประโยชน์',
+  'Unclear': 'ไม่ชัดเจน',
+  'Comment': 'Comment',
+  'Question feedback': 'Feedback ของคำถาม',
+  'Save feedback': 'บันทึก Feedback',
+  'Update feedback': 'อัปเดต Feedback',
+  'Answer review': 'Review คำตอบ',
+  'Correct answer': 'คำตอบที่ถูกต้อง',
+  'Your answer': 'คำตอบของคุณ',
+  'Score calculation': 'วิธีคำนวณคะแนน',
+};
+
+const englishUiCopyByThai = Object.fromEntries(Object.entries(thaiUiCopy).map(([english, thai]) => [thai, english]));
+
+function translateUiText(value: string, language: AppLanguage) {
+  if (language === 'en') return englishUiCopyByThai[value] ?? value;
+  return thaiUiCopy[value] ?? value;
+}
+
+function translateTextNodeValue(value: string, language: AppLanguage) {
+  const trimmed = value.trim();
+  if (!trimmed) return value;
+  const translated = translateUiText(trimmed, language);
+  if (translated === trimmed) return value;
+  return value.replace(trimmed, translated);
+}
+
+function translateAttributeValue(value: string, language: AppLanguage) {
+  const trimmed = value.trim();
+  if (!trimmed) return value;
+  const translated = translateUiText(trimmed, language);
+  if (!translated) return value;
+  return translated;
+}
+
+function applyUiLanguage(language: AppLanguage) {
+  if (typeof document === 'undefined') return;
+  document.documentElement.lang = language === 'th' ? 'th' : 'en';
+  document.documentElement.dataset.appLanguage = language;
+  const blockedTags = new Set(['SCRIPT', 'STYLE', 'TEXTAREA']);
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || blockedTags.has(parent.tagName) || parent.closest('[data-no-translate]')) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const textNodes: Text[] = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+  textNodes.forEach((node) => {
+    node.nodeValue = translateTextNodeValue(node.nodeValue ?? '', language);
+  });
+  document.querySelectorAll<HTMLElement>('[placeholder], [aria-label], [title]').forEach((element) => {
+    (['placeholder', 'aria-label', 'title'] as const).forEach((attribute) => {
+      const value = element.getAttribute(attribute);
+      if (!value) return;
+      element.setAttribute(attribute, translateAttributeValue(value, language));
+    });
+  });
+}
 
 const broadSurveyQuestions: SurveyQuestion[] = [
   {
@@ -10390,6 +10590,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 
 export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
@@ -10541,6 +10742,16 @@ export default function Home() {
     }, []);
   }, []);
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
+
+  useEffect(() => {
+    writeLocalStorage(languageStorageKey, appLanguage);
+    applyUiLanguage(appLanguage);
+    const observer = new MutationObserver(() => {
+      window.requestAnimationFrame(() => applyUiLanguage(appLanguage));
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [appLanguage, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
   const latestSupervisedAgentRun = supervisedAgentRuns[0] ?? null;
   const pendingAgentDraftCount = supervisedAgentRuns.reduce(
     (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'pending').length,
@@ -11586,7 +11797,22 @@ export default function Home() {
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => showHomeSection('results')}>Results</button>
         </nav>
-        <button className="small-button" onClick={() => setStep('onboarding')}>Start</button>
+        <div className="topbar-actions">
+          <div className="language-toggle" aria-label="Language">
+            {(['en', 'th'] as AppLanguage[]).map((language) => (
+              <button
+                key={language}
+                type="button"
+                className={appLanguage === language ? 'selected' : ''}
+                onClick={() => setAppLanguage(language)}
+                aria-pressed={appLanguage === language}
+              >
+                {language === 'en' ? 'EN' : 'TH'}
+              </button>
+            ))}
+          </div>
+          <button className="small-button" onClick={() => setStep('onboarding')}>Start</button>
+        </div>
       </header>
 
       {step === 'home' && (

@@ -118,6 +118,39 @@ nav button:hover {
   color: var(--ink);
 }
 
+.topbar-actions {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.language-toggle {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+}
+
+.language-toggle button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  min-height: 32px;
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+.language-toggle button.selected {
+  background: var(--ink);
+  color: #fff;
+}
+
 .small-button,
 .primary,
 .secondary {
@@ -5695,6 +5728,7 @@ h3 {
   .workspace-actions,
   .assessment-top,
   .admin-card-heading,
+  .topbar-actions,
   .stimulus-toolbar,
   .artifact-reader-toolbar,
   .results-hero,

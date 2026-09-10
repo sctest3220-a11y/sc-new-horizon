@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-10: Thai and English Language Toggle
+
+The app now includes an `EN` / `TH` language switch in the top navigation. The preference is saved locally and reapplies as users move between landing, assessment, report, and admin views.
+
+Thai translation should use simple Thailand Thai phrasing while keeping technical terms such as AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, and Platform recognizable in English.
+
 ## 2026-09-09: Item Quality Gate
 
 Admin now shows an item quality gate for question-level feedback and behavior signals. Each question is classified as `keep`, `watch`, or `review` using unclear flags, issue comments, likes, timing, and confusion signals.

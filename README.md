@@ -28,6 +28,12 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
+## Language Support
+
+The app supports English and Thai through the `EN` / `TH` toggle in the top navigation. The selected language is stored in local browser storage with `new-horizon-language-v1`.
+
+Thai copy should be simple, natural Thailand Thai. Do not translate core technical terms that users need to recognize in the market or tools, including AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, Platform, and Assessment.
+
 ## Latest Change Report
 
 Detailed telemetry and agent documentation:
