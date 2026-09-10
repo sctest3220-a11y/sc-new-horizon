@@ -572,7 +572,7 @@ const thaiUiCopy: Record<string, string> = {
   'Learn more': 'เรียนรู้เพิ่ม',
   'Tune topics': 'ปรับหัวข้อให้ตรงกับคุณ',
   'Peer challenge': 'ท้าทายกับกลุ่มใกล้เคียง',
-  'Where would you land today?': 'วันนี้คุณจะอยู่ตรงไหน?',
+  'Where would you land today?': 'วันนี้คะแนนของคุณจะอยู่ตรงไหน?',
   'Compare against the visible top 10 for the day or week, then take the assessment to see whether your strongest domain is enough to break into your peer group.': 'เทียบกับ Top 10 รายวันหรือรายสัปดาห์ แล้วทำ Assessment เพื่อดูว่า Domain ที่คุณถนัดพอจะติดอันดับในกลุ่มเดียวกันไหม',
   'Today': 'วันนี้',
   'This week': 'สัปดาห์นี้',
@@ -8731,6 +8731,18 @@ function getScoreGroup(
   };
 }
 
+function normalizeDisplayGroupLabel(label: string) {
+  return label
+    .replace(/^General public\b/i, 'General')
+    .replace(/\bGeneral public average\b/i, 'General average')
+    .replace(/\bProfessional\b/g, 'Work')
+    .replace(/\bTeam member\b/g, 'Team');
+}
+
+function cleanAverageLabel(label: string) {
+  return normalizeDisplayGroupLabel(label).replace(/ average$/i, '');
+}
+
 function parseScoreLog(raw: string | null): ScoreLogEntry[] {
   if (!raw) return [];
   try {
@@ -8812,8 +8824,8 @@ function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderbo
       return {
         id: entry.id,
         rank: index + 1,
-        displayName: entry.userEmail?.split('@')[0] || `${entry.groupLabel.replace(/ average$/i, '')} run`,
-        groupLabel: entry.groupLabel.replace(/ average$/i, ''),
+        displayName: entry.userEmail?.split('@')[0] || `${cleanAverageLabel(entry.groupLabel)} run`,
+        groupLabel: cleanAverageLabel(entry.groupLabel),
         overall: entry.overall,
         strongestDomain,
         createdAt: entry.createdAt,
@@ -8990,7 +9002,7 @@ function averageScoreLog(entries: ScoreLogEntry[], groupKey: string): BenchmarkP
     scores[domain] = Math.round(groupEntries.reduce((sum, entry) => sum + entry.scores[domain], 0) / groupEntries.length);
   });
   return {
-    label: groupEntries[0].groupLabel,
+    label: normalizeDisplayGroupLabel(groupEntries[0].groupLabel),
     detail: `${groupEntries.length} saved run${groupEntries.length === 1 ? '' : 's'} on this device`,
     tone: 'group',
     scores,
@@ -9717,7 +9729,7 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
   const groupRows = [...groupMap.entries()]
     .map(([key, groupEntries]) => ({
       key,
-      label: groupEntries[0].groupLabel,
+      label: normalizeDisplayGroupLabel(groupEntries[0].groupLabel),
       count: groupEntries.length,
       average: getAverage(groupEntries.map((entry) => entry.overall)),
       lastRun: groupEntries
@@ -9789,7 +9801,7 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
     .slice(0, 6)
     .map((entry) => ({
       id: entry.id,
-      label: entry.groupLabel,
+      label: normalizeDisplayGroupLabel(entry.groupLabel),
       mode: entry.mode,
       score: entry.overall,
       date: new Date(entry.createdAt).toLocaleDateString(),
@@ -13998,7 +14010,7 @@ export default function Home() {
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Persona leaderboard</p>
-                  <h2>Top 10 · {scoreGroup.label.replace(/ average$/i, '')}</h2>
+                  <h2>Top 10 · {cleanAverageLabel(scoreGroup.label)}</h2>
                 </div>
                 <span>{personaLeaderboard.length} ranked run{personaLeaderboard.length === 1 ? '' : 's'}</span>
               </div>
@@ -14126,7 +14138,7 @@ export default function Home() {
                   <p className="eyebrow">Personalized AI report</p>
                   <h2>{generatedReport.headline}</h2>
                 </div>
-                <span>{scoreGroup.label.replace(/ average$/i, '')}</span>
+                <span>{cleanAverageLabel(scoreGroup.label)}</span>
               </div>
               <p>{generatedReport.summary}</p>
               <div className="report-section">

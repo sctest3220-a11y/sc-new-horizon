@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-11: Thai Context and Saved Label Fixes
+
+Adjusted Thai leaderboard copy from the overly literal "วันนี้คุณจะอยู่ตรงไหน?" to "วันนี้คะแนนของคุณจะอยู่ตรงไหน?" so the meaning is clear in context.
+
+Saved score and ranking labels now normalize older `General public`, `Professional`, and `Team member` wording at display time, so existing local results show the cleaner labels `General`, `Work`, and `Team` without clearing past assessment data.
+
 ## 2026-09-11: Navigation and Thai Copy Cleanup
 
 The top navigation is simplified to `Home`, `Assessment`, `Practice`, `AI Watch`, `Dashboard`, and `Admin`. Secondary pages such as Agent Ops, demo reports, platform explanation, and detailed results now sit inside their relevant flows instead of crowding the main navigation.
