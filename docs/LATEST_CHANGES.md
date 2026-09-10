@@ -1,5 +1,17 @@
 # Latest Changes
 
+## 2026-09-10: Question Bank Audit Round 1 Applied
+
+Reviewers completed `exports/New_Horizon_Question_Bank_Audit_Completed.xlsx` (660 questions, 2,552 choices, 41 artifacts). Outcome: 619 Keep / 41 Revise / 0 Remove; every answer key confirmed; 30 items rated "too hard" for their band because of scenario length. Changes applied from the verdicts:
+
+- Legacy reliance items (`REL-G-*`, `REL-E-*`, 11 items flagged "predictable bias towards Together"): each scenario now carries an explicit stakes edge and the keys vary. Scheduling reply and explaining a term are now AI-led; the breaking-news repost, sensitive face-to-face feedback, the data incident whose root cause is the AI workflow itself, the role-redesign announcement, and the unvalidated investor forecast are now human-owned; portfolio prioritisation, board explanation, and agent tool access stay shared but with a stronger human-owned option. Across the 12 legacy items the keys are now 6 Me / 4 Together / 2 AI.
+- Horizon awareness items (`REL-H-D6-005`, `REL-H-D2-007/010/014/021/023`): scenario text shortened to one or two sentences as requested.
+- Market-trend awareness items (24 `TREND-*-AWARENESS-01`): the appended "Focus competency … the user should show they …" sentence is removed at awareness level so the item reads as a scenario, not a rubric. Subject-verb grammar fixed for the other bands ("they use", not "they uses").
+- Drag-order items (23, flagged "enrich feedback"): new optional `rankRationale` field on `Question`, authored for every drag-order item. After submitting, the feedback now states how many steps were in the right position, the best order, and why that order.
+- Artifacts: the six hidden-by-gate artifacts reviewers marked "Improve" stay gated; they need visual redesign before ungating and are left on the artifact backlog.
+
+Verified: lint clean, production build passes, 660 unique ids, 18 pre-existing TypeScript errors unchanged. Detailed verdict-to-change mapping in `docs/AUDIT_ROUND_1_RESPONSE.md`. New helper `scripts/dump-question-bank.mjs` exports the bank to JSON for regenerating the audit workbook.
+
 ## 2026-09-10: Horizon "AI or Me?" Reliance Deck Imported
 
 Added `horizonRelianceQuestions` (26 `reliance-decision` items, ids `REL-H-*`) to the general question bank, imported from the Horizon Field Lab "Appropriate reliance" swipe deck (`horizon-field-lab.pages.dev/reliance`). The full inventory, including Thai text, wildcard cards, and the deck's own scoring rules, is documented in the project workspace (`Horizon_Reliance_Deck_Question_Inventory`).

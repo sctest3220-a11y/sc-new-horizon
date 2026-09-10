@@ -208,6 +208,7 @@ type Question = {
   correctOptionIds?: string[];
   rankItems?: RankItem[];
   idealOrder?: string[];
+  rankRationale?: string;
   matchPairs?: MatchPair[];
   parts?: QuestionPart[];
   rubricCriteria?: RubricCriterion[];
@@ -1647,10 +1648,10 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
 function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: Difficulty, trend: (typeof marketTrendFrames)[Difficulty][number], index: number): Question {
   const focus = competency.skills.slice(0, 3).join(', ');
   const difficultyLead = {
-    awareness: 'recognizes',
-    applied: 'uses',
-    proficient: 'handles tradeoffs in',
-    advanced: 'designs scalable controls for',
+    awareness: 'recognize',
+    applied: 'use',
+    proficient: 'handle tradeoffs in',
+    advanced: 'design scalable controls for',
   }[difficulty];
   return {
     id: `TREND-${competency.id.toUpperCase()}-${difficulty.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
@@ -1661,7 +1662,10 @@ function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: 
     competencyIds: [competency.id],
     skillIds: [...new Set([...competency.skills, 'AI market trends', 'agentic AI', 'multimodal AI', 'evaluation'])],
     evidenceMode: difficulty === 'awareness' ? 'knowing' : 'hybrid',
-    context: `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
+    // Audit 2026-09-10: awareness items keep only the scenario; the competency framing sentence made them read like a rubric.
+    context: difficulty === 'awareness'
+      ? trend.context
+      : `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
     prompt: trend.prompt,
     options: [
       { id: 'best', label: trend.best, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.` },
@@ -2188,8 +2192,8 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Reply to a Simple Scheduling Email',
-      caption: 'Low-risk drafting is a good AI assist, but you still check the details.',
-      points: ['Email: Can Tuesday 2 PM work?', 'Calendar: open', 'Need: polite reply', 'Risk: low'],
+      caption: 'Decide how much of a trivial, reversible task to hand over.',
+      points: ['Email: Can Tuesday 2 PM work?', 'Calendar: open, synced', 'Commitment: none beyond the time', 'Risk: low, reversible'],
     },
     stimulus: {
       src: '/stimuli/realistic-scheduling-email.png',
@@ -2197,12 +2201,12 @@ const generalRelianceQuestions: Question[] = [
       label: 'Email and calendar artifact',
       caption: 'Use the email and calendar evidence to decide how much of the reply can be delegated.',
     },
-    context: 'You need to reply quickly to a simple meeting request.',
+    context: 'You need to reply quickly to a one-line meeting request. Your calendar is synced, no attachment or commitment is involved, and a wrong time is fixed with a second email.',
     prompt: 'Who should do the task?',
     options: [
-      { ...relianceOptions.me, score: 65, feedback: 'Safe but slower. AI can draft this because the stakes are low and easy to check.' },
-      { ...relianceOptions.together, score: 95, feedback: 'Best. Let AI draft, then verify time, tone, and link before sending.' },
-      { ...relianceOptions.ai, score: 60, feedback: 'Almost fine for low stakes, but you should still confirm the calendar and recipient.' },
+      { ...relianceOptions.me, score: 45, feedback: 'Too cautious for a trivial, reversible task. Time spent here compounds across dozens of similar emails.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Fine, but heavier than needed. A glance at the time and link is all the review this task deserves.' },
+      { ...relianceOptions.ai, score: 95, feedback: 'Best. Trivial, reversible, high-volume: let AI draft and send from the synced calendar. Appropriate reliance means not over-checking low-stakes work.' },
     ],
   },
   {
@@ -2215,7 +2219,7 @@ const generalRelianceQuestions: Question[] = [
       kind: 'post',
       eyebrow: 'Task ownership',
       title: 'Share a Viral Disaster Photo',
-      caption: 'Fast sharing can spread false claims. Verification is part of the task.',
+      caption: 'Decide who verifies before anything is reposted.',
       points: ['Image: dramatic flooding', 'Caption: happened today', 'Source: unknown', 'Emotion: urgent'],
       metrics: [
         { label: 'Source', value: 'Unknown', status: 'bad' },
@@ -2230,12 +2234,12 @@ const generalRelianceQuestions: Question[] = [
       label: 'Station flood post',
       caption: 'Inspect the post for source, date, location, and emotional pressure before sharing.',
     },
-    context: 'A group chat asks whether to repost a dramatic image.',
+    context: 'A group chat asks whether to repost a dramatic flood image that appeared in the last hour. No outlet has confirmed it, and your company account would be the one sharing it.',
     prompt: 'Who should decide?',
     options: [
-      { ...relianceOptions.me, score: 75, feedback: 'Human judgment matters, but AI can help list verification checks.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI to plan checks, then verify source, date, location, and evidence yourself.' },
-      { ...relianceOptions.ai, score: 15, feedback: 'Too risky. AI may miss context or invent confidence about the image.' },
+      { ...relianceOptions.me, score: 95, feedback: 'Best. The event is minutes old, so AI may not know it and will guess confidently. Reverse-image search, check the original source and date yourself, and only then decide.' },
+      { ...relianceOptions.together, score: 65, feedback: 'Acceptable only for listing the checks. The verification of a breaking claim is yours; an AI verdict on the image is not evidence.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. AI may miss context, know nothing about a one-hour-old event, and invent confidence about the image.' },
     ],
   },
   {
@@ -2281,7 +2285,7 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Explain a Confusing Term',
-      caption: 'AI is useful for first-pass explanation when the user checks meaning before acting.',
+      caption: 'Decide how much help a low-stakes learning question needs.',
       points: ['Term: retrieval augmented generation', 'Need: plain language', 'Use: understand a meeting', 'Risk: low'],
       metrics: [
         { label: 'Risk', value: 'Low', status: 'good' },
@@ -2293,12 +2297,12 @@ const generalRelianceQuestions: Question[] = [
         { label: 'Need expert sign-off', value: 24, note: 'Low stakes' },
       ],
     },
-    context: 'You heard an AI term in a meeting and want a simple explanation.',
+    context: 'You heard the term retrieval-augmented generation in a meeting and want a plain explanation so you can follow along. No decision depends on it.',
     prompt: 'Who should handle it?',
     options: [
-      { ...relianceOptions.me, score: 55, feedback: 'You can research manually, but AI is useful for a low-risk first explanation.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Ask AI for a plain explanation, then compare it with a reliable source if the term affects a decision.' },
-      { ...relianceOptions.ai, score: 70, feedback: 'Mostly fine for learning, but do not treat one AI answer as the final authority.' },
+      { ...relianceOptions.me, score: 45, feedback: 'You can search manually, but a plain-language explanation of a common term is exactly what AI does well and fast.' },
+      { ...relianceOptions.together, score: 68, feedback: 'Fine, but cross-checking a reliable source is only needed once the term starts affecting a decision.' },
+      { ...relianceOptions.ai, score: 95, feedback: 'Best. Low stakes, well-documented concept, and you will sense-check it against the meeting itself. Escalate to sources only if a decision depends on it.' },
     ],
   },
   {
@@ -2332,10 +2336,10 @@ const generalRelianceQuestions: Question[] = [
       label: 'Workflow artifact',
       caption: 'Use the workflow map to decide who owns pilot prioritization and review.',
     },
-    context: 'Your team has several AI ideas and only time for one experiment.',
+    context: 'Your team has several AI ideas and time for one experiment. You will present the choice to your director, who will hold you accountable for the outcome.',
     prompt: 'Who should choose?',
     options: [
-      { ...relianceOptions.me, score: 70, feedback: 'Human ownership is right, but AI can help compare options against explicit criteria.' },
+      { ...relianceOptions.me, score: 75, feedback: 'Ownership is right, and defensible. You lose only the speed of having AI organise the options against explicit criteria first.' },
       { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI to organize evidence, then choose based on value, feasibility, risk, and learning.' },
       { ...relianceOptions.ai, score: 10, feedback: 'Too much delegation. AI cannot own strategy, risk appetite, or tradeoffs for the team.' },
     ],
@@ -2350,15 +2354,15 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Give Feedback to a Coworker',
-      caption: 'AI can help with wording, but relationship judgment stays human.',
-      points: ['Issue: missed deadline', 'Need: respectful tone', 'Relationship: ongoing', 'Risk: trust'],
+      caption: 'Decide who owns a sensitive conversation.',
+      points: ['Issue: missed deadline', 'Format: face to face tomorrow', 'Context: coworker confided a personal difficulty', 'Risk: trust'],
     },
-    context: 'You need to write sensitive feedback to a coworker.',
+    context: 'You need to give a coworker feedback about a missed deadline in a face-to-face conversation tomorrow. Last week they confided a personal difficulty to you.',
     prompt: 'Who should do the task?',
     options: [
-      { ...relianceOptions.me, score: 72, feedback: 'Human care matters, but AI can help make wording clearer and less reactive.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI for a draft, then revise with your own context, empathy, and accountability.' },
-      { ...relianceOptions.ai, score: 15, feedback: 'Too risky. AI should not fully own sensitive relationship communication.' },
+      { ...relianceOptions.me, score: 95, feedback: 'Best. A live conversation with someone who trusted you with personal context is human work. The value is your presence and judgment, not the polish of a script.' },
+      { ...relianceOptions.together, score: 60, feedback: 'Only to rehearse how to open. If the coworker senses a script, the confided context makes the trust damage worse than the missed deadline.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. AI cannot own a live, sensitive relationship conversation.' },
     ],
   },
 ];
@@ -2469,7 +2473,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Friend: closest, lost father suddenly', 'Timing: today', 'Need: something that is clearly from you', 'Risk: trust'],
     },
-    context: 'Write a condolence note to a grieving friend. Your closest friend just lost their father unexpectedly. They need to hear from you today — not a template, but something that feels like it came from you.',
+    context: 'Write a condolence note to your closest friend, who just lost their father. They need to hear from you today — not a template.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. The value here is that it came from you. AI can phrase grief fluently, but the point of the message is human presence, not polish.' },
@@ -2513,7 +2517,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Function: form validation', 'Checks: required, email, password length', 'Pattern: common, written many times', 'Verification: tests'],
     },
-    context: 'Write a standard form-validation function. You need a validation function: required fields, email format check, minimum password length. It\'s a common pattern you\'ve written manually a dozen times before.',
+    context: 'Write a standard form-validation function: required fields, email format, minimum password length. You have written this pattern many times.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'You have written this a dozen times. Well-trodden, testable code is a strong AI use; your tests verify it.' },
@@ -2579,7 +2583,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Email: two-paragraph proposal', 'Recipient: new client', 'Content: already right', 'Need: polish grammar and tighten'],
     },
-    context: 'Proofread an email for grammar and clarity. You drafted a two-paragraph proposal email to a new client. The content is right — you just want the grammar polished and the sentences tightened before you hit send.',
+    context: 'Proofread a two-paragraph proposal email to a new client. The content is right; you want the grammar polished before you send it.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'You can, but grammar and clarity polishing is reliable AI work and the result is self-evident when you read it.' },
@@ -2667,7 +2671,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Event: wedding in 2 weeks', 'Role: best man', 'Blocker: blank page for 3 days', 'Asset: real stories'],
     },
-    context: 'Write a wedding speech that sounds like you. The wedding is in two weeks. You\'re the best man and you\'ve been staring at a blank page for three days. You have real stories — you just can\'t make them flow.',
+    context: 'Write a best-man wedding speech that sounds like you. The wedding is in two weeks, you have real stories, and the page is still blank.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Owning it is right, but three days of blank page suggests AI structure would help you get the real stories flowing.' },
@@ -2821,7 +2825,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Recording: 1-hour strategy session', 'Need: full transcript for minutes', 'Detail: names, action items, exact wording', 'Risk: names and numbers'],
     },
-    context: 'Transcribe a one-hour meeting recording. You just finished a one-hour strategy session. A recording exists. Someone needs the full transcript for the minutes — names, action items, exact wording of key decisions.',
+    context: 'Transcribe a one-hour meeting recording for the minutes — names, action items, and the exact wording of key decisions.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 30, feedback: 'Manual transcription of an hour of audio is a poor use of time. Speech-to-text is a mature AI strength.' },
@@ -2865,7 +2869,7 @@ const horizonRelianceQuestions: Question[] = [
       caption: 'Decide who should own this task: you, AI, or both working together.',
       points: ['Business: new consultancy', 'Stage: before briefing a designer', 'Need: 10–20 visual directions', 'Goal: find the right territory'],
     },
-    context: 'Generate logo concepts to explore directions. You\'re starting a new consultancy. Before briefing a designer, you want to explore 10–20 visual directions quickly — just to know what territory feels right.',
+    context: 'Generate 10–20 quick logo concepts for your new consultancy to explore directions before briefing a designer.',
     prompt: 'Who should do the task?',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'Slow for fast exploration. Let AI generate directions, then bring a designer to finish.' },
@@ -2967,10 +2971,10 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Two items need governance gate', 'Value and risk not normalized'],
     },
-    context: 'The leadership team must choose which AI initiatives get funded next quarter.',
+    context: 'The leadership team must choose which AI initiatives get funded next quarter. The CEO will personally defend the ranking to the board.',
     prompt: 'Who should own the decision?',
     options: [
-      { id: 'me', label: 'Executive: decide from judgment alone.', score: 55, feedback: 'Executives own the decision, but evidence structuring should not be skipped.' },
+      { id: 'me', label: 'Executive: decide from judgment alone.', score: 70, feedback: 'Accountability is right, but a ranking you must defend is stronger when AI has first normalised value, readiness, and risk across the 12 cases.' },
       { id: 'together', label: 'Together: AI structures evidence, executives decide.', score: 98, feedback: 'Correct. AI can organize value, readiness, and risk; leaders own the tradeoff.' },
       { id: 'ai', label: 'AI: rank and approve the portfolio automatically.', score: 5, feedback: 'Unsafe. Portfolio governance and risk appetite are executive responsibilities.' },
     ],
@@ -2985,8 +2989,8 @@ const executiveRelianceQuestions: Question[] = [
       kind: 'risk',
       eyebrow: 'Executive ownership',
       title: 'Respond to a Data Incident',
-      caption: 'AI can accelerate triage, but accountability and communications require human authority.',
-      points: ['Customer data exposed', 'Regulator clock started', 'Press inquiry pending', 'Root cause unclear'],
+      caption: 'Decide who leads when the AI workflow itself is the compromised system.',
+      points: ['Customer data exposed by the AI workflow', 'Regulator clock: 72 hours', 'Press inquiry pending', 'Root cause unclear: same system'],
       metrics: [
         { label: 'Exposure', value: 'Live', status: 'bad' },
         { label: 'Clock', value: 'Started', status: 'bad' },
@@ -2994,12 +2998,12 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Containment first', 'Do not auto-send messages', 'Preserve audit trail'],
     },
-    context: 'An AI workflow exposed confidential customer data to the wrong audience.',
-    prompt: 'Who should lead?',
+    context: 'An AI workflow exposed confidential customer data to the wrong audience. The root cause is unknown, so the same AI tooling cannot yet be trusted with incident data, and the regulator notification clock has started.',
+    prompt: 'Who should lead the first 72 hours?',
     options: [
-      { id: 'me', label: 'Executive/legal team only.', score: 70, feedback: 'Human leadership is essential, but AI can support timeline reconstruction and evidence gathering.' },
-      { id: 'together', label: 'Together: AI supports triage, executives own response.', score: 98, feedback: 'Correct. Use AI for controlled analysis while humans own notification, remediation, and accountability.' },
-      { id: 'ai', label: 'AI: draft and send all incident messages.', score: 5, feedback: 'Unsafe. High-stakes communication must not be delegated end to end.' },
+      { id: 'me', label: 'Executive/legal team only, with AI tooling paused.', score: 95, feedback: 'Best. Until the root cause is known, the AI system is part of the incident, not a tool for handling it. Executives and legal own containment, notification, and the audit trail.' },
+      { id: 'together', label: 'Together: AI supports triage, executives own response.', score: 65, feedback: 'Reasonable later, once the compromised workflow is isolated and a separate, controlled AI tool is cleared. In the first hours it risks feeding incident data into the failing system.' },
+      { id: 'ai', label: 'AI: draft and send all incident messages.', score: 0, feedback: 'Unsafe. High-stakes, regulated communication must not be delegated, least of all to the system that caused the exposure.' },
     ],
   },
   {
@@ -3012,15 +3016,15 @@ const executiveRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Executive ownership',
       title: 'Announce Role Redesign',
-      caption: 'AI can test clarity, but leaders must own the human message.',
-      points: ['AI changes workflows', 'Employees fear replacement', 'Managers need guidance', 'Union asks for clarity'],
+      caption: 'Decide who writes a message about AI replacing work.',
+      points: ['AI changes workflows', 'Employees fear replacement by AI', 'Union: message must come personally from you', 'Trust: fragile'],
     },
-    context: 'A new AI program will change how teams divide work.',
+    context: 'A new AI program will change how teams divide work. Employees fear being replaced, and the union has asked that the announcement come personally from you. An AI-written message about AI taking work would be noticed.',
     prompt: 'Who should write the message?',
     options: [
-      { id: 'me', label: 'Executive: write and own the message.', score: 78, feedback: 'Leadership ownership is required, though AI can help test clarity and possible misunderstandings.' },
-      { id: 'together', label: 'Together: AI drafts scenarios, executives write final.', score: 98, feedback: 'Correct. AI can support preparation; leaders own trust, tone, and commitments.' },
-      { id: 'ai', label: 'AI: generate and publish the announcement.', score: 5, feedback: 'Unsafe. This would make a sensitive people decision feel outsourced.' },
+      { id: 'me', label: 'Executive: write and own the message.', score: 95, feedback: 'Best. When the subject is AI displacing work, an authentically human message is the point. Write it yourself; test clarity with trusted managers.' },
+      { id: 'together', label: 'Together: AI drafts scenarios, executives write final.', score: 60, feedback: 'Useful for anticipating questions, but if the draft voice leaks into the final message, the trust cost exceeds the time saved.' },
+      { id: 'ai', label: 'AI: generate and publish the announcement.', score: 0, feedback: 'Unsafe. Outsourcing this message to AI confirms the fear it is meant to address.' },
     ],
   },
   {
@@ -3047,12 +3051,12 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Confidence is not proof', 'No uncertainty range', 'No validation trail'],
     },
-    context: 'Leadership wants to use an AI revenue forecast in investor guidance.',
+    context: 'Leadership wants to use an AI revenue forecast in tomorrow\'s investor guidance. Guidance is a regulated disclosure the CFO signs, and the model has no back-test or uncertainty range.',
     prompt: 'Who should decide?',
     options: [
-      { id: 'me', label: 'Executive/finance: decide after evidence review.', score: 82, feedback: 'Strong. AI may support analysis, but accountable leaders must challenge assumptions.' },
-      { id: 'together', label: 'Together: AI analyzes scenarios, leaders decide disclosure.', score: 98, feedback: 'Correct. Use AI for scenario work while humans own investor-facing judgment.' },
-      { id: 'ai', label: 'AI: publish the forecast if confidence is high.', score: 5, feedback: 'Unsafe. Model confidence is not disclosure-grade evidence.' },
+      { id: 'me', label: 'Executive/finance: decide after evidence review.', score: 95, feedback: 'Best. A signed, regulated disclosure with no validation trail is a human decision. Withhold the number or present it with your own range and caveats.' },
+      { id: 'together', label: 'Together: AI analyzes scenarios, leaders decide disclosure.', score: 70, feedback: 'Good practice normally, but with the call tomorrow and no back-test, scenario work cannot make the forecast disclosure-grade. The decision, not the analysis, is what matters here.' },
+      { id: 'ai', label: 'AI: publish the forecast if confidence is high.', score: 0, feedback: 'Unsafe. Model confidence is not disclosure-grade evidence, and the CFO carries the liability.' },
     ],
   },
   {
@@ -3068,10 +3072,10 @@ const executiveRelianceQuestions: Question[] = [
       caption: 'Executives should understand enough to ask the right control questions.',
       points: ['Agent can plan', 'Agent can use tools', 'Agent can act', 'Controls determine authority'],
     },
-    context: 'The board asks what makes an AI agent different from a chatbot.',
+    context: 'The board asks what makes an AI agent different from a chatbot, and will probe your answer with follow-up questions in the room.',
     prompt: 'Who should explain it?',
     options: [
-      { id: 'me', label: 'Executive: explain from current understanding.', score: 65, feedback: 'Helpful, but executives should verify technical claims before presenting.' },
+      { id: 'me', label: 'Executive: explain from current understanding.', score: 72, feedback: 'Defensible if your understanding is current. Preparing with AI simply lets you pressure-test the explanation before the board does.' },
       { id: 'together', label: 'Together: AI helps draft, executive validates and explains.', score: 98, feedback: 'Correct. Leaders can use AI to prepare, but must understand and own the explanation.' },
       { id: 'ai', label: 'AI: present directly to the board.', score: 20, feedback: 'Too much delegation. The board needs accountable leadership judgment.' },
     ],
@@ -3095,10 +3099,10 @@ const executiveRelianceQuestions: Question[] = [
       label: 'Agent trace artifact',
       caption: 'Inspect the tool trace before deciding who can approve agent access.',
     },
-    context: 'A business unit wants an AI agent to operate across multiple systems.',
+    context: 'A business unit wants an AI agent to operate across files, CRM, email, and finance approvals. Whoever approves the access owns the consequences of what the agent does with it.',
     prompt: 'Who should approve access?',
     options: [
-      { id: 'me', label: 'Executive/owners: approve manually without AI input.', score: 70, feedback: 'Accountability is right, but AI can help map risks and missing controls.' },
+      { id: 'me', label: 'Executive/owners: approve manually without AI input.', score: 76, feedback: 'Accountability is right. AI only adds a systematic map of tools, risks, and missing controls before you set the boundaries.' },
       { id: 'together', label: 'Together: AI maps risks, owners approve bounded access.', score: 98, feedback: 'Correct. Use AI to structure the review; humans set permissions and escalation rules.' },
       { id: 'ai', label: 'AI: grant itself tools as needed.', score: 0, feedback: 'Unsafe. Agents must not self-authorize high-impact tools.' },
     ],
@@ -3243,6 +3247,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'pilot', label: 'Run a time-boxed pilot with success and stop criteria' },
     ],
     idealOrder: ['workflow', 'baseline', 'controls', 'pilot'],
+    rankRationale: 'Defining the workflow problem and users comes first; a baseline makes value measurable; review gates, data boundaries, and an owner are set before the pilot starts; a time-boxed pilot with stop criteria produces a decision, not an open-ended experiment.',
     options: [
       { id: 'rank', label: 'Order pilot steps from problem evidence to controlled test.', score: 98, feedback: 'Correct. Function-level pilots need workflow fit, baseline evidence, controls, and learning criteria.' },
     ],
@@ -3337,6 +3342,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'measure', label: 'Compare time saved and corrections before expanding' },
     ],
     idealOrder: ['baseline', 'scope', 'review', 'measure'],
+    rankRationale: 'A baseline of cycle time and error rate is what the pilot will be compared against; scoping AI to approved data and selected variances limits the blast radius; controller review preserves review discipline; measuring time saved against corrections decides expansion.',
     options: [
       { id: 'rank', label: 'Sequence the close-comment pilot.', score: 98, feedback: 'Correct. A useful pilot starts with a baseline, constrains scope, preserves review, and measures before scale.' },
     ],
@@ -3530,6 +3536,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'act', label: 'Send a human-owned follow-up and update the CRM rationale' },
     ],
     idealOrder: ['clean', 'prompt', 'review', 'act'],
+    rankRationale: 'Stale CRM data produces confident but wrong recommendations, so data hygiene comes first; the prompt asks for account-specific actions with evidence; legal, privacy, and customer-context review happens before any outreach; the human owns the follow-up and records the rationale.',
     options: [
       { id: 'rank', label: 'Order the AI-assisted sales workflow.', score: 98, feedback: 'Correct. Useful sales AI starts with evidence quality, then prompt, review, and accountable action.' },
     ],
@@ -3757,6 +3764,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'approve', label: 'Approve with owner, monitoring, and rollback plan.' },
     ],
     idealOrder: ['purpose', 'license', 'risk', 'test', 'approve'],
+    rankRationale: 'Confirm the need first so you are not evaluating a package you do not require; licence and maintenance decide whether it can be used at all; the risk review examines what it will do inside your environment; sandbox testing with real data comes before an approval that names an owner and rollback plan.',
     options: [],
   },
   {
@@ -4302,6 +4310,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'measure', label: 'Measure whether errors and overrides improve.' },
     ],
     idealOrder: ['sample', 'classify', 'coach', 'control', 'measure'],
+    rankRationale: 'Sampling real outputs and overrides supplies the evidence; classifying error patterns shows what to fix and how risky it is; coaching addresses the human side before controls tighten the system side; measuring closes the weekly loop.',
     options: [],
   },
   {
@@ -4629,6 +4638,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'learn', label: 'Review patterns weekly and update coaching or prompts.' },
     ],
     idealOrder: ['classify', 'draft', 'review', 'send', 'learn'],
+    rankRationale: 'Risk classification decides which tickets the AI may touch; the draft uses only approved evidence; the human reviewer checks evidence and exception rules before send; recording the override reason is what feeds the weekly learning review.',
     options: [],
   },
   {
@@ -4757,6 +4767,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'learn', label: 'Run a post-incident review with owner and prevention metrics.' },
     ],
     idealOrder: ['contain', 'scope', 'notify', 'fix', 'learn'],
+    rankRationale: 'Containment stops further harm before anything else; scoping tells you who was affected; notification goes through the approved legal and communications path; fixes come before the post-incident review that sets prevention metrics.',
     options: [],
   },
   {
@@ -4959,6 +4970,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'scale', label: 'Scale only where evidence and manager support are strong.' },
     ],
     idealOrder: ['listen', 'coach', 'measure', 'adjust', 'scale'],
+    rankRationale: 'Listening to users explains why adoption is uneven; coaching managers addresses the biggest adoption lever; measuring against the baseline shows whether quality and trust hold; adjustments come before scaling, and scale only follows evidence and manager support.',
     options: [],
   },
   {
@@ -5003,6 +5015,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'portfolio', label: 'Fund scale only for patterns that meet evidence gates.' },
     ],
     idealOrder: ['inventory', 'pattern', 'controls', 'pilot', 'portfolio'],
+    rankRationale: 'An inventory shows where AI is worth applying; reusable patterns stop every team rebuilding the same workflow; controls are defined before the first pilot so pilots are comparable; funding follows evidence gates, not enthusiasm.',
     options: [],
   },
   {
@@ -5231,6 +5244,7 @@ const questionBank: Question[] = [
       { id: 'release', label: 'Merge and monitor production signals after approval.' },
     ],
     idealOrder: ['scope', 'generate', 'ci', 'review', 'release'],
+    rankRationale: 'Scope limits what the assistant can touch before it writes anything; tests and rationale travel with the patch; automated checks catch mechanical faults before a human spends review time on behaviour and risk; monitoring after merge closes the loop.',
     options: [],
   },
   {
@@ -5549,6 +5563,7 @@ const questionBank: Question[] = [
       { id: 'learn', label: 'Log overrides and update guidance.' },
     ],
     idealOrder: ['triage', 'retrieve', 'draft', 'approve', 'learn'],
+    rankRationale: 'Risk is classified first so high-risk tickets never reach an unreviewed draft; evidence is pulled before drafting so the reply is grounded; approval sits before send for the cases that can cause harm; logging overrides last is what improves the next round.',
     options: [],
   },
   {
@@ -5655,6 +5670,7 @@ const questionBank: Question[] = [
       { id: 'approve', label: 'Approve expansion only after evidence and signoff.' },
     ],
     idealOrder: ['classify', 'contract', 'controls', 'pilot', 'approve'],
+    rankRationale: 'You cannot negotiate data rights until you know how sensitive the data is; contract terms define what controls must exist; a limited pilot tests those controls in practice; expansion is approved only on pilot evidence.',
     options: [],
   },
   {
@@ -6216,6 +6232,7 @@ const questionBank: Question[] = [
       { id: 'send', label: 'Share the final summary with caveats if needed' },
     ],
     idealOrder: ['source', 'format', 'verify', 'send'],
+    rankRationale: 'The AI needs the transcript and purpose before it can summarise anything; format and audience shape what the summary emphasises; verification of names, owners, and dates comes before anyone acts on it; caveats travel with the final version.',
     options: [
       { id: 'rank', label: 'Order the summary workflow.', score: 98, feedback: 'Reliable AI work comes from clear inputs, constraints, and review.' },
     ],
@@ -6345,6 +6362,7 @@ const questionBank: Question[] = [
       { id: 'learn', label: 'Fast learning path for scale or stop decision' },
     ],
     idealOrder: ['problem', 'measure', 'risk', 'learn'],
+    rankRationale: 'A pilot that does not solve a clear user problem is not worth measuring; a baseline is what makes the outcome measurable; risk controls decide whether the pilot is allowed to run at all; a fast learning path lets you scale or stop with evidence.',
     options: [
       { id: 'rank', label: 'Order pilot selection criteria.', score: 98, feedback: 'Good pilots start with problem fit and measurable evidence.' },
     ],
@@ -6536,6 +6554,7 @@ const questionBank: Question[] = [
       { id: 'monitor', label: 'Monitor new outputs against the same criteria' },
     ],
     idealOrder: ['sample', 'rubric', 'revise', 'monitor'],
+    rankRationale: 'Improvement starts from real failed and successful cases, not opinions; a rubric turns cases into named error categories; only then do you change the prompt, sources, or controls; monitoring against the same rubric shows whether the change worked.',
     options: [
       { id: 'rank', label: 'Order loop steps from evidence to monitoring.', score: 98, feedback: 'Correct. Improvement loops start from evidence, then revise and monitor.' },
     ],
@@ -6861,6 +6880,7 @@ const questionBank: Question[] = [
       { id: 'use', label: 'Use the plan after making needed human corrections' },
     ],
     idealOrder: ['scope', 'prompt', 'check', 'use'],
+    rankRationale: 'Separating personal, school, and work material before upload protects sensitive details; a clear task, format, and priority rules shape the plan; verification of names, dates, and commitments comes before use; the plan is used only after human corrections.',
     options: [
       { id: 'rank', label: 'Order the AI planning workflow.', score: 98, feedback: 'Correct. Practical AI use starts with scope, then prompting, checking, and careful use.' },
     ],
@@ -7031,6 +7051,7 @@ const questionBank: Question[] = [
       { id: 'scale', label: 'Expand only after value, harm, and adoption evidence meet gates' },
     ],
     idealOrder: ['map', 'scope', 'pilot', 'scale'],
+    rankRationale: 'Mapping the workflow, thresholds, and owners defines what the agent may decide; limiting tools, data, and refund authority bounds the risk; a monitored pilot with logs and exceptions generates evidence; expansion waits for value, harm, and adoption gates.',
     options: [
       { id: 'rank', label: 'Order the agent rollout gates.', score: 98, feedback: 'Correct. Practical agent adoption starts with workflow and authority design before scale.' },
     ],
@@ -7293,6 +7314,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'scale', label: 'Scale only after evidence and controls pass' },
     ],
     idealOrder: ['value', 'readiness', 'pilot', 'scale'],
+    rankRationale: 'A value hypothesis with an owner defines what success means; readiness assessment decides whether a pilot is even feasible; a controlled pilot produces the evidence; scale is released only when evidence and controls pass.',
     options: [
       { id: 'rank', label: 'Order portfolio gates from hypothesis to scale.', score: 98, feedback: 'Strong. The sequence protects investment discipline.' },
     ],
@@ -7384,6 +7406,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'train', label: 'Train role owners and scale the pattern' },
     ],
     idealOrder: ['map', 'review', 'measure', 'train'],
+    rankRationale: 'Map where AI enters the workflow before deciding where humans review it; set review and exception points before measuring, or the metrics will not reflect the real process; measure before training and scaling so you scale a pattern that works.',
     options: [
       { id: 'rank', label: 'Order workflow steps from mapping to scale.', score: 98, feedback: 'Strong workflow governance starts with context, then controls, measures, and enablement.' },
     ],
@@ -7476,6 +7499,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'prevent', label: 'Fix permissions, monitoring, and ownership' },
     ],
     idealOrder: ['contain', 'assess', 'communicate', 'prevent'],
+    rankRationale: 'Contain access and preserve evidence first; assess impact and legal obligations before communicating, so the message is accurate; communicate before fixing root causes because affected stakeholders have a right to know quickly; prevention is the last, durable step.',
     options: [
       { id: 'rank', label: 'Order incident actions from containment to prevention.', score: 98, feedback: 'Correct. Incident leadership starts with containment and evidence.' },
     ],
@@ -7731,6 +7755,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'monitor', label: 'Monitor incidents and suspend when thresholds are crossed' },
     ],
     idealOrder: ['classify', 'authority', 'validate', 'monitor'],
+    rankRationale: 'Classifying the use case as safety-critical triggers the whole control regime; human authority and fail-safe boundaries must exist before validation is meaningful; edge-case validation precedes live use; monitoring with suspension thresholds is the ongoing control.',
     options: [
       { id: 'rank', label: 'Order safety controls from classification to monitoring.', score: 98, feedback: 'Correct. Safety-critical AI requires staged controls.' },
     ],
@@ -7781,6 +7806,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'refresh', label: 'Refresh prompts, policies, and training from observed failures' },
     ],
     idealOrder: ['practice', 'review', 'coach', 'refresh'],
+    rankRationale: 'Define the decision moments first so AI assists where it matters; review criteria for quality and fairness must exist before coaching, or coaching has no standard; coaching from real examples beats abstract training; refreshing prompts and policies from observed failures is the learning loop.',
     options: [
       { id: 'rank', label: 'Order leadership loop steps.', score: 98, feedback: 'Correct. Capability improves when real use feeds coaching and updates.' },
     ],
@@ -8068,6 +8094,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'funding', label: 'Release staged funding tied to evidence milestones' },
     ],
     idealOrder: ['outcomes', 'readiness', 'risk', 'funding'],
+    rankRationale: 'Outcomes, baseline, and decision owner define what funding is for; readiness validation tests whether programmes can absorb it; controls and stop conditions protect the downside; staged funding tied to milestones keeps the board in control.',
     options: [
       { id: 'rank', label: 'Order the investment gate steps.', score: 98, feedback: 'Correct. Strategy becomes executable when value evidence, readiness, risk, and funding gates are sequenced.' },
     ],
@@ -12150,11 +12177,17 @@ export default function Home() {
 
   function submitRankOrder() {
     const score = scoreOrder(current, rankOrder);
+    const ideal = current.idealOrder ?? [];
+    const exactPositions = ideal.filter((id, index) => rankOrder[index] === id).length;
+    const verdict = score >= 90
+      ? 'Strong sequencing judgment.'
+      : `Partial signal: ${exactPositions} of ${ideal.length} steps were in the right position. The order matters, not only the ingredients.`;
+    const rationale = current.rankRationale ? ` Why this order: ${current.rankRationale}` : '';
     submitAnswer({
       id: rankOrder.join('>'),
       label: 'Submitted ordered sequence',
       score,
-      feedback: score >= 90 ? 'Strong sequencing judgment.' : 'Partial signal. Executive workflows need the right order, not only the right ingredients.',
+      feedback: `${verdict} Best order: ${getCorrectAnswerSummary(current)}.${rationale}`,
     });
   }
 
