@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { questionTranslationsTh } from './questionTranslations.th';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -160,7 +161,7 @@ type LabConfig = {
 
 type Option = { id: string; label: string; score: number; feedback: string; labelTh?: string; feedbackTh?: string };
 type TranslationStatus = 'draft' | 'reviewed' | 'approved';
-type RubricCriterion = { id: string; label: string; keywords: string[]; points: number };
+type RubricCriterion = { id: string; label: string; keywords: string[]; points: number; labelTh?: string; keywordsTh?: string[] };
 type VisualStimulus = {
   kind: 'dashboard' | 'report' | 'post' | 'portfolio' | 'risk' | 'memo';
   title: string;
@@ -177,13 +178,14 @@ type VisualStimulus = {
   metrics?: Array<{ label: string; value: string; status?: 'good' | 'warn' | 'bad' }>;
 };
 type RankItem = { id: string; label: string; labelTh?: string };
-type MatchPair = { id: string; left: string; correct: string; choices: string[] };
+type MatchPair = { id: string; left: string; correct: string; choices: string[]; leftTh?: string; correctTh?: string; choicesTh?: string[] };
 type QuestionPart = {
   id: string;
   domain: DomainId;
   prompt: string;
   correctOptionId: string;
   options: Option[];
+  promptTh?: string;
 };
 type BenchmarkProfile = {
   label: string;
@@ -221,10 +223,12 @@ type Question = {
   rankItems?: RankItem[];
   idealOrder?: string[];
   rankRationale?: string;
+  rankRationaleTh?: string;
   matchPairs?: MatchPair[];
   parts?: QuestionPart[];
   rubricCriteria?: RubricCriterion[];
   exemplarAnswer?: string;
+  exemplarAnswerTh?: string;
   prompt: string;
   context: string;
   options: Option[];
@@ -2403,9 +2407,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Summarize a 40-page report into 5 bullet points. You have 2 hours before a board meeting. A 40-page industry analysis just landed in your inbox. The team needs the highlights now — not tomorrow.',
     prompt: 'Who should do the task?',
-    contextTh: 'สรุปรายงาน 40 หน้าให้เหลือ 5 บูลเล็ต เหลือ 2 ชั่วโมงก่อนประชุมกรรมการ รายงานอุตสาหกรรม 40 หน้าเพิ่งเข้ากล่องจดหมาย ทีมต้องการสาระสำคัญทันที ไม่ใช่พรุ่งนี้',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'มีรายงานวิเคราะห์อุตสาหกรรมความยาว 40 หน้าส่งเข้ามาในกล่องข้อความอีเมล โดยเหลือเวลาอีกเพียง 2 ชั่วโมงก่อนเริ่มการประชุมบอร์ดบริหาร ทีมงานต้องการสรุป 5 ประเด็นสำคัญเพื่อนำไปใช้ทันที',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'Doing it by hand under a two-hour deadline spends the one thing you lack. AI can condense; you skim to verify.', feedbackTh: 'ทำเองภายใต้เดดไลน์สองชั่วโมงคือการใช้สิ่งที่คุณขาดที่สุด AI ย่อได้ คุณกวาดอ่านเพื่อตรวจ' },
       { ...relianceOptions.together, score: 70, feedback: 'Reasonable, but heavier than needed. A quick skim of the source is enough verification for a summary you can check yourself.', feedbackTh: 'สมเหตุสมผล แต่หนักเกินความจำเป็น การกวาดอ่านต้นฉบับสั้น ๆ ก็เพียงพอสำหรับสรุปที่คุณตรวจเองได้' },
@@ -2432,9 +2436,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Decide which employee to lay off. Budget cuts are final. One position from your team of eight must go. HR has pulled every performance file. There\'s no obvious choice — and someone\'s livelihood depends on it.',
     prompt: 'Who should do the task?',
-    contextTh: 'ตัดสินใจว่าจะให้พนักงานคนไหนออก งบประมาณถูกตัดสิน ต้องลดหนึ่งตำแหน่งจากทีมแปดคน ฝ่าย HR ดึงแฟ้มผลงานทุกคนมาให้แล้ว ไม่มีคำตอบที่ชัดเจน และชีวิตของใครบางคนขึ้นอยู่กับสิ่งนี้',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ผลสรุปการปรับลดงบประมาณเป็นที่สิ้นสุดแล้ว และจำเป็นต้องปลดพนักงาน 1 คนจากทีมที่มีทั้งหมด 8 คน ฝ่ายบุคคล (HR) ได้รวบรวมแฟ้มประวัติผลงานของทุกคนมาให้แล้ว ซึ่งไม่มีคำตอบที่ชัดเจนหรือตัดสินใจได้ง่าย และเรื่องนี้กระทบต่อชีวิตความเป็นอยู่ของคนอย่างยิ่ง',
+    promptTh: 'ใครควรเป็นผู้ตัดสินใจ',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. High-stakes, accountable, and legally exposed. AI can summarize records, but the decision and its consequences are yours — delegating it invites bias and liability.', feedbackTh: 'ดีที่สุด เป็นเรื่องเดิมพันสูง ต้องรับผิดชอบ และมีความเสี่ยงทางกฎหมาย AI สรุปข้อมูลได้ แต่การตัดสินใจและผลของมันเป็นของคุณ การยกให้ AI เสี่ยงทั้งอคติและความรับผิด' },
       { ...relianceOptions.together, score: 45, feedback: 'AI may summarize the files, but if it shapes the ranking you import bias into a decision you must personally defend.', feedbackTh: 'AI สรุปแฟ้มได้ แต่ถ้าปล่อยให้มันจัดอันดับ คุณกำลังนำอคติเข้าสู่การตัดสินใจที่คุณต้องรับผิดชอบเอง' },
@@ -2461,9 +2465,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Translate a casual email into English. A supplier sent a short, informal message in Thai. You need it in English to reply quickly. Nothing is legally binding — it\'s scheduling a call.',
     prompt: 'Who should do the task?',
-    contextTh: 'แปลอีเมลทั่วไปเป็นภาษาอังกฤษ ซัพพลายเออร์ส่งข้อความสั้น ๆ ไม่เป็นทางการมาเป็นภาษาไทย คุณต้องการเวอร์ชันภาษาอังกฤษเพื่อตอบเร็ว ๆ ไม่มีอะไรผูกมัดทางกฎหมาย เป็นแค่การนัดโทรศัพท์',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ซัพพลายเออร์ส่งข้อความสั้น ๆ อย่างไม่เป็นทางการเป็นภาษาไทยมาหาคุณ คุณต้องการแปลเป็นภาษาอังกฤษอย่างรวดเร็วเพื่อตอบกลับทันที โดยเนื้อหาไม่มีผลผูกพันทางกฎหมาย เป็นเพียงการนัดหมายคุยทางโทรศัพท์เท่านั้น',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'You can, but it is slow for a low-stakes note. Everyday translation is exactly where AI is reliable.', feedbackTh: 'ทำได้ แต่ช้าสำหรับข้อความที่เดิมพันต่ำ การแปลงานทั่วไปคือจุดที่ AI เชื่อถือได้' },
       { ...relianceOptions.together, score: 65, feedback: 'Fine, though a quick sense-check of the output is all the review this needs.', feedbackTh: 'ใช้ได้ แต่แค่ตรวจความสมเหตุสมผลสั้น ๆ ก็พอแล้วสำหรับงานนี้' },
@@ -2490,9 +2494,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Translate a contract that will be signed. A 12-page service agreement needs Thai translation before both parties sign next week. One mistranslated clause could make the whole deal unenforceable.',
     prompt: 'Who should do the task?',
-    contextTh: 'แปลสัญญาที่จะนำไปลงนาม สัญญาให้บริการ 12 หน้าต้องแปลเป็นภาษาไทยก่อนที่ทั้งสองฝ่ายจะลงนามสัปดาห์หน้า ข้อความที่แปลผิดเพียงข้อเดียวอาจทำให้ข้อตกลงทั้งหมดบังคับใช้ไม่ได้',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'สัญญาให้บริการความยาว 12 หน้าต้องได้รับการแปลเป็นภาษาไทยก่อนที่ทั้งสองฝ่ายจะลงนามในสัปดาห์หน้า โดยข้อความสัญญาที่แปลผิดพลาดแม้เพียงข้อเดียว อาจทำให้ข้อตกลงทั้งหมดกลายเป็นโมฆะหรือไม่สามารถบังคับใช้ได้ตามกฎหมาย',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe but slow and costly. AI can draft while a qualified reviewer checks every clause.', feedbackTh: 'ปลอดภัยแต่ช้าและแพง ให้ AI ร่างได้ โดยผู้เชี่ยวชาญตรวจทุกข้อ' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. Let AI draft, but a qualified human must review. One mistranslated clause in a binding document can cost far more than the time saved.', feedbackTh: 'ดีที่สุด ให้ AI ร่างได้ แต่ต้องมีผู้เชี่ยวชาญตรวจ ข้อความที่แปลผิดเพียงข้อเดียวในเอกสารผูกพันอาจเสียหายมากกว่าเวลาที่ประหยัด' },
@@ -2519,9 +2523,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write a condolence note to your closest friend, who just lost their father. They need to hear from you today — not a template.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนข้อความปลอบใจให้เพื่อนสนิทที่เพิ่งสูญเสียพ่อ เขาต้องได้ยินจากคุณวันนี้ ไม่ใช่เทมเพลต',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องการเขียนข้อความแสดงความเสียใจถึงเพื่อนสนิทที่เพิ่งสูญเสียคุณพ่อ ซึ่งเพื่อนควรได้รับข้อความที่มาจากใจของคุณโดยตรงในวันนี้ ไม่ใช่ข้อความสำเร็จรูปจากเทมเพลต',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. The value here is that it came from you. AI can phrase grief fluently, but the point of the message is human presence, not polish.', feedbackTh: 'ดีที่สุด คุณค่าของมันคือ \'มาจากคุณ\' AI เรียบเรียงความเศร้าได้ลื่นไหล แต่หัวใจของข้อความคือการมีตัวตนของมนุษย์ ไม่ใช่ความสละสลวย' },
       { ...relianceOptions.together, score: 45, feedback: 'Even a light AI draft hollows out the point: the message has to come from you, not be polished for you.', feedbackTh: 'แม้ร่างเบา ๆ จาก AI ก็ทำให้ข้อความกลวง เพราะหัวใจของมันคือต้องมาจากคุณ ไม่ใช่ถูกขัดเกลาให้คุณ' },
@@ -2548,9 +2552,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Diagnose a rash from a photo to decide treatment. A rash appeared on your arm two days ago. You have a clear photo. You want to know if it\'s serious and what to do — before deciding whether to see a doctor.',
     prompt: 'Who should do the task?',
-    contextTh: 'วินิจฉัยผื่นจากรูปถ่ายเพื่อตัดสินใจรักษา ผื่นขึ้นที่แขนเมื่อสองวันก่อน คุณถ่ายรูปชัดไว้ ต้องการรู้ว่าน่ากังวลไหมและควรทำอะไร ก่อนตัดสินใจว่าจะไปหาหมอหรือไม่',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณมีผื่นขึ้นที่แขนมาสองวัน จึงถ่ายรูปไว้อย่างชัดเจนและต้องการตรวจดูเบื้องต้นว่ามีอาการรุนแรงหรือไม่ ก่อนตัดสินใจว่าจะไปพบแพทย์',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. Medical diagnosis from an image is outside reliable AI use for treatment decisions. Use it for questions to ask — then see a clinician.', feedbackTh: 'ดีที่สุด การวินิจฉัยโรคจากภาพเพื่อตัดสินใจรักษาอยู่นอกขอบเขตที่ AI เชื่อถือได้ ใช้มันเพื่อตั้งคำถามที่จะถามหมอ แล้วไปพบแพทย์จริง' },
       { ...relianceOptions.together, score: 50, feedback: 'Only as a way to prepare questions for a clinician. Treatment decisions from a photo are outside reliable AI use.', feedbackTh: 'ใช้ได้เพียงเพื่อเตรียมคำถามไปถามแพทย์ การตัดสินใจรักษาจากรูปถ่ายอยู่นอกขอบเขตที่ AI เชื่อถือได้' },
@@ -2577,9 +2581,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write a standard form-validation function: required fields, email format, minimum password length. You have written this pattern many times.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนฟังก์ชันตรวจสอบฟอร์มแบบมาตรฐาน: ฟิลด์บังคับ รูปแบบอีเมล ความยาวรหัสผ่านขั้นต่ำ เป็นรูปแบบที่คุณเขียนมาแล้วหลายครั้ง',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องเขียนฟังก์ชันตรวจสอบแบบฟอร์มตามมาตรฐาน (เช่น ช่องบังคับกรอก รูปแบบอีเมล และความยาวรหัสผ่านขั้นต่ำ) ซึ่งเป็นรูปแบบโค้ดที่คุณเคยเขียนมาแล้วหลายครั้ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'You have written this a dozen times. Well-trodden, testable code is a strong AI use; your tests verify it.', feedbackTh: 'คุณเขียนมาแล้วนับสิบครั้ง โค้ดที่มีรูปแบบชัดและทดสอบได้คือจุดแข็งของ AI การทดสอบของคุณเป็นตัวตรวจ' },
       { ...relianceOptions.together, score: 70, feedback: 'Fine, but the tests already do the verification. Heavy human review adds little here.', feedbackTh: 'ใช้ได้ แต่การทดสอบตรวจสอบให้อยู่แล้ว การรีวิวหนัก ๆ โดยคนแทบไม่เพิ่มอะไร' },
@@ -2606,9 +2610,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Brainstorm 20 product names to choose from. A new SaaS product launches next month. You need a shortlist of 20 candidate names for the team to vote on. No budget for a naming agency.',
     prompt: 'Who should do the task?',
-    contextTh: 'ระดมชื่อสินค้า 20 ชื่อเพื่อเลือก ซอฟต์แวร์ SaaS ตัวใหม่จะเปิดตัวเดือนหน้า ต้องชื่อ 20 ตัวสำหรับให้ทีมโหวต ไม่มีงบจ้างเอเจนซีตั้งชื่อ',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ซอฟต์แวร์ SaaS ตัวใหม่กำลังจะเปิดตัวในเดือนหน้า และคุณไม่มีงบจ้างเอเจนซี จึงต้องระดมไอเดียชื่อสินค้ามาให้ได้ 20 ชื่อเพื่อให้ทีมร่วมกันโหวตเลือก',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'Slow for a divergent, low-stakes task. Let AI generate volume; you stay the judge.', feedbackTh: 'ช้าสำหรับงานคิดกระจายที่เดิมพันต่ำ ให้ AI สร้างปริมาณ คุณเป็นผู้ตัดสิน' },
       { ...relianceOptions.together, score: 70, feedback: 'Acceptable, though the human role here is simply choosing, not co-writing the list.', feedbackTh: 'พอรับได้ แต่บทบาทของคนที่นี่คือแค่เลือก ไม่ใช่ร่วมเขียนรายชื่อ' },
@@ -2635,9 +2639,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Find legal precedents to cite in a court filing. A court filing is due tomorrow morning. You need three specific case citations to support your legal argument — and they must be real, verifiable, and current.',
     prompt: 'Who should do the task?',
-    contextTh: 'หาคำพิพากษาอ้างอิงเพื่อใส่ในคำร้องต่อศาล ต้องยื่นเอกสารต่อศาลพรุ่งนี้เช้า ต้องการคดีอ้างอิงสามคดีเพื่อสนับสนุนข้อโต้แย้ง และต้องเป็นคดีจริง ตรวจสอบได้ และเป็นปัจจุบัน',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องยื่นคำร้องต่อศาลในเช้าวันพรุ่งนี้ จึงต้องการคำพิพากษาฎีกาหรือคดีตัวอย่าง 3 คดีมาสนับสนุนข้อโต้แย้งทางกฎหมาย โดยข้อมูลต้องถูกต้อง มีอยู่จริง และตรวจสอบได้',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI — including specialized legal research tools — regularly invents plausible-sounding cases that don\'t exist. Multiple lawyers have been suspended for filing them. You can use AI to surface potentially relevant cases, but you must personally verify every citation in the official legal database before any filing. The stakes and the signature are yours.', feedbackTh: 'ดีที่สุด AI รวมถึงเครื่องมือวิจัยกฎหมายเฉพาะทาง กุคดีที่ฟังดูน่าเชื่อแต่ไม่มีจริงอย่างสม่ำเสมอ ทนายความหลายคนถูกพักใบอนุญาตเพราะยื่นคดีเหล่านั้น ใช้ AI เพื่อค้นหาคดีที่อาจเกี่ยวข้องได้ แต่ต้องตรวจสอบทุกการอ้างอิงในฐานข้อมูลกฎหมายจริงด้วยตนเองก่อนยื่น ความรับผิดชอบและลายเซ็นเป็นของคุณ' },
       { ...relianceOptions.together, score: 55, feedback: 'Acceptable only if every citation is personally verified in the official database before filing. AI surfaces candidates; it does not confirm them.', feedbackTh: 'รับได้ก็ต่อเมื่อคุณตรวจทุกการอ้างอิงด้วยตนเองในฐานข้อมูลทางการก่อนยื่น AI ช่วยหาผู้สมัคร แต่ไม่ได้ยืนยัน' },
@@ -2664,9 +2668,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Proofread a two-paragraph proposal email to a new client. The content is right; you want the grammar polished before you send it.',
     prompt: 'Who should do the task?',
-    contextTh: 'ตรวจไวยากรณ์อีเมลข้อเสนอสองย่อหน้าถึงลูกค้าใหม่ เนื้อหาถูกต้องแล้ว แค่ต้องการขัดเกลาก่อนส่ง',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องการตรวจไวยากรณ์อีเมลข้อเสนอความยาว 2 ย่อหน้าที่จะส่งหาลูกค้าใหม่ เนื้อหาครบถ้วนถูกต้องแล้ว เพียงต้องการขัดเกลาภาษาให้เรียบร้อยก่อนส่ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'You can, but grammar and clarity polishing is reliable AI work and the result is self-evident when you read it.', feedbackTh: 'ทำได้ แต่การขัดไวยากรณ์และความชัดเจนเป็นงานที่ AI ทำได้น่าเชื่อถือ และคุณเห็นผลทันทีเมื่ออ่าน' },
       { ...relianceOptions.together, score: 72, feedback: 'Fine. Reading the result and keeping what sounds like you is all the human step needs to be.', feedbackTh: 'ใช้ได้ การอ่านผลลัพธ์แล้วเก็บสำนวนที่เป็นตัวคุณคือขั้นตอนของคนที่พอเพียงแล้ว' },
@@ -2693,9 +2697,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Calculate and file your taxes. Tax filing deadline is in three days. You have income from multiple sources this year — freelance, dividends, and a side business. Several deductions are unclear.',
     prompt: 'Who should do the task?',
-    contextTh: 'คำนวณและยื่นภาษีของคุณ ยื่นภาษีอีกสามวัน ปีนี้มีรายได้หลายแหล่ง ทั้งฟรีแลนซ์ เงินปันผล และธุรกิจเสริม มีรายการลดหย่อนหลายอย่างที่ยังไม่ชัดเจน',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'เหลือเวลาอีกเพียง 3 วันในการยื่นภาษีประจำปี ซึ่งปีนี้คุณมีรายได้จากหลายทาง ทั้งงานฟรีแลนซ์ เงินปันผล และธุรกิจส่วนตัว จึงต้องคำนวณและยื่นแบบอย่างถูกต้อง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI can explain rules and organize the numbers before you verify against official sources or an accountant.', feedbackTh: 'ปลอดภัย แต่ AI อธิบายกฎและจัดระเบียบตัวเลขได้ก่อนที่คุณจะตรวจกับแหล่งทางการหรือนักบัญชี' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can explain rules and organize numbers, but it gets figures and current law wrong. Use it to prepare, then verify against official sources or an accountant before filing.', feedbackTh: 'ดีที่สุด AI อธิบายกฎและจัดระเบียบตัวเลขได้ แต่ผิดพลาดเรื่องตัวเลขและกฎหมายปัจจุบัน ใช้มันเตรียมงาน แล้วตรวจกับแหล่งทางการหรือนักบัญชีก่อนยื่น' },
@@ -2722,9 +2726,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Extract data from 200 receipts into a spreadsheet. The accounting team needs all expense data from 200 paper receipts entered into a spreadsheet before month-end. Doing it manually would take a full workday.',
     prompt: 'Who should do the task?',
-    contextTh: 'ดึงข้อมูลจากใบเสร็จ 200 ใบลงสเปรดชีต ทีมบัญชีต้องการข้อมูลค่าใช้จ่ายจากใบเสร็จ 200 ใบลงสเปรดชีตก่อนสิ้นเดือน ถ้าทำมือจะกินเวลาทั้งวัน',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ทีมบัญชีต้องการดึงข้อมูลค่าใช้จ่ายจากใบเสร็จจำนวน 200 ใบลงในตารางสเปรดชีตให้เสร็จสิ้นก่อนสิ้นวัน',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 35, feedback: 'A full workday of manual entry when structured extraction is exactly what AI accelerates.', feedbackTh: 'ป้อนมือทั้งวัน ในขณะที่การดึงข้อมูลที่มีโครงสร้างคือสิ่งที่ AI เร่งได้ดีที่สุด' },
       { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a spot-check of a sample against originals, not parallel entry.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการสุ่มตรวจตัวอย่างเทียบต้นฉบับ ไม่ใช่ป้อนคู่ขนาน' },
@@ -2751,9 +2755,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Set your company\'s five-year strategy. Your leadership team is meeting this week to set direction for the next five years. Markets are shifting. Your team has competing views. The call will shape everything that follows.',
     prompt: 'Who should do the task?',
-    contextTh: 'กำหนดกลยุทธ์ห้าปีของบริษัท ทีมผู้นำประชุมสัปดาห์นี้เพื่อกำหนดทิศทางห้าปีข้างหน้า ตลาดกำลังเปลี่ยน ทีมมีมุมมองที่แตกต่างกัน การตัดสินใจครั้งนี้จะกำหนดทุกสิ่งที่ตามมา',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ทีมผู้บริหารระดับสูงกำลังจะประชุมในสัปดาห์นี้เพื่อกำหนดทิศทางและกลยุทธ์ 5 ปีข้างหน้าของบริษัท ท่ามกลางการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและคู่แข่ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. Strategy depends on context, values, and accountability AI doesn\'t hold. Use it to pressure-test options — but own the call.', feedbackTh: 'ดีที่สุด กลยุทธ์ขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี ใช้มันทดสอบทางเลือกได้ แต่การตัดสินใจต้องเป็นของคุณ' },
       { ...relianceOptions.together, score: 55, feedback: 'Use AI to pressure-test options, but the call itself depends on context, values, and accountability that AI does not hold.', feedbackTh: 'ใช้ AI ทดสอบทางเลือกได้ แต่การตัดสินใจขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี' },
@@ -2780,9 +2784,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write a best-man wedding speech that sounds like you. The wedding is in two weeks, you have real stories, and the page is still blank.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนสุนทรพจน์เพื่อนเจ้าบ่าวที่ฟังเหมือนคุณพูดเอง งานแต่งอีกสองสัปดาห์ คุณมีเรื่องเล่าจริง แต่หน้ากระดาษยังว่าง',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'อีก 2 สัปดาห์จะถึงงานแต่งงานของเพื่อนสนิท คุณมีเรื่องเล่าความทรงจำอยู่แล้ว แต่ยังเริ่มเขียนไม่ออก จึงต้องการเขียนคำอวยพรเพื่อนเจ้าบ่าวให้ฟังดูเป็นตัวคุณเองอย่างแท้จริง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Owning it is right, but three days of blank page suggests AI structure would help you get the real stories flowing.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่หน้ากระดาษว่างสามวันบอกว่าโครงจาก AI จะช่วยให้เรื่องเล่าจริงไหลออกมา' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives you a structure to beat blank-page fear, but the stories and voice must be yours or the room will feel it.', feedbackTh: 'ดีที่สุด AI ช่วยให้โครงเพื่อข้ามความกลัวหน้ากระดาษว่าง แต่เรื่องเล่าและน้ำเสียงต้องเป็นของคุณ ไม่งั้นคนในงานจะรู้สึกได้' },
@@ -2809,9 +2813,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Decide if a loan applicant is creditworthy. Your bank processes 800 loan applications per day. An AI model scores each one. The proposal is to automate approvals without any human reviewing individual decisions.',
     prompt: 'Who should do the task?',
-    contextTh: 'ตัดสินว่าผู้ขอกู้มีเครดิตพอหรือไม่ ธนาคารของคุณรับใบสมัครกู้ 800 ใบต่อวัน โมเดล AI ให้คะแนนแต่ละใบ ข้อเสนอคือให้อนุมัติอัตโนมัติโดยไม่มีมนุษย์ตรวจสอบรายกรณี',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ธนาคารของคุณมีใบสมัครขอสินเชื่อเข้ามา 800 รายการต่อวัน โดยมีโมเดล AI ช่วยประเมินคะแนนเครดิตของแต่ละคน และมีผู้จัดการคอยตรวจทานกรณีที่คะแนนก้ำกึ่ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 55, feedback: 'Human review of 800 applications a day is unrealistic. The answer is scoring plus accountable human oversight, not no model.', feedbackTh: 'ให้คนตรวจ 800 ใบต่อวันไม่สมจริง คำตอบคือให้โมเดลให้คะแนนพร้อมการกำกับดูแลของคนที่รับผิดชอบ ไม่ใช่ไม่มีโมเดล' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. Models can score risk, but unaudited automation has produced illegal discrimination. A human must be accountable and able to explain every decision.', feedbackTh: 'ดีที่สุด โมเดลให้คะแนนความเสี่ยงได้ แต่การปล่อยอัตโนมัติโดยไม่ตรวจสอบเคยก่อให้เกิดการเลือกปฏิบัติที่ผิดกฎหมาย ต้องมีมนุษย์รับผิดชอบและอธิบายทุกการตัดสินใจได้' },
@@ -2838,9 +2842,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Recommend a movie to watch tonight. Sunday evening, you\'re tired, and you want something genuinely good. You\'ve scrolled Netflix for 15 minutes and given up.',
     prompt: 'Who should do the task?',
-    contextTh: 'แนะนำหนังสำหรับดูคืนนี้ เย็นวันอาทิตย์ คุณเหนื่อย ต้องการดูอะไรที่ดีจริง ๆ คุณเลื่อน Netflix มา 15 นาทีและยอมแพ้แล้ว',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ในค่ำวันอาทิตย์ที่คุณเหนื่อยล้าและอยากดูหนังดี ๆ สักเรื่อง แต่ใช้เวลาเลื่อนหาบน Netflix ไปแล้ว 15 นาทีก็ยังเลือกไม่ได้',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'You already spent 15 minutes scrolling. Low-stakes personal taste is a perfect lightweight AI use.', feedbackTh: 'คุณเลื่อนมา 15 นาทีแล้ว รสนิยมส่วนตัวที่เดิมพันต่ำคือการใช้ AI แบบเบา ๆ ที่เหมาะมาก' },
       { ...relianceOptions.together, score: 60, feedback: 'Fine, but there is nothing to verify. Worst case you switch films.', feedbackTh: 'ใช้ได้ แต่ไม่มีอะไรต้องตรวจ แย่สุดก็แค่เปลี่ยนเรื่อง' },
@@ -2867,9 +2871,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write performance reviews for your team. Year-end reviews are due Friday. You manage eight people and have rough notes on each — but the written reviews need to be fair, specific, and defensible.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนประเมินผลงานให้ทีมของคุณ ส่งประเมินผลงานสิ้นปีวันศุกร์ คุณดูแลแปดคนและมีบันทึกคร่าว ๆ ของแต่ละคน แต่การประเมินที่เขียนต้องเป็นธรรม เฉพาะเจาะจง และอ้างอิงได้',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องส่งแบบประเมินผลงานสิ้นปีของทีมในวันศุกร์นี้ โดยคุณดูแลพนักงาน 8 คนและมีเพียงบันทึกย่อคร่าว ๆ ของแต่ละคนตลอดทั้งปี',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can tidy your notes so your time goes to fairness and specifics.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI ช่วยเรียบเรียงบันทึกได้ เพื่อให้เวลาของคุณไปอยู่ที่ความเป็นธรรมและรายละเอียด' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can tidy your notes, but fairness and specifics must come from you. Generic AI praise erodes trust and can encode bias across a team.', feedbackTh: 'ดีที่สุด AI ช่วยเรียบเรียงบันทึกของคุณได้ แต่ความเป็นธรรมและรายละเอียดต้องมาจากคุณ คำชมลอย ๆ ของ AI บั่นทอนความไว้ใจและอาจฝังอคติทั้งทีม' },
@@ -2896,9 +2900,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Negotiate your own salary in the room. Your manager just made an offer. It\'s lower than you expected. You\'re sitting across from them right now — the silence is yours to fill.',
     prompt: 'Who should do the task?',
-    contextTh: 'ต่อรองเงินเดือนของคุณเองในห้องประชุม ผู้จัดการเพิ่งแจ้งตัวเลข ต่ำกว่าที่คุณหวัง ตอนนี้คุณนั่งตรงข้ามกันอยู่ ความเงียบรอให้คุณเติม',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณกำลังนั่งคุยเรื่องผลตอบแทนกับผู้จัดการในห้องประชุม โดยตัวเลขที่ผู้จัดการเพิ่งแจ้งนั้นต่ำกว่าที่คุณคาดหวังไว้ และคุณจำเป็นต้องเจรจาต่อรองทันที',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI can prep your case beforehand, but the live read of the other person is human work. Reliance research calls this knowing when not to delegate.', feedbackTh: 'ดีที่สุด AI ช่วยเตรียมข้อมูลล่วงหน้าได้ แต่การอ่านคู่สนทนาแบบสด ๆ เป็นงานของมนุษย์ งานวิจัยเรื่องการพึ่งพาเรียกสิ่งนี้ว่า \'รู้ว่าเมื่อไรไม่ควรมอบหมาย\'' },
       { ...relianceOptions.together, score: 50, feedback: 'AI can prepare your case beforehand, but in the room the live read of the other person is yours.', feedbackTh: 'AI เตรียมข้อมูลล่วงหน้าได้ แต่ในห้อง การอ่านคู่สนทนาแบบสด ๆ เป็นของคุณ' },
@@ -2925,9 +2929,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Draft a privacy policy for your website. You\'re launching a new app next month that collects user emails, location data, and payment info. Legal says you need a PDPA-compliant privacy policy before launch.',
     prompt: 'Who should do the task?',
-    contextTh: 'ร่างนโยบายความเป็นส่วนตัวให้เว็บไซต์ แอปใหม่จะเปิดตัวเดือนหน้า เก็บอีเมล ข้อมูลตำแหน่ง และข้อมูลการชำระเงิน ทีมกฎหมายบอกต้องมีนโยบายความเป็นส่วนตัวตาม PDPA ก่อนเปิดตัว',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'แอปพลิเคชันใหม่กำลังจะเปิดตัวในเดือนหน้า โดยมีการเก็บข้อมูลอีเมล พิกัดตำแหน่ง และประวัติการชำระเงิน คุณจึงต้องจัดทำร่างนโยบายความเป็นส่วนตัว (Privacy Policy) สำหรับเว็บไซต์',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI gives a solid template. The human work is matching PDPA obligations to what you actually collect.', feedbackTh: 'ปลอดภัย แต่ AI ให้เทมเพลตที่ดี งานของคนคือจับคู่ข้อกำหนด PDPA กับข้อมูลที่คุณเก็บจริง' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives a solid template, but PDPA compliance is specific to what you actually collect. A wrong policy is a legal liability, not a formality.', feedbackTh: 'ดีที่สุด AI ให้เทมเพลตที่ดี แต่การปฏิบัติตาม PDPA ขึ้นกับข้อมูลที่คุณเก็บจริง นโยบายที่ผิดคือความรับผิดทางกฎหมาย ไม่ใช่แค่พิธีการ' },
@@ -2954,9 +2958,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write the public apology after your data breach. Your company confirmed a data breach affecting 50,000 users\' personal records. Media is already asking. You need a public statement out today — accurate, accountable, and human.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนคำขอโทษต่อสาธารณะหลังข้อมูลรั่ว บริษัทยืนยันข้อมูลรั่วกระทบบันทึกส่วนตัวผู้ใช้ 50,000 ราย สื่อเริ่มถามแล้ว ต้องออกแถลงการณ์ต่อสาธารณะวันนี้ ถูกต้อง รับผิดชอบ และรู้สึกได้ว่ามาจากมนุษย์',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'บริษัทยืนยันว่ามีเหตุการณ์ข้อมูลลูกค้ารั่วไหลกระทบผู้ใช้ 50,000 ราย สื่อมวลชนกำลังเริ่มติดต่อเข้ามา และคุณจำเป็นต้องร่างแถลงการณ์ขอโทษต่อสาธารณะ',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can structure the statement fast while you own facts, accountability, and tone.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI จัดโครงแถลงการณ์ได้เร็ว ขณะที่คุณเป็นเจ้าของข้อเท็จจริง ความรับผิดชอบ และน้ำเสียง' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can structure the statement, but accountability, facts, and tone are existential here. A tone-deaf or inaccurate apology deepens the crisis.', feedbackTh: 'ดีที่สุด AI จัดโครงแถลงการณ์ได้ แต่ความรับผิดชอบ ข้อเท็จจริง และน้ำเสียงเป็นเรื่องชีวิตตายที่นี่ คำขอโทษที่ผิดที่ผิดทางหรือคลาดเคลื่อนยิ่งทำให้วิกฤติหนักขึ้น' },
@@ -2983,9 +2987,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Transcribe a one-hour meeting recording for the minutes — names, action items, and the exact wording of key decisions.',
     prompt: 'Who should do the task?',
-    contextTh: 'ถอดเทปการประชุมหนึ่งชั่วโมงสำหรับรายงานการประชุม ทั้งชื่อ รายการที่ต้องทำ และถ้อยคำที่แน่ชัดของการตัดสินใจสำคัญ',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องถอดเทปบันทึกเสียงการประชุมความยาว 1 ชั่วโมงเพื่อจัดทำรายงานการประชุม โดยต้องระบุชื่อผู้รับผิดชอบ รายการสิ่งที่ต้องทำ และข้อความสรุปมติที่ชัดเจน',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 30, feedback: 'Manual transcription of an hour of audio is a poor use of time. Speech-to-text is a mature AI strength.', feedbackTh: 'ถอดเทปเสียงหนึ่งชั่วโมงด้วยมือคือการใช้เวลาที่ไม่คุ้ม การถอดเสียงเป็นข้อความคือจุดแข็งที่สุกงอมของ AI' },
       { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a skim for names and numbers, not parallel transcription.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการกวาดตาดูชื่อและตัวเลข ไม่ใช่ถอดเทปคู่ขนาน' },
@@ -3012,9 +3016,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Judge whether a vendor\'s AI claims are real. A vendor\'s deck says their AI \'reduces procurement time by 60%\'. They want you to sign a 3-year contract. You\'ve seen the slide — but no data, no demo, no independent test.',
     prompt: 'Who should do the task?',
-    contextTh: 'ตัดสินว่าคำกล่าวอ้างเรื่อง AI ของผู้ขายเป็นจริงไหม สไลด์ของผู้ขายบอกว่า AI \'ลดเวลาจัดซื้อ 60%\' พวกเขาต้องการให้คุณเซ็นสัญญา 3 ปี คุณเห็นสไลด์แล้ว แต่ไม่มีข้อมูล ไม่มีการสาธิต ไม่มีการทดสอบอิสระ',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'ผู้ขายระบบ AI นำเสนอสไลด์ที่อ้างว่าระบบสามารถ \'ลดเวลาจัดซื้อลงได้ 60%\' และต้องการให้คุณลงนามในสัญญา คุณต้องตัดสินใจว่าคำกล่าวอ้างนี้เชื่อถือได้จริงหรือไม่',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.', feedbackTh: 'ดีที่สุด นี่คือทักษะระดับเหนือ: การประเมิน AI คือวิจารณญาณของมนุษย์ ขอหลักฐานและการสาธิตสด ๆ อย่าให้ AI ของผู้ขายตรวจการบ้านตัวเอง' },
       { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.', feedbackTh: 'AI ช่วยลิสต์คำถามที่ควรถามได้ แต่การประเมินหลักฐานของผู้ขาย AI คือวิจารณญาณของคน อย่าให้ AI ของเขาตรวจการบ้านตัวเอง' },
@@ -3041,9 +3045,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Generate 10–20 quick logo concepts for your new consultancy to explore directions before briefing a designer.',
     prompt: 'Who should do the task?',
-    contextTh: 'สร้างแนวคิดโลโก้แบบเร็ว 10–20 แบบสำหรับบริษัทที่ปรึกษาใหม่ของคุณ เพื่อสำรวจทิศทางก่อนบรีฟนักออกแบบ',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องการระดมไอเดียออกแบบโลโก้แบบเร็ว ๆ 10–20 แบบสำหรับบริษัทที่ปรึกษาเปิดใหม่ เพื่อสำรวจแนวทางเบื้องต้นก่อนส่งบรีฟให้นักออกแบบกราฟิกตัวจริง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'Slow for fast exploration. Let AI generate directions, then bring a designer to finish.', feedbackTh: 'ช้าสำหรับการสำรวจอย่างรวดเร็ว ให้ AI สร้างทิศทาง แล้วให้ดีไซเนอร์ทำให้เสร็จ' },
       { ...relianceOptions.together, score: 65, feedback: 'Fine, but at this stage the human role is choosing a direction, not co-designing.', feedbackTh: 'ใช้ได้ แต่ในขั้นนี้บทบาทของคนคือเลือกทิศทาง ไม่ใช่ร่วมออกแบบ' },
@@ -3070,9 +3074,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Sign off on the company\'s financial statements. Year-end financial statements are ready. The accountants have done their work. Your name goes on the signature line — and filing is tomorrow.',
     prompt: 'Who should do the task?',
-    contextTh: 'ลงนามรับรองงบการเงินของบริษัท งบการเงินสิ้นปีพร้อมแล้ว นักบัญชีทำงานของพวกเขาแล้ว ชื่อคุณจะปรากฏในบรรทัดลายเซ็น และต้องยื่นพรุ่งนี้',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'งบการเงินสิ้นปีของบริษัทจัดทำเสร็จเรียบร้อยแล้วโดยนักบัญชี และชื่อของคุณจะต้องปรากฏในช่องลงนามรับรองเพื่อยื่นต่อหน่วยงานกำกับดูแล',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. A signature is legal accountability that cannot be delegated to software. AI may help prepare; only a responsible human can attest.', feedbackTh: 'ดีที่สุด ลายเซ็นคือความรับผิดทางกฎหมายที่มอบให้ซอฟต์แวร์ไม่ได้ AI ช่วยเตรียมได้ แต่มีเพียงมนุษย์ผู้รับผิดชอบเท่านั้นที่รับรองได้' },
       { ...relianceOptions.together, score: 45, feedback: 'AI may help prepare and check, but attestation is legal accountability that cannot be shared with software.', feedbackTh: 'AI ช่วยเตรียมและตรวจได้ แต่การรับรองคือความรับผิดทางกฎหมายที่แบ่งให้ซอฟต์แวร์ไม่ได้' },
@@ -3099,9 +3103,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Write the first draft of a blog post. You need a 600-word explainer on AI risk for a non-technical audience by end of day. You know the subject well — but you\'ve been staring at the blank page for an hour.',
     prompt: 'Who should do the task?',
-    contextTh: 'เขียนร่างแรกของบทความบล็อก ต้องการบทความ 600 คำอธิบายความเสี่ยง AI สำหรับผู้อ่านที่ไม่ใช่นักเทคนิคภายในวันนี้ คุณรู้เรื่องดี แต่จ้องหน้ากระดาษว่างมาหนึ่งชั่วโมงแล้ว',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'คุณต้องการร่างแรกของบทความบล็อกความยาว 600 คำ เพื่ออธิบายความเสี่ยงของ AI ให้ผู้อ่านทั่วไปเข้าใจได้ง่ายภายในวันนี้ โดยคุณมีความรู้ในหัวข้อนี้เป็นอย่างดีอยู่แล้ว',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 55, feedback: 'You know the subject, but an hour of blank page says AI can beat it. Your edit is what makes it publishable.', feedbackTh: 'คุณรู้เรื่องดี แต่หน้ากระดาษว่างหนึ่งชั่วโมงบอกว่า AI ช่วยข้ามได้ การแก้ของคุณคือสิ่งที่ทำให้มันเผยแพร่ได้' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI beats the blank page, but a draft is not a decision. Your edit — the facts, the angle, the voice — is what makes it worth publishing.', feedbackTh: 'ดีที่สุด AI ช่วยข้ามหน้ากระดาษว่าง แต่ร่างไม่ใช่การตัดสินใจ การแก้ของคุณ — ข้อเท็จจริง มุมมอง น้ำเสียง — คือสิ่งที่ทำให้มันคู่ควรกับการเผยแพร่' },
@@ -3128,9 +3132,9 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Confirm whether a breaking news claim is true. A viral post says a major tech company just collapsed. Your colleagues are already reacting. It happened in the last hour — before any major outlets have confirmed.',
     prompt: 'Who should do the task?',
-    contextTh: 'ยืนยันว่าข่าวด่วนเป็นความจริงหรือไม่ โพสต์ที่แชร์กันมาก อ้างว่าบริษัทเทคโนโลยีรายใหญ่เพิ่งล้ม เพื่อนร่วมงานเริ่มตอบสนองแล้ว เกิดขึ้นในชั่วโมงที่ผ่านมา ก่อนที่สื่อหลักจะยืนยัน',
-    promptTh: 'งานนี้ใครควรทำ?',
-    translationStatus: 'draft',
+    contextTh: 'มีโพสต์ไวรัลที่แชร์กันอย่างรวดเร็วอ้างว่าบริษัทยักษ์ใหญ่ด้านเทคโนโลยีเพิ่งปิดตัวกะทันหัน และเพื่อนร่วมงานเริ่มตื่นตระหนก คุณต้องตรวจสอบว่าข่าวด่วนนี้เป็นความจริงหรือไม่',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI may not know recent events and will state guesses confidently. Check primary sources yourself before you share or act.', feedbackTh: 'ดีที่สุด AI อาจไม่รู้เหตุการณ์ล่าสุดและจะพูดการเดาอย่างมั่นใจ ตรวจแหล่งข้อมูลปฐมภูมิเองก่อนแชร์หรือลงมือ' },
       { ...relianceOptions.together, score: 50, feedback: 'AI may not know last-hour events and will guess confidently. It can suggest what to check, but you must open primary sources.', feedbackTh: 'AI อาจไม่รู้เหตุการณ์ในชั่วโมงที่ผ่านมาและจะเดาอย่างมั่นใจ มันแนะนำสิ่งที่ควรตรวจได้ แต่คุณต้องเปิดแหล่งปฐมภูมิเอง' },
@@ -10613,7 +10617,11 @@ function scoreTextAnswer(question: Question, response: string) {
   const normalized = response.toLowerCase();
   const criteria = question.rubricCriteria ?? [];
   if (!normalized.trim()) return { score: 0, hits: [] as RubricCriterion[] };
-  const hits = criteria.filter((criterion) => criterion.keywords.some((keyword) => normalized.includes(keyword)));
+  const translated = questionTranslationsTh[question.id]?.rubricCriteria;
+  const hits = criteria.filter((criterion) => {
+    const keywords = [...criterion.keywords, ...(criterion.keywordsTh ?? []), ...(translated?.[criterion.id]?.keywords ?? [])];
+    return keywords.some((keyword) => keyword && normalized.includes(keyword.toLowerCase()));
+  });
   const evidencePoints = hits.reduce((sum, criterion) => sum + criterion.points, 0);
   const score = hits.length ? Math.min(98, evidencePoints) : 0;
   return { score, hits };
@@ -10831,44 +10839,69 @@ const hiddenArtifactQuestionIds = new Set([
   'MULTI-CONCEPT-EXEC-001',
 ]);
 
-function localizeOption(option: Option, language: AppLanguage): Option {
-  if (language !== 'th') return option;
-  return {
-    ...option,
-    label: option.labelTh ?? option.label,
-    feedback: option.feedbackTh ?? option.feedback,
-  };
-}
-
 /**
  * Returns the question as it should be shown in the active language.
- * Only questions that carry a translationStatus are localized, so a partially
- * translated bank never mixes Thai buttons with an English scenario.
- * Ids, scores, keys, and telemetry stay language-independent.
+ * Thai comes from two places: optional `*Th` fields written beside the English on the item, and the
+ * id-keyed table in app/questionTranslations.th.ts (generated from the reviewed workbook; it wins).
+ * Only questions with a translation status are localized, so a partially translated bank never
+ * mixes Thai buttons with an English scenario. Ids, scores, keys, and telemetry stay language-independent.
  */
+function getTranslationStatus(question: Question): TranslationStatus | undefined {
+  return questionTranslationsTh[question.id]?.status ?? question.translationStatus;
+}
+
 function localizeQuestion(question: Question, language: AppLanguage): Question {
-  if (language !== 'th' || !question.translationStatus) return question;
+  if (language !== 'th' || !getTranslationStatus(question)) return question;
+  const t = questionTranslationsTh[question.id];
+  const pick = (...values: Array<string | undefined>) => values.find((value) => value !== undefined && value !== '');
   return {
     ...question,
-    context: question.contextTh ?? question.context,
-    prompt: question.promptTh ?? question.prompt,
-    options: question.options.map((option) => localizeOption(option, language)),
-    rankItems: question.rankItems?.map((item) => ({ ...item, label: item.labelTh ?? item.label })),
+    context: pick(t?.context, question.contextTh) ?? question.context,
+    prompt: pick(t?.prompt, question.promptTh) ?? question.prompt,
+    options: question.options.map((option) => ({
+      ...option,
+      label: pick(t?.options?.[option.id]?.label, option.labelTh) ?? option.label,
+      feedback: pick(t?.options?.[option.id]?.feedback, option.feedbackTh) ?? option.feedback,
+    })),
+    rankItems: question.rankItems?.map((item) => ({ ...item, label: pick(t?.rankItems?.[item.id], item.labelTh) ?? item.label })),
+    rankRationale: pick(t?.rankRationale, question.rankRationaleTh) ?? question.rankRationale,
+    matchPairs: question.matchPairs?.map((pair) => {
+      const tp = t?.matchPairs?.[pair.id];
+      const choices = tp?.choices ?? pair.choicesTh;
+      const correct = tp?.correct ?? pair.correctTh;
+      // Only switch a pair to Thai when every choice and the key are translated, so selection strings stay consistent.
+      if (!choices || choices.length !== pair.choices.length || !correct || !choices.includes(correct)) return pair;
+      return { ...pair, left: pick(tp?.left, pair.leftTh) ?? pair.left, choices, correct };
+    }),
+    parts: question.parts?.map((part) => ({
+      ...part,
+      prompt: pick(t?.parts?.[part.id]?.prompt, part.promptTh) ?? part.prompt,
+      options: part.options.map((option) => ({
+        ...option,
+        label: pick(t?.parts?.[part.id]?.options?.[option.id]?.label, option.labelTh) ?? option.label,
+        feedback: pick(t?.parts?.[part.id]?.options?.[option.id]?.feedback, option.feedbackTh) ?? option.feedback,
+      })),
+    })),
+    rubricCriteria: question.rubricCriteria?.map((criterion) => ({
+      ...criterion,
+      label: pick(t?.rubricCriteria?.[criterion.id]?.label, criterion.labelTh) ?? criterion.label,
+    })),
+    exemplarAnswer: pick(t?.exemplarAnswer, question.exemplarAnswerTh) ?? question.exemplarAnswer,
     stimulus: question.stimulus
       ? {
           ...question.stimulus,
-          alt: question.stimulus.altTh ?? question.stimulus.alt,
-          label: question.stimulus.labelTh ?? question.stimulus.label,
-          caption: question.stimulus.captionTh ?? question.stimulus.caption,
+          alt: pick(t?.stimulus?.alt, question.stimulus.altTh) ?? question.stimulus.alt,
+          label: pick(t?.stimulus?.label, question.stimulus.labelTh) ?? question.stimulus.label,
+          caption: pick(t?.stimulus?.caption, question.stimulus.captionTh) ?? question.stimulus.caption,
         }
       : undefined,
     visualStimulus: question.visualStimulus
       ? {
           ...question.visualStimulus,
-          title: question.visualStimulus.titleTh ?? question.visualStimulus.title,
-          eyebrow: question.visualStimulus.eyebrowTh ?? question.visualStimulus.eyebrow,
-          caption: question.visualStimulus.captionTh ?? question.visualStimulus.caption,
-          points: question.visualStimulus.pointsTh ?? question.visualStimulus.points,
+          title: pick(t?.visualStimulus?.title, question.visualStimulus.titleTh) ?? question.visualStimulus.title,
+          eyebrow: pick(t?.visualStimulus?.eyebrow, question.visualStimulus.eyebrowTh) ?? question.visualStimulus.eyebrow,
+          caption: pick(t?.visualStimulus?.caption, question.visualStimulus.captionTh) ?? question.visualStimulus.caption,
+          points: t?.visualStimulus?.points ?? question.visualStimulus.pointsTh ?? question.visualStimulus.points,
         }
       : undefined,
   };
@@ -11771,36 +11804,43 @@ export default function Home() {
     [results.domainScores],
   );
   const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage), [current, appLanguage]);
+  // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
+  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(appLanguage);
+  if (matchSelectionsLanguage !== appLanguage) {
+    setMatchSelectionsLanguage(appLanguage);
+    if (Object.keys(matchSelections).length) setMatchSelections({});
+  }
   const displayedOptions = useMemo(
     () => shuffledBySeed(shownQuestion.options, assessmentSeed, `${current.id}:options`, (option) => option.id),
     [assessmentSeed, current.id, shownQuestion],
   );
   const currentDisplayStimulus = getDisplayStimulus(shownQuestion);
   const displayedMatchPairs = useMemo(
-    () => shuffledBySeed(current.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
-    [assessmentSeed, current],
+    () => shuffledBySeed(shownQuestion.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedMatchChoices = useMemo(
     () => Object.fromEntries(
-      (current.matchPairs ?? []).map((pair) => [
+      (shownQuestion.matchPairs ?? []).map((pair, pairIndex) => [
         pair.id,
-        shuffledBySeed(pair.choices, assessmentSeed, `${current.id}:${pair.id}:choices`, (choice) => choice),
+        // Shuffle by position (not by translated string) so EN and TH show the same order.
+        shuffledBySeed(pair.choices.map((choice, index) => ({ choice, index })), assessmentSeed, `${current.id}:${pair.id}:choices`, (entry) => String(entry.index + pairIndex * 100)).map((entry) => entry.choice),
       ]),
     ) as Record<string, string[]>,
-    [assessmentSeed, current],
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedParts = useMemo(
-    () => shuffledBySeed(current.parts ?? [], assessmentSeed, `${current.id}:parts`, (part) => part.id),
-    [assessmentSeed, current],
+    () => shuffledBySeed(shownQuestion.parts ?? [], assessmentSeed, `${current.id}:parts`, (part) => part.id),
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedPartOptions = useMemo(
     () => Object.fromEntries(
-      (current.parts ?? []).map((part) => [
+      (shownQuestion.parts ?? []).map((part) => [
         part.id,
         shuffledBySeed(part.options, assessmentSeed, `${current.id}:${part.id}:options`, (option) => option.id),
       ]),
     ) as Record<string, Option[]>,
-    [assessmentSeed, current],
+    [assessmentSeed, current.id, shownQuestion],
   );
   const activeSurveyQuestions = useMemo(
     () => getSurveyQuestionsForProfile(surveyMode, audience, functionTrack, executiveRole),
@@ -12425,17 +12465,18 @@ export default function Home() {
     const verdict = score >= 90
       ? 'Strong sequencing judgment.'
       : `Partial signal: ${exactPositions} of ${ideal.length} steps were in the right position. The order matters, not only the ingredients.`;
-    const rationale = current.rankRationale ? ` Why this order: ${current.rankRationale}` : '';
+    const rationale = shownQuestion.rankRationale ? ` Why this order: ${shownQuestion.rankRationale}` : '';
     submitAnswer({
       id: rankOrder.join('>'),
       label: 'Submitted ordered sequence',
       score,
-      feedback: `${verdict} Best order: ${getCorrectAnswerSummary(current)}.${rationale}`,
+      feedback: `${verdict} Best order: ${getCorrectAnswerSummary(shownQuestion)}.${rationale}`,
     });
   }
 
   function submitMatches() {
-    const score = scoreMatches(current, matchSelections);
+    // Selections hold the strings that were shown, so score against the localized pairs.
+    const score = scoreMatches(shownQuestion, matchSelections);
     submitAnswer({
       id: Object.values(matchSelections).join('|') || 'unmatched',
       label: 'Submitted matching response',
@@ -14289,7 +14330,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span>Expected answer</span>
-                  <p>{getCorrectAnswerSummary(lastAnswer.question)}</p>
+                  <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage))}</p>
                 </div>
               </div>
               <div className="rubric-panel">

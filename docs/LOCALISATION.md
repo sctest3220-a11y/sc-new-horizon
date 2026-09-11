@@ -2,7 +2,10 @@
 
 ## Model
 
-English is the source of truth for every question. Thai is stored beside it on the same item, never in a separate dictionary, so an edit to the English text is visible next to the Thai that must follow it.
+English is the source of truth for every question. Thai lives in two places, both keyed by the question's id (never by matching the English string):
+
+1. Optional `*Th` fields written beside the English on the item in `app/page.tsx` (used for the 26 Horizon items).
+2. `app/questionTranslations.th.ts` — a generated, id-keyed table produced from the reviewed workbook. This is the main store; it wins over inline fields when both exist. Do not hand-edit it; regenerate it from the review workbook.
 
 Optional fields (all in `app/page.tsx`):
 
@@ -13,10 +16,14 @@ Optional fields (all in `app/page.tsx`):
 | `Question.stimulus` | `altTh`, `labelTh`, `captionTh` |
 | `VisualStimulus` | `titleTh`, `eyebrowTh`, `captionTh`, `pointsTh` |
 | `RankItem` | `labelTh` |
+| `MatchPair` | `leftTh`, `correctTh`, `choicesTh` (a pair switches to Thai only when all choices and the key are translated) |
+| `QuestionPart` | `promptTh`; part options use `labelTh`/`feedbackTh` |
+| `RubricCriterion` | `labelTh`, `keywordsTh` — free-text scoring matches English **and** Thai keywords |
+| `Question` | `rankRationaleTh`, `exemplarAnswerTh` |
 
 Rendering: `localizeQuestion(question, appLanguage)` returns the question as it should be shown. It only localises items that carry a `translationStatus`, so a half-translated bank never shows Thai buttons under an English scenario. Every field falls back to English when the Thai field is missing. Option ids, scores, keys, competencies, and telemetry are language-independent; the report re-localises stored answers with `localizeAnswerOption`, so switching language after answering updates the feedback shown.
 
-Not yet localisable (follow-up): `matchPairs` (choices double as keys), `QuestionPart` prompts and options, rubric criteria and exemplar answers for text items, and the market-trend / advanced templates (translate the frames, not the generated items).
+Matching: selections store the choice string that was shown, so matches are scored against the localised pairs and selections reset if the language is switched mid-question. Not yet localisable: the market-trend / advanced templates (translate the frames in `marketTrendFrames` / the advanced generator, not the 300+ generated items).
 
 The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add question text to it.
 
@@ -36,9 +43,9 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 ## Current coverage
 
-- 26 Horizon reliance items (`REL-H-*`): `draft`. Task, scenario, and best-answer rationale come from the Horizon deck's own Thai; option labels, partial-credit feedback, and visual-card points were drafted here and need native review.
-- Shared reliance option labels (`relianceOptions.*.labelTh`) apply to any reliance item once it carries a `translationStatus`.
-- Everything else: English only. Reviewers marked 163 items Thai priority High in the round-1 audit; that is the next batch.
+- Batch 1 (2026-09-11): 163 items `reviewed` — the Thai-priority-High set from audit round 1. 137 in `questionTranslations.th.ts`, 26 Horizon items inline. Reviewer edited 39 scenarios and 32 prompts; choices, rubric keywords, glossary and artifact tags were confirmed as drafted. Source workbook: `exports/New_Horizon_Thai_Review_Batch1_Completed.xlsx`; glossary: `exports/glossary_th.json`.
+- Shared reliance option labels (`relianceOptions.*.labelTh`) apply to any reliance item that has a translation status.
+- Remaining: 497 items English only (89 marked Thai priority Medium are batch 2). Artifacts: 16 tagged "Thai needed", 9 "Both" — Thai image versions not yet produced.
 
 ## Workflow for a translation batch
 

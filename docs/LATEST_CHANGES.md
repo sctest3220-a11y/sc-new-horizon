@@ -1,5 +1,16 @@
 # Latest Changes
 
+## 2026-09-11: Thai Localisation Batch 1 Applied (163 Items Reviewed)
+
+Native review of `exports/New_Horizon_Thai_Review_Batch1.xlsx` came back with all 163 Thai-priority-High items approved after in-cell edits (39 scenarios and 32 prompts reworded; meaning, naturalness, terminology, UI fit and cultural fit all confirmed; every answer key judged still unambiguous in Thai). Applied as `translationStatus: 'reviewed'`.
+
+- New generated module `app/questionTranslations.th.ts` (137 items) holds Thai for scenario, prompt, options and feedback, rank steps and rationale, matching pairs, multi-part items, rubric labels and Thai keywords, exemplar answers, and artifact/visual-card text. `localizeQuestion()` merges it over any inline `*Th` fields; the table wins.
+- The 26 Horizon items keep their inline Thai, now with the reviewer's corrected scenario and prompt.
+- Localisation now covers matching (scored against the pairs as shown; selections reset on language switch), multi-part items, rank rationale, and free-text items: `scoreTextAnswer` matches English and Thai keywords, so Thai written answers score.
+- Glossary (`exports/glossary_th.json`, 65 terms) and artifact language tags (16 Thai needed / 9 Both / 16 Keep English) confirmed as proposed.
+
+Verified: lint clean, production build passes, VM tests for every interaction type (ids/scores identical across languages; Thai free-text answer scores 98; matching key present in translated choices), headless walkthrough in Thai renders a translated item in Thai and an untranslated item in English with no runtime errors. 18 pre-existing TypeScript errors unchanged.
+
 ## 2026-09-10: Per-Question Thai Localisation Model
 
 The question bank can now carry Thai text on each item instead of relying on the interface-string dictionary. New optional fields: `contextTh`, `promptTh`, `translationStatus` on `Question`; `labelTh`, `feedbackTh` on `Option`; Thai variants for artifact alt/label/caption, visual-card title/eyebrow/caption/points, and rank-item labels. `localizeQuestion()` overlays them at render time with English fallback and only for items that have a `translationStatus`, so partially translated content never mixes languages within one question. Ids, scores, keys, and telemetry are unchanged; the feedback panel re-localises the stored answer when the language toggle changes.
