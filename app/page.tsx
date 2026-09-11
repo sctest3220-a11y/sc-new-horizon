@@ -3109,7 +3109,7 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Decide if a loan applicant is creditworthy. Your bank processes 800 loan applications per day. An AI model scores each one. The proposal is to automate approvals without any human reviewing individual decisions.',
     prompt: 'Who should do the task?',
-    contextTh: 'ธนาคารของคุณมีใบสมัครขอสินเชื่อเข้ามา 800 รายการต่อวัน โดยมีโมเดล AI ช่วยประเมินคะแนนเครดิตของแต่ละคน และมีผู้จัดการคอยตรวจทานกรณีที่คะแนนก้ำกึ่ง',
+    contextTh: 'คุณต้องตัดสินใจอนุมัติสินเชื่อ ธนาคารของคุณมีใบสมัคร 800 รายการต่อวัน ซึ่งมีโมเดล AI ช่วยประเมินคะแนนเครดิต โดยมีข้อเสนอให้เปลี่ยนไปใช้ระบบอนุมัติอัตโนมัติทั้งหมดโดยไม่มีมนุษย์คอยตรวจทานรายกรณี',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
     translationStatus: 'reviewed',
     options: [

@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-12: Thai Spot Check Round 1 Applied; Round 2 Sample Issued
+
+The second-reviewer spot check of Thai batch 1 returned 13 Approve / 7 Fix with no ambiguous keys, so batch 1 stays `reviewed`. The reviewer found a systematic find-and-replace defect ("copilot" rendered as "coโครงการนำร่อง (Pilot)") and several register issues (pronoun มัน opening formal options, เรียกร้อง in executive prompts, literal ลูป, สัญญาณอันตราย). All were fixed across the full 163-item batch, not only the sampled items — 22 items changed, zero remaining hits on every pattern. Per-item detail in `docs/THAI_SPOTCHECK_ROUND1_RESPONSE.md`. A fresh, non-overlapping 20-item round-2 sample is in `exports/New_Horizon_Thai_Batch1_SpotCheck_Round2.xlsx`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged, 163 items reviewed.
+
 ## 2026-09-11: Thai Versions of Message-Type Artifacts
 
 Nine artifacts that a Thai user must read as messages to judge realistically now have Thai versions: delivery-scam SMS thread, forwarded flood chat, station flood social post, executive impersonation post, fraudulent supplier invoice, phishing re-authentication page, client scheduling email, fake marketplace listing, and vendor data-rights memo. SVGs had their text nodes replaced (Noto Sans Thai embedded as a data URI so rendering does not depend on device fonts); PNG screenshots had only their text regions repainted, leaving photos, layout and every fraud or verification cue unchanged (mismatched domain, changed bank account, missing PO, countdown pressure, unverified source, missing agenda and timezone). Amounts are in baht.
