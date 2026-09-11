@@ -14317,7 +14317,7 @@ export default function Home() {
                 </div>
               </details>
             </article>
-            <article className="result-card wide did-you-know-report report-primary report-order-dyk">
+            <article className="result-card wide did-you-know-report analysis-primary">
               <div>
                 <p className="eyebrow">Did you know?</p>
                 <h2>{personalizedDidYouKnow.topic}</h2>
@@ -14407,7 +14407,7 @@ export default function Home() {
                 </div>
               </article>
             )}
-            <article className="result-card wide leaderboard-card report-primary report-order-leaderboard">
+            <article className="result-card wide leaderboard-card analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Persona leaderboard</p>
@@ -14696,7 +14696,7 @@ export default function Home() {
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card wide report-primary report-order-evidence-mode">
+            <article className="result-card wide analysis-primary">
               <h2>Knowledge vs practical skill</h2>
               <div className="evidence-mode-grid">
                 {evidenceModeSummary.map((item) => (
@@ -14708,7 +14708,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide report-primary report-order-badges">
+            <article className="result-card wide analysis-primary">
               <h2>Readiness badges</h2>
               <div className="badge-grid">
                 {earnedBadges.map((badge) => (
@@ -14831,7 +14831,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide report-primary report-order-improve">
+            <article className="result-card wide analysis-primary">
               <h2>Where to improve next</h2>
               <div className="improvement-brief">
                 {improvementBrief.map((item) => (

@@ -1,5 +1,9 @@
 # Latest Changes
 
+## 2026-09-11: Report Simplification
+
+The assessment report Summary tab is reorganized around the user’s immediate questions: score meaning, whether to continue, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary material such as Did you know, leaderboard, score calculation, telemetry, evidence-mode split, badges, profile signals, and improvement math now sits in Question review/analysis to reduce clutter.
+
 ## 2026-09-11: Score Calibration And Learning Path Visibility
 
 Overall scoring now applies an answer-quality evidence factor after the D1-D6 domain average. This prevents a mostly incorrect run from looking stronger than the answer evidence supports while still preserving partial credit for genuinely partial answers. The report score calculation now shows the domain average, raw answer-quality average, applied factor, and final score.

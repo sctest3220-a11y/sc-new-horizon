@@ -50,6 +50,8 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 
+Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
+
 Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
 
 Latest UX priority update: the landing page is simplified around Free Assessment, Premium Diagnostic, peer comparison, and concise guide cards. Heavier explanatory content now sits behind an expandable `Explore more` panel. Leaderboards use anonymous labels by default. Premium now includes role, function, and industry context instead of exposing a separate executive assessment tier. Question-level feedback resets at the start of each assessment and disables browser autocomplete on the comment input to prevent stale notes from prior users. Artifact cards now show an `Inspect for` cue so users know why the document/image matters before spending time on it.
