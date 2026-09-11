@@ -10937,7 +10937,7 @@ export default function Home() {
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
   const [partSelections, setPartSelections] = useState<Record<string, string>>({});
   const [textResponse, setTextResponse] = useState('');
-  const [questionFeedbackComment, setQuestionFeedbackComment] = useState('');
+  const [questionFeedbackComments, setQuestionFeedbackComments] = useState<Record<string, string>>({});
   const [questionFeedbackDraft, setQuestionFeedbackDraft] = useState<Record<string, 'like' | 'unclear' | 'clear' | null>>({});
   const [questionFeedbackSubmitted, setQuestionFeedbackSubmitted] = useState<Record<string, 'like' | 'unclear' | 'comment'>>({});
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
@@ -11293,7 +11293,7 @@ export default function Home() {
   }
 
   function submitQuestionFeedback(question = current) {
-    const comment = questionFeedbackComment.trim();
+    const comment = (questionFeedbackComments[question.id] ?? '').trim();
     const selectedKind = questionFeedbackDraft[question.id];
     const kind = selectedKind ?? (comment ? 'comment' : null);
     if (!kind) return;
@@ -11320,14 +11320,15 @@ export default function Home() {
       return next;
     });
     setQuestionFeedbackDraft((existing) => ({ ...existing, [question.id]: null }));
-    setQuestionFeedbackComment('');
+    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
   }
 
   function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
     const draftKind = questionFeedbackDraft[question.id] ?? null;
     const savedKind = questionFeedbackSubmitted[question.id];
     const activeKind = draftKind === 'clear' ? null : draftKind ?? savedKind ?? null;
-    const hasDraftChange = draftKind !== null || Boolean(questionFeedbackComment.trim());
+    const questionComment = questionFeedbackComments[question.id] ?? '';
+    const hasDraftChange = draftKind !== null || Boolean(questionComment.trim());
     return (
       <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
         <div>
@@ -11355,8 +11356,8 @@ export default function Home() {
         <label>
           <span>Optional note</span>
           <input
-            value={questionFeedbackComment}
-            onChange={(event) => setQuestionFeedbackComment(event.target.value)}
+            value={questionComment}
+            onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: event.target.value }))}
             placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
           />
         </label>
@@ -11366,7 +11367,7 @@ export default function Home() {
           disabled={!hasDraftChange}
           onClick={() => submitQuestionFeedback(question)}
         >
-          {draftKind === 'clear' && !questionFeedbackComment.trim() ? 'Clear' : 'Save'}
+          {draftKind === 'clear' && !questionComment.trim() ? 'Clear' : 'Save'}
         </button>
       </div>
     );
@@ -11685,7 +11686,7 @@ export default function Home() {
     setMatchSelections({});
     setPartSelections({});
     setTextResponse('');
-    setQuestionFeedbackComment('');
+    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
     setDraggedIndex(null);
     questionStartedAtRef.current = new Date().getTime();
     questionStartedIsoRef.current = new Date().toISOString();
