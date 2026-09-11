@@ -749,6 +749,46 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.home-menu-tabs {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 clamp(20px, 5vw, 72px) 24px;
+}
+
+.home-menu-tabs a {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  display: grid;
+  gap: 8px;
+  min-height: 122px;
+  padding: 18px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-menu-tabs a:hover,
+.home-menu-tabs a:focus-visible {
+  border-color: rgba(34, 108, 111, 0.46);
+  box-shadow: 0 14px 38px rgba(23, 32, 29, 0.09);
+  transform: translateY(-2px);
+}
+
+.home-menu-tabs span {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.home-menu-tabs p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .activity-grid {
   display: grid;
   gap: 14px;
@@ -1073,6 +1113,127 @@ h3 {
 
 .band {
   background: rgba(236, 232, 220, 0.55);
+}
+
+.scoring-model-section,
+.global-framework-section {
+  scroll-margin-top: 92px;
+}
+
+.score-model-grid,
+.framework-crosswalk-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.score-model-card {
+  min-height: 170px;
+}
+
+.difficulty-band-table {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 18px;
+  overflow: hidden;
+}
+
+.difficulty-band-table > div {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  padding: 13px 16px;
+}
+
+.difficulty-band-table > div:first-child {
+  background: #17201d;
+  color: #ffffff;
+}
+
+.difficulty-band-table > div + div {
+  border-top: 1px solid var(--line);
+}
+
+.framework-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  border-top: 5px solid #226c6f;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.framework-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.framework-card h3,
+.framework-card p {
+  margin: 0;
+}
+
+.framework-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.framework-source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.framework-source-list a {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 9px 12px;
+  text-decoration: none;
+}
+
+.home-more-panel {
+  border-top: 1px solid var(--line);
+}
+
+.home-more-panel > summary {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr;
+  list-style: none;
+  padding: 22px clamp(20px, 5vw, 72px);
+}
+
+.home-more-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-more-panel > summary span {
+  background: #17201d;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+.home-more-panel > summary strong {
+  color: var(--ink);
+  font-size: clamp(18px, 2vw, 24px);
 }
 
 .dashboard-shell {
@@ -3181,6 +3342,19 @@ h3 {
   text-transform: uppercase;
 }
 
+.stimulus-purpose {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 5px 0 0;
+  max-width: 720px;
+}
+
+.stimulus-purpose span {
+  color: #fff;
+  font-weight: 800;
+}
+
 .stimulus-media {
   align-items: start;
   appearance: none;
@@ -4311,55 +4485,39 @@ h3 {
 }
 
 .report-order-generated {
-  order: 4;
+  order: 3;
 }
 
 .report-order-strengths {
-  order: 5;
+  order: 4;
 }
 
 .report-order-gaps {
-  order: 6;
+  order: 5;
 }
 
 .report-order-domain {
-  order: 7;
+  order: 6;
 }
 
 .report-order-competencies {
-  order: 8;
+  order: 7;
 }
 
 .report-order-learning {
-  order: 9;
+  order: 8;
 }
 
 .report-order-courses {
+  order: 9;
+}
+
+.report-order-bootcamps {
   order: 10;
 }
 
-.report-order-improve {
-  order: 11;
-}
-
-.report-order-badges {
-  order: 12;
-}
-
-.report-order-evidence-mode {
-  order: 13;
-}
-
-.report-order-leaderboard {
-  order: 14;
-}
-
-.report-order-dyk {
-  order: 15;
-}
-
 .report-order-survey {
-  order: 3;
+  order: 11;
 }
 
 .result-card {
@@ -4408,6 +4566,88 @@ h3 {
 .learning-list strong {
   display: block;
   margin-bottom: 6px;
+}
+
+.bootcamp-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.bootcamp-list details {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.bootcamp-list summary {
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(140px, 0.5fr) minmax(0, 1fr) auto;
+}
+
+.bootcamp-list summary span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.bootcamp-list summary strong {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.bootcamp-list summary b {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 7px 10px;
+  white-space: nowrap;
+}
+
+.bootcamp-detail-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.bootcamp-detail-grid > p,
+.bootcamp-detail-grid > div {
+  background: var(--panel-soft);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 12px;
+}
+
+.bootcamp-detail-grid > p:last-child {
+  grid-column: 1 / -1;
+}
+
+.bootcamp-detail-grid strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.bootcamp-detail-grid ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.bootcamp-detail-grid li + li {
+  margin-top: 4px;
 }
 
 .evidence-mode-grid {
@@ -5654,6 +5894,7 @@ h3 {
   }
 
   .stats,
+  .home-menu-tabs,
   .assessment-snapshot,
   .admin-kpi-grid,
   .demo-domain-grid,
@@ -5687,6 +5928,8 @@ h3 {
   .reliance-options,
   .feedback-grid,
   .criterion-list,
+  .score-model-grid,
+  .framework-crosswalk-grid,
   .room-grid {
     grid-template-columns: 1fr;
   }
@@ -5697,6 +5940,9 @@ h3 {
   .period-toggle,
   .profile-pulse-actions,
   .question-feedback-strip,
+  .difficulty-band-table > div,
+  .bootcamp-list summary,
+  .bootcamp-detail-grid,
   .quality-review-row,
   .leaderboard-list > div,
   .question-analysis-list summary {

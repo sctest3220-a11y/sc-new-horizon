@@ -352,6 +352,19 @@ type LearningRecommendation = {
   price: string;
   fit: string;
 };
+type BootcampRecommendation = {
+  id: string;
+  title: string;
+  duration: string;
+  level: 'Fundamental' | 'Intermediate' | 'Advanced' | 'Executive' | 'Role-based' | 'Governance';
+  domains: DomainId[];
+  roles: string[];
+  forWho: string;
+  whyTakeIt: string;
+  expectedOutputs: string[];
+  labs: string[];
+  mappedFrameworks: string[];
+};
 type PersonalizedExplorationPlan = {
   tools: string[];
   concepts: string[];
@@ -505,12 +518,70 @@ const domains: Record<DomainId, { name: string; short: string; color: string }> 
   D6: { name: 'Human-AI Collaboration', short: 'Collaboration', color: '#3b6ea8' },
 };
 
+const globalFrameworkCrosswalk = [
+  {
+    domain: 'D1' as DomainId,
+    mapsTo: 'UNESCO AI competency frameworks, OECD/EC AI Literacy Framework, DigComp 2.2, Long & Magerko AI literacy',
+    emphasis: 'AI vocabulary, model behavior, GenAI mechanics, capabilities, limitations, data, and system concepts.',
+    improveNext: 'Add more lifecycle questions about how systems are designed, monitored, and retired.',
+  },
+  {
+    domain: 'D2' as DomainId,
+    mapsTo: 'OECD/EC AI Literacy Framework, DigComp problem solving/content creation, DEC AI Literacy/Readiness, IBM AI skills',
+    emphasis: 'Practical tool use, prompt design, workflow integration, output refinement, and job-relevant application.',
+    improveNext: 'Separate nontechnical tool fluency from technical build/integration pathways more explicitly.',
+  },
+  {
+    domain: 'D3' as DomainId,
+    mapsTo: 'DigComp information/data evaluation, OECD critical evaluation, UNESCO ethics/safe use, Long & Magerko critical interpretation',
+    emphasis: 'Source checking, media provenance, chart judgment, benchmark skepticism, fraud detection, and evidence review.',
+    improveNext: 'Increase realistic artifacts where the correct decision depends on inspecting source quality and provenance.',
+  },
+  {
+    domain: 'D4' as DomainId,
+    mapsTo: 'NIST AI RMF, ISO/IEC 42001, EU AI Act Article 4, AI Verify/MGF GenAI, UNESCO ethics',
+    emphasis: 'Privacy, fairness, rights, policy fluency, security controls, auditability, human oversight, and governance.',
+    improveNext: 'Add explicit role-based AI Act literacy, affected-person impact, accessibility, and sustainability evidence.',
+  },
+  {
+    domain: 'D5' as DomainId,
+    mapsTo: 'NIST AI RMF Map/Measure/Manage, ISO/IEC 42001 risk/opportunity management, IBM contextual AI knowledge',
+    emphasis: 'Use-case fit, ROI/KPI design, portfolio prioritization, risk-adjusted value, scale gates, and operating model.',
+    improveNext: 'Add more executive and industry scenarios that distinguish demo appeal from durable business value.',
+  },
+  {
+    domain: 'D6' as DomainId,
+    mapsTo: 'UNESCO human-centred mindset, OECD agency/attitudes, EU AI Act context-of-use literacy, AI Verify human agency/oversight, DEC human-centricity',
+    emphasis: 'Human-AI role clarity, accountability, challenge culture, change enablement, coaching, and learning loops.',
+    improveNext: 'Add more collaboration evidence for managers, creators, educators, and frontline teams using AI daily.',
+  },
+];
+
+const frameworkSourceLinks = [
+  { label: 'UNESCO AI competency frameworks', url: 'https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=66813' },
+  { label: 'OECD/EC AI Literacy Framework', url: 'https://www.oecd.org/en/publications/empowering-learners-for-the-age-of-ai_65cd27d4-en.html' },
+  { label: 'NIST AI RMF', url: 'https://www.nist.gov/itl/ai-risk-management-framework' },
+  { label: 'EU AI Act Article 4', url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-4' },
+  { label: 'DigComp 2.2', url: 'https://joint-research-centre.ec.europa.eu/oldpage-digcomp/digcomp-framework_en' },
+  { label: 'ISO/IEC 42001', url: 'https://www.iso.org/standard/42001' },
+  { label: 'AI Verify Foundation', url: 'https://aiverifyfoundation.sg/what-is-ai-verify/' },
+];
+
+const scoringModelExplainers = [
+  ['1. Raw answer evidence', 'Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.'],
+  ['2. Difficulty adjustment', 'Raw score is converted into readiness evidence through difficulty bands. Easy items are capped below advanced readiness; proficient and advanced items can contribute more.'],
+  ['3. Competency roll-up', 'Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.'],
+  ['4. Domain roll-up', 'Domain score averages readiness evidence for that domain. Secondary-domain evidence counts at 0.35 weight so cross-domain questions help without overpowering the primary domain.'],
+  ['5. Overall score', 'The MVP overall score starts from the average of D1-D6 domain scores, then applies an answer-quality check so mostly incorrect runs do not look stronger than the evidence supports. Unsampled domains do not receive a free midpoint score.'],
+  ['6. Confidence and continuation', 'Confidence is based on coverage, repeated evidence, item information, SEM, and whether profile-priority competencies were sampled. Low confidence triggers targeted continuation.'],
+];
+
 const audienceLabels: Record<Audience, string> = {
-  general: 'General public',
+  general: 'General',
   student: 'Student',
   educator: 'Educator',
-  professional: 'Professional',
-  team: 'Team member',
+  professional: 'Work',
+  team: 'Team',
 };
 
 const functionLabels: Record<FunctionTrack, string> = {
@@ -549,6 +620,14 @@ const thaiUiCopy: Record<string, string> = {
   'User Login': 'เข้าสู่ระบบผู้ใช้',
   'User Dashboard': 'แดชบอร์ดผู้ใช้',
   'Admin Login': 'เข้าสู่ระบบ Admin',
+  'Home': 'หน้าแรก',
+  'Assessment': 'Assessment',
+  'Practice': 'Practice',
+  'Scoring': 'Scoring',
+  'Frameworks': 'Frameworks',
+  'Dashboard': 'Dashboard',
+  'Admin': 'Admin',
+  'Premium': 'Premium',
   'Agent Ops': 'Agent Ops',
   'Platform': 'Platform',
   'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
@@ -560,9 +639,15 @@ const thaiUiCopy: Record<string, string> = {
   'Measure practical AI readiness.': 'วัดความพร้อมด้าน AI ที่ใช้ได้จริง',
   'New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts, verify sources, choose safe workflows, govern agents, and turn scores into learning paths.': 'New Horizon คือ Assessment Platform แบบปรับตามผู้ใช้ เพื่อวัดความสามารถด้าน AI ที่ใช้ได้จริง: ตรวจ artifact, เช็กแหล่งข้อมูล, เลือก Workflow ที่ปลอดภัย, กำกับ Agent และแปลงคะแนนเป็นเส้นทางการเรียนรู้',
   'Start Free Assessment': 'เริ่ม Assessment ฟรี',
-  'Start Premium Pilot': 'เริ่ม Premium Pilot',
-  'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
+  'Start Premium Pilot': 'เริ่ม Premium Diagnostic',
+  'Premium Leadership Diagnostic': 'Premium Leadership Diagnostic',
+  'Start Premium Diagnostic': 'เริ่ม Premium Diagnostic',
+  'Try Premium Diagnostic': 'ลอง Premium Diagnostic',
+  'Premium diagnostic': 'Premium Diagnostic',
+  'Explore more': 'ดูเพิ่มเติม',
+  'Learning prompts, practice labs, scoring, and frameworks': 'Prompt การเรียนรู้, Practice Lab, Scoring และ Framework',
   'See How It Works': 'ดูวิธีทำงาน',
+  'Scoring model': 'Scoring Model',
   'Adaptive assessment platform': 'Assessment Platform แบบปรับตามผู้ใช้',
   'Artifacts, scoring, radar, learning paths': 'Artifact, คะแนน, Radar, เส้นทางการเรียนรู้',
   'Raw artifacts': 'Artifact ดิบ',
@@ -580,11 +665,17 @@ const thaiUiCopy: Record<string, string> = {
   'multi-part clusters': 'ชุดคำถามหลายส่วน',
   'AILF domains': 'AILF Domains',
   'question formats': 'รูปแบบคำถาม',
+  'Home guide menu': 'เมนูแนะนำหน้าแรก',
+  'How answers, difficulty, competencies, domains, and confidence become the score.': 'คำตอบ ระดับความยาก Competency Domain และ Confidence กลายเป็นคะแนนอย่างไร',
+  'Global frameworks': 'Framework ระดับโลก',
+  'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.': 'New Horizon เชื่อมกับ UNESCO, OECD, NIST, EU AI Act, DigComp, ISO และ AI Verify อย่างไร',
+  'Adaptive testing': 'Adaptive Testing',
+  'Why the test continues when coverage or confidence is not strong enough.': 'ทำไมระบบจึงแนะนำให้ทำต่อเมื่อ Coverage หรือ Confidence ยังไม่พอ',
   'Did you know?': 'รู้ไหม?',
   'Learn more': 'เรียนรู้เพิ่ม',
   'Tune topics': 'ปรับหัวข้อให้ตรงกับคุณ',
   'Peer challenge': 'ท้าทายกับกลุ่มใกล้เคียง',
-  'Where would you land today?': 'วันนี้คุณจะอยู่ตรงไหน?',
+  'Where would you land today?': 'วันนี้คะแนนของคุณจะอยู่ตรงไหน?',
   'Compare against the visible top 10 for the day or week, then take the assessment to see whether your strongest domain is enough to break into your peer group.': 'เทียบกับ Top 10 รายวันหรือรายสัปดาห์ แล้วทำ Assessment เพื่อดูว่า Domain ที่คุณถนัดพอจะติดอันดับในกลุ่มเดียวกันไหม',
   'Today': 'วันนี้',
   'This week': 'สัปดาห์นี้',
@@ -609,6 +700,32 @@ const thaiUiCopy: Record<string, string> = {
   'Difficulty and domain focus move as the score estimate and coverage gaps change.': 'ระดับความยากและ Domain จะเปลี่ยนตามคะแนนโดยประมาณและช่องว่างของหลักฐาน',
   'Useful after the score': 'มีประโยชน์หลังรู้คะแนน',
   'Results point to competencies, practical skills, benchmarks, and real learning options.': 'ผลลัพธ์ชี้ไปที่ Competency, ทักษะใช้งานจริง, Benchmark และทางเลือกการเรียนรู้',
+  'Scoring and adaptive testing': 'Scoring และ Adaptive Testing',
+  'Scores reward harder evidence, not just correct guesses.': 'คะแนนให้คุณค่ากับหลักฐานที่ยากขึ้น ไม่ใช่แค่การเดาถูก',
+  'New Horizon separates raw answer correctness from readiness evidence. The same raw score contributes differently depending on difficulty, competency coverage, and confidence.': 'New Horizon แยกคะแนนคำตอบดิบออกจาก Readiness Evidence คะแนนดิบเท่ากันอาจมีผลต่างกันตามระดับความยาก Coverage ของ Competency และ Confidence',
+  'Transparent MVP logic': 'Logic ของ MVP แบบโปร่งใส',
+  '1. Raw answer evidence': '1. หลักฐานจากคำตอบดิบ',
+  'Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.': 'แต่ละข้อเริ่มจากตัวเลือก ความถูกต้องของการจับคู่/เรียงลำดับ คะแนนหลายตัวเลือก Rubric ของคำตอบเขียน หรือคะแนนคำถามย่อย คำตอบว่างได้ 0',
+  '2. Difficulty adjustment': '2. ปรับตามระดับความยาก',
+  'Raw score is converted into readiness evidence through difficulty bands. Easy items are capped below advanced readiness; proficient and advanced items can contribute more.': 'คะแนนดิบถูกแปลงเป็น Readiness Evidence ผ่าน Difficulty Band ข้อง่ายมีเพดานต่ำกว่า Advanced ส่วนข้อ Proficient และ Advanced ให้หลักฐานได้มากกว่า',
+  '3. Competency roll-up': '3. สรุปตาม Competency',
+  'Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.': 'แต่ละสัญญาณคะแนนเชื่อมกับหนึ่งหรือหลาย Competency คะแนน Competency คือค่าเฉลี่ยของ Readiness Evidence ที่เก็บได้',
+  '4. Domain roll-up': '4. สรุปตาม Domain',
+  'Domain score averages readiness evidence for that domain. Secondary-domain evidence counts at 0.35 weight so cross-domain questions help without overpowering the primary domain.': 'คะแนน Domain คือค่าเฉลี่ยของ Readiness Evidence ใน Domain นั้น Evidence ของ Secondary Domain ใช้น้ำหนัก 0.35 เพื่อช่วยสะท้อนข้อข้าม Domain โดยไม่กลบ Domain หลัก',
+  '5. Overall score': '5. คะแนนรวม',
+  'The MVP overall score is the average of D1-D6 domain scores. Unsampled domains do not receive a free midpoint score.': 'คะแนนรวมของ MVP คือค่าเฉลี่ย Domain D1-D6 Domain ที่ยังไม่ได้ทดสอบจะไม่ได้คะแนนกลางฟรี',
+  '6. Confidence and continuation': '6. Confidence และการทำต่อ',
+  'Confidence is based on coverage, repeated evidence, item information, SEM, and whether profile-priority competencies were sampled. Low confidence triggers targeted continuation.': 'Confidence มาจาก Coverage หลักฐานซ้ำ Item Information, SEM และ Competency สำคัญตาม Profile ถูกทดสอบหรือยัง Confidence ต่ำจะทำให้ระบบแนะนำข้อถัดไปแบบเจาะจง',
+  'Difficulty readiness bands': 'Difficulty Readiness Bands',
+  'Partial anchor': 'Partial Anchor',
+  'Maximum readiness': 'Readiness สูงสุด',
+  'Global framework crosswalk': 'แผนที่เทียบ Framework ระดับโลก',
+  'Mapped to reputable AI literacy, governance, and readiness frameworks.': 'เชื่อมกับ Framework ด้าน AI Literacy, Governance และ Readiness ที่น่าเชื่อถือ',
+  'New Horizon is not claiming certification equivalence. It uses these frameworks as a crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.': 'New Horizon ไม่ได้อ้างว่าเทียบเท่า Certificate แต่ใช้ Framework เหล่านี้เป็น Crosswalk เพื่อให้ Domain, Competency, คำถาม, telemetry และการปรับปรุงมีฐานอ้างอิงระดับโลก',
+  'D1-D6 crosswalk': 'Crosswalk D1-D6',
+  'Maps to': 'เชื่อมกับ',
+  'Tests': 'ทดสอบ',
+  'Improve next': 'ปรับปรุงต่อ',
   'Progress system': 'ระบบความก้าวหน้า',
   'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
   'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
@@ -628,8 +745,8 @@ const thaiUiCopy: Record<string, string> = {
   'Radar profile, gaps, and next steps.': 'Radar Profile, ช่องว่าง และขั้นตอนถัดไป',
   'MVP results are indicative, not certification-grade. They show readiness patterns and recommend practical learning actions while collecting evidence for future calibration.': 'ผล MVP เป็นข้อมูลเบื้องต้น ยังไม่ใช่การรับรองอย่างเป็นทางการ ใช้ดูรูปแบบความพร้อมและแนะนำการเรียนรู้ พร้อมเก็บหลักฐานเพื่อปรับเทียบในอนาคต',
   'Try Free Flow': 'ลองแบบฟรี',
-  'Try Premium Pilot': 'ลอง Premium Pilot',
-  'Try Executive Pilot': 'ลอง Executive Pilot',
+  'Try Premium Pilot': 'ลอง Premium Diagnostic',
+  'Try Premium Leadership Diagnostic': 'ลอง Premium Leadership Diagnostic',
   'Competency map': 'แผนที่ Competency',
   'Premium assessment': 'Premium Assessment',
   'Deeper diagnosis for people who want more than a score.': 'วิเคราะห์ลึกขึ้นสำหรับคนที่ต้องการมากกว่าคะแนน',
@@ -654,7 +771,7 @@ const thaiUiCopy: Record<string, string> = {
   'Start Full Assessment': 'เริ่ม Assessment เต็ม',
   'Start with a broad profile.': 'เริ่มจาก Profile ภาพรวม',
   'Build Profile and Begin 12-Question Assessment': 'สร้าง Profile และเริ่ม Assessment 12 ข้อ',
-  'Build Profile and Begin Executive Assessment': 'สร้าง Profile และเริ่ม Executive Assessment',
+  'Build Profile and Begin Premium Leadership Diagnostic': 'สร้าง Profile และเริ่ม Premium Leadership Diagnostic',
   'Optional profile pulse': 'คำถาม Profile สั้นๆ',
   'Skip': 'ข้าม',
   'Tune my test': 'ปรับ Test ให้ตรงกับฉัน',
@@ -679,7 +796,7 @@ const thaiUiCopy: Record<string, string> = {
   'Start Full Free Assessment': 'เริ่ม Assessment ฟรีแบบเต็ม',
   'Retake Free Assessment': 'ทำ Free Assessment ใหม่',
   'Retake Premium Assessment': 'ทำ Premium Assessment ใหม่',
-  'Retake Executive Assessment': 'ทำ Executive Assessment ใหม่',
+  'Retake Premium Leadership Diagnostic': 'ทำ Premium Leadership Diagnostic ใหม่',
   'Useful': 'มีประโยชน์',
   'Unclear': 'ไม่ชัดเจน',
   'Comment': 'Comment',
@@ -690,6 +807,189 @@ const thaiUiCopy: Record<string, string> = {
   'Correct answer': 'คำตอบที่ถูกต้อง',
   'Your answer': 'คำตอบของคุณ',
   'Score calculation': 'วิธีคำนวณคะแนน',
+  'Optional profile survey': 'Profile Survey แบบสั้น',
+  'Personalize your assessment.': 'ปรับ Assessment ให้เหมาะกับคุณ',
+  'Question': 'คำถาม',
+  'Difficulty': 'ระดับความยาก',
+  'Artifacts': 'Artifact',
+  'Question clarity': 'ความชัดเจนของคำถาม',
+  'Suggestions for improvement': 'ข้อเสนอแนะ',
+  'Clear': 'ชัดเจน',
+  'Some were unclear': 'บางข้อไม่ชัดเจน',
+  'Confusing': 'สับสน',
+  'About right': 'กำลังดี',
+  'Too easy': 'ง่ายเกินไป',
+  'Too hard': 'ยากเกินไป',
+  'Realistic and relevant': 'สมจริงและเกี่ยวข้อง',
+  'Mixed quality': 'คุณภาพปนกัน',
+  'Poor or irrelevant': 'ไม่ดีหรือไม่เกี่ยวข้อง',
+  'Too short': 'สั้นเกินไป',
+  'Too long': 'ยาวเกินไป',
+  'Summary': 'สรุป',
+  'Question review': 'Review คำถาม',
+  'Score interpretation': 'คำอธิบายคะแนน',
+  'How this result was derived': 'คะแนนนี้คำนวณอย่างไร',
+  'Question-level calculation': 'การคำนวณรายคำถาม',
+  'Domain roll-up': 'สรุปตาม Domain',
+  'Competency roll-up': 'สรุปตาม Competency',
+  'Score explanation': 'คำอธิบายคะแนน',
+  'Expected answer': 'คำตอบที่คาดหวัง',
+  'Rubric and calibration': 'Rubric และการปรับเทียบ',
+  'Measured competencies': 'Competency ที่วัด',
+  'Detected': 'พบแล้ว',
+  'Missing': 'ยังขาด',
+  'Make the call': 'ตัดสินใจ',
+  'Task brief': 'โจทย์สั้น',
+  'Scenario': 'สถานการณ์',
+  'Submit Selected Answers': 'ส่งคำตอบที่เลือก',
+  'Submit Order': 'ส่งลำดับ',
+  'Submit Matches': 'ส่งคำตอบจับคู่',
+  'Choose match': 'เลือกคู่ที่ตรงกัน',
+  'Your written answer': 'คำตอบแบบเขียน',
+  'Submit Written Answer': 'ส่งคำตอบแบบเขียน',
+  'Artifact reader': 'ตัวอ่าน Artifact',
+  'Read full size': 'ดูขนาดใหญ่',
+  'Inspect for': 'ดูเพื่อหา',
+  'Open file': 'เปิดไฟล์',
+  'Close': 'ปิด',
+  'Fit': 'พอดีหน้าจอ',
+  'Quick feedback': 'Feedback สั้นๆ',
+  'Artifact irrelevant, answer too obvious, wording unclear...': 'Artifact ไม่เกี่ยวข้อง, คำตอบเดาง่าย, คำถามไม่ชัดเจน...',
+  'Helpful': 'มีประโยชน์',
+  'Question or instruction unclear': 'คำถามหรือคำสั่งไม่ชัดเจน',
+  'Question useful': 'คำถามมีประโยชน์',
+  'Question feedback cleared': 'ล้าง Feedback ของคำถามแล้ว',
+  'Question comment': 'Comment ของคำถาม',
+  'General': 'General',
+  'Student': 'นักเรียน/นักศึกษา',
+  'Educator': 'ผู้สอน',
+  'Work': 'งาน',
+  'Team': 'ทีม',
+  'General work': 'งานทั่วไป',
+  'Financial services': 'บริการการเงิน',
+  'Healthcare': 'Healthcare',
+  'Retail & ecommerce': 'Retail & ecommerce',
+  'Public sector': 'ภาครัฐ',
+  'Engineering & Data': 'Engineering & Data',
+  'Customer Service': 'Customer Service',
+  'Function': 'Function',
+  'Industry': 'Industry',
+  'Role context': 'บริบทของบทบาท',
+  'Back': 'กลับ',
+  'Premium assessment pilot': 'Premium Diagnostic',
+  'Add context for a deeper profile.': 'เพิ่มบริบทเพื่อให้ Profile ลึกขึ้น',
+  'Premium uses the same AILF spine, then adapts interpretation by function and industry.': 'Premium ใช้โครง AILF เดียวกัน แล้วปรับการตีความตาม Function และ Industry',
+  'Build Profile and Begin Premium Diagnostic': 'สร้าง Profile และเริ่ม Premium Diagnostic',
+  'Board-level AI readiness.': 'ความพร้อมด้าน AI ระดับ Board',
+  'Premium leadership context weights strategy, governance, and change leadership.': 'Premium Leadership Context ให้น้ำหนักกับ Strategy, Governance และ Change Leadership',
+  'Executive role': 'บทบาทผู้บริหาร',
+  'Premium leadership diagnostic includes': 'Premium Leadership Diagnostic มี',
+  'Premium pilot includes': 'Premium Diagnostic มี',
+  'Profile builder': 'Profile Builder',
+  'Premium profile signals': 'สัญญาณ Profile สำหรับ Premium',
+  'Executive profile signals': 'สัญญาณ Profile สำหรับ Executive',
+  'Tool awareness': 'ความคุ้นเคยกับ Tool',
+  'Learning intent': 'เป้าหมายการเรียนรู้',
+  'AI priorities': 'AI Priorities',
+  'Risk agenda': 'ประเด็นความเสี่ยง',
+  'Board/value signals': 'สัญญาณ Board/Value',
+  'Telemetry and result analysis': 'Telemetry และการวิเคราะห์ผล',
+  'What the assessment tracks and why': 'Assessment เก็บอะไร และใช้ทำไม',
+  'Currently tracked': 'สิ่งที่เก็บตอนนี้',
+  'Used for analysis': 'ใช้วิเคราะห์',
+  'Improve next': 'ควรปรับปรุงต่อ',
+  'Local MVP log': 'Log ในเครื่อง',
+  '30-second feedback': 'Feedback 30 วินาที',
+  'Help improve the assessment and unlock your detailed evidence.': 'ช่วยปรับปรุง Assessment และปลดล็อกหลักฐานแบบละเอียด',
+  'Thanks. Your detailed evidence is unlocked.': 'ขอบคุณ ตอนนี้ปลดล็อกหลักฐานแบบละเอียดแล้ว',
+  'Quick survey': 'Survey สั้น',
+  'Unlocked': 'ปลดล็อกแล้ว',
+  'Locked': 'ล็อกอยู่',
+  'Your detailed evidence is unlocked.': 'หลักฐานแบบละเอียดของคุณถูกปลดล็อกแล้ว',
+  'Feedback unlock required.': 'ต้องส่ง Feedback ก่อน',
+  'Give feedback': 'ให้ Feedback',
+  'Later': 'ไว้ทีหลัง',
+  'Unlock your detailed evidence trail': 'ปลดล็อกเส้นทางหลักฐานแบบละเอียด',
+  'Tell us what you already use, what similar people in your role are exploring, and what you may want to learn next. New Horizon uses these signals to tune examples, learning paths, and cohort analysis.': 'บอกเราว่าคุณใช้ Tool อะไรอยู่ คนในบทบาทคล้ายกันกำลังสนใจอะไร และคุณอยากเรียนรู้อะไรต่อ New Horizon จะใช้สัญญาณเหล่านี้เพื่อปรับตัวอย่าง Learning Path และ Cohort Analysis',
+  'Assessment complete. Results are ready.': 'Assessment เสร็จแล้ว ผลลัพธ์พร้อมดู',
+  'Keep going': 'ทำต่อ',
+  'Evidence completion': 'เก็บหลักฐานให้ครบขึ้น',
+  'Score interpretation': 'คำอธิบายคะแนน',
+  'Your score': 'คะแนนของคุณ',
+  'Group average': 'ค่าเฉลี่ยกลุ่ม',
+  'Target profile': 'Target Profile',
+  'A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.': 'เป็นค่าประมาณจากตัวอย่างคำตอบ ยังไม่ใช่คะแนน Psychometric ที่ผ่านการ Validate แล้ว Domain ที่ยังไม่ได้ทดสอบจะไม่ถูกเติมคะแนนกลางให้อัตโนมัติ',
+  'Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.': 'คะแนนดิบมาจากตัวเลือกที่เลือก Rubric ที่เข้าเงื่อนไข การจับคู่ การเรียงลำดับ หลายตัวเลือก หรือคะแนนคำถามย่อย',
+  'Raw score is converted into readiness evidence using the item difficulty band.': 'คะแนนดิบถูกแปลงเป็น Readiness Evidence ตามระดับความยากของคำถาม',
+  'Competency score is the average readiness evidence for all signals mapped to that competency.': 'คะแนน Competency คือค่าเฉลี่ยของ Readiness Evidence ที่ผูกกับ Competency นั้น',
+  'Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.': 'คะแนน Domain คือ Readiness Points หารด้วยจำนวนหลักฐาน โดย Secondary Domain คิดน้ำหนัก 0.35',
+  'Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.': 'เวลา ความลังเล ค่า item `a/b/c`, information และ SEM เป็น Telemetry/Calibration Signals ตอนนี้ยังไม่บวกหรือลบคะแนนโดยตรง',
+  'Average readiness evidence from mapped question signals.': 'ค่าเฉลี่ย Readiness Evidence จากสัญญาณคำถามที่เชื่อมไว้',
+  'Improve personalization': 'ปรับ Personalization ให้ดีขึ้น',
+  'Recommended if you want a fuller profile': 'แนะนำถ้าคุณต้องการ Profile ที่ครบขึ้น',
+  'The next batch targets planned and profile-priority competencies that still need repeated evidence.': 'ชุดถัดไปจะเจาะ Competency ตามแผนและตาม Profile ที่ยังต้องการหลักฐานซ้ำ',
+  'Add': 'เพิ่ม',
+  'evidence questions': 'คำถามเก็บหลักฐาน',
+  'Persona leaderboard': 'อันดับตาม Persona',
+  'Your completed run will establish this persona leaderboard.': 'ผลที่คุณทำเสร็จจะเริ่มสร้างอันดับ Persona นี้',
+  'MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.': 'MVP จัดอันดับ Run ที่บันทึกในเครื่องนี้สำหรับ Persona เดียวกัน เวอร์ชัน Production ควรใช้ข้อมูล Cohort บน Server ที่ได้รับความยินยอม และชื่อที่ปลอดภัยต่อ Privacy',
+  'Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.': 'บอกเราว่าคำถามชัดเจน สมจริง และมีประโยชน์ไหม แล้ว Report จะปลดล็อกหลักฐานรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.': 'Feedback ของคุณถูกบันทึกเพื่อ Review คุณภาพคำถามแล้ว ตอนนี้เปิด Question review เพื่อดูว่าแต่ละคำถามส่งผลต่อคะแนนอย่างไรได้',
+  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
+  'Question-level analysis': 'Analysis รายคำถาม',
+  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Survey สั้นๆ ในแท็บ Summary เพื่อปลดล็อกหลักฐานรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
+  'Optional: name a confusing question, unrealistic artifact, or missing topic.': 'ใส่เพิ่มเติมได้ เช่น คำถามที่สับสน Artifact ที่ไม่สมจริง หรือหัวข้อที่ยังขาด',
+  'Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.': 'ตอบ Feedback สั้นๆ 4 ข้อ เพื่อดูคำตอบของคุณ หลักฐานที่คาดหวัง เวลา ระดับความยาก และข้อมูลเปรียบเทียบของแต่ละข้อ',
+  'Ready for a deeper profile?': 'พร้อมสร้าง Profile ที่ลึกขึ้นไหม?',
+  'Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.': 'ปลดล็อก Skill-level Analysis บริบทตามบทบาท Multimodal Review และ Premium Diagnostic ต่อเนื่อง',
+  'Try Free Version': 'ลองเวอร์ชันฟรี',
+  'Personalized AI report': 'Personalized AI Report',
+  'What this means': 'ความหมายของผลนี้',
+  'Domain scorecard': 'Scorecard ตาม Domain',
+  'Assessment coverage plan': 'แผนความครอบคลุมของ Assessment',
+  'User profile signals': 'สัญญาณ User Profile',
+  'No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.': 'ยังไม่ได้บันทึก Profile Survey แบบเสริม Assessment ยังทำงานได้ แต่ Personalization จะอิงจาก Audience, Function, Industry หรือ Role ที่เลือกเท่านั้น',
+  'Domain evidence quality': 'คุณภาพหลักฐานตาม Domain',
+  'Saved score analytics': 'Analytics ของคะแนนที่บันทึก',
+  'Strengths': 'จุดแข็ง',
+  'Priority gaps': 'ช่องว่างสำคัญ',
+  'Knowledge vs practical skill': 'ความรู้เทียบกับทักษะใช้งานจริง',
+  'Readiness badges': 'Readiness Badges',
+  'Competency and skill scores': 'คะแนน Competency และ Skill',
+  'Tools to explore': 'Tool ที่ควรลอง',
+  'Concepts to strengthen': 'Concept ที่ควรเสริม',
+  'Practice next': 'ควรฝึกต่อ',
+  'Recommended courses': 'Course ที่แนะนำ',
+  'Recommended bootcamps and workshops': 'Bootcamp และ Workshop ที่แนะนำ',
+  'Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.': 'แนะนำเมื่อผล Assessment พบช่องว่างที่ควรฝึกแบบมีคนแนะนำ จัดทีมให้เข้าใจตรงกัน หรือออกแบบ Workflow ตามบทบาท',
+  'For who': 'เหมาะกับใคร',
+  'Why take it': 'ทำไมควรเรียน',
+  'Expected learning outputs': 'ผลลัพธ์ที่คาดว่าจะได้',
+  'Workshop labs': 'Lab ใน Workshop',
+  'Framework alignment': 'เชื่อมกับ Framework',
+  'Best fit roles': 'บทบาทที่เหมาะ',
+  'Thailand course recommendations': 'Course แนะนำในไทย',
+  'Where to improve next': 'ควรปรับปรุงตรงไหนต่อ',
+  'Evidence summary': 'สรุปหลักฐาน',
+  'Adaptive coverage': 'Adaptive Coverage',
+  'Scenario context': 'บริบทของสถานการณ์',
+  'Target status': 'สถานะเป้าหมาย',
+  'Format': 'รูปแบบ',
+  'Price': 'ราคา',
+  'Maps to': 'เชื่อมกับ',
+  'Scored evidence': 'หลักฐานที่นำไปคิดคะแนน',
+  'Time on question': 'เวลาต่อคำถาม',
+  'Answer interactions': 'การโต้ตอบกับคำตอบ',
+  'Artifact use': 'การใช้ Artifact',
+  'Target level': 'ระดับเป้าหมาย',
+  'Item b': 'Item b',
+  'Item a': 'Item a',
+  'Guess c': 'Guess c',
+  'Info': 'Info',
+  'SEM': 'SEM',
+  'Next step': 'ขั้นตอนถัดไป',
+  'Updated theta': 'Theta ล่าสุด',
+  'Next focus': 'Focus ถัดไป',
 };
 
 const englishUiCopyByThai = Object.fromEntries(Object.entries(thaiUiCopy).map(([english, thai]) => [thai, english]));
@@ -8446,11 +8746,118 @@ const executiveLearningCatalog: Record<DomainId, { title: string; detail: string
   D6: { title: 'Human-AI change leadership', detail: 'Build role clarity, trust loops, leadership messaging, capability plans, and accountability rituals.', format: '75 min leadership lab' },
 };
 
+const bootcampCatalog: BootcampRecommendation[] = [
+  {
+    id: 'ai-fundamentals-1d',
+    title: 'AI Fundamentals 1-Day Bootcamp',
+    duration: '1 day or 2 half-days',
+    level: 'Fundamental',
+    domains: ['D1', 'D2', 'D3', 'D4'],
+    roles: ['General', 'Student', 'Educator', 'Work', 'Team'],
+    forWho: 'People who are new to AI or score below target in foundations, prompting, verification, or safe everyday use.',
+    whyTakeIt: 'Builds the baseline mental model needed before users rely on AI for work, study, customer, or public decisions.',
+    expectedOutputs: ['Personal AI safe-use checklist', 'Reusable prompt checklist', 'Source-verification routine', 'Baseline reassessment plan'],
+    labs: ['Repair a vague prompt', 'Check an AI answer against sources', 'Decide what data should not enter AI', 'Spot unsupported or fake-looking claims'],
+    mappedFrameworks: ['UNESCO AI foundations/ethics', 'OECD/EC AI literacy', 'DigComp information and safety'],
+  },
+  {
+    id: 'practical-ai-work-2d',
+    title: 'Practical AI for Work 2-Day Bootcamp',
+    duration: '2 days',
+    level: 'Intermediate',
+    domains: ['D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Work', 'Team', 'Manager', 'Operations', 'Customer Service', 'Sales', 'Marketing', 'Finance', 'HR'],
+    forWho: 'Professionals already using AI who need repeatable workflows, better output quality, and clearer human review gates.',
+    whyTakeIt: 'Turns casual AI usage into controlled work patterns that can be measured, improved, and trusted by teams.',
+    expectedOutputs: ['AI workflow map', 'Review rubric', 'Risk gate checklist', 'Before/after value measurement plan'],
+    labs: ['Use AI with a messy work artifact', 'Design a human-in-the-loop workflow', 'Score output quality', 'Measure speed, quality, rework, and risk'],
+    mappedFrameworks: ['OECD/EC responsible use', 'NIST Map/Measure/Manage', 'ISO/IEC 42001 continual improvement'],
+  },
+  {
+    id: 'advanced-ai-operator-3d',
+    title: 'Advanced AI Operator 3-Day Bootcamp',
+    duration: '3 days',
+    level: 'Advanced',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Power user', 'Product', 'Operations', 'Analyst', 'Creator', 'Technical lead', 'Transformation team'],
+    forWho: 'Users near proficient or advanced level who need deeper evidence with artifacts, data, workflows, agents, and evaluation.',
+    whyTakeIt: 'Differentiates advanced users by requiring harder practical evidence, not just correct answers on simple items.',
+    expectedOutputs: ['Advanced workflow playbook', 'Evaluation rubric', 'Agent/control design', 'Telemetry-backed improvement loop'],
+    labs: ['Compare outputs across models/tools', 'Design a RAG/source-quality test', 'Build an agent approval flow', 'Create a mini eval harness'],
+    mappedFrameworks: ['NIST AI RMF', 'ISO/IEC 42001', 'AI Verify', 'Long & Magerko AI literacy'],
+  },
+  {
+    id: 'executive-ai-strategy-1d',
+    title: 'Executive AI Strategy 1-Day Bootcamp',
+    duration: '1 day',
+    level: 'Executive',
+    domains: ['D1', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['CEO', 'Board', 'CFO', 'CHRO', 'CIO', 'CDO', 'CTO', 'Transformation sponsor'],
+    forWho: 'Senior leaders who must fund, govern, scale, or challenge AI initiatives without becoming hands-on engineers.',
+    whyTakeIt: 'Helps leaders separate AI theater from value, risk, workforce readiness, and operating-model decisions.',
+    expectedOutputs: ['AI portfolio scorecard', 'Executive risk register', '90-day action plan', 'Board-ready measurement view'],
+    labs: ['Prioritize AI use cases', 'Challenge a vendor claim', 'Set scale gates', 'Design executive AI governance cadence'],
+    mappedFrameworks: ['NIST Govern/Map/Measure/Manage', 'EU AI Act Article 4', 'ISO/IEC 42001', 'AI Verify governance'],
+  },
+  {
+    id: 'ai-governance-risk-2d',
+    title: 'AI Governance and Risk 2-Day Bootcamp',
+    duration: '2 days',
+    level: 'Governance',
+    domains: ['D3', 'D4', 'D5', 'D6'],
+    roles: ['Risk', 'Legal', 'Compliance', 'Audit', 'Security', 'Data governance', 'Public sector', 'Executive sponsor'],
+    forWho: 'Teams responsible for AI policy, vendor review, privacy, model risk, auditability, and human oversight.',
+    whyTakeIt: 'Creates the controls and evidence needed before AI becomes embedded in high-impact workflows.',
+    expectedOutputs: ['AI policy control map', 'Vendor/model review checklist', 'Incident response routine', 'Audit evidence template'],
+    labs: ['Review a vendor memo', 'Map controls to AI risks', 'Design approval and escalation gates', 'Build an AI incident timeline'],
+    mappedFrameworks: ['NIST AI RMF', 'EU AI Act Article 4', 'ISO/IEC 42001', 'AI Verify/MGF GenAI'],
+  },
+  {
+    id: 'ai-agent-workflow-lab-3d',
+    title: 'AI Agent and Workflow Lab',
+    duration: '2-3 days',
+    level: 'Advanced',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Developer', 'Data', 'Product', 'Operations', 'Automation', 'Technical leader'],
+    forWho: 'Technical and operations teams building or buying tool-using agents, workflow automation, RAG, or AI copilots.',
+    whyTakeIt: 'Moves teams from demo agents to bounded systems with permissions, logs, evals, rollback, and human approval.',
+    expectedOutputs: ['Agent workflow design', 'Permission matrix', 'Eval and monitoring plan', 'Rollback/escalation playbook'],
+    labs: ['Scope tool permissions', 'Design typed handoffs', 'Inspect audit logs', 'Test failure modes before launch'],
+    mappedFrameworks: ['NIST AI RMF', 'ISO/IEC 42001', 'AI Verify robustness/security', 'OECD/EC informed use'],
+  },
+  {
+    id: 'role-based-ai-labs',
+    title: 'Role-Based AI Bootcamp Series',
+    duration: '1-3 days by role',
+    level: 'Role-based',
+    domains: ['D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Marketing', 'Sales', 'Customer Service', 'HR', 'Finance', 'Operations', 'Educator', 'Student', 'Developer'],
+    forWho: 'Users whose assessment profile shows role-specific gaps or interests that generic AI training will not cover deeply enough.',
+    whyTakeIt: 'Makes the learning path relevant to actual work: campaign review, CRM, support tickets, hiring, finance, education, or code.',
+    expectedOutputs: ['Role-specific workflow', 'Role risk checklist', 'Quality rubric', 'Reusable prompt/template pack'],
+    labs: ['Marketing content and synthetic media review', 'Sales CRM forecast check', 'Support escalation draft', 'Finance variance explanation', 'HR policy and fairness review'],
+    mappedFrameworks: ['UNESCO role-aware competency design', 'OECD/EC context-aware AI literacy', 'EU AI Act context of use'],
+  },
+  {
+    id: 'train-the-trainer-2d',
+    title: 'AI Train-the-Trainer 2-Day Workshop',
+    duration: '2 days',
+    level: 'Role-based',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D6'],
+    roles: ['L&D', 'HR', 'Educator', 'Trainer', 'Transformation team', 'Manager'],
+    forWho: 'Internal trainers and educators who need to roll out AI capability building across teams.',
+    whyTakeIt: 'Builds a repeatable internal enablement model instead of one-off tool training.',
+    expectedOutputs: ['Facilitator guide', 'Role-based exercise set', 'Assessment/reassessment plan', 'Feedback and improvement loop'],
+    labs: ['Facilitate prompt repair', 'Coach source checking', 'Run a role-based scenario', 'Interpret New Horizon reports'],
+    mappedFrameworks: ['UNESCO AI pedagogy/professional learning', 'DigComp', 'OECD/EC AI literacy'],
+  },
+];
+
 const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, proficient: 2, advanced: 3 };
 const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
   free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
   premium: { label: 'Premium diagnostic pilot', totalQuestions: 20, confidenceBase: 48, confidenceStep: 3 },
-  executive: { label: 'Executive assessment pilot', totalQuestions: 20, confidenceBase: 54, confidenceStep: 3 },
+  executive: { label: 'Premium leadership diagnostic', totalQuestions: 20, confidenceBase: 54, confidenceStep: 3 },
   practice: { label: 'Practice activity', totalQuestions: 1, confidenceBase: 24, confidenceStep: 8 },
 };
 const executiveDomainTargets: Record<DomainId, number> = { D1: 1, D2: 1, D3: 2, D4: 4, D5: 4, D6: 4 };
@@ -9358,6 +9765,18 @@ function getScoreGroup(
   };
 }
 
+function normalizeDisplayGroupLabel(label: string) {
+  return label
+    .replace(/^General public\b/i, 'General')
+    .replace(/\bGeneral public average\b/i, 'General average')
+    .replace(/\bProfessional\b/g, 'Work')
+    .replace(/\bTeam member\b/g, 'Team');
+}
+
+function cleanAverageLabel(label: string) {
+  return normalizeDisplayGroupLabel(label).replace(/ average$/i, '');
+}
+
 function parseScoreLog(raw: string | null): ScoreLogEntry[] {
   if (!raw) return [];
   try {
@@ -9410,21 +9829,21 @@ function getPersonaLeaderboard(entries: ScoreLogEntry[], groupKey: string) {
     .map((entry, index) => ({
       ...entry,
       rank: index + 1,
-      displayName: entry.userEmail?.split('@')[0] || `Assessment ${entry.id.slice(-5)}`,
+      displayName: `Anonymous ${String(index + 1).padStart(2, '0')}`,
     }));
 }
 
 const demoLandingLeaderboard: LandingLeaderboardRow[] = [
-  { id: 'demo-creator-1', rank: 1, displayName: 'Creator profile', groupLabel: 'Marketing / Retail', overall: 94, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-tech-1', rank: 2, displayName: 'Technical builder', groupLabel: 'Technical / General', overall: 91, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-finance-1', rank: 3, displayName: 'Finance operator', groupLabel: 'Finance / Financial services', overall: 89, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-board-1', rank: 4, displayName: 'Board readiness', groupLabel: 'Board member', overall: 87, strongestDomain: 'D4', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-people-1', rank: 5, displayName: 'People leader', groupLabel: 'People / General', overall: 85, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-sales-1', rank: 6, displayName: 'Sales workflow', groupLabel: 'Sales / Retail', overall: 83, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-student-1', rank: 7, displayName: 'Student explorer', groupLabel: 'Student', overall: 81, strongestDomain: 'D1', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-ops-1', rank: 8, displayName: 'Ops improver', groupLabel: 'Operations / General', overall: 79, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-cs-1', rank: 9, displayName: 'Support pilot', groupLabel: 'Customer service / General', overall: 76, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-general-1', rank: 10, displayName: 'General user', groupLabel: 'General user', overall: 73, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-creator-1', rank: 1, displayName: 'Anonymous 01', groupLabel: 'Marketing / Retail', overall: 94, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-tech-1', rank: 2, displayName: 'Anonymous 02', groupLabel: 'Technical / General', overall: 91, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-finance-1', rank: 3, displayName: 'Anonymous 03', groupLabel: 'Finance / Financial services', overall: 89, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-board-1', rank: 4, displayName: 'Anonymous 04', groupLabel: 'Board member', overall: 87, strongestDomain: 'D4', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-people-1', rank: 5, displayName: 'Anonymous 05', groupLabel: 'People / General', overall: 85, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-sales-1', rank: 6, displayName: 'Anonymous 06', groupLabel: 'Sales / Retail', overall: 83, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-student-1', rank: 7, displayName: 'Anonymous 07', groupLabel: 'Student', overall: 81, strongestDomain: 'D1', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-ops-1', rank: 8, displayName: 'Anonymous 08', groupLabel: 'Operations / General', overall: 79, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-cs-1', rank: 9, displayName: 'Anonymous 09', groupLabel: 'Customer service / General', overall: 76, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-general-1', rank: 10, displayName: 'Anonymous 10', groupLabel: 'General user', overall: 73, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
 ];
 
 function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderboardPeriod): LandingLeaderboardRow[] {
@@ -9439,8 +9858,8 @@ function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderbo
       return {
         id: entry.id,
         rank: index + 1,
-        displayName: entry.userEmail?.split('@')[0] || `${entry.groupLabel.replace(/ average$/i, '')} run`,
-        groupLabel: entry.groupLabel.replace(/ average$/i, ''),
+        displayName: `Anonymous ${String(index + 1).padStart(2, '0')}`,
+        groupLabel: cleanAverageLabel(entry.groupLabel),
         overall: entry.overall,
         strongestDomain,
         createdAt: entry.createdAt,
@@ -9617,7 +10036,7 @@ function averageScoreLog(entries: ScoreLogEntry[], groupKey: string): BenchmarkP
     scores[domain] = Math.round(groupEntries.reduce((sum, entry) => sum + entry.scores[domain], 0) / groupEntries.length);
   });
   return {
-    label: groupEntries[0].groupLabel,
+    label: normalizeDisplayGroupLabel(groupEntries[0].groupLabel),
     detail: `${groupEntries.length} saved run${groupEntries.length === 1 ? '' : 's'} on this device`,
     tone: 'group',
     scores,
@@ -9635,7 +10054,7 @@ function getEvidenceMode(question: Question): EvidenceMode {
   if (question.evidenceMode) return question.evidenceMode;
   if (question.interaction === 'text' || question.interaction === 'rank' || question.type === 'report-review' || question.type === 'fraud-detection') return 'doing';
   if (question.interaction === 'parts' || question.interaction === 'match' || question.type === 'concept-cluster') return 'hybrid';
-  if (question.stimulus || question.visualStimulus || question.interaction === 'multi') return 'doing';
+  if (hasHelpfulVisualEvidence(question) || question.interaction === 'multi') return 'doing';
   return question.difficulty === 'awareness' ? 'knowing' : 'hybrid';
 }
 
@@ -9758,6 +10177,20 @@ function getScoreBandDescription(score: number, level: string) {
   if (score >= 55) return 'Applied evidence: usable skill with visible gaps.';
   if (score >= 40) return 'Developing evidence: inconsistent or incomplete performance.';
   return 'Limited evidence: answers show major gaps or unsafe choices in this sample.';
+}
+
+function getAnswerQualityAdjustment(answers: Answer[]) {
+  if (!answers.length) {
+    return { rawAverage: 0, strongRatio: 0, factor: 0 };
+  }
+  const rawAverage = answers.reduce((sum, answer) => sum + clamp(answer.option.score, 0, 100), 0) / answers.length;
+  const strongRatio = answers.filter((answer) => answer.option.score >= 82).length / answers.length;
+  const factor = clamp(0.45 + (rawAverage / 100) * 0.45 + strongRatio * 0.1, 0.45, 1);
+  return {
+    rawAverage: Math.round(rawAverage),
+    strongRatio,
+    factor,
+  };
 }
 
 function getReadinessScore(rawScore: number, difficulty: Difficulty) {
@@ -9912,7 +10345,7 @@ function getCoverageTargets(
       priorityIds,
       plannedIds: [...new Set([...domainAnchorIds, ...priorityIds])],
       contextLabel: executiveLabels[executiveRole],
-      testFrame: 'Executive pilot prioritizes strategic, governance, value, and change-leadership competencies.',
+      testFrame: 'Premium leadership context prioritizes strategic, governance, value, and change-leadership competencies.',
     };
   }
   if (assessmentMode === 'premium') {
@@ -10141,7 +10574,7 @@ function getTelemetryAnalysis(
   const confusingEvents = answeredEvents.filter((event) => event.hesitation === 'confusing' || event.hesitation === 'slow');
   const averageDuration = answeredEvents.length ? getAverage(answeredEvents.map((event) => event.durationMs ?? 0)) : getAverage(answers.map((answer) => answer.behavior?.durationMs ?? 0));
   const textAnswers = answers.filter((answer) => answer.textResponse?.trim()).length;
-  const artifactQuestions = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+  const artifactQuestions = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
   const highConfidenceRelevant = coverage.filter((competency) => (competency.planned || competency.priority) && competency.confidence === 'high').length;
   const relevantTotal = coverage.filter((competency) => competency.planned || competency.priority).length;
   const latestFeedback = feedback[0];
@@ -10344,7 +10777,7 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
   const groupRows = [...groupMap.entries()]
     .map(([key, groupEntries]) => ({
       key,
-      label: groupEntries[0].groupLabel,
+      label: normalizeDisplayGroupLabel(groupEntries[0].groupLabel),
       count: groupEntries.length,
       average: getAverage(groupEntries.map((entry) => entry.overall)),
       lastRun: groupEntries
@@ -10416,7 +10849,7 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
     .slice(0, 6)
     .map((entry) => ({
       id: entry.id,
-      label: entry.groupLabel,
+      label: normalizeDisplayGroupLabel(entry.groupLabel),
       mode: entry.mode,
       score: entry.overall,
       date: new Date(entry.createdAt).toLocaleDateString(),
@@ -10466,6 +10899,47 @@ function getLearningRecommendations(priorityDomains: DomainId[], assessmentMode:
     .sort((left, right) => right.rank - left.rank)
     .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 5)
     .map(({ course }) => course);
+}
+
+function getBootcampRecommendations(
+  priorityDomains: DomainId[],
+  assessmentMode: AssessmentMode,
+  overallScore: number,
+  functionTrack: FunctionTrack,
+  executiveRole: ExecutiveRole,
+  weakCompetencyIds: string[],
+  profileTags: string[] = [],
+) {
+  const profileText = `${profileTags.join(' ')} ${functionLabels[functionTrack]} ${executiveLabels[executiveRole]}`.toLowerCase();
+  const ranked = bootcampCatalog
+    .map((bootcamp) => {
+      const domainFit = bootcamp.domains.filter((domain) => priorityDomains.includes(domain)).length;
+      const weakCompetencyFit = weakCompetencyIds.filter((competencyId) => {
+        const competency = competencyDefinitions[competencyId];
+        return competency && bootcamp.domains.includes(competency.domain);
+      }).length;
+      const executiveFit = assessmentMode === 'executive' && bootcamp.level === 'Executive' ? 8 : 0;
+      const governanceFit = priorityDomains.includes('D4') && bootcamp.level === 'Governance' ? 5 : 0;
+      const advancedFit = overallScore >= 75 && bootcamp.level === 'Advanced' ? 5 : 0;
+      const fundamentalFit = overallScore < 60 && bootcamp.level === 'Fundamental' ? 7 : 0;
+      const intermediateFit = overallScore >= 55 && overallScore < 80 && bootcamp.level === 'Intermediate' ? 5 : 0;
+      const roleText = `${bootcamp.roles.join(' ')} ${bootcamp.title} ${bootcamp.forWho} ${bootcamp.labs.join(' ')}`.toLowerCase();
+      const roleFit = ['marketing', 'sales', 'customer', 'service', 'finance', 'hr', 'people', 'operations', 'technical', 'developer', 'educator', 'student', 'creator', 'agent', 'workflow', 'governance']
+        .filter((keyword) => profileText.includes(keyword) && roleText.includes(keyword)).length;
+      return {
+        bootcamp,
+        rank: domainFit * 4 + weakCompetencyFit * 2 + roleFit * 3 + executiveFit + governanceFit + advancedFit + fundamentalFit + intermediateFit,
+      };
+    })
+    .filter(({ rank }) => rank > 0)
+    .sort((left, right) => right.rank - left.rank)
+    .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 4)
+    .map(({ bootcamp }) => bootcamp);
+  if (ranked.length) return ranked;
+  const fallbackLevel = overallScore < 50 ? 'Fundamental' : overallScore < 75 ? 'Intermediate' : 'Advanced';
+  return bootcampCatalog
+    .filter((bootcamp) => bootcamp.level === fallbackLevel || priorityDomains.some((domain) => bootcamp.domains.includes(domain)))
+    .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 4);
 }
 
 function uniqueLimited(items: string[], limit: number) {
@@ -10826,14 +11300,25 @@ function optionDisplayLetter(index: number) {
 }
 
 const hiddenArtifactQuestionIds = new Set([
+  'DEPTH-D1-CONCEPTS-025',
+  'DEPTH-D1-CONCEPTS-026',
+  'DEPTH-D1-SYSTEMS-028',
+  'DEPTH-D2-PROMPT-031',
+  'DEPTH-D2-WORKFLOW-034',
   'DEPTH-D5-STRATEGY-052',
   'DEPTH-D6-COLLAB-055',
   'DEPTH-D6-CHANGE-058',
   'MATCH-AI-COMPONENTS-061',
+  'MATCH-AI-PRODUCTS-062',
+  'MATCH-AI-BENCHMARKS-065',
+  'MATCH-AI-CONTROLS-066',
+  'DEPTH-EXP-D1-D2-067',
+  'DEPTH-EXP-D1-SYSTEMS-068',
   'DEPTH-EXP-D1-D2-086',
   'DEPTH-EXP-D1-CONCEPTS-090',
   'COMP-D1-CONCEPTS-001',
   'COMP-D2-WORKFLOW-004',
+  'COMP-D5-VALUE-009',
   'EXEC-D6-LOOP-019',
   'EXEC-EXP-D1-CAL-001',
   'MULTI-CONCEPT-EXEC-001',
@@ -10911,14 +11396,43 @@ function localizeAnswerOption(answer: Answer, language: AppLanguage): Option {
   const localized = localizeQuestion(answer.question, language);
   return localized.options.find((option) => option.id === answer.option.id) ?? answer.option;
 }
+const hiddenVisualStimulusQuestionIds = new Set([
+  'RELY-EMAIL-001',
+  'RELY-TERM-004',
+  'RELY-STRATEGY-005',
+  'RELY-SENSITIVE-FEEDBACK-006',
+  'EXEC-PORTFOLIO-001',
+  'EXEC-INCIDENT-002',
+  'EXEC-ANNOUNCE-003',
+  'EXEC-FORECAST-004',
+  'EXEC-BOARD-005',
+  'DEPTH-D1-VERIFY-091',
+  'DEPTH-D1-POLICY-092',
+  'DEPTH-D1-SOURCE-093',
+  'DEPTH-D2-PROMPT-094',
+  'DEPTH-D2-AUTOMATION-095',
+  'DEPTH-D2-REPEAT-096',
+  'DEPTH-D3-CITATION-099',
+  'DEPTH-D4-PRIVACY-100',
+  'DEPTH-D4-HIRING-101',
+  'DEPTH-D4-AGENT-102',
+  'DEPTH-D5-PROBLEM-103',
+  'DEPTH-D6-ADOPTION-105',
+  'DEPTH-D6-LEARNING-106',
+]);
 
 function getDisplayStimulus(question: Question) {
   if (!question.stimulus || hiddenArtifactQuestionIds.has(question.id)) return undefined;
   return question.stimulus;
 }
 
+function getDisplayVisualStimulus(question: Question) {
+  if (!question.visualStimulus || hiddenVisualStimulusQuestionIds.has(question.id)) return undefined;
+  return question.visualStimulus;
+}
+
 function hasHelpfulVisualEvidence(question: Question) {
-  return Boolean(getDisplayStimulus(question) || question.visualStimulus);
+  return Boolean(getDisplayStimulus(question) || getDisplayVisualStimulus(question));
 }
 
 function selectExecutiveDomain(answers: Answer[]) {
@@ -11143,7 +11657,10 @@ function StimulusFigure({
     <>
       <figure className="stimulus-card">
         <div className="stimulus-toolbar">
-          <div className="stimulus-label">{stimulus.label}</div>
+          <div>
+            <div className="stimulus-label">{stimulus.label}</div>
+            <p className="stimulus-purpose"><span>Inspect for</span>: {stimulus.caption}</p>
+          </div>
           <button type="button" className="secondary dark" onClick={openReader}>Read full size</button>
         </div>
         <button type="button" className="stimulus-media" onClick={openReader} aria-label={`Open ${stimulus.label} full size`}>
@@ -11493,7 +12010,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
@@ -11536,7 +12053,7 @@ export default function Home() {
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
   const [partSelections, setPartSelections] = useState<Record<string, string>>({});
   const [textResponse, setTextResponse] = useState('');
-  const [questionFeedbackComment, setQuestionFeedbackComment] = useState('');
+  const [questionFeedbackComments, setQuestionFeedbackComments] = useState<Record<string, string>>({});
   const [questionFeedbackDraft, setQuestionFeedbackDraft] = useState<Record<string, 'like' | 'unclear' | 'clear' | null>>({});
   const [questionFeedbackSubmitted, setQuestionFeedbackSubmitted] = useState<Record<string, 'like' | 'unclear' | 'comment'>>({});
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
@@ -11601,10 +12118,12 @@ export default function Home() {
   const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), activeConfig.totalQuestions);
   const results = useMemo(() => {
     const domainScores = getDomainScores(answers);
-    const overall = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
+    const domainAverage = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
+    const answerQuality = getAnswerQualityAdjustment(answers);
+    const overall = Math.round(domainAverage * answerQuality.factor);
     const sortedDomains = (Object.keys(domainScores) as DomainId[]).sort((a, b) => domainScores[a] - domainScores[b]);
     const confidence = Math.min(mode === 'executive' ? 96 : mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
-    return { domainScores, overall, level: scoreToLevel(overall, answers), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
+    return { domainScores, domainAverage, answerQuality, overall, level: scoreToLevel(overall, answers), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
   }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
   const currentMeasures = useMemo(() => getQuestionMeasures(current), [current]);
   const currentSkills = useMemo(() => getQuestionSkillLabels(current), [current]);
@@ -11634,12 +12153,13 @@ export default function Home() {
   const artifactReplacementBriefs = useMemo(() => {
     const seen = new Set<string>();
     return allAssessmentItems.reduce<Array<{ src: string; label: string; description: string; questionId: string }>>((briefs, question) => {
-      if (!question.stimulus || seen.has(question.stimulus.src)) return briefs;
-      seen.add(question.stimulus.src);
+      const displayStimulus = getDisplayStimulus(question);
+      if (!displayStimulus || seen.has(displayStimulus.src)) return briefs;
+      seen.add(displayStimulus.src);
       briefs.push({
-          src: question.stimulus!.src,
-          label: question.stimulus!.label,
-          description: `${question.stimulus!.caption} Create a realistic, legible ${domains[question.domain].short.toLowerCase()} work document with internally consistent names, dates, figures, provenance, and the evidence needed to answer ${question.id}. Avoid decorative mockup styling.`,
+          src: displayStimulus.src,
+          label: displayStimulus.label,
+          description: `${displayStimulus.caption} Create a realistic, legible ${domains[question.domain].short.toLowerCase()} work document with internally consistent names, dates, figures, provenance, and the evidence needed to answer ${question.id}. Avoid decorative mockup styling.`,
           questionId: question.id,
       });
       return briefs;
@@ -11767,6 +12287,18 @@ export default function Home() {
     () => getLearningRecommendations(results.weakest, mode, weakestCompetencies.map((competency) => competency.id), userProfileTags),
     [mode, results.weakest, userProfileTags, weakestCompetencies],
   );
+  const bootcampRecommendations = useMemo(
+    () => getBootcampRecommendations(
+      results.weakest,
+      mode,
+      results.overall,
+      functionTrack,
+      executiveRole,
+      weakestCompetencies.map((competency) => competency.id),
+      userProfileTags,
+    ),
+    [executiveRole, functionTrack, mode, results.overall, results.weakest, userProfileTags, weakestCompetencies],
+  );
   const personalizedExploration = useMemo(
     () => getPersonalizedExplorationPlan(mode, functionTrack, executiveRole, weakestCompetencies, userProfileTags),
     [executiveRole, functionTrack, mode, userProfileTags, weakestCompetencies],
@@ -11815,6 +12347,8 @@ export default function Home() {
     [assessmentSeed, current.id, shownQuestion],
   );
   const currentDisplayStimulus = getDisplayStimulus(shownQuestion);
+  const currentDisplayStimulus = getDisplayStimulus(current);
+  const currentDisplayVisualStimulus = getDisplayVisualStimulus(current);
   const displayedMatchPairs = useMemo(
     () => shuffledBySeed(shownQuestion.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
     [assessmentSeed, current.id, shownQuestion],
@@ -11900,7 +12434,7 @@ export default function Home() {
   }
 
   function submitQuestionFeedback(question = current) {
-    const comment = questionFeedbackComment.trim();
+    const comment = (questionFeedbackComments[question.id] ?? '').trim();
     const selectedKind = questionFeedbackDraft[question.id];
     const kind = selectedKind ?? (comment ? 'comment' : null);
     if (!kind) return;
@@ -11927,14 +12461,15 @@ export default function Home() {
       return next;
     });
     setQuestionFeedbackDraft((existing) => ({ ...existing, [question.id]: null }));
-    setQuestionFeedbackComment('');
+    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
   }
 
   function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
     const draftKind = questionFeedbackDraft[question.id] ?? null;
     const savedKind = questionFeedbackSubmitted[question.id];
     const activeKind = draftKind === 'clear' ? null : draftKind ?? savedKind ?? null;
-    const hasDraftChange = draftKind !== null || Boolean(questionFeedbackComment.trim());
+    const questionComment = questionFeedbackComments[question.id] ?? '';
+    const hasDraftChange = draftKind !== null || Boolean(questionComment.trim());
     return (
       <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
         <div>
@@ -11962,9 +12497,11 @@ export default function Home() {
         <label>
           <span>Optional note</span>
           <input
-            value={questionFeedbackComment}
-            onChange={(event) => setQuestionFeedbackComment(event.target.value)}
+            key={`${behaviorSessionId}:${question.id}:${placement}`}
+            value={questionComment}
+            onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: event.target.value }))}
             placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+            autoComplete="off"
           />
         </label>
         <button
@@ -11973,7 +12510,7 @@ export default function Home() {
           disabled={!hasDraftChange}
           onClick={() => submitQuestionFeedback(question)}
         >
-          {draftKind === 'clear' && !questionFeedbackComment.trim() ? 'Clear' : 'Save'}
+          {draftKind === 'clear' && !questionComment.trim() ? 'Clear' : 'Save'}
         </button>
       </div>
     );
@@ -12146,6 +12683,9 @@ export default function Home() {
     setReportTab('report');
     setFeedbackPromptOpen(true);
     setFeedbackDraft(defaultAssessmentFeedbackDraft());
+    setQuestionFeedbackDraft({});
+    setQuestionFeedbackSubmitted({});
+    setQuestionFeedbackComments({});
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -12292,7 +12832,7 @@ export default function Home() {
     setMatchSelections({});
     setPartSelections({});
     setTextResponse('');
-    setQuestionFeedbackComment('');
+    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
     setDraggedIndex(null);
     questionStartedAtRef.current = new Date().getTime();
     questionStartedIsoRef.current = new Date().toISOString();
@@ -12707,15 +13247,13 @@ export default function Home() {
           <span>New Horizon</span>
         </button>
         <nav aria-label="Primary navigation">
-          <button onClick={() => setStep('dashboard')}>User Login</button>
-          <button onClick={() => setStep('dashboard')}>User Dashboard</button>
-          <button onClick={() => setStep('admin')}>Admin Login</button>
-          <button onClick={() => setStep('admin')}>Agent Ops</button>
-          <button onClick={() => showHomeSection('platform')}>Platform</button>
-          <button onClick={() => showHomeSection('labs')}>Learn by doing</button>
-          <button onClick={() => setStep('developerReport')}>Demo Report</button>
+          <button onClick={() => setStep('home')}>Home</button>
+          <button onClick={() => setStep('onboarding')}>Assessment</button>
+          <button onClick={() => setStep('premiumOnboarding')}>Premium</button>
+          <button onClick={() => showHomeSection('labs')}>Practice</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
-          <button onClick={() => showHomeSection('results')}>Results</button>
+          <button onClick={() => setStep('dashboard')}>Dashboard</button>
+          <button onClick={() => setStep('admin')}>Admin</button>
         </nav>
         <div className="topbar-actions">
           <div className="language-toggle" aria-label="Language">
@@ -12747,9 +13285,9 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
-                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
-                <button className="secondary" onClick={() => setStep('executiveOnboarding')}>Executive Assessment</button>
+                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
                 <a className="secondary" href="#process">See How It Works</a>
+                <a className="secondary" href="#scoring-model">Scoring model</a>
               </div>
             </div>
             <div className="hero-panel" aria-label="Assessment preview">
@@ -12784,6 +13322,19 @@ export default function Home() {
             <div><strong>{multiPartItemCount}</strong><span>multi-part clusters</span></div>
             <div><strong>6</strong><span>AILF domains</span></div>
             <div><strong>{interactionCount}</strong><span>question formats</span></div>
+          </section>
+
+          <section className="home-menu-tabs" aria-label="Home guide menu">
+            {[
+              ['Scoring model', 'How answers, difficulty, competencies, domains, and confidence become the score.', 'scoring-model'],
+              ['Global frameworks', 'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.', 'global-frameworks'],
+              ['Adaptive testing', 'Why the test continues when coverage or confidence is not strong enough.', 'process'],
+            ].map(([title, body, target]) => (
+              <a key={title} href={`#${target}`}>
+                <span>{title}</span>
+                <p>{body}</p>
+              </a>
+            ))}
           </section>
 
           <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
@@ -12878,6 +13429,12 @@ export default function Home() {
             </div>
           </section>
 
+          <details className="home-more-panel">
+            <summary>
+              <span>Explore more</span>
+              <strong>Learning prompts, practice labs, scoring, and frameworks</strong>
+            </summary>
+
           <section id="labs" className="section field-lab">
             <div>
               <p className="eyebrow">Learn by doing</p>
@@ -12930,6 +13487,72 @@ export default function Home() {
                   <h3>{title}</h3>
                   <p>{body}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="scoring-model" className="section scoring-model-section">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Scoring and adaptive testing</p>
+                <h2>Scores reward harder evidence, not just correct guesses.</h2>
+                <p>
+                  New Horizon separates raw answer correctness from readiness evidence. The same raw score
+                  contributes differently depending on difficulty, competency coverage, and confidence.
+                </p>
+              </div>
+              <span>Transparent MVP logic</span>
+            </div>
+            <div className="score-model-grid">
+              {scoringModelExplainers.map(([title, body]) => (
+                <article className="info-card score-model-card" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="difficulty-band-table" role="table" aria-label="Difficulty readiness bands">
+              <div role="row">
+                <strong role="columnheader">Difficulty</strong>
+                <strong role="columnheader">Partial anchor</strong>
+                <strong role="columnheader">Maximum readiness</strong>
+              </div>
+              {(Object.keys(difficultyReadinessBands) as Difficulty[]).map((difficulty) => (
+                <div role="row" key={difficulty}>
+                  <span role="cell">{difficultyLabels[difficulty]}</span>
+                  <span role="cell">{difficultyReadinessBands[difficulty].partial}/100</span>
+                  <span role="cell">{difficultyReadinessBands[difficulty].max}/100</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="global-frameworks" className="section global-framework-section band">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Global framework crosswalk</p>
+                <h2>Mapped to reputable AI literacy, governance, and readiness frameworks.</h2>
+                <p>
+                  New Horizon is not claiming certification equivalence. It uses these frameworks as a
+                  crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.
+                </p>
+              </div>
+              <span>D1-D6 crosswalk</span>
+            </div>
+            <div className="framework-crosswalk-grid">
+              {globalFrameworkCrosswalk.map((row) => (
+                <article className="framework-card" key={row.domain} style={{ borderTopColor: domains[row.domain].color }}>
+                  <span>{row.domain} · {domains[row.domain].name}</span>
+                  <h3>{domains[row.domain].short}</h3>
+                  <p><strong>Maps to</strong> {row.mapsTo}</p>
+                  <p><strong>Tests</strong> {row.emphasis}</p>
+                  <p><strong>Improve next</strong> {row.improveNext}</p>
+                </article>
+              ))}
+            </div>
+            <div className="framework-source-list">
+              {frameworkSourceLinks.map((source) => (
+                <a key={source.label} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
               ))}
             </div>
           </section>
@@ -12995,8 +13618,7 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <button className="primary light" onClick={() => setStep('onboarding')}>Try Free Flow</button>
-                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Pilot</button>
-                <button className="secondary invert" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>
+                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Diagnostic</button>
               </div>
             </div>
             <div className="mock-result">
@@ -13025,12 +13647,12 @@ export default function Home() {
               <p className="eyebrow">Premium assessment</p>
               <h2>Deeper diagnosis for people who want more than a score.</h2>
               <p>
-                The MVP premium pilot adds function and industry context, a longer adaptive run,
-                evidence review, precision language, executive pathways, and a richer learning plan.
+                The MVP premium pilot adds function, industry, role context, a longer adaptive run,
+                evidence review, precision language, leadership pathways, and a richer learning plan.
               </p>
             </div>
             <div className="premium-grid">
-              {['Function context', 'Industry scenarios', 'Executive assessment', 'Premium learning plan'].map((item) => (
+              {['Function context', 'Industry scenarios', 'Leadership role context', 'Premium learning plan'].map((item) => (
                 <article className="info-card" key={item}>
                   <h3>{item}</h3>
                   <p>Pilot-grade now, designed for calibrated psychometrics after response data is collected.</p>
@@ -13038,10 +13660,10 @@ export default function Home() {
               ))}
             </div>
             <div className="hero-actions">
-              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
-              <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Start Executive Pilot</button>
+              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
             </div>
           </section>
+          </details>
         </>
       )}
 
@@ -13851,7 +14473,7 @@ export default function Home() {
       {step === 'premiumOnboarding' && (
         <section className="workspace">
           <div className="workspace-header">
-            <p className="eyebrow">Premium assessment pilot</p>
+            <p className="eyebrow">Premium diagnostic</p>
             <h1>Add context for a deeper profile.</h1>
             <p>Premium uses the same AILF spine, then adapts interpretation by function and industry.</p>
           </div>
@@ -13888,45 +14510,9 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </div>
-          <div className="premium-summary">
-            <strong>Premium pilot includes</strong>
-            <span>20 adaptive questions, function/industry context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
-          </div>
-          <article className="profile-builder-card compact">
             <div>
-              <p className="eyebrow">Profile builder</p>
-              <h2>Premium profile signals</h2>
-              <p>
-                Before the diagnostic starts, New Horizon asks about current tools, similar-role tools, workflows, risks, and learning interests.
-                Those tags personalize item routing, artifacts, tool suggestions, and the learning path.
-              </p>
-            </div>
-            <div className="profile-builder-steps">
-              <span>{functionLabels[functionTrack]}</span>
-              <span>{industryLabels[industryTrack]}</span>
-              <span>Tool awareness</span>
-              <span>Learning intent</span>
-            </div>
-          </article>
-          <div className="workspace-actions">
-            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={() => openProfileSurvey('premium')}>Build Profile and Begin Premium Diagnostic</button>
-          </div>
-        </section>
-      )}
-
-      {step === 'executiveOnboarding' && (
-        <section className="workspace">
-          <div className="workspace-header">
-            <p className="eyebrow">Executive assessment pilot</p>
-            <h1>Board-level AI readiness.</h1>
-            <p>Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.</p>
-          </div>
-          <div className="setup-columns single">
-            <div>
-              <h2>Executive role</h2>
-              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Executive role">
+              <h2>Role context</h2>
+              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Role context">
                 {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
                   <button
                     key={id}
@@ -13942,28 +14528,29 @@ export default function Home() {
             </div>
           </div>
           <div className="premium-summary">
-            <strong>Executive pilot includes</strong>
-            <span>20 adaptive questions from {executiveAssessmentQuestionBank.length} executive and advanced competency items, chart/report visuals, multi-select, drag-order, matching, narrative judgment, target radar graph, and personalized executive learning path.</span>
+            <strong>Premium pilot includes</strong>
+            <span>20 adaptive questions, function/industry/role context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
           </div>
           <article className="profile-builder-card compact">
             <div>
               <p className="eyebrow">Profile builder</p>
-              <h2>Executive profile signals</h2>
+              <h2>Premium profile signals</h2>
               <p>
-                Before the assessment starts, New Horizon captures executive priorities, maturity, risk focus, peer topics, and learning interests.
-                During the test, strategy, governance, and change-leadership evidence signals are added from artifact-backed questions.
+                Before the diagnostic starts, New Horizon asks about current tools, similar-role tools, workflows, risks, and learning interests.
+                Those tags personalize item routing, artifacts, tool suggestions, and the learning path.
               </p>
             </div>
             <div className="profile-builder-steps">
+              <span>{functionLabels[functionTrack]}</span>
+              <span>{industryLabels[industryTrack]}</span>
               <span>{executiveLabels[executiveRole]}</span>
-              <span>AI priorities</span>
-              <span>Risk agenda</span>
-              <span>Board/value signals</span>
+              <span>Tool awareness</span>
+              <span>Learning intent</span>
             </div>
           </article>
           <div className="workspace-actions">
             <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={() => openProfileSurvey('executive')}>Build Profile and Begin Executive Assessment</button>
+            <button className="primary" onClick={() => openProfileSurvey('premium')}>Build Profile and Begin Premium Diagnostic</button>
           </div>
         </section>
       )}
@@ -14067,6 +14654,7 @@ export default function Home() {
                   <div>
                     {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
                     {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
+                    {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
                     <span>Make the call</span>
@@ -14090,6 +14678,7 @@ export default function Home() {
                 <>
                   {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
                   {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
+                  {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>
@@ -14512,7 +15101,7 @@ export default function Home() {
         <section className="results-shell">
           <div className="results-hero">
             <div>
-              <p className="eyebrow">{mode === 'executive' ? 'Executive assessment pilot' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
+              <p className="eyebrow">{mode === 'executive' ? 'Premium leadership diagnostic' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
               <h1>{results.overall}</h1>
               <p className="result-level">{results.level} AI readiness</p>
               <p>
@@ -14546,7 +15135,7 @@ export default function Home() {
               className={reportTab === 'report' ? 'selected' : ''}
               onClick={() => setReportTab('report')}
             >
-              Report
+              Summary
             </button>
             <button
               type="button"
@@ -14555,7 +15144,7 @@ export default function Home() {
               className={reportTab === 'analysis' ? 'selected' : ''}
               onClick={() => setReportTab('analysis')}
             >
-              Test analysis
+              Question review
             </button>
           </div>
           <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
@@ -14580,7 +15169,7 @@ export default function Home() {
                 <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
                 <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
                 <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
-                <p><strong>Assessment</strong> Overall score is the average of D1-D6 domain scores: {Object.values(results.domainScores).join(' + ')} / 6 = {results.overall}.</p>
+                <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
                 <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
               </div>
               <details className="calculation-details" open>
@@ -14626,7 +15215,7 @@ export default function Home() {
                 </div>
               </details>
             </article>
-            <article className="result-card wide did-you-know-report report-primary report-order-dyk">
+            <article className="result-card wide did-you-know-report analysis-primary">
               <div>
                 <p className="eyebrow">Did you know?</p>
                 <h2>{personalizedDidYouKnow.topic}</h2>
@@ -14716,11 +15305,11 @@ export default function Home() {
                 </div>
               </article>
             )}
-            <article className="result-card wide leaderboard-card report-primary report-order-leaderboard">
+            <article className="result-card wide leaderboard-card analysis-primary">
               <div className="report-heading">
                 <div>
                   <p className="eyebrow">Persona leaderboard</p>
-                  <h2>Top 10 · {scoreGroup.label.replace(/ average$/i, '')}</h2>
+                  <h2>Top 10 · {cleanAverageLabel(scoreGroup.label)}</h2>
                 </div>
                 <span>{personaLeaderboard.length} ranked run{personaLeaderboard.length === 1 ? '' : 's'}</span>
               </div>
@@ -14848,7 +15437,7 @@ export default function Home() {
                   <p className="eyebrow">Personalized AI report</p>
                   <h2>{generatedReport.headline}</h2>
                 </div>
-                <span>{scoreGroup.label.replace(/ average$/i, '')}</span>
+                <span>{cleanAverageLabel(scoreGroup.label)}</span>
               </div>
               <p>{generatedReport.summary}</p>
               <div className="report-section">
@@ -15005,7 +15594,7 @@ export default function Home() {
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
             </article>
-            <article className="result-card wide report-primary report-order-evidence-mode">
+            <article className="result-card wide analysis-primary">
               <h2>Knowledge vs practical skill</h2>
               <div className="evidence-mode-grid">
                 {evidenceModeSummary.map((item) => (
@@ -15017,7 +15606,7 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide report-primary report-order-badges">
+            <article className="result-card wide analysis-primary">
               <h2>Readiness badges</h2>
               <div className="badge-grid">
                 {earnedBadges.map((badge) => (
@@ -15076,6 +15665,15 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <div className="learning-list bootcamp-inline-list">
+                {bootcampRecommendations.slice(0, 2).map((bootcamp) => (
+                  <div key={bootcamp.id}>
+                    <span>{bootcamp.duration} · {bootcamp.level} workshop</span>
+                    <strong>{bootcamp.title}</strong>
+                    <p>{bootcamp.whyTakeIt}</p>
+                  </div>
+                ))}
+              </div>
             </article>
             <article className="result-card wide report-primary report-order-courses">
               <h2>Thailand course recommendations</h2>
@@ -15096,7 +15694,42 @@ export default function Home() {
                 ))}
               </div>
             </article>
-            <article className="result-card wide report-primary report-order-improve">
+            <article className="result-card wide report-primary report-order-bootcamps">
+              <h2>Recommended bootcamps and workshops</h2>
+              <p className="context-line">
+                Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.
+              </p>
+              <div className="bootcamp-list">
+                {bootcampRecommendations.map((bootcamp, index) => (
+                  <details key={bootcamp.id} open={index === 0}>
+                    <summary>
+                      <span>{bootcamp.duration} · {bootcamp.level}</span>
+                      <strong>{bootcamp.title}</strong>
+                      <b>{bootcamp.domains.join(', ')}</b>
+                    </summary>
+                    <div className="bootcamp-detail-grid">
+                      <p><strong>For who</strong> {bootcamp.forWho}</p>
+                      <p><strong>Why take it</strong> {bootcamp.whyTakeIt}</p>
+                      <div>
+                        <strong>Expected learning outputs</strong>
+                        <ul>
+                          {bootcamp.expectedOutputs.map((output) => <li key={output}>{output}</li>)}
+                        </ul>
+                      </div>
+                      <div>
+                        <strong>Workshop labs</strong>
+                        <ul>
+                          {bootcamp.labs.map((lab) => <li key={lab}>{lab}</li>)}
+                        </ul>
+                      </div>
+                      <p><strong>Framework alignment</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
+                      <p><strong>Best fit roles</strong> {bootcamp.roles.join(', ')}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </article>
+            <article className="result-card wide analysis-primary">
               <h2>Where to improve next</h2>
               <div className="improvement-brief">
                 {improvementBrief.map((item) => (
@@ -15165,9 +15798,8 @@ export default function Home() {
                 {mode === 'practice' ? 'Back to Activities' : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
               </button>
               {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Start Full Free Assessment</button>}
-              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>}
+              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>}
               {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
-              {mode !== 'executive' && <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>}
             </div>
           </div>
         </section>

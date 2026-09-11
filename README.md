@@ -1,30 +1,36 @@
 # SC Horizon / New Horizon
 
-Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, executive assessment, learning paths, and AI trend awareness.
+Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, premium role context, learning paths, and AI trend awareness.
 
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
+- Simplified public tiers: Free Assessment and Premium Diagnostic, with executive/leadership context handled inside Premium
+- Home-page tabs for global AI framework mapping and transparent scoring/adaptive-testing logic
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
 - Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
+- Artifact relevance gate that hides decorative, redundant, generic, or non-evidence artifacts during scored assessment
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores
 - Continue-assessment option after mandatory 12/20-question routes when confidence or coverage is weak
+- Assessment-mapped AI bootcamp/workshop recommendations with expandable details for audience, learning outputs, rationale, labs, and framework alignment
 - User profile builder and signal logging
 - Optional landing-page profile pulse that asks for current AI interests and routes later questions accordingly
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
 - End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
 - Top-10 score leaderboard scoped to the user's assessment persona/group
+- Anonymous leaderboard display by default, with real names or aliases reserved for future explicit opt-in
 - Landing-page daily/weekly top-10 teaser and peer-insight cards to motivate users to see where they rank
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
 - Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
 - Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
+- Global framework crosswalk mapping D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
 
@@ -41,6 +47,20 @@ Detailed telemetry and agent documentation:
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
+- [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
+- [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+
+Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
+
+Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
+
+Latest UX priority update: the landing page is simplified around Free Assessment, Premium Diagnostic, peer comparison, and concise guide cards. Heavier explanatory content now sits behind an expandable `Explore more` panel. Leaderboards use anonymous labels by default. Premium now includes role, function, and industry context instead of exposing a separate executive assessment tier. Question-level feedback resets at the start of each assessment and disables browser autocomplete on the comment input to prevent stale notes from prior users. Artifact cards now show an `Inspect for` cue so users know why the document/image matters before spending time on it.
+
+Latest bootcamp update: the report learning path now recommends New Horizon bootcamps and workshops when guided practice is a better next step than a self-paced course alone. Recommendations use weak domains, overall score, assessment mode, function track, executive role, weak competencies, and profile tags. Users can expand each workshop to see who it is for, why to take it, expected learning outputs, labs, best-fit roles, and framework alignment.
+
+Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
+
+Latest artifact relevance cleanup: more low-value concept cards, simple workflow diagrams, generic product maps, and explanatory visual cards are hidden when the question can be answered without inspecting them. The same helpful-artifact gate now drives artifact-backed item counts, adaptive routing, telemetry analysis, and admin artifact replacement briefs. Future questions should show artifacts only when they contain evidence needed by the answer key, clarify context, or simulate realistic document inspection.
 
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
@@ -136,6 +156,8 @@ See:
 - `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
 - `docs/TELEMETRY_TRACKING_PURPOSE.md`
 - `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
+- `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`
+- `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`
 
 Draft tables:
 

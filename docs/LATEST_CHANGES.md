@@ -43,6 +43,68 @@ Differences from the legacy reliance items:
 - Horizon's `scheduling-reply` card was not imported because `REL-G-D2-001` already covers that scenario with an artifact.
 
 The adaptive router still shows at most one `reliance-decision` item per sitting, so this widens the pool rather than lengthening the assessment. Verified: lint clean, production build passes, 252 unique question ids; the 16 pre-existing TypeScript errors on the branch are unchanged.
+## 2026-09-11: Report Simplification
+
+The assessment report Summary tab is reorganized around the user’s immediate questions: score meaning, whether to continue, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary material such as Did you know, leaderboard, score calculation, telemetry, evidence-mode split, badges, profile signals, and improvement math now sits in Question review/analysis to reduce clutter.
+
+## 2026-09-11: Score Calibration And Learning Path Visibility
+
+Overall scoring now applies an answer-quality evidence factor after the D1-D6 domain average. This prevents a mostly incorrect run from looking stronger than the answer evidence supports while still preserving partial credit for genuinely partial answers. The report score calculation now shows the domain average, raw answer-quality average, applied factor, and final score.
+
+Bootcamp and workshop recommendations now appear directly inside the recommended learning path card, with the detailed bootcamp section still kept underneath recommended courses.
+
+## 2026-09-11: UX Priority Cleanup
+
+The public product structure is now simplified to `Free Assessment` and `Premium Diagnostic`. Executive context remains available inside Premium through role selection and recommendation logic, instead of appearing as a separate public assessment tier.
+
+Leaderboards now use anonymous display labels by default. The product should show real names or aliases only after explicit user opt-in, because peer comparison should motivate users without exposing identity or email-derived names.
+
+Question-level feedback is reset when a new assessment starts, including useful/unclear selections and comment drafts. The feedback comment input is keyed by session, question, and placement with browser autocomplete disabled to prevent old user notes from appearing like stale app data.
+
+The report order now keeps recommended bootcamps and workshops underneath recommended courses. Courses remain the lighter next step; bootcamps are positioned as deeper guided practice when the assessment shows role, team, or confidence gaps.
+
+The landing page now prioritizes the starting choices, peer challenge, and guide cards. Heavier sections such as practice labs, platform method, scoring details, framework crosswalk, domains, results preview, and premium details are grouped under an expandable `Explore more` panel to reduce first-page clutter.
+
+Artifact cards now include an `Inspect for` cue derived from the artifact caption. The design rule is that artifacts should be shown only when they clarify the task or provide evidence the user needs; otherwise the question should stand alone without an artifact.
+
+## 2026-09-11: Bootcamp Recommendations In Learning Path
+
+Added a structured New Horizon bootcamp and workshop catalog covering AI Fundamentals, Practical AI for Work, Advanced AI Operator, Executive AI Strategy, AI Governance and Risk, AI Agent and Workflow Lab, Role-Based AI Bootcamps, and AI Train-the-Trainer.
+
+The assessment report now recommends bootcamps when the user's score, weak domains, weak competencies, assessment mode, function track, executive role, or profile signals indicate that guided practice is useful. Each recommendation is expandable so users can see who it is for, why to take it, expected learning outputs, workshop labs, best-fit roles, and framework alignment.
+
+Added `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md` as the source-of-truth training catalog. Future training, scoring, role-mapping, and learning-path changes should keep this document, the report UI, README, latest-change log, and admin/agent recommendation prompts aligned.
+
+## 2026-09-11: Artifact Relevance Cleanup
+
+Expanded the artifact display gate so more low-value concept cards, generic product maps, simple workflow diagrams, and explanatory visual cards are hidden when the question can be answered from the scenario, prompt, options, or rubric without inspecting an artifact.
+
+The same helpful-artifact gate now drives artifact-backed counts, adaptive routing visual bonuses, telemetry analysis, and admin artifact replacement briefs. This prevents hidden/decorative artifacts from inflating coverage or distracting users during assessment.
+
+Question authors should show an artifact only when it contains necessary evidence, clarifies ambiguous scenario context, or simulates realistic document inspection. If the artifact is merely decorative, redundant, too generic, or not referenced by the answer key, hide it or replace it before scored use.
+
+## 2026-09-11: Global Framework and Scoring Home Tabs
+
+The home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`.
+
+The `Scoring model` section explains how the platform derives results from raw answer evidence, difficulty-adjusted readiness evidence, competency roll-ups, domain roll-ups, the D1-D6 overall score, confidence, and continuation recommendations. It also shows the current seeded readiness bands for Awareness, Applied, Proficient, and Advanced items.
+
+The `Global frameworks` section maps New Horizon D1-D6 to reputable international frameworks and research, including UNESCO AI competency frameworks, the OECD/European Commission AI Literacy Framework, NIST AI RMF, EU AI Act Article 4, DigComp 2.2, ISO/IEC 42001, Singapore AI Verify / MGF GenAI, and AI literacy research.
+
+Added `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` as the source-of-truth documentation for the framework mapping. Future changes to domains, competencies, scoring, adaptive routing, telemetry, or admin agent prompts should keep the home-page tabs, report explanations, README, latest-change log, and crosswalk document aligned.
+
+## 2026-09-11: Thai Context and Saved Label Fixes
+
+Adjusted Thai leaderboard copy from the overly literal "วันนี้คุณจะอยู่ตรงไหน?" to "วันนี้คะแนนของคุณจะอยู่ตรงไหน?" so the meaning is clear in context.
+
+Saved score and ranking labels now normalize older `General public`, `Professional`, and `Team member` wording at display time, so existing local results show the cleaner labels `General`, `Work`, and `Team` without clearing past assessment data.
+
+## 2026-09-11: Navigation and Thai Copy Cleanup
+
+The top navigation is simplified to `Home`, `Assessment`, `Practice`, `AI Watch`, `Dashboard`, and `Admin`. Secondary pages such as Agent Ops, demo reports, platform explanation, and detailed results now sit inside their relevant flows instead of crowding the main navigation.
+
+Audience wording is simplified: `General public` is now `General`, `Professional` is now `Work`, and `Team member` is now `Team`. Thai translation coverage was expanded across onboarding, assessment controls, report tabs, feedback survey, score explanations, telemetry labels, and report sections. Thai copy remains simple and keeps technical terms such as AI, Workflow, Agent, Domain, Competency, Assessment, telemetry, and Platform recognizable.
+
 ## 2026-09-10: Artifact Relevance Gate
 
 Assessment artifacts are now gated before display. Several low-value or decorative concept/rollout artifacts are hidden when the question can be answered from the scenario and options without inspecting the image.
