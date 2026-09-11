@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-11: Artifact Relevance Cleanup
+
+Expanded the artifact display gate so more low-value concept cards, generic product maps, simple workflow diagrams, and explanatory visual cards are hidden when the question can be answered from the scenario, prompt, options, or rubric without inspecting an artifact.
+
+The same helpful-artifact gate now drives artifact-backed counts, adaptive routing visual bonuses, telemetry analysis, and admin artifact replacement briefs. This prevents hidden/decorative artifacts from inflating coverage or distracting users during assessment.
+
+Question authors should show an artifact only when it contains necessary evidence, clarifies ambiguous scenario context, or simulates realistic document inspection. If the artifact is merely decorative, redundant, too generic, or not referenced by the answer key, hide it or replace it before scored use.
+
 ## 2026-09-11: Global Framework and Scoring Home Tabs
 
 The home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`.

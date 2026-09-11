@@ -9113,7 +9113,7 @@ function getEvidenceMode(question: Question): EvidenceMode {
   if (question.evidenceMode) return question.evidenceMode;
   if (question.interaction === 'text' || question.interaction === 'rank' || question.type === 'report-review' || question.type === 'fraud-detection') return 'doing';
   if (question.interaction === 'parts' || question.interaction === 'match' || question.type === 'concept-cluster') return 'hybrid';
-  if (question.stimulus || question.visualStimulus || question.interaction === 'multi') return 'doing';
+  if (hasHelpfulVisualEvidence(question) || question.interaction === 'multi') return 'doing';
   return question.difficulty === 'awareness' ? 'knowing' : 'hybrid';
 }
 
@@ -9619,7 +9619,7 @@ function getTelemetryAnalysis(
   const confusingEvents = answeredEvents.filter((event) => event.hesitation === 'confusing' || event.hesitation === 'slow');
   const averageDuration = answeredEvents.length ? getAverage(answeredEvents.map((event) => event.durationMs ?? 0)) : getAverage(answers.map((answer) => answer.behavior?.durationMs ?? 0));
   const textAnswers = answers.filter((answer) => answer.textResponse?.trim()).length;
-  const artifactQuestions = answers.filter((answer) => answer.question.stimulus || answer.question.visualStimulus).length;
+  const artifactQuestions = answers.filter((answer) => hasHelpfulVisualEvidence(answer.question)).length;
   const highConfidenceRelevant = coverage.filter((competency) => (competency.planned || competency.priority) && competency.confidence === 'high').length;
   const relevantTotal = coverage.filter((competency) => competency.planned || competency.priority).length;
   const latestFeedback = feedback[0];
@@ -10300,17 +10300,53 @@ function optionDisplayLetter(index: number) {
 }
 
 const hiddenArtifactQuestionIds = new Set([
+  'DEPTH-D1-CONCEPTS-025',
+  'DEPTH-D1-CONCEPTS-026',
+  'DEPTH-D1-SYSTEMS-028',
+  'DEPTH-D2-PROMPT-031',
+  'DEPTH-D2-WORKFLOW-034',
   'DEPTH-D5-STRATEGY-052',
   'DEPTH-D6-COLLAB-055',
   'DEPTH-D6-CHANGE-058',
   'MATCH-AI-COMPONENTS-061',
+  'MATCH-AI-PRODUCTS-062',
+  'MATCH-AI-BENCHMARKS-065',
+  'MATCH-AI-CONTROLS-066',
+  'DEPTH-EXP-D1-D2-067',
+  'DEPTH-EXP-D1-SYSTEMS-068',
   'DEPTH-EXP-D1-D2-086',
   'DEPTH-EXP-D1-CONCEPTS-090',
   'COMP-D1-CONCEPTS-001',
   'COMP-D2-WORKFLOW-004',
+  'COMP-D5-VALUE-009',
   'EXEC-D6-LOOP-019',
   'EXEC-EXP-D1-CAL-001',
   'MULTI-CONCEPT-EXEC-001',
+]);
+
+const hiddenVisualStimulusQuestionIds = new Set([
+  'RELY-EMAIL-001',
+  'RELY-TERM-004',
+  'RELY-STRATEGY-005',
+  'RELY-SENSITIVE-FEEDBACK-006',
+  'EXEC-PORTFOLIO-001',
+  'EXEC-INCIDENT-002',
+  'EXEC-ANNOUNCE-003',
+  'EXEC-FORECAST-004',
+  'EXEC-BOARD-005',
+  'DEPTH-D1-VERIFY-091',
+  'DEPTH-D1-POLICY-092',
+  'DEPTH-D1-SOURCE-093',
+  'DEPTH-D2-PROMPT-094',
+  'DEPTH-D2-AUTOMATION-095',
+  'DEPTH-D2-REPEAT-096',
+  'DEPTH-D3-CITATION-099',
+  'DEPTH-D4-PRIVACY-100',
+  'DEPTH-D4-HIRING-101',
+  'DEPTH-D4-AGENT-102',
+  'DEPTH-D5-PROBLEM-103',
+  'DEPTH-D6-ADOPTION-105',
+  'DEPTH-D6-LEARNING-106',
 ]);
 
 function getDisplayStimulus(question: Question) {
@@ -10318,8 +10354,13 @@ function getDisplayStimulus(question: Question) {
   return question.stimulus;
 }
 
+function getDisplayVisualStimulus(question: Question) {
+  if (!question.visualStimulus || hiddenVisualStimulusQuestionIds.has(question.id)) return undefined;
+  return question.visualStimulus;
+}
+
 function hasHelpfulVisualEvidence(question: Question) {
-  return Boolean(getDisplayStimulus(question) || question.visualStimulus);
+  return Boolean(getDisplayStimulus(question) || getDisplayVisualStimulus(question));
 }
 
 function selectExecutiveDomain(answers: Answer[]) {
@@ -11035,12 +11076,13 @@ export default function Home() {
   const artifactReplacementBriefs = useMemo(() => {
     const seen = new Set<string>();
     return allAssessmentItems.reduce<Array<{ src: string; label: string; description: string; questionId: string }>>((briefs, question) => {
-      if (!question.stimulus || seen.has(question.stimulus.src)) return briefs;
-      seen.add(question.stimulus.src);
+      const displayStimulus = getDisplayStimulus(question);
+      if (!displayStimulus || seen.has(displayStimulus.src)) return briefs;
+      seen.add(displayStimulus.src);
       briefs.push({
-          src: question.stimulus!.src,
-          label: question.stimulus!.label,
-          description: `${question.stimulus!.caption} Create a realistic, legible ${domains[question.domain].short.toLowerCase()} work document with internally consistent names, dates, figures, provenance, and the evidence needed to answer ${question.id}. Avoid decorative mockup styling.`,
+          src: displayStimulus.src,
+          label: displayStimulus.label,
+          description: `${displayStimulus.caption} Create a realistic, legible ${domains[question.domain].short.toLowerCase()} work document with internally consistent names, dates, figures, provenance, and the evidence needed to answer ${question.id}. Avoid decorative mockup styling.`,
           questionId: question.id,
       });
       return briefs;
@@ -11209,6 +11251,7 @@ export default function Home() {
     [assessmentSeed, current],
   );
   const currentDisplayStimulus = getDisplayStimulus(current);
+  const currentDisplayVisualStimulus = getDisplayVisualStimulus(current);
   const displayedMatchPairs = useMemo(
     () => shuffledBySeed(current.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
     [assessmentSeed, current],
@@ -13532,7 +13575,7 @@ export default function Home() {
                 <div className="reliance-stage">
                   <div>
                     {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                    {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                    {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
                     <span>Make the call</span>
@@ -13555,7 +13598,7 @@ export default function Home() {
               {!useRelianceStage && (
                 <>
                   {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                  {!currentDisplayStimulus && current.visualStimulus && <VisualStimulusCard stimulus={current.visualStimulus} />}
+                  {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>

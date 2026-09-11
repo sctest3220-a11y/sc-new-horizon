@@ -10,6 +10,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
 - Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
+- Artifact relevance gate that hides decorative, redundant, generic, or non-evidence artifacts during scored assessment
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
@@ -46,6 +47,8 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 
 Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
+
+Latest artifact relevance cleanup: more low-value concept cards, simple workflow diagrams, generic product maps, and explanatory visual cards are hidden when the question can be answered without inspecting them. The same helpful-artifact gate now drives artifact-backed item counts, adaptive routing, telemetry analysis, and admin artifact replacement briefs. Future questions should show artifacts only when they contain evidence needed by the answer key, clarify context, or simulate realistic document inspection.
 
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
