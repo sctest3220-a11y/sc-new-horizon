@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { questionTranslationsTh } from './questionTranslations.th';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -158,27 +159,33 @@ type LabConfig = {
   checklist?: string[];
 };
 
-type Option = { id: string; label: string; score: number; feedback: string };
-type RubricCriterion = { id: string; label: string; keywords: string[]; points: number };
+type Option = { id: string; label: string; score: number; feedback: string; labelTh?: string; feedbackTh?: string };
+type TranslationStatus = 'draft' | 'reviewed' | 'approved';
+type RubricCriterion = { id: string; label: string; keywords: string[]; points: number; labelTh?: string; keywordsTh?: string[] };
 type VisualStimulus = {
   kind: 'dashboard' | 'report' | 'post' | 'portfolio' | 'risk' | 'memo';
   title: string;
   eyebrow: string;
   caption: string;
   points: string[];
+  titleTh?: string;
+  eyebrowTh?: string;
+  captionTh?: string;
+  pointsTh?: string[];
   callout?: string;
   flags?: string[];
   chartBars?: Array<{ label: string; value: number; note?: string }>;
   metrics?: Array<{ label: string; value: string; status?: 'good' | 'warn' | 'bad' }>;
 };
-type RankItem = { id: string; label: string };
-type MatchPair = { id: string; left: string; correct: string; choices: string[] };
+type RankItem = { id: string; label: string; labelTh?: string };
+type MatchPair = { id: string; left: string; correct: string; choices: string[]; leftTh?: string; correctTh?: string; choicesTh?: string[] };
 type QuestionPart = {
   id: string;
   domain: DomainId;
   prompt: string;
   correctOptionId: string;
   options: Option[];
+  promptTh?: string;
 };
 type BenchmarkProfile = {
   label: string;
@@ -203,15 +210,27 @@ type Question = {
     alt: string;
     label: string;
     caption: string;
+    altTh?: string;
+    labelTh?: string;
+    captionTh?: string;
+    /** Thai version of the image; also resolvable through thaiStimulusSources by src. */
+    srcTh?: string;
   };
   visualStimulus?: VisualStimulus;
+  /** Thai question text. English fields stay the source of truth; scoring uses option ids only. */
+  contextTh?: string;
+  promptTh?: string;
+  translationStatus?: TranslationStatus;
   correctOptionIds?: string[];
   rankItems?: RankItem[];
   idealOrder?: string[];
+  rankRationale?: string;
+  rankRationaleTh?: string;
   matchPairs?: MatchPair[];
   parts?: QuestionPart[];
   rubricCriteria?: RubricCriterion[];
   exemplarAnswer?: string;
+  exemplarAnswerTh?: string;
   prompt: string;
   context: string;
   options: Option[];
@@ -604,7 +623,6 @@ const thaiUiCopy: Record<string, string> = {
   'User Dashboard': 'แดชบอร์ดผู้ใช้',
   'Admin Login': 'เข้าสู่ระบบ Admin',
   'Home': 'หน้าแรก',
-  'Assessment': 'Assessment',
   'Practice': 'Practice',
   'Scoring': 'Scoring',
   'Frameworks': 'Frameworks',
@@ -706,9 +724,7 @@ const thaiUiCopy: Record<string, string> = {
   'Mapped to reputable AI literacy, governance, and readiness frameworks.': 'เชื่อมกับ Framework ด้าน AI Literacy, Governance และ Readiness ที่น่าเชื่อถือ',
   'New Horizon is not claiming certification equivalence. It uses these frameworks as a crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.': 'New Horizon ไม่ได้อ้างว่าเทียบเท่า Certificate แต่ใช้ Framework เหล่านี้เป็น Crosswalk เพื่อให้ Domain, Competency, คำถาม, telemetry และการปรับปรุงมีฐานอ้างอิงระดับโลก',
   'D1-D6 crosswalk': 'Crosswalk D1-D6',
-  'Maps to': 'เชื่อมกับ',
   'Tests': 'ทดสอบ',
-  'Improve next': 'ปรับปรุงต่อ',
   'Progress system': 'ระบบความก้าวหน้า',
   'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
   'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
@@ -771,8 +787,6 @@ const thaiUiCopy: Record<string, string> = {
   'Analysis': 'Analysis',
   'Assessment': 'Assessment',
   'Submit feedback and unlock analysis': 'ส่ง Feedback เพื่อเปิด Analysis',
-  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
-  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Feedback สั้นๆ ในแท็บ Report เพื่อเปิดข้อมูลรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
   'Go to feedback survey': 'ไปที่ Feedback Survey',
   'Assessment length': 'ความยาว Assessment',
   'Back to Activities': 'กลับไปที่กิจกรรม',
@@ -810,7 +824,6 @@ const thaiUiCopy: Record<string, string> = {
   'Too long': 'ยาวเกินไป',
   'Summary': 'สรุป',
   'Question review': 'Review คำถาม',
-  'Score interpretation': 'คำอธิบายคะแนน',
   'How this result was derived': 'คะแนนนี้คำนวณอย่างไร',
   'Question-level calculation': 'การคำนวณรายคำถาม',
   'Domain roll-up': 'สรุปตาม Domain',
@@ -1743,9 +1756,9 @@ const domainBadges: Record<DomainId, { title: string; detail: string }> = {
 };
 
 const relianceOptions = {
-  me: { id: 'me', label: 'Human-owned: keep judgment with the person.', score: 20, feedback: 'This may be too cautious if the task is low-risk and easy to verify.' },
-  together: { id: 'together', label: 'Shared with AI: use AI, then verify and decide.', score: 98, feedback: 'Correct. AI can help, but the human keeps judgment, context, and accountability.' },
-  ai: { id: 'ai', label: 'AI-led: let AI handle it end to end.', score: 20, feedback: 'Full delegation is risky when the output affects trust, safety, money, policy, or another person.' },
+  me: { id: 'me', label: 'Human-owned: keep judgment with the person.', labelTh: 'คุณทำเอง: เก็บการตัดสินใจไว้กับคน', score: 20, feedback: 'This may be too cautious if the task is low-risk and easy to verify.' },
+  together: { id: 'together', label: 'Shared with AI: use AI, then verify and decide.', labelTh: 'ทำร่วมกับ AI: ใช้ AI ช่วย แล้วตรวจสอบและตัดสินใจเอง', score: 98, feedback: 'Correct. AI can help, but the human keeps judgment, context, and accountability.' },
+  ai: { id: 'ai', label: 'AI-led: let AI handle it end to end.', labelTh: 'ให้ AI ทำ: ปล่อยให้ AI จัดการตั้งแต่ต้นจนจบ', score: 20, feedback: 'Full delegation is risky when the output affects trust, safety, money, policy, or another person.' },
 };
 
 const difficultyLabels: Record<Difficulty, string> = {
@@ -1947,10 +1960,10 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
 function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: Difficulty, trend: (typeof marketTrendFrames)[Difficulty][number], index: number): Question {
   const focus = competency.skills.slice(0, 3).join(', ');
   const difficultyLead = {
-    awareness: 'recognizes',
-    applied: 'uses',
-    proficient: 'handles tradeoffs in',
-    advanced: 'designs scalable controls for',
+    awareness: 'recognize',
+    applied: 'use',
+    proficient: 'handle tradeoffs in',
+    advanced: 'design scalable controls for',
   }[difficulty];
   return {
     id: `TREND-${competency.id.toUpperCase()}-${difficulty.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
@@ -1961,7 +1974,10 @@ function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: 
     competencyIds: [competency.id],
     skillIds: [...new Set([...competency.skills, 'AI market trends', 'agentic AI', 'multimodal AI', 'evaluation'])],
     evidenceMode: difficulty === 'awareness' ? 'knowing' : 'hybrid',
-    context: `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
+    // Audit 2026-09-10: awareness items keep only the scenario; the competency framing sentence made them read like a rubric.
+    context: difficulty === 'awareness'
+      ? trend.context
+      : `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
     prompt: trend.prompt,
     options: [
       { id: 'best', label: trend.best, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.` },
@@ -2488,8 +2504,8 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Reply to a Simple Scheduling Email',
-      caption: 'Low-risk drafting is a good AI assist, but you still check the details.',
-      points: ['Email: Can Tuesday 2 PM work?', 'Calendar: open', 'Need: polite reply', 'Risk: low'],
+      caption: 'Decide how much of a trivial, reversible task to hand over.',
+      points: ['Email: Can Tuesday 2 PM work?', 'Calendar: open, synced', 'Commitment: none beyond the time', 'Risk: low, reversible'],
     },
     stimulus: {
       src: '/stimuli/realistic-scheduling-email.png',
@@ -2497,12 +2513,12 @@ const generalRelianceQuestions: Question[] = [
       label: 'Email and calendar artifact',
       caption: 'Use the email and calendar evidence to decide how much of the reply can be delegated.',
     },
-    context: 'You need to reply quickly to a simple meeting request.',
+    context: 'You need to reply quickly to a one-line meeting request. Your calendar is synced, no attachment or commitment is involved, and a wrong time is fixed with a second email.',
     prompt: 'Who should do the task?',
     options: [
-      { ...relianceOptions.me, score: 65, feedback: 'Safe but slower. AI can draft this because the stakes are low and easy to check.' },
-      { ...relianceOptions.together, score: 95, feedback: 'Best. Let AI draft, then verify time, tone, and link before sending.' },
-      { ...relianceOptions.ai, score: 60, feedback: 'Almost fine for low stakes, but you should still confirm the calendar and recipient.' },
+      { ...relianceOptions.me, score: 45, feedback: 'Too cautious for a trivial, reversible task. Time spent here compounds across dozens of similar emails.' },
+      { ...relianceOptions.together, score: 70, feedback: 'Fine, but heavier than needed. A glance at the time and link is all the review this task deserves.' },
+      { ...relianceOptions.ai, score: 95, feedback: 'Best. Trivial, reversible, high-volume: let AI draft and send from the synced calendar. Appropriate reliance means not over-checking low-stakes work.' },
     ],
   },
   {
@@ -2515,7 +2531,7 @@ const generalRelianceQuestions: Question[] = [
       kind: 'post',
       eyebrow: 'Task ownership',
       title: 'Share a Viral Disaster Photo',
-      caption: 'Fast sharing can spread false claims. Verification is part of the task.',
+      caption: 'Decide who verifies before anything is reposted.',
       points: ['Image: dramatic flooding', 'Caption: happened today', 'Source: unknown', 'Emotion: urgent'],
       metrics: [
         { label: 'Source', value: 'Unknown', status: 'bad' },
@@ -2530,12 +2546,12 @@ const generalRelianceQuestions: Question[] = [
       label: 'Station flood post',
       caption: 'Inspect the post for source, date, location, and emotional pressure before sharing.',
     },
-    context: 'A group chat asks whether to repost a dramatic image.',
+    context: 'A group chat asks whether to repost a dramatic flood image that appeared in the last hour. No outlet has confirmed it, and your company account would be the one sharing it.',
     prompt: 'Who should decide?',
     options: [
-      { ...relianceOptions.me, score: 75, feedback: 'Human judgment matters, but AI can help list verification checks.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI to plan checks, then verify source, date, location, and evidence yourself.' },
-      { ...relianceOptions.ai, score: 15, feedback: 'Too risky. AI may miss context or invent confidence about the image.' },
+      { ...relianceOptions.me, score: 95, feedback: 'Best. The event is minutes old, so AI may not know it and will guess confidently. Reverse-image search, check the original source and date yourself, and only then decide.' },
+      { ...relianceOptions.together, score: 65, feedback: 'Acceptable only for listing the checks. The verification of a breaking claim is yours; an AI verdict on the image is not evidence.' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. AI may miss context, know nothing about a one-hour-old event, and invent confidence about the image.' },
     ],
   },
   {
@@ -2581,7 +2597,7 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Explain a Confusing Term',
-      caption: 'AI is useful for first-pass explanation when the user checks meaning before acting.',
+      caption: 'Decide how much help a low-stakes learning question needs.',
       points: ['Term: retrieval augmented generation', 'Need: plain language', 'Use: understand a meeting', 'Risk: low'],
       metrics: [
         { label: 'Risk', value: 'Low', status: 'good' },
@@ -2593,12 +2609,12 @@ const generalRelianceQuestions: Question[] = [
         { label: 'Need expert sign-off', value: 24, note: 'Low stakes' },
       ],
     },
-    context: 'You heard an AI term in a meeting and want a simple explanation.',
+    context: 'You heard the term retrieval-augmented generation in a meeting and want a plain explanation so you can follow along. No decision depends on it.',
     prompt: 'Who should handle it?',
     options: [
-      { ...relianceOptions.me, score: 55, feedback: 'You can research manually, but AI is useful for a low-risk first explanation.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Ask AI for a plain explanation, then compare it with a reliable source if the term affects a decision.' },
-      { ...relianceOptions.ai, score: 70, feedback: 'Mostly fine for learning, but do not treat one AI answer as the final authority.' },
+      { ...relianceOptions.me, score: 45, feedback: 'You can search manually, but a plain-language explanation of a common term is exactly what AI does well and fast.' },
+      { ...relianceOptions.together, score: 68, feedback: 'Fine, but cross-checking a reliable source is only needed once the term starts affecting a decision.' },
+      { ...relianceOptions.ai, score: 95, feedback: 'Best. Low stakes, well-documented concept, and you will sense-check it against the meeting itself. Escalate to sources only if a decision depends on it.' },
     ],
   },
   {
@@ -2632,10 +2648,10 @@ const generalRelianceQuestions: Question[] = [
       label: 'Workflow artifact',
       caption: 'Use the workflow map to decide who owns pilot prioritization and review.',
     },
-    context: 'Your team has several AI ideas and only time for one experiment.',
+    context: 'Your team has several AI ideas and time for one experiment. You will present the choice to your director, who will hold you accountable for the outcome.',
     prompt: 'Who should choose?',
     options: [
-      { ...relianceOptions.me, score: 70, feedback: 'Human ownership is right, but AI can help compare options against explicit criteria.' },
+      { ...relianceOptions.me, score: 75, feedback: 'Ownership is right, and defensible. You lose only the speed of having AI organise the options against explicit criteria first.' },
       { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI to organize evidence, then choose based on value, feasibility, risk, and learning.' },
       { ...relianceOptions.ai, score: 10, feedback: 'Too much delegation. AI cannot own strategy, risk appetite, or tradeoffs for the team.' },
     ],
@@ -2650,17 +2666,777 @@ const generalRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Task ownership',
       title: 'Give Feedback to a Coworker',
-      caption: 'AI can help with wording, but relationship judgment stays human.',
-      points: ['Issue: missed deadline', 'Need: respectful tone', 'Relationship: ongoing', 'Risk: trust'],
+      caption: 'Decide who owns a sensitive conversation.',
+      points: ['Issue: missed deadline', 'Format: face to face tomorrow', 'Context: coworker confided a personal difficulty', 'Risk: trust'],
     },
-    context: 'You need to write sensitive feedback to a coworker.',
+    context: 'You need to give a coworker feedback about a missed deadline in a face-to-face conversation tomorrow. Last week they confided a personal difficulty to you.',
     prompt: 'Who should do the task?',
     options: [
-      { ...relianceOptions.me, score: 72, feedback: 'Human care matters, but AI can help make wording clearer and less reactive.' },
-      { ...relianceOptions.together, score: 98, feedback: 'Correct. Use AI for a draft, then revise with your own context, empathy, and accountability.' },
-      { ...relianceOptions.ai, score: 15, feedback: 'Too risky. AI should not fully own sensitive relationship communication.' },
+      { ...relianceOptions.me, score: 95, feedback: 'Best. A live conversation with someone who trusted you with personal context is human work. The value is your presence and judgment, not the polish of a script.' },
+      { ...relianceOptions.together, score: 60, feedback: 'Only to rehearse how to open. If the coworker senses a script, the confided context makes the trust damage worse than the missed deadline.' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. AI cannot own a live, sensitive relationship conversation.' },
     ],
   },
+];
+
+// Horizon45 'AI or Me?' reliance deck (horizon-field-lab.pages.dev/reliance), imported 2026-09-10.
+// 26 of 27 cards; 'scheduling-reply' skipped because REL-G-D2-001 already covers that scenario.
+// Unlike the legacy reliance items, the best answer varies (AI / Human / Shared), so scores are set per option.
+const horizonRelianceQuestions: Question[] = [
+  {
+    id: 'REL-H-D2-001',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection', 'D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Summarize a 40-page report into 5 bullet points',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'สรุปรายงาน 40 หน้าให้เหลือ 5 บูลเล็ต',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['รายงาน: 40 หน้า', 'เดดไลน์: ประชุมกรรมการใน 2 ชั่วโมง', 'ต้องการ: สาระสำคัญ 5 ข้อ', 'ความเสี่ยง: ต่ำ ตรวจสอบได้'],
+      points: ['Report: 40 pages', 'Deadline: board meeting in 2 hours', 'Need: 5 highlights', 'Risk: low, verifiable'],
+    },
+    context: 'Summarize a 40-page report into 5 bullet points. You have 2 hours before a board meeting. A 40-page industry analysis just landed in your inbox. The team needs the highlights now — not tomorrow.',
+    prompt: 'Who should do the task?',
+    contextTh: 'มีรายงานวิเคราะห์อุตสาหกรรมความยาว 40 หน้าส่งเข้ามาในกล่องข้อความอีเมล โดยเหลือเวลาอีกเพียง 2 ชั่วโมงก่อนเริ่มการประชุมบอร์ดบริหาร ทีมงานต้องการสรุป 5 ประเด็นสำคัญเพื่อนำไปใช้ทันที',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'Doing it by hand under a two-hour deadline spends the one thing you lack. AI can condense; you skim to verify.', feedbackTh: 'ทำเองภายใต้เดดไลน์สองชั่วโมงคือการใช้สิ่งที่คุณขาดที่สุด AI ย่อได้ คุณกวาดอ่านเพื่อตรวจ' },
+      { ...relianceOptions.together, score: 70, feedback: 'Reasonable, but heavier than needed. A quick skim of the source is enough verification for a summary you can check yourself.', feedbackTh: 'สมเหตุสมผล แต่หนักเกินความจำเป็น การกวาดอ่านต้นฉบับสั้น ๆ ก็เพียงพอสำหรับสรุปที่คุณตรวจเองได้' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Condensing text you can still verify is squarely inside AI\'s frontier. Skim the source to confirm nothing critical was dropped.', feedbackTh: 'ดีที่สุด การย่อข้อความที่คุณยังตรวจสอบได้เองอยู่ในขอบเขตที่ AI ทำได้ดี เพียงกวาดอ่านต้นฉบับเพื่อยืนยันว่าไม่มีจุดสำคัญตกหล่น' },
+    ],
+  }, // horizon:summarize-report · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D4-002',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-fairness-ethics', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Decide which employee to lay off',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ตัดสินใจว่าจะให้พนักงานคนไหนออก',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ทีม: 8 คน ต้องลด 1 ตำแหน่ง', 'หลักฐาน: แฟ้มผลงานจาก HR', 'ทางเลือก: ไม่มีคำตอบชัดเจน', 'ผลกระทบ: ชีวิตของใครบางคน'],
+      points: ['Team: 8 people, 1 position cut', 'Evidence: HR performance files', 'Choice: no obvious answer', 'Impact: someone\'s livelihood'],
+    },
+    context: 'Decide which employee to lay off. Budget cuts are final. One position from your team of eight must go. HR has pulled every performance file. There\'s no obvious choice — and someone\'s livelihood depends on it.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ผลสรุปการปรับลดงบประมาณเป็นที่สิ้นสุดแล้ว และจำเป็นต้องปลดพนักงาน 1 คนจากทีมที่มีทั้งหมด 8 คน ฝ่ายบุคคล (HR) ได้รวบรวมแฟ้มประวัติผลงานของทุกคนมาให้แล้ว ซึ่งไม่มีคำตอบที่ชัดเจนหรือตัดสินใจได้ง่าย และเรื่องนี้กระทบต่อชีวิตความเป็นอยู่ของคนอย่างยิ่ง',
+    promptTh: 'ใครควรเป็นผู้ตัดสินใจ',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. High-stakes, accountable, and legally exposed. AI can summarize records, but the decision and its consequences are yours — delegating it invites bias and liability.', feedbackTh: 'ดีที่สุด เป็นเรื่องเดิมพันสูง ต้องรับผิดชอบ และมีความเสี่ยงทางกฎหมาย AI สรุปข้อมูลได้ แต่การตัดสินใจและผลของมันเป็นของคุณ การยกให้ AI เสี่ยงทั้งอคติและความรับผิด' },
+      { ...relianceOptions.together, score: 45, feedback: 'AI may summarize the files, but if it shapes the ranking you import bias into a decision you must personally defend.', feedbackTh: 'AI สรุปแฟ้มได้ แต่ถ้าปล่อยให้มันจัดอันดับ คุณกำลังนำอคติเข้าสู่การตัดสินใจที่คุณต้องรับผิดชอบเอง' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. Delegating a legally exposed, high-stakes people decision invites bias and liability.', feedbackTh: 'รับไม่ได้ การมอบการตัดสินใจเรื่องคนที่เดิมพันสูงและมีความเสี่ยงทางกฎหมายให้ AI เสี่ยงทั้งอคติและความรับผิด' },
+    ],
+  }, // horizon:layoff-decision · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-003',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Translate a casual email into English',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'แปลอีเมลทั่วไปเป็นภาษาอังกฤษ',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ข้อความ: สั้น ไม่เป็นทางการ ภาษาไทย', 'ต้องการ: ตอบเป็นอังกฤษเร็ว ๆ', 'ผูกมัดทางกฎหมาย: ไม่', 'จุดประสงค์: นัดโทรศัพท์'],
+      points: ['Message: short, informal, Thai', 'Need: quick English reply', 'Binding: no', 'Purpose: schedule a call'],
+    },
+    context: 'Translate a casual email into English. A supplier sent a short, informal message in Thai. You need it in English to reply quickly. Nothing is legally binding — it\'s scheduling a call.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ซัพพลายเออร์ส่งข้อความสั้น ๆ อย่างไม่เป็นทางการเป็นภาษาไทยมาหาคุณ คุณต้องการแปลเป็นภาษาอังกฤษอย่างรวดเร็วเพื่อตอบกลับทันที โดยเนื้อหาไม่มีผลผูกพันทางกฎหมาย เป็นเพียงการนัดหมายคุยทางโทรศัพท์เท่านั้น',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'You can, but it is slow for a low-stakes note. Everyday translation is exactly where AI is reliable.', feedbackTh: 'ทำได้ แต่ช้าสำหรับข้อความที่เดิมพันต่ำ การแปลงานทั่วไปคือจุดที่ AI เชื่อถือได้' },
+      { ...relianceOptions.together, score: 65, feedback: 'Fine, though a quick sense-check of the output is all the review this needs.', feedbackTh: 'ใช้ได้ แต่แค่ตรวจความสมเหตุสมผลสั้น ๆ ก็พอแล้วสำหรับงานนี้' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Everyday translation is a strong AI use. The stakes are low and you can sense-check the result yourself.', feedbackTh: 'ดีที่สุด การแปลงานทั่วไปเป็นจุดแข็งของ AI เดิมพันต่ำและคุณตรวจความสมเหตุสมผลเองได้' },
+    ],
+  }, // horizon:translate-casual · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D3-004',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D4-regulatory-policy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Translate a contract that will be signed',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'แปลสัญญาที่จะนำไปลงนาม',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['เอกสาร: สัญญาบริการ 12 หน้า', 'ลงนาม: สัปดาห์หน้า', 'ความเสี่ยง: ข้อเดียวผิด ดีลล้ม', 'ผู้ตรวจ: ต้องเป็นผู้เชี่ยวชาญ'],
+      points: ['Document: 12-page service agreement', 'Signing: next week', 'Risk: one bad clause voids the deal', 'Reviewer: qualified human needed'],
+    },
+    context: 'Translate a contract that will be signed. A 12-page service agreement needs Thai translation before both parties sign next week. One mistranslated clause could make the whole deal unenforceable.',
+    prompt: 'Who should do the task?',
+    contextTh: 'สัญญาให้บริการความยาว 12 หน้าต้องได้รับการแปลเป็นภาษาไทยก่อนที่ทั้งสองฝ่ายจะลงนามในสัปดาห์หน้า โดยข้อความสัญญาที่แปลผิดพลาดแม้เพียงข้อเดียว อาจทำให้ข้อตกลงทั้งหมดกลายเป็นโมฆะหรือไม่สามารถบังคับใช้ได้ตามกฎหมาย',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe but slow and costly. AI can draft while a qualified reviewer checks every clause.', feedbackTh: 'ปลอดภัยแต่ช้าและแพง ให้ AI ร่างได้ โดยผู้เชี่ยวชาญตรวจทุกข้อ' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. Let AI draft, but a qualified human must review. One mistranslated clause in a binding document can cost far more than the time saved.', feedbackTh: 'ดีที่สุด ให้ AI ร่างได้ แต่ต้องมีผู้เชี่ยวชาญตรวจ ข้อความที่แปลผิดเพียงข้อเดียวในเอกสารผูกพันอาจเสียหายมากกว่าเวลาที่ประหยัด' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. One mistranslated clause in a binding document can make the whole deal unenforceable.', feedbackTh: 'เสี่ยงเกินไป ข้อความที่แปลผิดเพียงข้อเดียวในเอกสารผูกพันอาจทำให้ข้อตกลงทั้งหมดบังคับใช้ไม่ได้' },
+    ],
+  }, // horizon:translate-contract · axis: evidence judgment · key: Shared with AI
+  {
+    id: 'REL-H-D6-005',
+    domain: 'D6',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D6-trust-culture'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a condolence note to a grieving friend',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนข้อความปลอบใจเพื่อนที่กำลังโศกเศร้า',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['เพื่อน: สนิทที่สุด เพิ่งเสียพ่อ', 'เวลา: วันนี้', 'ต้องการ: สิ่งที่มาจากคุณจริง ๆ', 'ความเสี่ยง: ความไว้ใจ'],
+      points: ['Friend: closest, lost father suddenly', 'Timing: today', 'Need: something that is clearly from you', 'Risk: trust'],
+    },
+    context: 'Write a condolence note to your closest friend, who just lost their father. They need to hear from you today — not a template.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องการเขียนข้อความแสดงความเสียใจถึงเพื่อนสนิทที่เพิ่งสูญเสียคุณพ่อ ซึ่งเพื่อนควรได้รับข้อความที่มาจากใจของคุณโดยตรงในวันนี้ ไม่ใช่ข้อความสำเร็จรูปจากเทมเพลต',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. The value here is that it came from you. AI can phrase grief fluently, but the point of the message is human presence, not polish.', feedbackTh: 'ดีที่สุด คุณค่าของมันคือ \'มาจากคุณ\' AI เรียบเรียงความเศร้าได้ลื่นไหล แต่หัวใจของข้อความคือการมีตัวตนของมนุษย์ ไม่ใช่ความสละสลวย' },
+      { ...relianceOptions.together, score: 45, feedback: 'Even a light AI draft hollows out the point: the message has to come from you, not be polished for you.', feedbackTh: 'แม้ร่างเบา ๆ จาก AI ก็ทำให้ข้อความกลวง เพราะหัวใจของมันคือต้องมาจากคุณ ไม่ใช่ถูกขัดเกลาให้คุณ' },
+      { ...relianceOptions.ai, score: 10, feedback: 'AI can phrase grief fluently, but a templated note defeats the purpose of human presence.', feedbackTh: 'AI เรียบเรียงความเศร้าได้ลื่นไหล แต่ข้อความจากเทมเพลตทำลายความหมายของการอยู่เคียงข้างกัน' },
+    ],
+  }, // horizon:condolence-note · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D4-006',
+    domain: 'D4',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D1-capability-limits', 'D4-data-privacy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Diagnose a rash from a photo to decide treatment',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'วินิจฉัยผื่นจากรูปถ่ายเพื่อตัดสินใจรักษา',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['อาการ: ผื่นที่แขน 2 วัน', 'หลักฐาน: รูปถ่ายชัด 1 รูป', 'ตัดสินใจ: ร้ายแรงไหม ทำอย่างไร', 'ความเสี่ยง: สุขภาพ'],
+      points: ['Symptom: rash on arm, 2 days', 'Evidence: one clear photo', 'Decision: is it serious, what to do', 'Risk: health'],
+    },
+    context: 'Diagnose a rash from a photo to decide treatment. A rash appeared on your arm two days ago. You have a clear photo. You want to know if it\'s serious and what to do — before deciding whether to see a doctor.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณมีผื่นขึ้นที่แขนมาสองวัน จึงถ่ายรูปไว้อย่างชัดเจนและต้องการตรวจดูเบื้องต้นว่ามีอาการรุนแรงหรือไม่ ก่อนตัดสินใจว่าจะไปพบแพทย์',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. Medical diagnosis from an image is outside reliable AI use for treatment decisions. Use it for questions to ask — then see a clinician.', feedbackTh: 'ดีที่สุด การวินิจฉัยโรคจากภาพเพื่อตัดสินใจรักษาอยู่นอกขอบเขตที่ AI เชื่อถือได้ ใช้มันเพื่อตั้งคำถามที่จะถามหมอ แล้วไปพบแพทย์จริง' },
+      { ...relianceOptions.together, score: 50, feedback: 'Only as a way to prepare questions for a clinician. Treatment decisions from a photo are outside reliable AI use.', feedbackTh: 'ใช้ได้เพียงเพื่อเตรียมคำถามไปถามแพทย์ การตัดสินใจรักษาจากรูปถ่ายอยู่นอกขอบเขตที่ AI เชื่อถือได้' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. Image-based diagnosis for treatment decisions is outside reliable AI use; see a clinician.', feedbackTh: 'ไม่ปลอดภัย การวินิจฉัยจากภาพเพื่อตัดสินใจรักษาอยู่นอกขอบเขตที่ AI เชื่อถือได้ ไปพบแพทย์' },
+    ],
+  }, // horizon:diagnose-rash · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-007',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a standard form-validation function',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนฟังก์ชันตรวจสอบฟอร์มแบบมาตรฐาน',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ฟังก์ชัน: ตรวจสอบฟอร์ม', 'ตรวจ: ฟิลด์บังคับ อีเมล ความยาวรหัสผ่าน', 'รูปแบบ: ทั่วไป เขียนมาหลายครั้ง', 'การตรวจ: ชุดทดสอบ'],
+      points: ['Function: form validation', 'Checks: required, email, password length', 'Pattern: common, written many times', 'Verification: tests'],
+    },
+    context: 'Write a standard form-validation function: required fields, email format, minimum password length. You have written this pattern many times.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องเขียนฟังก์ชันตรวจสอบแบบฟอร์มตามมาตรฐาน (เช่น ช่องบังคับกรอก รูปแบบอีเมล และความยาวรหัสผ่านขั้นต่ำ) ซึ่งเป็นรูปแบบโค้ดที่คุณเคยเขียนมาแล้วหลายครั้ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'You have written this a dozen times. Well-trodden, testable code is a strong AI use; your tests verify it.', feedbackTh: 'คุณเขียนมาแล้วนับสิบครั้ง โค้ดที่มีรูปแบบชัดและทดสอบได้คือจุดแข็งของ AI การทดสอบของคุณเป็นตัวตรวจ' },
+      { ...relianceOptions.together, score: 70, feedback: 'Fine, but the tests already do the verification. Heavy human review adds little here.', feedbackTh: 'ใช้ได้ แต่การทดสอบตรวจสอบให้อยู่แล้ว การรีวิวหนัก ๆ โดยคนแทบไม่เพิ่มอะไร' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Well-trodden, testable code is a strong AI use. You run it and the tests tell you instantly if it\'s wrong.', feedbackTh: 'ดีที่สุด โค้ดที่มีรูปแบบชัดและทดสอบได้เป็นจุดแข็งของ AI คุณรันแล้วการทดสอบจะบอกทันทีว่าผิดหรือไม่' },
+    ],
+  }, // horizon:boilerplate-code · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D2-008',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Brainstorm 20 product names to choose from',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ระดมชื่อสินค้า 20 ชื่อเพื่อเลือก',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['สินค้า: SaaS ใหม่ เปิดตัวเดือนหน้า', 'ต้องการ: ชื่อ 20 ตัวเลือก', 'ตัดสิน: ทีมโหวต', 'งบ: ไม่มีเอเจนซี'],
+      points: ['Product: new SaaS, launches next month', 'Need: 20 candidate names', 'Decision: team vote', 'Budget: no agency'],
+    },
+    context: 'Brainstorm 20 product names to choose from. A new SaaS product launches next month. You need a shortlist of 20 candidate names for the team to vote on. No budget for a naming agency.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ซอฟต์แวร์ SaaS ตัวใหม่กำลังจะเปิดตัวในเดือนหน้า และคุณไม่มีงบจ้างเอเจนซี จึงต้องระดมไอเดียชื่อสินค้ามาให้ได้ 20 ชื่อเพื่อให้ทีมร่วมกันโหวตเลือก',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'Slow for a divergent, low-stakes task. Let AI generate volume; you stay the judge.', feedbackTh: 'ช้าสำหรับงานคิดกระจายที่เดิมพันต่ำ ให้ AI สร้างปริมาณ คุณเป็นผู้ตัดสิน' },
+      { ...relianceOptions.together, score: 70, feedback: 'Acceptable, though the human role here is simply choosing, not co-writing the list.', feedbackTh: 'พอรับได้ แต่บทบาทของคนที่นี่คือแค่เลือก ไม่ใช่ร่วมเขียนรายชื่อ' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Divergent, low-stakes idea generation plays to AI\'s strength. You stay the judge of which one is right.', feedbackTh: 'ดีที่สุด การคิดไอเดียแบบกระจายที่เดิมพันต่ำเข้าทาง AI โดยคุณยังเป็นผู้ตัดสินว่าชื่อไหนใช่' },
+    ],
+  }, // horizon:brainstorm-names · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D3-009',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D1-capability-limits'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Find legal precedents to cite in a court filing',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'หาคำพิพากษาอ้างอิงเพื่อใส่ในคำร้องต่อศาล',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ยื่น: พรุ่งนี้เช้า', 'ต้องการ: คดีอ้างอิง 3 คดี', 'เงื่อนไข: จริง ตรวจสอบได้ เป็นปัจจุบัน', 'ความเสี่ยง: ถูกลงโทษ'],
+      points: ['Filing: due tomorrow morning', 'Need: 3 case citations', 'Requirement: real, verifiable, current', 'Risk: sanctions'],
+    },
+    context: 'Find legal precedents to cite in a court filing. A court filing is due tomorrow morning. You need three specific case citations to support your legal argument — and they must be real, verifiable, and current.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องยื่นคำร้องต่อศาลในเช้าวันพรุ่งนี้ จึงต้องการคำพิพากษาฎีกาหรือคดีตัวอย่าง 3 คดีมาสนับสนุนข้อโต้แย้งทางกฎหมาย โดยข้อมูลต้องถูกต้อง มีอยู่จริง และตรวจสอบได้',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI — including specialized legal research tools — regularly invents plausible-sounding cases that don\'t exist. Multiple lawyers have been suspended for filing them. You can use AI to surface potentially relevant cases, but you must personally verify every citation in the official legal database before any filing. The stakes and the signature are yours.', feedbackTh: 'ดีที่สุด AI รวมถึงเครื่องมือวิจัยกฎหมายเฉพาะทาง กุคดีที่ฟังดูน่าเชื่อแต่ไม่มีจริงอย่างสม่ำเสมอ ทนายความหลายคนถูกพักใบอนุญาตเพราะยื่นคดีเหล่านั้น ใช้ AI เพื่อค้นหาคดีที่อาจเกี่ยวข้องได้ แต่ต้องตรวจสอบทุกการอ้างอิงในฐานข้อมูลกฎหมายจริงด้วยตนเองก่อนยื่น ความรับผิดชอบและลายเซ็นเป็นของคุณ' },
+      { ...relianceOptions.together, score: 55, feedback: 'Acceptable only if every citation is personally verified in the official database before filing. AI surfaces candidates; it does not confirm them.', feedbackTh: 'รับได้ก็ต่อเมื่อคุณตรวจทุกการอ้างอิงด้วยตนเองในฐานข้อมูลทางการก่อนยื่น AI ช่วยหาผู้สมัคร แต่ไม่ได้ยืนยัน' },
+      { ...relianceOptions.ai, score: 0, feedback: 'Dangerous. AI regularly invents plausible cases that do not exist, and lawyers have been sanctioned for filing them.', feedbackTh: 'อันตราย AI กุคดีที่ฟังดูน่าเชื่อแต่ไม่มีจริงอยู่เป็นประจำ และทนายหลายคนถูกลงโทษเพราะยื่นคดีเหล่านั้น' },
+    ],
+  }, // horizon:legal-precedents · axis: evidence judgment · key: Human-owned
+  {
+    id: 'REL-H-D2-010',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Proofread an email for grammar and clarity',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ตรวจไวยากรณ์และความชัดเจนของอีเมล',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['อีเมล: ข้อเสนอสองย่อหน้า', 'ผู้รับ: ลูกค้าใหม่', 'เนื้อหา: ถูกต้องแล้ว', 'ต้องการ: ขัดไวยากรณ์ กระชับประโยค'],
+      points: ['Email: two-paragraph proposal', 'Recipient: new client', 'Content: already right', 'Need: polish grammar and tighten'],
+    },
+    context: 'Proofread a two-paragraph proposal email to a new client. The content is right; you want the grammar polished before you send it.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องการตรวจไวยากรณ์อีเมลข้อเสนอความยาว 2 ย่อหน้าที่จะส่งหาลูกค้าใหม่ เนื้อหาครบถ้วนถูกต้องแล้ว เพียงต้องการขัดเกลาภาษาให้เรียบร้อยก่อนส่ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'You can, but grammar and clarity polishing is reliable AI work and the result is self-evident when you read it.', feedbackTh: 'ทำได้ แต่การขัดไวยากรณ์และความชัดเจนเป็นงานที่ AI ทำได้น่าเชื่อถือ และคุณเห็นผลทันทีเมื่ออ่าน' },
+      { ...relianceOptions.together, score: 72, feedback: 'Fine. Reading the result and keeping what sounds like you is all the human step needs to be.', feedbackTh: 'ใช้ได้ การอ่านผลลัพธ์แล้วเก็บสำนวนที่เป็นตัวคุณคือขั้นตอนของคนที่พอเพียงแล้ว' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Grammar and clarity polishing is reliable and self-evident. You read the result and keep what sounds like you.', feedbackTh: 'ดีที่สุด การขัดเกลาไวยากรณ์และความชัดเจนทำได้น่าเชื่อถือและเห็นผลทันที คุณอ่านผลลัพธ์แล้วเก็บสำนวนที่เป็นตัวคุณไว้' },
+    ],
+  }, // horizon:proofread-grammar · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D3-011',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D4-regulatory-policy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Calculate and file your taxes',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'คำนวณและยื่นภาษีของคุณ',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['เดดไลน์: 3 วัน', 'รายได้: ฟรีแลนซ์ เงินปันผล ธุรกิจเสริม', 'ลดหย่อน: หลายรายการไม่ชัด', 'ความเสี่ยง: ค่าปรับ'],
+      points: ['Deadline: 3 days', 'Income: freelance, dividends, side business', 'Deductions: several unclear', 'Risk: penalties'],
+    },
+    context: 'Calculate and file your taxes. Tax filing deadline is in three days. You have income from multiple sources this year — freelance, dividends, and a side business. Several deductions are unclear.',
+    prompt: 'Who should do the task?',
+    contextTh: 'เหลือเวลาอีกเพียง 3 วันในการยื่นภาษีประจำปี ซึ่งปีนี้คุณมีรายได้จากหลายทาง ทั้งงานฟรีแลนซ์ เงินปันผล และธุรกิจส่วนตัว จึงต้องคำนวณและยื่นแบบอย่างถูกต้อง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI can explain rules and organize the numbers before you verify against official sources or an accountant.', feedbackTh: 'ปลอดภัย แต่ AI อธิบายกฎและจัดระเบียบตัวเลขได้ก่อนที่คุณจะตรวจกับแหล่งทางการหรือนักบัญชี' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can explain rules and organize numbers, but it gets figures and current law wrong. Use it to prepare, then verify against official sources or an accountant before filing.', feedbackTh: 'ดีที่สุด AI อธิบายกฎและจัดระเบียบตัวเลขได้ แต่ผิดพลาดเรื่องตัวเลขและกฎหมายปัจจุบัน ใช้มันเตรียมงาน แล้วตรวจกับแหล่งทางการหรือนักบัญชีก่อนยื่น' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Too risky. AI gets figures and current tax law wrong; filing unverified output is your liability.', feedbackTh: 'เสี่ยงเกินไป AI ผิดพลาดเรื่องตัวเลขและกฎหมายภาษีปัจจุบัน การยื่นผลลัพธ์ที่ไม่ได้ตรวจคือความรับผิดของคุณ' },
+    ],
+  }, // horizon:file-taxes · axis: evidence judgment · key: Shared with AI
+  {
+    id: 'REL-H-D2-012',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection', 'D2-agentic-workflows'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Extract data from 200 receipts into a spreadsheet',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ดึงข้อมูลจากใบเสร็จ 200 ใบลงสเปรดชีต',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ข้อมูลเข้า: ใบเสร็จกระดาษ 200 ใบ', 'ผลลัพธ์: แถวในสเปรดชีต', 'เดดไลน์: สิ้นเดือน', 'ต้นทุนทำมือ: ทั้งวัน'],
+      points: ['Input: 200 paper receipts', 'Output: spreadsheet rows', 'Deadline: month-end', 'Manual cost: full workday'],
+    },
+    context: 'Extract data from 200 receipts into a spreadsheet. The accounting team needs all expense data from 200 paper receipts entered into a spreadsheet before month-end. Doing it manually would take a full workday.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ทีมบัญชีต้องการดึงข้อมูลค่าใช้จ่ายจากใบเสร็จจำนวน 200 ใบลงในตารางสเปรดชีตให้เสร็จสิ้นก่อนสิ้นวัน',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 35, feedback: 'A full workday of manual entry when structured extraction is exactly what AI accelerates.', feedbackTh: 'ป้อนมือทั้งวัน ในขณะที่การดึงข้อมูลที่มีโครงสร้างคือสิ่งที่ AI เร่งได้ดีที่สุด' },
+      { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a spot-check of a sample against originals, not parallel entry.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการสุ่มตรวจตัวอย่างเทียบต้นฉบับ ไม่ใช่ป้อนคู่ขนาน' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Repetitive structured extraction is exactly what AI accelerates — scan, extract, structured rows in minutes. Spot-check a sample against the originals; OCR errors on handwritten numbers are the main failure mode. See the Learn section (Build an OCR Pipeline) for a step-by-step guide.', feedbackTh: 'ดีที่สุด การดึงข้อมูลซ้ำ ๆ ที่มีโครงสร้างคือสิ่งที่ AI เร่งความเร็วได้ดีที่สุด สแกน → ดึงข้อมูล → แถวที่เป็นระเบียบในไม่กี่นาที สุ่มตรวจบางแถวเทียบกับต้นฉบับ — ข้อผิดพลาด OCR บนตัวเลขที่เขียนด้วยมือคือจุดล้มเหลวหลัก ดูส่วน Learn (สร้าง OCR Pipeline) สำหรับคู่มือทีละขั้นตอน' },
+    ],
+  }, // horizon:extract-receipts · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D5-013',
+    domain: 'D5',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D5-transformation-strategy', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Set your company\'s five-year strategy',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'กำหนดกลยุทธ์ห้าปีของบริษัท',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ระยะ: 5 ปี', 'ประชุม: ทีมผู้นำ สัปดาห์นี้', 'ตลาด: กำลังเปลี่ยน', 'ทีม: มุมมองต่างกัน'],
+      points: ['Horizon: 5 years', 'Meeting: leadership, this week', 'Market: shifting', 'Team: competing views'],
+    },
+    context: 'Set your company\'s five-year strategy. Your leadership team is meeting this week to set direction for the next five years. Markets are shifting. Your team has competing views. The call will shape everything that follows.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ทีมผู้บริหารระดับสูงกำลังจะประชุมในสัปดาห์นี้เพื่อกำหนดทิศทางและกลยุทธ์ 5 ปีข้างหน้าของบริษัท ท่ามกลางการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและคู่แข่ง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. Strategy depends on context, values, and accountability AI doesn\'t hold. Use it to pressure-test options — but own the call.', feedbackTh: 'ดีที่สุด กลยุทธ์ขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี ใช้มันทดสอบทางเลือกได้ แต่การตัดสินใจต้องเป็นของคุณ' },
+      { ...relianceOptions.together, score: 55, feedback: 'Use AI to pressure-test options, but the call itself depends on context, values, and accountability that AI does not hold.', feedbackTh: 'ใช้ AI ทดสอบทางเลือกได้ แต่การตัดสินใจขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unacceptable. Strategy is owned by accountable leaders, not delegated to a model.', feedbackTh: 'รับไม่ได้ กลยุทธ์เป็นของผู้นำที่รับผิดชอบ ไม่ใช่มอบให้โมเดล' },
+    ],
+  }, // horizon:company-strategy · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-014',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write a wedding speech that sounds like you',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนสุนทรพจน์งานแต่งที่ฟังเหมือนคุณพูดเอง',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['งาน: แต่งงานใน 2 สัปดาห์', 'บทบาท: เพื่อนเจ้าบ่าว', 'ติด: หน้ากระดาษว่าง 3 วัน', 'ทุน: เรื่องเล่าจริง'],
+      points: ['Event: wedding in 2 weeks', 'Role: best man', 'Blocker: blank page for 3 days', 'Asset: real stories'],
+    },
+    context: 'Write a best-man wedding speech that sounds like you. The wedding is in two weeks, you have real stories, and the page is still blank.',
+    prompt: 'Who should do the task?',
+    contextTh: 'อีก 2 สัปดาห์จะถึงงานแต่งงานของเพื่อนสนิท คุณมีเรื่องเล่าความทรงจำอยู่แล้ว แต่ยังเริ่มเขียนไม่ออก จึงต้องการเขียนคำอวยพรเพื่อนเจ้าบ่าวให้ฟังดูเป็นตัวคุณเองอย่างแท้จริง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Owning it is right, but three days of blank page suggests AI structure would help you get the real stories flowing.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่หน้ากระดาษว่างสามวันบอกว่าโครงจาก AI จะช่วยให้เรื่องเล่าจริงไหลออกมา' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives you a structure to beat blank-page fear, but the stories and voice must be yours or the room will feel it.', feedbackTh: 'ดีที่สุด AI ช่วยให้โครงเพื่อข้ามความกลัวหน้ากระดาษว่าง แต่เรื่องเล่าและน้ำเสียงต้องเป็นของคุณ ไม่งั้นคนในงานจะรู้สึกได้' },
+      { ...relianceOptions.ai, score: 15, feedback: 'The room will feel it. Stories and voice must be yours.', feedbackTh: 'คนในงานจะรู้สึกได้ เรื่องเล่าและน้ำเสียงต้องเป็นของคุณ' },
+    ],
+  }, // horizon:wedding-speech · axis: iteration and repair · key: Shared with AI
+  {
+    id: 'REL-H-D4-015',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-fairness-ethics', 'D4-security-governance'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Decide if a loan applicant is creditworthy',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ตัดสินว่าผู้ขอกู้มีเครดิตพอหรือไม่',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ปริมาณ: 800 ใบสมัคร/วัน', 'โมเดล: AI ให้คะแนนความเสี่ยง', 'ข้อเสนอ: อนุมัติอัตโนมัติ', 'คนตรวจ: ไม่มี'],
+      points: ['Volume: 800 applications/day', 'Model: AI risk score per case', 'Proposal: automate approvals', 'Human review: none'],
+    },
+    context: 'Decide if a loan applicant is creditworthy. Your bank processes 800 loan applications per day. An AI model scores each one. The proposal is to automate approvals without any human reviewing individual decisions.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องตัดสินใจอนุมัติสินเชื่อ ธนาคารของคุณมีใบสมัคร 800 รายการต่อวัน ซึ่งมีโมเดล AI ช่วยประเมินคะแนนเครดิต โดยมีข้อเสนอให้เปลี่ยนไปใช้ระบบอนุมัติอัตโนมัติทั้งหมดโดยไม่มีมนุษย์คอยตรวจทานรายกรณี',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 55, feedback: 'Human review of 800 applications a day is unrealistic. The answer is scoring plus accountable human oversight, not no model.', feedbackTh: 'ให้คนตรวจ 800 ใบต่อวันไม่สมจริง คำตอบคือให้โมเดลให้คะแนนพร้อมการกำกับดูแลของคนที่รับผิดชอบ ไม่ใช่ไม่มีโมเดล' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. Models can score risk, but unaudited automation has produced illegal discrimination. A human must be accountable and able to explain every decision.', feedbackTh: 'ดีที่สุด โมเดลให้คะแนนความเสี่ยงได้ แต่การปล่อยอัตโนมัติโดยไม่ตรวจสอบเคยก่อให้เกิดการเลือกปฏิบัติที่ผิดกฎหมาย ต้องมีมนุษย์รับผิดชอบและอธิบายทุกการตัดสินใจได้' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. Unaudited automated approvals have produced illegal discrimination; a human must be able to explain every decision.', feedbackTh: 'ไม่ปลอดภัย การอนุมัติอัตโนมัติที่ไม่ได้ตรวจสอบเคยก่อการเลือกปฏิบัติที่ผิดกฎหมาย ต้องมีคนที่อธิบายทุกการตัดสินใจได้' },
+    ],
+  }, // horizon:credit-decision · axis: risk handling · key: Shared with AI
+  {
+    id: 'REL-H-D2-016',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Recommend a movie to watch tonight',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'แนะนำหนังสำหรับดูคืนนี้',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['เวลา: เย็นวันอาทิตย์ เหนื่อย', 'เป้าหมาย: หนังดี ๆ', 'ที่ผ่านมา: เลื่อน 15 นาที', 'ความเสี่ยง: ไม่มี'],
+      points: ['Time: Sunday evening, tired', 'Goal: something good', 'Effort so far: 15 minutes scrolling', 'Risk: none'],
+    },
+    context: 'Recommend a movie to watch tonight. Sunday evening, you\'re tired, and you want something genuinely good. You\'ve scrolled Netflix for 15 minutes and given up.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ในค่ำวันอาทิตย์ที่คุณเหนื่อยล้าและอยากดูหนังดี ๆ สักเรื่อง แต่ใช้เวลาเลื่อนหาบน Netflix ไปแล้ว 15 นาทีก็ยังเลือกไม่ได้',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 45, feedback: 'You already spent 15 minutes scrolling. Low-stakes personal taste is a perfect lightweight AI use.', feedbackTh: 'คุณเลื่อนมา 15 นาทีแล้ว รสนิยมส่วนตัวที่เดิมพันต่ำคือการใช้ AI แบบเบา ๆ ที่เหมาะมาก' },
+      { ...relianceOptions.together, score: 60, feedback: 'Fine, but there is nothing to verify. Worst case you switch films.', feedbackTh: 'ใช้ได้ แต่ไม่มีอะไรต้องตรวจ แย่สุดก็แค่เปลี่ยนเรื่อง' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Low-stakes, reversible, personal taste — a perfect lightweight AI use. Worst case, you switch films.', feedbackTh: 'ดีที่สุด เดิมพันต่ำ ย้อนกลับได้ ตามรสนิยมส่วนตัว เป็นการใช้ AI แบบเบา ๆ ที่เหมาะมาก แย่สุดก็แค่เปลี่ยนเรื่อง' },
+    ],
+  }, // horizon:movie-rec · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D6-017',
+    domain: 'D6',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D4-fairness-ethics'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write performance reviews for your team',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนประเมินผลงานให้ทีมของคุณ',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ประเมิน: 8 คน ส่งวันศุกร์', 'หลักฐาน: บันทึกคร่าว ๆ', 'มาตรฐาน: เป็นธรรม เฉพาะเจาะจง อ้างอิงได้', 'ความเสี่ยง: ความไว้ใจและอคติ'],
+      points: ['Reviews: 8 people, due Friday', 'Evidence: rough notes', 'Standard: fair, specific, defensible', 'Risk: trust and bias'],
+    },
+    context: 'Write performance reviews for your team. Year-end reviews are due Friday. You manage eight people and have rough notes on each — but the written reviews need to be fair, specific, and defensible.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องส่งแบบประเมินผลงานสิ้นปีของทีมในวันศุกร์นี้ โดยคุณดูแลพนักงาน 8 คนและมีเพียงบันทึกย่อคร่าว ๆ ของแต่ละคนตลอดทั้งปี',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can tidy your notes so your time goes to fairness and specifics.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI ช่วยเรียบเรียงบันทึกได้ เพื่อให้เวลาของคุณไปอยู่ที่ความเป็นธรรมและรายละเอียด' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can tidy your notes, but fairness and specifics must come from you. Generic AI praise erodes trust and can encode bias across a team.', feedbackTh: 'ดีที่สุด AI ช่วยเรียบเรียงบันทึกของคุณได้ แต่ความเป็นธรรมและรายละเอียดต้องมาจากคุณ คำชมลอย ๆ ของ AI บั่นทอนความไว้ใจและอาจฝังอคติทั้งทีม' },
+      { ...relianceOptions.ai, score: 10, feedback: 'Generic AI praise erodes trust and can encode bias across a team. Fairness must come from you.', feedbackTh: 'คำชมลอย ๆ จาก AI บั่นทอนความไว้ใจและอาจฝังอคติทั้งทีม ความเป็นธรรมต้องมาจากคุณ' },
+    ],
+  }, // horizon:performance-reviews · axis: handoff clarity · key: Shared with AI
+  {
+    id: 'REL-H-D6-018',
+    domain: 'D6',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Negotiate your own salary in the room',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ต่อรองเงินเดือนของคุณเองในห้องประชุม',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ข้อเสนอ: ต่ำกว่าที่หวัง', 'สถานการณ์: เผชิญหน้า ตอนนี้', 'เตรียม: ใช้ AI ล่วงหน้าได้', 'ทักษะ: อ่านคู่สนทนาสด'],
+      points: ['Offer: lower than expected', 'Setting: face to face, right now', 'Prep: could have used AI beforehand', 'Skill: live read of the other person'],
+    },
+    context: 'Negotiate your own salary in the room. Your manager just made an offer. It\'s lower than you expected. You\'re sitting across from them right now — the silence is yours to fill.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณกำลังนั่งคุยเรื่องผลตอบแทนกับผู้จัดการในห้องประชุม โดยตัวเลขที่ผู้จัดการเพิ่งแจ้งนั้นต่ำกว่าที่คุณคาดหวังไว้ และคุณจำเป็นต้องเจรจาต่อรองทันที',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI can prep your case beforehand, but the live read of the other person is human work. Reliance research calls this knowing when not to delegate.', feedbackTh: 'ดีที่สุด AI ช่วยเตรียมข้อมูลล่วงหน้าได้ แต่การอ่านคู่สนทนาแบบสด ๆ เป็นงานของมนุษย์ งานวิจัยเรื่องการพึ่งพาเรียกสิ่งนี้ว่า \'รู้ว่าเมื่อไรไม่ควรมอบหมาย\'' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI can prepare your case beforehand, but in the room the live read of the other person is yours.', feedbackTh: 'AI เตรียมข้อมูลล่วงหน้าได้ แต่ในห้อง การอ่านคู่สนทนาแบบสด ๆ เป็นของคุณ' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Not possible or wise. The silence in the room is yours to fill.', feedbackTh: 'ทำไม่ได้และไม่ควร ความเงียบในห้องรอให้คุณเติม' },
+    ],
+  }, // horizon:salary-negotiation · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D4-019',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-regulatory-policy', 'D4-data-privacy'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Draft a privacy policy for your website',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ร่างนโยบายความเป็นส่วนตัวให้เว็บไซต์',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['แอป: เปิดตัวเดือนหน้า', 'ข้อมูล: อีเมล ตำแหน่ง การชำระเงิน', 'ข้อกำหนด: นโยบายตาม PDPA', 'ความเสี่ยง: ความรับผิดทางกฎหมาย'],
+      points: ['App: launches next month', 'Data: emails, location, payment', 'Requirement: PDPA-compliant policy', 'Risk: legal liability'],
+    },
+    context: 'Draft a privacy policy for your website. You\'re launching a new app next month that collects user emails, location data, and payment info. Legal says you need a PDPA-compliant privacy policy before launch.',
+    prompt: 'Who should do the task?',
+    contextTh: 'แอปพลิเคชันใหม่กำลังจะเปิดตัวในเดือนหน้า โดยมีการเก็บข้อมูลอีเมล พิกัดตำแหน่ง และประวัติการชำระเงิน คุณจึงต้องจัดทำร่างนโยบายความเป็นส่วนตัว (Privacy Policy) สำหรับเว็บไซต์',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI gives a solid template. The human work is matching PDPA obligations to what you actually collect.', feedbackTh: 'ปลอดภัย แต่ AI ให้เทมเพลตที่ดี งานของคนคือจับคู่ข้อกำหนด PDPA กับข้อมูลที่คุณเก็บจริง' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives a solid template, but PDPA compliance is specific to what you actually collect. A wrong policy is a legal liability, not a formality.', feedbackTh: 'ดีที่สุด AI ให้เทมเพลตที่ดี แต่การปฏิบัติตาม PDPA ขึ้นกับข้อมูลที่คุณเก็บจริง นโยบายที่ผิดคือความรับผิดทางกฎหมาย ไม่ใช่แค่พิธีการ' },
+      { ...relianceOptions.ai, score: 10, feedback: 'A wrong policy is a legal liability, not a formality. PDPA compliance is specific to your data.', feedbackTh: 'นโยบายที่ผิดคือความรับผิดทางกฎหมาย ไม่ใช่พิธีการ การปฏิบัติตาม PDPA ขึ้นกับข้อมูลของคุณโดยเฉพาะ' },
+    ],
+  }, // horizon:privacy-policy · axis: risk handling · key: Shared with AI
+  {
+    id: 'REL-H-D6-020',
+    domain: 'D6',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D6-role-clarity', 'D4-security-governance'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write the public apology after your data breach',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนคำขอโทษต่อสาธารณะหลังข้อมูลรั่ว',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['รั่วไหล: ข้อมูลผู้ใช้ 50,000 ราย', 'สื่อ: เริ่มถามแล้ว', 'เดดไลน์: แถลงวันนี้', 'เงื่อนไข: ถูกต้อง รับผิดชอบ เป็นมนุษย์'],
+      points: ['Breach: 50,000 users\' records', 'Media: already asking', 'Deadline: statement today', 'Requirement: accurate, accountable, human'],
+    },
+    context: 'Write the public apology after your data breach. Your company confirmed a data breach affecting 50,000 users\' personal records. Media is already asking. You need a public statement out today — accurate, accountable, and human.',
+    prompt: 'Who should do the task?',
+    contextTh: 'บริษัทยืนยันว่ามีเหตุการณ์ข้อมูลลูกค้ารั่วไหลกระทบผู้ใช้ 50,000 ราย สื่อมวลชนกำลังเริ่มติดต่อเข้ามา และคุณจำเป็นต้องร่างแถลงการณ์ขอโทษต่อสาธารณะ',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can structure the statement fast while you own facts, accountability, and tone.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI จัดโครงแถลงการณ์ได้เร็ว ขณะที่คุณเป็นเจ้าของข้อเท็จจริง ความรับผิดชอบ และน้ำเสียง' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI can structure the statement, but accountability, facts, and tone are existential here. A tone-deaf or inaccurate apology deepens the crisis.', feedbackTh: 'ดีที่สุด AI จัดโครงแถลงการณ์ได้ แต่ความรับผิดชอบ ข้อเท็จจริง และน้ำเสียงเป็นเรื่องชีวิตตายที่นี่ คำขอโทษที่ผิดที่ผิดทางหรือคลาดเคลื่อนยิ่งทำให้วิกฤติหนักขึ้น' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. A tone-deaf or inaccurate apology deepens the crisis; accountability cannot be outsourced.', feedbackTh: 'ไม่ปลอดภัย คำขอโทษที่ผิดที่ผิดทางหรือคลาดเคลื่อนยิ่งซ้ำเติมวิกฤติ ความรับผิดชอบมอบให้ใครไม่ได้' },
+    ],
+  }, // horizon:breach-apology · axis: handoff clarity · key: Shared with AI
+  {
+    id: 'REL-H-D2-021',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Transcribe a one-hour meeting recording',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ถอดเทปการประชุมหนึ่งชั่วโมง',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['บันทึก: ประชุมกลยุทธ์ 1 ชั่วโมง', 'ต้องการ: ถอดเทปเต็มสำหรับรายงาน', 'รายละเอียด: ชื่อ งานที่ต้องทำ ถ้อยคำแน่ชัด', 'ความเสี่ยง: ชื่อและตัวเลข'],
+      points: ['Recording: 1-hour strategy session', 'Need: full transcript for minutes', 'Detail: names, action items, exact wording', 'Risk: names and numbers'],
+    },
+    context: 'Transcribe a one-hour meeting recording for the minutes — names, action items, and the exact wording of key decisions.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องถอดเทปบันทึกเสียงการประชุมความยาว 1 ชั่วโมงเพื่อจัดทำรายงานการประชุม โดยต้องระบุชื่อผู้รับผิดชอบ รายการสิ่งที่ต้องทำ และข้อความสรุปมติที่ชัดเจน',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 30, feedback: 'Manual transcription of an hour of audio is a poor use of time. Speech-to-text is a mature AI strength.', feedbackTh: 'ถอดเทปเสียงหนึ่งชั่วโมงด้วยมือคือการใช้เวลาที่ไม่คุ้ม การถอดเสียงเป็นข้อความคือจุดแข็งที่สุกงอมของ AI' },
+      { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a skim for names and numbers, not parallel transcription.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการกวาดตาดูชื่อและตัวเลข ไม่ใช่ถอดเทปคู่ขนาน' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Speech-to-text is a mature AI strength. Skim for names and numbers, which are where transcription slips.', feedbackTh: 'ดีที่สุด การถอดเสียงเป็นข้อความเป็นจุดแข็งที่สุกงอมของ AI เพียงกวาดตาดูชื่อและตัวเลข ซึ่งเป็นจุดที่การถอดเทปมักพลาด' },
+    ],
+  }, // horizon:transcribe-meeting · axis: tool choice · key: AI-led
+  {
+    id: 'REL-H-D3-022',
+    domain: 'D3',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D5-usecase-fit'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Judge whether a vendor\'s AI claims are real',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ตัดสินว่าคำกล่าวอ้างเรื่อง AI ของผู้ขายเป็นจริงไหม',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['คำอ้าง: \'ลดเวลาจัดซื้อ 60%\'', 'ข้อเสนอ: สัญญา 3 ปี', 'หลักฐาน: สไลด์ 1 แผ่น', 'ขาด: ข้อมูล การสาธิต การทดสอบอิสระ'],
+      points: ['Claim: \'reduces procurement time by 60%\'', 'Ask: 3-year contract', 'Evidence: one slide', 'Missing: data, demo, independent test'],
+    },
+    context: 'Judge whether a vendor\'s AI claims are real. A vendor\'s deck says their AI \'reduces procurement time by 60%\'. They want you to sign a 3-year contract. You\'ve seen the slide — but no data, no demo, no independent test.',
+    prompt: 'Who should do the task?',
+    contextTh: 'ผู้ขายระบบ AI นำเสนอสไลด์ที่อ้างว่าระบบสามารถ \'ลดเวลาจัดซื้อลงได้ 60%\' และต้องการให้คุณลงนามในสัญญา คุณต้องตัดสินใจว่าคำกล่าวอ้างนี้เชื่อถือได้จริงหรือไม่',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.', feedbackTh: 'ดีที่สุด นี่คือทักษะระดับเหนือ: การประเมิน AI คือวิจารณญาณของมนุษย์ ขอหลักฐานและการสาธิตสด ๆ อย่าให้ AI ของผู้ขายตรวจการบ้านตัวเอง' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.', feedbackTh: 'AI ช่วยลิสต์คำถามที่ควรถามได้ แต่การประเมินหลักฐานของผู้ขาย AI คือวิจารณญาณของคน อย่าให้ AI ของเขาตรวจการบ้านตัวเอง' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Circular. Asking AI whether an AI claim is real is not evidence; demand data and a live demo.', feedbackTh: 'วนในอ่าง การถาม AI ว่าคำกล่าวอ้างเรื่อง AI จริงไหมไม่ใช่หลักฐาน ขอข้อมูลและการสาธิตสด' },
+    ],
+  }, // horizon:judge-vendor-claims · axis: evidence judgment · key: Human-owned
+  {
+    id: 'REL-H-D2-023',
+    domain: 'D2',
+    difficulty: 'awareness',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement', 'D2-tool-selection'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Generate logo concepts to explore directions',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'สร้างแนวคิดโลโก้เพื่อสำรวจทิศทาง',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ธุรกิจ: บริษัทที่ปรึกษาใหม่', 'ขั้น: ก่อนบรีฟนักออกแบบ', 'ต้องการ: 10–20 ทิศทางภาพ', 'เป้าหมาย: หาทิศทางที่ใช่'],
+      points: ['Business: new consultancy', 'Stage: before briefing a designer', 'Need: 10–20 visual directions', 'Goal: find the right territory'],
+    },
+    context: 'Generate 10–20 quick logo concepts for your new consultancy to explore directions before briefing a designer.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องการระดมไอเดียออกแบบโลโก้แบบเร็ว ๆ 10–20 แบบสำหรับบริษัทที่ปรึกษาเปิดใหม่ เพื่อสำรวจแนวทางเบื้องต้นก่อนส่งบรีฟให้นักออกแบบกราฟิกตัวจริง',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 40, feedback: 'Slow for fast exploration. Let AI generate directions, then bring a designer to finish.', feedbackTh: 'ช้าสำหรับการสำรวจอย่างรวดเร็ว ให้ AI สร้างทิศทาง แล้วให้ดีไซเนอร์ทำให้เสร็จ' },
+      { ...relianceOptions.together, score: 65, feedback: 'Fine, but at this stage the human role is choosing a direction, not co-designing.', feedbackTh: 'ใช้ได้ แต่ในขั้นนี้บทบาทของคนคือเลือกทิศทาง ไม่ใช่ร่วมออกแบบ' },
+      { ...relianceOptions.ai, score: 98, feedback: 'Best. Exploring visual directions fast is a great AI use. Pick a direction, then bring a designer to finish what will represent you for years.', feedbackTh: 'ดีที่สุด การสำรวจทิศทางภาพอย่างรวดเร็วเป็นการใช้ AI ที่ดี เลือกทิศทางแล้วให้ดีไซเนอร์ทำให้เสร็จ เพราะมันจะเป็นตัวแทนคุณไปอีกหลายปี' },
+    ],
+  }, // horizon:logo-concepts · axis: iteration and repair · key: AI-led
+  {
+    id: 'REL-H-D4-024',
+    domain: 'D4',
+    difficulty: 'proficient',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D4-regulatory-policy', 'D6-role-clarity'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Sign off on the company\'s financial statements',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ลงนามรับรองงบการเงินของบริษัท',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['งบ: สิ้นปี นักบัญชีทำเสร็จแล้ว', 'ยื่น: พรุ่งนี้', 'ลายเซ็น: ของคุณ', 'ความรับผิด: ทางกฎหมาย'],
+      points: ['Statements: year-end, prepared by accountants', 'Filing: tomorrow', 'Signature: yours', 'Accountability: legal'],
+    },
+    context: 'Sign off on the company\'s financial statements. Year-end financial statements are ready. The accountants have done their work. Your name goes on the signature line — and filing is tomorrow.',
+    prompt: 'Who should do the task?',
+    contextTh: 'งบการเงินสิ้นปีของบริษัทจัดทำเสร็จเรียบร้อยแล้วโดยนักบัญชี และชื่อของคุณจะต้องปรากฏในช่องลงนามรับรองเพื่อยื่นต่อหน่วยงานกำกับดูแล',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. A signature is legal accountability that cannot be delegated to software. AI may help prepare; only a responsible human can attest.', feedbackTh: 'ดีที่สุด ลายเซ็นคือความรับผิดทางกฎหมายที่มอบให้ซอฟต์แวร์ไม่ได้ AI ช่วยเตรียมได้ แต่มีเพียงมนุษย์ผู้รับผิดชอบเท่านั้นที่รับรองได้' },
+      { ...relianceOptions.together, score: 45, feedback: 'AI may help prepare and check, but attestation is legal accountability that cannot be shared with software.', feedbackTh: 'AI ช่วยเตรียมและตรวจได้ แต่การรับรองคือความรับผิดทางกฎหมายที่แบ่งให้ซอฟต์แวร์ไม่ได้' },
+      { ...relianceOptions.ai, score: 0, feedback: 'Impossible and unlawful. A signature is personal legal accountability.', feedbackTh: 'เป็นไปไม่ได้และผิดกฎหมาย ลายเซ็นคือความรับผิดทางกฎหมายส่วนบุคคล' },
+    ],
+  }, // horizon:signoff-financials · axis: risk handling · key: Human-owned
+  {
+    id: 'REL-H-D2-025',
+    domain: 'D2',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D2-output-refinement'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Write the first draft of a blog post',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'เขียนร่างแรกของบทความบล็อก',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['ชิ้นงาน: บทความ 600 คำเรื่องความเสี่ยง AI', 'ผู้อ่าน: ไม่ใช่นักเทคนิค', 'เดดไลน์: สิ้นวัน', 'ติด: หน้ากระดาษว่างหนึ่งชั่วโมง'],
+      points: ['Piece: 600-word explainer on AI risk', 'Audience: non-technical', 'Deadline: end of day', 'Blocker: blank page for an hour'],
+    },
+    context: 'Write the first draft of a blog post. You need a 600-word explainer on AI risk for a non-technical audience by end of day. You know the subject well — but you\'ve been staring at the blank page for an hour.',
+    prompt: 'Who should do the task?',
+    contextTh: 'คุณต้องการร่างแรกของบทความบล็อกความยาว 600 คำ เพื่ออธิบายความเสี่ยงของ AI ให้ผู้อ่านทั่วไปเข้าใจได้ง่ายภายในวันนี้ โดยคุณมีความรู้ในหัวข้อนี้เป็นอย่างดีอยู่แล้ว',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 55, feedback: 'You know the subject, but an hour of blank page says AI can beat it. Your edit is what makes it publishable.', feedbackTh: 'คุณรู้เรื่องดี แต่หน้ากระดาษว่างหนึ่งชั่วโมงบอกว่า AI ช่วยข้ามได้ การแก้ของคุณคือสิ่งที่ทำให้มันเผยแพร่ได้' },
+      { ...relianceOptions.together, score: 98, feedback: 'Best. AI beats the blank page, but a draft is not a decision. Your edit — the facts, the angle, the voice — is what makes it worth publishing.', feedbackTh: 'ดีที่สุด AI ช่วยข้ามหน้ากระดาษว่าง แต่ร่างไม่ใช่การตัดสินใจ การแก้ของคุณ — ข้อเท็จจริง มุมมอง น้ำเสียง — คือสิ่งที่ทำให้มันคู่ควรกับการเผยแพร่' },
+      { ...relianceOptions.ai, score: 20, feedback: 'A draft is not a decision. Facts, angle, and voice need your edit before publishing.', feedbackTh: 'ร่างไม่ใช่การตัดสินใจ ข้อเท็จจริง มุมมอง และน้ำเสียงต้องผ่านการแก้ของคุณก่อนเผยแพร่' },
+    ],
+  }, // horizon:first-draft-blog · axis: iteration and repair · key: Shared with AI
+  {
+    id: 'REL-H-D3-026',
+    domain: 'D3',
+    difficulty: 'applied',
+    type: 'reliance-decision',
+    interaction: 'single',
+    competencyIds: ['D3-source-verification', 'D1-capability-limits'],
+    visualStimulus: {
+      kind: 'memo',
+      eyebrow: 'Task ownership',
+      title: 'Confirm whether a breaking news claim is true',
+      caption: 'Decide who should own this task: you, AI, or both working together.',
+      titleTh: 'ยืนยันว่าข่าวด่วนเป็นความจริงหรือไม่',
+      eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
+      captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
+      pointsTh: ['คำอ้าง: บริษัทเทคใหญ่ล้ม', 'แหล่ง: โพสต์ไวรัล', 'เวลา: ชั่วโมงที่แล้ว สื่อยังไม่ยืนยัน', 'แรงกด: เพื่อนร่วมงานตอบสนองแล้ว'],
+      points: ['Claim: major tech company collapsed', 'Source: viral post', 'Timing: last hour, unconfirmed by outlets', 'Pressure: colleagues reacting'],
+    },
+    context: 'Confirm whether a breaking news claim is true. A viral post says a major tech company just collapsed. Your colleagues are already reacting. It happened in the last hour — before any major outlets have confirmed.',
+    prompt: 'Who should do the task?',
+    contextTh: 'มีโพสต์ไวรัลที่แชร์กันอย่างรวดเร็วอ้างว่าบริษัทยักษ์ใหญ่ด้านเทคโนโลยีเพิ่งปิดตัวกะทันหัน และเพื่อนร่วมงานเริ่มตื่นตระหนก คุณต้องตรวจสอบว่าข่าวด่วนนี้เป็นความจริงหรือไม่',
+    promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
+    translationStatus: 'reviewed',
+    options: [
+      { ...relianceOptions.me, score: 98, feedback: 'Best. AI may not know recent events and will state guesses confidently. Check primary sources yourself before you share or act.', feedbackTh: 'ดีที่สุด AI อาจไม่รู้เหตุการณ์ล่าสุดและจะพูดการเดาอย่างมั่นใจ ตรวจแหล่งข้อมูลปฐมภูมิเองก่อนแชร์หรือลงมือ' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI may not know last-hour events and will guess confidently. It can suggest what to check, but you must open primary sources.', feedbackTh: 'AI อาจไม่รู้เหตุการณ์ในชั่วโมงที่ผ่านมาและจะเดาอย่างมั่นใจ มันแนะนำสิ่งที่ควรตรวจได้ แต่คุณต้องเปิดแหล่งปฐมภูมิเอง' },
+      { ...relianceOptions.ai, score: 5, feedback: 'Unsafe. AI may not know recent events and will state guesses confidently.', feedbackTh: 'ไม่ปลอดภัย AI อาจไม่รู้เหตุการณ์ล่าสุดและจะพูดการเดาอย่างมั่นใจ' },
+    ],
+  }, // horizon:verify-news · axis: evidence judgment · key: Human-owned
 ];
 
 const executiveRelianceQuestions: Question[] = [
@@ -2689,10 +3465,10 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Two items need governance gate', 'Value and risk not normalized'],
     },
-    context: 'The leadership team must choose which AI initiatives get funded next quarter.',
+    context: 'The leadership team must choose which AI initiatives get funded next quarter. The CEO will personally defend the ranking to the board.',
     prompt: 'Who should own the decision?',
     options: [
-      { id: 'me', label: 'Executive: decide from judgment alone.', score: 55, feedback: 'Executives own the decision, but evidence structuring should not be skipped.' },
+      { id: 'me', label: 'Executive: decide from judgment alone.', score: 70, feedback: 'Accountability is right, but a ranking you must defend is stronger when AI has first normalised value, readiness, and risk across the 12 cases.' },
       { id: 'together', label: 'Together: AI structures evidence, executives decide.', score: 98, feedback: 'Correct. AI can organize value, readiness, and risk; leaders own the tradeoff.' },
       { id: 'ai', label: 'AI: rank and approve the portfolio automatically.', score: 5, feedback: 'Unsafe. Portfolio governance and risk appetite are executive responsibilities.' },
     ],
@@ -2707,8 +3483,8 @@ const executiveRelianceQuestions: Question[] = [
       kind: 'risk',
       eyebrow: 'Executive ownership',
       title: 'Respond to a Data Incident',
-      caption: 'AI can accelerate triage, but accountability and communications require human authority.',
-      points: ['Customer data exposed', 'Regulator clock started', 'Press inquiry pending', 'Root cause unclear'],
+      caption: 'Decide who leads when the AI workflow itself is the compromised system.',
+      points: ['Customer data exposed by the AI workflow', 'Regulator clock: 72 hours', 'Press inquiry pending', 'Root cause unclear: same system'],
       metrics: [
         { label: 'Exposure', value: 'Live', status: 'bad' },
         { label: 'Clock', value: 'Started', status: 'bad' },
@@ -2716,12 +3492,12 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Containment first', 'Do not auto-send messages', 'Preserve audit trail'],
     },
-    context: 'An AI workflow exposed confidential customer data to the wrong audience.',
-    prompt: 'Who should lead?',
+    context: 'An AI workflow exposed confidential customer data to the wrong audience. The root cause is unknown, so the same AI tooling cannot yet be trusted with incident data, and the regulator notification clock has started.',
+    prompt: 'Who should lead the first 72 hours?',
     options: [
-      { id: 'me', label: 'Executive/legal team only.', score: 70, feedback: 'Human leadership is essential, but AI can support timeline reconstruction and evidence gathering.' },
-      { id: 'together', label: 'Together: AI supports triage, executives own response.', score: 98, feedback: 'Correct. Use AI for controlled analysis while humans own notification, remediation, and accountability.' },
-      { id: 'ai', label: 'AI: draft and send all incident messages.', score: 5, feedback: 'Unsafe. High-stakes communication must not be delegated end to end.' },
+      { id: 'me', label: 'Executive/legal team only, with AI tooling paused.', score: 95, feedback: 'Best. Until the root cause is known, the AI system is part of the incident, not a tool for handling it. Executives and legal own containment, notification, and the audit trail.' },
+      { id: 'together', label: 'Together: AI supports triage, executives own response.', score: 65, feedback: 'Reasonable later, once the compromised workflow is isolated and a separate, controlled AI tool is cleared. In the first hours it risks feeding incident data into the failing system.' },
+      { id: 'ai', label: 'AI: draft and send all incident messages.', score: 0, feedback: 'Unsafe. High-stakes, regulated communication must not be delegated, least of all to the system that caused the exposure.' },
     ],
   },
   {
@@ -2734,15 +3510,15 @@ const executiveRelianceQuestions: Question[] = [
       kind: 'memo',
       eyebrow: 'Executive ownership',
       title: 'Announce Role Redesign',
-      caption: 'AI can test clarity, but leaders must own the human message.',
-      points: ['AI changes workflows', 'Employees fear replacement', 'Managers need guidance', 'Union asks for clarity'],
+      caption: 'Decide who writes a message about AI replacing work.',
+      points: ['AI changes workflows', 'Employees fear replacement by AI', 'Union: message must come personally from you', 'Trust: fragile'],
     },
-    context: 'A new AI program will change how teams divide work.',
+    context: 'A new AI program will change how teams divide work. Employees fear being replaced, and the union has asked that the announcement come personally from you. An AI-written message about AI taking work would be noticed.',
     prompt: 'Who should write the message?',
     options: [
-      { id: 'me', label: 'Executive: write and own the message.', score: 78, feedback: 'Leadership ownership is required, though AI can help test clarity and possible misunderstandings.' },
-      { id: 'together', label: 'Together: AI drafts scenarios, executives write final.', score: 98, feedback: 'Correct. AI can support preparation; leaders own trust, tone, and commitments.' },
-      { id: 'ai', label: 'AI: generate and publish the announcement.', score: 5, feedback: 'Unsafe. This would make a sensitive people decision feel outsourced.' },
+      { id: 'me', label: 'Executive: write and own the message.', score: 95, feedback: 'Best. When the subject is AI displacing work, an authentically human message is the point. Write it yourself; test clarity with trusted managers.' },
+      { id: 'together', label: 'Together: AI drafts scenarios, executives write final.', score: 60, feedback: 'Useful for anticipating questions, but if the draft voice leaks into the final message, the trust cost exceeds the time saved.' },
+      { id: 'ai', label: 'AI: generate and publish the announcement.', score: 0, feedback: 'Unsafe. Outsourcing this message to AI confirms the fear it is meant to address.' },
     ],
   },
   {
@@ -2769,12 +3545,12 @@ const executiveRelianceQuestions: Question[] = [
       ],
       flags: ['Confidence is not proof', 'No uncertainty range', 'No validation trail'],
     },
-    context: 'Leadership wants to use an AI revenue forecast in investor guidance.',
+    context: 'Leadership wants to use an AI revenue forecast in tomorrow\'s investor guidance. Guidance is a regulated disclosure the CFO signs, and the model has no back-test or uncertainty range.',
     prompt: 'Who should decide?',
     options: [
-      { id: 'me', label: 'Executive/finance: decide after evidence review.', score: 82, feedback: 'Strong. AI may support analysis, but accountable leaders must challenge assumptions.' },
-      { id: 'together', label: 'Together: AI analyzes scenarios, leaders decide disclosure.', score: 98, feedback: 'Correct. Use AI for scenario work while humans own investor-facing judgment.' },
-      { id: 'ai', label: 'AI: publish the forecast if confidence is high.', score: 5, feedback: 'Unsafe. Model confidence is not disclosure-grade evidence.' },
+      { id: 'me', label: 'Executive/finance: decide after evidence review.', score: 95, feedback: 'Best. A signed, regulated disclosure with no validation trail is a human decision. Withhold the number or present it with your own range and caveats.' },
+      { id: 'together', label: 'Together: AI analyzes scenarios, leaders decide disclosure.', score: 70, feedback: 'Good practice normally, but with the call tomorrow and no back-test, scenario work cannot make the forecast disclosure-grade. The decision, not the analysis, is what matters here.' },
+      { id: 'ai', label: 'AI: publish the forecast if confidence is high.', score: 0, feedback: 'Unsafe. Model confidence is not disclosure-grade evidence, and the CFO carries the liability.' },
     ],
   },
   {
@@ -2790,10 +3566,10 @@ const executiveRelianceQuestions: Question[] = [
       caption: 'Executives should understand enough to ask the right control questions.',
       points: ['Agent can plan', 'Agent can use tools', 'Agent can act', 'Controls determine authority'],
     },
-    context: 'The board asks what makes an AI agent different from a chatbot.',
+    context: 'The board asks what makes an AI agent different from a chatbot, and will probe your answer with follow-up questions in the room.',
     prompt: 'Who should explain it?',
     options: [
-      { id: 'me', label: 'Executive: explain from current understanding.', score: 65, feedback: 'Helpful, but executives should verify technical claims before presenting.' },
+      { id: 'me', label: 'Executive: explain from current understanding.', score: 72, feedback: 'Defensible if your understanding is current. Preparing with AI simply lets you pressure-test the explanation before the board does.' },
       { id: 'together', label: 'Together: AI helps draft, executive validates and explains.', score: 98, feedback: 'Correct. Leaders can use AI to prepare, but must understand and own the explanation.' },
       { id: 'ai', label: 'AI: present directly to the board.', score: 20, feedback: 'Too much delegation. The board needs accountable leadership judgment.' },
     ],
@@ -2817,10 +3593,10 @@ const executiveRelianceQuestions: Question[] = [
       label: 'Agent trace artifact',
       caption: 'Inspect the tool trace before deciding who can approve agent access.',
     },
-    context: 'A business unit wants an AI agent to operate across multiple systems.',
+    context: 'A business unit wants an AI agent to operate across files, CRM, email, and finance approvals. Whoever approves the access owns the consequences of what the agent does with it.',
     prompt: 'Who should approve access?',
     options: [
-      { id: 'me', label: 'Executive/owners: approve manually without AI input.', score: 70, feedback: 'Accountability is right, but AI can help map risks and missing controls.' },
+      { id: 'me', label: 'Executive/owners: approve manually without AI input.', score: 76, feedback: 'Accountability is right. AI only adds a systematic map of tools, risks, and missing controls before you set the boundaries.' },
       { id: 'together', label: 'Together: AI maps risks, owners approve bounded access.', score: 98, feedback: 'Correct. Use AI to structure the review; humans set permissions and escalation rules.' },
       { id: 'ai', label: 'AI: grant itself tools as needed.', score: 0, feedback: 'Unsafe. Agents must not self-authorize high-impact tools.' },
     ],
@@ -2965,6 +3741,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'pilot', label: 'Run a time-boxed pilot with success and stop criteria' },
     ],
     idealOrder: ['workflow', 'baseline', 'controls', 'pilot'],
+    rankRationale: 'Defining the workflow problem and users comes first; a baseline makes value measurable; review gates, data boundaries, and an owner are set before the pilot starts; a time-boxed pilot with stop criteria produces a decision, not an open-ended experiment.',
     options: [
       { id: 'rank', label: 'Order pilot steps from problem evidence to controlled test.', score: 98, feedback: 'Correct. Function-level pilots need workflow fit, baseline evidence, controls, and learning criteria.' },
     ],
@@ -3059,6 +3836,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'measure', label: 'Compare time saved and corrections before expanding' },
     ],
     idealOrder: ['baseline', 'scope', 'review', 'measure'],
+    rankRationale: 'A baseline of cycle time and error rate is what the pilot will be compared against; scoping AI to approved data and selected variances limits the blast radius; controller review preserves review discipline; measuring time saved against corrections decides expansion.',
     options: [
       { id: 'rank', label: 'Sequence the close-comment pilot.', score: 98, feedback: 'Correct. A useful pilot starts with a baseline, constrains scope, preserves review, and measures before scale.' },
     ],
@@ -3252,6 +4030,7 @@ const functionalQuestionBank: Question[] = [
       { id: 'act', label: 'Send a human-owned follow-up and update the CRM rationale' },
     ],
     idealOrder: ['clean', 'prompt', 'review', 'act'],
+    rankRationale: 'Stale CRM data produces confident but wrong recommendations, so data hygiene comes first; the prompt asks for account-specific actions with evidence; legal, privacy, and customer-context review happens before any outreach; the human owns the follow-up and records the rationale.',
     options: [
       { id: 'rank', label: 'Order the AI-assisted sales workflow.', score: 98, feedback: 'Correct. Useful sales AI starts with evidence quality, then prompt, review, and accountable action.' },
     ],
@@ -3479,6 +4258,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'approve', label: 'Approve with owner, monitoring, and rollback plan.' },
     ],
     idealOrder: ['purpose', 'license', 'risk', 'test', 'approve'],
+    rankRationale: 'Confirm the need first so you are not evaluating a package you do not require; licence and maintenance decide whether it can be used at all; the risk review examines what it will do inside your environment; sandbox testing with real data comes before an approval that names an owner and rollback plan.',
     options: [],
   },
   {
@@ -4024,6 +4804,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'measure', label: 'Measure whether errors and overrides improve.' },
     ],
     idealOrder: ['sample', 'classify', 'coach', 'control', 'measure'],
+    rankRationale: 'Sampling real outputs and overrides supplies the evidence; classifying error patterns shows what to fix and how risky it is; coaching addresses the human side before controls tighten the system side; measuring closes the weekly loop.',
     options: [],
   },
   {
@@ -4351,6 +5132,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'learn', label: 'Review patterns weekly and update coaching or prompts.' },
     ],
     idealOrder: ['classify', 'draft', 'review', 'send', 'learn'],
+    rankRationale: 'Risk classification decides which tickets the AI may touch; the draft uses only approved evidence; the human reviewer checks evidence and exception rules before send; recording the override reason is what feeds the weekly learning review.',
     options: [],
   },
   {
@@ -4479,6 +5261,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'learn', label: 'Run a post-incident review with owner and prevention metrics.' },
     ],
     idealOrder: ['contain', 'scope', 'notify', 'fix', 'learn'],
+    rankRationale: 'Containment stops further harm before anything else; scoping tells you who was affected; notification goes through the approved legal and communications path; fixes come before the post-incident review that sets prevention metrics.',
     options: [],
   },
   {
@@ -4681,6 +5464,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'scale', label: 'Scale only where evidence and manager support are strong.' },
     ],
     idealOrder: ['listen', 'coach', 'measure', 'adjust', 'scale'],
+    rankRationale: 'Listening to users explains why adoption is uneven; coaching managers addresses the biggest adoption lever; measuring against the baseline shows whether quality and trust hold; adjustments come before scaling, and scale only follows evidence and manager support.',
     options: [],
   },
   {
@@ -4725,6 +5509,7 @@ const competencyDepthQuestionBank: Question[] = [
       { id: 'portfolio', label: 'Fund scale only for patterns that meet evidence gates.' },
     ],
     idealOrder: ['inventory', 'pattern', 'controls', 'pilot', 'portfolio'],
+    rankRationale: 'An inventory shows where AI is worth applying; reusable patterns stop every team rebuilding the same workflow; controls are defined before the first pilot so pilots are comparable; funding follows evidence gates, not enthusiasm.',
     options: [],
   },
   {
@@ -4816,6 +5601,7 @@ const competencyDepthQuestionBank: Question[] = [
 
 const questionBank: Question[] = [
   ...generalRelianceQuestions,
+  ...horizonRelianceQuestions,
   ...functionalQuestionBank,
   ...competencyDepthQuestionBank,
   ...marketTrendQuestionBank,
@@ -4952,6 +5738,7 @@ const questionBank: Question[] = [
       { id: 'release', label: 'Merge and monitor production signals after approval.' },
     ],
     idealOrder: ['scope', 'generate', 'ci', 'review', 'release'],
+    rankRationale: 'Scope limits what the assistant can touch before it writes anything; tests and rationale travel with the patch; automated checks catch mechanical faults before a human spends review time on behaviour and risk; monitoring after merge closes the loop.',
     options: [],
   },
   {
@@ -5270,6 +6057,7 @@ const questionBank: Question[] = [
       { id: 'learn', label: 'Log overrides and update guidance.' },
     ],
     idealOrder: ['triage', 'retrieve', 'draft', 'approve', 'learn'],
+    rankRationale: 'Risk is classified first so high-risk tickets never reach an unreviewed draft; evidence is pulled before drafting so the reply is grounded; approval sits before send for the cases that can cause harm; logging overrides last is what improves the next round.',
     options: [],
   },
   {
@@ -5376,6 +6164,7 @@ const questionBank: Question[] = [
       { id: 'approve', label: 'Approve expansion only after evidence and signoff.' },
     ],
     idealOrder: ['classify', 'contract', 'controls', 'pilot', 'approve'],
+    rankRationale: 'You cannot negotiate data rights until you know how sensitive the data is; contract terms define what controls must exist; a limited pilot tests those controls in practice; expansion is approved only on pilot evidence.',
     options: [],
   },
   {
@@ -5937,6 +6726,7 @@ const questionBank: Question[] = [
       { id: 'send', label: 'Share the final summary with caveats if needed' },
     ],
     idealOrder: ['source', 'format', 'verify', 'send'],
+    rankRationale: 'The AI needs the transcript and purpose before it can summarise anything; format and audience shape what the summary emphasises; verification of names, owners, and dates comes before anyone acts on it; caveats travel with the final version.',
     options: [
       { id: 'rank', label: 'Order the summary workflow.', score: 98, feedback: 'Reliable AI work comes from clear inputs, constraints, and review.' },
     ],
@@ -6066,6 +6856,7 @@ const questionBank: Question[] = [
       { id: 'learn', label: 'Fast learning path for scale or stop decision' },
     ],
     idealOrder: ['problem', 'measure', 'risk', 'learn'],
+    rankRationale: 'A pilot that does not solve a clear user problem is not worth measuring; a baseline is what makes the outcome measurable; risk controls decide whether the pilot is allowed to run at all; a fast learning path lets you scale or stop with evidence.',
     options: [
       { id: 'rank', label: 'Order pilot selection criteria.', score: 98, feedback: 'Good pilots start with problem fit and measurable evidence.' },
     ],
@@ -6257,6 +7048,7 @@ const questionBank: Question[] = [
       { id: 'monitor', label: 'Monitor new outputs against the same criteria' },
     ],
     idealOrder: ['sample', 'rubric', 'revise', 'monitor'],
+    rankRationale: 'Improvement starts from real failed and successful cases, not opinions; a rubric turns cases into named error categories; only then do you change the prompt, sources, or controls; monitoring against the same rubric shows whether the change worked.',
     options: [
       { id: 'rank', label: 'Order loop steps from evidence to monitoring.', score: 98, feedback: 'Correct. Improvement loops start from evidence, then revise and monitor.' },
     ],
@@ -6582,6 +7374,7 @@ const questionBank: Question[] = [
       { id: 'use', label: 'Use the plan after making needed human corrections' },
     ],
     idealOrder: ['scope', 'prompt', 'check', 'use'],
+    rankRationale: 'Separating personal, school, and work material before upload protects sensitive details; a clear task, format, and priority rules shape the plan; verification of names, dates, and commitments comes before use; the plan is used only after human corrections.',
     options: [
       { id: 'rank', label: 'Order the AI planning workflow.', score: 98, feedback: 'Correct. Practical AI use starts with scope, then prompting, checking, and careful use.' },
     ],
@@ -6752,6 +7545,7 @@ const questionBank: Question[] = [
       { id: 'scale', label: 'Expand only after value, harm, and adoption evidence meet gates' },
     ],
     idealOrder: ['map', 'scope', 'pilot', 'scale'],
+    rankRationale: 'Mapping the workflow, thresholds, and owners defines what the agent may decide; limiting tools, data, and refund authority bounds the risk; a monitored pilot with logs and exceptions generates evidence; expansion waits for value, harm, and adoption gates.',
     options: [
       { id: 'rank', label: 'Order the agent rollout gates.', score: 98, feedback: 'Correct. Practical agent adoption starts with workflow and authority design before scale.' },
     ],
@@ -7014,6 +7808,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'scale', label: 'Scale only after evidence and controls pass' },
     ],
     idealOrder: ['value', 'readiness', 'pilot', 'scale'],
+    rankRationale: 'A value hypothesis with an owner defines what success means; readiness assessment decides whether a pilot is even feasible; a controlled pilot produces the evidence; scale is released only when evidence and controls pass.',
     options: [
       { id: 'rank', label: 'Order portfolio gates from hypothesis to scale.', score: 98, feedback: 'Strong. The sequence protects investment discipline.' },
     ],
@@ -7105,6 +7900,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'train', label: 'Train role owners and scale the pattern' },
     ],
     idealOrder: ['map', 'review', 'measure', 'train'],
+    rankRationale: 'Map where AI enters the workflow before deciding where humans review it; set review and exception points before measuring, or the metrics will not reflect the real process; measure before training and scaling so you scale a pattern that works.',
     options: [
       { id: 'rank', label: 'Order workflow steps from mapping to scale.', score: 98, feedback: 'Strong workflow governance starts with context, then controls, measures, and enablement.' },
     ],
@@ -7197,6 +7993,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'prevent', label: 'Fix permissions, monitoring, and ownership' },
     ],
     idealOrder: ['contain', 'assess', 'communicate', 'prevent'],
+    rankRationale: 'Contain access and preserve evidence first; assess impact and legal obligations before communicating, so the message is accurate; communicate before fixing root causes because affected stakeholders have a right to know quickly; prevention is the last, durable step.',
     options: [
       { id: 'rank', label: 'Order incident actions from containment to prevention.', score: 98, feedback: 'Correct. Incident leadership starts with containment and evidence.' },
     ],
@@ -7452,6 +8249,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'monitor', label: 'Monitor incidents and suspend when thresholds are crossed' },
     ],
     idealOrder: ['classify', 'authority', 'validate', 'monitor'],
+    rankRationale: 'Classifying the use case as safety-critical triggers the whole control regime; human authority and fail-safe boundaries must exist before validation is meaningful; edge-case validation precedes live use; monitoring with suspension thresholds is the ongoing control.',
     options: [
       { id: 'rank', label: 'Order safety controls from classification to monitoring.', score: 98, feedback: 'Correct. Safety-critical AI requires staged controls.' },
     ],
@@ -7502,6 +8300,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'refresh', label: 'Refresh prompts, policies, and training from observed failures' },
     ],
     idealOrder: ['practice', 'review', 'coach', 'refresh'],
+    rankRationale: 'Define the decision moments first so AI assists where it matters; review criteria for quality and fairness must exist before coaching, or coaching has no standard; coaching from real examples beats abstract training; refreshing prompts and policies from observed failures is the learning loop.',
     options: [
       { id: 'rank', label: 'Order leadership loop steps.', score: 98, feedback: 'Correct. Capability improves when real use feeds coaching and updates.' },
     ],
@@ -7789,6 +8588,7 @@ const executiveQuestionBank: Question[] = [
       { id: 'funding', label: 'Release staged funding tied to evidence milestones' },
     ],
     idealOrder: ['outcomes', 'readiness', 'risk', 'funding'],
+    rankRationale: 'Outcomes, baseline, and decision owner define what funding is for; readiness validation tests whether programmes can absorb it; controls and stop conditions protect the downside; staged funding tied to milestones keeps the board in control.',
     options: [
       { id: 'rank', label: 'Order the investment gate steps.', score: 98, feedback: 'Correct. Strategy becomes executable when value evidence, readiness, risk, and funding gates are sequenced.' },
     ],
@@ -10287,7 +11087,11 @@ function scoreTextAnswer(question: Question, response: string) {
   const normalized = response.toLowerCase();
   const criteria = question.rubricCriteria ?? [];
   if (!normalized.trim()) return { score: 0, hits: [] as RubricCriterion[] };
-  const hits = criteria.filter((criterion) => criterion.keywords.some((keyword) => normalized.includes(keyword)));
+  const translated = questionTranslationsTh[question.id]?.rubricCriteria;
+  const hits = criteria.filter((criterion) => {
+    const keywords = [...criterion.keywords, ...(criterion.keywordsTh ?? []), ...(translated?.[criterion.id]?.keywords ?? [])];
+    return keywords.some((keyword) => keyword && normalized.includes(keyword.toLowerCase()));
+  });
   const evidencePoints = hits.reduce((sum, criterion) => sum + criterion.points, 0);
   const score = hits.length ? Math.min(98, evidencePoints) : 0;
   return { score, hits };
@@ -10516,6 +11320,95 @@ const hiddenArtifactQuestionIds = new Set([
   'MULTI-CONCEPT-EXEC-001',
 ]);
 
+/**
+ * Returns the question as it should be shown in the active language.
+ * Thai comes from two places: optional `*Th` fields written beside the English on the item, and the
+ * id-keyed table in app/questionTranslations.th.ts (generated from the reviewed workbook; it wins).
+ * Only questions with a translation status are localized, so a partially translated bank never
+ * mixes Thai buttons with an English scenario. Ids, scores, keys, and telemetry stay language-independent.
+ */
+/**
+ * Thai versions of message-type artifacts (SMS, chat, social post, invoice, login alert, email, listing, memo).
+ * Only text regions were repainted; layout, photos, and every fraud/verification cue are unchanged.
+ */
+const thaiStimulusSources: Record<string, string> = {
+  '/stimuli/gen-exp-fraud-sms-thread.svg': '/stimuli/gen-exp-fraud-sms-thread-th.svg',
+  '/stimuli/executive-synthetic-post.svg': '/stimuli/executive-synthetic-post-th.svg',
+  '/stimuli/fraud-invoice.svg': '/stimuli/fraud-invoice-th.svg',
+  '/stimuli/fraud-login.svg': '/stimuli/fraud-login-th.svg',
+  '/stimuli/fake-product-listing.svg': '/stimuli/fake-product-listing-th.svg',
+  '/stimuli/executive/exec-exp-vendor-memo-data-rights.svg': '/stimuli/executive/exec-exp-vendor-memo-data-rights-th.svg',
+  '/stimuli/flood-forwarded-chat.png': '/stimuli/flood-forwarded-chat-th.png',
+  '/stimuli/flood-station-social-post.png': '/stimuli/flood-station-social-post-th.png',
+  '/stimuli/realistic-scheduling-email.png': '/stimuli/realistic-scheduling-email-th.png',
+};
+
+function getTranslationStatus(question: Question): TranslationStatus | undefined {
+  return questionTranslationsTh[question.id]?.status ?? question.translationStatus;
+}
+
+function localizeQuestion(question: Question, language: AppLanguage): Question {
+  if (language !== 'th' || !getTranslationStatus(question)) return question;
+  const t = questionTranslationsTh[question.id];
+  const pick = (...values: Array<string | undefined>) => values.find((value) => value !== undefined && value !== '');
+  return {
+    ...question,
+    context: pick(t?.context, question.contextTh) ?? question.context,
+    prompt: pick(t?.prompt, question.promptTh) ?? question.prompt,
+    options: question.options.map((option) => ({
+      ...option,
+      label: pick(t?.options?.[option.id]?.label, option.labelTh) ?? option.label,
+      feedback: pick(t?.options?.[option.id]?.feedback, option.feedbackTh) ?? option.feedback,
+    })),
+    rankItems: question.rankItems?.map((item) => ({ ...item, label: pick(t?.rankItems?.[item.id], item.labelTh) ?? item.label })),
+    rankRationale: pick(t?.rankRationale, question.rankRationaleTh) ?? question.rankRationale,
+    matchPairs: question.matchPairs?.map((pair) => {
+      const tp = t?.matchPairs?.[pair.id];
+      const choices = tp?.choices ?? pair.choicesTh;
+      const correct = tp?.correct ?? pair.correctTh;
+      // Only switch a pair to Thai when every choice and the key are translated, so selection strings stay consistent.
+      if (!choices || choices.length !== pair.choices.length || !correct || !choices.includes(correct)) return pair;
+      return { ...pair, left: pick(tp?.left, pair.leftTh) ?? pair.left, choices, correct };
+    }),
+    parts: question.parts?.map((part) => ({
+      ...part,
+      prompt: pick(t?.parts?.[part.id]?.prompt, part.promptTh) ?? part.prompt,
+      options: part.options.map((option) => ({
+        ...option,
+        label: pick(t?.parts?.[part.id]?.options?.[option.id]?.label, option.labelTh) ?? option.label,
+        feedback: pick(t?.parts?.[part.id]?.options?.[option.id]?.feedback, option.feedbackTh) ?? option.feedback,
+      })),
+    })),
+    rubricCriteria: question.rubricCriteria?.map((criterion) => ({
+      ...criterion,
+      label: pick(t?.rubricCriteria?.[criterion.id]?.label, criterion.labelTh) ?? criterion.label,
+    })),
+    exemplarAnswer: pick(t?.exemplarAnswer, question.exemplarAnswerTh) ?? question.exemplarAnswer,
+    stimulus: question.stimulus
+      ? {
+          ...question.stimulus,
+          src: question.stimulus.srcTh ?? thaiStimulusSources[question.stimulus.src] ?? question.stimulus.src,
+          alt: pick(t?.stimulus?.alt, question.stimulus.altTh) ?? question.stimulus.alt,
+          label: pick(t?.stimulus?.label, question.stimulus.labelTh) ?? question.stimulus.label,
+          caption: pick(t?.stimulus?.caption, question.stimulus.captionTh) ?? question.stimulus.caption,
+        }
+      : undefined,
+    visualStimulus: question.visualStimulus
+      ? {
+          ...question.visualStimulus,
+          title: pick(t?.visualStimulus?.title, question.visualStimulus.titleTh) ?? question.visualStimulus.title,
+          eyebrow: pick(t?.visualStimulus?.eyebrow, question.visualStimulus.eyebrowTh) ?? question.visualStimulus.eyebrow,
+          caption: pick(t?.visualStimulus?.caption, question.visualStimulus.captionTh) ?? question.visualStimulus.caption,
+          points: t?.visualStimulus?.points ?? question.visualStimulus.pointsTh ?? question.visualStimulus.points,
+        }
+      : undefined,
+  };
+}
+
+function localizeAnswerOption(answer: Answer, language: AppLanguage): Option {
+  const localized = localizeQuestion(answer.question, language);
+  return localized.options.find((option) => option.id === answer.option.id) ?? answer.option;
+}
 const hiddenVisualStimulusQuestionIds = new Set([
   'RELY-EMAIL-001',
   'RELY-TERM-004',
@@ -11455,37 +12348,45 @@ export default function Home() {
       .sort((left, right) => Number(right.earned) - Number(left.earned) || right.score - left.score),
     [results.domainScores],
   );
+  const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage), [current, appLanguage]);
+  // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
+  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(appLanguage);
+  if (matchSelectionsLanguage !== appLanguage) {
+    setMatchSelectionsLanguage(appLanguage);
+    if (Object.keys(matchSelections).length) setMatchSelections({});
+  }
   const displayedOptions = useMemo(
-    () => shuffledBySeed(current.options, assessmentSeed, `${current.id}:options`, (option) => option.id),
-    [assessmentSeed, current],
+    () => shuffledBySeed(shownQuestion.options, assessmentSeed, `${current.id}:options`, (option) => option.id),
+    [assessmentSeed, current.id, shownQuestion],
   );
-  const currentDisplayStimulus = getDisplayStimulus(current);
-  const currentDisplayVisualStimulus = getDisplayVisualStimulus(current);
+  const currentDisplayStimulus = getDisplayStimulus(shownQuestion);
+  const currentDisplayVisualStimulus = getDisplayVisualStimulus(shownQuestion);
   const displayedMatchPairs = useMemo(
-    () => shuffledBySeed(current.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
-    [assessmentSeed, current],
+    () => shuffledBySeed(shownQuestion.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedMatchChoices = useMemo(
     () => Object.fromEntries(
-      (current.matchPairs ?? []).map((pair) => [
+      (shownQuestion.matchPairs ?? []).map((pair, pairIndex) => [
         pair.id,
-        shuffledBySeed(pair.choices, assessmentSeed, `${current.id}:${pair.id}:choices`, (choice) => choice),
+        // Shuffle by position (not by translated string) so EN and TH show the same order.
+        shuffledBySeed(pair.choices.map((choice, index) => ({ choice, index })), assessmentSeed, `${current.id}:${pair.id}:choices`, (entry) => String(entry.index + pairIndex * 100)).map((entry) => entry.choice),
       ]),
     ) as Record<string, string[]>,
-    [assessmentSeed, current],
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedParts = useMemo(
-    () => shuffledBySeed(current.parts ?? [], assessmentSeed, `${current.id}:parts`, (part) => part.id),
-    [assessmentSeed, current],
+    () => shuffledBySeed(shownQuestion.parts ?? [], assessmentSeed, `${current.id}:parts`, (part) => part.id),
+    [assessmentSeed, current.id, shownQuestion],
   );
   const displayedPartOptions = useMemo(
     () => Object.fromEntries(
-      (current.parts ?? []).map((part) => [
+      (shownQuestion.parts ?? []).map((part) => [
         part.id,
         shuffledBySeed(part.options, assessmentSeed, `${current.id}:${part.id}:options`, (option) => option.id),
       ]),
     ) as Record<string, Option[]>,
-    [assessmentSeed, current],
+    [assessmentSeed, current.id, shownQuestion],
   );
   const activeSurveyQuestions = useMemo(
     () => getSurveyQuestionsForProfile(surveyMode, audience, functionTrack, executiveRole),
@@ -12111,16 +13012,23 @@ export default function Home() {
 
   function submitRankOrder() {
     const score = scoreOrder(current, rankOrder);
+    const ideal = current.idealOrder ?? [];
+    const exactPositions = ideal.filter((id, index) => rankOrder[index] === id).length;
+    const verdict = score >= 90
+      ? 'Strong sequencing judgment.'
+      : `Partial signal: ${exactPositions} of ${ideal.length} steps were in the right position. The order matters, not only the ingredients.`;
+    const rationale = shownQuestion.rankRationale ? ` Why this order: ${shownQuestion.rankRationale}` : '';
     submitAnswer({
       id: rankOrder.join('>'),
       label: 'Submitted ordered sequence',
       score,
-      feedback: score >= 90 ? 'Strong sequencing judgment.' : 'Partial signal. Executive workflows need the right order, not only the right ingredients.',
+      feedback: `${verdict} Best order: ${getCorrectAnswerSummary(shownQuestion)}.${rationale}`,
     });
   }
 
   function submitMatches() {
-    const score = scoreMatches(current, matchSelections);
+    // Selections hold the strings that were shown, so score against the localized pairs.
+    const score = scoreMatches(shownQuestion, matchSelections);
     submitAnswer({
       id: Object.values(matchSelections).join('|') || 'unmatched',
       label: 'Submitted matching response',
@@ -13757,11 +14665,12 @@ export default function Home() {
                 <div className="reliance-stage">
                   <div>
                     {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                    {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
                     {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
                     <span>Make the call</span>
-                    <h2>{current.prompt}</h2>
+                    <h2>{shownQuestion.prompt}</h2>
                     <div className="reliance-options" aria-label="Reliance decision">
                       {displayedOptions.map((option) => {
                         const choice = getRelianceChoice(option);
@@ -13773,13 +14682,14 @@ export default function Home() {
                         );
                       })}
                     </div>
-                    <p>{current.context}</p>
+                    <p>{shownQuestion.context}</p>
                   </div>
                 </div>
               )}
               {!useRelianceStage && (
                 <>
                   {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                  {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
                   {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
@@ -13787,8 +14697,8 @@ export default function Home() {
                   </div>
                   <div className="scenario-panel">
                     <span>Scenario</span>
-                    <p className="context">{current.context}</p>
-                    <h2>{current.prompt}</h2>
+                    <p className="context">{shownQuestion.context}</p>
+                    <h2>{shownQuestion.prompt}</h2>
                   </div>
                 </>
               )}
@@ -13824,7 +14734,7 @@ export default function Home() {
                 <div className="interaction-panel">
                   <div className="rank-list" aria-label="Drag-order response">
                     {rankOrder.map((itemId, index) => {
-                      const item = current.rankItems?.find((rankItem) => rankItem.id === itemId);
+                      const item = shownQuestion.rankItems?.find((rankItem) => rankItem.id === itemId);
                       return (
                         <div
                           className="rank-item"
@@ -14017,17 +14927,17 @@ export default function Home() {
               <div className="feedback-grid">
                 <div>
                   <span>Your answer</span>
-                  <p>{lastAnswer.textResponse || lastAnswer.option.label}</p>
+                  <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage).label}</p>
                 </div>
                 <div>
                   <span>Expected answer</span>
-                  <p>{getCorrectAnswerSummary(lastAnswer.question)}</p>
+                  <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage))}</p>
                 </div>
               </div>
               <div className="rubric-panel">
                 <span>Rubric and calibration</span>
                 <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
-                <p>{lastAnswer.option.feedback}</p>
+                <p>{localizeAnswerOption(lastAnswer, appLanguage).feedback}</p>
               </div>
               <div className="rubric-panel">
                 <span>Measured competencies</span>

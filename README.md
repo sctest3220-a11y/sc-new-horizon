@@ -40,6 +40,13 @@ The app supports English and Thai through the `EN` / `TH` toggle in the top navi
 
 Thai copy should be simple, natural Thailand Thai. Do not translate core technical terms that users need to recognize in the market or tools, including AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, Platform, and Assessment.
 
+Thai lives in two deliberately separate places:
+
+- **Interface chrome** (navigation, buttons, report labels, survey text) is translated by the `thaiUiCopy` dictionary in `app/page.tsx`, which maps exact English strings to Thai at render time. Add UI strings there.
+- **Question content** (scenarios, prompts, answer choices, feedback, rank steps, matching pairs, rubric keywords, artifact captions) is translated per question id: optional `*Th` fields beside the English on the item, plus the generated table `app/questionTranslations.th.ts` produced from the reviewed translation workbook. `localizeQuestion()` merges them with English fallback and only for items that carry a `translationStatus`. Never add question text to `thaiUiCopy`, and never hand-edit the generated table; see `docs/LOCALISATION.md` for the review workflow and status rules (`draft` → `reviewed` → `approved`).
+
+Continuous integration (`.github/workflows/ci.yml`) runs lint, a TypeScript error budget, the production build, and a question-bank integrity check (unique ids, translations point at real questions) on every push and pull request to `kj-dee-branch` and `main`, so a merge that breaks the build cannot sit unnoticed on the branch.
+
 ## Latest Change Report
 
 Detailed telemetry and agent documentation:
@@ -270,4 +277,4 @@ After seeing the basic score, a short clarity, difficulty, artifact, and length 
 
 The admin quality engine aggregates these signals into a supervised improvement queue. High confusion, long response time, weak discrimination, abandonment, poor artifact ratings, and route-level difficulty feedback can nominate questions, formats, profile fields, surveys, or artifacts for revision. This is a continuous-improvement system, not a claim of general intelligence: scored content remains versioned and reviewable so historical scores do not change silently.
 
-Legacy `reliance-decision` items now render as complete control-pattern scenarios instead of the simplified Human / AI / Both card format. The admin artifact backlog lists a realistic replacement brief and stable asset path for each unique document image so generated replacements remain relevant to their questions.
+Legacy `reliance-decision` items now render as complete control-pattern scenarios instead of the simplified Human / AI / Both card format. The general bank also includes 26 Horizon "AI or Me?" reliance scenarios (`REL-H-*`) whose best answer varies between AI-led, human-owned, and shared ownership, so the format can detect both over-reliance and under-reliance. The admin artifact backlog lists a realistic replacement brief and stable asset path for each unique document image so generated replacements remain relevant to their questions.
