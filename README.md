@@ -2,6 +2,10 @@
 
 Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, executive assessment, learning paths, and AI trend awareness.
 
+## Draft Question Inventory
+
+A separate 3,328-item review inventory is available on `Lufy-branch`: 768 core, 1,296 function, 320 industry, and 944 executive variants. All are English drafts with provisional difficulty and pending review. They share 96 decision families and 384 base evidence patterns; they are not calibrated independent items. The existing 634 live questions are unchanged. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md) and [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx).
+
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
