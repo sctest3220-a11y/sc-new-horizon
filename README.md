@@ -16,6 +16,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores
 - Continue-assessment option after mandatory 12/20-question routes when confidence or coverage is weak
+- Assessment-mapped AI bootcamp/workshop recommendations with expandable details for audience, learning outputs, rationale, labs, and framework alignment
 - User profile builder and signal logging
 - Optional landing-page profile pulse that asks for current AI interests and routes later questions accordingly
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
@@ -45,6 +46,9 @@ Detailed telemetry and agent documentation:
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
+- [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+
+Latest bootcamp update: the report learning path now recommends New Horizon bootcamps and workshops when guided practice is a better next step than a self-paced course alone. Recommendations use weak domains, overall score, assessment mode, function track, executive role, weak competencies, and profile tags. Users can expand each workshop to see who it is for, why to take it, expected learning outputs, labs, best-fit roles, and framework alignment.
 
 Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
 
@@ -145,6 +149,7 @@ See:
 - `docs/TELEMETRY_TRACKING_PURPOSE.md`
 - `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
 - `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`
+- `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`
 
 Draft tables:
 

@@ -4536,6 +4536,88 @@ h3 {
   margin-bottom: 6px;
 }
 
+.bootcamp-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.bootcamp-list details {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.bootcamp-list summary {
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(140px, 0.5fr) minmax(0, 1fr) auto;
+}
+
+.bootcamp-list summary span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.bootcamp-list summary strong {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.bootcamp-list summary b {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 7px 10px;
+  white-space: nowrap;
+}
+
+.bootcamp-detail-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.bootcamp-detail-grid > p,
+.bootcamp-detail-grid > div {
+  background: var(--panel-soft);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 12px;
+}
+
+.bootcamp-detail-grid > p:last-child {
+  grid-column: 1 / -1;
+}
+
+.bootcamp-detail-grid strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.bootcamp-detail-grid ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.bootcamp-detail-grid li + li {
+  margin-top: 4px;
+}
+
 .evidence-mode-grid {
   display: grid;
   gap: 14px;
@@ -5827,6 +5909,8 @@ h3 {
   .profile-pulse-actions,
   .question-feedback-strip,
   .difficulty-band-table > div,
+  .bootcamp-list summary,
+  .bootcamp-detail-grid,
   .quality-review-row,
   .leaderboard-list > div,
   .question-analysis-list summary {

@@ -335,6 +335,19 @@ type LearningRecommendation = {
   price: string;
   fit: string;
 };
+type BootcampRecommendation = {
+  id: string;
+  title: string;
+  duration: string;
+  level: 'Fundamental' | 'Intermediate' | 'Advanced' | 'Executive' | 'Role-based' | 'Governance';
+  domains: DomainId[];
+  roles: string[];
+  forWho: string;
+  whyTakeIt: string;
+  expectedOutputs: string[];
+  labs: string[];
+  mappedFrameworks: string[];
+};
 type PersonalizedExplorationPlan = {
   tools: string[];
   concepts: string[];
@@ -921,6 +934,14 @@ const thaiUiCopy: Record<string, string> = {
   'Tools to explore': 'Tool ที่ควรลอง',
   'Concepts to strengthen': 'Concept ที่ควรเสริม',
   'Practice next': 'ควรฝึกต่อ',
+  'Recommended bootcamps and workshops': 'Bootcamp และ Workshop ที่แนะนำ',
+  'Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.': 'แนะนำเมื่อผล Assessment พบช่องว่างที่ควรฝึกแบบมีคนแนะนำ จัดทีมให้เข้าใจตรงกัน หรือออกแบบ Workflow ตามบทบาท',
+  'For who': 'เหมาะกับใคร',
+  'Why take it': 'ทำไมควรเรียน',
+  'Expected learning outputs': 'ผลลัพธ์ที่คาดว่าจะได้',
+  'Workshop labs': 'Lab ใน Workshop',
+  'Framework alignment': 'เชื่อมกับ Framework',
+  'Best fit roles': 'บทบาทที่เหมาะ',
   'Thailand course recommendations': 'Course แนะนำในไทย',
   'Where to improve next': 'ควรปรับปรุงตรงไหนต่อ',
   'Evidence summary': 'สรุปหลักฐาน',
@@ -7912,6 +7933,113 @@ const executiveLearningCatalog: Record<DomainId, { title: string; detail: string
   D6: { title: 'Human-AI change leadership', detail: 'Build role clarity, trust loops, leadership messaging, capability plans, and accountability rituals.', format: '75 min leadership lab' },
 };
 
+const bootcampCatalog: BootcampRecommendation[] = [
+  {
+    id: 'ai-fundamentals-1d',
+    title: 'AI Fundamentals 1-Day Bootcamp',
+    duration: '1 day or 2 half-days',
+    level: 'Fundamental',
+    domains: ['D1', 'D2', 'D3', 'D4'],
+    roles: ['General', 'Student', 'Educator', 'Work', 'Team'],
+    forWho: 'People who are new to AI or score below target in foundations, prompting, verification, or safe everyday use.',
+    whyTakeIt: 'Builds the baseline mental model needed before users rely on AI for work, study, customer, or public decisions.',
+    expectedOutputs: ['Personal AI safe-use checklist', 'Reusable prompt checklist', 'Source-verification routine', 'Baseline reassessment plan'],
+    labs: ['Repair a vague prompt', 'Check an AI answer against sources', 'Decide what data should not enter AI', 'Spot unsupported or fake-looking claims'],
+    mappedFrameworks: ['UNESCO AI foundations/ethics', 'OECD/EC AI literacy', 'DigComp information and safety'],
+  },
+  {
+    id: 'practical-ai-work-2d',
+    title: 'Practical AI for Work 2-Day Bootcamp',
+    duration: '2 days',
+    level: 'Intermediate',
+    domains: ['D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Work', 'Team', 'Manager', 'Operations', 'Customer Service', 'Sales', 'Marketing', 'Finance', 'HR'],
+    forWho: 'Professionals already using AI who need repeatable workflows, better output quality, and clearer human review gates.',
+    whyTakeIt: 'Turns casual AI usage into controlled work patterns that can be measured, improved, and trusted by teams.',
+    expectedOutputs: ['AI workflow map', 'Review rubric', 'Risk gate checklist', 'Before/after value measurement plan'],
+    labs: ['Use AI with a messy work artifact', 'Design a human-in-the-loop workflow', 'Score output quality', 'Measure speed, quality, rework, and risk'],
+    mappedFrameworks: ['OECD/EC responsible use', 'NIST Map/Measure/Manage', 'ISO/IEC 42001 continual improvement'],
+  },
+  {
+    id: 'advanced-ai-operator-3d',
+    title: 'Advanced AI Operator 3-Day Bootcamp',
+    duration: '3 days',
+    level: 'Advanced',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Power user', 'Product', 'Operations', 'Analyst', 'Creator', 'Technical lead', 'Transformation team'],
+    forWho: 'Users near proficient or advanced level who need deeper evidence with artifacts, data, workflows, agents, and evaluation.',
+    whyTakeIt: 'Differentiates advanced users by requiring harder practical evidence, not just correct answers on simple items.',
+    expectedOutputs: ['Advanced workflow playbook', 'Evaluation rubric', 'Agent/control design', 'Telemetry-backed improvement loop'],
+    labs: ['Compare outputs across models/tools', 'Design a RAG/source-quality test', 'Build an agent approval flow', 'Create a mini eval harness'],
+    mappedFrameworks: ['NIST AI RMF', 'ISO/IEC 42001', 'AI Verify', 'Long & Magerko AI literacy'],
+  },
+  {
+    id: 'executive-ai-strategy-1d',
+    title: 'Executive AI Strategy 1-Day Bootcamp',
+    duration: '1 day',
+    level: 'Executive',
+    domains: ['D1', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['CEO', 'Board', 'CFO', 'CHRO', 'CIO', 'CDO', 'CTO', 'Transformation sponsor'],
+    forWho: 'Senior leaders who must fund, govern, scale, or challenge AI initiatives without becoming hands-on engineers.',
+    whyTakeIt: 'Helps leaders separate AI theater from value, risk, workforce readiness, and operating-model decisions.',
+    expectedOutputs: ['AI portfolio scorecard', 'Executive risk register', '90-day action plan', 'Board-ready measurement view'],
+    labs: ['Prioritize AI use cases', 'Challenge a vendor claim', 'Set scale gates', 'Design executive AI governance cadence'],
+    mappedFrameworks: ['NIST Govern/Map/Measure/Manage', 'EU AI Act Article 4', 'ISO/IEC 42001', 'AI Verify governance'],
+  },
+  {
+    id: 'ai-governance-risk-2d',
+    title: 'AI Governance and Risk 2-Day Bootcamp',
+    duration: '2 days',
+    level: 'Governance',
+    domains: ['D3', 'D4', 'D5', 'D6'],
+    roles: ['Risk', 'Legal', 'Compliance', 'Audit', 'Security', 'Data governance', 'Public sector', 'Executive sponsor'],
+    forWho: 'Teams responsible for AI policy, vendor review, privacy, model risk, auditability, and human oversight.',
+    whyTakeIt: 'Creates the controls and evidence needed before AI becomes embedded in high-impact workflows.',
+    expectedOutputs: ['AI policy control map', 'Vendor/model review checklist', 'Incident response routine', 'Audit evidence template'],
+    labs: ['Review a vendor memo', 'Map controls to AI risks', 'Design approval and escalation gates', 'Build an AI incident timeline'],
+    mappedFrameworks: ['NIST AI RMF', 'EU AI Act Article 4', 'ISO/IEC 42001', 'AI Verify/MGF GenAI'],
+  },
+  {
+    id: 'ai-agent-workflow-lab-3d',
+    title: 'AI Agent and Workflow Lab',
+    duration: '2-3 days',
+    level: 'Advanced',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Developer', 'Data', 'Product', 'Operations', 'Automation', 'Technical leader'],
+    forWho: 'Technical and operations teams building or buying tool-using agents, workflow automation, RAG, or AI copilots.',
+    whyTakeIt: 'Moves teams from demo agents to bounded systems with permissions, logs, evals, rollback, and human approval.',
+    expectedOutputs: ['Agent workflow design', 'Permission matrix', 'Eval and monitoring plan', 'Rollback/escalation playbook'],
+    labs: ['Scope tool permissions', 'Design typed handoffs', 'Inspect audit logs', 'Test failure modes before launch'],
+    mappedFrameworks: ['NIST AI RMF', 'ISO/IEC 42001', 'AI Verify robustness/security', 'OECD/EC informed use'],
+  },
+  {
+    id: 'role-based-ai-labs',
+    title: 'Role-Based AI Bootcamp Series',
+    duration: '1-3 days by role',
+    level: 'Role-based',
+    domains: ['D2', 'D3', 'D4', 'D5', 'D6'],
+    roles: ['Marketing', 'Sales', 'Customer Service', 'HR', 'Finance', 'Operations', 'Educator', 'Student', 'Developer'],
+    forWho: 'Users whose assessment profile shows role-specific gaps or interests that generic AI training will not cover deeply enough.',
+    whyTakeIt: 'Makes the learning path relevant to actual work: campaign review, CRM, support tickets, hiring, finance, education, or code.',
+    expectedOutputs: ['Role-specific workflow', 'Role risk checklist', 'Quality rubric', 'Reusable prompt/template pack'],
+    labs: ['Marketing content and synthetic media review', 'Sales CRM forecast check', 'Support escalation draft', 'Finance variance explanation', 'HR policy and fairness review'],
+    mappedFrameworks: ['UNESCO role-aware competency design', 'OECD/EC context-aware AI literacy', 'EU AI Act context of use'],
+  },
+  {
+    id: 'train-the-trainer-2d',
+    title: 'AI Train-the-Trainer 2-Day Workshop',
+    duration: '2 days',
+    level: 'Role-based',
+    domains: ['D1', 'D2', 'D3', 'D4', 'D6'],
+    roles: ['L&D', 'HR', 'Educator', 'Trainer', 'Transformation team', 'Manager'],
+    forWho: 'Internal trainers and educators who need to roll out AI capability building across teams.',
+    whyTakeIt: 'Builds a repeatable internal enablement model instead of one-off tool training.',
+    expectedOutputs: ['Facilitator guide', 'Role-based exercise set', 'Assessment/reassessment plan', 'Feedback and improvement loop'],
+    labs: ['Facilitate prompt repair', 'Coach source checking', 'Run a role-based scenario', 'Interpret New Horizon reports'],
+    mappedFrameworks: ['UNESCO AI pedagogy/professional learning', 'DigComp', 'OECD/EC AI literacy'],
+  },
+];
+
 const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, proficient: 2, advanced: 3 };
 const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
   free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
@@ -9946,6 +10074,42 @@ function getLearningRecommendations(priorityDomains: DomainId[], assessmentMode:
     .map(({ course }) => course);
 }
 
+function getBootcampRecommendations(
+  priorityDomains: DomainId[],
+  assessmentMode: AssessmentMode,
+  overallScore: number,
+  functionTrack: FunctionTrack,
+  executiveRole: ExecutiveRole,
+  weakCompetencyIds: string[],
+  profileTags: string[] = [],
+) {
+  const profileText = `${profileTags.join(' ')} ${functionLabels[functionTrack]} ${executiveLabels[executiveRole]}`.toLowerCase();
+  return bootcampCatalog
+    .map((bootcamp) => {
+      const domainFit = bootcamp.domains.filter((domain) => priorityDomains.includes(domain)).length;
+      const weakCompetencyFit = weakCompetencyIds.filter((competencyId) => {
+        const competency = competencyDefinitions[competencyId];
+        return competency && bootcamp.domains.includes(competency.domain);
+      }).length;
+      const executiveFit = assessmentMode === 'executive' && bootcamp.level === 'Executive' ? 8 : 0;
+      const governanceFit = priorityDomains.includes('D4') && bootcamp.level === 'Governance' ? 5 : 0;
+      const advancedFit = overallScore >= 75 && bootcamp.level === 'Advanced' ? 5 : 0;
+      const fundamentalFit = overallScore < 60 && bootcamp.level === 'Fundamental' ? 7 : 0;
+      const intermediateFit = overallScore >= 55 && overallScore < 80 && bootcamp.level === 'Intermediate' ? 5 : 0;
+      const roleText = `${bootcamp.roles.join(' ')} ${bootcamp.title} ${bootcamp.forWho} ${bootcamp.labs.join(' ')}`.toLowerCase();
+      const roleFit = ['marketing', 'sales', 'customer', 'service', 'finance', 'hr', 'people', 'operations', 'technical', 'developer', 'educator', 'student', 'creator', 'agent', 'workflow', 'governance']
+        .filter((keyword) => profileText.includes(keyword) && roleText.includes(keyword)).length;
+      return {
+        bootcamp,
+        rank: domainFit * 4 + weakCompetencyFit * 2 + roleFit * 3 + executiveFit + governanceFit + advancedFit + fundamentalFit + intermediateFit,
+      };
+    })
+    .filter(({ rank }) => rank > 0)
+    .sort((left, right) => right.rank - left.rank)
+    .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 4)
+    .map(({ bootcamp }) => bootcamp);
+}
+
 function uniqueLimited(items: string[], limit: number) {
   return [...new Set(items.filter(Boolean))].slice(0, limit);
 }
@@ -11209,6 +11373,18 @@ export default function Home() {
   const courseRecommendations = useMemo(
     () => getLearningRecommendations(results.weakest, mode, weakestCompetencies.map((competency) => competency.id), userProfileTags),
     [mode, results.weakest, userProfileTags, weakestCompetencies],
+  );
+  const bootcampRecommendations = useMemo(
+    () => getBootcampRecommendations(
+      results.weakest,
+      mode,
+      results.overall,
+      functionTrack,
+      executiveRole,
+      weakestCompetencies.map((competency) => competency.id),
+      userProfileTags,
+    ),
+    [executiveRole, functionTrack, mode, results.overall, results.weakest, userProfileTags, weakestCompetencies],
   );
   const personalizedExploration = useMemo(
     () => getPersonalizedExplorationPlan(mode, functionTrack, executiveRole, weakestCompetencies, userProfileTags),
@@ -14583,6 +14759,41 @@ export default function Home() {
                     <strong>{activeLearningCatalog[domain].title}</strong>
                     <p>{activeLearningCatalog[domain].detail}</p>
                   </div>
+                ))}
+              </div>
+            </article>
+            <article className="result-card wide report-primary report-order-bootcamps">
+              <h2>Recommended bootcamps and workshops</h2>
+              <p className="context-line">
+                Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.
+              </p>
+              <div className="bootcamp-list">
+                {bootcampRecommendations.map((bootcamp, index) => (
+                  <details key={bootcamp.id} open={index === 0}>
+                    <summary>
+                      <span>{bootcamp.duration} · {bootcamp.level}</span>
+                      <strong>{bootcamp.title}</strong>
+                      <b>{bootcamp.domains.join(', ')}</b>
+                    </summary>
+                    <div className="bootcamp-detail-grid">
+                      <p><strong>For who</strong> {bootcamp.forWho}</p>
+                      <p><strong>Why take it</strong> {bootcamp.whyTakeIt}</p>
+                      <div>
+                        <strong>Expected learning outputs</strong>
+                        <ul>
+                          {bootcamp.expectedOutputs.map((output) => <li key={output}>{output}</li>)}
+                        </ul>
+                      </div>
+                      <div>
+                        <strong>Workshop labs</strong>
+                        <ul>
+                          {bootcamp.labs.map((lab) => <li key={lab}>{lab}</li>)}
+                        </ul>
+                      </div>
+                      <p><strong>Framework alignment</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
+                      <p><strong>Best fit roles</strong> {bootcamp.roles.join(', ')}</p>
+                    </div>
+                  </details>
                 ))}
               </div>
             </article>

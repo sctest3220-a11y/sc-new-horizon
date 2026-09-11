@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-11: Bootcamp Recommendations In Learning Path
+
+Added a structured New Horizon bootcamp and workshop catalog covering AI Fundamentals, Practical AI for Work, Advanced AI Operator, Executive AI Strategy, AI Governance and Risk, AI Agent and Workflow Lab, Role-Based AI Bootcamps, and AI Train-the-Trainer.
+
+The assessment report now recommends bootcamps when the user's score, weak domains, weak competencies, assessment mode, function track, executive role, or profile signals indicate that guided practice is useful. Each recommendation is expandable so users can see who it is for, why to take it, expected learning outputs, workshop labs, best-fit roles, and framework alignment.
+
+Added `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md` as the source-of-truth training catalog. Future training, scoring, role-mapping, and learning-path changes should keep this document, the report UI, README, latest-change log, and admin/agent recommendation prompts aligned.
+
 ## 2026-09-11: Artifact Relevance Cleanup
 
 Expanded the artifact display gate so more low-value concept cards, generic product maps, simple workflow diagrams, and explanatory visual cards are hidden when the question can be answered from the scenario, prompt, options, or rubric without inspecting an artifact.
