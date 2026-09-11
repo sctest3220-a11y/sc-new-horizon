@@ -1,67 +1,332 @@
 [
- {"en": "AI", "th": "AI", "rule": "Keep in English. Never แปลเป็น 'ปัญญาประดิษฐ์' in question text."},
- {"en": "AI agent / agent", "th": "AI agent / เอเจนต์", "rule": "Use 'AI agent' on first mention, 'เอเจนต์' afterwards is acceptable."},
- {"en": "prompt", "th": "prompt", "rule": "Keep in English (noun). Verb 'to prompt' → 'สั่ง AI' / 'เขียน prompt'."},
- {"en": "LLM / language model", "th": "LLM / โมเดลภาษา", "rule": "Keep 'LLM'; 'โมเดล' for model."},
- {"en": "model", "th": "โมเดล", "rule": "Transliterate. 'model confidence' → 'ความมั่นใจของโมเดล'."},
- {"en": "RAG / retrieval", "th": "RAG / การค้นคืนข้อมูล", "rule": "Keep 'RAG'; explain once as 'การค้นคืนข้อมูลมาประกอบคำตอบ' if the item is Awareness level."},
- {"en": "hallucination", "th": "hallucination (การกุข้อมูล)", "rule": "Keep English term, add Thai gloss in parentheses on first mention per item."},
- {"en": "chatbot", "th": "แชตบอต", "rule": "Transliterate."},
- {"en": "copilot", "th": "copilot", "rule": "Keep in English (product-style term)."},
- {"en": "workflow", "th": "workflow / ขั้นตอนงาน", "rule": "'workflow' acceptable in Thai business register; use 'ขั้นตอนงาน' when the sentence is about steps."},
- {"en": "automation", "th": "ระบบอัตโนมัติ", "rule": ""},
- {"en": "pilot", "th": "โครงการนำร่อง (pilot)", "rule": "First mention 'โครงการนำร่อง', then 'pilot' acceptable."},
- {"en": "baseline", "th": "ค่าฐาน (baseline)", "rule": "Use 'ค่าฐาน' with English in parentheses on first mention."},
- {"en": "evidence", "th": "หลักฐาน", "rule": "In scoring context 'หลักฐาน'; 'evidence gate' → 'เกณฑ์หลักฐาน'."},
- {"en": "source", "th": "แหล่งข้อมูล / ต้นทาง", "rule": "'primary source' → 'แหล่งข้อมูลปฐมภูมิ'."},
- {"en": "citation", "th": "การอ้างอิง", "rule": ""},
- {"en": "verification / verify", "th": "การตรวจสอบ / ตรวจสอบ", "rule": ""},
- {"en": "confidence", "th": "ความมั่นใจ", "rule": "Model confidence is not evidence → 'ความมั่นใจของโมเดลไม่ใช่หลักฐาน'."},
- {"en": "uncertainty", "th": "ความไม่แน่นอน", "rule": ""},
- {"en": "governance", "th": "การกำกับดูแล (governance)", "rule": ""},
- {"en": "audit / audit log", "th": "การตรวจสอบ (audit) / บันทึกตรวจสอบ (audit log)", "rule": "Keep 'audit log' in English after first mention."},
- {"en": "compliance", "th": "การปฏิบัติตามข้อกำหนด", "rule": ""},
- {"en": "PDPA", "th": "PDPA", "rule": "Keep. Thai law name is พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล; use only if the item explains it."},
- {"en": "privacy", "th": "ความเป็นส่วนตัว", "rule": "'personal data' → 'ข้อมูลส่วนบุคคล'."},
- {"en": "consent", "th": "ความยินยอม", "rule": ""},
- {"en": "de-identified / anonymised", "th": "ลบข้อมูลระบุตัวตน / ทำให้ไม่ระบุตัวตน", "rule": ""},
- {"en": "bias / fairness", "th": "อคติ / ความเป็นธรรม", "rule": ""},
- {"en": "incident", "th": "เหตุการณ์ผิดปกติ (incident)", "rule": "'incident response' → 'การรับมือเหตุการณ์'."},
- {"en": "escalation", "th": "การส่งต่อให้ผู้มีอำนาจ (escalation)", "rule": "'escalation path' → 'ช่องทางส่งต่อ'."},
- {"en": "approval gate / stage gate", "th": "จุดอนุมัติ / ด่านตัดสินใจ (stage gate)", "rule": ""},
- {"en": "human-in-the-loop / human review", "th": "การตรวจทานโดยคน", "rule": ""},
- {"en": "override", "th": "การแก้ทับผลของ AI (override)", "rule": ""},
- {"en": "rollback", "th": "การย้อนกลับระบบ (rollback)", "rule": ""},
- {"en": "least privilege", "th": "สิทธิ์เท่าที่จำเป็น (least privilege)", "rule": ""},
- {"en": "permission / tool access", "th": "สิทธิ์ / สิทธิ์เข้าถึงเครื่องมือ", "rule": ""},
- {"en": "fail-safe", "th": "กลไกหยุดเมื่อผิดพลาด (fail-safe)", "rule": ""},
- {"en": "guardrail", "th": "แนวป้องกัน (guardrail)", "rule": ""},
- {"en": "vendor", "th": "ผู้ขาย / ผู้ให้บริการ", "rule": "'vendor claim' → 'คำกล่าวอ้างของผู้ขาย'."},
- {"en": "benchmark", "th": "benchmark (ผลทดสอบเทียบ)", "rule": "Keep English, gloss once."},
- {"en": "back-test", "th": "การทดสอบย้อนหลัง (back-test)", "rule": ""},
- {"en": "forecast", "th": "การคาดการณ์", "rule": ""},
- {"en": "disclosure", "th": "การเปิดเผยข้อมูล", "rule": "Investor guidance → 'แนวทางที่แจ้งต่อนักลงทุน'."},
- {"en": "board", "th": "คณะกรรมการบริษัท", "rule": "'board packet' → 'เอกสารประชุมกรรมการ'."},
- {"en": "executive", "th": "ผู้บริหาร", "rule": ""},
- {"en": "stakeholder", "th": "ผู้มีส่วนได้ส่วนเสีย", "rule": ""},
- {"en": "dashboard", "th": "แดชบอร์ด", "rule": ""},
- {"en": "CRM / OCR / API / SLA / KPI / ROI / MCP", "th": "keep as is", "rule": "Acronyms stay in English."},
- {"en": "ticket", "th": "ticket (เคสลูกค้า)", "rule": "Support ticket → 'ticket' with gloss once."},
- {"en": "refund", "th": "การคืนเงิน", "rule": ""},
- {"en": "invoice", "th": "ใบแจ้งหนี้", "rule": ""},
- {"en": "phishing", "th": "ฟิชชิง (phishing)", "rule": ""},
- {"en": "synthetic media / deepfake", "th": "สื่อสังเคราะห์ / deepfake", "rule": ""},
- {"en": "provenance", "th": "ที่มาของสื่อ (provenance)", "rule": ""},
- {"en": "reverse image search", "th": "การค้นหาภาพย้อนกลับ", "rule": ""},
- {"en": "viral post", "th": "โพสต์ไวรัล", "rule": ""},
- {"en": "endorsement", "th": "การรับรองสินค้าโดยบุคคล", "rule": ""},
- {"en": "triage", "th": "การคัดกรองความเร่งด่วน (triage)", "rule": ""},
- {"en": "variance (finance)", "th": "ผลต่าง (variance)", "rule": ""},
- {"en": "rubric", "th": "เกณฑ์การให้คะแนน", "rule": ""},
- {"en": "token / embedding / fine-tuning / context window", "th": "token / embedding / fine-tuning / context window", "rule": "Keep in English; Awareness items may add a short Thai gloss."},
- {"en": "you (the user)", "th": "คุณ", "rule": "Always คุณ. Never ท่าน, never ผม/ฉัน for the reader."},
- {"en": "Human-owned / Shared with AI / AI-led", "th": "คุณทำเอง / ทำร่วมกับ AI / ให้ AI ทำ", "rule": "Fixed labels for reliance-decision options (already in code)."},
- {"en": "Correct. / Best.", "th": "ถูกต้อง / ดีที่สุด", "rule": "Feedback opener for the keyed option."},
- {"en": "Too risky. / Unsafe.", "th": "เสี่ยงเกินไป / ไม่ปลอดภัย", "rule": "Feedback opener for the wrong-direction option."},
- {"en": "currency", "th": "บาท", "rule": "If a scenario names an amount, convert to a plausible baht figure and keep digits."}
-]
+ {
+  "en": "AI",
+  "th": "AI",
+  "rule": "Keep in English. Never แปลเป็น 'ปัญญาประดิษฐ์' in question text."
+ },
+ {
+  "en": "AI agent / agent",
+  "th": "AI agent / เอเจนต์",
+  "rule": "Use 'AI agent' on first mention, 'เอเจนต์' afterwards is acceptable."
+ },
+ {
+  "en": "prompt",
+  "th": "prompt",
+  "rule": "Keep in English (noun). Verb 'to prompt' → 'สั่ง AI' / 'เขียน prompt'."
+ },
+ {
+  "en": "LLM / language model",
+  "th": "LLM / โมเดลภาษา",
+  "rule": "Keep 'LLM'; 'โมเดล' for model."
+ },
+ {
+  "en": "model",
+  "th": "โมเดล",
+  "rule": "Transliterate. 'model confidence' → 'ความมั่นใจของโมเดล'."
+ },
+ {
+  "en": "RAG / retrieval",
+  "th": "RAG / การค้นคืนข้อมูล",
+  "rule": "Keep 'RAG'; explain once as 'การค้นคืนข้อมูลมาประกอบคำตอบ' if the item is Awareness level."
+ },
+ {
+  "en": "hallucination",
+  "th": "hallucination (การกุข้อมูล)",
+  "rule": "Keep English term, add Thai gloss in parentheses on first mention per item."
+ },
+ {
+  "en": "chatbot",
+  "th": "แชตบอต",
+  "rule": "Transliterate."
+ },
+ {
+  "en": "copilot",
+  "th": "copilot",
+  "rule": "Keep in English (product-style term)."
+ },
+ {
+  "en": "workflow",
+  "th": "workflow / ขั้นตอนงาน",
+  "rule": "'workflow' acceptable in Thai business register; use 'ขั้นตอนงาน' when the sentence is about steps."
+ },
+ {
+  "en": "automation",
+  "th": "ระบบอัตโนมัติ",
+  "rule": ""
+ },
+ {
+  "en": "pilot",
+  "th": "โครงการนำร่อง (pilot)",
+  "rule": "First mention 'โครงการนำร่อง', then 'pilot' acceptable."
+ },
+ {
+  "en": "baseline",
+  "th": "ค่าฐาน (baseline)",
+  "rule": "Use 'ค่าฐาน' with English in parentheses on first mention."
+ },
+ {
+  "en": "evidence",
+  "th": "หลักฐาน",
+  "rule": "In scoring context 'หลักฐาน'; 'evidence gate' → 'เกณฑ์หลักฐาน'."
+ },
+ {
+  "en": "source",
+  "th": "แหล่งข้อมูล / ต้นทาง",
+  "rule": "'primary source' → 'แหล่งข้อมูลปฐมภูมิ'."
+ },
+ {
+  "en": "citation",
+  "th": "การอ้างอิง",
+  "rule": ""
+ },
+ {
+  "en": "verification / verify",
+  "th": "การตรวจสอบ / ตรวจสอบ",
+  "rule": ""
+ },
+ {
+  "en": "confidence",
+  "th": "ความมั่นใจ",
+  "rule": "Model confidence is not evidence → 'ความมั่นใจของโมเดลไม่ใช่หลักฐาน'."
+ },
+ {
+  "en": "uncertainty",
+  "th": "ความไม่แน่นอน",
+  "rule": ""
+ },
+ {
+  "en": "governance",
+  "th": "การกำกับดูแล (governance)",
+  "rule": ""
+ },
+ {
+  "en": "audit / audit log",
+  "th": "การตรวจสอบ (audit) / บันทึกตรวจสอบ (audit log)",
+  "rule": "Keep 'audit log' in English after first mention."
+ },
+ {
+  "en": "compliance",
+  "th": "การปฏิบัติตามข้อกำหนด",
+  "rule": ""
+ },
+ {
+  "en": "PDPA",
+  "th": "PDPA",
+  "rule": "Keep. Thai law name is พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล; use only if the item explains it."
+ },
+ {
+  "en": "privacy",
+  "th": "ความเป็นส่วนตัว",
+  "rule": "'personal data' → 'ข้อมูลส่วนบุคคล'."
+ },
+ {
+  "en": "consent",
+  "th": "ความยินยอม",
+  "rule": ""
+ },
+ {
+  "en": "de-identified / anonymised",
+  "th": "ลบข้อมูลระบุตัวตน / ทำให้ไม่ระบุตัวตน",
+  "rule": ""
+ },
+ {
+  "en": "bias / fairness",
+  "th": "อคติ / ความเป็นธรรม",
+  "rule": ""
+ },
+ {
+  "en": "incident",
+  "th": "เหตุการณ์ผิดปกติ (incident)",
+  "rule": "'incident response' → 'การรับมือเหตุการณ์'."
+ },
+ {
+  "en": "escalation",
+  "th": "การส่งต่อให้ผู้มีอำนาจ (escalation)",
+  "rule": "'escalation path' → 'ช่องทางส่งต่อ'."
+ },
+ {
+  "en": "approval gate / stage gate",
+  "th": "จุดอนุมัติ / ด่านตัดสินใจ (stage gate)",
+  "rule": ""
+ },
+ {
+  "en": "human-in-the-loop / human review",
+  "th": "การตรวจทานโดยคน",
+  "rule": ""
+ },
+ {
+  "en": "override",
+  "th": "การแก้ทับผลของ AI (override)",
+  "rule": ""
+ },
+ {
+  "en": "rollback",
+  "th": "การย้อนกลับระบบ (rollback)",
+  "rule": ""
+ },
+ {
+  "en": "least privilege",
+  "th": "สิทธิ์เท่าที่จำเป็น (least privilege)",
+  "rule": ""
+ },
+ {
+  "en": "permission / tool access",
+  "th": "สิทธิ์ / สิทธิ์เข้าถึงเครื่องมือ",
+  "rule": ""
+ },
+ {
+  "en": "fail-safe",
+  "th": "กลไกหยุดเมื่อผิดพลาด (fail-safe)",
+  "rule": ""
+ },
+ {
+  "en": "guardrail",
+  "th": "แนวป้องกัน (guardrail)",
+  "rule": ""
+ },
+ {
+  "en": "vendor",
+  "th": "ผู้ขาย / ผู้ให้บริการ",
+  "rule": "'vendor claim' → 'คำกล่าวอ้างของผู้ขาย'."
+ },
+ {
+  "en": "benchmark",
+  "th": "benchmark (ผลทดสอบเทียบ)",
+  "rule": "Keep English, gloss once."
+ },
+ {
+  "en": "back-test",
+  "th": "การทดสอบย้อนหลัง (back-test)",
+  "rule": ""
+ },
+ {
+  "en": "forecast",
+  "th": "การคาดการณ์",
+  "rule": ""
+ },
+ {
+  "en": "disclosure",
+  "th": "การเปิดเผยข้อมูล",
+  "rule": "Investor guidance → 'แนวทางที่แจ้งต่อนักลงทุน'."
+ },
+ {
+  "en": "board",
+  "th": "คณะกรรมการบริษัท",
+  "rule": "'board packet' → 'เอกสารประชุมกรรมการ'."
+ },
+ {
+  "en": "executive",
+  "th": "ผู้บริหาร",
+  "rule": ""
+ },
+ {
+  "en": "stakeholder",
+  "th": "ผู้มีส่วนได้ส่วนเสีย",
+  "rule": ""
+ },
+ {
+  "en": "dashboard",
+  "th": "แดชบอร์ด",
+  "rule": ""
+ },
+ {
+  "en": "CRM / OCR / API / SLA / KPI / ROI / MCP",
+  "th": "keep as is",
+  "rule": "Acronyms stay in English."
+ },
+ {
+  "en": "ticket",
+  "th": "ticket (เคสลูกค้า)",
+  "rule": "Support ticket → 'ticket' with gloss once."
+ },
+ {
+  "en": "refund",
+  "th": "การคืนเงิน",
+  "rule": ""
+ },
+ {
+  "en": "invoice",
+  "th": "ใบแจ้งหนี้",
+  "rule": ""
+ },
+ {
+  "en": "phishing",
+  "th": "ฟิชชิง (phishing)",
+  "rule": ""
+ },
+ {
+  "en": "synthetic media / deepfake",
+  "th": "สื่อสังเคราะห์ / deepfake",
+  "rule": ""
+ },
+ {
+  "en": "provenance",
+  "th": "ที่มาของสื่อ (provenance)",
+  "rule": ""
+ },
+ {
+  "en": "reverse image search",
+  "th": "การค้นหาภาพย้อนกลับ",
+  "rule": ""
+ },
+ {
+  "en": "viral post",
+  "th": "โพสต์ไวรัล",
+  "rule": ""
+ },
+ {
+  "en": "endorsement",
+  "th": "การรับรองสินค้าโดยบุคคล",
+  "rule": ""
+ },
+ {
+  "en": "triage",
+  "th": "การคัดกรองความเร่งด่วน (triage)",
+  "rule": ""
+ },
+ {
+  "en": "variance (finance)",
+  "th": "ผลต่าง (variance)",
+  "rule": ""
+ },
+ {
+  "en": "rubric",
+  "th": "เกณฑ์การให้คะแนน",
+  "rule": ""
+ },
+ {
+  "en": "token / embedding / fine-tuning / context window",
+  "th": "token / embedding / fine-tuning / context window",
+  "rule": "Keep in English; Awareness items may add a short Thai gloss."
+ },
+ {
+  "en": "you (the user)",
+  "th": "คุณ",
+  "rule": "Always คุณ. Never ท่าน, never ผม/ฉัน for the reader."
+ },
+ {
+  "en": "Human-owned / Shared with AI / AI-led",
+  "th": "คุณทำเอง / ทำร่วมกับ AI / ให้ AI ทำ",
+  "rule": "Fixed labels for reliance-decision options (already in code)."
+ },
+ {
+  "en": "Correct. / Best.",
+  "th": "ถูกต้อง / ดีที่สุด",
+  "rule": "Feedback opener for the keyed option."
+ },
+ {
+  "en": "Too risky. / Unsafe.",
+  "th": "เสี่ยงเกินไป / ไม่ปลอดภัย",
+  "rule": "Feedback opener for the wrong-direction option."
+ },
+ {
+  "en": "currency",
+  "th": "บาท",
+  "rule": "If a scenario names an amount, convert to a plausible baht figure and keep digits."
+ },
+ {
+  "en": "Domain / Competency / Assessment / Platform / telemetry / Workflow",
+  "th": "keep as is",
+  "rule": "Upstream README style guide (2026-09-11): these product terms stay in English in Thai copy so they match the UI chrome. In question prose, 'workflow' may still read as ขั้นตอนงาน when the sentence is about steps."
+ }
+]

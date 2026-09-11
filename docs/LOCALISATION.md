@@ -45,7 +45,9 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 - Batch 1 (2026-09-11): 163 items `reviewed` — the Thai-priority-High set from audit round 1. 137 in `questionTranslations.th.ts`, 26 Horizon items inline. Reviewer edited 39 scenarios and 32 prompts; choices, rubric keywords, glossary and artifact tags were confirmed as drafted. Source workbook: `exports/New_Horizon_Thai_Review_Batch1_Completed.xlsx`; glossary: `exports/glossary_th.json`.
 - Shared reliance option labels (`relianceOptions.*.labelTh`) apply to any reliance item that has a translation status.
-- Remaining: 497 items English only (89 marked Thai priority Medium are batch 2). Artifacts: 16 tagged "Thai needed", 9 "Both" — Thai image versions not yet produced.
+- Remaining: 497 items English only (89 marked Thai priority Medium are batch 2).
+- Artifacts: language tags re-checked against the expanded relevance gate (22 hidden question ids) in `exports/artifact-language-tags.json`. 26 artifacts still display and need a Thai version (16 "Thai needed", 10 "Both"); 15 stay English. Produce message-type artifacts first (scam SMS, forwarded chat, social posts, invoice, login alert, scheduling email, vendor memo, product listing) because a Thai user cannot judge them realistically in English. Do not produce Thai images for artifacts hidden by the gate.
+- Glossary aligned with the README style guide: Domain, Competency, Assessment, Platform, telemetry and Workflow stay in English in Thai copy.
 
 ## Workflow for a translation batch
 

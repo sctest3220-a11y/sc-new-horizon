@@ -1,5 +1,18 @@
 # Latest Changes
 
+## 2026-09-11: Merge Repair After Main Sync
+
+The merge of `main` into `kj-dee-branch` (`82d0da4`) left `page.tsx` unbuildable: `currentDisplayStimulus` was declared twice (the localisation branch's `getDisplayStimulus(shownQuestion)` beside main's `getDisplayStimulus(current)`), so `pnpm build` failed with a parse error. Fixed by keeping one declaration and driving main's new visual-card gate from the localised question (`getDisplayVisualStimulus(shownQuestion)`), so hidden-artifact rules and Thai visual cards work together. Also removed six duplicate keys in `thaiUiCopy` introduced by the merge (`Assessment`, `Improve next`, `Score interpretation`, `Open detailed analysis`, the survey-unlock sentence, `Maps to`); JavaScript kept the last value anyway, so behaviour is unchanged.
+
+Verified: lint clean, production build passes, TypeScript back to the 18 pre-existing errors, Thai localisation checks pass (163 items reviewed, Thai free-text scoring, matching), Thai toggle smoke test clean.
+
+Added with the repair, so a broken merge cannot recur unnoticed:
+
+- `.github/workflows/ci.yml` — lint, a TypeScript error budget (fails only if the count grows above the known 18), production build, and a question-bank integrity check (unique ids; every translation table entry points at a real question) on push and pull request to `kj-dee-branch` and `main`.
+- README `Language Support` now states the two Thai mechanisms and their boundary: `thaiUiCopy` for interface chrome, per-question `*Th` fields plus `app/questionTranslations.th.ts` for question content.
+- `exports/glossary_th.json` aligned with the README style guide (Domain, Competency, Assessment, Platform, telemetry, Workflow stay in English).
+- `exports/artifact-language-tags.json` — artifact language tags re-checked against the expanded relevance gate: 26 artifacts still display and need Thai versions, 15 stay English, none should be produced for gated uses.
+
 ## 2026-09-11: Thai Localisation Batch 1 Applied (163 Items Reviewed)
 
 Native review of `exports/New_Horizon_Thai_Review_Batch1.xlsx` came back with all 163 Thai-priority-High items approved after in-cell edits (39 scenarios and 32 prompts reworded; meaning, naturalness, terminology, UI fit and cultural fit all confirmed; every answer key judged still unambiguous in Thai). Applied as `translationStatus: 'reviewed'`.

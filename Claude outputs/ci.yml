@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [kj-dee-branch, main]
+  pull_request:
+    branches: [kj-dee-branch, main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: TypeScript error budget
+        # The codebase carries a known set of pre-existing type errors. Fail only when the count grows,
+        # so a bad merge (duplicate declarations, broken imports) is caught without blocking on legacy debt.
+        run: |
+          BUDGET=18
+          COUNT=$(npx tsc --noEmit -p tsconfig.json 2>&1 | grep -c "error TS" || true)
+          echo "TypeScript errors: $COUNT (budget $BUDGET)"
+          if [ "$COUNT" -gt "$BUDGET" ]; then
+            npx tsc --noEmit -p tsconfig.json 2>&1 | grep "error TS" | head -40
+            exit 1
+          fi
+      - name: Build
+        run: pnpm build
+      - name: Question bank integrity
+        run: |
+          node scripts/dump-question-bank.mjs /tmp/bank.json
+          node -e '
+            const d = require("/tmp/bank.json");
+            const ids = d.questions.map(q => q.id);
+            const dup = ids.filter((id, i) => ids.indexOf(id) !== i);
+            if (dup.length) { console.error("Duplicate question ids:", dup); process.exit(1); }
+            const th = Object.keys(d.questionTranslationsTh).filter(id => !ids.includes(id));
+            if (th.length) { console.error("Translations for unknown question ids:", th); process.exit(1); }
+            console.log(`${ids.length} questions, ${Object.keys(d.questionTranslationsTh).length} table translations, ok`);
+          '

@@ -621,7 +621,6 @@ const thaiUiCopy: Record<string, string> = {
   'User Dashboard': 'แดชบอร์ดผู้ใช้',
   'Admin Login': 'เข้าสู่ระบบ Admin',
   'Home': 'หน้าแรก',
-  'Assessment': 'Assessment',
   'Practice': 'Practice',
   'Scoring': 'Scoring',
   'Frameworks': 'Frameworks',
@@ -723,9 +722,7 @@ const thaiUiCopy: Record<string, string> = {
   'Mapped to reputable AI literacy, governance, and readiness frameworks.': 'เชื่อมกับ Framework ด้าน AI Literacy, Governance และ Readiness ที่น่าเชื่อถือ',
   'New Horizon is not claiming certification equivalence. It uses these frameworks as a crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.': 'New Horizon ไม่ได้อ้างว่าเทียบเท่า Certificate แต่ใช้ Framework เหล่านี้เป็น Crosswalk เพื่อให้ Domain, Competency, คำถาม, telemetry และการปรับปรุงมีฐานอ้างอิงระดับโลก',
   'D1-D6 crosswalk': 'Crosswalk D1-D6',
-  'Maps to': 'เชื่อมกับ',
   'Tests': 'ทดสอบ',
-  'Improve next': 'ปรับปรุงต่อ',
   'Progress system': 'ระบบความก้าวหน้า',
   'Make readiness feel earned.': 'ทำให้ความพร้อมเป็นสิ่งที่ได้มาจากการฝึกจริง',
   'Gamification should reward careful judgment, evidence review, and improvement over time. The goal is confidence through practice, not points for rushing.': 'Gamification ควรให้รางวัลกับการตัดสินใจรอบคอบ การตรวจหลักฐาน และการพัฒนาต่อเนื่อง เป้าหมายคือความมั่นใจจากการฝึก ไม่ใช่คะแนนจากการรีบตอบ',
@@ -788,8 +785,6 @@ const thaiUiCopy: Record<string, string> = {
   'Analysis': 'Analysis',
   'Assessment': 'Assessment',
   'Submit feedback and unlock analysis': 'ส่ง Feedback เพื่อเปิด Analysis',
-  'Open detailed analysis': 'เปิด Analysis แบบละเอียด',
-  'Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.': 'ทำ Feedback สั้นๆ ในแท็บ Report เพื่อเปิดข้อมูลรายคำถาม คำตอบที่คาดหวัง เวลา และข้อมูลเปรียบเทียบในเครื่องนี้',
   'Go to feedback survey': 'ไปที่ Feedback Survey',
   'Assessment length': 'ความยาว Assessment',
   'Back to Activities': 'กลับไปที่กิจกรรม',
@@ -827,7 +822,6 @@ const thaiUiCopy: Record<string, string> = {
   'Too long': 'ยาวเกินไป',
   'Summary': 'สรุป',
   'Question review': 'Review คำถาม',
-  'Score interpretation': 'คำอธิบายคะแนน',
   'How this result was derived': 'คะแนนนี้คำนวณอย่างไร',
   'Question-level calculation': 'การคำนวณรายคำถาม',
   'Domain roll-up': 'สรุปตาม Domain',
@@ -12347,8 +12341,7 @@ export default function Home() {
     [assessmentSeed, current.id, shownQuestion],
   );
   const currentDisplayStimulus = getDisplayStimulus(shownQuestion);
-  const currentDisplayStimulus = getDisplayStimulus(current);
-  const currentDisplayVisualStimulus = getDisplayVisualStimulus(current);
+  const currentDisplayVisualStimulus = getDisplayVisualStimulus(shownQuestion);
   const displayedMatchPairs = useMemo(
     () => shuffledBySeed(shownQuestion.matchPairs ?? [], assessmentSeed, `${current.id}:pairs`, (pair) => pair.id),
     [assessmentSeed, current.id, shownQuestion],
