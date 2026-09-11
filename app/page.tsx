@@ -555,7 +555,7 @@ const scoringModelExplainers = [
   ['2. Difficulty adjustment', 'Raw score is converted into readiness evidence through difficulty bands. Easy items are capped below advanced readiness; proficient and advanced items can contribute more.'],
   ['3. Competency roll-up', 'Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.'],
   ['4. Domain roll-up', 'Domain score averages readiness evidence for that domain. Secondary-domain evidence counts at 0.35 weight so cross-domain questions help without overpowering the primary domain.'],
-  ['5. Overall score', 'The MVP overall score is the average of D1-D6 domain scores. Unsampled domains do not receive a free midpoint score.'],
+  ['5. Overall score', 'The MVP overall score starts from the average of D1-D6 domain scores, then applies an answer-quality check so mostly incorrect runs do not look stronger than the evidence supports. Unsampled domains do not receive a free midpoint score.'],
   ['6. Confidence and continuation', 'Confidence is based on coverage, repeated evidence, item information, SEM, and whether profile-priority competencies were sampled. Low confidence triggers targeted continuation.'],
 ];
 
@@ -9375,6 +9375,20 @@ function getScoreBandDescription(score: number, level: string) {
   return 'Limited evidence: answers show major gaps or unsafe choices in this sample.';
 }
 
+function getAnswerQualityAdjustment(answers: Answer[]) {
+  if (!answers.length) {
+    return { rawAverage: 0, strongRatio: 0, factor: 0 };
+  }
+  const rawAverage = answers.reduce((sum, answer) => sum + clamp(answer.option.score, 0, 100), 0) / answers.length;
+  const strongRatio = answers.filter((answer) => answer.option.score >= 82).length / answers.length;
+  const factor = clamp(0.45 + (rawAverage / 100) * 0.45 + strongRatio * 0.1, 0.45, 1);
+  return {
+    rawAverage: Math.round(rawAverage),
+    strongRatio,
+    factor,
+  };
+}
+
 function getReadinessScore(rawScore: number, difficulty: Difficulty) {
   const score = clamp(rawScore, 0, 100);
   const band = difficultyReadinessBands[difficulty];
@@ -10093,7 +10107,7 @@ function getBootcampRecommendations(
   profileTags: string[] = [],
 ) {
   const profileText = `${profileTags.join(' ')} ${functionLabels[functionTrack]} ${executiveLabels[executiveRole]}`.toLowerCase();
-  return bootcampCatalog
+  const ranked = bootcampCatalog
     .map((bootcamp) => {
       const domainFit = bootcamp.domains.filter((domain) => priorityDomains.includes(domain)).length;
       const weakCompetencyFit = weakCompetencyIds.filter((competencyId) => {
@@ -10117,6 +10131,11 @@ function getBootcampRecommendations(
     .sort((left, right) => right.rank - left.rank)
     .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 4)
     .map(({ bootcamp }) => bootcamp);
+  if (ranked.length) return ranked;
+  const fallbackLevel = overallScore < 50 ? 'Fundamental' : overallScore < 75 ? 'Intermediate' : 'Advanced';
+  return bootcampCatalog
+    .filter((bootcamp) => bootcamp.level === fallbackLevel || priorityDomains.some((domain) => bootcamp.domains.includes(domain)))
+    .slice(0, assessmentMode === 'free' || assessmentMode === 'practice' ? 3 : 4);
 }
 
 function uniqueLimited(items: string[], limit: number) {
@@ -11219,10 +11238,12 @@ export default function Home() {
   const progress = Math.min(answers.length + (step === 'assessment' ? 1 : 0), activeConfig.totalQuestions);
   const results = useMemo(() => {
     const domainScores = getDomainScores(answers);
-    const overall = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
+    const domainAverage = Math.round(Object.values(domainScores).reduce((sum, value) => sum + value, 0) / Object.values(domainScores).length);
+    const answerQuality = getAnswerQualityAdjustment(answers);
+    const overall = Math.round(domainAverage * answerQuality.factor);
     const sortedDomains = (Object.keys(domainScores) as DomainId[]).sort((a, b) => domainScores[a] - domainScores[b]);
     const confidence = Math.min(mode === 'executive' ? 96 : mode === 'premium' ? 94 : 88, activeConfig.confidenceBase + answers.length * activeConfig.confidenceStep);
-    return { domainScores, overall, level: scoreToLevel(overall, answers), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
+    return { domainScores, domainAverage, answerQuality, overall, level: scoreToLevel(overall, answers), weakest: sortedDomains.slice(0, 2), strongest: sortedDomains.slice(-2).reverse(), confidence };
   }, [activeConfig.confidenceBase, activeConfig.confidenceStep, answers, mode]);
   const currentMeasures = useMemo(() => getQuestionMeasures(current), [current]);
   const currentSkills = useMemo(() => getQuestionSkillLabels(current), [current]);
@@ -14250,7 +14271,7 @@ export default function Home() {
                 <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
                 <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
                 <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
-                <p><strong>Assessment</strong> Overall score is the average of D1-D6 domain scores: {Object.values(results.domainScores).join(' + ')} / 6 = {results.overall}.</p>
+                <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
                 <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
               </div>
               <details className="calculation-details" open>
@@ -14743,6 +14764,15 @@ export default function Home() {
                     <span>{activeLearningCatalog[domain].format}</span>
                     <strong>{activeLearningCatalog[domain].title}</strong>
                     <p>{activeLearningCatalog[domain].detail}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="learning-list bootcamp-inline-list">
+                {bootcampRecommendations.slice(0, 2).map((bootcamp) => (
+                  <div key={bootcamp.id}>
+                    <span>{bootcamp.duration} · {bootcamp.level} workshop</span>
+                    <strong>{bootcamp.title}</strong>
+                    <p>{bootcamp.whyTakeIt}</p>
                   </div>
                 ))}
               </div>

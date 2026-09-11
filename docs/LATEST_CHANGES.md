@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-11: Score Calibration And Learning Path Visibility
+
+Overall scoring now applies an answer-quality evidence factor after the D1-D6 domain average. This prevents a mostly incorrect run from looking stronger than the answer evidence supports while still preserving partial credit for genuinely partial answers. The report score calculation now shows the domain average, raw answer-quality average, applied factor, and final score.
+
+Bootcamp and workshop recommendations now appear directly inside the recommended learning path card, with the detailed bootcamp section still kept underneath recommended courses.
+
 ## 2026-09-11: UX Priority Cleanup
 
 The public product structure is now simplified to `Free Assessment` and `Premium Diagnostic`. Executive context remains available inside Premium through role selection and recommendation logic, instead of appearing as a separate public assessment tier.
