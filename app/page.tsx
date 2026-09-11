@@ -623,7 +623,7 @@ const thaiUiCopy: Record<string, string> = {
   'New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts, verify sources, choose safe workflows, govern agents, and turn scores into learning paths.': 'New Horizon คือ Assessment Platform แบบปรับตามผู้ใช้ เพื่อวัดความสามารถด้าน AI ที่ใช้ได้จริง: ตรวจ artifact, เช็กแหล่งข้อมูล, เลือก Workflow ที่ปลอดภัย, กำกับ Agent และแปลงคะแนนเป็นเส้นทางการเรียนรู้',
   'Start Free Assessment': 'เริ่ม Assessment ฟรี',
   'Start Premium Pilot': 'เริ่ม Premium Diagnostic',
-  'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
+  'Premium Leadership Diagnostic': 'Premium Leadership Diagnostic',
   'Start Premium Diagnostic': 'เริ่ม Premium Diagnostic',
   'Try Premium Diagnostic': 'ลอง Premium Diagnostic',
   'Premium diagnostic': 'Premium Diagnostic',
@@ -729,7 +729,7 @@ const thaiUiCopy: Record<string, string> = {
   'MVP results are indicative, not certification-grade. They show readiness patterns and recommend practical learning actions while collecting evidence for future calibration.': 'ผล MVP เป็นข้อมูลเบื้องต้น ยังไม่ใช่การรับรองอย่างเป็นทางการ ใช้ดูรูปแบบความพร้อมและแนะนำการเรียนรู้ พร้อมเก็บหลักฐานเพื่อปรับเทียบในอนาคต',
   'Try Free Flow': 'ลองแบบฟรี',
   'Try Premium Pilot': 'ลอง Premium Diagnostic',
-  'Try Executive Pilot': 'ลอง Executive Pilot',
+  'Try Premium Leadership Diagnostic': 'ลอง Premium Leadership Diagnostic',
   'Competency map': 'แผนที่ Competency',
   'Premium assessment': 'Premium Assessment',
   'Deeper diagnosis for people who want more than a score.': 'วิเคราะห์ลึกขึ้นสำหรับคนที่ต้องการมากกว่าคะแนน',
@@ -754,7 +754,7 @@ const thaiUiCopy: Record<string, string> = {
   'Start Full Assessment': 'เริ่ม Assessment เต็ม',
   'Start with a broad profile.': 'เริ่มจาก Profile ภาพรวม',
   'Build Profile and Begin 12-Question Assessment': 'สร้าง Profile และเริ่ม Assessment 12 ข้อ',
-  'Build Profile and Begin Executive Assessment': 'สร้าง Profile และเริ่ม Executive Assessment',
+  'Build Profile and Begin Premium Leadership Diagnostic': 'สร้าง Profile และเริ่ม Premium Leadership Diagnostic',
   'Optional profile pulse': 'คำถาม Profile สั้นๆ',
   'Skip': 'ข้าม',
   'Tune my test': 'ปรับ Test ให้ตรงกับฉัน',
@@ -779,7 +779,7 @@ const thaiUiCopy: Record<string, string> = {
   'Start Full Free Assessment': 'เริ่ม Assessment ฟรีแบบเต็ม',
   'Retake Free Assessment': 'ทำ Free Assessment ใหม่',
   'Retake Premium Assessment': 'ทำ Premium Assessment ใหม่',
-  'Retake Executive Assessment': 'ทำ Executive Assessment ใหม่',
+  'Retake Premium Leadership Diagnostic': 'ทำ Premium Leadership Diagnostic ใหม่',
   'Useful': 'มีประโยชน์',
   'Unclear': 'ไม่ชัดเจน',
   'Comment': 'Comment',
@@ -864,9 +864,9 @@ const thaiUiCopy: Record<string, string> = {
   'Premium uses the same AILF spine, then adapts interpretation by function and industry.': 'Premium ใช้โครง AILF เดียวกัน แล้วปรับการตีความตาม Function และ Industry',
   'Build Profile and Begin Premium Diagnostic': 'สร้าง Profile และเริ่ม Premium Diagnostic',
   'Board-level AI readiness.': 'ความพร้อมด้าน AI ระดับ Board',
-  'Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.': 'Executive mode ใช้ Question Bank แบบหลายรูปแบบ และให้น้ำหนักกับ Strategy, Governance และ Change Leadership',
+  'Premium leadership context weights strategy, governance, and change leadership.': 'Premium Leadership Context ให้น้ำหนักกับ Strategy, Governance และ Change Leadership',
   'Executive role': 'บทบาทผู้บริหาร',
-  'Executive pilot includes': 'Executive Pilot มี',
+  'Premium leadership diagnostic includes': 'Premium Leadership Diagnostic มี',
   'Premium pilot includes': 'Premium Diagnostic มี',
   'Profile builder': 'Profile Builder',
   'Premium profile signals': 'สัญญาณ Profile สำหรับ Premium',
@@ -8053,7 +8053,7 @@ const difficultyValue: Record<Difficulty, number> = { awareness: 0, applied: 1, 
 const modeConfig: Record<AssessmentMode, { label: string; totalQuestions: number; confidenceBase: number; confidenceStep: number }> = {
   free: { label: 'Adaptive free assessment', totalQuestions: 12, confidenceBase: 38, confidenceStep: 4 },
   premium: { label: 'Premium diagnostic pilot', totalQuestions: 20, confidenceBase: 48, confidenceStep: 3 },
-  executive: { label: 'Executive assessment pilot', totalQuestions: 20, confidenceBase: 54, confidenceStep: 3 },
+  executive: { label: 'Premium leadership diagnostic', totalQuestions: 20, confidenceBase: 54, confidenceStep: 3 },
   practice: { label: 'Practice activity', totalQuestions: 1, confidenceBase: 24, confidenceStep: 8 },
 };
 const executiveDomainTargets: Record<DomainId, number> = { D1: 1, D2: 1, D3: 2, D4: 4, D5: 4, D6: 4 };
@@ -9527,7 +9527,7 @@ function getCoverageTargets(
       priorityIds,
       plannedIds: [...new Set([...domainAnchorIds, ...priorityIds])],
       contextLabel: executiveLabels[executiveRole],
-      testFrame: 'Executive pilot prioritizes strategic, governance, value, and change-leadership competencies.',
+      testFrame: 'Premium leadership context prioritizes strategic, governance, value, and change-leadership competencies.',
     };
   }
   if (assessmentMode === 'premium') {
@@ -11111,7 +11111,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'executiveOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
@@ -13638,58 +13638,6 @@ export default function Home() {
         </section>
       )}
 
-      {step === 'executiveOnboarding' && (
-        <section className="workspace">
-          <div className="workspace-header">
-            <p className="eyebrow">Executive assessment pilot</p>
-            <h1>Board-level AI readiness.</h1>
-            <p>Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.</p>
-          </div>
-          <div className="setup-columns single">
-            <div>
-              <h2>Executive role</h2>
-              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Executive role">
-                {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
-                  <button
-                    key={id}
-                    className={executiveRole === id ? 'choice-card selected' : 'choice-card'}
-                    onClick={() => setExecutiveRole(id)}
-                    role="radio"
-                    aria-checked={executiveRole === id}
-                  >
-                    {executiveLabels[id]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="premium-summary">
-            <strong>Executive pilot includes</strong>
-            <span>20 adaptive questions from {executiveAssessmentQuestionBank.length} executive and advanced competency items, chart/report visuals, multi-select, drag-order, matching, narrative judgment, target radar graph, and personalized executive learning path.</span>
-          </div>
-          <article className="profile-builder-card compact">
-            <div>
-              <p className="eyebrow">Profile builder</p>
-              <h2>Executive profile signals</h2>
-              <p>
-                Before the assessment starts, New Horizon captures executive priorities, maturity, risk focus, peer topics, and learning interests.
-                During the test, strategy, governance, and change-leadership evidence signals are added from artifact-backed questions.
-              </p>
-            </div>
-            <div className="profile-builder-steps">
-              <span>{executiveLabels[executiveRole]}</span>
-              <span>AI priorities</span>
-              <span>Risk agenda</span>
-              <span>Board/value signals</span>
-            </div>
-          </article>
-          <div className="workspace-actions">
-            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={() => openProfileSurvey('executive')}>Build Profile and Begin Executive Assessment</button>
-          </div>
-        </section>
-      )}
-
       {step === 'assessment' && current && (
         <section className="assessment-shell">
           <div className="assessment-workbench">
@@ -14234,7 +14182,7 @@ export default function Home() {
         <section className="results-shell">
           <div className="results-hero">
             <div>
-              <p className="eyebrow">{mode === 'executive' ? 'Executive assessment pilot' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
+              <p className="eyebrow">{mode === 'executive' ? 'Premium leadership diagnostic' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
               <h1>{results.overall}</h1>
               <p className="result-level">{results.level} AI readiness</p>
               <p>

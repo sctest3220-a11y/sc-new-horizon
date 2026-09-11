@@ -1,6 +1,6 @@
 # SC Horizon / New Horizon
 
-Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, executive assessment, learning paths, and AI trend awareness.
+Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, premium role context, learning paths, and AI trend awareness.
 
 ## What It Includes
 
