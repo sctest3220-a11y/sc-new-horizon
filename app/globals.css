@@ -1201,6 +1201,41 @@ h3 {
   text-decoration: none;
 }
 
+.home-more-panel {
+  border-top: 1px solid var(--line);
+}
+
+.home-more-panel > summary {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr;
+  list-style: none;
+  padding: 22px clamp(20px, 5vw, 72px);
+}
+
+.home-more-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-more-panel > summary span {
+  background: #17201d;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+.home-more-panel > summary strong {
+  color: var(--ink);
+  font-size: clamp(18px, 2vw, 24px);
+}
+
 .dashboard-shell {
   display: grid;
   gap: 22px;
@@ -3307,6 +3342,19 @@ h3 {
   text-transform: uppercase;
 }
 
+.stimulus-purpose {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 5px 0 0;
+  max-width: 720px;
+}
+
+.stimulus-purpose span {
+  color: #fff;
+  font-weight: 800;
+}
+
 .stimulus-media {
   align-items: start;
   appearance: none;
@@ -4464,24 +4512,28 @@ h3 {
   order: 10;
 }
 
-.report-order-improve {
+.report-order-bootcamps {
   order: 11;
 }
 
-.report-order-badges {
+.report-order-improve {
   order: 12;
 }
 
-.report-order-evidence-mode {
+.report-order-badges {
   order: 13;
 }
 
-.report-order-leaderboard {
+.report-order-evidence-mode {
   order: 14;
 }
 
-.report-order-dyk {
+.report-order-leaderboard {
   order: 15;
+}
+
+.report-order-dyk {
+  order: 16;
 }
 
 .report-order-survey {

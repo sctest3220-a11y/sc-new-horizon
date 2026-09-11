@@ -1,5 +1,19 @@
 # Latest Changes
 
+## 2026-09-11: UX Priority Cleanup
+
+The public product structure is now simplified to `Free Assessment` and `Premium Diagnostic`. Executive context remains available inside Premium through role selection and recommendation logic, instead of appearing as a separate public assessment tier.
+
+Leaderboards now use anonymous display labels by default. The product should show real names or aliases only after explicit user opt-in, because peer comparison should motivate users without exposing identity or email-derived names.
+
+Question-level feedback is reset when a new assessment starts, including useful/unclear selections and comment drafts. The feedback comment input is keyed by session, question, and placement with browser autocomplete disabled to prevent old user notes from appearing like stale app data.
+
+The report order now keeps recommended bootcamps and workshops underneath recommended courses. Courses remain the lighter next step; bootcamps are positioned as deeper guided practice when the assessment shows role, team, or confidence gaps.
+
+The landing page now prioritizes the starting choices, peer challenge, and guide cards. Heavier sections such as practice labs, platform method, scoring details, framework crosswalk, domains, results preview, and premium details are grouped under an expandable `Explore more` panel to reduce first-page clutter.
+
+Artifact cards now include an `Inspect for` cue derived from the artifact caption. The design rule is that artifacts should be shown only when they clarify the task or provide evidence the user needs; otherwise the question should stand alone without an artifact.
+
 ## 2026-09-11: Bootcamp Recommendations In Learning Path
 
 Added a structured New Horizon bootcamp and workshop catalog covering AI Fundamentals, Practical AI for Work, Advanced AI Operator, Executive AI Strategy, AI Governance and Risk, AI Agent and Workflow Lab, Role-Based AI Bootcamps, and AI Train-the-Trainer.

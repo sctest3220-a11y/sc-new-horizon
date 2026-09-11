@@ -5,6 +5,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
+- Simplified public tiers: Free Assessment and Premium Diagnostic, with executive/leadership context handled inside Premium
 - Home-page tabs for global AI framework mapping and transparent scoring/adaptive-testing logic
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
@@ -22,6 +23,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
 - End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
 - Top-10 score leaderboard scoped to the user's assessment persona/group
+- Anonymous leaderboard display by default, with real names or aliases reserved for future explicit opt-in
 - Landing-page daily/weekly top-10 teaser and peer-insight cards to motivate users to see where they rank
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
@@ -47,6 +49,8 @@ Detailed telemetry and agent documentation:
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+
+Latest UX priority update: the landing page is simplified around Free Assessment, Premium Diagnostic, peer comparison, and concise guide cards. Heavier explanatory content now sits behind an expandable `Explore more` panel. Leaderboards use anonymous labels by default. Premium now includes role, function, and industry context instead of exposing a separate executive assessment tier. Question-level feedback resets at the start of each assessment and disables browser autocomplete on the comment input to prevent stale notes from prior users. Artifact cards now show an `Inspect for` cue so users know why the document/image matters before spending time on it.
 
 Latest bootcamp update: the report learning path now recommends New Horizon bootcamps and workshops when guided practice is a better next step than a self-paced course alone. Recommendations use weak domains, overall score, assessment mode, function track, executive role, weak competencies, and profile tags. Users can expand each workshop to see who it is for, why to take it, expected learning outputs, labs, best-fit roles, and framework alignment.
 

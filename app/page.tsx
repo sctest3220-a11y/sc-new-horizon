@@ -610,6 +610,7 @@ const thaiUiCopy: Record<string, string> = {
   'Frameworks': 'Frameworks',
   'Dashboard': 'Dashboard',
   'Admin': 'Admin',
+  'Premium': 'Premium',
   'Agent Ops': 'Agent Ops',
   'Platform': 'Platform',
   'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
@@ -621,8 +622,13 @@ const thaiUiCopy: Record<string, string> = {
   'Measure practical AI readiness.': 'วัดความพร้อมด้าน AI ที่ใช้ได้จริง',
   'New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts, verify sources, choose safe workflows, govern agents, and turn scores into learning paths.': 'New Horizon คือ Assessment Platform แบบปรับตามผู้ใช้ เพื่อวัดความสามารถด้าน AI ที่ใช้ได้จริง: ตรวจ artifact, เช็กแหล่งข้อมูล, เลือก Workflow ที่ปลอดภัย, กำกับ Agent และแปลงคะแนนเป็นเส้นทางการเรียนรู้',
   'Start Free Assessment': 'เริ่ม Assessment ฟรี',
-  'Start Premium Pilot': 'เริ่ม Premium Pilot',
+  'Start Premium Pilot': 'เริ่ม Premium Diagnostic',
   'Executive Assessment': 'Assessment สำหรับผู้บริหาร',
+  'Start Premium Diagnostic': 'เริ่ม Premium Diagnostic',
+  'Try Premium Diagnostic': 'ลอง Premium Diagnostic',
+  'Premium diagnostic': 'Premium Diagnostic',
+  'Explore more': 'ดูเพิ่มเติม',
+  'Learning prompts, practice labs, scoring, and frameworks': 'Prompt การเรียนรู้, Practice Lab, Scoring และ Framework',
   'See How It Works': 'ดูวิธีทำงาน',
   'Scoring model': 'Scoring Model',
   'Adaptive assessment platform': 'Assessment Platform แบบปรับตามผู้ใช้',
@@ -722,7 +728,7 @@ const thaiUiCopy: Record<string, string> = {
   'Radar profile, gaps, and next steps.': 'Radar Profile, ช่องว่าง และขั้นตอนถัดไป',
   'MVP results are indicative, not certification-grade. They show readiness patterns and recommend practical learning actions while collecting evidence for future calibration.': 'ผล MVP เป็นข้อมูลเบื้องต้น ยังไม่ใช่การรับรองอย่างเป็นทางการ ใช้ดูรูปแบบความพร้อมและแนะนำการเรียนรู้ พร้อมเก็บหลักฐานเพื่อปรับเทียบในอนาคต',
   'Try Free Flow': 'ลองแบบฟรี',
-  'Try Premium Pilot': 'ลอง Premium Pilot',
+  'Try Premium Pilot': 'ลอง Premium Diagnostic',
   'Try Executive Pilot': 'ลอง Executive Pilot',
   'Competency map': 'แผนที่ Competency',
   'Premium assessment': 'Premium Assessment',
@@ -826,6 +832,7 @@ const thaiUiCopy: Record<string, string> = {
   'Submit Written Answer': 'ส่งคำตอบแบบเขียน',
   'Artifact reader': 'ตัวอ่าน Artifact',
   'Read full size': 'ดูขนาดใหญ่',
+  'Inspect for': 'ดูเพื่อหา',
   'Open file': 'เปิดไฟล์',
   'Close': 'ปิด',
   'Fit': 'พอดีหน้าจอ',
@@ -850,8 +857,9 @@ const thaiUiCopy: Record<string, string> = {
   'Customer Service': 'Customer Service',
   'Function': 'Function',
   'Industry': 'Industry',
+  'Role context': 'บริบทของบทบาท',
   'Back': 'กลับ',
-  'Premium assessment pilot': 'Premium Assessment Pilot',
+  'Premium assessment pilot': 'Premium Diagnostic',
   'Add context for a deeper profile.': 'เพิ่มบริบทเพื่อให้ Profile ลึกขึ้น',
   'Premium uses the same AILF spine, then adapts interpretation by function and industry.': 'Premium ใช้โครง AILF เดียวกัน แล้วปรับการตีความตาม Function และ Industry',
   'Build Profile and Begin Premium Diagnostic': 'สร้าง Profile และเริ่ม Premium Diagnostic',
@@ -859,7 +867,7 @@ const thaiUiCopy: Record<string, string> = {
   'Executive mode draws from the multimodal question bank and weights strategy, governance, and change leadership.': 'Executive mode ใช้ Question Bank แบบหลายรูปแบบ และให้น้ำหนักกับ Strategy, Governance และ Change Leadership',
   'Executive role': 'บทบาทผู้บริหาร',
   'Executive pilot includes': 'Executive Pilot มี',
-  'Premium pilot includes': 'Premium Pilot มี',
+  'Premium pilot includes': 'Premium Diagnostic มี',
   'Profile builder': 'Profile Builder',
   'Premium profile signals': 'สัญญาณ Profile สำหรับ Premium',
   'Executive profile signals': 'สัญญาณ Profile สำหรับ Executive',
@@ -934,6 +942,7 @@ const thaiUiCopy: Record<string, string> = {
   'Tools to explore': 'Tool ที่ควรลอง',
   'Concepts to strengthen': 'Concept ที่ควรเสริม',
   'Practice next': 'ควรฝึกต่อ',
+  'Recommended courses': 'Course ที่แนะนำ',
   'Recommended bootcamps and workshops': 'Bootcamp และ Workshop ที่แนะนำ',
   'Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.': 'แนะนำเมื่อผล Assessment พบช่องว่างที่ควรฝึกแบบมีคนแนะนำ จัดทีมให้เข้าใจตรงกัน หรือออกแบบ Workflow ตามบทบาท',
   'For who': 'เหมาะกับใคร',
@@ -9016,21 +9025,21 @@ function getPersonaLeaderboard(entries: ScoreLogEntry[], groupKey: string) {
     .map((entry, index) => ({
       ...entry,
       rank: index + 1,
-      displayName: entry.userEmail?.split('@')[0] || `Assessment ${entry.id.slice(-5)}`,
+      displayName: `Anonymous ${String(index + 1).padStart(2, '0')}`,
     }));
 }
 
 const demoLandingLeaderboard: LandingLeaderboardRow[] = [
-  { id: 'demo-creator-1', rank: 1, displayName: 'Creator profile', groupLabel: 'Marketing / Retail', overall: 94, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-tech-1', rank: 2, displayName: 'Technical builder', groupLabel: 'Technical / General', overall: 91, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-finance-1', rank: 3, displayName: 'Finance operator', groupLabel: 'Finance / Financial services', overall: 89, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-board-1', rank: 4, displayName: 'Board readiness', groupLabel: 'Board member', overall: 87, strongestDomain: 'D4', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-people-1', rank: 5, displayName: 'People leader', groupLabel: 'People / General', overall: 85, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-sales-1', rank: 6, displayName: 'Sales workflow', groupLabel: 'Sales / Retail', overall: 83, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-student-1', rank: 7, displayName: 'Student explorer', groupLabel: 'Student', overall: 81, strongestDomain: 'D1', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-ops-1', rank: 8, displayName: 'Ops improver', groupLabel: 'Operations / General', overall: 79, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-cs-1', rank: 9, displayName: 'Support pilot', groupLabel: 'Customer service / General', overall: 76, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
-  { id: 'demo-general-1', rank: 10, displayName: 'General user', groupLabel: 'General user', overall: 73, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-creator-1', rank: 1, displayName: 'Anonymous 01', groupLabel: 'Marketing / Retail', overall: 94, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-tech-1', rank: 2, displayName: 'Anonymous 02', groupLabel: 'Technical / General', overall: 91, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-finance-1', rank: 3, displayName: 'Anonymous 03', groupLabel: 'Finance / Financial services', overall: 89, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-board-1', rank: 4, displayName: 'Anonymous 04', groupLabel: 'Board member', overall: 87, strongestDomain: 'D4', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-people-1', rank: 5, displayName: 'Anonymous 05', groupLabel: 'People / General', overall: 85, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-sales-1', rank: 6, displayName: 'Anonymous 06', groupLabel: 'Sales / Retail', overall: 83, strongestDomain: 'D5', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-student-1', rank: 7, displayName: 'Anonymous 07', groupLabel: 'Student', overall: 81, strongestDomain: 'D1', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-ops-1', rank: 8, displayName: 'Anonymous 08', groupLabel: 'Operations / General', overall: 79, strongestDomain: 'D2', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-cs-1', rank: 9, displayName: 'Anonymous 09', groupLabel: 'Customer service / General', overall: 76, strongestDomain: 'D6', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
+  { id: 'demo-general-1', rank: 10, displayName: 'Anonymous 10', groupLabel: 'General user', overall: 73, strongestDomain: 'D3', createdAt: '2026-09-07T00:00:00.000Z', source: 'demo' },
 ];
 
 function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderboardPeriod): LandingLeaderboardRow[] {
@@ -9045,7 +9054,7 @@ function getLandingLeaderboard(entries: ScoreLogEntry[], period: LandingLeaderbo
       return {
         id: entry.id,
         rank: index + 1,
-        displayName: entry.userEmail?.split('@')[0] || `${cleanAverageLabel(entry.groupLabel)} run`,
+        displayName: `Anonymous ${String(index + 1).padStart(2, '0')}`,
         groupLabel: cleanAverageLabel(entry.groupLabel),
         overall: entry.overall,
         strongestDomain,
@@ -10749,7 +10758,10 @@ function StimulusFigure({
     <>
       <figure className="stimulus-card">
         <div className="stimulus-toolbar">
-          <div className="stimulus-label">{stimulus.label}</div>
+          <div>
+            <div className="stimulus-label">{stimulus.label}</div>
+            <p className="stimulus-purpose"><span>Inspect for</span>: {stimulus.caption}</p>
+          </div>
           <button type="button" className="secondary dark" onClick={openReader}>Read full size</button>
         </div>
         <button type="button" className="stimulus-media" onClick={openReader} aria-label={`Open ${stimulus.label} full size`}>
@@ -11575,9 +11587,11 @@ export default function Home() {
         <label>
           <span>Optional note</span>
           <input
+            key={`${behaviorSessionId}:${question.id}:${placement}`}
             value={questionComment}
             onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: event.target.value }))}
             placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+            autoComplete="off"
           />
         </label>
         <button
@@ -11759,6 +11773,9 @@ export default function Home() {
     setReportTab('report');
     setFeedbackPromptOpen(true);
     setFeedbackDraft(defaultAssessmentFeedbackDraft());
+    setQuestionFeedbackDraft({});
+    setQuestionFeedbackSubmitted({});
+    setQuestionFeedbackComments({});
     setAnswers([]);
     setLastAnswer(null);
     setPendingQuestion(null);
@@ -12315,8 +12332,7 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <button onClick={() => setStep('home')}>Home</button>
           <button onClick={() => setStep('onboarding')}>Assessment</button>
-          <button onClick={() => showHomeSection('scoring-model')}>Scoring</button>
-          <button onClick={() => showHomeSection('global-frameworks')}>Frameworks</button>
+          <button onClick={() => setStep('premiumOnboarding')}>Premium</button>
           <button onClick={() => showHomeSection('labs')}>Practice</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => setStep('dashboard')}>Dashboard</button>
@@ -12352,8 +12368,7 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
-                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
-                <button className="secondary" onClick={() => setStep('executiveOnboarding')}>Executive Assessment</button>
+                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
                 <a className="secondary" href="#process">See How It Works</a>
                 <a className="secondary" href="#scoring-model">Scoring model</a>
               </div>
@@ -12496,6 +12511,12 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+          <details className="home-more-panel">
+            <summary>
+              <span>Explore more</span>
+              <strong>Learning prompts, practice labs, scoring, and frameworks</strong>
+            </summary>
 
           <section id="labs" className="section field-lab">
             <div>
@@ -12680,8 +12701,7 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <button className="primary light" onClick={() => setStep('onboarding')}>Try Free Flow</button>
-                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Pilot</button>
-                <button className="secondary invert" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>
+                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Diagnostic</button>
               </div>
             </div>
             <div className="mock-result">
@@ -12710,12 +12730,12 @@ export default function Home() {
               <p className="eyebrow">Premium assessment</p>
               <h2>Deeper diagnosis for people who want more than a score.</h2>
               <p>
-                The MVP premium pilot adds function and industry context, a longer adaptive run,
-                evidence review, precision language, executive pathways, and a richer learning plan.
+                The MVP premium pilot adds function, industry, role context, a longer adaptive run,
+                evidence review, precision language, leadership pathways, and a richer learning plan.
               </p>
             </div>
             <div className="premium-grid">
-              {['Function context', 'Industry scenarios', 'Executive assessment', 'Premium learning plan'].map((item) => (
+              {['Function context', 'Industry scenarios', 'Leadership role context', 'Premium learning plan'].map((item) => (
                 <article className="info-card" key={item}>
                   <h3>{item}</h3>
                   <p>Pilot-grade now, designed for calibrated psychometrics after response data is collected.</p>
@@ -12723,10 +12743,10 @@ export default function Home() {
               ))}
             </div>
             <div className="hero-actions">
-              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>
-              <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Start Executive Pilot</button>
+              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
             </div>
           </section>
+          </details>
         </>
       )}
 
@@ -13536,7 +13556,7 @@ export default function Home() {
       {step === 'premiumOnboarding' && (
         <section className="workspace">
           <div className="workspace-header">
-            <p className="eyebrow">Premium assessment pilot</p>
+            <p className="eyebrow">Premium diagnostic</p>
             <h1>Add context for a deeper profile.</h1>
             <p>Premium uses the same AILF spine, then adapts interpretation by function and industry.</p>
           </div>
@@ -13573,10 +13593,26 @@ export default function Home() {
                 ))}
               </div>
             </div>
+            <div>
+              <h2>Role context</h2>
+              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Role context">
+                {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
+                  <button
+                    key={id}
+                    className={executiveRole === id ? 'choice-card selected' : 'choice-card'}
+                    onClick={() => setExecutiveRole(id)}
+                    role="radio"
+                    aria-checked={executiveRole === id}
+                  >
+                    {executiveLabels[id]}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="premium-summary">
             <strong>Premium pilot includes</strong>
-            <span>20 adaptive questions, function/industry context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
+            <span>20 adaptive questions, function/industry/role context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
           </div>
           <article className="profile-builder-card compact">
             <div>
@@ -13590,6 +13626,7 @@ export default function Home() {
             <div className="profile-builder-steps">
               <span>{functionLabels[functionTrack]}</span>
               <span>{industryLabels[industryTrack]}</span>
+              <span>{executiveLabels[executiveRole]}</span>
               <span>Tool awareness</span>
               <span>Learning intent</span>
             </div>
@@ -14762,6 +14799,25 @@ export default function Home() {
                 ))}
               </div>
             </article>
+            <article className="result-card wide report-primary report-order-courses">
+              <h2>Thailand course recommendations</h2>
+              <div className="course-list">
+                {courseRecommendations.map((course) => (
+                  <article key={course.id}>
+                    <div>
+                      <span>{course.provider} · {course.level}</span>
+                      <h3><a href={course.url} target="_blank" rel="noreferrer">{course.title}</a></h3>
+                      <p>{course.fit}</p>
+                    </div>
+                    <dl>
+                      <div><dt>Format</dt><dd>{course.format}</dd></div>
+                      <div><dt>Price</dt><dd>{course.price}</dd></div>
+                      <div><dt>Maps to</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
+                    </dl>
+                  </article>
+                ))}
+              </div>
+            </article>
             <article className="result-card wide report-primary report-order-bootcamps">
               <h2>Recommended bootcamps and workshops</h2>
               <p className="context-line">
@@ -14794,25 +14850,6 @@ export default function Home() {
                       <p><strong>Best fit roles</strong> {bootcamp.roles.join(', ')}</p>
                     </div>
                   </details>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide report-primary report-order-courses">
-              <h2>Thailand course recommendations</h2>
-              <div className="course-list">
-                {courseRecommendations.map((course) => (
-                  <article key={course.id}>
-                    <div>
-                      <span>{course.provider} · {course.level}</span>
-                      <h3><a href={course.url} target="_blank" rel="noreferrer">{course.title}</a></h3>
-                      <p>{course.fit}</p>
-                    </div>
-                    <dl>
-                      <div><dt>Format</dt><dd>{course.format}</dd></div>
-                      <div><dt>Price</dt><dd>{course.price}</dd></div>
-                      <div><dt>Maps to</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
-                    </dl>
-                  </article>
                 ))}
               </div>
             </article>
@@ -14885,9 +14922,8 @@ export default function Home() {
                 {mode === 'practice' ? 'Back to Activities' : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
               </button>
               {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Start Full Free Assessment</button>}
-              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Pilot</button>}
+              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>}
               {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
-              {mode !== 'executive' && <button className="secondary dark" onClick={() => setStep('executiveOnboarding')}>Try Executive Pilot</button>}
             </div>
           </div>
         </section>
