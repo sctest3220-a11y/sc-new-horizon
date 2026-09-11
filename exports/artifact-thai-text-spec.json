@@ -1,0 +1,151 @@
+{
+ "gen-exp-fraud-sms-thread.svg": {
+  "note": "Thai delivery-scam SMS (the most common Thai scam pattern). Keeps: unknown sender, tiny fee, short link with mismatched domain, countdown pressure, card collection page.",
+  "map": {
+   "Parcel Notice": "แจ้งเตือนพัสดุ",
+   "+1 (844) 019-7742": "+66 92 019 7742",
+   "Today 8:14 AM": "วันนี้ 08:14",
+   "Your package is held due": "พัสดุของคุณถูกระงับ",
+   "to unpaid customs fee.": "เนื่องจากค้างค่าธรรมเนียมศุลกากร",
+   "Pay $2.98 within 30 min": "ชำระ 29 บาท ภายใน 30 นาที",
+   "to prevent return:": "เพื่อไม่ให้ถูกตีกลับ:",
+   "http://trk-pstl.cc/8Qz": "http://trk-pstl.cc/8Qz",
+   "I am expecting a package.": "ฉันกำลังรอพัสดุอยู่พอดี",
+   "Is this safe?": "อันนี้ปลอดภัยไหม?",
+   "Final reminder. Payment": "เตือนครั้งสุดท้าย ช่องทาง",
+   "window closes soon.": "ชำระเงินกำลังจะปิด",
+   "No phone support today.": "วันนี้ไม่มีเจ้าหน้าที่รับสาย",
+   "trk-pstl.cc / verify-delivery": "trk-pstl.cc / verify-delivery",
+   "Postal Delivery Confirmation": "ยืนยันการจัดส่งพัสดุไปรษณีย์",
+   "Pay a small customs balance to release your parcel.": "ชำระค่าธรรมเนียมศุลกากรจำนวนเล็กน้อยเพื่อปล่อยพัสดุ",
+   "Action required": "ต้องดำเนินการ",
+   "Your item will be returned if payment is not completed today.": "พัสดุจะถูกส่งคืนหากไม่ชำระเงินภายในวันนี้",
+   "Fee due: $2.98": "ยอดที่ต้องชำระ: 29 บาท",
+   "Tracking: US-88I0-O1": "เลขพัสดุ: TH-88I0-O1",
+   "Card number": "หมายเลขบัตร",
+   "0000 0000 0000 0000": "0000 0000 0000 0000",
+   "Name and billing ZIP": "ชื่อและรหัสไปรษณีย์",
+   "Release parcel": "ปล่อยพัสดุ",
+   "mismatched domain": "โดเมนไม่ตรงกับไปรษณีย์",
+   "pressure": "เร่งรัดให้รีบ",
+   "card collection": "ขอข้อมูลบัตร"
+  }
+ },
+ "executive-synthetic-post.svg": {
+  "note": "Impersonation post about the CEO. Keeps: unverified label, anonymous repost, no original video, no company statement, timing before market open.",
+  "map": {
+   "Executive Signal Watch": "เฝ้าระวังสัญญาณระดับผู้บริหาร",
+   "UNVERIFIED POST": "โพสต์ที่ยังไม่ยืนยัน",
+   "Breaking: CEO confirms AI-driven layoffs": "ด่วน: CEO ยืนยันเลิกจ้างพนักงานเพราะใช้ AI",
+   "Post clues": "เบาะแสในโพสต์",
+   "Source: anonymous repost": "แหล่งที่มา: รีโพสต์จากบัญชีนิรนาม",
+   "Original video: not linked": "วิดีโอต้นฉบับ: ไม่มีลิงก์",
+   "Company channel: no matching statement": "ช่องทางบริษัท: ไม่มีแถลงการณ์ที่ตรงกัน",
+   "Timing: before market open": "เวลา: ก่อนตลาดหุ้นเปิด",
+   "Leadership task: verify provenance before public response.": "หน้าที่ผู้บริหาร: ตรวจสอบที่มาก่อนตอบสาธารณะ"
+  }
+ },
+ "fraud-invoice.svg": {
+  "note": "Supplier invoice with changed bank account. Keeps: look-alike sender domain, PAY TODAY pressure, missing PO, new payee, bank country mismatch, 'do not call old contact'.",
+  "map": {
+   "INVOICE": "ใบแจ้งหนี้",
+   "#INV-9041": "#INV-9041",
+   "From: NorthBridge Supplies": "จาก: บริษัท นอร์ทบริดจ์ ซัพพลาย จำกัด",
+   "Sender: billing@northbrldge-payments.com": "ผู้ส่ง: billing@northbrldge-payments.com",
+   "PAY TODAY ONLY": "ต้องชำระภายในวันนี้เท่านั้น",
+   "Item": "รายการ",
+   "Amount": "จำนวนเงิน",
+   "Classroom laptops and setup support": "โน้ตบุ๊กสำหรับห้องเรียนและบริการติดตั้ง",
+   "$18,740.00": "฿ 640,500.00",
+   "Purchase order": "ใบสั่งซื้อ (PO)",
+   "MISSING": "ไม่มี",
+   "Payment instructions changed": "เปลี่ยนวิธีการชำระเงิน",
+   "Wire to: NB Rapid Settlement Ltd.": "โอนเข้า: NB Rapid Settlement Ltd.",
+   "Account ending: 9917 · Bank country: different from vendor record": "เลขบัญชีลงท้าย: 9917 · ธนาคารต่างประเทศ ไม่ตรงกับข้อมูลผู้ขายในระบบ",
+   "Do not call old procurement contact. Reply to this email after transfer.": "ไม่ต้องโทรหาผู้ติดต่อฝ่ายจัดซื้อเดิม ตอบกลับอีเมลนี้หลังโอนเงิน"
+  }
+ },
+ "fraud-login.svg": {
+  "note": "Phishing re-authentication page. Keeps: look-alike URL, lock threat, countdown, password + OTP fields, 'reply with phone number'.",
+  "map": {
+   "https://secure-it.example.co-login.verify": "https://secure-it.example.co-login.verify",
+   "IT Security Re-authentication": "ฝ่าย IT: ยืนยันตัวตนอีกครั้งเพื่อความปลอดภัย",
+   "Your account will be locked unless you verify now.": "บัญชีของคุณจะถูกล็อก หากไม่ยืนยันตัวตนทันที",
+   "05:00 minutes remaining": "เหลือเวลา 05:00 นาที",
+   "PASSWORD": "รหัสผ่าน",
+   "Enter password": "กรอกรหัสผ่าน",
+   "ONE-TIME CODE": "รหัส OTP",
+   "Enter authenticator code": "กรอกรหัสจากแอปยืนยันตัวตน",
+   "Verify Account": "ยืนยันบัญชี",
+   "Need help? Reply to this message with your phone number.": "ต้องการความช่วยเหลือ? ตอบกลับข้อความนี้พร้อมเบอร์โทรของคุณ"
+  }
+ },
+ "fake-product-listing.svg": {
+  "note": "Marketplace listing (Shopee/Lazada-style cues). Keeps: warped logo, too-good price, new seller, duplicated reviews, off-platform payment.",
+  "map": {
+   "Image has warped logo and inconsistent shadows": "โลโก้ในภาพบิดเบี้ยว เงาไม่สอดคล้องกัน",
+   "Pro AI Laptop Pro Max": "Pro AI Laptop Pro Max",
+   "$129 today only": "฿4,590 วันนี้เท่านั้น",
+   "Seller created yesterday": "ร้านเปิดเมื่อวานนี้",
+   "Reviews repeat same wording": "รีวิวใช้ข้อความซ้ำ ๆ กัน",
+   "Payment outside platform": "ให้โอนเงินนอกแพลตฟอร์ม"
+  }
+ },
+ "executive/exec-exp-vendor-memo-data-rights.svg": {
+  "note": "Vendor memo. Keeps every unresolved term: model improvement opt-out, 30-day logs, support access, best-effort subprocessor notice, discount pressure.",
+  "map": {
+   "VENDOR MEMO: ENTERPRISE GENAI PLATFORM TERMS": "บันทึกจากผู้ขาย: เงื่อนไขแพลตฟอร์ม GenAI ระดับองค์กร",
+   "Summary": "สรุป",
+   "The platform is ready for enterprise rollout. Remaining security and data questions can be finalized in the first renewal cycle.": "แพลตฟอร์มพร้อมใช้งานทั่วองค์กรแล้ว ประเด็นด้านความปลอดภัยและข้อมูลที่เหลือสามารถสรุปได้ในรอบต่ออายุสัญญาครั้งแรก",
+   "1. Model improvement": "1. การนำข้อมูลไปพัฒนาโมเดล",
+   "Customer prompts and outputs may be used to improve service quality unless an opt-out addendum is executed.": "prompt และผลลัพธ์ของลูกค้าอาจถูกนำไปใช้พัฒนาคุณภาพบริการ เว้นแต่จะลงนามเอกสารแนบขอไม่เข้าร่วม (opt-out)",
+   "2. Audit logs": "2. Audit log",
+   "Admin logs are retained for 30 days by default; extended retention is available on an enterprise plan tier.": "บันทึกของผู้ดูแลระบบเก็บไว้ 30 วันโดยค่าเริ่มต้น การเก็บนานขึ้นมีในแพ็กเกจระดับองค์กร",
+   "3. Support access": "3. สิทธิ์เข้าถึงของทีมซัพพอร์ต",
+   "Vendor support may inspect customer workspaces to resolve incidents; approval workflow is configurable post-launch.": "ทีมซัพพอร์ตของผู้ขายอาจเข้าดูพื้นที่ทำงานของลูกค้าเพื่อแก้ปัญหา ตั้งค่าขั้นตอนอนุมัติได้หลังเปิดใช้งาน",
+   "4. Subprocessors": "4. ผู้ประมวลผลช่วง (subprocessors)",
+   "New subprocessors are posted on the trust site; contract notice is best-effort for urgent service continuity changes.": "ผู้ประมวลผลช่วงรายใหม่จะประกาศบนเว็บไซต์ trust การแจ้งตามสัญญาทำ \"เท่าที่ทำได้\" กรณีเปลี่ยนแปลงเร่งด่วนเพื่อความต่อเนื่องของบริการ",
+   "Procurement note: discount expires Friday if signed without redlines.": "หมายเหตุฝ่ายจัดซื้อ: ส่วนลดหมดอายุวันศุกร์ หากลงนามโดยไม่แก้ไขข้อสัญญา",
+   "Open: data rights, retention, support access, subprocessor notice.": "ยังไม่ปิด: สิทธิ์ในข้อมูล ระยะเวลาเก็บ สิทธิ์เข้าถึงของซัพพอร์ต การแจ้งผู้ประมวลผลช่วง",
+   "From: Account Director | To: CIO, GC, CFO | Re: commercial close items": "จาก: ผู้อำนวยการฝ่ายลูกค้าองค์กร | ถึง: CIO, ที่ปรึกษากฎหมาย, CFO | เรื่อง: รายการที่ต้องปิดก่อนเซ็นสัญญา"
+  }
+ },
+ "flood-forwarded-chat.png": {
+  "note": "Chat screenshot repainted: group header, date chip, forwarded caption, composer placeholder. Photo untouched.",
+  "map": {
+   "Family Group": "กลุ่มครอบครัว",
+   "9 members": "สมาชิก 9 คน",
+   "Today": "วันนี้",
+   "Forwarded: Rama 9 flooded again today": "ส่งต่อ: พระราม 9 น้ำท่วมอีกแล้ววันนี้",
+   "Message": "ข้อความ"
+  }
+ },
+ "flood-station-social-post.png": {
+  "note": "Social post repainted: caption, action bar, comment placeholder. Photo and redacted author untouched.",
+  "map": {
+   "1h": "1 ชม.",
+   "Flooding near station this morning?": "น้ำท่วมแถวสถานีเช้านี้เหรอ?",
+   "Like": "ถูกใจ",
+   "Comment": "แสดงความคิดเห็น",
+   "Share": "แชร์",
+   "Write a comment...": "เขียนความคิดเห็น..."
+  }
+ },
+ "realistic-scheduling-email.png": {
+  "note": "Email client repainted on the message pane only (subject, greeting, body, sign-off, AI draft, Missing box, availability header). Left nav and calendar chrome stay English, which is realistic for Thai offices using Outlook.",
+  "map": {
+   "Subject: Client kickoff call": "เรื่อง: นัดประชุมเปิดโปรเจกต์กับลูกค้า",
+   "Client kickoff call": "นัดประชุมเปิดโปรเจกต์กับลูกค้า",
+   "Hi team,": "สวัสดีทีม",
+   "Can we meet next week with Bangkok and London teams?": "สัปดาห์หน้าเรานัดประชุมกับทีมกรุงเทพและทีมลอนดอนได้ไหมครับ",
+   "Thanks,": "ขอบคุณครับ",
+   "Alex": "อเล็กซ์",
+   "AI draft:": "ร่างจาก AI:",
+   "Find a time and send an invite.": "หาเวลาว่างแล้วส่งคำเชิญ",
+   "Missing:": "ยังขาด:",
+   "timezone, agenda, attendees, confirmation link": "โซนเวลา วาระประชุม ผู้เข้าร่วม ลิงก์ยืนยัน",
+   "Team availability": "เวลาว่างของทีม",
+   "Showing times for": "แสดงเวลาสำหรับ"
+  }
+ }
+}

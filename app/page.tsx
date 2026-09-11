@@ -213,6 +213,8 @@ type Question = {
     altTh?: string;
     labelTh?: string;
     captionTh?: string;
+    /** Thai version of the image; also resolvable through thaiStimulusSources by src. */
+    srcTh?: string;
   };
   visualStimulus?: VisualStimulus;
   /** Thai question text. English fields stay the source of truth; scoring uses option ids only. */
@@ -11325,6 +11327,22 @@ const hiddenArtifactQuestionIds = new Set([
  * Only questions with a translation status are localized, so a partially translated bank never
  * mixes Thai buttons with an English scenario. Ids, scores, keys, and telemetry stay language-independent.
  */
+/**
+ * Thai versions of message-type artifacts (SMS, chat, social post, invoice, login alert, email, listing, memo).
+ * Only text regions were repainted; layout, photos, and every fraud/verification cue are unchanged.
+ */
+const thaiStimulusSources: Record<string, string> = {
+  '/stimuli/gen-exp-fraud-sms-thread.svg': '/stimuli/gen-exp-fraud-sms-thread-th.svg',
+  '/stimuli/executive-synthetic-post.svg': '/stimuli/executive-synthetic-post-th.svg',
+  '/stimuli/fraud-invoice.svg': '/stimuli/fraud-invoice-th.svg',
+  '/stimuli/fraud-login.svg': '/stimuli/fraud-login-th.svg',
+  '/stimuli/fake-product-listing.svg': '/stimuli/fake-product-listing-th.svg',
+  '/stimuli/executive/exec-exp-vendor-memo-data-rights.svg': '/stimuli/executive/exec-exp-vendor-memo-data-rights-th.svg',
+  '/stimuli/flood-forwarded-chat.png': '/stimuli/flood-forwarded-chat-th.png',
+  '/stimuli/flood-station-social-post.png': '/stimuli/flood-station-social-post-th.png',
+  '/stimuli/realistic-scheduling-email.png': '/stimuli/realistic-scheduling-email-th.png',
+};
+
 function getTranslationStatus(question: Question): TranslationStatus | undefined {
   return questionTranslationsTh[question.id]?.status ?? question.translationStatus;
 }
@@ -11369,6 +11387,7 @@ function localizeQuestion(question: Question, language: AppLanguage): Question {
     stimulus: question.stimulus
       ? {
           ...question.stimulus,
+          src: question.stimulus.srcTh ?? thaiStimulusSources[question.stimulus.src] ?? question.stimulus.src,
           alt: pick(t?.stimulus?.alt, question.stimulus.altTh) ?? question.stimulus.alt,
           label: pick(t?.stimulus?.label, question.stimulus.labelTh) ?? question.stimulus.label,
           caption: pick(t?.stimulus?.caption, question.stimulus.captionTh) ?? question.stimulus.caption,

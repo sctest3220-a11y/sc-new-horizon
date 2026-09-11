@@ -1,5 +1,15 @@
 # Latest Changes
 
+## 2026-09-11: Thai Versions of Message-Type Artifacts
+
+Nine artifacts that a Thai user must read as messages to judge realistically now have Thai versions: delivery-scam SMS thread, forwarded flood chat, station flood social post, executive impersonation post, fraudulent supplier invoice, phishing re-authentication page, client scheduling email, fake marketplace listing, and vendor data-rights memo. SVGs had their text nodes replaced (Noto Sans Thai embedded as a data URI so rendering does not depend on device fonts); PNG screenshots had only their text regions repainted, leaving photos, layout and every fraud or verification cue unchanged (mismatched domain, changed bank account, missing PO, countdown pressure, unverified source, missing agenda and timezone). Amounts are in baht.
+
+`thaiStimulusSources` maps each English image to its `-th` version and `localizeQuestion` swaps it for questions that carry a translation status. Fourteen translated questions now show Thai artifacts; nine untranslated `DEPTH-*` items keep the English image until they are translated, so a question never mixes languages. English mode is unchanged. The EN→TH text for each image is recorded in `exports/artifact-thai-text-spec.json` for native review; `exports/artifact-language-tags.json` tracks production status.
+
+Also added `exports/New_Horizon_Thai_Batch1_SpotCheck.xlsx`: a stratified 20-item second-reviewer sample of batch 1 with a built-in promotion rule (18 of 20 Approve and no ambiguous key → promote batch 1 to `approved`).
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged, VM check that Thai image swap applies only to translated questions and never in English mode.
+
 ## 2026-09-11: Merge Repair After Main Sync
 
 The merge of `main` into `kj-dee-branch` (`82d0da4`) left `page.tsx` unbuildable: `currentDisplayStimulus` was declared twice (the localisation branch's `getDisplayStimulus(shownQuestion)` beside main's `getDisplayStimulus(current)`), so `pnpm build` failed with a parse error. Fixed by keeping one declaration and driving main's new visual-card gate from the localised question (`getDisplayVisualStimulus(shownQuestion)`), so hidden-artifact rules and Thai visual cards work together. Also removed six duplicate keys in `thaiUiCopy` introduced by the merge (`Assessment`, `Improve next`, `Score interpretation`, `Open detailed analysis`, the survey-unlock sentence, `Maps to`); JavaScript kept the last value anyway, so behaviour is unchanged.

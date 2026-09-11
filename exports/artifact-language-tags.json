@@ -16,7 +16,9 @@
     "EXEC-D6-004"
    ],
    "action": "No Thai image needed",
-   "reason": "System UI: permission trace. English tool/permission names are realistic in Thai offices."
+   "reason": "System UI: permission trace. English tool/permission names are realistic in Thai offices.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/ai-concept-workbench.svg",
@@ -29,7 +31,9 @@
     "MULTI-CONCEPT-GEN-002"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Concept board; already gated for 5 items. If redesigned, produce EN and TH versions since it carries explanatory text the user must read."
+   "reason": "Concept board; already gated for 5 items. If redesigned, produce EN and TH versions since it carries explanatory text the user must read.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/ai-pilot-workflow.svg",
@@ -44,7 +48,9 @@
     "D2-L-007"
    ],
    "action": "No Thai image needed",
-   "reason": "Workflow diagram with short labels; gated. Thai caption is enough."
+   "reason": "Workflow diagram with short labels; gated. Thai caption is enough.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/executive-market-report.svg",
@@ -56,7 +62,9 @@
     "EXEC-D3-002"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Text-heavy report the user must read to judge claims; gated. A Thai market report is more realistic for Thai executives."
+   "reason": "Text-heavy report the user must read to judge claims; gated. A Thai market report is more realistic for Thai executives.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/executive-synthetic-post.svg",
@@ -69,7 +77,9 @@
     "EXEC-D3-003"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Message-type: impersonation social post. Must be Thai to test a Thai user realistically."
+   "reason": "Message-type: impersonation social post. Must be Thai to test a Thai user realistically.",
+   "thai_version": "/stimuli/executive-synthetic-post-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/executive/exec-exp-board-packet-scale-readiness.svg",
@@ -84,7 +94,9 @@
     "EXEC-EXP-D5-PORT-006"
    ],
    "action": "Produce Thai version (5 visible uses)",
-   "reason": "Board packet table; numbers dominate, but headings/notes should be Thai for Thai boards."
+   "reason": "Board packet table; numbers dominate, but headings/notes should be Thai for Thai boards.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/executive/exec-exp-incident-timeline-support-ai.svg",
@@ -99,7 +111,9 @@
     "EXEC-EXP-D6-LOOP-008"
    ],
    "action": "Produce Thai version (5 visible uses)",
-   "reason": "Timeline with narrative entries; the entries carry the evidence."
+   "reason": "Timeline with narrative entries; the entries carry the evidence.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/executive/exec-exp-risk-log-agent-authority.svg",
@@ -111,7 +125,9 @@
     "EXEC-EXP-D4-GOV-004"
    ],
    "action": "No Thai image needed",
-   "reason": "Register-style table; English column headers are common in Thai risk logs."
+   "reason": "Register-style table; English column headers are common in Thai risk logs.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/executive/exec-exp-vendor-memo-data-rights.svg",
@@ -124,7 +140,9 @@
     "EXEC-EXP-D4-VEND-005"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Message-type: vendor memo the user must read for contract terms."
+   "reason": "Message-type: vendor memo the user must read for contract terms.",
+   "thai_version": "/stimuli/executive/exec-exp-vendor-memo-data-rights-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/fake-product-listing.svg",
@@ -137,7 +155,9 @@
     "D3-P-005"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Message-type: marketplace listing (Shopee/Lazada-style is the realistic Thai context)."
+   "reason": "Message-type: marketplace listing (Shopee/Lazada-style is the realistic Thai context).",
+   "thai_version": "/stimuli/fake-product-listing-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/flood-claim-review-dashboard.png",
@@ -148,7 +168,9 @@
     "DEPTH-EXP-D3-D6-089"
    ],
    "action": "No Thai image needed",
-   "reason": "Analyst dashboard; structure matters more than words."
+   "reason": "Analyst dashboard; structure matters more than words.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/flood-forwarded-chat.png",
@@ -160,7 +182,9 @@
     "D3-A-001"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Message-type: forwarded chat (LINE is the realistic Thai channel)."
+   "reason": "Message-type: forwarded chat (LINE is the realistic Thai channel).",
+   "thai_version": "/stimuli/flood-forwarded-chat-th.png",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/flood-station-social-post.png",
@@ -172,7 +196,9 @@
     "DEPTH-D3-MEDIA-040"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Message-type: social post; caption must be Thai."
+   "reason": "Message-type: social post; caption must be Thai.",
+   "thai_version": "/stimuli/flood-station-social-post-th.png",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/fraud-invoice.svg",
@@ -185,7 +211,9 @@
     "D3-F-007"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Message-type: fraudulent invoice with changed bank account — Thai bank names and format make it testable."
+   "reason": "Message-type: fraudulent invoice with changed bank account — Thai bank names and format make it testable.",
+   "thai_version": "/stimuli/fraud-invoice-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/fraud-login.svg",
@@ -198,7 +226,9 @@
     "D4-F-006"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Message-type: phishing login alert."
+   "reason": "Message-type: phishing login alert.",
+   "thai_version": "/stimuli/fraud-login-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/func-exp-campaign-export.svg",
@@ -212,7 +242,9 @@
     "DEPTH-D5-VALUE-051"
    ],
    "action": "No Thai image needed",
-   "reason": "Raw data export; English column names are realistic."
+   "reason": "Raw data export; English column names are realistic.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/func-exp-finance-workbook.svg",
@@ -225,7 +257,9 @@
     "CAL-D4-RISK-019"
    ],
    "action": "No Thai image needed",
-   "reason": "Spreadsheet; numbers and English headers realistic. Thai caption only."
+   "reason": "Spreadsheet; numbers and English headers realistic. Thai caption only.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/func-exp-ops-data-workflow-log.svg",
@@ -240,7 +274,9 @@
     "DEPTH-EXP-D2-D5-072"
    ],
    "action": "Produce Thai version (5 visible uses)",
-   "reason": "Mixed: system log (English) plus customer ticket text (should be Thai)."
+   "reason": "Mixed: system log (English) plus customer ticket text (should be Thai).",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/func-exp-people-policy-packet.svg",
@@ -252,7 +288,9 @@
     "FUNC-EXP-PEOPLE-D4-002"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Text-heavy HR policy packet the user must read."
+   "reason": "Text-heavy HR policy packet the user must read.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/gen-exp-fraud-sms-thread.svg",
@@ -264,7 +302,9 @@
     "GEN-EXP-D3-001"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Message-type: delivery-scam SMS — the most common Thai scam pattern; must be Thai."
+   "reason": "Message-type: delivery-scam SMS — the most common Thai scam pattern; must be Thai.",
+   "thai_version": "/stimuli/gen-exp-fraud-sms-thread-th.svg",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/gen-exp-privacy-workflow-board.svg",
@@ -278,7 +318,9 @@
     "GEN-EXP-D5-001"
    ],
    "action": "No Thai image needed",
-   "reason": "Workflow board with short labels."
+   "reason": "Workflow board with short labels.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/gen-exp-school-policy-draft.svg",
@@ -291,7 +333,9 @@
     "GEN-EXP-D6-001"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Text-heavy student draft with reviewer notes."
+   "reason": "Text-heavy student draft with reviewer notes.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/medical-record-redacted.svg",
@@ -303,7 +347,9 @@
     "DEPTH-D4-RISK-043"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Lab report with personal identifiers; Thai hospital format is more realistic."
+   "reason": "Lab report with personal identifiers; Thai hospital format is more realistic.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/productivity-chart-forensics.png",
@@ -320,7 +366,9 @@
     "EXEC-D5-003"
    ],
    "action": "No Thai image needed",
-   "reason": "Chart; axis labels only."
+   "reason": "Chart; axis labels only.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-agent-audit-log.svg",
@@ -335,7 +383,9 @@
     "EXEC-D4-AGENT-020"
    ],
    "action": "No Thai image needed",
-   "reason": "System log; gated."
+   "reason": "System log; gated.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-agent-workflow-plan.svg",
@@ -349,7 +399,9 @@
     "CAL-D6-CHANGE-024"
    ],
    "action": "Produce Thai version (4 visible uses)",
-   "reason": "Plan with reviewer notes and failure cases in prose; gated."
+   "reason": "Plan with reviewer notes and failure cases in prose; gated.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-customer-notes.svg",
@@ -362,7 +414,9 @@
     "D3-N-006"
    ],
    "action": "Produce Thai version (3 visible uses)",
-   "reason": "Customer notes in prose; tone requirements only make sense in the customer's language."
+   "reason": "Customer notes in prose; tone requirements only make sense in the customer's language.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-customer-service-escalation.svg",
@@ -377,7 +431,9 @@
     "CAL-D2-WORKFLOW-016"
    ],
    "action": "Produce Thai version (5 visible uses)",
-   "reason": "Queue UI (English) with frustrated customer messages (Thai)."
+   "reason": "Queue UI (English) with frustrated customer messages (Thai).",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-finance-variance-report.svg",
@@ -390,7 +446,9 @@
     "EXEC-D3-FIN-022"
    ],
    "action": "No Thai image needed",
-   "reason": "Financial table."
+   "reason": "Financial table.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-hr-candidate-packet.svg",
@@ -404,7 +462,9 @@
     "EXEC-D4-PEOPLE-023"
    ],
    "action": "Produce Thai version (4 visible uses)",
-   "reason": "Text-heavy candidate evidence notes; bias cues depend on wording."
+   "reason": "Text-heavy candidate evidence notes; bias cues depend on wording.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-marketing-campaign-dashboard.svg",
@@ -418,7 +478,9 @@
     "D3-PRO-010"
    ],
    "action": "No Thai image needed",
-   "reason": "Dashboard; numbers dominate."
+   "reason": "Dashboard; numbers dominate.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-policy-excerpt.svg",
@@ -430,7 +492,9 @@
     "D3-P-004"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Policy text beside an AI summary; the unsupported-claim test is linguistic."
+   "reason": "Policy text beside an AI summary; the unsupported-claim test is linguistic.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-rag-source-comparison.svg",
@@ -446,7 +510,9 @@
     "EXEC-EXP-D4-SOURCE-010"
    ],
    "action": "Produce Thai version (6 visible uses)",
-   "reason": "Retrieved passages are prose the user must compare; search UI can stay English."
+   "reason": "Retrieved passages are prose the user must compare; search UI can stay English.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-sales-crm-pipeline.svg",
@@ -461,7 +527,9 @@
     "CAL-D5-VALUE-021"
    ],
    "action": "No Thai image needed",
-   "reason": "CRM table; risk notes short."
+   "reason": "CRM table; risk notes short.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-study-helper-review.svg",
@@ -473,7 +541,9 @@
     "PRACTICAL-GEN-D6-014"
    ],
    "action": "Produce Thai version (2 visible uses)",
-   "reason": "Prose answer with unsupported citations; the test is reading the text."
+   "reason": "Prose answer with unsupported citations; the test is reading the text.",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-support-ticket-thread.svg",
@@ -484,7 +554,9 @@
     "FUNC-OPS-D6-001"
    ],
    "action": "Produce Thai version (1 visible use)",
-   "reason": "System payment log (English) plus customer complaint and AI draft (Thai)."
+   "reason": "System payment log (English) plus customer complaint and AI draft (Thai).",
+   "thai_version": "",
+   "thai_status": "pending"
   },
   {
    "artifact": "/stimuli/raw-technical-access-log.svg",
@@ -499,7 +571,9 @@
     "D4-PRO-011"
    ],
    "action": "No Thai image needed",
-   "reason": "Access log; gated."
+   "reason": "Access log; gated.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/raw-vendor-security-questionnaire.svg",
@@ -514,7 +588,9 @@
     "EXEC-D4-005"
    ],
    "action": "No Thai image needed",
-   "reason": "Model card excerpt; industry documents are English."
+   "reason": "Model card excerpt; industry documents are English.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/realistic-agent-workflow-builder.png",
@@ -528,7 +604,9 @@
     "EXEC-EXP-D2-AGENT-009"
    ],
    "action": "No Thai image needed",
-   "reason": "Product UI screenshot; English is realistic."
+   "reason": "Product UI screenshot; English is realistic.",
+   "thai_version": "",
+   "thai_status": ""
   },
   {
    "artifact": "/stimuli/realistic-scheduling-email.png",
@@ -539,7 +617,9 @@
     "REL-G-D2-001"
    ],
    "action": "Produce Thai version (1 visible use)",
-   "reason": "Message-type: client email and weak AI draft; both should be Thai."
+   "reason": "Message-type: client email and weak AI draft; both should be Thai.",
+   "thai_version": "/stimuli/realistic-scheduling-email-th.png",
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
   },
   {
    "artifact": "/stimuli/realistic-support-ticket-ai-draft.png",
@@ -553,7 +633,10 @@
     "EXEC-D6-OPS-024"
    ],
    "action": "Produce Thai version (4 visible uses)",
-   "reason": "Console UI (English) with customer message and AI draft (Thai); gated."
+   "reason": "Console UI (English) with customer message and AI draft (Thai); gated.",
+   "thai_version": "",
+   "thai_status": "pending"
   }
- ]
+ ],
+ "thai_content_spec": "exports/artifact-thai-text-spec.json"
 }
