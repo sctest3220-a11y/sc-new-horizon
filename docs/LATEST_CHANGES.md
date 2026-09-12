@@ -6,6 +6,8 @@ Radar target profiles now use more differentiated domain expectations instead of
 
 Premium target blending now weights function context first, industry context second, and professional baseline third. This keeps radar targets tied to the selected profile instead of averaging every profile back toward the same shape.
 
+The research basis is documented in `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`. It references UNESCO AI competency dimensions and understand/apply/create progression; OECD/European Commission AI literacy knowledge, skills, and attitudes; EU AI Act Article 4 context-of-use and user-experience requirements; NIST AI RMF Govern/Map/Measure/Manage; DigComp 2.2; ISO/IEC 42001; and Singapore AI Verify/MGF GenAI. The documented conclusion is that domain targets and question routing should be profile-weighted, not evenly distributed across D1-D6.
+
 ## 2026-09-11: Report Simplification
 
 The assessment report Summary tab is reorganized around the user’s immediate questions: score meaning, whether to continue, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary material such as Did you know, leaderboard, score calculation, telemetry, evidence-mode split, badges, profile signals, and improvement math now sits in Question review/analysis to reduce clutter.
