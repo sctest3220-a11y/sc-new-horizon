@@ -50,6 +50,8 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 
+Latest radar-target update: profile targets now show distinct radar shapes. General users emphasize foundations, practical tooling, and critical judgment; work/team/function/industry/premium contexts shift targets toward the domains most relevant to the selected profile. Premium target blending now weights function first, industry second, and professional baseline third.
+
 Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
 
 Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.

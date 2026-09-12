@@ -8074,31 +8074,31 @@ function scoreToLevel(score: number, answers: Answer[]) {
 }
 
 const audienceBenchmarks: Record<Audience, Record<DomainId, number>> = {
-  general: { D1: 70, D2: 72, D3: 80, D4: 76, D5: 68, D6: 76 },
-  student: { D1: 74, D2: 74, D3: 82, D4: 78, D5: 66, D6: 76 },
-  educator: { D1: 76, D2: 74, D3: 84, D4: 84, D5: 70, D6: 84 },
-  professional: { D1: 76, D2: 80, D3: 84, D4: 80, D5: 76, D6: 82 },
-  team: { D1: 76, D2: 80, D3: 84, D4: 84, D5: 80, D6: 84 },
+  general: { D1: 82, D2: 84, D3: 86, D4: 72, D5: 54, D6: 74 },
+  student: { D1: 84, D2: 82, D3: 86, D4: 78, D5: 50, D6: 70 },
+  educator: { D1: 82, D2: 74, D3: 86, D4: 88, D5: 62, D6: 88 },
+  professional: { D1: 74, D2: 86, D3: 86, D4: 82, D5: 78, D6: 80 },
+  team: { D1: 70, D2: 84, D3: 82, D4: 88, D5: 86, D6: 88 },
 };
 
 const functionBenchmarks: Record<FunctionTrack, Record<DomainId, number>> = {
-  general: { D1: 74, D2: 78, D3: 82, D4: 80, D5: 76, D6: 80 },
-  people: { D1: 74, D2: 74, D3: 82, D4: 88, D5: 76, D6: 88 },
-  finance: { D1: 76, D2: 78, D3: 88, D4: 90, D5: 86, D6: 78 },
-  marketing: { D1: 74, D2: 84, D3: 84, D4: 80, D5: 84, D6: 80 },
-  sales: { D1: 74, D2: 84, D3: 86, D4: 80, D5: 86, D6: 84 },
-  customerService: { D1: 72, D2: 82, D3: 84, D4: 84, D5: 78, D6: 88 },
-  technical: { D1: 88, D2: 90, D3: 86, D4: 86, D5: 78, D6: 80 },
-  operations: { D1: 74, D2: 84, D3: 82, D4: 84, D5: 84, D6: 82 },
+  general: { D1: 78, D2: 84, D3: 86, D4: 78, D5: 70, D6: 78 },
+  people: { D1: 68, D2: 76, D3: 82, D4: 90, D5: 70, D6: 92 },
+  finance: { D1: 72, D2: 78, D3: 92, D4: 94, D5: 90, D6: 70 },
+  marketing: { D1: 72, D2: 90, D3: 90, D4: 78, D5: 88, D6: 72 },
+  sales: { D1: 68, D2: 90, D3: 88, D4: 82, D5: 90, D6: 84 },
+  customerService: { D1: 66, D2: 88, D3: 86, D4: 86, D5: 70, D6: 92 },
+  technical: { D1: 94, D2: 94, D3: 88, D4: 90, D5: 68, D6: 70 },
+  operations: { D1: 68, D2: 90, D3: 80, D4: 84, D5: 90, D6: 86 },
 };
 
 const industryBenchmarks: Record<IndustryTrack, Record<DomainId, number>> = {
-  general: { D1: 74, D2: 78, D3: 82, D4: 80, D5: 78, D6: 80 },
-  education: { D1: 78, D2: 74, D3: 84, D4: 86, D5: 72, D6: 84 },
-  financial: { D1: 78, D2: 80, D3: 90, D4: 92, D5: 86, D6: 80 },
-  healthcare: { D1: 76, D2: 76, D3: 90, D4: 92, D5: 78, D6: 84 },
-  retail: { D1: 74, D2: 84, D3: 82, D4: 82, D5: 84, D6: 80 },
-  public: { D1: 76, D2: 74, D3: 86, D4: 92, D5: 80, D6: 86 },
+  general: { D1: 76, D2: 82, D3: 84, D4: 80, D5: 76, D6: 80 },
+  education: { D1: 86, D2: 76, D3: 86, D4: 90, D5: 62, D6: 88 },
+  financial: { D1: 76, D2: 80, D3: 94, D4: 96, D5: 92, D6: 72 },
+  healthcare: { D1: 74, D2: 76, D3: 92, D4: 96, D5: 76, D6: 88 },
+  retail: { D1: 68, D2: 90, D3: 88, D4: 82, D5: 90, D6: 76 },
+  public: { D1: 74, D2: 74, D3: 88, D4: 96, D5: 78, D6: 90 },
 };
 
 const executiveBenchmarks: Record<ExecutiveRole, Record<DomainId, number>> = {
@@ -8153,12 +8153,13 @@ const targetEvidenceSources = [
   },
 ];
 
-function blendScores(scoreSets: Record<DomainId, number>[]) {
+function blendScores(scoreSets: Array<{ scores: Record<DomainId, number>; weight: number }>) {
   const blended = {} as Record<DomainId, number>;
+  const totalWeight = scoreSets.reduce((sum, item) => sum + item.weight, 0) || 1;
   (Object.keys(domains) as DomainId[]).forEach((domain) => {
-    const weightedAverage = scoreSets.reduce((sum, scores) => sum + scores[domain], 0) / scoreSets.length;
-    const strongestSignal = Math.max(...scoreSets.map((scores) => scores[domain]));
-    blended[domain] = Math.round(weightedAverage + (strongestSignal - weightedAverage) * 0.65);
+    const weightedAverage = scoreSets.reduce((sum, item) => sum + item.scores[domain] * item.weight, 0) / totalWeight;
+    const strongestSignal = Math.max(...scoreSets.map((item) => item.scores[domain]));
+    blended[domain] = Math.round(weightedAverage + (strongestSignal - weightedAverage) * 0.25);
   });
   return blended;
 }
@@ -8177,7 +8178,16 @@ function getBenchmarkProfiles(
   }
   if (assessmentMode === 'premium') {
     return [
-      { label: 'Focused target', detail: `${functionLabels[functionTrack]} in ${industryLabels[industryTrack].toLowerCase()}`, tone: 'target', scores: blendScores([audienceBenchmarks.professional, functionBenchmarks[functionTrack], industryBenchmarks[industryTrack]]) },
+      {
+        label: 'Focused target',
+        detail: `${functionLabels[functionTrack]} in ${industryLabels[industryTrack].toLowerCase()}`,
+        tone: 'target',
+        scores: blendScores([
+          { scores: audienceBenchmarks.professional, weight: 0.2 },
+          { scores: functionBenchmarks[functionTrack], weight: 0.55 },
+          { scores: industryBenchmarks[industryTrack], weight: 0.25 },
+        ]),
+      },
     ];
   }
   return [

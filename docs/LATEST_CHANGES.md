@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-12: Profile-Weighted Radar Targets
+
+Radar target profiles now use more differentiated domain expectations instead of near-even D1-D6 shapes. General users emphasize D1 Foundations, D2 Practical Tooling, and D3 Critical Judgment, with lighter D4/D6 and minimal D5. Professional, team, function, industry, and leadership contexts now show visibly different target shapes based on the researched profile focus model.
+
+Premium target blending now weights function context first, industry context second, and professional baseline third. This keeps radar targets tied to the selected profile instead of averaging every profile back toward the same shape.
+
 ## 2026-09-11: Report Simplification
 
 The assessment report Summary tab is reorganized around the user’s immediate questions: score meaning, whether to continue, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary material such as Did you know, leaderboard, score calculation, telemetry, evidence-mode split, badges, profile signals, and improvement math now sits in Question review/analysis to reduce clutter.
