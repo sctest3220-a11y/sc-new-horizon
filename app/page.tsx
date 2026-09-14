@@ -522,19 +522,19 @@ const globalFrameworkCrosswalk = [
   },
   {
     domain: 'D4' as DomainId,
-    mapsTo: 'NIST AI RMF, ISO/IEC 42001, EU AI Act Article 4, AI Verify/MGF GenAI, UNESCO ethics',
+    mapsTo: 'NIST AI RMF, ISO/IEC 42001, EU AI Act Article 4, AI Verify/MGF GenAI, UNESCO ethics, BCG Responsible AI maturity',
     emphasis: 'Privacy, fairness, rights, policy fluency, security controls, auditability, human oversight, and governance.',
     improveNext: 'Add explicit role-based AI Act literacy, affected-person impact, accessibility, and sustainability evidence.',
   },
   {
     domain: 'D5' as DomainId,
-    mapsTo: 'NIST AI RMF Map/Measure/Manage, ISO/IEC 42001 risk/opportunity management, IBM contextual AI knowledge',
+    mapsTo: 'NIST AI RMF Map/Measure/Manage, ISO/IEC 42001 risk/opportunity management, Gartner AI maturity, McKinsey AI value measurement, IBM contextual AI knowledge',
     emphasis: 'Use-case fit, ROI/KPI design, portfolio prioritization, risk-adjusted value, scale gates, and operating model.',
     improveNext: 'Add more executive and industry scenarios that distinguish demo appeal from durable business value.',
   },
   {
     domain: 'D6' as DomainId,
-    mapsTo: 'UNESCO human-centred mindset, OECD agency/attitudes, EU AI Act context-of-use literacy, AI Verify human agency/oversight, DEC human-centricity',
+    mapsTo: 'UNESCO human-centred mindset, OECD agency/attitudes, EU AI Act context-of-use literacy, AI Verify human agency/oversight, Gartner people/culture maturity, BCG Human + AI, DEC human-centricity',
     emphasis: 'Human-AI role clarity, accountability, challenge culture, change enablement, coaching, and learning loops.',
     improveNext: 'Add more collaboration evidence for managers, creators, educators, and frontline teams using AI daily.',
   },
@@ -548,6 +548,9 @@ const frameworkSourceLinks = [
   { label: 'DigComp 2.2', url: 'https://joint-research-centre.ec.europa.eu/oldpage-digcomp/digcomp-framework_en' },
   { label: 'ISO/IEC 42001', url: 'https://www.iso.org/standard/42001' },
   { label: 'AI Verify Foundation', url: 'https://aiverifyfoundation.sg/what-is-ai-verify/' },
+  { label: 'Gartner AI Maturity Model', url: 'https://www.gartner.com/en/chief-information-officer/research/ai-maturity-model-toolkit' },
+  { label: 'McKinsey AI value measurement', url: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/from-promise-to-impact-how-companies-can-measure-and-realize-the-full-value-of-ai' },
+  { label: 'BCG Responsible AI maturity', url: 'https://www.bcg.com/publications/2021/the-four-stages-of-responsible-ai-maturity' },
 ];
 
 const scoringModelExplainers = [
@@ -10980,11 +10983,13 @@ function getRelianceChoice(option: Option) {
 function RadarChart({
   scores,
   benchmarks = [],
+  assessedDomains,
   selectedDomain,
   onSelectDomain,
 }: {
   scores: Record<DomainId, number>;
   benchmarks?: BenchmarkProfile[];
+  assessedDomains?: DomainId[];
   selectedDomain?: DomainId;
   onSelectDomain?: (domain: DomainId) => void;
 }) {
@@ -11019,7 +11024,12 @@ function RadarChart({
       pointY: center + Math.sin(point.angle) * radius * value,
     };
   });
-  const polygon = getPolygon(scores);
+  const assessedSet = new Set(assessedDomains ?? axis);
+  const assessedUserPoints = userPoints.filter((point) => assessedSet.has(point.domain));
+  const polygon = assessedUserPoints.length >= 3
+    ? assessedUserPoints.map((point) => `${point.pointX},${point.pointY}`).join(' ')
+    : '';
+  const hasUnassessedDomains = assessedSet.size < axis.length;
 
   return (
     <div className="radar-panel">
@@ -11042,8 +11052,8 @@ function RadarChart({
         {benchmarks.map((benchmark) => (
           <polygon key={benchmark.label} points={getPolygon(benchmark.scores)} className={`radar-benchmark ${benchmark.tone}`} />
         ))}
-        <polygon points={polygon} className="radar-score" />
-        {userPoints.map((point) => (
+        {polygon && <polygon points={polygon} className="radar-score" />}
+        {assessedUserPoints.map((point) => (
           <g key={point.domain}>
             <circle cx={point.pointX} cy={point.pointY} r={selectedDomain === point.domain ? '6' : '4'} fill={domains[point.domain].color} />
             {onSelectDomain && (
@@ -11088,6 +11098,9 @@ function RadarChart({
           </button>
         ))}
       </div>
+      {hasUnassessedDomains && (
+        <p className="radar-note">Domains without sampled evidence are left unplotted and marked as Not assessed in the scorecard.</p>
+      )}
       {benchmarks.length > 0 && (
         <div className="benchmark-legend" aria-label="Target comparison key">
           <span><i className="user-line" />Your score</span>
@@ -11377,6 +11390,14 @@ export default function Home() {
   const questionScoreCalculations = useMemo(() => getQuestionScoreCalculations(answers), [answers]);
   const domainScoreCalculations = useMemo(() => getDomainScoreCalculations(answers), [answers]);
   const domainEvidenceSummary = useMemo(() => getDomainEvidenceSummary(answers), [answers]);
+  const domainEvidenceById = useMemo(
+    () => Object.fromEntries(domainEvidenceSummary.map((item) => [item.domain, item])) as Record<DomainId, (typeof domainEvidenceSummary)[number]>,
+    [domainEvidenceSummary],
+  );
+  const assessedDomains = useMemo(
+    () => domainEvidenceSummary.filter((item) => item.evidenceCount > 0).map((item) => item.domain),
+    [domainEvidenceSummary],
+  );
   const evidenceModeSummary = useMemo(() => getEvidenceModeSummary(answers), [answers]);
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
   const adminAnalytics = useMemo(() => getAdminAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
@@ -12682,6 +12703,8 @@ export default function Home() {
               <p>
                 Each activity box maps to a practical assessment format. Users do not just read about AI;
                 they inspect, repair, verify, sequence, match, and explain.
+                Pilot labs should be treated as samples until they include complete instructions, realistic artifacts,
+                scoring criteria, and a debrief.
               </p>
             </div>
             <div className="activity-grid">
@@ -14372,6 +14395,7 @@ export default function Home() {
             <RadarChart
               scores={results.domainScores}
               benchmarks={radarProfiles}
+              assessedDomains={assessedDomains}
               selectedDomain={selectedRadarDomain}
               onSelectDomain={setSelectedRadarDomain}
             />
@@ -14418,21 +14442,32 @@ export default function Home() {
                 <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
                 <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
                 <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
-                <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
+                <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Domains with no sampled evidence are shown as Not assessed in the scorecard; the MVP formula still includes them as 0 until the route collects enough evidence, so the report should recommend continuation instead of treating the score as final. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
                 <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
               </div>
               <details className="calculation-details" open>
                 <summary>Question-level calculation</summary>
                 <div className="calculation-table">
-                  {questionScoreCalculations.map((row, index) => (
-                    <div key={`${row.questionId}-${index}`}>
-                      <span>Q{index + 1}</span>
-                      <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
-                      <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
-                      <small>{row.calculation}</small>
-                      <p>{row.competencies}</p>
-                    </div>
-                  ))}
+                  {questionScoreCalculations.map((row, index) => {
+                    const answer = answers[index];
+                    return (
+                      <div key={`${row.questionId}-${index}`}>
+                        <span>Q{index + 1}</span>
+                        <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
+                        <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
+                        <small>{row.calculation}</small>
+                        {answer && (
+                          <>
+                            <p><strong>Question</strong> {answer.question.prompt}</p>
+                            <p><strong>Your answer</strong> {answer.textResponse?.trim() || answer.option.label}</p>
+                            <p><strong>Expected evidence</strong> {getCorrectAnswerSummary(answer.question)}</p>
+                            <p><strong>Why it scored this way</strong> {answer.option.feedback}</p>
+                          </>
+                        )}
+                        <p><strong>Measured</strong> {row.competencies}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </details>
               <details className="calculation-details" open>
@@ -14702,6 +14737,8 @@ export default function Home() {
                 {(Object.keys(results.domainScores) as DomainId[]).map((domain) => {
                   const target = getTargetScore(domain, radarProfiles);
                   const gap = target - results.domainScores[domain];
+                  const evidence = domainEvidenceById[domain];
+                  const assessed = (evidence?.evidenceCount ?? 0) > 0;
                   return (
                     <button
                       key={domain}
@@ -14710,9 +14747,9 @@ export default function Home() {
                       onClick={() => selectReportDomain(domain, 'radar')}
                     >
                       <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
-                      <strong>{results.domainScores[domain]}/100</strong>
-                      <meter min="0" max="100" value={results.domainScores[domain]} />
-                      <small>{gap > 0 ? `${gap} points below target` : 'At or above target'}</small>
+                      <strong>{assessed ? `${results.domainScores[domain]}/100` : 'Not assessed'}</strong>
+                      {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label="Not assessed" />}
+                      <small>{assessed ? (gap > 0 ? `${gap} points below target` : 'At or above target') : 'No question sampled this domain yet'}</small>
                     </button>
                   );
                 })}
@@ -14842,14 +14879,15 @@ export default function Home() {
             </article>
             <article className="result-card report-primary report-order-strengths">
               <h2>Strengths</h2>
-              {results.strongest.map((domain) => (
+              {results.strongest.filter((domain) => assessedDomains.includes(domain)).map((domain) => (
                 <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
               ))}
+              {!results.strongest.some((domain) => assessedDomains.includes(domain)) && <p>Not enough sampled evidence yet. Continue the test to establish strengths.</p>}
             </article>
             <article className="result-card report-primary report-order-gaps">
               <h2>Priority gaps</h2>
               {results.weakest.map((domain) => (
-                <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
+                <p key={domain}><strong>{domains[domain].short}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : 'Not assessed yet'}</p>
               ))}
             </article>
             <article className="result-card wide analysis-primary">

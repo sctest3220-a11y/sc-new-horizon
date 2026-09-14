@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-14: Report Explainability And Evidence Gaps
+
+Question-level score calculation now includes the question prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. This makes the calculation useful for learners and item reviewers instead of only showing math fragments.
+
+Unsampled domains now display as `Not assessed` in the report scorecard and are left unplotted on the user's radar shape. They remain visible as coverage gaps so the platform can recommend targeted continuation, but the UI no longer presents missing evidence as if it were a measured domain score.
+
+The framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside formal or public frameworks such as UNESCO, OECD/EC, NIST, EU AI Act, DigComp, ISO/IEC 42001, and AI Verify. Artifact and lab quality standards were also documented: artifacts should be relevant, necessary, realistic, legible, and tied to the answer key; pilot labs should be marked as samples until instructions, artifacts, scoring, outputs, and debriefs are complete.
+
 ## 2026-09-14: Item Calibration Dashboard
 
 Admin quality review now shows an item calibration dashboard instead of a simple quality gate. Each row exposes status, domain, difficulty, interaction type, attempt count, average score, average time, confusion rate, artifact action rate, feedback count, unclear flags, difficulty mismatch, artifact presence, negative signals, and recommended human-review action.

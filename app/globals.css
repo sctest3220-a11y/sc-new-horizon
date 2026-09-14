@@ -2277,6 +2277,15 @@ h3 {
   stroke-width: 3;
 }
 
+.radar-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  margin: -4px 0 0;
+  max-width: 520px;
+  text-align: center;
+}
+
 .radar-benchmark {
   fill: transparent;
   stroke-dasharray: 6 5;
@@ -4407,6 +4416,25 @@ h3 {
 
 .calculation-table p {
   grid-column: 2 / -1;
+}
+
+.calculation-table p strong {
+  display: inline;
+  margin-right: 6px;
+}
+
+.unassessed-meter {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(101, 112, 107, 0.14) 0,
+    rgba(101, 112, 107, 0.14) 8px,
+    rgba(101, 112, 107, 0.05) 8px,
+    rgba(101, 112, 107, 0.05) 16px
+  );
+  border: 1px dashed rgba(101, 112, 107, 0.34);
+  border-radius: 999px;
+  height: 8px;
+  width: 100%;
 }
 
 .rubric-panel {

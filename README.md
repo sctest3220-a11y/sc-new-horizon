@@ -50,6 +50,10 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 
+Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
+
+Latest framework/artifact quality update: the D1-D6 framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. Artifact and lab quality standards now require relevant, necessary, realistic, legible evidence and complete pilot-lab instructions, scoring criteria, expected outputs, and debriefs before release.
+
 Latest calibration update: Admin quality review now includes an item calibration dashboard with attempt count, average score/time, confusion rate, artifact action rate, feedback polarity, difficulty mismatch, artifact presence, and recommended human-review action. Review signals can de-prioritize weak items in routing, but item rewrites, artifact replacement, recalibration, and retirement remain human-approved.
 
 Latest routing update: adaptive question selection now uses profile domain targets before general weak-domain balancing. General free users are routed mostly toward D1/D2/D3/D6, while premium routes blend function, industry, and professional baseline targets. The analysis tab shows target counts by domain, and answer review now includes a practice cue after each question.
