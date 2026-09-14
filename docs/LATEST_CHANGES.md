@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-14: Thai Batch 3 Approved (408 Items); Batches 1–2 Aligned to Glossary Decisions; Batch 1 Round-2 Sample Reissued
+
+The batch-3 second-reviewer spot check (20 rendered questions covering all 17 scenario frames) returned 20 Approve with no ambiguous keys, so both template builders now emit `translationStatus: 'approved'`: the 408 `ADV-*` / `TREND-*` items join batch 2's 89 as `approved` (497 total). Batch 1's 163 items stay `reviewed` — the file received as its round-2 review was the round-1 review again (byte-identical to the one applied on 2026-09-12), so the round-2 sample is still open.
+
+While it was open, batches 1–2 were aligned to the renderings three reviewers converged on during batches 2–3: ผู้ให้บริการ for AI/IT vendors (ผู้ขาย kept for sellers, suppliers and invoices), Human-in-the-loop alongside การตรวจทานโดยคน on first mention, การแก้ไขทับผล AI, the hallucination gloss, กติกา → ข้อกำหนด/แนวปฏิบัติ/เกณฑ์ by context, ความเป็นปัจจุบันของข้อมูล, and "…รัดกุมและเหมาะสมที่สุด / มีน้ำหนักมากที่สุด" in place of "…หนักแน่นที่สุด" prompts — 45 items, terminology only, meaning unchanged, batch 2 stays `approved`. One batch-1 exemplar (CAL-D3-MEDIA-018) lost a first-person ผม and now scores fully. The round-2 batch-1 sample was regenerated on the aligned text with the same 20 ids (`exports/New_Horizon_Thai_Batch1_SpotCheck_Round2.xlsx`, marked REISSUED). Detail in `docs/THAI_BATCH3_SPOTCHECK_RESPONSE.md`. Still open for the team: the escalation rendering.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; all 660 questions localise, English is the identity, every Thai exemplar scores fully.
+
 ## 2026-09-14: Thai Batch 3 — Template-Generated Items (408) and Competency Vocabulary (Draft → Reviewed)
 
 The 408 questions still English-only are all generated from templates: 240 `ADV-*` advanced items (10 scenario frames × 24 competencies) and 168 `TREND-*` market-trend items (7 frames × 24 competencies). Instead of translating 408 questions, batch 3 translates the templates and the vocabulary they interpolate: 10 advanced frames, the 4 shared advanced options with feedback, 7 market-trend frames (scenario, prompt, 4 options), the framing sentence, difficulty verbs and names, 4 feedback templates, plus 24 competency names and 95 skill names (`competencyLabelsTh`, `skillLabelsTh` in `app/page.tsx`). The two builders now emit `contextTh` / `promptTh` / option `labelTh` / `feedbackTh` with `translationStatus: 'draft'`, so every generated question carries Thai — about 150 strings cover all 408 items, and a fix to a template fixes every question built from it.

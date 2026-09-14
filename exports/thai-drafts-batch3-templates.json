@@ -1,7 +1,7 @@
 {
  "source_commit": "4b73376",
  "generated": "2026-09-14",
- "status": "reviewed (native review applied 2026-09-14: 51 strings corrected; second-reviewer spot check pending)",
+ "status": "approved (second-reviewer spot check 20/20 on 2026-09-14)",
  "batch": "Batch 3: template-generated items (240 ADV-* + 168 TREND-*) and competency vocabulary (24 labels, 95 skills)",
  "review_workbook": "exports/New_Horizon_Thai_Review_Batch3_Templates.xlsx",
  "competencyLabels": {
@@ -280,5 +280,14 @@
    "lead": 2,
    "feedback": 1
   }
+ },
+ "spot_check": {
+  "source": "exports/New_Horizon_Thai_Batch3_SpotCheck_Reviewed.xlsx",
+  "result": {
+   "Approve": 20,
+   "Fix": 0,
+   "Rewrite": 0
+  },
+  "key_ambiguous": 0
  }
 }

@@ -142,7 +142,7 @@
  {
   "en": "escalation",
   "th": "การส่งต่อให้ผู้มีอำนาจ (escalation)",
-  "rule": "'escalation path' → 'ช่องทางส่งต่อ'."
+  "rule": "'escalation path' → 'ช่องทางส่งต่อ'. OPEN: batch-2 spot-check reviewer suggested ส่งต่อเคสให้หัวหน้างาน in customer-service contexts; team decision pending (10 occurrences)."
  },
  {
   "en": "approval gate / stage gate",
@@ -152,7 +152,7 @@
  {
   "en": "human-in-the-loop / human review",
   "th": "การตรวจทานโดยคน (Human-in-the-loop)",
-  "rule": "Reviewer batch 2: ปรับปรุง: คงคำภาษาอังกฤษควบคู่ เพื่อให้ผู้สอบคุ้นเคยกับคำสากล"
+  "rule": "Reviewer batch 2: ปรับปรุง: คงคำภาษาอังกฤษควบคู่ เพื่อให้ผู้สอบคุ้นเคยกับคำสากล Aligned across batches 1–3 on 2026-09-14."
  },
  {
   "en": "override",

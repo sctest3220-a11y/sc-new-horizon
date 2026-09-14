@@ -1997,7 +1997,7 @@ function buildAdvancedCompetencyQuestion(competency: CompetencyDefinition, frame
     // Thai (batch 3, template-level): frames carry contextTh/promptTh; option text is templated on the Thai competency label.
     contextTh: `${frame.contextTh} สมรรถนะที่วัด: ${labelTh} ทักษะที่เกี่ยวข้อง: ${skillFocusTh}`,
     promptTh: frame.promptTh,
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       {
         id: 'advanced-control',
@@ -2198,7 +2198,7 @@ function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: 
     // Thai (batch 3, template-level). Awareness keeps only the scenario, mirroring the English rule above.
     contextTh: difficulty === 'awareness' ? trend.contextTh : `${trend.contextTh} สมรรถนะที่วัด: ${labelTh} ผู้ใช้ควรแสดงให้เห็นว่า${difficultyLeadTh} ${labelTh} โดยมีแนวทางปฏิบัติที่ชัดเจน เช่น ${focusTh}`,
     promptTh: trend.promptTh,
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { id: 'best', label: trend.best, labelTh: trend.bestTh, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.`, feedbackTh: `ถูกต้อง หลักฐาน${difficultyNameTh}ที่ชัดเจนสำหรับ ${labelTh} คำตอบนี้เชื่อมแนวโน้มเข้ากับความเหมาะสมของงาน หลักฐาน มาตรการควบคุม และผลลัพธ์` },
       { id: 'partial', label: trend.partial, labelTh: trend.partialTh, score: difficulty === 'awareness' ? 60 : difficulty === 'applied' ? 58 : 62, feedback: 'Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.', feedbackTh: 'หลักฐานบางส่วน คำตอบนี้มองเห็นแนวโน้มเพียงบางด้าน แต่ยังไม่ได้ทดสอบความเหมาะสม ความเสี่ยง หลักฐาน และการใช้งานจริงอย่างครบถ้วน' },
@@ -3524,7 +3524,7 @@ const horizonRelianceQuestions: Question[] = [
       eyebrow: 'Task ownership',
       title: 'Judge whether a vendor\'s AI claims are real',
       caption: 'Decide who should own this task: you, AI, or both working together.',
-      titleTh: 'ตัดสินว่าคำกล่าวอ้างเรื่อง AI ของผู้ขายเป็นจริงไหม',
+      titleTh: 'ตัดสินว่าคำกล่าวอ้างเรื่อง AI ของผู้ให้บริการเป็นจริงไหม',
       eyebrowTh: 'ใครควรเป็นเจ้าของงาน',
       captionTh: 'ตัดสินว่างานนี้ใครควรเป็นเจ้าของ: คุณ AI หรือทำร่วมกัน',
       pointsTh: ['คำอ้าง: \'ลดเวลาจัดซื้อ 60%\'', 'ข้อเสนอ: สัญญา 3 ปี', 'หลักฐาน: สไลด์ 1 แผ่น', 'ขาด: ข้อมูล การสาธิต การทดสอบอิสระ'],
@@ -3532,12 +3532,12 @@ const horizonRelianceQuestions: Question[] = [
     },
     context: 'Judge whether a vendor\'s AI claims are real. A vendor\'s deck says their AI \'reduces procurement time by 60%\'. They want you to sign a 3-year contract. You\'ve seen the slide — but no data, no demo, no independent test.',
     prompt: 'Who should do the task?',
-    contextTh: 'ผู้ขายระบบ AI นำเสนอสไลด์ที่อ้างว่าระบบสามารถ \'ลดเวลาจัดซื้อลงได้ 60%\' และต้องการให้คุณลงนามในสัญญา คุณต้องตัดสินใจว่าคำกล่าวอ้างนี้เชื่อถือได้จริงหรือไม่',
+    contextTh: 'ผู้ให้บริการระบบ AI นำเสนอสไลด์ที่อ้างว่าระบบสามารถ \'ลดเวลาจัดซื้อลงได้ 60%\' และต้องการให้คุณลงนามในสัญญา คุณต้องตัดสินใจว่าคำกล่าวอ้างนี้เชื่อถือได้จริงหรือไม่',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
     translationStatus: 'reviewed',
     options: [
-      { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.', feedbackTh: 'ดีที่สุด นี่คือทักษะระดับเหนือ: การประเมิน AI คือวิจารณญาณของมนุษย์ ขอหลักฐานและการสาธิตสด ๆ อย่าให้ AI ของผู้ขายตรวจการบ้านตัวเอง' },
-      { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.', feedbackTh: 'AI ช่วยลิสต์คำถามที่ควรถามได้ แต่การประเมินหลักฐานของผู้ขาย AI คือวิจารณญาณของคน อย่าให้ AI ของเขาตรวจการบ้านตัวเอง' },
+      { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.', feedbackTh: 'ดีที่สุด นี่คือทักษะระดับเหนือ: การประเมิน AI คือวิจารณญาณของมนุษย์ ขอหลักฐานและการสาธิตสด ๆ อย่าให้ AI ของผู้ให้บริการตรวจการบ้านตัวเอง' },
+      { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.', feedbackTh: 'AI ช่วยลิสต์คำถามที่ควรถามได้ แต่การประเมินหลักฐานของผู้ให้บริการ AI คือวิจารณญาณของคน อย่าให้ AI ของเขาตรวจการบ้านตัวเอง' },
       { ...relianceOptions.ai, score: 5, feedback: 'Circular. Asking AI whether an AI claim is real is not evidence; demand data and a live demo.', feedbackTh: 'วนในอ่าง การถาม AI ว่าคำกล่าวอ้างเรื่อง AI จริงไหมไม่ใช่หลักฐาน ขอข้อมูลและการสาธิตสด' },
     ],
   }, // horizon:judge-vendor-claims · axis: evidence judgment · key: Human-owned
