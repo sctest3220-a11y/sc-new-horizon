@@ -85,6 +85,26 @@ Premium and role/function diagnostics should use a weighted target model:
 
 This is why the app's radar targets should show distinct shapes. A general user's target should peak around D1-D3, a technical user's target should peak around D1/D2/D4, a finance user's target should peak around D3/D4/D5, and a leadership user's target should peak around D4/D5/D6. If all targets look similar, the report implies the same standard applies to every user, which conflicts with EU AI Act context-of-use logic and role-based skilling practice.
 
+## Implemented Assessment Improvement Rules
+
+Question routing should now follow this order:
+
+1. Profile domain targets: route toward the domains the selected audience/function/industry needs most.
+2. Profile priority competencies: prefer competencies identified from audience, function, industry, role, and optional profile survey.
+3. Difficulty adaptation: move easier after weak evidence and harder after strong evidence.
+4. Weak or undersampled domains: fill evidence gaps before finalizing confidence.
+5. Item quality gates: de-prioritize flagged questions with negative item feedback, stale/irrelevant artifacts, confusing behavior, or poor survey themes.
+
+The first route should not try to prove every D1-D6 area equally. A short route is a profile-weighted diagnostic sample. Follow-up routes then collect missing evidence until planned and profile-priority competencies are covered with enough confidence.
+
+Answer review should support learning, not only grading. Each reveal should include:
+
+- Raw answer score and difficulty-adjusted readiness evidence.
+- Correct/expected evidence.
+- Competencies measured.
+- A practice cue for what the user should do next.
+- Per-question quick feedback so weak items can be improved later.
+
 ## Scoring And Adaptive Testing Alignment
 
 The scoring model supports the crosswalk by making high scores depend on stronger evidence:

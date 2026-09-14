@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-14: Profile-Weighted Routing And Learning Cues
+
+Implemented profile domain targets for adaptive question selection. Free routes now use audience-specific allocations, for example General emphasizes D1 Foundations, D2 Practical Tooling, D3 Critical Judgment, and D6 Human-AI Collaboration while minimizing D5 Strategy. Premium routes blend function, industry, and professional baseline targets, then route toward domains below the selected profile's expected allocation.
+
+Answer review now includes a short practice cue so every question teaches a next action after scoring. The analysis tab also shows the intended profile domain target counts so testers can check whether the adaptive route matches the user's profile.
+
 ## 2026-09-12: Profile-Weighted Radar Targets
 
 Radar target profiles now use more differentiated domain expectations instead of near-even D1-D6 shapes. General users emphasize D1 Foundations, D2 Practical Tooling, and D3 Critical Judgment, with lighter D4/D6 and minimal D5. Professional, team, function, industry, and leadership contexts now show visibly different target shapes based on the researched profile focus model.

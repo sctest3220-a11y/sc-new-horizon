@@ -8061,6 +8061,34 @@ const starterDomains: DomainId[] = ['D5', 'D4', 'D6', 'D3'];
 const minimumExecutiveInteractions: Partial<Record<NonNullable<Question['interaction']>, number>> = { multi: 3, rank: 2, match: 2 };
 const minimumGeneralInteractions: Partial<Record<NonNullable<Question['interaction']>, number>> = { multi: 2, rank: 1, match: 1, text: 1 };
 
+const freeAudienceDomainTargets: Record<Audience, Record<DomainId, number>> = {
+  general: { D1: 3, D2: 3, D3: 3, D4: 1, D5: 0, D6: 2 },
+  student: { D1: 3, D2: 3, D3: 3, D4: 2, D5: 0, D6: 1 },
+  educator: { D1: 2, D2: 1, D3: 3, D4: 3, D5: 0, D6: 3 },
+  professional: { D1: 1, D2: 3, D3: 3, D4: 2, D5: 2, D6: 1 },
+  team: { D1: 1, D2: 2, D3: 2, D4: 3, D5: 2, D6: 2 },
+};
+
+const functionDomainTargets: Record<FunctionTrack, Record<DomainId, number>> = {
+  general: { D1: 3, D2: 4, D3: 4, D4: 3, D5: 3, D6: 3 },
+  people: { D1: 2, D2: 3, D3: 3, D4: 5, D5: 2, D6: 5 },
+  finance: { D1: 2, D2: 3, D3: 5, D4: 5, D5: 4, D6: 1 },
+  marketing: { D1: 2, D2: 5, D3: 5, D4: 3, D5: 4, D6: 1 },
+  sales: { D1: 1, D2: 5, D3: 4, D4: 3, D5: 4, D6: 3 },
+  customerService: { D1: 1, D2: 5, D3: 4, D4: 4, D5: 1, D6: 5 },
+  technical: { D1: 5, D2: 5, D3: 4, D4: 4, D5: 1, D6: 1 },
+  operations: { D1: 1, D2: 5, D3: 2, D4: 3, D5: 5, D6: 4 },
+};
+
+const industryDomainTargets: Record<IndustryTrack, Record<DomainId, number>> = {
+  general: { D1: 3, D2: 4, D3: 4, D4: 3, D5: 3, D6: 3 },
+  education: { D1: 4, D2: 2, D3: 4, D4: 5, D5: 1, D6: 4 },
+  financial: { D1: 2, D2: 3, D3: 5, D4: 5, D5: 4, D6: 1 },
+  healthcare: { D1: 2, D2: 2, D3: 5, D4: 6, D5: 1, D6: 4 },
+  retail: { D1: 1, D2: 5, D3: 4, D4: 3, D5: 5, D6: 2 },
+  public: { D1: 2, D2: 2, D3: 4, D4: 6, D5: 2, D6: 4 },
+};
+
 function hasStrongEvidenceAtDifficulty(answers: Answer[], difficulty: Difficulty) {
   return answers.some((answer) => answer.question.difficulty === difficulty && answer.option.score >= 82);
 }
@@ -8193,6 +8221,44 @@ function getBenchmarkProfiles(
   return [
     { label: `${audienceLabels[audience]} target`, detail: 'Research-informed readiness target', tone: 'target', scores: audienceBenchmarks[audience] },
   ];
+}
+
+function blendDomainTargets(scoreSets: Array<{ targets: Record<DomainId, number>; weight: number }>, totalQuestions: number) {
+  const totalWeight = scoreSets.reduce((sum, item) => sum + item.weight, 0) || 1;
+  const rawTargets = (Object.keys(domains) as DomainId[]).map((domain) => ({
+    domain,
+    raw: scoreSets.reduce((sum, item) => sum + item.targets[domain] * item.weight, 0) / totalWeight,
+  }));
+  const rounded = rawTargets.map((item) => ({ ...item, value: Math.floor(item.raw) }));
+  let remaining = totalQuestions - rounded.reduce((sum, item) => sum + item.value, 0);
+  rounded
+    .sort((left, right) => (right.raw - right.value) - (left.raw - left.value))
+    .forEach((item) => {
+      if (remaining > 0) {
+        item.value += 1;
+        remaining -= 1;
+      }
+    });
+  return Object.fromEntries(rounded.map((item) => [item.domain, Math.max(0, item.value)])) as Record<DomainId, number>;
+}
+
+function getProfileDomainTargets(
+  assessmentMode: AssessmentMode,
+  audience: Audience,
+  functionTrack: FunctionTrack,
+  industryTrack: IndustryTrack,
+  executiveRole: ExecutiveRole,
+  totalQuestions: number,
+) {
+  if (assessmentMode === 'executive') return executiveDomainTargets;
+  if (assessmentMode === 'premium') {
+    return blendDomainTargets([
+      { targets: functionDomainTargets[functionTrack], weight: 0.55 },
+      { targets: industryDomainTargets[industryTrack], weight: 0.25 },
+      { targets: freeAudienceDomainTargets.professional, weight: 0.2 },
+    ], totalQuestions);
+  }
+  return freeAudienceDomainTargets[audience];
 }
 
 function getTargetScore(domain: DomainId, benchmarks: BenchmarkProfile[]) {
@@ -9428,6 +9494,14 @@ function getScoreExplanation(answer: Answer) {
   ];
 }
 
+function getAnswerPracticeCue(answer: Answer) {
+  const score = answer.option.score;
+  const domain = domains[answer.question.domain].short.toLowerCase();
+  if (score >= 82) return `Stretch next: try a harder ${domain} scenario and explain the evidence you would require before acting.`;
+  if (score >= 55) return `Practice next: compare your answer with the expected evidence, then name the missing check, control, or workflow step.`;
+  return `Repair next: identify the unsafe or weak assumption, then rewrite the decision using source, risk, owner, and review evidence.`;
+}
+
 function getRawScoreMethod(answer: Answer) {
   const interaction = answer.question.interaction ?? 'single';
   if (answer.option.score <= 0) return 'No response or no scored evidence = 0 raw.';
@@ -10580,17 +10654,25 @@ function selectNextQuestion(
   answers: Answer[],
   assessmentMode: AssessmentMode = 'free',
   seed = 0,
-  profile: { functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
+  profile: { audience?: Audience; functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; executiveRole?: ExecutiveRole; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
 ) {
   const bank = getAssessmentBank(assessmentMode);
   const answered = new Set(answers.map((answer) => answer.question.id));
   const scores = getDomainScores(answers);
   const counts = getAnsweredDomainCounts(answers);
+  const profileDomainTargets = getProfileDomainTargets(
+    assessmentMode,
+    profile.audience ?? 'general',
+    profile.functionTrack ?? 'general',
+    profile.industryTrack ?? 'general',
+    profile.executiveRole ?? 'ceo',
+    profile.totalQuestions ?? modeConfig[assessmentMode].totalQuestions,
+  );
   const targetDomain = profile.targetDomain ?? (assessmentMode === 'executive' ? selectExecutiveDomain(answers) : undefined);
   const targetCompetencyIds = new Set(profile.targetCompetencyIds ?? []);
   const flaggedQuestionIds = new Set(profile.flaggedQuestionIds ?? []);
   const weakestDomain = (Object.keys(domains) as DomainId[]).sort(
-    (a, b) => counts[a].count - counts[b].count || scores[a] - scores[b],
+    (a, b) => (profileDomainTargets[b] - counts[b].count) - (profileDomainTargets[a] - counts[a].count) || scores[a] - scores[b],
   )[0];
   const latestScore = answers.at(-1)?.option.score ?? 62;
   const targetDifficulty = getDifficultyFromLastAnswer(answers);
@@ -10654,7 +10736,7 @@ function selectNextQuestion(
       let rank = seededValue(question.id, seed) / 1000;
       if (question.domain === targetDomain) rank += 56;
       if (questionCompetencyIds.some((id) => targetCompetencyIds.has(id))) rank += 52;
-      rank += Math.max(0, executiveDomainTargets[question.domain] - counts[question.domain].count) * 10;
+      rank += Math.max(0, profileDomainTargets[question.domain] - counts[question.domain].count) * 10;
       rank += 34 - difficultyDistance * 12;
       if ((interactionCounts[interaction] ?? 0) < targetMinimum) rank += 24;
       if (visualCount < 5 && hasHelpfulVisualEvidence(question)) rank += 18;
@@ -10683,6 +10765,7 @@ function selectNextQuestion(
     let rank = seededValue(question.id, seed) / 1000;
     if (question.domain === targetDomain) rank += 44;
     if (questionCompetencyIds.some((id) => targetCompetencyIds.has(id))) rank += 52;
+    rank += Math.max(0, profileDomainTargets[question.domain] - counts[question.domain].count) * 14;
     if (question.domain === weakestDomain) rank += 42;
     if (assessmentMode === 'premium' && question.functionTracks?.includes(profile.functionTrack ?? 'general')) rank += 26;
     if (assessmentMode === 'premium' && question.industryTracks?.includes(profile.industryTrack ?? 'general')) rank += 16;
@@ -11324,6 +11407,10 @@ export default function Home() {
     () => getCompetencyCoverage(competencyScores, mode, audience, functionTrack, industryTrack, executiveRole),
     [audience, competencyScores, executiveRole, functionTrack, industryTrack, mode],
   );
+  const profileDomainTargets = useMemo(
+    () => getProfileDomainTargets(mode, audience, functionTrack, industryTrack, executiveRole, activeConfig.totalQuestions),
+    [activeConfig.totalQuestions, audience, executiveRole, functionTrack, industryTrack, mode],
+  );
   const selectedDomainCompetencies = useMemo(
     () => coveragePlan.coverage.filter((competency) => competency.domain === selectedRadarDomain),
     [coveragePlan.coverage, selectedRadarDomain],
@@ -11792,8 +11879,10 @@ export default function Home() {
     behaviorSessionIdRef.current = nextSessionId;
     setBehaviorSessionId(nextSessionId);
     const firstQuestion = selectNextQuestion([], nextMode, nextSeed, {
+      audience,
       functionTrack,
       industryTrack,
+      executiveRole,
       targetCompetencyIds,
       flaggedQuestionIds: flaggedQualityQuestionIds,
     });
@@ -12026,8 +12115,10 @@ export default function Home() {
       return;
     }
     const nextQuestion = selectNextQuestion(nextAnswers, mode, assessmentSeed, {
+      audience,
       functionTrack,
       industryTrack,
+      executiveRole,
       targetDomain: continuationFocus?.targetDomain,
       targetCompetencyIds: continuationFocus?.targetCompetencyIds ?? profileTargetCompetencyIds,
       totalQuestions: activeConfig.totalQuestions,
@@ -12058,8 +12149,10 @@ export default function Home() {
     const nextTargetTotal = answers.length + addedQuestions;
     const nextSeed = assessmentSeed || createAssessmentSeed();
     const nextQuestion = selectNextQuestion(answers, mode, nextSeed, {
+      audience,
       functionTrack,
       industryTrack,
+      executiveRole,
       targetDomain: focus.targetDomain,
       targetCompetencyIds: focus.targetCompetencyIds,
       totalQuestions: nextTargetTotal,
@@ -14023,6 +14116,7 @@ export default function Home() {
                 <span>Score explanation</span>
                 <p>{getRawScoreMethod(lastAnswer)}</p>
                 {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
+                <p><strong>Practice cue</strong> {getAnswerPracticeCue(lastAnswer)}</p>
               </div>
               <div className="feedback-grid">
                 <div>
@@ -14601,6 +14695,15 @@ export default function Home() {
                   <span>Planned route</span>
                   <strong>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal}</strong>
                 </div>
+              </div>
+              <div className="domain-target-grid" aria-label="Profile domain targets">
+                {(Object.keys(domains) as DomainId[]).map((domain) => (
+                  <div key={domain}>
+                    <span>{domain}</span>
+                    <strong>{profileDomainTargets[domain]}</strong>
+                    <small>{domains[domain].short}</small>
+                  </div>
+                ))}
               </div>
               <div className="coverage-grid">
                 {coveragePlan.coverage.map((competency) => (
