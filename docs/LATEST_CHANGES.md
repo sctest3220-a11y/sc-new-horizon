@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-14: Item Calibration Dashboard
+
+Admin quality review now shows an item calibration dashboard instead of a simple quality gate. Each row exposes status, domain, difficulty, interaction type, attempt count, average score, average time, confusion rate, artifact action rate, feedback count, unclear flags, difficulty mismatch, artifact presence, negative signals, and recommended human-review action.
+
+The dashboard flags candidates for review when telemetry suggests advanced items are too easy, awareness items are too hard, users show high confusion, or artifact interactions combine with negative artifact comments. These signals de-prioritize items in routing, but scored content still requires human approval before rewrite, artifact replacement, recalibration, or retirement.
+
 ## 2026-09-14: Profile-Weighted Routing And Learning Cues
 
 Implemented profile domain targets for adaptive question selection. Free routes now use audience-specific allocations, for example General emphasizes D1 Foundations, D2 Practical Tooling, D3 Critical Judgment, and D6 Human-AI Collaboration while minimizing D5 Strategy. Premium routes blend function, industry, and professional baseline targets, then route toward domains below the selected profile's expected allocation.

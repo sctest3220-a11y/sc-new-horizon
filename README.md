@@ -50,6 +50,8 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 
+Latest calibration update: Admin quality review now includes an item calibration dashboard with attempt count, average score/time, confusion rate, artifact action rate, feedback polarity, difficulty mismatch, artifact presence, and recommended human-review action. Review signals can de-prioritize weak items in routing, but item rewrites, artifact replacement, recalibration, and retirement remain human-approved.
+
 Latest routing update: adaptive question selection now uses profile domain targets before general weak-domain balancing. General free users are routed mostly toward D1/D2/D3/D6, while premium routes blend function, industry, and professional baseline targets. The analysis tab shows target counts by domain, and answer review now includes a practice cue after each question.
 
 Research documentation update: `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` now records the source-backed rationale for profile-weighted question routing and radar targets. It maps the recommendation to UNESCO, OECD/European Commission, EU AI Act Article 4, NIST AI RMF, DigComp 2.2, ISO/IEC 42001, and Singapore AI Verify/MGF GenAI.

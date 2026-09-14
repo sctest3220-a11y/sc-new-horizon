@@ -9207,13 +9207,21 @@ function getQuestionBenchmarks(events: AssessmentBehaviorEvent[]) {
 function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
   const benchmarks = getQuestionBenchmarks(events);
   const feedbackEvents = events.filter((event) => event.type === 'question_feedback' && event.questionId);
+  const artifactEvents = events.filter((event) => (
+    event.questionId && (event.type === 'artifact_opened' || event.type === 'artifact_zoomed' || event.type === 'artifact_external_opened')
+  ));
   const groups = new Map<string, AssessmentBehaviorEvent[]>();
   feedbackEvents.forEach((event) => {
     groups.set(event.questionId!, [...(groups.get(event.questionId!) ?? []), event]);
   });
+  const artifactGroups = new Map<string, AssessmentBehaviorEvent[]>();
+  artifactEvents.forEach((event) => {
+    artifactGroups.set(event.questionId!, [...(artifactGroups.get(event.questionId!) ?? []), event]);
+  });
   const issueTerms = ['guess', 'obvious', 'giveaway', 'artifact', 'irrelevant', 'not related', 'unnecessary', 'inconsistent', 'unclear', 'ambiguous', 'harsh', 'rubric'];
-  return [...new Set([...Object.keys(benchmarks), ...groups.keys()])].map((questionId) => {
+  return [...new Set([...Object.keys(benchmarks), ...groups.keys(), ...artifactGroups.keys()])].map((questionId) => {
     const feedback = groups.get(questionId) ?? [];
+    const question = allAssessmentItems.find((item) => item.id === questionId);
     const unclear = feedback.filter((event) => event.itemFeedbackKind === 'unclear').length;
     const comments = feedback.filter((event) => event.itemFeedbackComment?.trim()).length;
     const likes = feedback.filter((event) => event.itemFeedbackKind === 'like').length;
@@ -9222,23 +9230,48 @@ function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
       return issueTerms.some((term) => text.includes(term));
     }).length;
     const benchmark = benchmarks[questionId];
+    const artifactInteractions = artifactGroups.get(questionId)?.length ?? 0;
+    const artifactOpenRate = benchmark?.attempts ? Math.round((artifactInteractions / benchmark.attempts) * 100) : 0;
+    const difficultyMismatch = question?.difficulty === 'advanced' && (benchmark?.averageScore ?? 0) >= 88
+      ? 'advanced-too-easy'
+      : question?.difficulty === 'awareness' && benchmark && benchmark.attempts >= 3 && benchmark.averageScore < 45
+        ? 'awareness-too-hard'
+        : benchmark && benchmark.attempts >= 3 && benchmark.averageScore >= 90
+          ? 'too-easy'
+          : benchmark && benchmark.attempts >= 3 && benchmark.averageScore < 35
+            ? 'too-hard'
+            : 'calibrating';
     const negativeSignals = unclear + issueComments + Math.max(0, comments - likes);
-    const status = negativeSignals >= 2 || (benchmark?.confusionRate ?? 0) >= 50
+    const artifactRisk = artifactOpenRate >= 150 && issueComments > 0;
+    const status = negativeSignals >= 2 || (benchmark?.confusionRate ?? 0) >= 50 || artifactRisk || difficultyMismatch === 'advanced-too-easy' || difficultyMismatch === 'awareness-too-hard'
       ? 'review'
       : negativeSignals >= 1 || (benchmark?.confusionRate ?? 0) >= 25
         ? 'watch'
         : 'keep';
-    const action = status === 'review'
-      ? 'Quarantine for rewrite or artifact replacement before heavy scored use.'
-      : status === 'watch'
-        ? 'Monitor with more attempts and inspect wording/artifact fit.'
-        : 'Keep in active routing.';
+    const action = artifactRisk
+      ? 'Review artifact dependency: users are opening/zooming and commenting negatively; simplify, replace, or remove the artifact.'
+      : difficultyMismatch === 'advanced-too-easy'
+        ? 'Recalibrate difficulty or add harder distractors; advanced item is scoring too high.'
+        : difficultyMismatch === 'awareness-too-hard'
+          ? 'Rewrite foundations item; awareness item is behaving too hard.'
+          : status === 'review'
+            ? 'Quarantine for rewrite or artifact replacement before heavy scored use.'
+            : status === 'watch'
+              ? 'Monitor with more attempts and inspect wording/artifact fit.'
+              : 'Keep in active routing.';
     return {
       questionId,
+      domain: question?.domain,
+      difficulty: question?.difficulty,
+      interaction: question?.interaction ?? 'single',
+      artifactRequired: question && hasHelpfulVisualEvidence(question) ? 'artifact shown' : 'no artifact',
       attempts: benchmark?.attempts ?? 0,
       averageScore: benchmark?.averageScore ?? 0,
       averageDurationMs: benchmark?.averageDurationMs ?? 0,
       confusionRate: benchmark?.confusionRate ?? 0,
+      artifactInteractions,
+      artifactOpenRate,
+      difficultyMismatch,
       feedbackCount: feedback.length,
       unclear,
       comments,
@@ -13235,13 +13268,23 @@ export default function Home() {
 	                    </div>
 	                  </div>
 	                  <div className="quality-review-table">
-	                    <h3>Item quality gate</h3>
+	                    <h3>Item calibration dashboard</h3>
 	                    <div className="quality-review-rows">
 	                      {qualityInsights.qualityRows.length ? qualityInsights.qualityRows.map((row) => (
 	                        <div key={row.questionId} className={`quality-review-row ${row.status}`}>
 	                          <span>{row.status}</span>
 	                          <strong>{row.questionId}</strong>
-	                          <small>{row.feedbackCount} feedback · {row.unclear} unclear · {row.negativeSignals} negative signals · {row.confusionRate}% confusing</small>
+                            <div className="calibration-chip-row">
+                              <b>{row.domain ?? 'Unknown'} · {row.difficulty ?? 'unmapped'} · {row.interaction}</b>
+                              <b>{row.attempts} attempts</b>
+                              <b>{row.averageScore}/100 avg</b>
+                              <b>{formatDuration(row.averageDurationMs)} avg</b>
+                              <b>{row.confusionRate}% confusing</b>
+                              <b>{row.artifactOpenRate}% artifact actions/attempt</b>
+                              <b>{row.feedbackCount} feedback · {row.unclear} unclear</b>
+                              <b>{row.difficultyMismatch}</b>
+                            </div>
+	                          <small>{row.artifactRequired} · {row.negativeSignals} negative signals</small>
 	                          <p>{row.action}</p>
 	                        </div>
 	                      )) : <p>No item-level feedback has been submitted yet.</p>}

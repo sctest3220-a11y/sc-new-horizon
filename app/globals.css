@@ -1968,14 +1968,14 @@ h3 {
 }
 
 .quality-review-row {
-  align-items: center;
+  align-items: start;
   background: #fff;
   border: 1px solid var(--line);
   border-left: 4px solid #b9c3cc;
   border-radius: 8px;
   display: grid;
   gap: 8px 12px;
-  grid-template-columns: 76px minmax(180px, 1fr) minmax(220px, 1.2fr);
+  grid-template-columns: 76px minmax(180px, 1fr);
   padding: 10px 12px;
 }
 
@@ -2019,6 +2019,28 @@ h3 {
 .quality-review-row p {
   grid-column: 2 / -1;
   margin: 0;
+}
+
+.quality-review-row small {
+  color: var(--muted);
+  grid-column: 2 / -1;
+}
+
+.calibration-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  grid-column: 2 / -1;
+}
+
+.calibration-chip-row b {
+  background: rgba(23, 32, 29, 0.06);
+  border: 1px solid rgba(23, 32, 29, 0.08);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 5px 8px;
 }
 
 .admin-run-grid {
