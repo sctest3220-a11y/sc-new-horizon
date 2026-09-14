@@ -1,7 +1,7 @@
 {
  "source_commit": "3997610",
  "generated": "2026-09-14",
- "status": "reviewed (native review + spot-check round 1 fixes applied 2026-09-14; round-2 spot check pending)",
+ "status": "approved (second-reviewer spot check round 2 passed 20/20 on 2026-09-14)",
  "batch": "Thai priority Medium (89)",
  "questions": {
   "DEPTH-D1-CONCEPTS-025": {
@@ -4381,5 +4381,15 @@
    "คำวิจารณ์ที่หนักแน่นที่สุด": 0,
    "รอบ ๆ โมเดล": 0
   }
+ },
+ "spot_check_round2": {
+  "source": "exports/New_Horizon_Thai_Batch2_SpotCheck_Round2_Reviewed.xlsx",
+  "result": {
+   "Approve": 20,
+   "Fix": 0,
+   "Rewrite": 0
+  },
+  "key_ambiguous": 0,
+  "decision": "promoted to approved"
  }
 }

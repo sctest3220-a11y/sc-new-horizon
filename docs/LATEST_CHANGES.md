@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-14: Thai Batch 2 Approved (89 Items) — Spot Check Round 2 Passed 20/20
+
+The second-reviewer round-2 sample for Thai batch 2 (20 fresh items, including all seven touched only by the round-1 sweep) came back 20 Approve / 0 Fix / 0 Rewrite with the key unambiguous on every item. Under the decision rule (≥18 Approve, no ambiguous key) the 89 batch-2 entries in `app/questionTranslations.th.ts` move from `reviewed` to `approved` — the first batch to reach that status. Across both rounds the second reviewer read 40 of the 89 items. Rendering is unchanged for now (`reviewed` and `approved` both localise); `approved` is the release gate for the default Thai experience described in `docs/LOCALISATION.md`, to be switched on when the toggle leaves pilot. Detail in `docs/THAI_BATCH2_SPOTCHECK_ROUND2_RESPONSE.md`. Batch 1 (163 items) remains `reviewed` pending its own round-2 sample.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; only the 89 status fields changed.
+
 ## 2026-09-14: Thai Batch 2 Applied (89 Items Reviewed); Spot Check Round 1 Applied, Round 2 Issued
 
 The native review of Thai batch 2 (89 Thai-priority-Medium items) came back with 49 Approve / 40 Fix in cell / 0 Rewrite, meaning preserved and the key unambiguous on every item and every one of the 323 answer-choice rows. Applied to `app/questionTranslations.th.ts` as `reviewed`: the table now holds 226 entries (252 questions with Thai including the 26 inline Horizon items). 22 scenarios, 36 prompts and 3 key options were reworded in cell; all 83 free-text rubric keyword lists were expanded with the stems Thai users actually type. Three glossary renderings changed (hallucination gloss, Human-in-the-loop alongside the Thai, การแก้ไขทับผล AI) and were swept across batch 2; batch 1 keeps the old wording until its round-2 spot check closes. Two tooling decisions are documented in `docs/THAI_BATCH2_REVIEW_RESPONSE.md`: the reviewer's leading จง was dropped from 21 prompts to match batch 1's register, and five over-broad keyword stems (คน, รอ, PR) were lengthened so free-text scoring cannot match on noise. The reviewer also re-confirmed all 41 artifact language tags and wrote a Thai "Inspect for" cue per artifact (kept in `exports/artifact-language-tags.json`).

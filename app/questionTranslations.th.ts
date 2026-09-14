@@ -3978,7 +3978,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-CONCEPTS-025': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้งานใหม่คนหนึ่งกล่าวว่า “AI ตอบด้วยน้ำเสียงมั่นใจ แสดงว่าข้อมูลต้องถูกต้องแน่นอน”',
     prompt: 'ข้อใดอธิบายการทำงานของ AI ได้ถูกต้องที่สุด',
     options: {
@@ -4006,7 +4006,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-MEDIA-040': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนคนหนึ่งต้องการแชร์ภาพภัยพิบัติที่ดูสะเทือนอารมณ์และรุนแรง',
     prompt: 'ข้อใดคือแนวทางปฏิบัติแรกที่ปลอดภัยที่สุด',
     options: {
@@ -4034,7 +4034,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-STRATEGY-052': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารถามว่า เมื่อมีโมเดล AI รุ่นใหม่ออกมาทุกครั้ง องค์กรควรเปิดโครงการใหม่ตามด้วยหรือไม่',
     prompt: 'ข้อใดคือคำตอบที่เหมาะสมที่สุด',
     options: {
@@ -4062,7 +4062,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D1-CONCEPTS-090': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้เข้าอบรมระบุว่า การตั้งค่า temperature ให้ต่ำ, เขียน prompt ให้ยาว และจัดรูปแบบการอ้างอิงให้น่าเชื่อถือ จะช่วยรับประกันว่าคำตอบของ AI ถูกต้องแน่นอน',
     prompt: 'ประเด็นใดบ้างที่วิทยากรควรชี้แจงเพื่อแก้ไขความเข้าใจผิด',
     options: {
@@ -4094,7 +4094,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-PROMPT-032': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการผลิตภัณฑ์กำลังสร้างเทมเพลต prompt สำหรับสรุปบันทึกการคุยกับลูกค้า',
     prompt: 'จับคู่ส่วนประกอบของ prompt แต่ละข้อกับวัตถุประสงค์การใช้งาน',
     matchPairs: {
@@ -4126,7 +4126,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-GOV-047': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow ที่ใช้ AI ทำให้เกิดการดำเนินการที่ผิดพลาดกับลูกค้า',
     prompt: 'ข้อใดคือหลักฐานที่จำเป็นต้องเก็บไว้สำหรับการรับมือเหตุการณ์',
     options: {
@@ -4158,7 +4158,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-CHANGE-059': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แต่ละทีมมีรูปแบบการนำ AI ไปใช้ที่แตกต่างกัน',
     prompt: 'จับคู่สัญญาณแต่ละข้อกับแนวทางสนับสนุนที่เหมาะสมที่สุด',
     matchPairs: {
@@ -4190,7 +4190,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D2-D6-071': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมบริการลูกค้าต้องการให้ AI ช่วยจัดการเคส (ticket) เรื่องการตัดเงินซ้ำ โดยยังคงรักษาการเรียนรู้และพัฒนาทักษะของเจ้าหน้าที่ผู้ตรวจทานไว้',
     prompt: 'เรียงลำดับขั้นตอนการทำงานให้ถูกต้อง',
     rankItems: {
@@ -4208,7 +4208,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-MEDIA-075': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมการเงินได้รับใบแจ้งหนี้เร่งด่วนที่อาจถูกแก้ไขด้วยเครื่องมือที่ใช้ AI ช่วย',
     prompt: 'จับคู่ร่องรอยแต่ละอย่างในเอกสารกับมาตรการควบคุมที่ปลอดภัยที่สุด',
     matchPairs: {
@@ -4240,7 +4240,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D6-CHANGE-085': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายงานหนึ่งต้องการขยายการใช้ผู้ช่วย AI หลังโครงการนำร่อง (pilot) ให้ผลดี แต่การนำไปใช้ยังไม่สม่ำเสมอ',
     prompt: 'จัดลำดับขั้นตอนการเตรียมความพร้อมก่อนขยายผล',
     rankItems: {
@@ -4258,7 +4258,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-MKT-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วยด้านแคมเปญแนะนำให้ขยายการลงทุนในกลุ่ม Segment C เพราะมี CPA ต่ำที่สุดและได้จำนวนลูกค้าเป้าหมายมากที่สุด',
     prompt: 'สิ่งใดที่นักการตลาดจำเป็นต้องทำก่อนขยายการลงทุนใน Segment C',
     options: {
@@ -4286,7 +4286,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-OPS-D6-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เจ้าหน้าที่บริการลูกค้าได้รับร่างคำตอบจาก AI ที่ปฏิเสธการคืนเงิน ทั้งที่ข้อมูลเคส (ticket) มีทั้งการลองตัดเงินซ้ำ การตัดเงินซ้ำซ้อน และเข้าข้อยกเว้นของนโยบายการคืนเงิน',
     prompt: 'เขียนอธิบาย 2–4 ประโยคว่า เจ้าหน้าที่บริการลูกค้าควรดำเนินการอย่างไรต่อไป',
     rubricCriteria: {
@@ -4315,7 +4315,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-AI-PRODUCTS-062': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการถามว่าผลิตภัณฑ์ AI ทุกตัวควรถูกกำกับดูแลด้วยวิธีเดียวกันหรือไม่',
     prompt: 'จับคู่ผลิตภัณฑ์ AI แต่ละแบบกับประเด็นที่ต้องตรวจสอบเป็นหลัก',
     matchPairs: {
@@ -4347,7 +4347,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-PROMPT-033': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งต้องการให้ผู้ช่วย AI ช่วยปรับปรุงอีเมลติดตามงานขายให้ดีขึ้นผ่านการทบทวนหลายรอบ',
     prompt: 'เขียนคำสั่ง prompt แบบวนซ้ำ (Prompt loop) ที่ครอบคลุมขั้นตอนการร่าง การวิจารณ์ประเมินผล การแก้ไขปรับปรุง และเกณฑ์การหยุดทำงาน',
     rubricCriteria: {
@@ -4380,7 +4380,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-GOV-048': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บริษัทแห่งหนึ่งมีโครงการนำร่อง (pilot) ด้าน AI หลายโครงการที่มีระดับความเสี่ยงแตกต่างกัน',
     prompt: 'เขียนกำหนดรอบเวลาและแนวทางการกำกับดูแล (Governance cadence) แบบสั้น ๆ สำหรับการทบทวนโครงการนำร่องเหล่านี้',
     rubricCriteria: {
@@ -4413,7 +4413,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-CHANGE-060': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หลังจากเกิดข้อผิดพลาดจาก AI ซึ่งส่งผลกระทบอย่างเห็นได้ชัด จนทำให้อัตราการใช้งานลดลงและทีมงานเกิดความลังเลใจ',
     prompt: 'เขียนแผนฟื้นฟูความเชื่อมั่นและความไว้วางใจ (Recovery plan) แบบสั้น ๆ สำหรับการดำเนินงานใน 30 วันข้างหน้า',
     rubricCriteria: {
@@ -4446,7 +4446,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D2-D5-072': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าฝ่ายปฏิบัติการเปรียบเทียบแนวคิดเครื่องมือ AI สี่แบบสำหรับกระบวนการเดียวกันที่มีงานล้นมือ',
     prompt: 'จับคู่สัญญาณจากขั้นตอนงานแต่ละข้อกับทางเลือกเครื่องมือหรือโครงการนำร่อง (pilot) ที่เหมาะสมที่สุด',
     matchPairs: {
@@ -4478,7 +4478,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-MEDIA-074': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โพสต์ที่ดูสมจริงอ้างว่าผู้บริหารของบริษัทประกาศเลิกจ้างพนักงานก่อนตลาดเปิด แต่ต้นทางเป็นเพียงการรีโพสต์จากบัญชีนิรนาม',
     prompt: 'เขียนอธิบาย 2–4 ประโยค ระบุขั้นตอนการตรวจสอบข้อเท็จจริง และท่าทีการสื่อสารที่เหมาะสมขององค์กร',
     rubricCriteria: {
@@ -4507,7 +4507,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D5-STRATEGY-080': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารระดับสูงกำลังตัดสินใจว่าจะพัฒนาเอง ซื้อ จับมือกับพันธมิตร พักไว้ หรือทำโครงการนำร่อง (pilot) สำหรับโอกาสด้าน AI หลายเรื่อง',
     prompt: 'จับคู่สัญญาณเชิงกลยุทธ์แต่ละข้อกับทางเลือกของพอร์ตโฟลิโอที่เหมาะสมที่สุด',
     matchPairs: {
@@ -4539,7 +4539,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-FIN-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ความเห็นปิดงบที่ AI เขียนไว้ระบุว่าค่าสื่อโฆษณาแบบเสียเงินคือสาเหตุหลักที่ทำให้อัตรากำไรพลาดเป้า และเงินที่ประหยัดได้จากผู้ขายชดเชยส่วนที่เหลือไปแล้ว',
     prompt: 'ข้อใดคือการแก้ไขที่ทำให้ความเห็นปิดงบใช้ประกอบการตัดสินใจได้ดีที่สุด',
     options: {
@@ -4567,7 +4567,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-TECH-D4-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ดูแลด้านเทคนิคและข้อมูลกำลังตรวจสอบการทำงานของเอเจนต์ฝ่ายปฏิบัติการ ซึ่งอ่านข้อมูลการเรียกเก็บเงินและ CRM พยายามคืนเงิน และพยายามส่งร่างคำตอบปฏิเสธออกไป',
     prompt: 'จับคู่ปัญหาในขั้นตอนงานกับมาตรการควบคุมที่ถูกต้อง',
     matchPairs: {
@@ -4594,7 +4594,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-PEOPLE-D4-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'สรุปผลการคัดกรองผู้สมัครที่ AI เขียนไว้แนะนำผู้สมัคร A ว่าเข้ากับวัฒนธรรมองค์กรได้ดีที่สุด เอกสารฉบับเต็มมีหลักฐานด้านสมรรถนะและโน้ตของผู้สมัครสองคน',
     prompt: 'ข้อใดคือประเด็นที่ HR ควรตั้งข้อสังเกตก่อนใช้คำแนะนำของ AI',
     options: {
@@ -4622,7 +4622,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-GITHUB-REPO-064': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักพัฒนาคนหนึ่งต้องการนำไลบรารี AI จาก GitHub มาใช้ในระบบที่ให้บริการจริง',
     prompt: 'จับคู่สัญญาณแต่ละอย่างจาก repository กับสิ่งที่สัญญาณนั้นบอกคุณ',
     matchPairs: {
@@ -4654,7 +4654,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-SYSTEMS-028': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้ถามว่า เพราะเหตุใดโมเดล AI ตัวเดียวกัน จึงมีความปลอดภัยในแอปพลิเคชันหนึ่ง มากกว่าอีกแอปพลิเคชันหนึ่ง',
     prompt: 'ข้อใดคือคำอธิบายที่ดีที่สุด',
     options: {
@@ -4682,7 +4682,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-VERIFY-037': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แชตบอตสรุปย่อหน้าหนึ่งของเอกสารนโยบาย',
     prompt: 'คุณควรตรวจสอบสิ่งใดเป็นอันดับแรก',
     options: {
@@ -4710,7 +4710,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-VALUE-049': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งบอกว่าโครงการนำร่อง (pilot) ด้าน AI ของตนประสบความสำเร็จ เพราะผู้คนชอบการสาธิต',
     prompt: 'ข้อใดคือหลักฐานที่ขาดไปและสำคัญที่สุด',
     options: {
@@ -4738,7 +4738,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-AI-COMPONENTS-061': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมใหม่กำลังเรียนรู้ว่าผลิตภัณฑ์ AI ประกอบขึ้นจากอะไรบ้าง',
     prompt: 'จับคู่องค์ประกอบ AI แต่ละอย่างกับคำอธิบายแบบเข้าใจง่าย',
     matchPairs: {
@@ -4770,7 +4770,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-WORKFLOW-035': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI agent ตัวหนึ่งจะสรุป ticket (เคสลูกค้า) ของฝ่ายสนับสนุน ร่างอีเมล อัปเดตข้อมูลใน CRM และสร้างคำขอคืนเงิน',
     prompt: 'รายละเอียดการตั้งค่าข้อใดบ้างที่จำเป็นต้องมี',
     options: {
@@ -4802,7 +4802,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-RISK-044': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI มีสิทธิ์เข้าถึงข้อมูลในระบบ workspace อย่างกว้างขวางเกินไป',
     prompt: 'จับคู่ความเสี่ยงแต่ละข้อกับมาตรการควบคุมที่เหมาะสม',
     matchPairs: {
@@ -4834,7 +4834,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-COLLAB-056': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ระบบคัดกรองผู้สมัครงานด้วย AI จัดอันดับผู้สมัครรายหนึ่งไว้ต่ำ แต่บันทึกการสัมภาษณ์แสดงหลักฐานที่หนักแน่น',
     prompt: 'พฤติกรรมการทำงานร่วมกันระหว่างคนกับ AI ข้อใดบ้างที่ถูกต้องและเหมาะสม',
     options: {
@@ -4866,7 +4866,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D2-PROMPT-091': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนร่วมงานสั่ง AI ว่า “เขียนอีเมลอัปเดตถึงลูกค้า” หลังจากวางบันทึกที่มีทั้งข้อเท็จจริงที่ตรวจสอบแล้ว สิ่งที่ยังไม่ทราบ และข้อจำกัดตามนโยบาย',
     prompt: 'ข้อใดบ้างที่ควรเพิ่มลงใน prompt เพื่อให้ร่างของ AI ใช้งานได้จริงและปลอดภัยยิ่งขึ้น',
     options: {
@@ -4898,7 +4898,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D4-D1-078': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการรายหนึ่งเสนอส่วนลดพิเศษหากองค์กรยอมเซ็นสัญญาอย่างรวดเร็ว โดยมีเงื่อนไขขอนำข้อมูลลูกค้าไปใช้ในแพลตฟอร์ม AI ของตน',
     prompt: 'โปรดตอบคำถามย่อยต่อไปนี้ก่อนพิจารณาอนุมัติสัญญาผู้ให้บริการ',
     parts: {
@@ -4961,7 +4961,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-CS-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ระบบ AI ของฝ่ายบริการลูกค้าร่างข้อความตอบกลับอัตโนมัติแบบมาตรฐาน เพื่อแจ้งความล่าช้าให้แก่ลูกค้าที่ถูกตัดเงินซ้ำ',
     prompt: 'ข้อใดคือจุดบกพร่องที่ร้ายแรงที่สุดของร่างข้อความจาก AI นี้',
     options: {
@@ -4989,7 +4989,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-OPS-D6-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เจ้าหน้าที่บริการลูกค้าได้รับร่างข้อความจาก AI ที่ปฏิเสธคำขอคืนเงินสำหรับเคสลูกค้าที่ถูกตัดเงินซ้ำ โดยบันทึกระบบ (workflow log) แสดงว่าน่าจะมีการตัดเงินครั้งที่สองจริง และระบบได้ระงับทั้งการคืนเงินและการส่งอีเมลออกไว้',
     prompt: 'เขียนอธิบาย 2–4 ประโยคว่า เจ้าหน้าที่บริการลูกค้าควรดำเนินการอย่างไรต่อไป',
     rubricCriteria: {
@@ -5018,7 +5018,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-SALES-D2-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'พนักงานขายต้องการให้ AI ช่วยวางแผนการดำเนินการถัดไปที่ดีที่สุดสำหรับดีลที่ยังเปิดอยู่',
     prompt: 'เรียงลำดับขั้นตอนการทำงานขายที่มี AI ช่วย ให้ถูกต้องและมีประสิทธิภาพสูงสุด',
     rankItems: {
@@ -5035,7 +5035,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-MODEL-CARD-063': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้สายเทคนิคกำลังตรวจสอบ model card ก่อนตัดสินใจนำโมเดลแบบเปิด (Open-source model) ไปใช้งาน',
     prompt: 'จับคู่แต่ละส่วนของ model card กับการตัดสินใจที่ส่วนนั้นช่วยสนับสนุน',
     matchPairs: {
@@ -5067,7 +5067,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-WORKFLOW-036': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow หนึ่งใช้ AI agent แยกกันสำหรับการวางแผน การค้นคืนข้อมูล การเขียน และการอนุมัติ',
     prompt: 'จับคู่ความเสี่ยงที่จะเกิดความผิดพลาดแต่ละข้อ กับมาตรการควบคุม workflow ที่เหมาะสม',
     matchPairs: {
@@ -5099,7 +5099,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-RISK-045': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายจัดซื้อสอบถามว่า ผู้ให้บริการ AI สามารถนำข้อมูลของบริษัทไปใช้พัฒนาโมเดลหรือปรับปรุงบริการของตนได้หรือไม่',
     prompt: 'เขียนคำถามสำคัญด้านความเสี่ยงที่คุณจะใช้ตรวจสอบและซักถามก่อนพิจารณาอนุมัติ',
     rubricCriteria: {
@@ -5132,7 +5132,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-COLLAB-057': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งต้องการยกระดับงานที่ใช้ AI ช่วยให้ดีขึ้นทุกสัปดาห์',
     prompt: 'เรียงลำดับวงรอบการทบทวนและปรับปรุงการทำงานร่วมกันระหว่างคนกับ AI (Review loop) ประจำสัปดาห์',
     rankItems: {
@@ -5150,7 +5150,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D2-D5-087': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้สนับสนุนการเปลี่ยนผ่านองค์กรต้องการยกระดับจากการทดลองใช้ AI แบบกระจัดกระจาย ไปสู่พอร์ตโฟลิโอของขั้นตอนงานที่ทำซ้ำได้และมีการกำกับดูแล (governance)',
     prompt: 'เรียงลำดับขั้นตอนการดำเนินงาน',
     rankItems: {
@@ -5168,7 +5168,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-MEDIA-088': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ข้อความแจ้งเตือนการเข้าสู่ระบบบอกว่าบัญชีจะถูกล็อก หากผู้ใช้ไม่ยืนยันตัวตนผ่านลิงก์ในข้อความนั้น',
     prompt: 'สัญญาณข้อใดบ้างที่ควรทำให้ผู้ใช้หยุดและไม่คลิกลิงก์นั้น',
     options: {
@@ -5200,7 +5200,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D6-CHANGE-083': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานสูญเสียความเชื่อมั่นหลังเกิดเหตุการณ์ผิดปกติ (incident) จาก AI และผู้จัดการแต่ละคนได้รับแนวทางที่ขัดกัน',
     prompt: 'จับคู่สัญญาณด้านความเชื่อมั่นแต่ละข้อ กับการลงมือของผู้นำ',
     matchPairs: {
@@ -5232,7 +5232,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-GEN-D5-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'กลุ่มผู้บริหารจากหลายสายงานกำลังเลือกระหว่างโครงการนำร่อง (pilot) ด้าน AI ในงานสนับสนุนนโยบาย HR คำอธิบายประกอบการปิดงบ การเพิ่มประสิทธิภาพแคมเปญ และการคืนเงินของฝ่ายสนับสนุน',
     prompt: 'ข้อใดบ้างคือเกณฑ์ที่หัวหน้าสายงานควรใช้จัดลำดับความสำคัญของ pilot ระดับพรีเมียม',
     options: {
@@ -5264,7 +5264,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-FIN-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บทสรุปการเงินจาก AI ระบุว่าการใช้จ่ายเกินงบของฝ่ายการตลาดคือสาเหตุหลักที่อัตรากำไรต่ำกว่าเป้า',
     prompt: 'ข้อใดคือข้อท้วงติงที่มีน้ำหนักมากที่สุดต่อบทสรุปของ AI',
     options: {
@@ -5292,7 +5292,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-SALES-D5-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้อำนวยการฝ่ายขายกำลังตัดสินใจว่าจะใช้บทสรุปการคาดการณ์จาก AI ในการประชุมรายได้ประจำสัปดาห์หรือไม่',
     prompt: 'ข้อใดบ้างคือหลักฐานที่ควรเพิ่มเข้าไป ก่อนที่ผู้บริหารจะนำการคาดการณ์จาก AI ไปใช้',
     options: {
@@ -5324,7 +5324,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-PROMPT-031': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้เขียนคำสั่งว่า “ช่วยทำให้อีเมลนี้ดีขึ้น”',
     prompt: 'รายละเอียดสำคัญข้อใดที่ขาดไป ซึ่งจะช่วยปรับปรุง prompt นี้ให้มีประสิทธิภาพสูงสุด',
     options: {
@@ -5352,7 +5352,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-GOV-046': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานถามว่าแนวคิด “Human-in-the-loop (การตรวจทานโดยคน)” ในการทำงานจริงควรหมายถึงอะไร',
     prompt: 'ข้อใดคือคำตอบที่ดีที่สุด',
     options: {
@@ -5380,7 +5380,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-CHANGE-058': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บริษัทเปิดให้พนักงานทุกคนเข้าถึงเครื่องมือ AI ตัวใหม่',
     prompt: 'หากต้องการให้พนักงานนำไปใช้งานได้จริง องค์กรยังขาดสิ่งใด',
     options: {
@@ -5408,7 +5408,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-CONCEPTS-026': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผลิตภัณฑ์กำลังเปรียบเทียบแนวทางต่าง ๆ ในการปรับปรุงผู้ช่วยงานบริการลูกค้า',
     prompt: 'จับคู่ความต้องการแต่ละข้อกับแนวคิดที่เกี่ยวข้องที่สุด',
     matchPairs: {
@@ -5440,7 +5440,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-MEDIA-041': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ใบแจ้งหนี้ฉบับหนึ่งขอให้ชำระเงินด่วนเข้าบัญชีธนาคารใหม่',
     prompt: 'สัญญาณใดบ้างที่จำเป็นต้องตรวจสอบ',
     options: {
@@ -5472,7 +5472,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-STRATEGY-053': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการพิจารณาพอร์ตโครงการกำลังทบทวนโครงการ AI หลายโครงการ',
     prompt: 'เกณฑ์ใดบ้างที่ควรมีผลต่อการจัดสรรงบประมาณ',
     options: {
@@ -5504,7 +5504,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D1-D2-067': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานกำลังสร้างผู้ช่วยด้านนโยบาย แต่ยังคงมองว่า prompt ที่ยาวขึ้น การค้นคืนข้อมูล และหน่วยความจำ เป็นวิธีแก้ปัญหาที่ใช้แทนกันได้',
     prompt: 'ตอบคำถามย่อยแต่ละข้อเกี่ยวกับการเลือกแนวคิดและวิธีเขียน prompt ที่เหมาะสม',
     parts: {
@@ -5567,7 +5567,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-D6-089': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แชตกลุ่มของทีมกำลังจะแชร์ต่อภาพภัยพิบัติเร่งด่วน ขณะที่แดชบอร์ดของนักวิเคราะห์แสดงหลักฐานที่ขัดแย้งกันเรื่องเวลา สภาพอากาศ การจราจร และประวัติของแหล่งข้อมูล',
     prompt: 'เขียนอธิบาย 2–4 ประโยค เพื่อแนะนำทีมว่าควรปฏิบัติอย่างไรในลำดับถัดไป และจะปรับปรุงแนวทางการแชร์ข้อมูลในอนาคตได้อย่างไร',
     rubricCriteria: {
@@ -5596,7 +5596,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D5-VALUE-079': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมขายต้องการซื้อผู้ช่วย AI สำหรับการคาดการณ์ยอดขาย เพราะผลคาดการณ์ครั้งหนึ่งชี้ว่ายอดขายในไตรมาสนี้จะเติบโตขึ้น',
     prompt: 'เขียน 2-4 ประโยค อธิบายว่าหลักฐานแบบใดจึงจะทำให้โครงการนำร่อง (pilot) นี้สมควรได้รับงบประมาณ',
     rubricCriteria: {
@@ -5629,7 +5629,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-CS-D5-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการฝ่ายบริการลูกค้าต้องการพิสูจน์ว่าการตอบลูกค้าโดยมี AI ช่วยนั้นทำให้ขั้นตอนงานบริการดีขึ้นจริงหรือไม่',
     prompt: 'ตัวชี้วัดใดบ้างที่ควรติดตามก่อนขยายการใช้ AI ช่วยตอบลูกค้า',
     options: {
@@ -5661,7 +5661,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-MKT-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ด้านแคมเปญแนะนำให้ขยายงบของ Ad Set C เพราะมีอัตราการเปลี่ยนเป็นยอดขายสูงที่สุด',
     prompt: 'นักการตลาดควรตรวจสอบสิ่งใดก่อนขยายงบ',
     options: {
@@ -5689,7 +5689,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-SALES-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ด้านการคาดการณ์ระบุว่าควรนับดีล Blue Harbor เข้าไตรมาสนี้ เพราะสถานะใน CRM ระบุว่าลูกค้าตอบรับด้วยวาจาแล้ว',
     prompt: 'พนักงานขายควรตั้งคำถามกับสิ่งใดเป็นอันดับแรก',
     options: {
@@ -5717,7 +5717,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-CONCEPTS-027': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักศึกษาคนหนึ่งต้องการพึ่งคำตอบจาก AI ที่มีการอ้างอิง ซึ่งอาจไม่ได้สนับสนุนข้อกล่าวอ้างนั้นจริง',
     prompt: 'อธิบายว่าคำตอบจาก AI นี้จะมีประโยชน์ในกรณีใดบ้าง และมีสิ่งใดที่คุณจำเป็นต้องตรวจสอบเป็นอันดับแรก',
     rubricCriteria: {
@@ -5746,7 +5746,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-MEDIA-042': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'มีข้อความและรูปภาพถูกส่งต่อในแชตกำลังแพร่กระจาย พร้อมข้อกล่าวอ้างเกี่ยวกับเหตุฉุกเฉินที่กำลังเกิดขึ้น',
     prompt: 'เขียนบันทึกการตรวจสอบสั้น ๆ เพื่อเตือนทีมก่อนที่จะมีการแชร์ภาพนี้ต่อหรือดำเนินการใด ๆ ตามภาพ',
     rubricCriteria: {
@@ -5779,7 +5779,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-STRATEGY-054': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โครงการนำร่อง (pilot) ใช้ AI ในงานบริการลูกค้าช่วยประหยัดเวลาได้ แต่เกิดข้อผิดพลาดที่กระทบลูกค้าหลายครั้ง',
     prompt: 'เขียนข้อเสนอแนะเชิงกลยุทธ์ว่าควรขยายผล (Scale), หยุดชั่วคราว (Pause) หรือดำเนินการแก้ไขก่อน (Remediate) พร้อมทั้งระบุเกณฑ์การตัดสินใจประกอบ',
     rubricCriteria: {
@@ -5812,7 +5812,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D1-D3-069': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ขายรายหนึ่งอ้างว่าโมเดลรุ่นใหม่ล่าสุดแก้ปัญหา hallucination (การกุข้อมูล / สร้างข้อมูลเท็จ) สำหรับงานด้านนโยบายได้หมดแล้ว',
     prompt: 'ผู้ซื้อที่รู้เท่าทันควรกำหนดให้มีการตรวจสอบข้อใดบ้าง ก่อนยอมรับคำกล่าวอ้างนี้',
     options: {
@@ -5844,7 +5844,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D2-PROMPT-070': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักการตลาดถาม AI ว่า “บอกหน่อยว่าควรขยายแคมเปญไหน” หลังอัปโหลดแดชบอร์ดที่มีหมายเหตุเรื่องขนาดกลุ่มตัวอย่างและการติดตามผลที่ไม่สมบูรณ์',
     prompt: 'เขียน prompt ใหม่ที่ปลอดภัยและรัดกุมยิ่งขึ้น เพื่อขอคำแนะนำประกอบการตัดสินใจโดยไม่ละเลยข้อจำกัดและความไม่แน่นอนของข้อมูล',
     rubricCriteria: {
@@ -5877,7 +5877,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D4-GOV-077': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ขั้นตอนงานบริการลูกค้าที่ใช้ AI ส่งคำแนะนำเรื่องการคืนเงินที่ไม่ถูกต้องไปถึงลูกค้า',
     prompt: 'จัดลำดับขั้นตอนการรับมือเหตุการณ์นี้',
     rankItems: {
@@ -5895,7 +5895,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D6-COLLAB-084': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมโครงการใช้ AI ช่วยสรุปแหล่งข้อมูล แต่สมาชิกคนหนึ่งสังเกตว่าข้อยกเว้นที่ระบุไว้ในแหล่งข้อมูลหายไปจากร่างฉบับสุดท้าย',
     prompt: 'ทีมควรใช้วิธีทำงานร่วมกันแบบใดบ้างก่อนส่งงาน',
     options: {
@@ -5927,7 +5927,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-PEOPLE-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เจ้าหน้าที่ฝ่ายบุคคล (HR) ให้ AI ช่วยตอบคำถามของหัวหน้างานเรื่องการยกยอดวันลาพักร้อนข้ามปี แต่ AI กลับอ้างอิงความเห็นในร่างนโยบายฉบับเก่า ทั้งที่มีเอกสารนโยบายฉบับอนุมัติล่าสุดแสดงอยู่',
     prompt: 'ข้อใดคือจุดบกพร่องที่สำคัญที่สุดของคำตอบจาก AI นี้',
     options: {
@@ -5955,7 +5955,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-GEN-D5-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าสายงานต้องการเลือกโครงการนำร่อง (pilot) ด้าน AI มาทำหนึ่งเรื่อง จากหลายไอเดียที่มีคุณค่า ความเสี่ยง และความพร้อมต่างกัน',
     prompt: 'จัดลำดับขั้นตอนการตัดสินใจคัดเลือกโครงการนำร่อง (pilot) ด้าน AI ให้ถูกต้อง',
     rankItems: {
@@ -5972,7 +5972,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-TECH-D4-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วยรับมือเหตุการณ์ผิดปกติ (incident) เรียกใช้ตัวเชื่อมต่อเครื่องมือหลายตัวระหว่างการคัดกรองความเร่งด่วน (triage) บันทึกการเข้าถึงแบบดิบแสดงทั้งรายการที่อนุญาต ที่ถูกบล็อก และที่อยู่นอกขอบเขต',
     prompt: 'ผู้รับผิดชอบด้านเทคนิคควรคงไว้หรือเสริมความเข้มของมาตรการควบคุมข้อใดบ้าง',
     options: {
@@ -6004,7 +6004,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D2-WORKFLOW-034': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้ต้องการให้ AI ช่วยทำรายงานประจำเดือน',
     prompt: 'ข้อใดคือขั้นตอนงาน (workflow) ที่ปลอดภัยที่สุด',
     options: {
@@ -6032,7 +6032,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D4-RISK-043': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้ต้องการนำข้อมูลประวัติการรักษาทางการแพทย์ไปวางลงในแชตบอต AI ทั่วไป',
     prompt: 'ข้อใดคือขั้นตอนแรกที่ปลอดภัยที่สุด',
     options: {
@@ -6060,7 +6060,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D6-COLLAB-055': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI ช่วยร่างข้อความตอบกลับสำหรับข้อร้องเรียนที่มีความละเอียดอ่อนของลูกค้า',
     prompt: 'ใครคือผู้รับผิดชอบข้อความฉบับสุดท้ายที่ส่งถึงลูกค้า',
     options: {
@@ -6088,7 +6088,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-SYSTEMS-029': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักพัฒนาต้องการนำโมเดลจาก Hugging Face มาใช้ในผู้ช่วยที่ให้บริการลูกค้าโดยตรง',
     prompt: 'ข้อใดคือรายละเอียดใน model card ที่ควรตรวจสอบ',
     options: {
@@ -6120,7 +6120,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-VERIFY-038': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ซื้อเปรียบเทียบผลิตภัณฑ์ AI สามรายจากคำกล่าวอ้างผล benchmark (ผลทดสอบเทียบ) ที่เผยแพร่ต่อสาธารณะ',
     prompt: 'จับคู่ข้อกังวลเกี่ยวกับ benchmark แต่ละข้อกับคำถามที่ควรใช้ตรวจสอบ',
     matchPairs: {
@@ -6152,7 +6152,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-VALUE-050': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายปฏิบัติการกำลังคัดเลือกกรณีใช้งาน AI',
     prompt: 'จับคู่สัญญาณของแต่ละกรณีใช้งานกับคำถามด้านคุณค่าที่เหมาะสมที่สุด',
     matchPairs: {
@@ -6184,7 +6184,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D1-D2-086': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'กลุ่มผู้เข้าอบรมกำลังทบทวนว่าเหตุใดผู้ช่วย AI ตัวหนึ่งจึงตอบจากข้อมูลเก่าที่จำไว้ ขณะที่อีกตัวหนึ่งอ้างอิงนโยบายฉบับปัจจุบัน',
     prompt: 'จับคู่พฤติกรรมแต่ละอย่างกับคำอธิบายที่เหมาะสมที่สุด',
     matchPairs: {
@@ -6216,7 +6216,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-MEDIA-073': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ข้อความ SMS แจ้งพัสดุขอให้ชำระค่าภาษีศุลกากรผ่านลิงก์ย่อ ในขณะที่ผู้รับกำลังรอรับพัสดุอยู่พอดี',
     prompt: 'ข้อใดคือสัญญาณเตือนความผิดปกติ (Red flags) และข้อควรปฏิบัติที่ต้องระวังก่อนดำเนินการ',
     options: {
@@ -6248,7 +6248,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D6-CHANGE-082': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บริษัทเปิดใช้ผู้ช่วย AI แต่ผู้จัดการยังไม่แน่ใจว่าจะโค้ชทีมให้ใช้งานอย่างปลอดภัยและเกิดประโยชน์ได้อย่างไร',
     prompt: 'เขียนแผนเสริมศักยภาพและแนวทางสนับสนุนหัวหน้างาน/ผู้จัดการภายใน 30 วัน ความยาว 2–4 ประโยค',
     rubricCriteria: {
@@ -6281,7 +6281,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-FIN-D5-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าฝ่ายการเงินต้องการทดลองใช้ AI ร่างคำอธิบายประกอบงบปิดบัญชีรายเดือน โดยไม่ทำให้วินัยการตรวจทานอ่อนลง',
     prompt: 'เรียงลำดับขั้นตอนของโครงการนำร่อง (pilot) จากขั้นแรกไปขั้นสุดท้าย',
     rankItems: {
@@ -6298,7 +6298,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-MKT-SALES-D6-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายการตลาดและฝ่ายขายใช้ AI สรุปข้อมูลลูกค้าเป้าหมาย ร่างข้อความติดต่อ และจัดลำดับความสำคัญในการติดตามผล การส่งต่องานระหว่างสองฝ่ายทำให้เกิดความเห็นไม่ตรงกันเรื่องคุณภาพลูกค้าเป้าหมาย',
     prompt: 'จับคู่ความเสี่ยงแต่ละข้อกับแนวปฏิบัติที่ดีที่สุด',
     matchPairs: {
@@ -6325,7 +6325,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-AI-CONTROLS-066': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานกำลังออกแบบมาตรการควบคุมสำหรับผู้ช่วย AI ที่ใช้ในการตัดสินใจเกี่ยวกับลูกค้า',
     prompt: 'จับคู่มาตรการควบคุม AI แต่ละข้อกับปัญหาที่มาตรการนั้นแก้ได้',
     matchPairs: {
@@ -6357,7 +6357,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D1-SYSTEMS-030': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานกำลังพิจารณานำแพ็กเกจ AI แบบโอเพนซอร์สจาก GitHub มาใช้',
     prompt: 'เรียงลำดับขั้นตอนการตรวจสอบ repository ก่อนตัดสินใจนำมาใช้',
     rankItems: {
@@ -6375,7 +6375,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D3-VERIFY-039': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI อธิบายผลต่าง (variance) ทางการเงินและเสนอแนวทางดำเนินการ',
     prompt: 'เขียนระบุหลักฐานที่คุณจะทำการตรวจสอบ ก่อนที่จะยอมรับคำอธิบายและข้อเสนอแนะดังกล่าวของ AI',
     rubricCriteria: {
@@ -6408,7 +6408,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-D5-VALUE-051': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายการตลาดต้องการขยายแคมเปญที่สร้างด้วย AI เพราะจำนวนลูกค้าเป้าหมายเพิ่มขึ้น',
     prompt: 'เขียนระบุหลักฐานสำคัญที่จำเป็นต้องตรวจสอบ ก่อนที่จะตัดสินใจอนุมัติเพิ่มงบประมาณในการขยายแคมเปญ',
     rubricCriteria: {
@@ -6441,7 +6441,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D1-SYSTEMS-068': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ซื้อเปรียบเทียบผู้ช่วย AI สองตัวที่ใช้โมเดลเดียวกันแต่ตั้งค่าผลิตภัณฑ์ต่างกัน',
     prompt: 'จับคู่คุณสมบัติของระบบแต่ละข้อกับคำถามด้านการใช้งานจริงที่ตามมา',
     matchPairs: {
@@ -6473,7 +6473,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D3-D5-076': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เอกสารประชุมกรรมการใช้กราฟผลิตภาพเป็นเหตุผลสนับสนุนการขยายโครงการ AI ไปทั่วทั้งบริษัท',
     prompt: 'ข้อใดคือช่องว่างด้านหลักฐานที่ควรตั้งคำถาม',
     options: {
@@ -6505,7 +6505,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'DEPTH-EXP-D5-D6-081': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'COO ต้องการแดชบอร์ดเพื่อตัดสินใจว่าควรขยายการใช้ AI ช่วยร่างงานออกไปนอกแผนกเดียวหรือไม่',
     prompt: 'ข้อใดคือตัวชี้วัดที่ควรอยู่ในแดชบอร์ดสำหรับการตัดสินใจขยายผล',
     options: {
@@ -6537,7 +6537,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-CS-D6-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าทีมบริการลูกค้าต้องการให้เจ้าหน้าที่ใช้ร่างจาก AI แต่ลูกค้าร้องเรียนว่าคำตอบซ้ำซากและขาดหลักฐานเฉพาะของบัญชีตนเอง',
     prompt: 'เขียนอธิบาย 2–4 ประโยค เกี่ยวกับแนวทางและกิจวัตรการตรวจทานที่เจ้าหน้าที่ต้องปฏิบัติ ก่อนที่จะส่งคำตอบที่ AI ร่างไว้ให้แก่ลูกค้า',
     rubricCriteria: {
@@ -6566,7 +6566,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-PEOPLE-D4-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการฝ่ายสรรหาต้องการเชื่อผลที่ AI ระบุว่าผู้สมัครหมายเลข 18 เหมาะสมที่สุด เอกสารประกอบมีทั้งหลักฐานด้านสมรรถนะและถ้อยคำที่เป็นตัวแทนโดยอ้อม',
     prompt: 'ข้อใดคือสิ่งที่หัวหน้าฝ่ายบุคคลควรกำหนดให้มีก่อนนำคำแนะนำของ AI ไปใช้',
     options: {
@@ -6598,7 +6598,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-MKT-D5-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ด้านแคมเปญแนะนำให้ขยายกลุ่มเป้าหมายที่มีต้นทุนถูกที่สุด แต่ข้อมูลแคมเปญที่ส่งออกมาแสดงว่าลูกค้าเป้าหมายคุณภาพต่ำและมีข้อกังวลเรื่องการระบุที่มาของผลลัพธ์',
     prompt: 'เขียนอธิบาย 2–4 ประโยค เพื่อให้ข้อเสนอแนะว่าควรขยายผล (Scale), หยุดชั่วคราว (Pause) หรือตรวจสอบเพิ่มเติม (Investigate) ก่อนการตัดสินใจเพิ่มงบประมาณ',
     rubricCriteria: {
@@ -6627,7 +6627,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MATCH-AI-BENCHMARKS-065': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานพบชื่อ benchmark (ผลทดสอบเทียบ) ของโมเดลหลายรายการในเอกสารของผู้ขาย',
     prompt: 'จับคู่ benchmark แต่ละประเภทกับสิ่งที่น่าจะมุ่งวัดมากที่สุด',
     matchPairs: {

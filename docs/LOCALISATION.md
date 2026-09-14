@@ -31,7 +31,7 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 - `draft` — machine or non-native draft; may be shown to users only in pilots.
 - `reviewed` — a native Thai reviewer with domain knowledge has checked meaning, naturalness, terminology, and that the correct answer is still unambiguous in Thai.
-- `approved` — second reviewer or back-translation spot check passed. Only `approved` items should ship in the default Thai experience once the toggle is public.
+- `approved` — second reviewer or back-translation spot check passed (≥18 of a 20-item stratified sample Approve, no ambiguous key; otherwise sweep the flagged pattern batch-wide and resample without overlap). Only `approved` items should ship in the default Thai experience once the toggle is public — that gate is not yet implemented; today `reviewed` and `approved` render identically.
 
 ## Style rules
 
@@ -47,7 +47,7 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 - Batch 1 (2026-09-11): 163 items `reviewed` — the Thai-priority-High set from audit round 1. 137 in `questionTranslations.th.ts`, 26 Horizon items inline. Reviewer edited 39 scenarios and 32 prompts; choices, rubric keywords, glossary and artifact tags were confirmed as drafted. Source workbook: `exports/New_Horizon_Thai_Review_Batch1_Completed.xlsx`; glossary: `exports/glossary_th.json`.
 - Shared reliance option labels (`relianceOptions.*.labelTh`) apply to any reliance item that has a translation status.
-- Batch 2 (2026-09-14): 89 items `reviewed` — the Thai-priority-Medium set. 49 Approve / 40 Fix in cell / 0 Rewrite; 22 scenarios, 36 prompts, 3 key options reworded; all 83 rubric keyword lists expanded. Source workbook: `exports/New_Horizon_Thai_Review_Batch2_Completed.xlsx`; response: `docs/THAI_BATCH2_REVIEW_RESPONSE.md`. Spot check round 1: 13/7/0, no ambiguous keys → 19 items swept (`docs/THAI_BATCH2_SPOTCHECK_ROUND1_RESPONSE.md`); round 2 pending: `exports/New_Horizon_Thai_Batch2_SpotCheck_Round2.xlsx`.
+- Batch 2 (2026-09-14): 89 items **`approved`** (spot check round 2 passed 20/20; `docs/THAI_BATCH2_SPOTCHECK_ROUND2_RESPONSE.md`). Native review: — the Thai-priority-Medium set. 49 Approve / 40 Fix in cell / 0 Rewrite; 22 scenarios, 36 prompts, 3 key options reworded; all 83 rubric keyword lists expanded. Source workbook: `exports/New_Horizon_Thai_Review_Batch2_Completed.xlsx`; response: `docs/THAI_BATCH2_REVIEW_RESPONSE.md`. Spot check round 1: 13/7/0, no ambiguous keys → 19 items swept (`docs/THAI_BATCH2_SPOTCHECK_ROUND1_RESPONSE.md`); round 2: 20/0/0 → approved.
 - Open glossary questions from the batch-2 spot check: vendor (ผู้ขาย vs ผู้ให้บริการ for service contracts) and escalation (ส่งต่อให้ผู้มีอำนาจ vs ส่งต่อให้ผู้รับผิดชอบระดับสูงขึ้น). Decide once, apply to both batches.
 - Glossary (batch 2 review): hallucination → "hallucination (การกุข้อมูล / สร้างข้อมูลเท็จ)", human review → "การตรวจทานโดยคน (Human-in-the-loop)" on first mention, override → "การแก้ไขทับผล AI (override)". Batch 1 text still carries the earlier renderings; align it when its round-2 spot check closes.
 - Remaining: 408 items English only (mostly generated market-trend and advanced template items).
