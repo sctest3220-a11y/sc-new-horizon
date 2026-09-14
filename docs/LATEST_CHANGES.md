@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-14: Thai Batch 2 Applied (89 Items Reviewed); Spot Check Round 1 Applied, Round 2 Issued
+
+The native review of Thai batch 2 (89 Thai-priority-Medium items) came back with 49 Approve / 40 Fix in cell / 0 Rewrite, meaning preserved and the key unambiguous on every item and every one of the 323 answer-choice rows. Applied to `app/questionTranslations.th.ts` as `reviewed`: the table now holds 226 entries (252 questions with Thai including the 26 inline Horizon items). 22 scenarios, 36 prompts and 3 key options were reworded in cell; all 83 free-text rubric keyword lists were expanded with the stems Thai users actually type. Three glossary renderings changed (hallucination gloss, Human-in-the-loop alongside the Thai, การแก้ไขทับผล AI) and were swept across batch 2; batch 1 keeps the old wording until its round-2 spot check closes. Two tooling decisions are documented in `docs/THAI_BATCH2_REVIEW_RESPONSE.md`: the reviewer's leading จง was dropped from 21 prompts to match batch 1's register, and five over-broad keyword stems (คน, รอ, PR) were lengthened so free-text scoring cannot match on noise. The reviewer also re-confirmed all 41 artifact language tags and wrote a Thai "Inspect for" cue per artifact (kept in `exports/artifact-language-tags.json`).
+
+The second-reviewer spot check (`exports/New_Horizon_Thai_Batch2_SpotCheck_Round1_Reviewed.xlsx`) returned 13 Approve / 7 Fix / 0 Rewrite with no ambiguous keys — below the 18-Approve threshold, so batch 2 stays `reviewed`. The seven Fix items were corrected in the reviewer's wording and the flagged patterns (กติกา, literal ความสดใหม่ / การกระทำที่เกี่ยวกับเงิน / สิทธิ์รอบ ๆ โมเดล, ข้ออ้าง, ผู้ใช้ฝ่ายขาย, vendor term drift) were swept across all 89 items: 19 items changed. Detail and two English-bank notes (DEPTH-EXP-D3-MEDIA-073's key mixes an action into a red-flag question; DEPTH-D3-MEDIA-042's scenario omits the image its prompt refers to) in `docs/THAI_BATCH2_SPOTCHECK_ROUND1_RESPONSE.md`. A fresh, non-overlapping round-2 sample that includes every sweep-touched item is in `exports/New_Horizon_Thai_Batch2_SpotCheck_Round2.xlsx`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; all 89 items localise end to end and every Thai exemplar answer scores fully through `scoreTextAnswer`.
+
 ## 2026-09-12: Batch 1 Register Sweep Completed; Thai Batch 2 Drafted
 
 Extended the batch-1 sweep beyond the second reviewer's list: five prompts still ending in a literal "…คืออะไร" were rephrased to exam form ("ข้อใดคือ…"), one ๆ spacing and one literal phrase fixed (7 edits). The round-2 spot-check sample was regenerated so it shows the final text. All 163 items remain `reviewed` pending the round-2 result.

@@ -18,7 +18,9 @@
    "action": "No Thai image needed",
    "reason": "System UI: permission trace. English tool/permission names are realistic in Thai offices.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตความแตกต่างของการทำงานของโมเดลตัวเดียวกัน เมื่อมีการเปิดใช้เครื่องมือและสิทธิ์ที่ต่างกันในแต่ละแอป",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/ai-concept-workbench.svg",
@@ -33,7 +35,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Concept board; already gated for 5 items. If redesigned, produce EN and TH versions since it carries explanatory text the user must read.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูแนวคิดพื้นฐานเรื่อง token, context window และความเสี่ยงเรื่อง hallucination (การกุข้อมูล)",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/ai-pilot-workflow.svg",
@@ -50,7 +54,9 @@
    "action": "No Thai image needed",
    "reason": "Workflow diagram with short labels; gated. Thai caption is enough.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตลำดับขั้นตอนงาน ตั้งแต่ข้อมูลนำเข้า ร่างจาก AI การตรวจทานโดยคน ไปจนถึงผลลัพธ์สุดท้าย",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive-market-report.svg",
@@ -64,7 +70,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Text-heavy report the user must read to judge claims; gated. A Thai market report is more realistic for Thai executives.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูรายงานตลาดเพื่อแยกแยะระหว่างการโฆษณาชวนเชื่อของคู่แข่ง กับคุณค่าทางธุรกิจจริงที่วัดผลได้",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive-synthetic-post.svg",
@@ -79,7 +87,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Message-type: impersonation social post. Must be Thai to test a Thai user realistically.",
    "thai_version": "/stimuli/executive-synthetic-post-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "สังเกตสัญญาณความผิดปกติของโพสต์ ทั้งจังหวะเวลาเร่งด่วน ร่องรอยภาพสังเคราะห์ และการขาดแหล่งข้อมูลต้นทาง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive/exec-exp-board-packet-scale-readiness.svg",
@@ -96,7 +106,9 @@
    "action": "Produce Thai version (5 visible uses)",
    "reason": "Board packet table; numbers dominate, but headings/notes should be Thai for Thai boards.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูตารางจัดอันดับโครงการ AI ตามเกณฑ์คุณค่า ความเสี่ยง ความพร้อมของข้อมูล และความสอดคล้องกับกลยุทธ์",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive/exec-exp-incident-timeline-support-ai.svg",
@@ -113,7 +125,9 @@
    "action": "Produce Thai version (5 visible uses)",
    "reason": "Timeline with narrative entries; the entries carry the evidence.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูลำดับเหตุการณ์ผิดปกติ (incident) เพื่อระบุจุดบกพร่องของการส่งต่อ และการขาดผู้รับผิดชอบที่ชัดเจน",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive/exec-exp-risk-log-agent-authority.svg",
@@ -127,7 +141,9 @@
    "action": "No Thai image needed",
    "reason": "Register-style table; English column headers are common in Thai risk logs.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตขอบเขตอำนาจของเอเจนต์ สิทธิ์การเข้าถึงข้อมูล และสถานะมาตรการลดความเสี่ยง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/executive/exec-exp-vendor-memo-data-rights.svg",
@@ -142,7 +158,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Message-type: vendor memo the user must read for contract terms.",
    "thai_version": "/stimuli/executive/exec-exp-vendor-memo-data-rights-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดูเงื่อนไขสัญญาของผู้ขาย โดยเฉพาะสิทธิ์ในการนำข้อมูลลูกค้าไปเทรนโมเดล และระยะเวลาการเก็บรักษาข้อมูล",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/fake-product-listing.svg",
@@ -157,7 +175,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Message-type: marketplace listing (Shopee/Lazada-style is the realistic Thai context).",
    "thai_version": "/stimuli/fake-product-listing-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดูร่องรอยความผิดปกติของรายการสินค้า ทั้งภาพสินค้า รีวิว ประวัติผู้ขาย และราคาที่ต่ำเกินจริง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/flood-claim-review-dashboard.png",
@@ -170,7 +190,9 @@
    "action": "No Thai image needed",
    "reason": "Analyst dashboard; structure matters more than words.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตการเปรียบเทียบข้ออ้างไวรัลกับข้อมูลสภาพอากาศ กล้องจราจร และการแจ้งเตือนจากทางการ",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/flood-forwarded-chat.png",
@@ -184,7 +206,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Message-type: forwarded chat (LINE is the realistic Thai channel).",
    "thai_version": "/stimuli/flood-forwarded-chat-th.png",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "สังเกตความไม่แน่นอนของข้อความแชต ทั้งภาพถ่ายที่ไม่ระบุพิกัดชัดเจน และการอ้างเหตุการณ์ในวันเดียวกัน",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/flood-station-social-post.png",
@@ -198,7 +222,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Message-type: social post; caption must be Thai.",
    "thai_version": "/stimuli/flood-station-social-post-th.png",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดูโพสต์โซเชียลมีเดียเพื่อแยกภาพจริงออกจากคำบรรยายที่อาจทำให้เข้าใจผิด",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/fraud-invoice.svg",
@@ -213,7 +239,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Message-type: fraudulent invoice with changed bank account — Thai bank names and format make it testable.",
    "thai_version": "/stimuli/fraud-invoice-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดูใบแจ้งหนี้เพื่อค้นหาร่องรอยการฉ้อโกง เช่น การเปลี่ยนเลขบัญชีธนาคาร การเร่งรัด และไม่มีใบสั่งซื้อ",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/fraud-login.svg",
@@ -228,7 +256,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Message-type: phishing login alert.",
    "thai_version": "/stimuli/fraud-login-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดูการแจ้งเตือนการเข้าสู่ระบบ เพื่อหาสัญญาณฟิชชิง ทั้งโดเมนที่ไม่ตรง อุปกรณ์ที่ไม่คุ้นเคย และคำขู่ล็อกบัญชี",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/func-exp-campaign-export.svg",
@@ -244,7 +274,9 @@
    "action": "No Thai image needed",
    "reason": "Raw data export; English column names are realistic.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตคุณภาพของลูกค้าเป้าหมาย อัตราการแปลงเป็นโอกาสการขาย และคำเตือนเรื่องคูปองรั่วไหล",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/func-exp-finance-workbook.svg",
@@ -259,7 +291,9 @@
    "action": "No Thai image needed",
    "reason": "Spreadsheet; numbers and English headers realistic. Thai caption only.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "ตรวจดูผลต่างทางการเงิน (Variance) และข้อสังเกตของผู้ควบคุมบัญชีเกี่ยวกับรายการที่เกิดขึ้นครั้งเดียว",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/func-exp-ops-data-workflow-log.svg",
@@ -276,7 +310,9 @@
    "action": "Produce Thai version (5 visible uses)",
    "reason": "Mixed: system log (English) plus customer ticket text (should be Thai).",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "สังเกตหลักฐานการตัดเงินซ้ำใน ticket บันทึกการทำงานของเอเจนต์ และจุดตรวจทานที่ถูกระงับไว้",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/func-exp-people-policy-packet.svg",
@@ -290,7 +326,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Text-heavy HR policy packet the user must read.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูนโยบายวันลาพักร้อนฉบับอนุมัติล่าสุด เทียบกับร่างเก่าที่ AI นำมาใช้อ้างอิงอย่างผิดพลาด",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/gen-exp-fraud-sms-thread.svg",
@@ -304,7 +342,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Message-type: delivery-scam SMS — the most common Thai scam pattern; must be Thai.",
    "thai_version": "/stimuli/gen-exp-fraud-sms-thread-th.svg",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดู SMS แจ้งพัสดุต้องสงสัย เพื่อค้นหาสัญญาณหลอกลวง เช่น ลิงก์ย่อแปลกปลอม และการขอข้อมูลบัตร",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/gen-exp-privacy-workflow-board.svg",
@@ -320,7 +360,9 @@
    "action": "No Thai image needed",
    "reason": "Workflow board with short labels.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตขั้นตอนการกำกับดูแลด้านความเป็นส่วนตัว ช่องทางการส่งต่อ และการกำหนดผู้รับผิดชอบก่อนเริ่มงาน",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/gen-exp-school-policy-draft.svg",
@@ -335,7 +377,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Text-heavy student draft with reviewer notes.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูร่างรายงานกลุ่ม เพื่อเปรียบเทียบจุดที่บทสรุปของ AI ตัดข้อยกเว้นสำคัญในเอกสารต้นทางทิ้งไป",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/medical-record-redacted.svg",
@@ -349,7 +393,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Lab report with personal identifiers; Thai hospital format is more realistic.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูข้อมูลเวชระเบียนเพื่อระบุข้อมูลส่วนบุคคลและข้อมูลอ่อนไหวที่ต้องปกปิดก่อนนำเข้าสู่ระบบ AI",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/productivity-chart-forensics.png",
@@ -368,7 +414,9 @@
    "action": "No Thai image needed",
    "reason": "Chart; axis labels only.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตค่าฐาน (Baseline) ขนาดกลุ่มตัวอย่าง และสเกลของกราฟ ก่อนเชื่อข้ออ้างเรื่องผลผลิตที่เพิ่มขึ้น",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-agent-audit-log.svg",
@@ -385,7 +433,9 @@
    "action": "No Thai image needed",
    "reason": "System log; gated.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "ตรวจดูร่องรอยการส่งต่องานระหว่างเอเจนต์หลายตัว เพื่อค้นหาจุดที่ขาดหลักฐานหรือการอนุมัติตัวเอง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-agent-workflow-plan.svg",
@@ -401,7 +451,9 @@
    "action": "Produce Thai version (4 visible uses)",
    "reason": "Plan with reviewer notes and failure cases in prose; gated.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "สังเกตการออกแบบขั้นตอนงานของเอเจนต์ ทั้งเกณฑ์การประเมิน จุดตรวจทาน และเงื่อนไขการหยุดทำงาน",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-customer-notes.svg",
@@ -416,7 +468,9 @@
    "action": "Produce Thai version (3 visible uses)",
    "reason": "Customer notes in prose; tone requirements only make sense in the customer's language.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูบันทึกการคุยกับลูกค้า เพื่อแยกข้อเท็จจริงที่ยืนยันแล้ว สิ่งที่ยังไม่รู้ และข้อจำกัดตามนโยบาย",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-customer-service-escalation.svg",
@@ -433,7 +487,9 @@
    "action": "Produce Thai version (5 visible uses)",
    "reason": "Queue UI (English) with frustrated customer messages (Thai).",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูหลักฐานการชำระเงินซ้ำ ความเสี่ยงต่อ SLA และข้อความของลูกค้า ก่อนยอมรับร่างคำตอบของ AI",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-finance-variance-report.svg",
@@ -448,7 +504,9 @@
    "action": "No Thai image needed",
    "reason": "Financial table.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "ตรวจดูรายการผลต่าง (Variance) ทุกบรรทัดเพื่อแยกแยะปัจจัยหลักที่ส่งผลต่อกำไรขาดทุน",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-hr-candidate-packet.svg",
@@ -464,7 +522,9 @@
    "action": "Produce Thai version (4 visible uses)",
    "reason": "Text-heavy candidate evidence notes; bias cues depend on wording.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูหลักฐานสมรรถนะและชิ้นงานตัวอย่างของผู้สมัคร เพื่อระบุอคติจากคำว่า Culture Fit ในการคัดกรอง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-marketing-campaign-dashboard.svg",
@@ -480,7 +540,9 @@
    "action": "No Thai image needed",
    "reason": "Dashboard; numbers dominate.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตขนาดกลุ่มตัวอย่างและหมายเหตุเรื่องคูปองรั่วไหล ก่อนตัดสินใจขยายงบประมาณตามคำแนะนำของ AI",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-policy-excerpt.svg",
@@ -494,7 +556,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Policy text beside an AI summary; the unsupported-claim test is linguistic.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจเทียบข้อความในเอกสารนโยบายต้นฉบับกับบทสรุปของ AI เพื่อหาข้อความที่ไม่มีหลักฐานรองรับ",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-rag-source-comparison.svg",
@@ -512,7 +576,9 @@
    "action": "Produce Thai version (6 visible uses)",
    "reason": "Retrieved passages are prose the user must compare; search UI can stay English.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจเทียบข้อความที่ระบบ RAG ค้นคืนมาได้กับคำตอบสุดท้าย เพื่อยืนยันว่าไม่มีการกุข้อมูลขึ้นเอง",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-sales-crm-pipeline.svg",
@@ -529,7 +595,9 @@
    "action": "No Thai image needed",
    "reason": "CRM table; risk notes short.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตความสดใหม่ของการติดต่อ บันทึกข้อพิพาททางกฎหมาย และมูลค่าดีล ก่อนเชื่อผลคาดการณ์ยอดขาย",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-study-helper-review.svg",
@@ -543,7 +611,9 @@
    "action": "Produce Thai version (2 visible uses)",
    "reason": "Prose answer with unsupported citations; the test is reading the text.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูรายการอ้างอิงในคำตอบของ AI เพื่อตรวจสอบว่ามีอยู่จริงและตรงกับข้อกล่าวอ้างหรือไม่",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-support-ticket-thread.svg",
@@ -556,7 +626,9 @@
    "action": "Produce Thai version (1 visible use)",
    "reason": "System payment log (English) plus customer complaint and AI draft (Thai).",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "ตรวจดูล็อกการชำระเงินของระบบเทียบกับคำร้องเรียนของลูกค้า เพื่อระบุข้อผิดพลาดในร่างปฏิเสธของ AI",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-technical-access-log.svg",
@@ -573,7 +645,9 @@
    "action": "No Thai image needed",
    "reason": "Access log; gated.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตบันทึกการเข้าถึงระบบเพื่อระบุความพยายามเข้าถึงข้อมูลนอกขอบเขต และมาตรการควบคุมที่ทำงานอยู่",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/raw-vendor-security-questionnaire.svg",
@@ -590,7 +664,9 @@
    "action": "No Thai image needed",
    "reason": "Model card excerpt; industry documents are English.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "ตรวจดู model card ในส่วนสัญญาอนุญาต ขอบเขตการใช้งานที่ตั้งใจไว้ และข้อจำกัดที่ทราบ",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/realistic-agent-workflow-builder.png",
@@ -606,7 +682,9 @@
    "action": "No Thai image needed",
    "reason": "Product UI screenshot; English is realistic.",
    "thai_version": "",
-   "thai_status": ""
+   "thai_status": "",
+   "inspect_cue_th": "สังเกตสิทธิ์การใช้งานที่กว้างเกินไปของเอเจนต์ จุดอนุมัติที่ขาดหาย และการไม่มีผู้รับผิดชอบการย้อนกลับระบบ",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/realistic-scheduling-email.png",
@@ -619,7 +697,9 @@
    "action": "Produce Thai version (1 visible use)",
    "reason": "Message-type: client email and weak AI draft; both should be Thai.",
    "thai_version": "/stimuli/realistic-scheduling-email-th.png",
-   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)"
+   "thai_status": "produced 2026-09-11 (draft — needs native review of the image text)",
+   "inspect_cue_th": "ตรวจดู prompt นัดหมายที่ยังขาดรายละเอียดสำคัญ เช่น กลุ่มผู้รับ เงื่อนไขเวลา และรูปแบบผลลัพธ์",
+   "tag_reconfirmed_batch2": true
   },
   {
    "artifact": "/stimuli/realistic-support-ticket-ai-draft.png",
@@ -635,8 +715,11 @@
    "action": "Produce Thai version (4 visible uses)",
    "reason": "Console UI (English) with customer message and AI draft (Thai); gated.",
    "thai_version": "",
-   "thai_status": "pending"
+   "thai_status": "pending",
+   "inspect_cue_th": "สังเกตหลักฐานการตัดเงินซ้ำและคำเตือน SLA บนหน้าจอ เพื่อแก้ไขร่างข้อความที่ AI ร่างไว้ให้ถูกต้อง",
+   "tag_reconfirmed_batch2": true
   }
  ],
- "thai_content_spec": "exports/artifact-thai-text-spec.json"
+ "thai_content_spec": "exports/artifact-thai-text-spec.json",
+ "notes_batch2": "2026-09-14: batch-2 reviewer re-confirmed all 41 tags and wrote a Thai 'Inspect for' cue per artifact (inspect_cue_th) — reference wording for future stimulus captions, not yet used by the app."
 }

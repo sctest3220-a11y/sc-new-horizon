@@ -31,8 +31,8 @@
  },
  {
   "en": "hallucination",
-  "th": "hallucination (การกุข้อมูล)",
-  "rule": "Keep English term, add Thai gloss in parentheses on first mention per item."
+  "th": "hallucination (การกุข้อมูล / สร้างข้อมูลเท็จ)",
+  "rule": "Keep English term, add Thai gloss in parentheses on first mention per item. Reviewer batch 2: ปรับปรุง: เติม 'สร้างข้อมูลเท็จ' ควบคู่ เพราะคำว่า 'กุข้อมูล' อาจทำให้ผู้สอบคิดว่า AI มีเจตนาหลอกลวง"
  },
  {
   "en": "chatbot",
@@ -151,13 +151,13 @@
  },
  {
   "en": "human-in-the-loop / human review",
-  "th": "การตรวจทานโดยคน",
-  "rule": ""
+  "th": "การตรวจทานโดยคน (Human-in-the-loop)",
+  "rule": "Reviewer batch 2: ปรับปรุง: คงคำภาษาอังกฤษควบคู่ เพื่อให้ผู้สอบคุ้นเคยกับคำสากล"
  },
  {
   "en": "override",
-  "th": "การแก้ทับผลของ AI (override)",
-  "rule": ""
+  "th": "การแก้ไขทับผล AI (override)",
+  "rule": "Reviewer batch 2: ปรับปรุง: ตัดคำว่า 'ของ' เพื่อความกระชับและเป็นภาษาพูดธรรมชาติ"
  },
  {
   "en": "rollback",
