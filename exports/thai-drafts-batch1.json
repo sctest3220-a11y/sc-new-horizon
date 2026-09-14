@@ -1,7 +1,7 @@
 {
  "source_commit": "dec7a67",
  "generated": "2026-09-14",
- "status": "reviewed (native review + round-1 spot-check fixes + 2026-09-14 glossary alignment applied; round-2 spot check reissued and pending)",
+ "status": "approved (second-reviewer spot check round 2 passed 20/20 on 2026-09-14)",
  "glossary": "glossary_th.json",
  "questions": {
   "REL-G-D2-001": {
@@ -5691,5 +5691,14 @@
     "captionTh": "ทบทวนบันทึกนี้ก่อนตัดสินใจว่าสัญญาพร้อมลงนามหรือยัง"
    }
   }
+ },
+ "spot_check_round2": {
+  "source": "exports/New_Horizon_Thai_Batch1_SpotCheck_Round2_Reviewed.xlsx",
+  "result": {
+   "Approve": 20,
+   "Fix": 0,
+   "Rewrite": 0
+  },
+  "key_ambiguous": 0
  }
 }

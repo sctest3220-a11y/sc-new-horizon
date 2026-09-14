@@ -21,7 +21,7 @@ export type QuestionTranslation = {
 
 export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'REL-G-D2-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณจำเป็นต้องตอบกลับอีเมลนัดประชุมสั้น ๆ ให้ทันเวลา ปฏิทินงานของคุณซิงก์ข้อมูลไว้อยู่แล้ว ไม่มีไฟล์แนบหรือข้อผูกมัดใด ๆ และหากระบุเวลาคลาดเคลื่อนก็ยังส่งอีเมลแก้ไขได้ทันที',
     prompt: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
     options: {
@@ -51,7 +51,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D1-CONCEPTS-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งสับสนระหว่าง LLM, RAG, context, memory และ hallucination (การสร้างข้อมูลเท็จ (Hallucination)) อยู่เรื่อย ๆ ขณะวางแผนทำแชตบอต',
     prompt: 'ตอบคำถามย่อยเพื่อแสดงความเข้าใจพื้นฐานเรื่องแนวคิดของ AI',
     parts: {
@@ -114,7 +114,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D4-RISK-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งต้องการดาวน์โหลดโมเดลแบบเปิดจาก model hub มาใช้งานใน workflow ที่ให้บริการลูกค้า',
     prompt: 'จับคู่สัญญาณจาก model card แต่ละข้อกับการตรวจสอบที่ควรทำ',
     matchPairs: {
@@ -146,7 +146,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D1-CONCEPTS-013': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งกำลังเขียนข้อความช่วยเหลือผู้ใช้สำหรับผู้ช่วย AI และต้องเลี่ยงคำกล่าวอ้างที่ทำให้เข้าใจผิด',
     prompt: 'จับคู่พฤติกรรมแต่ละอย่างกับแนวคิดที่อยู่เบื้องหลัง',
     matchPairs: {
@@ -178,7 +178,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D4-RISK-019': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักวิเคราะห์การเงินต้องการอัปโหลดไฟล์งานที่มีข้อมูลบัญชีธนาคารของผู้ขายขึ้นเครื่องมือ AI เพื่อสรุปผลต่าง (variance)',
     prompt: 'ควรใช้มาตรการควบคุมข้อใดก่อนเริ่มใช้ AI',
     options: {
@@ -210,7 +210,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D1-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนของคุณอยากใช้คำตอบจาก AI นี้ในการทำอาหารมื้อเย็นให้คนที่แพ้อาหาร',
     prompt: 'ข้อใดคือสิ่งแรกที่เขาควรทำ',
     options: {
@@ -239,7 +239,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โพสต์บนโซเชียลแสดงภาพเมืองจมน้ำที่ดูรุนแรง พร้อมอ้างว่าเกิดขึ้นเมื่อเช้านี้',
     prompt: 'คุณควรทำอะไรก่อนแชร์ต่อ',
     options: {
@@ -267,7 +267,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-H-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI agent ภายในองค์กรสามารถอ่านไฟล์ ส่งอีเมล และแก้ไขข้อมูลลูกค้าได้',
     prompt: 'มาตรการควบคุมข้อใดที่ต้องมี',
     options: {
@@ -296,7 +296,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-P-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณต้องให้ AI สรุปการประชุมส่งหัวหน้าของคุณ',
     prompt: 'เรียงลำดับขั้นตอนให้ถูกต้อง',
     rankItems: {
@@ -314,7 +314,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D6-P-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนร่วมทีมแอบใช้ AI เพราะแนวปฏิบัติยังไม่ชัดเจน',
     prompt: 'การตอบสนองแบบใดช่วยได้มากที่สุด',
     options: {
@@ -343,7 +343,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-F-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'พนักงานได้รับข้อความเตือนเรื่องการเข้าสู่ระบบที่ดูเหมือนมาจากฝ่าย IT และขอให้ยืนยันตัวตนใหม่',
     prompt: 'การตอบสนองแบบใดปลอดภัยที่สุด',
     options: {
@@ -371,7 +371,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D6-LOOP-008': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งใช้ AI วางแผนงานรายสัปดาห์ ทุกคนรับแผนของ AI มาใช้โดยไม่ตั้งคำถามกับข้อสมมติ และงานที่ต้องพึ่งพากันก็หลุดไปจนมาโผล่เอาตอนท้ายอยู่เรื่อย ๆ',
     prompt: 'แนวทางการทำงานร่วมกันแบบใดช่วยได้มากที่สุด',
     options: {
@@ -400,7 +400,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MULTI-CONCEPT-GEN-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ใช้คนหนึ่งอยากเข้าใจว่าทำไมคำตอบของ AI ถึงอาจลื่นไหล อิงแหล่งข้อมูล เชื่อมต่อเครื่องมือ หรือปรับให้เข้ากับตัวบุคคล ขึ้นอยู่กับการตั้งค่า',
     prompt: 'ตอบคำถามย่อยเพื่อแสดงว่าคุณแยกแยะแนวคิดหลักของ AI ในทางปฏิบัติได้',
     parts: {
@@ -463,7 +463,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D6-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โครงการกลุ่มหนึ่งใช้ AI สรุปแหล่งข้อมูลและแบ่งงาน สมาชิกเริ่มคัดลอกถ้อยคำของ AI มาใช้โดยไม่ตรวจว่าตรงกับแหล่งข้อมูลหรือตรงกับหน้าที่ของตัวเองหรือไม่',
     prompt: 'จับคู่ความเสี่ยงในการทำงานร่วมกันแต่ละข้อกับแนวปฏิบัติของคนที่ดีที่สุด',
     matchPairs: {
@@ -490,7 +490,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D5-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารต้องเลือกว่าโครงการ AI ใดจะได้รับงบประมาณในไตรมาสหน้า โดย CEO จะเป็นผู้ชี้แจงลำดับความสำคัญนี้ต่อคณะกรรมการบริษัทด้วยตัวเอง',
     prompt: 'ใครควรเป็นเจ้าของการตัดสินใจนี้',
     options: {
@@ -515,7 +515,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการรายหนึ่งนำเสนอสไลด์ต่อคณะกรรมการบริษัท โดยอ้างว่าโครงการนำร่อง (pilot) ด้าน AI เพิ่มผลิตภาพได้ 42% แต่สไลด์ไม่ได้แสดงค่าฐาน (baseline) ขนาดกลุ่มตัวอย่าง อัตราการใช้งาน หรือช่วงเวลาที่วัดผล',
     prompt: 'ผู้บริหารควรขออะไรก่อนอนุมัติให้ขยายผล',
     options: {
@@ -549,7 +549,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow ในธุรกิจที่มีกฎระเบียบกำกับจะใช้ AI เสนอผลการพิจารณาคุณสมบัติ โดยให้ผู้ตรวจทานที่เป็นคนอนุมัติกรณียกเว้น',
     prompt: 'จับคู่ความเสี่ยงของ workflow ที่มีกฎระเบียบกำกับกับหลักฐานด้านการกำกับดูแลที่เหมาะสม',
     matchPairs: {
@@ -571,7 +571,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-018': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการบริษัทถามว่าผู้บริหารจะรักษาความสามารถในการกำกับดูแล AI ไว้ได้อย่างไร ในเมื่อเครื่องมือและความเสี่ยงเปลี่ยนเร็วมาก',
     prompt: 'เลือกกิจวัตรที่ควรอยู่ในรอบการกำกับดูแล AI ของผู้บริหาร',
     options: {
@@ -598,7 +598,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-009': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'CFO ถามว่าทำไมงบประมาณแพลตฟอร์ม AI จึงสูงกว่าใบเสนอราคาค่าสิทธิ์การใช้งาน',
     prompt: 'เลือกหมวดต้นทุนแฝงที่ควรอยู่ในภาพต้นทุนรวม',
     options: {
@@ -625,7 +625,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D3-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ข้อเสนอแนะจาก AI ขัดแย้งกับหลักฐานจากผู้เชี่ยวชาญด้านการปฏิบัติตามข้อกำหนด ฝ่ายปฏิบัติการ และงานวิจัยลูกค้า',
     prompt: 'บันทึกการตัดสินใจของผู้บริหารควรแสดงอะไร',
     options: {
@@ -648,7 +648,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-LOOP-019': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารต้องการให้ copilot ช่วยยกระดับคุณภาพการตัดสินใจของผู้จัดการ แต่โครงการนำร่อง (pilot) ช่วงแรกกลับมีการใช้งานที่ไม่สม่ำเสมอและไม่มีวงจรการเรียนรู้',
     prompt: 'เรียงลำดับขั้นตอนการออกแบบวงจรการเรียนรู้ในระดับผู้บริหาร',
     rankItems: {
@@ -665,7 +665,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D1-CAL-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'กรรมการบริษัทคนหนึ่งใช้คำว่าแชตบอต (Chatbot), โคไพลอต (Copilot), ระบบอัตโนมัติของกระบวนการทำงาน (Workflow Automation) และเอเจนต์ (Agent) สลับกันไปมาระหว่างคุยเรื่องงบลงทุนด้าน AI ใหม่',
     prompt: 'จับคู่คำแต่ละคำกับขอบเขตความสามารถที่ผู้นำควรเข้าใจ',
     matchPairs: {
@@ -692,7 +692,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D5-PORT-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เอกสารประชุมบอร์ดบริหารถามว่าควรอนุมัติงบประมาณก้อนใหญ่ให้โครงการ AI หรือไม่ ทั้งที่แต่ละโครงการมีความพร้อมไม่เท่ากัน ค่าฐาน (baseline) ไม่ครบ และมีระดับความเสี่ยงต่างกัน',
     prompt: 'เรียงลำดับขั้นตอนการตัดสินใจก่อนอนุมัติงบประมาณเต็มพอร์ตโครงการ',
     rankItems: {
@@ -709,7 +709,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-G-D3-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ในกลุ่มแชตมีคนถามว่าควรแชร์ภาพน้ำท่วมหนักที่มีคนส่งต่อกันมาในชั่วโมงที่ผ่านมาหรือไม่ โดยที่ยังไม่มีสำนักข่าวใดยืนยัน และหากแชร์ จะเป็นการแชร์ผ่านบัญชีทางการของบริษัทคุณ',
     prompt: 'ใครควรเป็นผู้ตัดสินใจ',
     options: {
@@ -739,7 +739,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D1-SYSTEMS-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการคนหนึ่งบอกว่า “มันก็แค่แชตบอต ไม่มีปัญหาเรื่องความเป็นส่วนตัวหรอก” แต่ภาพหน้าจอแสดงว่ามีการเปิดใช้ตัวเชื่อมต่อปฏิทิน อีเมล และ CRM อยู่',
     prompt: 'ข้อใดแก้ไขความเข้าใจผิดนี้ได้ถูกต้องที่สุด',
     options: {
@@ -767,7 +767,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D4-GOV-008': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI agent เปลี่ยนงานติดตามลูกค้าหลังจากอ่านข้อมูลที่มีความอ่อนไหว',
     prompt: 'หลักฐานด้านการกำกับดูแล (governance) อะไรที่ยังขาดอยู่',
     options: {
@@ -799,7 +799,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D1-SYSTEMS-014': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการผลิตภัณฑ์ตรวจดูร่องรอยการทำงานของผู้ช่วย AI ก่อนอนุมัติ workflow ที่เปิดให้ใช้เครื่องมือได้',
     prompt: 'คำถามเชิงระบบข้อใดสำคัญที่สุดก่อนเปิดใช้งานจริง',
     options: {
@@ -831,7 +831,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D4-GOV-020': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการรายหนึ่งเสนอขอใช้ข้อมูลของบริษัทเพื่อพัฒนาบริการ AI ของตน',
     prompt: 'จัดลำดับขั้นตอนการทบทวนด้านการกำกับดูแล',
     rankItems: {
@@ -849,7 +849,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D1-M-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมของคุณอยากให้ AI ตอบคำถามเกี่ยวกับนโยบาย HR ฉบับล่าสุด',
     prompt: 'การตั้งค่าแบบใดปลอดภัยที่สุด',
     options: {
@@ -878,7 +878,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-M-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ภาพที่ดูเหมือนผู้บริหารพร้อมแคปชันอ้างว่า CEO ของบริษัทหนึ่งออกมารับรองนโยบายหนึ่งเมื่อวานนี้',
     prompt: 'หลักฐานแบบใดมีน้ำหนักมากที่สุดก่อนจะเชื่อแคปชันนี้',
     options: {
@@ -906,7 +906,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D5-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการคนหนึ่งบอกว่า "เราต้องใช้ AI เพราะคู่แข่งใช้กันแล้ว"',
     prompt: 'คุณควรถามอะไรต่อ',
     options: {
@@ -935,7 +935,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-P-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักศึกษาคนหนึ่งเขียน prompt แบบกว้าง ๆ แล้วได้คำตอบจาก AI ที่ใช้งานไม่ได้',
     prompt: 'เขาควรเพิ่มรายละเอียดอะไรบ้าง',
     options: {
@@ -964,7 +964,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D1-N-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'มีนาใช้ผู้ช่วย AI อธิบายข้อสัญญาทางกฎหมายข้อหนึ่ง คำตอบฟังดูมั่นใจ แต่ไม่ได้ยกข้อความในสัญญามาอ้าง และอาจกำลังปนหลักกฎหมายทั่วไปเข้ากับนโยบายของบริษัทเธอ',
     prompt: 'ข้อคิดใดสะท้อนความเข้าใจ AI ได้ดีที่สุด',
     options: {
@@ -987,7 +987,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-T-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณต้องการให้ผู้ช่วย AI เปรียบเทียบผู้ให้บริการ 3 รายสำหรับการจัดซื้อเทคโนโลยีของโรงเรียน prompt แรกคือ "ผู้ให้บริการรายไหนดีที่สุด"',
     prompt: 'เขียน prompt ใหม่ให้ AI สร้างการเปรียบเทียบที่ใช้งานได้จริงและตรวจสอบได้',
     rubricCriteria: {
@@ -1011,7 +1011,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     exemplarAnswer: 'เปรียบเทียบข้อเสนอของผู้ให้บริการทั้ง 3 ราย โดยใช้เฉพาะเอกสารที่แนบมาเท่านั้น ทำเป็นตารางที่ครอบคลุมต้นทุน ความเสี่ยงด้านความเป็นส่วนตัวและความปลอดภัย ความยากในการติดตั้งใช้งาน การสนับสนุนหลังการขาย และหลักฐานที่รองรับแต่ละข้ออ้าง พร้อมระบุข้อสมมติ ข้อมูลที่ยังขาด และประเด็นที่ต้องให้คนตรวจทานก่อนตัดสินใจ',
   },
   'D1-AGENT-008': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนคุณบอกว่าแชตบอต โคไพลอต (Copilot) และ AI agent ก็คือสิ่งเดียวกันทั้งหมด',
     prompt: 'จับคู่รูปแบบเครื่องมือ AI แต่ละแบบกับความแตกต่างที่สำคัญที่สุดของมัน',
     matchPairs: {
@@ -1033,7 +1033,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MULTI-CONCEPT-GEN-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งกำลังออกแบบผู้ช่วย AI ที่นำกลับมาใช้ซ้ำได้สำหรับการวางแผนงานรายสัปดาห์ และต้องการเลี่ยง prompt ที่คลุมเครือ การแชร์ข้อมูลโดยไม่ตั้งใจ และการพึ่งพา AI แบบไม่ตรวจสอบ',
     prompt: 'ตอบคำถามย่อยเกี่ยวกับ prompt บริบท และหน่วยความจำ',
     parts: {
@@ -1096,7 +1096,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MULTI-SOURCE-GEN-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ในที่ทำงานตอบคำถามเรื่องนโยบายโดยใช้แหล่งข้อมูลที่ค้นคืนมา แต่ร่างคำตอบอาจปนข้อเท็จจริงจากแหล่งข้อมูลเข้ากับการตีความที่ไม่มีอะไรรองรับ',
     prompt: 'ตอบคำถามย่อยเกี่ยวกับการยึดแหล่งข้อมูล การตรวจสอบ และความเป็นส่วนตัว',
     parts: {
@@ -1159,7 +1159,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D4-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow ที่ใช้ AI ทำให้ข้อมูลลับของลูกค้าหลุดไปถึงผู้ที่ไม่ควรเห็น ยังไม่ทราบสาเหตุที่แท้จริง จึงยังไว้ใจให้เครื่องมือ AI ชุดเดิมแตะข้อมูลของเหตุการณ์นี้ไม่ได้ และนาฬิกานับถอยหลังสำหรับการแจ้งหน่วยงานกำกับดูแลเริ่มเดินแล้ว',
     prompt: 'ใครควรนำใน 72 ชั่วโมงแรก',
     options: {
@@ -1184,7 +1184,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการบริหารต้องเลือกว่าโอกาสด้าน AI ข้อใดจะเข้าสู่พอร์ตโครงการของไตรมาสหน้า',
     prompt: 'เลือกเกณฑ์ทั้งหมดที่ควรใช้ก่อนจัดลำดับความสำคัญของพอร์ตโครงการ',
     options: {
@@ -1217,7 +1217,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-012': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ส่งคำแนะนำที่ผิดให้ลูกค้า กระทบลูกค้ากลุ่มเล็กแต่เป็นที่จับตา',
     prompt: 'การตอบสนองของผู้บริหารแบบใดสร้างความไว้วางใจได้มากที่สุด',
     options: {
@@ -1246,7 +1246,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-010': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow ที่ใช้ AI ทำให้รายงานลับเกี่ยวกับกลุ่มลูกค้าหลุดไปถึงพนักงานที่ไม่จำเป็นต้องเข้าถึง',
     prompt: 'ลากหรือจัดลำดับการรับมือเหตุการณ์ให้เป็นลำดับที่ดีที่สุดในมุมผู้บริหาร',
     rankItems: {
@@ -1264,7 +1264,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-014': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ลูกค้ารายหนึ่งโต้แย้งผลการให้คะแนนที่ใช้ AI ช่วย และขอทราบว่าการตัดสินใจนี้เกิดขึ้นได้อย่างไร',
     prompt: 'เลือกบันทึกที่ควรเก็บรักษาไว้เพื่อให้ตรวจสอบย้อนหลังได้',
     options: {
@@ -1297,7 +1297,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D2-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารมอบหมายงานวิเคราะห์ด้วย AI ให้ผู้ช่วย แต่ไม่ได้ให้บริบท ไม่ได้กำหนดขอบเขตแหล่งข้อมูล และไม่ได้บอกว่าจะเอาไปใช้ตัดสินใจอะไร',
     prompt: 'คำสั่งแบบใดช่วยยกระดับงาน AI ที่มอบหมายไปนี้ได้มากที่สุด',
     options: {
@@ -1320,7 +1320,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-AGENT-020': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เอเจนต์ภายในส่งอีเมลถึงผู้ให้บริการ แก้ไขข้อมูลในช่อง CRM และยื่นขออนุมัติจากฝ่ายการเงิน ก่อนที่ผู้จัดการจะได้ตรวจทานเคสนี้',
     prompt: 'เลือกมาตรการแก้ไขหลังเหตุการณ์ที่ผู้บริหารควรกำหนดให้ทำ',
     options: {
@@ -1352,7 +1352,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'MULTI-CONCEPT-EXEC-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการบริหารกำลังตัดสินใจว่าแพลตฟอร์ม AI ตัวถัดไปควรใช้ RAG หน่วยความจำ ตัวเชื่อมต่อแบบ MCP และ AI agent สำหรับงานด้านนโยบาย การเงิน และงานลูกค้าหรือไม่',
     prompt: 'ตอบคำถามย่อยเพื่อแสดงความเข้าใจระดับผู้บริหาร ทั้งด้านสถาปัตยกรรม AI และความเสี่ยงในการดำเนินงาน',
     parts: {
@@ -1432,7 +1432,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D5-VALUE-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'CEO ต้องการ KPI ด้าน AI เพียงตัวเดียวสำหรับการประชุมคณะกรรมการบริษัทครั้งหน้า ทีมงานเสนอมาทั้งชั่วโมงที่ประหยัดได้ จำนวน prompt ที่ส่ง ความแม่นยำของโมเดล ความพึงพอใจของลูกค้า และจำนวนกรณียกเว้นด้านความเสี่ยง',
     prompt: 'เลือกตัววัดที่เมื่อรวมกันแล้วทำให้แดชบอร์ดคุณค่าของ AI ระดับผู้บริหารดีขึ้น',
     options: {
@@ -1459,7 +1459,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-G-D4-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คนในครอบครัวขอให้ใช้ AI ช่วยอ่านและตีความรายงานผลตรวจสุขภาพ ซึ่งมีข้อมูลส่วนบุคคลและประวัติการรักษาที่ละเอียดอ่อนระบุอยู่อย่างชัดเจน',
     prompt: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
     options: {
@@ -1489,7 +1489,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D2-PROMPT-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าทีมซัพพอร์ตต้องการให้ AI ร่างคำตอบถึงลูกค้าที่กำลังโกรธ จากกรณีถูกเรียกเก็บเงินซ้ำและผิด SLA',
     prompt: 'เขียน prompt ที่ดีกว่าเดิมให้ผู้ช่วย AI โดยระบุงานที่ต้องทำ บริบท ขอบเขตแหล่งข้อมูล โทนเสียง รูปแบบผลลัพธ์ และข้อกำหนดการตรวจทาน',
     rubricCriteria: {
@@ -1522,7 +1522,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D5-VALUE-009': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมมีงบสนับสนุนโครงการนำร่อง (pilot) ด้าน AI ได้เพียงโครงการเดียวในไตรมาสนี้',
     prompt: 'pilot ไหนพร้อมที่สุด',
     options: {
@@ -1550,7 +1550,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D2-PROMPT-015': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าฝ่ายการตลาดต้องการให้ผู้ช่วย AI สรุปแดชบอร์ดแคมเปญให้ผู้บริหารอ่าน',
     prompt: 'เขียน prompt ที่ขอการวิเคราะห์ที่ใช้งานได้จริง พร้อมกันไม่ให้ AI สรุปเกินหลักฐาน',
     rubricCriteria: {
@@ -1583,7 +1583,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D5-VALUE-021': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายขายอยากให้อนุมัติงบผู้ช่วย AI สำหรับการคาดการณ์ยอดขาย เพราะระบบทำนายว่าไตรมาสนี้จะโตกว่าเดิม',
     prompt: 'ควรกำหนดให้มีหลักฐานอะไรบ้างก่อนขยายผล',
     options: {
@@ -1615,7 +1615,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D1-H-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ตอบนโยบายการคืนเงินที่ไม่มีอยู่ในเอกสารที่อัปโหลดไว้',
     prompt: 'ข้อใดน่าจะเกิดขึ้นมากที่สุด',
     options: {
@@ -1644,7 +1644,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-A-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ประกาศขายในมาร์เก็ตเพลซเสนออุปกรณ์ราคาแพงในราคาถูกผิดปกติ และขอให้ผู้ซื้อจ่ายเงินนอกแพลตฟอร์ม',
     prompt: 'สัญญาณใดเป็นเหตุผลที่มีน้ำหนักมากที่สุดที่ควรหยุดก่อนซื้อ',
     options: {
@@ -1672,7 +1672,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D5-M-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการรับประกันว่าเครื่องมือ AI จะเพิ่มผลิตภาพได้ 40% แต่ไม่มีค่าฐาน (baseline) ไม่มีการออกแบบโครงการนำร่อง (Pilot) และไม่มีแผนการผลักดันการใช้งานจริง (Adoption plan)',
     prompt: 'ควรจัดการกับคำกล่าวอ้างนี้อย่างไร',
     options: {
@@ -1700,7 +1700,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-P-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI สรุประเบียบของโรงเรียนว่าห้ามใช้โทรศัพท์ตลอดทั้งวัน แต่แหล่งข้อมูลที่ยกมาระบุว่าใช้ได้หากครูอนุญาต',
     prompt: 'เลือกประเด็นที่คุณควรตั้งข้อสังเกตก่อนนำบทสรุปนี้ไปใช้',
     options: {
@@ -1734,7 +1734,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-N-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI สรุปบทสัมภาษณ์ลูกค้าว่า "ผู้ใช้ชอบหน้าชำระเงินใหม่มาก" แต่บันทึกดิบแสดงความเห็นเชิงบวก 5 ข้อ ข้อร้องเรียนเรื่องการชำระเงินล้มเหลว 9 ข้อ และไม่มีคำอธิบายกลุ่มตัวอย่างเลย',
     prompt: 'ข้อท้วงติงใดมีน้ำหนักมากที่สุด',
     options: {
@@ -1768,7 +1768,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-L-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมซัพพอร์ตต้องการปรับปรุงผู้ช่วย AI ที่ช่วยร่างคำตอบ หลังพบข้อผิดพลาดซ้ำ ๆ ในเคสคืนเงิน',
     prompt: 'จัดลำดับขั้นตอนการพัฒนาระบบแบบวนรอบเพื่อปรับปรุงอย่างต่อเนื่อง (Loop Engineering)',
     rankItems: {
@@ -1785,7 +1785,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D5-PRO-009': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมอยากขยายผล โครงการนำร่อง (Pilot) งานซัพพอร์ตด้วย AI เพราะเวลาจัดการเคสเฉลี่ยดีขึ้น แต่การตรวจ ticket ดิบพบความเสี่ยงด้านคุณภาพในเคสคืนเงิน',
     prompt: 'การตัดสินใจเรื่องการขยายผลแบบใดดีที่สุด',
     options: {
@@ -1813,7 +1813,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D2-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณอยากให้ AI เปลี่ยนกองข้อมูลที่ปนกันอยู่ ทั้งประกาศจากโรงเรียน บันทึกการประชุม และรายละเอียดในปฏิทิน ให้กลายเป็นแผนงานรายสัปดาห์ที่ใช้ได้จริง',
     prompt: 'จัดลำดับขั้นตอนงานให้อยู่ในลำดับที่รัดกุมและเหมาะสมที่สุด',
     rankItems: {
@@ -1830,7 +1830,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'PRACTICAL-GEN-D2-012': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมต้องการให้ AI agent รับเรื่องคำขอคืนเงินมูลค่าไม่สูง ร่างข้อความถึงลูกค้า และอัปเดตข้อมูลใน CRM',
     prompt: 'จัดลำดับขั้นตอนการนำไปใช้ ให้ทดสอบประโยชน์ได้ดีที่สุดพร้อมคุมความเสี่ยงของเอเจนต์ไปด้วย',
     rankItems: {
@@ -1847,7 +1847,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D6-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โครงการ AI ใหม่จะเปลี่ยนวิธีแบ่งงานกันในทีม พนักงานกลัวว่าจะถูกแทนที่ และสหภาพแรงงานขอให้คุณเป็นผู้ประกาศเรื่องนี้ด้วยตัวเอง ข้อความเรื่อง AI มาแย่งงานที่เขียนโดย AI ย่อมถูกจับได้',
     prompt: 'ใครควรเป็นคนเขียนข้อความนี้',
     options: {
@@ -1872,7 +1872,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI agent ตัวหนึ่งสามารถร่างอีเมลถึงซัพพลายเออร์ อัปเดตข้อมูลใน CRM และเริ่มกระบวนการอนุมัติทางการเงินข้ามหลายฝ่ายได้',
     prompt: 'จับคู่ความสามารถของเอเจนต์แต่ละอย่างกับมาตรการควบคุมระดับผู้บริหารที่เหมาะสม',
     matchPairs: {
@@ -1905,7 +1905,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-016': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการเสนอ workflow AI แบบปิดของตนเอง ซึ่งจะฝังข้อมูลลูกค้าหลัก prompt และตรรกะการทำงานไว้ในแพลตฟอร์มของผู้ให้บริการ',
     prompt: 'เลือกความเสี่ยงเชิงกลยุทธ์ที่ผู้บริหารควรพิจารณาก่อนลงนาม',
     options: {
@@ -1928,7 +1928,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-021': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'พนักงานได้ยินว่า AI คือโครงการลดต้นทุน ขณะที่คณะกรรมการบริษัทได้ยินว่าเป็นโครงการเพื่อการเติบโตและคุณภาพ',
     prompt: 'เรื่องเล่าจากผู้บริหารแบบใดสนับสนุนการนำไปใช้จริงและความไว้วางใจได้ดีที่สุด',
     options: {
@@ -1951,7 +1951,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-016': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการบริษัทขอให้ฝ่ายจัดการกำหนดระดับความเสี่ยงด้าน AI ที่องค์กรยอมรับได้ ก่อนอนุมัติการใช้งานที่มีผลกระทบสูง',
     prompt: 'ข้อความกำหนดระดับความเสี่ยงที่ยอมรับได้ข้อใดรัดกุมและเหมาะสมที่สุด',
     options: {
@@ -1974,7 +1974,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D2-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารถามว่าเรื่องเครื่องมือ AI อะไรที่ตัวเองต้องเข้าใจเอง และอะไรที่มอบหมายให้คนอื่นดูแลได้',
     prompt: 'จับคู่หัวข้อด้านเครื่องมือกับความรับผิดชอบของผู้บริหารที่ถูกต้อง',
     matchPairs: {
@@ -1996,7 +1996,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-TREND-021': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'กรรมการบริษัทคนหนึ่งถามว่าควรอนุมัติงบโครงการ A2A agent หรือไม่ เพราะคู่แข่งเพิ่งประกาศความร่วมมือในลักษณะเดียวกัน',
     prompt: 'ผู้นำควรใช้กรอบการตัดสินใจแบบใด',
     options: {
@@ -2019,7 +2019,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D2-CAL-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายงานหนึ่งต้องการให้ผู้จัดการทุกคนใช้แชตบอตทั่วไปเขียนคำบรรยายงบประมาณ เหตุผลประกอบการจ้างงาน และการตอบกรณีลูกค้าที่ถูกส่งต่อ ภายในเดือนหน้า',
     prompt: 'แผนการนำไปใช้แบบใดใช้ได้จริงที่สุดโดยไม่กล่าวเกินความสามารถของเครื่องมือ',
     options: {
@@ -2042,7 +2042,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D6-LOOP-008': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ไทม์ไลน์เหตุการณ์ผิดปกติ (incident) ของ AI ในงานซัพพอร์ตแสดงว่าเวลาจัดการเคสเร็วขึ้น แต่มีการปฏิเสธคำขอคืนเงินที่ถูกต้อง การส่งต่อให้ผู้มีอำนาจล่าช้า และไม่มีผู้รับผิดชอบด้านการเรียนรู้',
     prompt: 'เขียน 2-4 ประโยคว่าผู้นำควรออกแบบวงรอบการทำงานร่วมกันระหว่างคนกับ AI ใหม่อย่างไรก่อนนำไปใช้จริง',
     rubricCriteria: {
@@ -2071,7 +2071,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-G-D1-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ในที่ประชุม มีการพูดถึงคำว่า Retrieval-Augmented Generation (RAG หรือการดึงข้อมูลมาช่วยตอบ) คุณต้องการหาคำอธิบายง่าย ๆ เพื่อให้ตัวเองฟังการประชุมได้ทันเรื่อง โดยไม่ได้มีเรื่องสำคัญที่ต้องตัดสินใจ',
     prompt: 'ใครควรเป็นผู้จัดการเรื่องนี้',
     options: {
@@ -2096,7 +2096,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D2-WORKFLOW-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมเทคนิคต้องการใช้ AI assistant เสนอการแก้ไขโค้ดใน repository ก่อนนำขึ้น production',
     prompt: 'จัดลำดับแนวป้องกัน (guardrail) ให้เป็นลำดับที่ดีที่สุด',
     rankItems: {
@@ -2114,7 +2114,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D5-STRATEGY-010': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารถามว่าโมเดลรุ่นใหม่ที่เพิ่งออกและประกาศของคู่แข่งเพียงพอที่จะลงทุนด้าน AI ก้อนใหญ่หรือไม่',
     prompt: 'เขียนข้อเสนอแนะสั้น ๆ ว่าคุณจะขอหลักฐานอะไรบ้างก่อนอนุมัติงบให้โครงการนี้',
     rubricCriteria: {
@@ -2147,7 +2147,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D2-WORKFLOW-016': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมซัพพอร์ตกำลังเพิ่มการร่างคำตอบด้วย AI เข้าไปในคิวงานที่ถูกส่งต่อให้ผู้มีอำนาจ (escalation)',
     prompt: 'จัดลำดับ workflow สำหรับกระบวนการตอบลูกค้าโดยมี AI ช่วยอย่างปลอดภัย',
     rankItems: {
@@ -2165,7 +2165,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D5-STRATEGY-022': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารกำลังทบทวนโอกาสด้าน AI สี่เรื่อง',
     prompt: 'จับคู่สัญญาณของแต่ละโครงการในพอร์ตกับก้าวเชิงกลยุทธ์ที่เหมาะที่สุด',
     matchPairs: {
@@ -2197,7 +2197,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณอยากให้ AI เปลี่ยนบันทึกย่อเหล่านี้ให้เป็นอีเมลถึงลูกค้า',
     prompt: 'prompt ไหนดีที่สุด',
     options: {
@@ -2226,7 +2226,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-H-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'รายงานที่ AI เขียนอ้างอิงงานวิจัยที่ไม่ได้สนับสนุนตัวเลขที่ระบุไว้จริง ๆ',
     prompt: 'ข้อใดคือปัญหาหลักในกรณีนี้',
     options: {
@@ -2255,7 +2255,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D6-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานรู้สึกกังวลกับเครื่องมือ AI ตัวใหม่ที่จะนำมาใช้ในที่ทำงาน',
     prompt: 'การตอบสนองแบบไหนที่สร้างความไว้วางใจ',
     options: {
@@ -2284,7 +2284,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-P-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ภาพที่ดูสมจริงของคนดังกำลังรับรองสินค้าถูกส่งเข้ามาในแชตกลุ่ม โดยไม่มีลิงก์แหล่งข้อมูล',
     prompt: 'ข้อใดคือสิ่งที่ควรทำต่อไป',
     options: {
@@ -2312,7 +2312,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-N-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมของโรงเรียนต้องการใช้เครื่องมือตรวจจับ AI เพื่อกล่าวหาว่านักเรียนทุจริต เครื่องมือให้คะแนนเป็นเปอร์เซ็นต์ แต่ไม่มีหลักฐานที่โปร่งใส ไม่มีช่องทางอุทธรณ์ และไม่ได้อธิบายอัตราความผิดพลาด',
     prompt: 'แนวนโยบายแบบใดที่รับผิดชอบที่สุด',
     options: {
@@ -2335,7 +2335,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-A2A-008': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI agent ด้านการเดินทาง ด้านปฏิทิน และด้านค่าใช้จ่าย ต้องส่งงานข้ามระบบกันเพื่อจัดการทริปธุรกิจหนึ่งครั้ง',
     prompt: 'จับคู่ประเด็นความเสี่ยงของการทำงานระหว่างเอเจนต์ (A2A) กับมาตรการควบคุมที่ถูกต้อง',
     matchPairs: {
@@ -2363,7 +2363,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-PRO-010': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'สรุปจากแดชบอร์ดที่ AI เขียนหยิบผลแคมเปญที่ตัวเลขดูดีที่สุดมาเน้น แล้วแนะนำให้โยกงบทันที',
     prompt: 'ควรตั้งข้อสังเกตเรื่องหลักฐานข้อใดบ้าง',
     options: {
@@ -2391,7 +2391,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D3-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'มี SMS แจ้งพัสดุเข้ามาในช่วงที่คุณกำลังรอของอยู่พอดี ข้อความมีลิงก์ไปยังหน้าเว็บที่ขอให้จ่ายค่าภาษีศุลกากรจำนวนเล็กน้อย พร้อมขอข้อมูลบัตรเครดิตทั้งหมด',
     prompt: 'เขียน 2-4 ประโยค ระบุสัญญาณเตือนความผิดปกติ (Red flags) ที่ชัดที่สุดและสิ่งที่ควรทำต่อไปอย่างปลอดภัยที่สุด',
     rubricCriteria: {
@@ -2420,7 +2420,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'PRACTICAL-GEN-D3-013': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการถามว่าคำตอบเรื่องนโยบาย AI ที่ได้จาก AI สามารถโพสต์ลงแชนเนลของทีมเป็นแนวทางให้ทุกคนได้เลยหรือไม่',
     prompt: 'การตรวจสอบข้อใดจะช่วยปรับปรุงคำตอบนี้อย่างมีนัยสำคัญก่อนนำไปแชร์',
     options: {
@@ -2452,7 +2452,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D3-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารต้องการใช้การคาดการณ์รายได้ที่ AI ทำไว้ในแนวทางที่แจ้งต่อนักลงทุนวันพรุ่งนี้ แนวทางนี้เป็นการเปิดเผยข้อมูลที่อยู่ภายใต้การกำกับและ CFO เป็นผู้ลงนาม ขณะที่โมเดลยังไม่มีการทดสอบย้อนหลัง (back-test) และไม่มีช่วงความไม่แน่นอน',
     prompt: 'ใครควรเป็นผู้ตัดสินใจ',
     options: {
@@ -2477,7 +2477,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการ AI รายสำคัญปฏิเสธที่จะอธิบายเรื่องสิทธิ์ในการตรวจสอบ (audit) การเฝ้าติดตามโมเดล ระยะเวลาเก็บข้อมูล และการใช้ผู้รับช่วงต่อ',
     prompt: 'ข้อกังวลใดบ้างที่ควรระงับการจัดซื้อไว้จนกว่าจะได้รับคำตอบ',
     options: {
@@ -2515,7 +2515,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D1-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารเข้าใจว่า AI agent สามารถเรียกใช้เครื่องมือต่อกันเป็นทอด ๆ ได้เองอย่างปลอดภัย เพราะโมเดลเบื้องหลังทำคะแนน benchmark (ผลทดสอบเทียบ) ได้ดี',
     prompt: 'จับคู่ความเข้าใจผิดของผู้บริหารกับแนวคิดการกำกับดูแล AI ที่ถูกต้อง',
     matchPairs: {
@@ -2537,7 +2537,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-016': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ฝ่ายกฎหมาย IT HR และปฏิบัติการเห็นไม่ตรงกันว่าควรขยายการใช้ AI assistant สำหรับงานบริการลูกค้าหรือไม่',
     prompt: 'จับคู่แต่ละหน่วยงานกับประเด็นที่ควรเป็นเจ้าของในเวทีตัดสินใจ',
     matchPairs: {
@@ -2559,7 +2559,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เครื่องมือ AI เปิดใช้กับพนักงาน 800 คน แต่การใช้งานจริงและความมั่นใจต่างกันมากในแต่ละหน่วยงาน',
     prompt: 'จับคู่สัญญาณการนำไปใช้แต่ละข้อกับการดำเนินการของผู้บริหารที่ควรเกิดขึ้น',
     matchPairs: {
@@ -2581,7 +2581,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D1-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมงานเสนอให้ใช้ความจำของโมเดลตอบคำถามเกี่ยวกับนโยบายภายในฉบับปัจจุบัน เพราะโมเดลตอบได้ลื่นไหลน่าเชื่อถือ',
     prompt: 'ผู้บริหารที่เป็นผู้สนับสนุนโครงการควรเลือกสถาปัตยกรรมแบบใด',
     options: {
@@ -2604,7 +2604,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D3-FIN-022': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'CFO ได้รับบันทึกสำหรับคณะกรรมการบริษัทที่ AI เขียน ซึ่งโยนสาเหตุที่อัตรากำไรพลาดเป้าไปที่การใช้งบการตลาดเกิน',
     prompt: 'ผู้บริหารควรขอสิ่งใดก่อนที่บันทึกนี้จะถูกส่งให้คณะกรรมการ',
     options: {
@@ -2632,7 +2632,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D3-CAL-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'สำนักกลยุทธ์ส่งสรุปที่ AI เขียนเกี่ยวกับประกาศของคู่แข่งให้ทุกคน สรุปนั้นอนุมานเรื่องราคา ผลกระทบต่ออัตรากำไร และความเสี่ยงที่ลูกค้าจะเลิกใช้บริการอย่างมั่นใจ ทั้งที่บันทึกต้นทางยืนยันได้เพียงว่ามีการเปิดตัวความร่วมมือเท่านั้น',
     prompt: 'เขียน 2-4 ประโยค อธิบายว่าผู้บริหารควรปฏิบัติต่อสรุปนี้อย่างไรก่อนนำไปใช้ตัดสินใจ',
     rubricCriteria: {
@@ -2656,7 +2656,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     exemplarAnswer: 'ควรแยกสรุปนี้ออกเป็นส่วนที่เป็นข้อเท็จจริงที่ยืนยันได้กับส่วนที่เป็นการอนุมานที่ไม่มีหลักฐานรองรับ การเปิดตัวความร่วมมืออาจเป็นเรื่องจริง แต่ข้อความเรื่องราคา อัตรากำไร และการที่ลูกค้าจะเลิกใช้บริการ ต้องมีหลักฐานด้านตลาดหรือการเงินมาสอบทานก่อนที่จะนำไปมีอิทธิพลต่อการตัดสินใจของคณะกรรมการบริษัท',
   },
   'EXEC-EXP-D2-AGENT-009': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารกำลังทบทวน workflow ของ AI agent ที่สามารถอ่านข้อมูลลูกค้า อนุมัติการคืนเงินจำนวนน้อย ส่งข้อความ และอัปเดต CRM ได้',
     prompt: 'ตอบคำถามย่อยต่อไปนี้ก่อนอนุมัติให้ workflow ของเอเจนต์นี้เข้าสู่โครงการนำร่องแบบใช้งานจริง',
     parts: {
@@ -2719,7 +2719,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-G-D5-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมของคุณมีไอเดียการนำ AI มาใช้หลายโครงการ แต่มีเวลาและทรัพยากรพอที่จะทดลองทำ (Pilot) ได้เพียงเรื่องเดียว คุณต้องนำเสนอตัวเลือกนี้ต่อผู้อำนวยการ โดยคุณต้องเป็นผู้รับผิดชอบผลลัพธ์ที่จะตามมา',
     prompt: 'ใครควรเป็นผู้ตัดสินใจเลือก',
     options: {
@@ -2749,7 +2749,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D3-VERIFY-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการรายหนึ่งบอกว่าโมเดลของตน “ดีที่สุด” เพราะเป็นอันดับหนึ่งใน benchmark (ผลทดสอบเทียบ) สาธารณะรายการหนึ่ง ทีมต้องตัดสินว่า benchmark นั้นเกี่ยวข้องกับงานจริงหรือไม่',
     prompt: 'ทีมควรตรวจสอบอะไรบ้างก่อนเชื่อคำกล่าวอ้างเรื่อง benchmark นี้',
     options: {
@@ -2781,7 +2781,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D6-COLLAB-011': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมบริการลูกค้ากำลังกำหนดว่าคนกับ AI ควรทำงานร่วมกันอย่างไรกับ ticket (เคสลูกค้า) ที่มีความอ่อนไหว',
     prompt: 'จับคู่แต่ละช่วงของงานกับแนวปฏิบัติการทำงานร่วมกันที่เหมาะสม',
     matchPairs: {
@@ -2813,7 +2813,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D3-VERIFY-017': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้จัดการบอกว่ากราฟนี้พิสูจน์ว่าการนำ AI มาใช้ทำให้ผลิตภาพเพิ่มขึ้น 38%',
     prompt: 'ข้อท้วงติงใดถูกต้องและเหมาะสมที่สุด',
     options: {
@@ -2841,7 +2841,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D6-COLLAB-023': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมสรรหาบุคลากรได้รับรายชื่อผู้สมัครที่ AI คัดกรองมา ซึ่งขัดแย้งกับบันทึกของผู้สัมภาษณ์และยังขาดหลักฐานประกอบ',
     prompt: 'เขียนแนวปฏิบัติการทำงานร่วมกันที่คุณจะให้ทีมยึดถือก่อนใช้รายชื่อที่ AI คัดกรองมา',
     rubricCriteria: {
@@ -2874,7 +2874,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-M-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'workflow ที่ใช้ AI แปลงการโทรคุยกับลูกค้าให้เป็นการอัปเดตข้อมูลใน CRM และการติดตามลูกค้า',
     prompt: 'จุดไหนที่ต้องมีการตรวจทานก่อนเป็นอันดับแรก',
     options: {
@@ -2908,7 +2908,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-A-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เจ้าหน้าที่สรรหาบุคลากรวางเรซูเม่ของผู้สมัครลงในแชตบอตสาธารณะเพื่อให้ช่วยสรุป',
     prompt: 'ข้อใดคือปัญหาที่ใหญ่ที่สุด',
     options: {
@@ -2937,7 +2937,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D6-H-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'AI ร่างคำตอบงานบริการลูกค้าให้ แต่พนักงานได้เรียนรู้กรณียาก ๆ น้อยลง',
     prompt: 'การออกแบบใหม่แบบใดได้ผลดีที่สุด',
     options: {
@@ -2966,7 +2966,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-P-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งต้องการให้ AI agent ทำงานข้ามแอปที่ใช้ประจำวัน',
     prompt: 'ต้องมีการควบคุมอะไรบ้าง',
     options: {
@@ -3004,7 +3004,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D6-N-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมหนึ่งเริ่มใช้ AI จดบันทึกการประชุม ผู้เข้าประชุมเลิกตั้งใจฟังเพราะคิดว่า "เดี๋ยว AI ก็จดให้" และการตัดสินใจต่าง ๆ ก็ตรวจสอบย้อนกลับได้ยากขึ้น',
     prompt: 'การออกแบบใหม่แบบใดปกป้องคุณภาพการทำงานร่วมกันได้ดีที่สุด',
     options: {
@@ -3027,7 +3027,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-MCP-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แชตบอตตัวหนึ่งเรียกใช้เครื่องมือที่เชื่อมต่อไว้ได้ ทั้งอีเมล ปฏิทิน และไฟล์ ผู้ใช้สั่งให้มันสรุปเนื้อหาในโฟลเดอร์ส่วนตัวแล้วส่งผลลัพธ์ออกไปภายนอก',
     prompt: 'เลือกการควบคุมที่ต้องมีก่อนเรียกใช้เครื่องมือ',
     options: {
@@ -3060,7 +3060,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-PRO-011': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วย AI ที่เชื่อมต่อกับเครื่องมือต่าง ๆ พยายามเข้าถึงไฟล์ที่อยู่นอกขอบเขตของเหตุการณ์ผิดปกติ (incident) ขณะช่วยคัดกรองปัญหาทางเทคนิค',
     prompt: 'เขียน 2-4 ประโยคระบุบทเรียนสำคัญเรื่องการควบคุมสิทธิ์เข้าถึง',
     rubricCriteria: {
@@ -3089,7 +3089,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D4-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนของคุณอยากอัปโหลดภาพหน้าจอปฏิทินครอบครัว บันทึกงาน และใบแจ้งหนี้ เพื่อให้ AI ช่วยจัดตารางทั้งสัปดาห์',
     prompt: 'การกระทำใดช่วยลดความเสี่ยงด้านความเป็นส่วนตัวก่อนใช้ AI',
     options: {
@@ -3121,7 +3121,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'PRACTICAL-GEN-D6-014': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'นักศึกษาคนหนึ่งอยากใช้ AI ช่วยทำงานที่ได้รับมอบหมาย โดยไม่สูญเสียความเป็นเจ้าของการเรียนรู้ และไม่ส่งงานที่ตัวเองอธิบายไม่ได้',
     prompt: 'เขียน 2-4 ประโยคอธิบายว่านักศึกษาควรปรับวิธีใช้ AI อย่างไร ให้เป็นการสร้างทักษะแทนที่จะแทนที่การเรียนรู้',
     rubricCriteria: {
@@ -3150,7 +3150,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D1-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คณะกรรมการบริษัทถามว่า AI agent ต่างจากแชตบอตอย่างไร และจะซักถามคำตอบของคุณต่อในที่ประชุม',
     prompt: 'ใครควรเป็นคนอธิบาย',
     options: {
@@ -3175,7 +3175,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D3-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โพสต์บนโซเชียลที่ดูสมจริงอ้างว่า CEO ประกาศเลิกจ้างพนักงานหลังเห็นการคาดการณ์ที่สร้างโดย AI โพสต์นี้กำลังแพร่กระจายอย่างรวดเร็วก่อนตลาดเปิด',
     prompt: 'ผู้บริหารควรทำอะไรก่อนออกมาตอบต่อสาธารณะ',
     options: {
@@ -3209,7 +3209,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D2-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หน่วยธุรกิจหนึ่งเพิ่ม AI copilot เข้าไปใน workflow การอนุมัติที่มีอยู่เดิม และรายงานว่าพนักงานชอบใช้',
     prompt: 'ลากหรือจัดลำดับขั้นตอนการผนวก AI เข้ากับ workflow ก่อนขยายผลไปทั่วองค์กร',
     rankItems: {
@@ -3221,7 +3221,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     rankRationale: 'ต้องรู้ก่อนว่า AI เข้ามาใน workflow ตรงจุดใด จึงจะตัดสินได้ว่าคนควรตรวจทานตรงไหน ต้องกำหนดจุดตรวจทานและกรณียกเว้นก่อนเริ่มวัดผล ไม่เช่นนั้นตัวเลขจะไม่สะท้อนกระบวนการจริง และต้องวัดผลก่อนอบรมและขยายผล เพื่อให้สิ่งที่ขยายออกไปเป็นรูปแบบที่ได้ผลจริง',
   },
   'EXEC-D3-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แดชบอร์ดแนวโน้มแสดงว่าอัตราการเลิกใช้บริการของลูกค้าลดลงหลังเปิดตัวผู้ช่วย AI แต่แกน y ถูกตัดไม่ได้เริ่มจากศูนย์ และมีการเปลี่ยนราคาเกิดขึ้นในช่วงเวลาเดียวกัน',
     prompt: 'ผู้บริหารควรตีความอย่างไรจึงจะดีที่สุด',
     options: {
@@ -3250,7 +3250,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-010': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หัวหน้าสายงานคนหนึ่งขอลดจำนวนพนักงานทันที เพราะเห็นการสาธิตที่ผู้ช่วย AI ร่างงานได้อย่างรวดเร็ว',
     prompt: 'ผู้นำควรตอบอย่างไรจึงจะดีที่สุด',
     options: {
@@ -3273,7 +3273,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D4-018': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เครื่องมือ AI แนะนำให้ดำเนินการด้านความปลอดภัยในการปฏิบัติงานอย่างหนึ่ง ซึ่งอาจส่งผลต่อทั้งพนักงานและลูกค้า',
     prompt: 'ลากหรือจัดลำดับชุดการควบคุมสำหรับงานที่มีผลต่อความปลอดภัย',
     rankItems: {
@@ -3285,7 +3285,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     rankRationale: 'การจัดประเภทกรณีใช้งานว่ามีผลต่อความปลอดภัยเป็นตัวเปิดใช้ระบบควบคุมทั้งชุด ต้องมีผู้มีอำนาจที่เป็นคนและขอบเขตกลไกหยุดเมื่อผิดพลาดก่อน การตรวจสอบความถูกต้องจึงจะมีความหมาย การทดสอบกับกรณียากต้องมาก่อนการใช้งานจริง และการเฝ้าติดตามพร้อมเกณฑ์ระงับการใช้งานคือการควบคุมที่ต้องทำต่อเนื่อง',
   },
   'EXEC-D4-PEOPLE-023': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'CHRO ถามว่าโครงการนำร่อง (pilot) การจัดอันดับผู้สมัครด้วย AI พร้อมขยายการใช้งานในวงกว้างแล้วหรือยัง',
     prompt: 'ผู้บริหารควรกำหนดจุดควบคุมด้านการกำกับดูแลข้อใดบ้างก่อนขยายผล',
     options: {
@@ -3317,7 +3317,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D4-GOV-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บันทึกความเสี่ยงของเอเจนต์ที่ให้บริการระดับองค์กรแสดงสิทธิ์ใช้เครื่องมือสำหรับอีเมลถึงซัพพลายเออร์ การอัปเดต CRM ขั้นตอนการคืนเงิน และโฟลเดอร์ข้อมูลการเงิน',
     prompt: 'เลือกการควบคุมที่ผู้บริหารควรกำหนดก่อนขยายขอบเขตของเอเจนต์',
     options: {
@@ -3349,7 +3349,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D4-SOURCE-010': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมผู้บริหารต้องการเผยแพร่แนวปฏิบัติภายในองค์กรโดยอ้างอิงจากเอกสารเปรียบเทียบแหล่งข้อมูลนโยบาย',
     prompt: 'ควรกำหนดการควบคุมข้อใดบ้างก่อนเผยแพร่สิ่งนี้เป็นแนวปฏิบัติการใช้ AI ภายในองค์กร',
     options: {
@@ -3381,7 +3381,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-G-D6-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณต้องให้ฟีดแบ็กเรื่องการส่งงานล่าช้ากับเพื่อนร่วมงานแบบต่อหน้าในวันพรุ่งนี้ โดยเมื่อสัปดาห์ก่อนเขาเพิ่งเปิดใจเล่าปัญหาส่วนตัวที่ค่อนข้างละเอียดอ่อนให้คุณฟัง',
     prompt: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
     options: {
@@ -3406,7 +3406,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D3-MEDIA-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนถามคุณว่าประกาศขายสินค้าลดราคาชิ้นนี้ ที่ดูเหมือนใช้ภาพจาก AI ปลอดภัยพอจะซื้อหรือไม่',
     prompt: 'สัญญาณใดบ้างที่ควรทำให้คุณกังวล',
     options: {
@@ -3438,7 +3438,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'COMP-D6-CHANGE-012': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'องค์กรหนึ่งอ้างว่าการนำ AI มาใช้ประสบความสำเร็จ เพราะยอดการใช้งานเพิ่มขึ้นเป็นสองเท่า',
     prompt: 'การดำเนินการต่อข้อใดบ้างที่จะทำให้โครงการเปลี่ยนแปลงนี้น่าเชื่อถือขึ้น',
     options: {
@@ -3470,7 +3470,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D3-MEDIA-018': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนร่วมงานคลิกข้อความแจ้งว่าสิทธิ์เข้าใช้งานหมดอายุ แล้วมาถึงหน้าเข้าสู่ระบบหน้านี้',
     prompt: 'เขียน 2-4 ประโยค อธิบายสัญญาณที่น่าสงสัยและสิ่งที่ควรทำต่ออย่างปลอดภัย',
     rubricCriteria: {
@@ -3503,7 +3503,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'CAL-D6-CHANGE-024': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'บริษัทเปิดตัวผู้ช่วย AI แต่หลายทีมยังสับสนว่าจะใช้เมื่อไรและใช้อย่างไร',
     prompt: 'การดำเนินการข้อใดสนับสนุนการนำไปใช้ได้ดีที่สุด',
     options: {
@@ -3531,7 +3531,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D2-H-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'คุณต้องการรายงานสรุปสำหรับคณะกรรมการบริษัทที่มีคุณภาพสม่ำเสมอทุกเดือน',
     prompt: 'แนวทางการออกแบบคำสั่ง (Prompt) ในข้อใดมีประสิทธิภาพที่สุด',
     options: {
@@ -3560,7 +3560,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D4-M-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'แผนกหนึ่งต้องการให้ AI จัดอันดับผู้สมัครงาน',
     prompt: 'สิ่งใดจำเป็นต้องดำเนินการก่อนเปิดใช้งานจริง',
     options: {
@@ -3589,7 +3589,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D1-P-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนร่วมทีมของคุณอยากรู้ว่า AI ช่วยงานอะไรได้บ้างอย่างปลอดภัย',
     prompt: 'จับคู่แต่ละงานกับผู้เป็นเจ้าของงาน',
     matchPairs: {
@@ -3617,7 +3617,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D5-P-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมของคุณมีไอเดียใช้ AI อยู่ 4 เรื่อง แต่มีเวลาทำโครงการนำร่อง (pilot) ได้แค่เรื่องเดียว',
     prompt: 'จัดลำดับเกณฑ์การตัดสินใจ',
     rankItems: {
@@ -3635,7 +3635,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D3-F-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ช่วยฝ่ายการเงินได้รับภาพใบแจ้งหนี้ใบนี้ และถามว่าปลอดภัยพอจะอนุมัติวันนี้เลยหรือไม่',
     prompt: 'เขียน 2-4 ประโยค ระบุสัญญาณเตือนความผิดปกติ (Red flags) และสิ่งที่ควรทำต่ออย่างปลอดภัยที่สุด',
     rubricCriteria: {
@@ -3664,7 +3664,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'D5-TREND-007': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'เพื่อนร่วมงานอยากซื้อแพลตฟอร์ม AI agent ตัวใหม่ เพราะผู้ให้บริการบอกว่า workflow แบบเอเจนต์คุยกับเอเจนต์คือเทรนด์ใหญ่ถัดไป',
     prompt: 'คำถามแรกที่ดีที่สุดคือข้อใด',
     options: {
@@ -3687,7 +3687,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D1-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ปกครองคนหนึ่งให้ผู้ช่วย AI สรุปนโยบายการใช้โทรศัพท์ของโรงเรียน ก่อนส่งต่อเข้าแชตกลุ่มห้องเรียน',
     prompt: 'จับคู่พฤติกรรมของ AI แต่ละข้อกับแนวคิดที่สะท้อนออกมา',
     matchPairs: {
@@ -3714,7 +3714,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'GEN-EXP-D5-001': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ทีมเล็ก ๆ ทีมหนึ่งอยากเริ่มใช้ AI เพราะทุกคนรู้สึกว่างานยุ่ง พวกเขากำลังเลือกระหว่างผู้ช่วยวางแผนงานรายสัปดาห์ บอตให้คำแนะนำแบบเปิดสาธารณะ และระบบอนุมัติใบแจ้งหนี้อัตโนมัติเต็มรูปแบบ',
     prompt: 'โครงการนำร่อง (pilot) แรกข้อใดแข็งแรงที่สุด',
     options: {
@@ -3742,7 +3742,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'FUNC-EXP-OPS-D5-003': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารฝ่ายปฏิบัติการกำลังพิจารณา AI agent จัดการคืนเงินตามแผน workflow ที่เห็นนี้ ผลจากเดโมช่วงแรกบอกว่าจัดการได้เร็วขึ้น แต่ยังไม่มีตัววัดความเสียหายต่อลูกค้าที่ตรวจสอบแล้ว',
     prompt: 'เขียน 2-4 ประโยค ระบุเกณฑ์การเปิดใช้งานที่คุณจะกำหนดก่อนขยายผลเป็นวงกว้าง',
     rubricCriteria: {
@@ -3771,7 +3771,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'REL-E-D2-006': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'หน่วยธุรกิจหนึ่งอยากให้ AI agent ทำงานข้ามระบบไฟล์ CRM อีเมล และการอนุมัติทางการเงิน ใครก็ตามที่อนุมัติสิทธิ์เข้าถึงคือผู้รับผลของสิ่งที่เอเจนต์ทำด้วยสิทธิ์นั้น',
     prompt: 'ใครควรเป็นผู้อนุมัติสิทธิ์เข้าถึง',
     options: {
@@ -3801,7 +3801,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-024': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'งบประมาณ AI ประจำปีมีข้อเสนอ 10 โครงการ ครอบคลุมระบบอัตโนมัติ ประสบการณ์ลูกค้า การวิเคราะห์ข้อมูล และผลิตภาพภายในองค์กร',
     prompt: 'ลากหรือจัดเรียงด่านตัดสินใจ (stage gate) ระดับผู้บริหาร ให้เป็นลำดับที่แข็งแรงที่สุดสำหรับการลงทุน AI อย่างรับผิดชอบ',
     rankItems: {
@@ -3813,7 +3813,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     rankRationale: 'สมมติฐานคุณค่าที่มีผู้รับผิดชอบเป็นตัวนิยามว่าความสำเร็จคืออะไร การประเมินความพร้อมบอกว่าจะทำ pilot ได้จริงหรือไม่ pilot ที่มีการควบคุมเป็นตัวสร้างหลักฐาน และการขยายผลจะปลดล็อกก็ต่อเมื่อหลักฐานและมาตรการควบคุมผ่านเกณฑ์',
   },
   'EXEC-D3-002': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'รายงานตลาดที่ AI สร้างขึ้นอ้างอิงแหล่งข้อมูล 3 แหล่ง แต่เอกสารที่อ้างถึงไม่ได้สนับสนุนตัวเลขการคาดการณ์การเติบโตที่ใช้ในข้อเสนอต่อคณะกรรมการบริษัท',
     prompt: 'ข้อสรุประดับผู้บริหารข้อใดแข็งแรงที่สุด',
     options: {
@@ -3847,7 +3847,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D5-013': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โครงการนำร่อง (pilot) มีคนใช้งานน้อยหลังผ่านไป 90 วัน แต่ผู้สนับสนุนโครงการอยากขยายผล เพราะตอนเปิดตัวประกาศไว้ใหญ่โต',
     prompt: 'การตัดสินใจระดับผู้บริหารข้อใดดีที่สุด',
     options: {
@@ -3870,7 +3870,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D3-004': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'โมเดลคาดการณ์ให้ตัวเลขประมาณการรายได้ด้วยความมั่นใจสูง และผู้บริหารอยากนำไปใช้ในแนวทางที่แจ้งต่อนักลงทุน',
     prompt: 'เลือกการตรวจสอบความไม่แน่นอนที่ผู้บริหารควรร้องขอ',
     options: {
@@ -3893,7 +3893,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D2-A2A-019': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ธนาคารแห่งหนึ่งต้องการให้ AI agent ฝ่ายบริการลูกค้า เอเจนต์ตรวจจับการฉ้อโกง และเอเจนต์ด้านการปฏิบัติตามข้อกำหนด แลกเปลี่ยนสถานะงานกันข้ามแพลตฟอร์มของผู้ให้บริการหลายราย',
     prompt: 'จับคู่ความเสี่ยงของการทำงานข้ามเอเจนต์กับมาตรการควบคุมระดับผู้บริหาร',
     matchPairs: {
@@ -3921,7 +3921,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-D6-OPS-024': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้บริหารฝ่ายปฏิบัติการอยากนำคำตอบลูกค้าที่ AI เขียนไปใช้จริง แต่ ticket (เคสลูกค้า) ดิบใบนี้แสดงว่าร่างของ AI ปฏิเสธการคืนเงินกรณีถูกเรียกเก็บเงินซ้ำที่มีเหตุผลรองรับ',
     prompt: 'เขียน 2-4 ประโยค ว่าผู้บริหารต้องวางมาตรการควบคุมอะไรก่อนเปิดใช้งานจริง',
     rubricCriteria: {
@@ -3950,7 +3950,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
     },
   },
   'EXEC-EXP-D4-VEND-005': {
-    status: 'reviewed',
+    status: 'approved',
     context: 'ผู้ให้บริการเสนอส่วนลดหากบริษัทเซ็นสัญญาแพลตฟอร์ม GenAI ระดับองค์กรก่อนที่ฝ่ายความปลอดภัยจะแก้ไขเงื่อนไขเสร็จ',
     prompt: 'การตอบสนองระดับผู้บริหารข้อใดแข็งแรงที่สุด',
     options: {

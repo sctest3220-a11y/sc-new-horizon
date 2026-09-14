@@ -2925,7 +2925,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'มีรายงานวิเคราะห์อุตสาหกรรมความยาว 40 หน้าส่งเข้ามาในกล่องข้อความอีเมล โดยเหลือเวลาอีกเพียง 2 ชั่วโมงก่อนเริ่มการประชุมบอร์ดบริหาร ทีมงานต้องการสรุป 5 ประเด็นสำคัญเพื่อนำไปใช้ทันที',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'Doing it by hand under a two-hour deadline spends the one thing you lack. AI can condense; you skim to verify.', feedbackTh: 'ทำเองภายใต้เดดไลน์สองชั่วโมงคือการใช้สิ่งที่คุณขาดที่สุด AI ย่อได้ คุณกวาดอ่านเพื่อตรวจ' },
       { ...relianceOptions.together, score: 70, feedback: 'Reasonable, but heavier than needed. A quick skim of the source is enough verification for a summary you can check yourself.', feedbackTh: 'สมเหตุสมผล แต่หนักเกินความจำเป็น การกวาดอ่านต้นฉบับสั้น ๆ ก็เพียงพอสำหรับสรุปที่คุณตรวจเองได้' },
@@ -2954,7 +2954,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ผลสรุปการปรับลดงบประมาณเป็นที่สิ้นสุดแล้ว และจำเป็นต้องปลดพนักงาน 1 คนจากทีมที่มีทั้งหมด 8 คน ฝ่ายบุคคล (HR) ได้รวบรวมแฟ้มประวัติผลงานของทุกคนมาให้แล้ว ซึ่งไม่มีคำตอบที่ชัดเจนหรือตัดสินใจได้ง่าย และเรื่องนี้กระทบต่อชีวิตความเป็นอยู่ของคนอย่างยิ่ง',
     promptTh: 'ใครควรเป็นผู้ตัดสินใจ',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. High-stakes, accountable, and legally exposed. AI can summarize records, but the decision and its consequences are yours — delegating it invites bias and liability.', feedbackTh: 'ดีที่สุด เป็นเรื่องเดิมพันสูง ต้องรับผิดชอบ และมีความเสี่ยงทางกฎหมาย AI สรุปข้อมูลได้ แต่การตัดสินใจและผลของมันเป็นของคุณ การยกให้ AI เสี่ยงทั้งอคติและความรับผิด' },
       { ...relianceOptions.together, score: 45, feedback: 'AI may summarize the files, but if it shapes the ranking you import bias into a decision you must personally defend.', feedbackTh: 'AI สรุปแฟ้มได้ แต่ถ้าปล่อยให้มันจัดอันดับ คุณกำลังนำอคติเข้าสู่การตัดสินใจที่คุณต้องรับผิดชอบเอง' },
@@ -2983,7 +2983,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ซัพพลายเออร์ส่งข้อความสั้น ๆ อย่างไม่เป็นทางการเป็นภาษาไทยมาหาคุณ คุณต้องการแปลเป็นภาษาอังกฤษอย่างรวดเร็วเพื่อตอบกลับทันที โดยเนื้อหาไม่มีผลผูกพันทางกฎหมาย เป็นเพียงการนัดหมายคุยทางโทรศัพท์เท่านั้น',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'You can, but it is slow for a low-stakes note. Everyday translation is exactly where AI is reliable.', feedbackTh: 'ทำได้ แต่ช้าสำหรับข้อความที่เดิมพันต่ำ การแปลงานทั่วไปคือจุดที่ AI เชื่อถือได้' },
       { ...relianceOptions.together, score: 65, feedback: 'Fine, though a quick sense-check of the output is all the review this needs.', feedbackTh: 'ใช้ได้ แต่แค่ตรวจความสมเหตุสมผลสั้น ๆ ก็พอแล้วสำหรับงานนี้' },
@@ -3012,7 +3012,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'สัญญาให้บริการความยาว 12 หน้าต้องได้รับการแปลเป็นภาษาไทยก่อนที่ทั้งสองฝ่ายจะลงนามในสัปดาห์หน้า โดยข้อความสัญญาที่แปลผิดพลาดแม้เพียงข้อเดียว อาจทำให้ข้อตกลงทั้งหมดกลายเป็นโมฆะหรือไม่สามารถบังคับใช้ได้ตามกฎหมาย',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe but slow and costly. AI can draft while a qualified reviewer checks every clause.', feedbackTh: 'ปลอดภัยแต่ช้าและแพง ให้ AI ร่างได้ โดยผู้เชี่ยวชาญตรวจทุกข้อ' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. Let AI draft, but a qualified human must review. One mistranslated clause in a binding document can cost far more than the time saved.', feedbackTh: 'ดีที่สุด ให้ AI ร่างได้ แต่ต้องมีผู้เชี่ยวชาญตรวจ ข้อความที่แปลผิดเพียงข้อเดียวในเอกสารผูกพันอาจเสียหายมากกว่าเวลาที่ประหยัด' },
@@ -3041,7 +3041,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องการเขียนข้อความแสดงความเสียใจถึงเพื่อนสนิทที่เพิ่งสูญเสียคุณพ่อ ซึ่งเพื่อนควรได้รับข้อความที่มาจากใจของคุณโดยตรงในวันนี้ ไม่ใช่ข้อความสำเร็จรูปจากเทมเพลต',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. The value here is that it came from you. AI can phrase grief fluently, but the point of the message is human presence, not polish.', feedbackTh: 'ดีที่สุด คุณค่าของมันคือ \'มาจากคุณ\' AI เรียบเรียงความเศร้าได้ลื่นไหล แต่หัวใจของข้อความคือการมีตัวตนของมนุษย์ ไม่ใช่ความสละสลวย' },
       { ...relianceOptions.together, score: 45, feedback: 'Even a light AI draft hollows out the point: the message has to come from you, not be polished for you.', feedbackTh: 'แม้ร่างเบา ๆ จาก AI ก็ทำให้ข้อความกลวง เพราะหัวใจของมันคือต้องมาจากคุณ ไม่ใช่ถูกขัดเกลาให้คุณ' },
@@ -3070,7 +3070,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณมีผื่นขึ้นที่แขนมาสองวัน จึงถ่ายรูปไว้อย่างชัดเจนและต้องการตรวจดูเบื้องต้นว่ามีอาการรุนแรงหรือไม่ ก่อนตัดสินใจว่าจะไปพบแพทย์',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. Medical diagnosis from an image is outside reliable AI use for treatment decisions. Use it for questions to ask — then see a clinician.', feedbackTh: 'ดีที่สุด การวินิจฉัยโรคจากภาพเพื่อตัดสินใจรักษาอยู่นอกขอบเขตที่ AI เชื่อถือได้ ใช้มันเพื่อตั้งคำถามที่จะถามหมอ แล้วไปพบแพทย์จริง' },
       { ...relianceOptions.together, score: 50, feedback: 'Only as a way to prepare questions for a clinician. Treatment decisions from a photo are outside reliable AI use.', feedbackTh: 'ใช้ได้เพียงเพื่อเตรียมคำถามไปถามแพทย์ การตัดสินใจรักษาจากรูปถ่ายอยู่นอกขอบเขตที่ AI เชื่อถือได้' },
@@ -3099,7 +3099,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องเขียนฟังก์ชันตรวจสอบแบบฟอร์มตามมาตรฐาน (เช่น ช่องบังคับกรอก รูปแบบอีเมล และความยาวรหัสผ่านขั้นต่ำ) ซึ่งเป็นรูปแบบโค้ดที่คุณเคยเขียนมาแล้วหลายครั้ง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'You have written this a dozen times. Well-trodden, testable code is a strong AI use; your tests verify it.', feedbackTh: 'คุณเขียนมาแล้วนับสิบครั้ง โค้ดที่มีรูปแบบชัดและทดสอบได้คือจุดแข็งของ AI การทดสอบของคุณเป็นตัวตรวจ' },
       { ...relianceOptions.together, score: 70, feedback: 'Fine, but the tests already do the verification. Heavy human review adds little here.', feedbackTh: 'ใช้ได้ แต่การทดสอบตรวจสอบให้อยู่แล้ว การรีวิวหนัก ๆ โดยคนแทบไม่เพิ่มอะไร' },
@@ -3128,7 +3128,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ซอฟต์แวร์ SaaS ตัวใหม่กำลังจะเปิดตัวในเดือนหน้า และคุณไม่มีงบจ้างเอเจนซี จึงต้องระดมไอเดียชื่อสินค้ามาให้ได้ 20 ชื่อเพื่อให้ทีมร่วมกันโหวตเลือก',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'Slow for a divergent, low-stakes task. Let AI generate volume; you stay the judge.', feedbackTh: 'ช้าสำหรับงานคิดกระจายที่เดิมพันต่ำ ให้ AI สร้างปริมาณ คุณเป็นผู้ตัดสิน' },
       { ...relianceOptions.together, score: 70, feedback: 'Acceptable, though the human role here is simply choosing, not co-writing the list.', feedbackTh: 'พอรับได้ แต่บทบาทของคนที่นี่คือแค่เลือก ไม่ใช่ร่วมเขียนรายชื่อ' },
@@ -3157,7 +3157,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องยื่นคำร้องต่อศาลในเช้าวันพรุ่งนี้ จึงต้องการคำพิพากษาฎีกาหรือคดีตัวอย่าง 3 คดีมาสนับสนุนข้อโต้แย้งทางกฎหมาย โดยข้อมูลต้องถูกต้อง มีอยู่จริง และตรวจสอบได้',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI — including specialized legal research tools — regularly invents plausible-sounding cases that don\'t exist. Multiple lawyers have been suspended for filing them. You can use AI to surface potentially relevant cases, but you must personally verify every citation in the official legal database before any filing. The stakes and the signature are yours.', feedbackTh: 'ดีที่สุด AI รวมถึงเครื่องมือวิจัยกฎหมายเฉพาะทาง กุคดีที่ฟังดูน่าเชื่อแต่ไม่มีจริงอย่างสม่ำเสมอ ทนายความหลายคนถูกพักใบอนุญาตเพราะยื่นคดีเหล่านั้น ใช้ AI เพื่อค้นหาคดีที่อาจเกี่ยวข้องได้ แต่ต้องตรวจสอบทุกการอ้างอิงในฐานข้อมูลกฎหมายจริงด้วยตนเองก่อนยื่น ความรับผิดชอบและลายเซ็นเป็นของคุณ' },
       { ...relianceOptions.together, score: 55, feedback: 'Acceptable only if every citation is personally verified in the official database before filing. AI surfaces candidates; it does not confirm them.', feedbackTh: 'รับได้ก็ต่อเมื่อคุณตรวจทุกการอ้างอิงด้วยตนเองในฐานข้อมูลทางการก่อนยื่น AI ช่วยหาผู้สมัคร แต่ไม่ได้ยืนยัน' },
@@ -3186,7 +3186,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องการตรวจไวยากรณ์อีเมลข้อเสนอความยาว 2 ย่อหน้าที่จะส่งหาลูกค้าใหม่ เนื้อหาครบถ้วนถูกต้องแล้ว เพียงต้องการขัดเกลาภาษาให้เรียบร้อยก่อนส่ง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'You can, but grammar and clarity polishing is reliable AI work and the result is self-evident when you read it.', feedbackTh: 'ทำได้ แต่การขัดไวยากรณ์และความชัดเจนเป็นงานที่ AI ทำได้น่าเชื่อถือ และคุณเห็นผลทันทีเมื่ออ่าน' },
       { ...relianceOptions.together, score: 72, feedback: 'Fine. Reading the result and keeping what sounds like you is all the human step needs to be.', feedbackTh: 'ใช้ได้ การอ่านผลลัพธ์แล้วเก็บสำนวนที่เป็นตัวคุณคือขั้นตอนของคนที่พอเพียงแล้ว' },
@@ -3215,7 +3215,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'เหลือเวลาอีกเพียง 3 วันในการยื่นภาษีประจำปี ซึ่งปีนี้คุณมีรายได้จากหลายทาง ทั้งงานฟรีแลนซ์ เงินปันผล และธุรกิจส่วนตัว จึงต้องคำนวณและยื่นแบบอย่างถูกต้อง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI can explain rules and organize the numbers before you verify against official sources or an accountant.', feedbackTh: 'ปลอดภัย แต่ AI อธิบายกฎและจัดระเบียบตัวเลขได้ก่อนที่คุณจะตรวจกับแหล่งทางการหรือนักบัญชี' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can explain rules and organize numbers, but it gets figures and current law wrong. Use it to prepare, then verify against official sources or an accountant before filing.', feedbackTh: 'ดีที่สุด AI อธิบายกฎและจัดระเบียบตัวเลขได้ แต่ผิดพลาดเรื่องตัวเลขและกฎหมายปัจจุบัน ใช้มันเตรียมงาน แล้วตรวจกับแหล่งทางการหรือนักบัญชีก่อนยื่น' },
@@ -3244,7 +3244,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ทีมบัญชีต้องการดึงข้อมูลค่าใช้จ่ายจากใบเสร็จจำนวน 200 ใบลงในตารางสเปรดชีตให้เสร็จสิ้นก่อนสิ้นวัน',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 35, feedback: 'A full workday of manual entry when structured extraction is exactly what AI accelerates.', feedbackTh: 'ป้อนมือทั้งวัน ในขณะที่การดึงข้อมูลที่มีโครงสร้างคือสิ่งที่ AI เร่งได้ดีที่สุด' },
       { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a spot-check of a sample against originals, not parallel entry.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการสุ่มตรวจตัวอย่างเทียบต้นฉบับ ไม่ใช่ป้อนคู่ขนาน' },
@@ -3273,7 +3273,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ทีมผู้บริหารระดับสูงกำลังจะประชุมในสัปดาห์นี้เพื่อกำหนดทิศทางและกลยุทธ์ 5 ปีข้างหน้าของบริษัท ท่ามกลางการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและคู่แข่ง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. Strategy depends on context, values, and accountability AI doesn\'t hold. Use it to pressure-test options — but own the call.', feedbackTh: 'ดีที่สุด กลยุทธ์ขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี ใช้มันทดสอบทางเลือกได้ แต่การตัดสินใจต้องเป็นของคุณ' },
       { ...relianceOptions.together, score: 55, feedback: 'Use AI to pressure-test options, but the call itself depends on context, values, and accountability that AI does not hold.', feedbackTh: 'ใช้ AI ทดสอบทางเลือกได้ แต่การตัดสินใจขึ้นกับบริบท คุณค่า และความรับผิดชอบที่ AI ไม่มี' },
@@ -3302,7 +3302,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'อีก 2 สัปดาห์จะถึงงานแต่งงานของเพื่อนสนิท คุณมีเรื่องเล่าความทรงจำอยู่แล้ว แต่ยังเริ่มเขียนไม่ออก จึงต้องการเขียนคำอวยพรเพื่อนเจ้าบ่าวให้ฟังดูเป็นตัวคุณเองอย่างแท้จริง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Owning it is right, but three days of blank page suggests AI structure would help you get the real stories flowing.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่หน้ากระดาษว่างสามวันบอกว่าโครงจาก AI จะช่วยให้เรื่องเล่าจริงไหลออกมา' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives you a structure to beat blank-page fear, but the stories and voice must be yours or the room will feel it.', feedbackTh: 'ดีที่สุด AI ช่วยให้โครงเพื่อข้ามความกลัวหน้ากระดาษว่าง แต่เรื่องเล่าและน้ำเสียงต้องเป็นของคุณ ไม่งั้นคนในงานจะรู้สึกได้' },
@@ -3331,7 +3331,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องตัดสินใจอนุมัติสินเชื่อ ธนาคารของคุณมีใบสมัคร 800 รายการต่อวัน ซึ่งมีโมเดล AI ช่วยประเมินคะแนนเครดิต โดยมีข้อเสนอให้เปลี่ยนไปใช้ระบบอนุมัติอัตโนมัติทั้งหมดโดยไม่มีมนุษย์คอยตรวจทานรายกรณี',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 55, feedback: 'Human review of 800 applications a day is unrealistic. The answer is scoring plus accountable human oversight, not no model.', feedbackTh: 'ให้คนตรวจ 800 ใบต่อวันไม่สมจริง คำตอบคือให้โมเดลให้คะแนนพร้อมการกำกับดูแลของคนที่รับผิดชอบ ไม่ใช่ไม่มีโมเดล' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. Models can score risk, but unaudited automation has produced illegal discrimination. A human must be accountable and able to explain every decision.', feedbackTh: 'ดีที่สุด โมเดลให้คะแนนความเสี่ยงได้ แต่การปล่อยอัตโนมัติโดยไม่ตรวจสอบเคยก่อให้เกิดการเลือกปฏิบัติที่ผิดกฎหมาย ต้องมีมนุษย์รับผิดชอบและอธิบายทุกการตัดสินใจได้' },
@@ -3360,7 +3360,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ในค่ำวันอาทิตย์ที่คุณเหนื่อยล้าและอยากดูหนังดี ๆ สักเรื่อง แต่ใช้เวลาเลื่อนหาบน Netflix ไปแล้ว 15 นาทีก็ยังเลือกไม่ได้',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 45, feedback: 'You already spent 15 minutes scrolling. Low-stakes personal taste is a perfect lightweight AI use.', feedbackTh: 'คุณเลื่อนมา 15 นาทีแล้ว รสนิยมส่วนตัวที่เดิมพันต่ำคือการใช้ AI แบบเบา ๆ ที่เหมาะมาก' },
       { ...relianceOptions.together, score: 60, feedback: 'Fine, but there is nothing to verify. Worst case you switch films.', feedbackTh: 'ใช้ได้ แต่ไม่มีอะไรต้องตรวจ แย่สุดก็แค่เปลี่ยนเรื่อง' },
@@ -3389,7 +3389,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องส่งแบบประเมินผลงานสิ้นปีของทีมในวันศุกร์นี้ โดยคุณดูแลพนักงาน 8 คนและมีเพียงบันทึกย่อคร่าว ๆ ของแต่ละคนตลอดทั้งปี',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can tidy your notes so your time goes to fairness and specifics.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI ช่วยเรียบเรียงบันทึกได้ เพื่อให้เวลาของคุณไปอยู่ที่ความเป็นธรรมและรายละเอียด' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can tidy your notes, but fairness and specifics must come from you. Generic AI praise erodes trust and can encode bias across a team.', feedbackTh: 'ดีที่สุด AI ช่วยเรียบเรียงบันทึกของคุณได้ แต่ความเป็นธรรมและรายละเอียดต้องมาจากคุณ คำชมลอย ๆ ของ AI บั่นทอนความไว้ใจและอาจฝังอคติทั้งทีม' },
@@ -3418,7 +3418,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณกำลังนั่งคุยเรื่องผลตอบแทนกับผู้จัดการในห้องประชุม โดยตัวเลขที่ผู้จัดการเพิ่งแจ้งนั้นต่ำกว่าที่คุณคาดหวังไว้ และคุณจำเป็นต้องเจรจาต่อรองทันที',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI can prep your case beforehand, but the live read of the other person is human work. Reliance research calls this knowing when not to delegate.', feedbackTh: 'ดีที่สุด AI ช่วยเตรียมข้อมูลล่วงหน้าได้ แต่การอ่านคู่สนทนาแบบสด ๆ เป็นงานของมนุษย์ งานวิจัยเรื่องการพึ่งพาเรียกสิ่งนี้ว่า \'รู้ว่าเมื่อไรไม่ควรมอบหมาย\'' },
       { ...relianceOptions.together, score: 50, feedback: 'AI can prepare your case beforehand, but in the room the live read of the other person is yours.', feedbackTh: 'AI เตรียมข้อมูลล่วงหน้าได้ แต่ในห้อง การอ่านคู่สนทนาแบบสด ๆ เป็นของคุณ' },
@@ -3447,7 +3447,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'แอปพลิเคชันใหม่กำลังจะเปิดตัวในเดือนหน้า โดยมีการเก็บข้อมูลอีเมล พิกัดตำแหน่ง และประวัติการชำระเงิน คุณจึงต้องจัดทำร่างนโยบายความเป็นส่วนตัว (Privacy Policy) สำหรับเว็บไซต์',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 60, feedback: 'Safe, but AI gives a solid template. The human work is matching PDPA obligations to what you actually collect.', feedbackTh: 'ปลอดภัย แต่ AI ให้เทมเพลตที่ดี งานของคนคือจับคู่ข้อกำหนด PDPA กับข้อมูลที่คุณเก็บจริง' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI gives a solid template, but PDPA compliance is specific to what you actually collect. A wrong policy is a legal liability, not a formality.', feedbackTh: 'ดีที่สุด AI ให้เทมเพลตที่ดี แต่การปฏิบัติตาม PDPA ขึ้นกับข้อมูลที่คุณเก็บจริง นโยบายที่ผิดคือความรับผิดทางกฎหมาย ไม่ใช่แค่พิธีการ' },
@@ -3476,7 +3476,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'บริษัทยืนยันว่ามีเหตุการณ์ข้อมูลลูกค้ารั่วไหลกระทบผู้ใช้ 50,000 ราย สื่อมวลชนกำลังเริ่มติดต่อเข้ามา และคุณจำเป็นต้องร่างแถลงการณ์ขอโทษต่อสาธารณะ',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 65, feedback: 'Ownership is right, but AI can structure the statement fast while you own facts, accountability, and tone.', feedbackTh: 'เป็นเจ้าของถูกแล้ว แต่ AI จัดโครงแถลงการณ์ได้เร็ว ขณะที่คุณเป็นเจ้าของข้อเท็จจริง ความรับผิดชอบ และน้ำเสียง' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI can structure the statement, but accountability, facts, and tone are existential here. A tone-deaf or inaccurate apology deepens the crisis.', feedbackTh: 'ดีที่สุด AI จัดโครงแถลงการณ์ได้ แต่ความรับผิดชอบ ข้อเท็จจริง และน้ำเสียงเป็นเรื่องชีวิตตายที่นี่ คำขอโทษที่ผิดที่ผิดทางหรือคลาดเคลื่อนยิ่งทำให้วิกฤติหนักขึ้น' },
@@ -3505,7 +3505,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องถอดเทปบันทึกเสียงการประชุมความยาว 1 ชั่วโมงเพื่อจัดทำรายงานการประชุม โดยต้องระบุชื่อผู้รับผิดชอบ รายการสิ่งที่ต้องทำ และข้อความสรุปมติที่ชัดเจน',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 30, feedback: 'Manual transcription of an hour of audio is a poor use of time. Speech-to-text is a mature AI strength.', feedbackTh: 'ถอดเทปเสียงหนึ่งชั่วโมงด้วยมือคือการใช้เวลาที่ไม่คุ้ม การถอดเสียงเป็นข้อความคือจุดแข็งที่สุกงอมของ AI' },
       { ...relianceOptions.together, score: 70, feedback: 'Good, but the human step should be a skim for names and numbers, not parallel transcription.', feedbackTh: 'ดี แต่ขั้นตอนของคนควรเป็นการกวาดตาดูชื่อและตัวเลข ไม่ใช่ถอดเทปคู่ขนาน' },
@@ -3534,7 +3534,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'ผู้ให้บริการระบบ AI นำเสนอสไลด์ที่อ้างว่าระบบสามารถ \'ลดเวลาจัดซื้อลงได้ 60%\' และต้องการให้คุณลงนามในสัญญา คุณต้องตัดสินใจว่าคำกล่าวอ้างนี้เชื่อถือได้จริงหรือไม่',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. This is the meta-skill: evaluating AI is human judgment. Ask for evidence and a live demo — don\'t let the vendor\'s AI grade its own homework.', feedbackTh: 'ดีที่สุด นี่คือทักษะระดับเหนือ: การประเมิน AI คือวิจารณญาณของมนุษย์ ขอหลักฐานและการสาธิตสด ๆ อย่าให้ AI ของผู้ให้บริการตรวจการบ้านตัวเอง' },
       { ...relianceOptions.together, score: 50, feedback: 'AI can help list the questions to ask, but evaluating an AI vendor\'s evidence is human judgment. Do not let their AI grade its own homework.', feedbackTh: 'AI ช่วยลิสต์คำถามที่ควรถามได้ แต่การประเมินหลักฐานของผู้ให้บริการ AI คือวิจารณญาณของคน อย่าให้ AI ของเขาตรวจการบ้านตัวเอง' },
@@ -3563,7 +3563,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องการระดมไอเดียออกแบบโลโก้แบบเร็ว ๆ 10–20 แบบสำหรับบริษัทที่ปรึกษาเปิดใหม่ เพื่อสำรวจแนวทางเบื้องต้นก่อนส่งบรีฟให้นักออกแบบกราฟิกตัวจริง',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 40, feedback: 'Slow for fast exploration. Let AI generate directions, then bring a designer to finish.', feedbackTh: 'ช้าสำหรับการสำรวจอย่างรวดเร็ว ให้ AI สร้างทิศทาง แล้วให้ดีไซเนอร์ทำให้เสร็จ' },
       { ...relianceOptions.together, score: 65, feedback: 'Fine, but at this stage the human role is choosing a direction, not co-designing.', feedbackTh: 'ใช้ได้ แต่ในขั้นนี้บทบาทของคนคือเลือกทิศทาง ไม่ใช่ร่วมออกแบบ' },
@@ -3592,7 +3592,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'งบการเงินสิ้นปีของบริษัทจัดทำเสร็จเรียบร้อยแล้วโดยนักบัญชี และชื่อของคุณจะต้องปรากฏในช่องลงนามรับรองเพื่อยื่นต่อหน่วยงานกำกับดูแล',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. A signature is legal accountability that cannot be delegated to software. AI may help prepare; only a responsible human can attest.', feedbackTh: 'ดีที่สุด ลายเซ็นคือความรับผิดทางกฎหมายที่มอบให้ซอฟต์แวร์ไม่ได้ AI ช่วยเตรียมได้ แต่มีเพียงมนุษย์ผู้รับผิดชอบเท่านั้นที่รับรองได้' },
       { ...relianceOptions.together, score: 45, feedback: 'AI may help prepare and check, but attestation is legal accountability that cannot be shared with software.', feedbackTh: 'AI ช่วยเตรียมและตรวจได้ แต่การรับรองคือความรับผิดทางกฎหมายที่แบ่งให้ซอฟต์แวร์ไม่ได้' },
@@ -3621,7 +3621,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'คุณต้องการร่างแรกของบทความบล็อกความยาว 600 คำ เพื่ออธิบายความเสี่ยงของ AI ให้ผู้อ่านทั่วไปเข้าใจได้ง่ายภายในวันนี้ โดยคุณมีความรู้ในหัวข้อนี้เป็นอย่างดีอยู่แล้ว',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 55, feedback: 'You know the subject, but an hour of blank page says AI can beat it. Your edit is what makes it publishable.', feedbackTh: 'คุณรู้เรื่องดี แต่หน้ากระดาษว่างหนึ่งชั่วโมงบอกว่า AI ช่วยข้ามได้ การแก้ของคุณคือสิ่งที่ทำให้มันเผยแพร่ได้' },
       { ...relianceOptions.together, score: 98, feedback: 'Best. AI beats the blank page, but a draft is not a decision. Your edit — the facts, the angle, the voice — is what makes it worth publishing.', feedbackTh: 'ดีที่สุด AI ช่วยข้ามหน้ากระดาษว่าง แต่ร่างไม่ใช่การตัดสินใจ การแก้ของคุณ — ข้อเท็จจริง มุมมอง น้ำเสียง — คือสิ่งที่ทำให้มันคู่ควรกับการเผยแพร่' },
@@ -3650,7 +3650,7 @@ const horizonRelianceQuestions: Question[] = [
     prompt: 'Who should do the task?',
     contextTh: 'มีโพสต์ไวรัลที่แชร์กันอย่างรวดเร็วอ้างว่าบริษัทยักษ์ใหญ่ด้านเทคโนโลยีเพิ่งปิดตัวกะทันหัน และเพื่อนร่วมงานเริ่มตื่นตระหนก คุณต้องตรวจสอบว่าข่าวด่วนนี้เป็นความจริงหรือไม่',
     promptTh: 'ใครควรเป็นผู้รับผิดชอบงานนี้',
-    translationStatus: 'reviewed',
+    translationStatus: 'approved',
     options: [
       { ...relianceOptions.me, score: 98, feedback: 'Best. AI may not know recent events and will state guesses confidently. Check primary sources yourself before you share or act.', feedbackTh: 'ดีที่สุด AI อาจไม่รู้เหตุการณ์ล่าสุดและจะพูดการเดาอย่างมั่นใจ ตรวจแหล่งข้อมูลปฐมภูมิเองก่อนแชร์หรือลงมือ' },
       { ...relianceOptions.together, score: 50, feedback: 'AI may not know last-hour events and will guess confidently. It can suggest what to check, but you must open primary sources.', feedbackTh: 'AI อาจไม่รู้เหตุการณ์ในชั่วโมงที่ผ่านมาและจะเดาอย่างมั่นใจ มันแนะนำสิ่งที่ควรตรวจได้ แต่คุณต้องเปิดแหล่งปฐมภูมิเอง' },

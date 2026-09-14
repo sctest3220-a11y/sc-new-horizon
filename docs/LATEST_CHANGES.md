@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-14: Thai Batch 1 Approved — Every Question in the Bank Now Approved in Thai
+
+The reissued round-2 spot check for batch 1 (20 items, none from round 1, read on the glossary-aligned text) came back 20 Approve with no ambiguous keys. Batch 1's 163 items — 137 table entries and the 26 inline Horizon items — move from `reviewed` to `approved`. That closes the Thai review programme started on 2026-09-10: all 660 questions (163 + 89 + 408) have Thai that passed a native review and an independent second-reviewer spot check. Nothing changes on screen (`reviewed` and `approved` render alike); the status gate for a default Thai experience is now satisfied. Detail and the remaining follow-ups (escalation term, Thai artifacts, two English-bank notes, Thai pilot) in `docs/THAI_BATCH1_SPOTCHECK_ROUND2_RESPONSE.md`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; only status fields changed; all 660 items localise and every Thai exemplar scores fully.
+
 ## 2026-09-14: Thai Batch 3 Approved (408 Items); Batches 1–2 Aligned to Glossary Decisions; Batch 1 Round-2 Sample Reissued
 
 The batch-3 second-reviewer spot check (20 rendered questions covering all 17 scenario frames) returned 20 Approve with no ambiguous keys, so both template builders now emit `translationStatus: 'approved'`: the 408 `ADV-*` / `TREND-*` items join batch 2's 89 as `approved` (497 total). Batch 1's 163 items stay `reviewed` — the file received as its round-2 review was the round-1 review again (byte-identical to the one applied on 2026-09-12), so the round-2 sample is still open.
