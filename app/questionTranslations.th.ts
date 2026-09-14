@@ -212,7 +212,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'D1-A-001': {
     status: 'reviewed',
     context: 'เพื่อนของคุณอยากใช้คำตอบจาก AI นี้ในการทำอาหารมื้อเย็นให้คนที่แพ้อาหาร',
-    prompt: 'สิ่งแรกที่เขาควรทำคืออะไร',
+    prompt: 'ข้อใดคือสิ่งแรกที่เขาควรทำ',
     options: {
       a: {
         label: 'รับคำตอบไว้เลยถ้าเขียนมาลื่นไหลดี',
@@ -680,7 +680,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
         choices: ['ช่วยคนทำงานอยู่ภายในขั้นตอนงานเดิมที่มีอยู่', 'อนุมัติกรณียกเว้นโดยไม่ต้องมีคนตรวจ', 'กำหนดกลยุทธ์จากสัญญาณตลาดเพียงอย่างเดียว'],
       },
       automation: {
-        left: 'ระบบอัตโนมัติของ workflow',
+        left: 'ระบบอัตโนมัติของกระบวนการทำงาน (Workflow Automation)',
         correct: 'ทำตามขั้นตอนที่กำหนดไว้ล่วงหน้าเมื่อเข้าเงื่อนไข',
         choices: ['ทำตามขั้นตอนที่กำหนดไว้ล่วงหน้าเมื่อเข้าเงื่อนไข', 'ต่อรองการแลกได้แลกเสียเชิงนโยบายได้ด้วยตัวเอง', 'สร้างข้อมูลฝึกโมเดลจากทุก prompt'],
       },
@@ -1617,7 +1617,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'D1-H-003': {
     status: 'reviewed',
     context: 'ผู้ช่วย AI ตอบนโยบายการคืนเงินที่ไม่มีอยู่ในเอกสารที่อัปโหลดไว้',
-    prompt: 'สิ่งที่น่าจะเกิดขึ้นมากที่สุดคืออะไร',
+    prompt: 'ข้อใดน่าจะเกิดขึ้นมากที่สุด',
     options: {
       a: {
         label: 'โมเดลสร้างคำตอบที่ฟังดูสมเหตุสมผลขึ้นมาเอง โดยไม่ได้อิงหลักฐานที่ค้นคืนมาได้',
@@ -2228,7 +2228,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'D3-H-003': {
     status: 'reviewed',
     context: 'รายงานที่ AI เขียนอ้างอิงงานวิจัยที่ไม่ได้สนับสนุนตัวเลขที่ระบุไว้จริง ๆ',
-    prompt: 'ปัญหาคืออะไร',
+    prompt: 'ข้อใดคือปัญหาหลักในกรณีนี้',
     options: {
       a: {
         label: 'รายงานมีปัญหาการอ้างอิงไม่ตรงกับข้อความที่อ้าง จึงไม่ควรใช้คำกล่าวอ้างนี้ตามที่เขียนไว้',
@@ -2286,7 +2286,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'D3-P-005': {
     status: 'reviewed',
     context: 'ภาพที่ดูสมจริงของคนดังกำลังรับรองสินค้าถูกส่งเข้ามาในแชตกลุ่ม โดยไม่มีลิงก์แหล่งข้อมูล',
-    prompt: 'สิ่งที่ควรทำต่อไปคืออะไร',
+    prompt: 'ข้อใดคือสิ่งที่ควรทำต่อไป',
     options: {
       a: {
         label: 'แชร์ต่อเพราะภาพดูสมจริง',
@@ -2910,7 +2910,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   'D4-A-001': {
     status: 'reviewed',
     context: 'เจ้าหน้าที่สรรหาบุคลากรวางเรซูเม่ของผู้สมัครลงในแชตบอตสาธารณะเพื่อให้ช่วยสรุป',
-    prompt: 'ปัญหาที่ใหญ่ที่สุดคืออะไร',
+    prompt: 'ข้อใดคือปัญหาที่ใหญ่ที่สุด',
     options: {
       a: {
         label: 'แชตบอตอาจเขียนด้วยภาษาที่เป็นทางการเกินไป',
@@ -2938,7 +2938,7 @@ export const questionTranslationsTh: Record<string, QuestionTranslation> = {
   },
   'D6-H-002': {
     status: 'reviewed',
-    context: 'AI ร่างคำตอบงานบริการลูกค้าให้ แต่พนักงานได้เรียนรู้กรณียากๆ น้อยลง',
+    context: 'AI ร่างคำตอบงานบริการลูกค้าให้ แต่พนักงานได้เรียนรู้กรณียาก ๆ น้อยลง',
     prompt: 'การออกแบบใหม่แบบใดได้ผลดีที่สุด',
     options: {
       a: {

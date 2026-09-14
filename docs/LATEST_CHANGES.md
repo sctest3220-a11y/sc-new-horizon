@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-12: Batch 1 Register Sweep Completed; Thai Batch 2 Drafted
+
+Extended the batch-1 sweep beyond the second reviewer's list: five prompts still ending in a literal "…คืออะไร" were rephrased to exam form ("ข้อใดคือ…"), one ๆ spacing and one literal phrase fixed (7 edits). The round-2 spot-check sample was regenerated so it shows the final text. All 163 items remain `reviewed` pending the round-2 result.
+
+Batch 2 (89 Thai-priority-Medium items, Free/Premium starters first, no executive-only items) is drafted into `exports/New_Horizon_Thai_Review_Batch2.xlsx` for native review: 323 answer-choice rows, 83 rubric-criterion rows (18 free-text items), glossary, and a new reviewer column checking that Thai artifact captions read as the "Inspect for" cue the app now derives from them. Drafts were produced under the updated translation brief (formal exam register, whole-word glossary matching) and QA-scanned before issue: zero hits on every pattern from the round-1 review. Machine-readable drafts in `exports/thai-drafts-batch2.json`. Nothing from batch 2 is in the app yet.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged.
+
 ## 2026-09-12: Thai Spot Check Round 1 Applied; Round 2 Sample Issued
 
 The second-reviewer spot check of Thai batch 1 returned 13 Approve / 7 Fix with no ambiguous keys, so batch 1 stays `reviewed`. The reviewer found a systematic find-and-replace defect ("copilot" rendered as "coโครงการนำร่อง (Pilot)") and several register issues (pronoun มัน opening formal options, เรียกร้อง in executive prompts, literal ลูป, สัญญาณอันตราย). All were fixed across the full 163-item batch, not only the sampled items — 22 items changed, zero remaining hits on every pattern. Per-item detail in `docs/THAI_SPOTCHECK_ROUND1_RESPONSE.md`. A fresh, non-overlapping 20-item round-2 sample is in `exports/New_Horizon_Thai_Batch1_SpotCheck_Round2.xlsx`.
