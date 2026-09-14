@@ -68,6 +68,9 @@ type AuthProfile = {
 };
 type QuestionSignalSnapshot = {
   questionId: string;
+  questionVersion?: string;
+  rubricVersion?: string;
+  artifactVersion?: string;
   domain: DomainId;
   secondaryDomains?: DomainId[];
   competencyIds: string[];
@@ -272,6 +275,8 @@ type AssessmentBehaviorEvent = {
 type ScoreLogEntry = {
   id: string;
   createdAt: string;
+  scoringModelVersion?: string;
+  questionBankVersion?: string;
   userId?: string;
   userEmail?: string;
   groupKey: string;
@@ -8828,6 +8833,10 @@ const profilePulseStorageKey = 'new-horizon-profile-pulse-v1';
 const supervisedAgentRunsStorageKey = 'new-horizon-supervised-agent-runs-v1';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+const questionBankVersion = 'question-bank-2026-09-15-mvp';
+const scoringModelVersion = 'scoring-model-2026-09-15-mvp';
+const rubricVersion = 'rubric-2026-09-15-mvp';
+const artifactVersion = 'artifact-set-2026-09-15-mvp';
 
 function parseAuthProfile(value: string | null): AuthProfile | null {
   if (!value) return null;
@@ -9251,16 +9260,27 @@ function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
       : negativeSignals >= 1 || (benchmark?.confusionRate ?? 0) >= 25
         ? 'watch'
         : 'keep';
-    const action = artifactRisk
-      ? 'Review artifact dependency: users are opening/zooming and commenting negatively; simplify, replace, or remove the artifact.'
+    const actionLabel = artifactRisk
+      ? 'Replace artifact'
       : difficultyMismatch === 'advanced-too-easy'
-        ? 'Recalibrate difficulty or add harder distractors; advanced item is scoring too high.'
+        ? 'Recalibrate difficulty'
         : difficultyMismatch === 'awareness-too-hard'
-          ? 'Rewrite foundations item; awareness item is behaving too hard.'
+          ? 'Rewrite now'
           : status === 'review'
-            ? 'Quarantine for rewrite or artifact replacement before heavy scored use.'
+            ? 'Rewrite or retire'
             : status === 'watch'
-              ? 'Monitor with more attempts and inspect wording/artifact fit.'
+              ? 'Watch'
+              : 'Keep';
+    const action = artifactRisk
+      ? 'Users are opening/zooming and commenting negatively; simplify, replace, or remove the artifact.'
+      : difficultyMismatch === 'advanced-too-easy'
+        ? 'Advanced item is scoring too high; add harder evidence, improve distractors, or lower difficulty.'
+        : difficultyMismatch === 'awareness-too-hard'
+          ? 'Foundations item is behaving too hard; rewrite wording, options, or context.'
+          : status === 'review'
+            ? 'Quarantine for rewrite, artifact replacement, rubric tuning, or retirement before heavy scored use.'
+            : status === 'watch'
+              ? 'Monitor with more attempts and inspect wording, distractors, and artifact fit.'
               : 'Keep in active routing.';
     return {
       questionId,
@@ -9281,6 +9301,7 @@ function getQuestionQualityRows(events: AssessmentBehaviorEvent[]) {
       likes,
       negativeSignals,
       status,
+      actionLabel,
       action,
     };
   }).sort((left, right) => {
@@ -10027,6 +10048,9 @@ function toEvidenceModeScoreMap(summary: ReturnType<typeof getEvidenceModeSummar
 function buildQuestionSignalSnapshots(answers: Answer[]): QuestionSignalSnapshot[] {
   return answers.map((answer) => ({
     questionId: answer.question.id,
+    questionVersion: `${answer.question.id}@${questionBankVersion}`,
+    rubricVersion,
+    artifactVersion: answer.question.stimulus || answer.question.visualStimulus ? artifactVersion : 'no-artifact',
     domain: answer.question.domain,
     secondaryDomains: answer.question.secondaryDomains,
     competencyIds: getQuestionMeasures(answer.question).map((competency) => competency.id),
@@ -10185,6 +10209,58 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
     interactionRows,
     recentRuns,
   };
+}
+
+function getAnalyticsReadinessRows({
+  behaviorLog,
+  scoreLog,
+  profileSignalLog,
+  assessmentFeedback,
+  supervisedAgentRuns,
+}: {
+  behaviorLog: AssessmentBehaviorEvent[];
+  scoreLog: ScoreLogEntry[];
+  profileSignalLog: ProfileSignalLogEntry[];
+  assessmentFeedback: AssessmentFeedbackSurvey[];
+  supervisedAgentRuns: SupervisedAgentRun[];
+}) {
+  const questionSignals = profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
+  const versionedSignals = profileSignalLog.reduce((sum, entry) => (
+    sum + entry.questionSignals.filter((signal) => signal.questionVersion && signal.rubricVersion && signal.artifactVersion).length
+  ), 0);
+  const serverConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+  return [
+    {
+      label: 'Event capture',
+      status: behaviorLog.length ? 'Ready for pilot analysis' : 'Needs assessment traffic',
+      detail: `${behaviorLog.length} local behavior event${behaviorLog.length === 1 ? '' : 's'} across starts, answers, artifacts, continuation, feedback, and report clicks.`,
+    },
+    {
+      label: 'Question evidence',
+      status: questionSignals ? 'Ready for item review' : 'Needs completed runs',
+      detail: `${questionSignals} saved question signal${questionSignals === 1 ? '' : 's'}; ${versionedSignals} include question/rubric/artifact version tags.`,
+    },
+    {
+      label: 'Survey feedback',
+      status: assessmentFeedback.length ? 'Ready for theme review' : 'Needs feedback responses',
+      detail: `${assessmentFeedback.length} end-of-assessment survey response${assessmentFeedback.length === 1 ? '' : 's'} available for clarity, difficulty, artifact, length, and suggestion analysis.`,
+    },
+    {
+      label: 'Cohort scoring',
+      status: scoreLog.length >= 10 ? 'Pilot benchmark forming' : 'Insufficient data',
+      detail: `${scoreLog.length} saved score run${scoreLog.length === 1 ? '' : 's'}; leaderboards and benchmarks should stay labeled local/demo until cohorts are larger.`,
+    },
+    {
+      label: 'Server analytics',
+      status: serverConfigured ? 'Supabase configured' : 'Local only',
+      detail: serverConfigured ? 'Environment variables are present; production still needs event tables, aggregate views, RLS, and audit logs.' : 'Telemetry remains browser-local until production event tables and aggregate views are deployed.',
+    },
+    {
+      label: 'Agent review trail',
+      status: supervisedAgentRuns.length ? 'Draft history available' : 'Needs supervised runs',
+      detail: `${supervisedAgentRuns.length} supervised local agent run${supervisedAgentRuns.length === 1 ? '' : 's'} stored with proposal review state.`,
+    },
+  ];
 }
 
 function getLearningRecommendations(priorityDomains: DomainId[], assessmentMode: AssessmentMode, weakCompetencyIds: string[], profileTags: string[] = []) {
@@ -11401,6 +11477,10 @@ export default function Home() {
   const evidenceModeSummary = useMemo(() => getEvidenceModeSummary(answers), [answers]);
   const scoreLogAnalytics = useMemo(() => getScoreLogAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
   const adminAnalytics = useMemo(() => getAdminAnalytics(scoreLog, profileSignalLog), [profileSignalLog, scoreLog]);
+  const analyticsReadinessRows = useMemo(
+    () => getAnalyticsReadinessRows({ behaviorLog, scoreLog, profileSignalLog, assessmentFeedback, supervisedAgentRuns }),
+    [assessmentFeedback, behaviorLog, profileSignalLog, scoreLog, supervisedAgentRuns],
+  );
   const personaLeaderboard = useMemo(() => getPersonaLeaderboard(scoreLog, scoreGroup.key), [scoreGroup.key, scoreLog]);
   const landingLeaderboard = useMemo(
     () => getLandingLeaderboard(scoreLog, landingLeaderboardPeriod),
@@ -11834,6 +11914,8 @@ export default function Home() {
     const entry: ScoreLogEntry = {
       id: resultId,
       createdAt: new Date().toISOString(),
+      scoringModelVersion,
+      questionBankVersion,
       userId: authProfile?.id,
       userEmail: authProfile?.email,
       groupKey: scoreGroup.key,
@@ -11884,6 +11966,101 @@ export default function Home() {
     activeAssessmentRef.current.active = false;
     appendBehaviorEvent({ type: 'results_viewed', answeredCount: answers.length, targetCount: activeConfig.totalQuestions, score: results.overall });
     setLoggedResultId(resultId);
+  }
+
+  function exportPilotReviewCsv() {
+    const qualityById = new Map(qualityInsights.qualityRows.map((row) => [row.questionId, row]));
+    const feedbackById = new Map<string, AssessmentBehaviorEvent[]>();
+    behaviorLog.filter((event) => event.type === 'question_feedback' && event.questionId).forEach((event) => {
+      feedbackById.set(event.questionId!, [...(feedbackById.get(event.questionId!) ?? []), event]);
+    });
+    const signalRows = profileSignalLog.flatMap((entry) => entry.questionSignals.map((signal) => {
+      const quality = qualityById.get(signal.questionId);
+      const feedback = feedbackById.get(signal.questionId) ?? [];
+      return {
+        runId: entry.id,
+        createdAt: entry.createdAt,
+        groupKey: entry.groupKey,
+        groupLabel: normalizeDisplayGroupLabel(entry.groupLabel),
+        mode: entry.mode,
+        audience: entry.audience,
+        functionTrack: entry.functionTrack ?? '',
+        industryTrack: entry.industryTrack ?? '',
+        executiveRole: entry.executiveRole ?? '',
+        overall: entry.overall,
+        questionId: signal.questionId,
+        questionVersion: signal.questionVersion ?? `${signal.questionId}@legacy`,
+        rubricVersion: signal.rubricVersion ?? 'legacy',
+        artifactVersion: signal.artifactVersion ?? 'legacy',
+        domain: signal.domain,
+        secondaryDomains: signal.secondaryDomains?.join('|') ?? '',
+        competencyIds: signal.competencyIds.join('|'),
+        skillIds: signal.skillIds.join('|'),
+        difficulty: signal.difficulty,
+        interaction: signal.interaction ?? 'single',
+        evidenceMode: signal.evidenceMode,
+        readinessScore: signal.score,
+        selectedOption: signal.optionId,
+        answerLabel: signal.optionLabel ?? '',
+        correctOptionIds: signal.correctOptionIds?.join('|') ?? '',
+        rubricHitIds: signal.rubricHitIds?.join('|') ?? '',
+        durationSeconds: signal.durationMs ? Math.round(signal.durationMs / 1000) : 0,
+        interactions: signal.interactionCount ?? 0,
+        revisions: signal.revisionCount ?? 0,
+        hesitation: signal.hesitation ?? '',
+        qualityStatus: quality?.status ?? 'insufficient-data',
+        qualityAction: quality?.actionLabel ?? 'Collect data',
+        feedbackCount: feedback.length,
+        unclearCount: feedback.filter((event) => event.itemFeedbackKind === 'unclear').length,
+        comments: feedback.map((event) => event.itemFeedbackComment?.trim()).filter(Boolean).join(' | '),
+      };
+    }));
+    const headers = Object.keys(signalRows[0] ?? {
+      runId: '',
+      createdAt: '',
+      groupKey: '',
+      groupLabel: '',
+      mode: '',
+      audience: '',
+      functionTrack: '',
+      industryTrack: '',
+      executiveRole: '',
+      overall: '',
+      questionId: '',
+      questionVersion: '',
+      rubricVersion: '',
+      artifactVersion: '',
+      domain: '',
+      secondaryDomains: '',
+      competencyIds: '',
+      skillIds: '',
+      difficulty: '',
+      interaction: '',
+      evidenceMode: '',
+      readinessScore: '',
+      selectedOption: '',
+      answerLabel: '',
+      correctOptionIds: '',
+      rubricHitIds: '',
+      durationSeconds: '',
+      interactions: '',
+      revisions: '',
+      hesitation: '',
+      qualityStatus: '',
+      qualityAction: '',
+      feedbackCount: '',
+      unclearCount: '',
+      comments: '',
+    });
+    const escapeCsv = (value: unknown) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+    const csv = [headers.join(','), ...signalRows.map((row) => headers.map((header) => escapeCsv(row[header as keyof typeof row])).join(','))].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `new-horizon-pilot-review-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
   }
 
   function runAgentWorkflowSimulation() {
@@ -13136,6 +13313,31 @@ export default function Home() {
               </div>
 
               <div className="admin-grid">
+                <article className="admin-card admin-wide analytics-readiness-card">
+                  <div className="admin-card-heading">
+                    <div>
+                      <span>MVP refinement</span>
+                      <h2>Analytics readiness checklist</h2>
+                    </div>
+                    <button className="secondary dark" type="button" onClick={exportPilotReviewCsv} disabled={!adminAnalytics.totalQuestionSignals}>
+                      Export pilot review CSV
+                    </button>
+                  </div>
+                  <p>
+                    This panel separates pilot-local evidence from production-ready analytics. Use the export for offline item review;
+                    keep cohort claims labeled insufficient until server-side aggregate views are deployed.
+                  </p>
+                  <div className="telemetry-grid readiness-grid">
+                    {analyticsReadinessRows.map((row) => (
+                      <div key={row.label}>
+                        <h3>{row.label}</h3>
+                        <strong>{row.status}</strong>
+                        <p>{row.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+
                 <article className="admin-card admin-wide">
                   <div className="admin-card-heading">
                     <div>
@@ -13298,6 +13500,7 @@ export default function Home() {
 	                          <span>{row.status}</span>
 	                          <strong>{row.questionId}</strong>
                             <div className="calibration-chip-row">
+                              <b>{row.actionLabel}</b>
                               <b>{row.domain ?? 'Unknown'} · {row.difficulty ?? 'unmapped'} · {row.interaction}</b>
                               <b>{row.attempts} attempts</b>
                               <b>{row.averageScore}/100 avg</b>

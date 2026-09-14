@@ -212,6 +212,18 @@ pnpm crawl:training
 - Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
 - The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
 
+## Production Analytics Readiness Checklist
+
+Before calling the platform production-ready, move the analysis loop from browser-local MVP logs to governed server-side data:
+
+- Persist assessment behavior events, question answers, question feedback, survey responses, profile signals, score logs, artifact interactions, continuation decisions, report-interest clicks, and agent-review decisions in Supabase/Postgres or an equivalent warehouse.
+- Create anonymized aggregate views for question quality, artifact quality, competency coverage, profile routing, score distribution, leaderboard cohorts, abandonment, continuation, and report engagement.
+- Separate identifiable account/profile data from assessment evidence, with clear consent, retention, deletion, and export rules.
+- Add admin role claims, tenant/organization scoping, RLS policies, audit logs, and export controls before exposing analytics dashboards.
+- Version questions, rubrics, artifacts, scoring parameters, profile ontology, surveys, and learning recommendations so historical scores remain explainable after changes.
+- Calibrate item difficulty, discrimination, guessing, partial-credit thresholds, confidence, and score bands from pilot data before using scores for high-stakes decisions.
+- Require human approval for agent-proposed edits to scored content, artifacts, rubrics, profile fields, survey wording, learning paths, and framework mappings.
+
 ## Scoring Model
 
 The assessment separates answer quality from readiness evidence.

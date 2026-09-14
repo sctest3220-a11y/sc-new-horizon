@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-15: MVP Analytics Refinement
+
+Admin now includes an analytics readiness checklist that separates local pilot evidence from production-ready analytics. It shows whether behavior events, question evidence, survey feedback, cohort scoring, server analytics, and agent review trails are ready, insufficient, or still local-only.
+
+Pilot-review export is now available from Admin as a CSV containing run context, profile group, question id, question/rubric/artifact version tags, domain, competencies, difficulty, interaction type, readiness score, answer label, expected answer ids, timing, revisions, hesitation, quality status, quality action, and question-level feedback counts/comments.
+
+Question signal snapshots now include MVP question, rubric, and artifact version tags so pilot exports are easier to audit before production database versioning is implemented. The item calibration dashboard also shows short reviewer action labels such as `Rewrite now`, `Replace artifact`, `Recalibrate difficulty`, `Watch`, and `Keep`.
+
 ## 2026-09-14: Report Explainability And Evidence Gaps
 
 Question-level score calculation now includes the question prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. This makes the calculation useful for learners and item reviewers instead of only showing math fragments.
