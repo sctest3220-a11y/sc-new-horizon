@@ -617,6 +617,8 @@ const executiveLabels: Record<ExecutiveRole, string> = {
 
 const userProfileStorageKey = 'new-horizon-user-profile-v1';
 const languageStorageKey = 'new-horizon-language-v1';
+// Pilot flag: set localStorage['new-horizon-thai-drafts-v1'] = '1' to see `draft` Thai (template items, unreviewed) in the TH view.
+const thaiDraftStorageKey = 'new-horizon-thai-drafts-v1';
 
 const thaiUiCopy: Record<string, string> = {
   'User Login': 'เข้าสู่ระบบผู้ใช้',
@@ -991,8 +993,8 @@ const thaiUiCopy: Record<string, string> = {
 const englishUiCopyByThai = Object.fromEntries(Object.entries(thaiUiCopy).map(([english, thai]) => [thai, english]));
 
 function translateUiText(value: string, language: AppLanguage) {
-  if (language === 'en') return englishUiCopyByThai[value] ?? value;
-  return thaiUiCopy[value] ?? value;
+  if (language === 'en') return englishUiCopyByThai[value] ?? englishVocabularyByThai[value] ?? value;
+  return thaiUiCopy[value] ?? competencyVocabularyTh[value] ?? value;
 }
 
 function translateTextNodeValue(value: string, language: AppLanguage) {
@@ -1824,21 +1826,163 @@ const broadCompetencyMap: Record<string, string[]> = {
   'D6-change': ['D6-trust-culture', 'D6-change-enablement', 'D6-learning-loops'],
 };
 
+// Thai competency vocabulary (batch 3, native review applied 2026-09-14 → status reviewed). Used by the template
+// generators below and by translateUiText so competency and skill names in reports switch language too.
+const competencyLabelsTh: Record<string, string> = {
+  'D1-core-concepts': 'แนวคิดพื้นฐานด้าน AI',
+  'D1-genai-mechanics': 'กลไกการทำงานของ Generative AI',
+  'D1-capability-limits': 'ขอบเขตความสามารถของ AI',
+  'D1-ai-systems': 'ความเข้าใจระบบ AI',
+  'D2-prompt-design': 'การออกแบบ prompt',
+  'D2-tool-selection': 'การเลือกและเชื่อมต่อเครื่องมือ',
+  'D2-agentic-workflows': 'ขั้นตอนงานแบบเอเจนต์',
+  'D2-output-refinement': 'การปรับปรุงผลลัพธ์',
+  'D3-source-verification': 'การตรวจสอบแหล่งข้อมูลและข้อกล่าวอ้าง',
+  'D3-data-chart-judgment': 'การอ่านข้อมูลและกราฟอย่างมีวิจารณญาณ',
+  'D3-media-provenance': 'การตรวจสอบที่มาของสื่อ (provenance)',
+  'D3-fraud-detection': 'การตรวจจับการฉ้อโกงและการล่อลวง',
+  'D4-data-privacy': 'การคุ้มครองข้อมูลและความเป็นส่วนตัว',
+  'D4-regulatory-policy': 'ความเข้าใจกฎระเบียบและนโยบาย',
+  'D4-fairness-ethics': 'ความเป็นธรรม จริยธรรม และสิทธิ',
+  'D4-security-governance': 'มาตรการความปลอดภัยและการกำกับดูแล',
+  'D5-usecase-fit': 'การประเมินกรณีการใช้งาน',
+  'D5-roi-metrics': 'ROI และการวัดผล',
+  'D5-portfolio-prioritization': 'การจัดลำดับความสำคัญของพอร์ตโครงการ',
+  'D5-transformation-strategy': 'กลยุทธ์และการเปลี่ยนผ่านองค์กร',
+  'D6-role-clarity': 'ความชัดเจนของบทบาทคนกับ AI',
+  'D6-trust-culture': 'วัฒนธรรมความเชื่อมั่นและการตั้งคำถาม',
+  'D6-change-enablement': 'การขับเคลื่อนการเปลี่ยนแปลง',
+  'D6-learning-loops': 'วงรอบการเรียนรู้และปรับปรุง',
+};
+
+const skillLabelsTh: Record<string, string> = {
+  'AI vocabulary': 'คำศัพท์ด้าน AI',
+  'LLM basics': 'พื้นฐาน LLM',
+  'models vs apps': 'ความแตกต่างระหว่างโมเดลกับแอป',
+  'capability patterns': 'รูปแบบความสามารถของ AI',
+  'tokens': 'token',
+  'embeddings': 'embedding',
+  'RAG and grounding': 'RAG และการยึดโยงกับแหล่งข้อมูล',
+  'fine-tuning': 'fine-tuning',
+  'hallucination': 'hallucination (การกุข้อมูล)',
+  'staleness': 'ข้อมูลล้าสมัย',
+  'uncertainty': 'ความไม่แน่นอน',
+  'model limits': 'ข้อจำกัดของโมเดล',
+  'context windows': 'context window',
+  'memory': 'หน่วยความจำ (memory)',
+  'tool connectors': 'ตัวเชื่อมต่อเครื่องมือ',
+  'agent components': 'องค์ประกอบของเอเจนต์',
+  'prompt repair': 'การปรับแก้ prompt',
+  'role and task framing': 'การกำหนดบทบาทและงาน',
+  'constraints': 'ข้อจำกัดและเงื่อนไข',
+  'examples': 'ตัวอย่างประกอบ',
+  'tool fit': 'ความเหมาะสมของเครื่องมือ',
+  'MCP/connectors': 'MCP และตัวเชื่อมต่อ',
+  'repository use': 'การใช้คลังข้อมูลและโค้ด',
+  'product choice': 'การเลือกผลิตภัณฑ์',
+  'workflow mapping': 'การวางผังขั้นตอนงาน',
+  'agent setup': 'การตั้งค่าเอเจนต์',
+  'handoffs': 'การส่งต่องาน',
+  'approval gates': 'จุดอนุมัติ',
+  'iteration': 'การปรับซ้ำเป็นรอบ',
+  'rubric review': 'การตรวจตามเกณฑ์การให้คะแนน',
+  'context setup': 'การจัดเตรียม context',
+  'quality checks': 'การตรวจสอบคุณภาพ',
+  'source checking': 'การตรวจสอบแหล่งข้อมูล',
+  'citation support': 'หลักฐานรองรับการอ้างอิง',
+  'claim review': 'การตรวจสอบข้อกล่าวอ้าง',
+  'triangulation': 'การสอบทานหลายแหล่งข้อมูล (triangulation)',
+  'chart forensics': 'การตรวจสอบความผิดปกติของกราฟ',
+  'baseline checks': 'การตรวจสอบค่าฐาน (baseline)',
+  'causality': 'ความเป็นเหตุเป็นผล',
+  'benchmark fit': 'ความเหมาะสมของ benchmark',
+  'synthetic media signals': 'สัญญาณของสื่อสังเคราะห์',
+  'image context': 'บริบทของภาพ',
+  'caption checks': 'การตรวจสอบคำบรรยายภาพ',
+  'provenance': 'ที่มาของสื่อ (provenance)',
+  'phishing checks': 'การตรวจจับฟิชชิง (Phishing)',
+  'suspicious artifacts': 'เอกสารหรือหลักฐานที่น่าสงสัย',
+  'invoice fraud': 'การฉ้อโกงใบแจ้งหนี้',
+  'impersonation': 'การแอบอ้างตัวตน',
+  'data minimization': 'การใช้ข้อมูลเท่าที่จำเป็น',
+  'sensitive data': 'ข้อมูลอ่อนไหว',
+  'retention': 'ระยะเวลาการจัดเก็บข้อมูล',
+  'consent': 'ความยินยอม',
+  'policy alignment': 'ความสอดคล้องกับนโยบาย',
+  'sector obligations': 'ข้อบังคับเฉพาะภาคธุรกิจ',
+  'disclosure': 'การเปิดเผยข้อมูล',
+  'documentation': 'การจัดทำเอกสาร',
+  'bias testing': 'การทดสอบอคติ',
+  'impact review': 'การประเมินผลกระทบ',
+  'IP/content rights': 'สิทธิในทรัพย์สินทางปัญญาและเนื้อหา',
+  'human impact': 'ผลกระทบต่อบุคลากรและผู้ใช้',
+  'least privilege': 'สิทธิ์เท่าที่จำเป็น (least privilege)',
+  'audit logs': 'บันทึกตรวจสอบ (audit log)',
+  'vendor controls': 'มาตรการควบคุมผู้ให้บริการภายนอก',
+  'incident response': 'การรับมือเหตุการณ์ผิดปกติ (incident)',
+  'problem fit': 'ความสอดคล้องกับปัญหา',
+  'feasibility': 'ความเป็นไปได้',
+  'data readiness': 'ความพร้อมของข้อมูล',
+  'user value': 'คุณค่าต่อผู้ใช้งาน',
+  'baseline metrics': 'ตัวชี้วัดค่าฐาน (baseline)',
+  'KPI design': 'การออกแบบ KPI',
+  'ROI evidence': 'หลักฐานผลตอบแทน (ROI)',
+  'quality measures': 'ตัวชี้วัดคุณภาพ',
+  'risk-adjusted value': 'มูลค่าที่ปรับตามความเสี่ยง',
+  'pilot gates': 'ด่านตัดสินใจของโครงการนำร่อง',
+  'resource allocation': 'การจัดสรรทรัพยากร',
+  'stage gates': 'ด่านตัดสินใจ (stage gate)',
+  'business-case design': 'การจัดทำข้อเสนอทางธุรกิจ (business case)',
+  'scale criteria': 'เกณฑ์การขยายผล',
+  'trend judgment': 'การประเมินแนวโน้ม',
+  'operating model': 'รูปแบบการดำเนินงาน (operating model)',
+  'role boundaries': 'ขอบเขตบทบาทหน้าที่',
+  'review routines': 'รอบการตรวจทานประจำ',
+  'human accountability': 'ความรับผิดชอบของบุคลากร',
+  'challenge culture': 'วัฒนธรรมการตั้งคำถาม',
+  'psychological safety': 'ความปลอดภัยทางจิตวิทยาในทีม',
+  'transparency': 'ความโปร่งใส',
+  'manager modeling': 'การเป็นแบบอย่างของหัวหน้างาน',
+  'adoption support': 'การสนับสนุนการนำไปใช้งานจริง',
+  'communication': 'การสื่อสาร',
+  'coaching loops': 'วงรอบการโค้ชชิ่ง',
+  'champion networks': 'เครือข่ายผู้นำการเปลี่ยนแปลง',
+  'learning ownership': 'ความมีส่วนร่วมเป็นเจ้าของการเรียนรู้',
+  'feedback loops': 'วงรอบข้อมูลสะท้อนกลับ',
+  'continuous improvement': 'การปรับปรุงอย่างต่อเนื่อง',
+  'reassessment': 'การประเมินผลซ้ำ',
+};
+
+const competencyVocabularyTh: Record<string, string> = {
+  ...Object.fromEntries(Object.values(competencyDefinitions).map((competency) => [competency.label, competencyLabelsTh[competency.id] ?? competency.label])),
+  ...skillLabelsTh,
+};
+const englishVocabularyByThai = Object.fromEntries(Object.entries(competencyVocabularyTh).map(([english, thai]) => [thai, english]));
+
+function competencyLabelTh(competency: CompetencyDefinition) {
+  return competencyLabelsTh[competency.id] ?? competency.label;
+}
+function skillLabelTh(skill: string) {
+  return skillLabelsTh[skill] ?? skill;
+}
+
 const advancedQuestionFrames = [
-  { id: 'scale-gate', context: 'A cross-functional team wants to scale an AI workflow from a controlled pilot to three departments.', prompt: 'Which decision best demonstrates advanced judgment for this competency?' },
-  { id: 'incident-review', context: 'A recent AI-assisted workflow incident exposed unclear ownership, weak evidence, and a rushed approval path.', prompt: 'What should the review team do before restoring or expanding the workflow?' },
-  { id: 'vendor-approval', context: 'A vendor claims its AI capability is enterprise-ready, but the evidence package is incomplete and business sponsors are eager to proceed.', prompt: 'Which approval condition is strongest?' },
-  { id: 'board-brief', context: 'Leadership needs a short recommendation that balances value, user impact, data boundaries, and operational controls.', prompt: 'Which recommendation is most decision-ready?' },
-  { id: 'workflow-redesign', context: 'A team is redesigning a high-volume process so AI can assist without hiding uncertainty or weakening accountability.', prompt: 'Which redesign choice is strongest?' },
-  { id: 'measurement-plan', context: 'The pilot looks promising, but the team has not separated speed, quality, user trust, cost, and risk outcomes.', prompt: 'What measurement plan should govern the next phase?' },
-  { id: 'policy-conflict', context: 'Two internal policies point in different directions, and the AI system gives a confident recommendation anyway.', prompt: 'What is the best advanced response?' },
-  { id: 'data-boundary', context: 'The proposed workflow would combine customer, employee, vendor, and operational data across multiple tools.', prompt: 'Which control set best supports responsible use?' },
-  { id: 'capability-claim', context: 'A product owner argues that the newest model removes the need for the old review process.', prompt: 'Which challenge is most appropriate?' },
-  { id: 'continuous-improvement', context: 'The first deployment is live and teams are reporting mixed outcomes, edge cases, and workarounds.', prompt: 'What should the owner do next?' },
+  { id: 'scale-gate', context: 'A cross-functional team wants to scale an AI workflow from a controlled pilot to three departments.', prompt: 'Which decision best demonstrates advanced judgment for this competency?', contextTh: 'ทีมข้ามสายงานต้องการขยายขั้นตอนงานที่ใช้ AI จากโครงการนำร่อง (pilot) ที่ควบคุมได้ ไปยังสามฝ่ายงาน', promptTh: 'การตัดสินใจข้อใดแสดงวิจารณญาณระดับสูงสำหรับสมรรถนะนี้ได้ดีที่สุด' },
+  { id: 'incident-review', context: 'A recent AI-assisted workflow incident exposed unclear ownership, weak evidence, and a rushed approval path.', prompt: 'What should the review team do before restoring or expanding the workflow?', contextTh: 'เหตุการณ์ผิดปกติ (incident) ล่าสุดในขั้นตอนงานที่ใช้ AI ช่วย เผยให้เห็นว่าผู้รับผิดชอบไม่ชัดเจน หลักฐานอ่อน และเส้นทางการอนุมัติเร่งรีบเกินไป', promptTh: 'ทีมทบทวนควรทำสิ่งใดก่อนจะกลับมาใช้งานหรือขยายขั้นตอนงานนี้' },
+  { id: 'vendor-approval', context: 'A vendor claims its AI capability is enterprise-ready, but the evidence package is incomplete and business sponsors are eager to proceed.', prompt: 'Which approval condition is strongest?', contextTh: 'ผู้ให้บริการอ้างว่าความสามารถด้าน AI ของตนพร้อมใช้ระดับองค์กร แต่ชุดหลักฐานยังไม่ครบ ขณะที่ผู้สนับสนุนฝ่ายธุรกิจอยากเดินหน้าทันที', promptTh: 'เงื่อนไขการอนุมัติข้อใดรัดกุมและเหมาะสมที่สุด' },
+  { id: 'board-brief', context: 'Leadership needs a short recommendation that balances value, user impact, data boundaries, and operational controls.', prompt: 'Which recommendation is most decision-ready?', contextTh: 'ผู้บริหารต้องการข้อเสนอแนะสั้น ๆ ที่สมดุลระหว่างคุณค่า ผลกระทบต่อผู้ใช้ ขอบเขตข้อมูล และมาตรการควบคุมการปฏิบัติงาน', promptTh: 'ข้อเสนอแนะข้อใดพร้อมสำหรับการตัดสินใจมากที่สุด' },
+  { id: 'workflow-redesign', context: 'A team is redesigning a high-volume process so AI can assist without hiding uncertainty or weakening accountability.', prompt: 'Which redesign choice is strongest?', contextTh: 'ทีมกำลังออกแบบกระบวนการที่มีปริมาณงานสูงใหม่ เพื่อให้ AI ช่วยได้โดยไม่ซ่อนความไม่แน่นอนและไม่ลดทอนความรับผิดชอบ', promptTh: 'ทางเลือกในการออกแบบกระบวนการใหม่ข้อใดรัดกุมและเหมาะสมที่สุด' },
+  { id: 'measurement-plan', context: 'The pilot looks promising, but the team has not separated speed, quality, user trust, cost, and risk outcomes.', prompt: 'What measurement plan should govern the next phase?', contextTh: 'โครงการนำร่อง (pilot) ดูมีแนวโน้มดี แต่ทีมยังไม่ได้แยกผลลัพธ์ด้านความเร็ว คุณภาพ ความเชื่อมั่นของผู้ใช้ ต้นทุน และความเสี่ยงออกจากกัน', promptTh: 'แผนการวัดผลแบบใดควรใช้กำกับระยะถัดไป' },
+  { id: 'policy-conflict', context: 'Two internal policies point in different directions, and the AI system gives a confident recommendation anyway.', prompt: 'What is the best advanced response?', contextTh: 'นโยบายภายในสองฉบับชี้ไปคนละทาง แต่ระบบ AI ยังให้คำแนะนำอย่างมั่นใจ', promptTh: 'แนวทางปฏิบัติที่แสดงถึงการตัดสินใจระดับสูงในข้อใดเหมาะสมที่สุด' },
+  { id: 'data-boundary', context: 'The proposed workflow would combine customer, employee, vendor, and operational data across multiple tools.', prompt: 'Which control set best supports responsible use?', contextTh: 'ขั้นตอนงานที่เสนอจะรวมข้อมูลลูกค้า พนักงาน ผู้ให้บริการภายนอก และข้อมูลปฏิบัติการจากหลายเครื่องมือเข้าด้วยกัน', promptTh: 'ชุดมาตรการควบคุมข้อใดรองรับการใช้งานอย่างรับผิดชอบได้ดีที่สุด' },
+  { id: 'capability-claim', context: 'A product owner argues that the newest model removes the need for the old review process.', prompt: 'Which challenge is most appropriate?', contextTh: 'เจ้าของผลิตภัณฑ์ยืนยันว่าโมเดลรุ่นใหม่ล่าสุดทำให้ไม่จำเป็นต้องมีกระบวนการตรวจทานแบบเดิมอีกต่อไป', promptTh: 'ข้อท้วงติงข้อใดเหมาะสมที่สุด' },
+  { id: 'continuous-improvement', context: 'The first deployment is live and teams are reporting mixed outcomes, edge cases, and workarounds.', prompt: 'What should the owner do next?', contextTh: 'การใช้งานจริงรอบแรกเริ่มแล้ว และทีมต่าง ๆ รายงานผลลัพธ์ที่ปะปนกัน ทั้งกรณีพิเศษและวิธีเลี่ยงระบบ', promptTh: 'เจ้าของงานควรทำสิ่งใดต่อไป' },
 ] as const;
 
 function buildAdvancedCompetencyQuestion(competency: CompetencyDefinition, frame: (typeof advancedQuestionFrames)[number], index: number): Question {
   const skillFocus = competency.skills.slice(0, 3).join(', ');
+  const labelTh = competencyLabelTh(competency);
+  const skillFocusTh = competency.skills.slice(0, 3).map(skillLabelTh).join(', ');
   return {
     id: `ADV-${competency.id.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
     domain: competency.domain,
@@ -1850,30 +1994,42 @@ function buildAdvancedCompetencyQuestion(competency: CompetencyDefinition, frame
     evidenceMode: 'hybrid',
     context: `${frame.context} Focus competency: ${competency.label}. Relevant skills: ${skillFocus}.`,
     prompt: frame.prompt,
+    // Thai (batch 3, template-level): frames carry contextTh/promptTh; option text is templated on the Thai competency label.
+    contextTh: `${frame.contextTh} สมรรถนะที่วัด: ${labelTh} ทักษะที่เกี่ยวข้อง: ${skillFocusTh}`,
+    promptTh: frame.promptTh,
+    translationStatus: 'reviewed',
     options: [
       {
         id: 'advanced-control',
         label: `Define success criteria, evidence requirements, ownership, and review controls for ${competency.label.toLowerCase()} before scaling.`,
+        labelTh: `กำหนดเกณฑ์ความสำเร็จ หลักฐานที่ต้องมี ผู้รับผิดชอบ และมาตรการตรวจทานสำหรับ ${labelTh} ก่อนขยายผล`,
         score: 98,
         feedback: `Strong advanced evidence. The answer connects ${competency.label.toLowerCase()} to measurable outcomes, constraints, and accountable operation.`,
+        feedbackTh: `ถูกต้อง หลักฐานระดับสูงที่ชัดเจน คำตอบนี้เชื่อม ${labelTh} เข้ากับผลลัพธ์ที่วัดได้ ข้อจำกัด และการดำเนินงานที่มีผู้รับผิดชอบ`,
       },
       {
         id: 'speed-first',
         label: 'Scale the workflow now because early users reported speed improvements.',
+        labelTh: 'ขยายขั้นตอนงานทันที เพราะผู้ใช้กลุ่มแรกรายงานว่าทำงานได้เร็วขึ้น',
         score: 38,
         feedback: 'Speed is useful, but advanced readiness requires quality, risk, ownership, and evidence checks before scale.',
+        feedbackTh: 'ความเร็วมีประโยชน์ แต่ความพร้อมระดับสูงต้องตรวจคุณภาพ ความเสี่ยง ผู้รับผิดชอบ และหลักฐานก่อนขยายผล',
       },
       {
         id: 'tool-only',
         label: 'Switch to a newer model or tool and assume the competency gap is resolved.',
+        labelTh: 'เปลี่ยนไปใช้โมเดลหรือเครื่องมือรุ่นใหม่ แล้วถือว่าช่องว่างของสมรรถนะถูกแก้แล้ว',
         score: 28,
         feedback: 'Tool capability does not replace competency evidence, workflow design, or governance.',
+        feedbackTh: 'ความสามารถของเครื่องมือไม่ได้ทดแทนหลักฐานด้านสมรรถนะ การออกแบบขั้นตอนงาน หรือการกำกับดูแล (governance)',
       },
       {
         id: 'block-without-learning',
         label: 'Stop all AI use in this area without preserving evidence or defining a safer path.',
+        labelTh: 'หยุดการใช้ AI ในงานส่วนนี้ทั้งหมด โดยไม่เก็บหลักฐานและไม่กำหนดแนวทางที่ปลอดภัยกว่า',
         score: 46,
         feedback: 'Caution may be appropriate, but advanced practice keeps evidence, learns from failure, and defines controlled next steps.',
+        feedbackTh: 'ความระมัดระวังอาจเหมาะสม แต่แนวปฏิบัติระดับสูงจะเก็บหลักฐาน เรียนรู้จากความล้มเหลว และกำหนดขั้นถัดไปที่ควบคุมได้',
       },
     ],
   };
@@ -1883,7 +2039,11 @@ const advancedCompetencyQuestionBank: Question[] = Object.values(competencyDefin
   advancedQuestionFrames.map((frame, index) => buildAdvancedCompetencyQuestion(competency, frame, index)),
 );
 
-const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string; prompt: string; best: string; partial: string; weak: string; trap: string }>> = {
+type MarketTrendFrame = {
+  id: string; context: string; prompt: string; best: string; partial: string; weak: string; trap: string;
+  contextTh?: string; promptTh?: string; bestTh?: string; partialTh?: string; weakTh?: string; trapTh?: string;
+};
+const marketTrendFrames: Record<Difficulty, MarketTrendFrame[]> = {
   awareness: [
     {
       id: 'agent-basics',
@@ -1893,6 +2053,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Ask which model is newest before deciding whether to try an agent.',
       weak: 'Assume any chatbot with tool access is safe to run autonomously.',
       trap: 'Adopt the agent because competitors are discussing agentic AI.',
+      contextTh: 'เพื่อนร่วมทีมบอกว่าบริษัทควรนำ AI agent มาใช้ เพราะโมเดลรุ่นใหม่ทุกตัวสามารถลงมือทำงานข้ามเครื่องมือได้แล้ว',
+      promptTh: 'คำถามแรกข้อใดช่วยตรวจสอบได้ดีที่สุดว่าผู้ใช้เข้าใจแนวโน้ม AI ในปัจจุบันนี้จริง',
+      bestTh: 'ถามว่าเอเจนต์จะทำงานอะไร เข้าถึงเครื่องมือใดได้ มีจุดอนุมัติตรงไหน และคนยังรับผิดชอบอยู่ที่จุดใด',
+      partialTh: 'ถามว่าโมเดลรุ่นใดใหม่ที่สุด ก่อนตัดสินใจว่าจะทดลองใช้เอเจนต์หรือไม่',
+      weakTh: 'ถือว่าแชตบอตใดก็ตามที่เข้าถึงเครื่องมือได้ ปลอดภัยพอจะทำงานเองโดยอัตโนมัติ',
+      trapTh: 'นำเอเจนต์มาใช้เพราะคู่แข่งกำลังพูดถึง agentic AI',
     },
   ],
   applied: [
@@ -1904,6 +2070,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Generate several variants and choose the one that looks most polished.',
       weak: 'Use the same approval checklist for text, images, and video because they came from one model.',
       trap: 'Skip provenance review because synthetic media is now normal in marketing.',
+      contextTh: 'ทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความโฆษณา ร่างวิดีโอสั้น และภาพสินค้าจากบรีฟเดียว',
+      promptTh: 'การจัดกระบวนการทดสอบในทางปฏิบัติข้อใดเหมาะสมที่สุด โดยไม่เชื่อถือผลลัพธ์มากเกินไป',
+      bestTh: 'เขียนบรีฟที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์และทรัพย์สินทางปัญญา ตรวจข้อกล่าวอ้างในภาพและวิดีโอแยกกัน และวัดอัตราการแก้ไขก่อนขยายผล',
+      partialTh: 'สร้างหลายเวอร์ชันแล้วเลือกเวอร์ชันที่ดูเรียบร้อยที่สุด',
+      weakTh: 'ใช้เช็กลิสต์อนุมัติชุดเดียวกันกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน',
+      trapTh: 'ข้ามการตรวจที่มาของสื่อ (provenance) เพราะสื่อสังเคราะห์กลายเป็นเรื่องปกติในงานการตลาดแล้ว',
     },
     {
       id: 'rag-context',
@@ -1913,6 +2085,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Increase the context window and assume the answer will be grounded.',
       weak: 'Fine-tune immediately before checking source quality.',
       trap: 'Remove human review once the assistant includes citations.',
+      contextTh: 'ทีมกำลังเปลี่ยนจากแชตที่ใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นคืนจากนโยบาย ticket และเอกสารผลิตภัณฑ์',
+      promptTh: 'การดำเนินการข้อใดแสดงความเข้าใจเรื่องการจัดเตรียม context และคุณภาพการค้นคืนข้อมูลได้ดีที่สุด',
+      bestTh: 'ทดสอบว่าแหล่งข้อมูลที่ค้นคืนมาเป็นปัจจุบัน ตรงประเด็น มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย',
+      partialTh: 'ขยาย context window แล้วถือว่าคำตอบจะยึดโยงกับแหล่งข้อมูลเอง',
+      weakTh: 'ทำ fine-tuning ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล',
+      trapTh: 'ยกเลิกการตรวจทานโดยคนทันทีที่ผู้ช่วยแสดงการอ้างอิง',
     },
   ],
   proficient: [
@@ -1924,6 +2102,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Let the agent handle low-value tasks and review a weekly sample.',
       weak: 'Give the agent broad permissions so it can learn the workflow faster.',
       trap: 'Measure success only by tickets closed per hour.',
+      contextTh: 'ฝ่ายปฏิบัติการต้องการให้ AI agent คัดกรองคำขอ อัปเดตข้อมูลในระบบ และส่งอีเมลติดตามผลโดยอัตโนมัติ',
+      promptTh: 'การตอบสนองข้อใดจัดการข้อแลกเปลี่ยน (trade-off) ของการใช้เอเจนต์ในปัจจุบันได้ดีที่สุด',
+      bestTh: 'เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการกระทำที่เอเจนต์เสนอ กำหนดให้ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายขอบเขตสิทธิ์การทำงานเมื่อมีหลักฐานความพร้อมที่ชัดเจนขึ้นเท่านั้น',
+      partialTh: 'ให้เอเจนต์จัดการงานที่มูลค่าต่ำ แล้วสุ่มตรวจตัวอย่างทุกสัปดาห์',
+      weakTh: 'ให้สิทธิ์เอเจนต์กว้าง ๆ เพื่อให้เรียนรู้ขั้นตอนงานได้เร็วขึ้น',
+      trapTh: 'วัดความสำเร็จจากจำนวน ticket ที่ปิดได้ต่อชั่วโมงเพียงอย่างเดียว',
     },
     {
       id: 'benchmark-caveat',
@@ -1933,6 +2117,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Prefer the domain-specific model if its published benchmark is higher.',
       weak: 'Reject all vendor benchmarks because they are marketing.',
       trap: 'Choose the model with the largest context window.',
+      contextTh: 'ผู้ให้บริการแสดงคะแนน benchmark (ผลทดสอบเทียบ) ที่สูงของโมเดลเฉพาะทาง และอ้างว่าจะทำงานได้ดีกว่าโมเดลทั่วไปในขั้นตอนงานของคุณ',
+      promptTh: 'การประเมินในระดับผู้เชี่ยวชาญข้อใดรัดกุมและมีน้ำหนักมากที่สุด',
+      bestTh: 'ทดสอบกับงานจริงด้วยข้อมูลของคุณเอง ครอบคลุมกรณีที่เคยผิดพลาด ข้อจำกัดด้านต้นทุนและความหน่วง การตรวจความปลอดภัย และความเห็นตรงกันของผู้ตรวจ ก่อนเลือกโมเดล',
+      partialTh: 'เลือกโมเดลเฉพาะทางหาก benchmark ที่เผยแพร่สูงกว่า',
+      weakTh: 'ปฏิเสธ benchmark ของผู้ให้บริการทั้งหมด เพราะเป็นเพียงการตลาด',
+      trapTh: 'เลือกโมเดลที่มี context window ใหญ่ที่สุด',
     },
   ],
   advanced: [
@@ -1944,6 +2134,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Create one central approval committee for every AI request.',
       weak: 'Let each team pick tools independently to move faster.',
       trap: 'Delay all adoption until regulation is fully settled.',
+      contextTh: 'ผู้บริหารต้องการขยาย generative AI เอเจนต์ และขั้นตอนงานแบบหลายสื่อ (multimodal) ไปทั่วทุกสายงาน ขณะที่กำลังคนด้านการกำกับดูแลมีจำกัด',
+      promptTh: 'การตัดสินใจระดับสูงข้อใดสะท้อนการเปลี่ยนผ่านของตลาด AI ปี 2026 จากการทดลองไปสู่รูปแบบการดำเนินงานจริงได้ดีที่สุด',
+      bestTh: 'สร้างรูปแบบการดำเนินงาน AI แบบแบ่งระดับ ที่มีช่องทางรับกรณีใช้งาน มาตรการควบคุมตามความเสี่ยง หลักฐานจากการประเมิน การทบทวนเหตุการณ์ผิดปกติ การอบรมตามบทบาท และด่านตัดสินใจด้านคุณค่าที่วัดได้',
+      partialTh: 'ตั้งคณะกรรมการอนุมัติกลางชุดเดียวสำหรับทุกคำขอด้าน AI',
+      weakTh: 'ให้แต่ละทีมเลือกเครื่องมือกันเองเพื่อความรวดเร็ว',
+      trapTh: 'ชะลอการนำไปใช้ทั้งหมดจนกว่ากฎระเบียบจะนิ่งสมบูรณ์',
     },
     {
       id: 'sovereign-data',
@@ -1953,6 +2149,12 @@ const marketTrendFrames: Record<Difficulty, Array<{ id: string; context: string;
       partial: 'Choose the strongest global model and translate outputs locally.',
       weak: 'Use only local models even if they fail critical tasks.',
       trap: 'Treat sovereignty as a hosting choice rather than an operating and governance requirement.',
+      contextTh: 'ธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎเฉพาะภาคธุรกิจ ข้อกำหนดถิ่นที่เก็บข้อมูล (data residency) และความกังวลเรื่องการพึ่งพาผู้ให้บริการภายนอก',
+      promptTh: 'แนวทางปฏิบัติระดับสูงข้อใดรัดกุมและเหมาะสมที่สุด',
+      bestTh: 'เปรียบเทียบความสามารถของโมเดลกับถิ่นที่เก็บข้อมูล ประสิทธิภาพด้านภาษา ความสามารถในการตรวจสอบ แผนการเปลี่ยนผ่านออกจากผู้ให้บริการ (vendor exit path) และภาระผูกพันตามกฎระเบียบท้องถิ่น ก่อนออกแบบการนำไปใช้',
+      partialTh: 'เลือกโมเดลระดับโลกที่มีประสิทธิภาพสูงสุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น',
+      weakTh: 'ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน',
+      trapTh: 'มองอธิปไตยข้อมูลเป็นเพียงเรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล',
     },
   ],
 };
@@ -1965,6 +2167,20 @@ function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: 
     proficient: 'handle tradeoffs in',
     advanced: 'design scalable controls for',
   }[difficulty];
+  const difficultyLeadTh = {
+    awareness: 'รู้จักและแยกแยะ',
+    applied: 'ประยุกต์ใช้งาน',
+    proficient: 'สามารถจัดการข้อแลกเปลี่ยน (trade-offs) ใน',
+    advanced: 'ออกแบบมาตรการควบคุมที่ขยายผลได้สำหรับ',
+  }[difficulty];
+  const difficultyNameTh = {
+    awareness: 'ระดับรับรู้',
+    applied: 'ระดับใช้งาน',
+    proficient: 'ระดับชำนาญ',
+    advanced: 'ระดับสูง',
+  }[difficulty];
+  const labelTh = competencyLabelTh(competency);
+  const focusTh = competency.skills.slice(0, 3).map(skillLabelTh).join(', ');
   return {
     id: `TREND-${competency.id.toUpperCase()}-${difficulty.toUpperCase()}-${String(index + 1).padStart(2, '0')}`,
     domain: competency.domain,
@@ -1979,11 +2195,15 @@ function buildMarketTrendQuestion(competency: CompetencyDefinition, difficulty: 
       ? trend.context
       : `${trend.context} Focus competency: ${competency.label}. The user should show they ${difficultyLead} ${competency.label.toLowerCase()} using practical signals such as ${focus}.`,
     prompt: trend.prompt,
+    // Thai (batch 3, template-level). Awareness keeps only the scenario, mirroring the English rule above.
+    contextTh: difficulty === 'awareness' ? trend.contextTh : `${trend.contextTh} สมรรถนะที่วัด: ${labelTh} ผู้ใช้ควรแสดงให้เห็นว่า${difficultyLeadTh} ${labelTh} โดยมีแนวทางปฏิบัติที่ชัดเจน เช่น ${focusTh}`,
+    promptTh: trend.promptTh,
+    translationStatus: 'reviewed',
     options: [
-      { id: 'best', label: trend.best, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.` },
-      { id: 'partial', label: trend.partial, score: difficulty === 'awareness' ? 60 : difficulty === 'applied' ? 58 : 62, feedback: 'Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.' },
-      { id: 'weak', label: trend.weak, score: 28, feedback: 'Weak evidence. This over-trusts the technology or misses the practical control problem.' },
-      { id: 'trend-chasing', label: trend.trap, score: 18, feedback: 'Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.' },
+      { id: 'best', label: trend.best, labelTh: trend.bestTh, score: 96, feedback: `Strong ${difficulty} evidence for ${competency.label.toLowerCase()}: it connects the trend to task fit, evidence, controls, and outcomes.`, feedbackTh: `ถูกต้อง หลักฐาน${difficultyNameTh}ที่ชัดเจนสำหรับ ${labelTh} คำตอบนี้เชื่อมแนวโน้มเข้ากับความเหมาะสมของงาน หลักฐาน มาตรการควบคุม และผลลัพธ์` },
+      { id: 'partial', label: trend.partial, labelTh: trend.partialTh, score: difficulty === 'awareness' ? 60 : difficulty === 'applied' ? 58 : 62, feedback: 'Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.', feedbackTh: 'หลักฐานบางส่วน คำตอบนี้มองเห็นแนวโน้มเพียงบางด้าน แต่ยังไม่ได้ทดสอบความเหมาะสม ความเสี่ยง หลักฐาน และการใช้งานจริงอย่างครบถ้วน' },
+      { id: 'weak', label: trend.weak, labelTh: trend.weakTh, score: 28, feedback: 'Weak evidence. This over-trusts the technology or misses the practical control problem.', feedbackTh: 'หลักฐานอ่อน คำตอบนี้เชื่อเทคโนโลยีมากเกินไป หรือมองข้ามปัญหาการควบคุมในทางปฏิบัติ' },
+      { id: 'trend-chasing', label: trend.trap, labelTh: trend.trapTh, score: 18, feedback: 'Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.', feedbackTh: 'การวิ่งตามกระแสไม่ใช่ความพร้อม ผู้ใช้ AI ที่มีศักยภาพสูงจะเชื่อมโยงความสามารถใหม่เข้ากับหลักฐาน การออกแบบขั้นตอนงาน และการใช้งานที่มีผู้รับผิดชอบ' },
     ],
   };
 }
@@ -11347,8 +11567,10 @@ function getTranslationStatus(question: Question): TranslationStatus | undefined
   return questionTranslationsTh[question.id]?.status ?? question.translationStatus;
 }
 
-function localizeQuestion(question: Question, language: AppLanguage): Question {
-  if (language !== 'th' || !getTranslationStatus(question)) return question;
+function localizeQuestion(question: Question, language: AppLanguage, includeDrafts = false): Question {
+  const status = getTranslationStatus(question);
+  // `draft` Thai (machine/template drafts not yet through native review) is shown only to pilot users who opted in.
+  if (language !== 'th' || !status || (status === 'draft' && !includeDrafts)) return question;
   const t = questionTranslationsTh[question.id];
   const pick = (...values: Array<string | undefined>) => values.find((value) => value !== undefined && value !== '');
   return {
@@ -11405,8 +11627,8 @@ function localizeQuestion(question: Question, language: AppLanguage): Question {
   };
 }
 
-function localizeAnswerOption(answer: Answer, language: AppLanguage): Option {
-  const localized = localizeQuestion(answer.question, language);
+function localizeAnswerOption(answer: Answer, language: AppLanguage, includeDrafts = false): Option {
+  const localized = localizeQuestion(answer.question, language, includeDrafts);
   return localized.options.find((option) => option.id === answer.option.id) ?? answer.option;
 }
 const hiddenVisualStimulusQuestionIds = new Set([
@@ -12025,6 +12247,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+  const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
@@ -12348,7 +12571,7 @@ export default function Home() {
       .sort((left, right) => Number(right.earned) - Number(left.earned) || right.score - left.score),
     [results.domainScores],
   );
-  const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage), [current, appLanguage]);
+  const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage, showDraftThai), [current, appLanguage, showDraftThai]);
   // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
   const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(appLanguage);
   if (matchSelectionsLanguage !== appLanguage) {
@@ -14927,17 +15150,17 @@ export default function Home() {
               <div className="feedback-grid">
                 <div>
                   <span>Your answer</span>
-                  <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage).label}</p>
+                  <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).label}</p>
                 </div>
                 <div>
                   <span>Expected answer</span>
-                  <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage))}</p>
+                  <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage, showDraftThai))}</p>
                 </div>
               </div>
               <div className="rubric-panel">
                 <span>Rubric and calibration</span>
                 <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
-                <p>{localizeAnswerOption(lastAnswer, appLanguage).feedback}</p>
+                <p>{localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).feedback}</p>
               </div>
               <div className="rubric-panel">
                 <span>Measured competencies</span>

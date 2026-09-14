@@ -29,7 +29,7 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 ## Status workflow
 
-- `draft` — machine or non-native draft; may be shown to users only in pilots.
+- `draft` — machine or non-native draft; shown only to pilot users who set `localStorage['new-horizon-thai-drafts-v1'] = '1'` (`localizeQuestion(question, language, includeDrafts)`).
 - `reviewed` — a native Thai reviewer with domain knowledge has checked meaning, naturalness, terminology, and that the correct answer is still unambiguous in Thai.
 - `approved` — second reviewer or back-translation spot check passed (≥18 of a 20-item stratified sample Approve, no ambiguous key; otherwise sweep the flagged pattern batch-wide and resample without overlap). Only `approved` items should ship in the default Thai experience once the toggle is public — that gate is not yet implemented; today `reviewed` and `approved` render identically.
 
@@ -48,12 +48,17 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 - Batch 1 (2026-09-11): 163 items `reviewed` — the Thai-priority-High set from audit round 1. 137 in `questionTranslations.th.ts`, 26 Horizon items inline. Reviewer edited 39 scenarios and 32 prompts; choices, rubric keywords, glossary and artifact tags were confirmed as drafted. Source workbook: `exports/New_Horizon_Thai_Review_Batch1_Completed.xlsx`; glossary: `exports/glossary_th.json`.
 - Shared reliance option labels (`relianceOptions.*.labelTh`) apply to any reliance item that has a translation status.
 - Batch 2 (2026-09-14): 89 items **`approved`** (spot check round 2 passed 20/20; `docs/THAI_BATCH2_SPOTCHECK_ROUND2_RESPONSE.md`). Native review: — the Thai-priority-Medium set. 49 Approve / 40 Fix in cell / 0 Rewrite; 22 scenarios, 36 prompts, 3 key options reworded; all 83 rubric keyword lists expanded. Source workbook: `exports/New_Horizon_Thai_Review_Batch2_Completed.xlsx`; response: `docs/THAI_BATCH2_REVIEW_RESPONSE.md`. Spot check round 1: 13/7/0, no ambiguous keys → 19 items swept (`docs/THAI_BATCH2_SPOTCHECK_ROUND1_RESPONSE.md`); round 2: 20/0/0 → approved.
-- Open glossary questions from the batch-2 spot check: vendor (ผู้ขาย vs ผู้ให้บริการ for service contracts) and escalation (ส่งต่อให้ผู้มีอำนาจ vs ส่งต่อให้ผู้รับผิดชอบระดับสูงขึ้น). Decide once, apply to both batches.
+- Glossary decision (batch 3 review, 2026-09-14): vendor → ผู้ให้บริการ for AI/IT/SaaS vendors, ผู้ให้บริการภายนอก for third parties, ผู้ขาย only for sellers of goods. Batches 1–2 still use ผู้ขาย for service vendors — align in the batch-1 approval commit. Still open: escalation (ส่งต่อให้ผู้มีอำนาจ vs ส่งต่อให้ผู้รับผิดชอบระดับสูงขึ้น).
 - Glossary (batch 2 review): hallucination → "hallucination (การกุข้อมูล / สร้างข้อมูลเท็จ)", human review → "การตรวจทานโดยคน (Human-in-the-loop)" on first mention, override → "การแก้ไขทับผล AI (override)". Batch 1 text still carries the earlier renderings; align it when its round-2 spot check closes.
-- Remaining: 408 items English only (mostly generated market-trend and advanced template items).
+- Batch 3 (2026-09-14, **`reviewed`**): the 408 template-generated items (240 `ADV-*`, 168 `TREND-*`) carry Thai from translated frames and templates plus the competency vocabulary (`competencyLabelsTh`, `skillLabelsTh`). Native review of the templates applied (51 strings; `docs/THAI_BATCH3_REVIEW_RESPONSE.md`); spot check pending: `exports/New_Horizon_Thai_Batch3_SpotCheck.xlsx`. Competency and skill names also switch language in reports via `translateUiText`.
+- Remaining: 0 items without Thai (89 approved, 571 reviewed).
 - Artifacts: language tags re-checked against the expanded relevance gate (22 hidden question ids) in `exports/artifact-language-tags.json`. 26 artifacts still display and need a Thai version (16 "Thai needed", 10 "Both"); 15 stay English. Produce message-type artifacts first (scam SMS, forwarded chat, social posts, invoice, login alert, scheduling email, vendor memo, product listing) because a Thai user cannot judge them realistically in English. Do not produce Thai images for artifacts hidden by the gate.
 - Thai artifact images: the nine message-type artifacts have `-th` versions (`public/stimuli/*-th.svg|png`), produced 2026-09-11 by repainting only the text (SVG text nodes replaced with Noto Sans Thai embedded; PNG text regions repainted over the original screenshots). `thaiStimulusSources` in `page.tsx` maps English src → Thai src and `localizeQuestion` swaps it for questions that have a translation status, so an untranslated question never shows a Thai image under English text. The EN→TH text for every artifact is in `exports/artifact-thai-text-spec.json` for reviewer sign-off; treat the images as `draft` until a native reviewer confirms them.
 - Glossary aligned with the README style guide: Domain, Competency, Assessment, Platform, telemetry and Workflow stay in English in Thai copy.
+
+## Template-generated items
+
+`ADV-*` and `TREND-*` questions are built at module load from `advancedQuestionFrames` / `marketTrendFrames` and `competencyDefinitions`. Their Thai lives on the frames (`contextTh`, `promptTh`, `bestTh`…), in the builders' option templates, and in `competencyLabelsTh` / `skillLabelsTh`. Translate and review those, never the generated ids. Placeholders `{label}`, `{lead}`, `{skills}`, `{difficulty}` in the review workbook map to template literals in the builders; keep a space on both sides of an inserted name so a gloss in parentheses never touches Thai text.
 
 ## Workflow for a translation batch
 

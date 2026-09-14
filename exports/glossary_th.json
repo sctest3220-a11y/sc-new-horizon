@@ -186,8 +186,8 @@
  },
  {
   "en": "vendor",
-  "th": "ผู้ขาย / ผู้ให้บริการ",
-  "rule": "'vendor claim' → 'คำกล่าวอ้างของผู้ขาย'."
+  "th": "ผู้ให้บริการ (AI / IT / SaaS vendor) · ผู้ให้บริการภายนอก (third party) · ผู้ขาย (seller of goods, marketplace listing)",
+  "rule": "Decided 2026-09-14 after three reviewers (batch 2 spot check, batch 3) preferred ผู้ให้บริการ for service vendors. Batches 1–2 still carry ผู้ขาย for service vendors — align in the batch-1 approval commit."
  },
  {
   "en": "benchmark",
