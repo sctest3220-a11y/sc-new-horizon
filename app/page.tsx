@@ -12506,7 +12506,11 @@ export default function Home() {
     setMatchSelections({});
     setPartSelections({});
     setTextResponse('');
-    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
+    setQuestionFeedbackComments((existing) => ({
+      ...existing,
+      [`${behaviorSessionIdRef.current}:${question.id}:assessment`]: '',
+      [`${behaviorSessionIdRef.current}:${question.id}:reveal`]: '',
+    }));
     setDraggedIndex(null);
     questionStartedAtRef.current = new Date().getTime();
     questionStartedIsoRef.current = new Date().toISOString();
@@ -12803,9 +12807,10 @@ export default function Home() {
 
   function showHomeSection(sectionId: string) {
     setStep('home');
+    setHomeMoreOpen(true);
     window.setTimeout(() => {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 0);
+    }, 50);
   }
 
   const activeLearningCatalog = mode === 'executive' ? executiveLearningCatalog : learningCatalog;
@@ -12957,8 +12962,8 @@ export default function Home() {
               <div className="hero-actions">
                 <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
                 <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
-                <a className="secondary" href="#process">See How It Works</a>
-                <a className="secondary" href="#scoring-model">Scoring model</a>
+                <button className="secondary" type="button" onClick={() => showHomeSection('process')}>See How It Works</button>
+                <button className="secondary" type="button" onClick={() => showHomeSection('scoring-model')}>Scoring model</button>
               </div>
             </div>
             <div className="hero-panel" aria-label="Assessment preview">
@@ -13111,8 +13116,7 @@ export default function Home() {
               <strong>{homeMoreOpen ? 'Hide learning prompts, practice labs, scoring, and frameworks' : 'Learning prompts, practice labs, scoring, and frameworks'}</strong>
             </button>
 
-          {homeMoreOpen && (
-            <div className="home-more-content">
+            <div className="home-more-content" hidden={!homeMoreOpen}>
           <section id="labs" className="section field-lab">
             <div>
               <p className="eyebrow">Learn by doing</p>
@@ -13344,7 +13348,6 @@ export default function Home() {
             </div>
           </section>
             </div>
-          )}
           </section>
         </>
       )}
