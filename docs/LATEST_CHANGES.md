@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-15: Assessment Quality Analytics Suite
+
+Admin now includes a 10-point assessment-quality suite: item discrimination, distractor analysis, artifact dependency, question clarity index, difficulty calibration, competency coverage heatmap, reliability estimate, written-response rubric audit, route/persona fit, and learning/report engagement. Each panel uses existing local MVP telemetry and labels insufficient data plainly when pilot volume is too low.
+
+The suite is intended to answer whether each item measures the intended competency, whether answer choices separate stronger from weaker users, whether artifacts help or distract, whether difficulty labels match observed behavior, whether each persona receives the right domain mix, and whether report recommendations attract learner interest.
+
 ## 2026-09-15: MVP Analytics Refinement
 
 Admin now includes an analytics readiness checklist that separates local pilot evidence from production-ready analytics. It shows whether behavior events, question evidence, survey feedback, cohort scoring, server analytics, and agent review trails are ready, insufficient, or still local-only.

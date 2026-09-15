@@ -1724,6 +1724,58 @@ h3 {
   padding: 10px;
 }
 
+.assessment-quality-suite {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 231, 0.74), rgba(237, 247, 246, 0.78)),
+    #fff;
+}
+
+.quality-suite-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.quality-suite-grid > div {
+  align-content: start;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.quality-suite-grid h3,
+.quality-suite-grid p {
+  margin: 0;
+}
+
+.quality-suite-grid h3 {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.quality-suite-grid p {
+  background: var(--panel-soft);
+  border: 1px solid rgba(216, 214, 202, 0.72);
+  border-radius: 8px;
+  display: grid;
+  gap: 3px;
+  padding: 9px;
+}
+
+.quality-suite-grid strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.quality-suite-grid small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .source-signal-list,
 .draft-review-actions {
   display: flex;

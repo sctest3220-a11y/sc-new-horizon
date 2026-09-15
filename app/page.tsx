@@ -10211,6 +10211,201 @@ function getAdminAnalytics(entries: ScoreLogEntry[], profileSignals: ProfileSign
   };
 }
 
+function getAssessmentQualityAnalytics(
+  behaviorEvents: AssessmentBehaviorEvent[],
+  scoreEntries: ScoreLogEntry[],
+  profileSignals: ProfileSignalLogEntry[],
+  qualityRows: ReturnType<typeof getQuestionQualityRows>,
+) {
+  const completedScores = scoreEntries.filter((entry) => entry.mode !== 'practice');
+  const completedSignals = profileSignals.filter((entry) => entry.mode !== 'practice');
+  const allSignals = completedSignals.flatMap((entry) => entry.questionSignals.map((signal) => ({ ...signal, run: entry })));
+  const medianScore = completedScores.length
+    ? completedScores.map((entry) => entry.overall).sort((a, b) => a - b)[Math.floor(completedScores.length / 2)]
+    : 0;
+  const questionIds = [...new Set([...allAssessmentItems.map((question) => question.id), ...allSignals.map((signal) => signal.questionId)])];
+  const answeredEvents = behaviorEvents.filter((event) => event.type === 'question_answered' && event.questionId);
+  const artifactPairs = new Set(behaviorEvents
+    .filter((event) => event.questionId && (event.type === 'artifact_opened' || event.type === 'artifact_zoomed' || event.type === 'artifact_external_opened'))
+    .map((event) => `${event.sessionId}:${event.questionId}`));
+
+  const discriminationRows = questionIds.map((questionId) => {
+    const rows = allSignals.filter((signal) => signal.questionId === questionId);
+    const high = rows.filter((row) => row.run.overall >= medianScore);
+    const low = rows.filter((row) => row.run.overall < medianScore);
+    const highCorrect = getAverage(high.map((row) => row.score >= 72 ? 100 : 0));
+    const lowCorrect = getAverage(low.map((row) => row.score >= 72 ? 100 : 0));
+    const gap = highCorrect - lowCorrect;
+    return {
+      questionId,
+      attempts: rows.length,
+      highCorrect,
+      lowCorrect,
+      gap,
+      status: rows.length < 4 ? 'insufficient data' : gap >= 20 ? 'separates well' : gap >= 5 ? 'weak signal' : 'review discrimination',
+    };
+  }).filter((row) => row.attempts > 0).sort((left, right) => left.gap - right.gap || right.attempts - left.attempts).slice(0, 8);
+
+  const distractorRows = questionIds.map((questionId) => {
+    const events = answeredEvents.filter((event) => event.questionId === questionId && event.selectedOptionId);
+    const selected = new Map<string, number>();
+    events.forEach((event) => selected.set(event.selectedOptionId!, (selected.get(event.selectedOptionId!) ?? 0) + 1));
+    const question = allAssessmentItems.find((item) => item.id === questionId);
+    const correct = new Set(question?.correctOptionIds ?? events[0]?.correctOptionIds ?? []);
+    const distractors = [...selected.entries()].filter(([optionId]) => !correct.has(optionId));
+    const topDistractor = distractors.sort((a, b) => b[1] - a[1])[0];
+    const neverChosen = question?.options.filter((option) => !correct.has(option.id) && !selected.has(option.id)).length ?? 0;
+    return {
+      questionId,
+      attempts: events.length,
+      topDistractor: topDistractor ? `${topDistractor[0]} (${topDistractor[1]})` : 'none yet',
+      neverChosen,
+      status: events.length < 4 ? 'insufficient data' : neverChosen >= 2 ? 'weak distractors' : topDistractor ? 'misconception visible' : 'review options',
+    };
+  }).filter((row) => row.attempts > 0).sort((left, right) => right.neverChosen - left.neverChosen || right.attempts - left.attempts).slice(0, 8);
+
+  const artifactDependencyRows = questionIds.map((questionId) => {
+    const events = answeredEvents.filter((event) => event.questionId === questionId);
+    const opened = events.filter((event) => artifactPairs.has(`${event.sessionId}:${event.questionId}`));
+    const notOpened = events.filter((event) => !artifactPairs.has(`${event.sessionId}:${event.questionId}`));
+    const openedScore = getAverage(opened.map((event) => event.score ?? 0));
+    const notOpenedScore = getAverage(notOpened.map((event) => event.score ?? 0));
+    const openedTime = getAverage(opened.map((event) => event.durationMs ?? 0));
+    const notOpenedTime = getAverage(notOpened.map((event) => event.durationMs ?? 0));
+    return {
+      questionId,
+      attempts: events.length,
+      opened: opened.length,
+      notOpened: notOpened.length,
+      openedScore,
+      notOpenedScore,
+      timeDeltaSeconds: Math.round((openedTime - notOpenedTime) / 1000),
+      status: events.length < 4 ? 'insufficient data' : opened.length && openedScore < notOpenedScore ? 'artifact may distract' : opened.length ? 'artifact used' : 'artifact not used',
+    };
+  }).filter((row) => row.attempts > 0).sort((left, right) => Math.abs(right.timeDeltaSeconds) - Math.abs(left.timeDeltaSeconds)).slice(0, 8);
+
+  const clarityRows = qualityRows.map((row) => {
+    const clarityRisk = Math.min(100, row.unclear * 22 + row.comments * 10 + row.confusionRate + (row.averageDurationMs >= 45000 ? 18 : 0) + (row.difficulty === 'awareness' && row.averageScore < 45 ? 15 : 0));
+    return { ...row, clarityRisk };
+  }).sort((left, right) => right.clarityRisk - left.clarityRisk).slice(0, 8);
+
+  const difficultyCalibrationRows = (['awareness', 'applied', 'proficient', 'advanced'] as Difficulty[]).map((difficulty) => {
+    const signals = allSignals.filter((signal) => signal.difficulty === difficulty);
+    const average = getAverage(signals.map((signal) => signal.score));
+    const quickHigh = signals.filter((signal) => (signal.durationMs ?? 999999) < 15000 && signal.score >= 82).length;
+    const status = signals.length < 8
+      ? 'insufficient data'
+      : difficulty === 'advanced' && average >= 86
+        ? 'too easy'
+        : difficulty === 'awareness' && average < 50
+          ? 'too hard'
+          : quickHigh / signals.length >= 0.45
+            ? 'guessable risk'
+            : 'calibrating';
+    return { difficulty, count: signals.length, average, quickHigh, status };
+  });
+
+  const competencyHeatmapRows = Object.values(competencyDefinitions).map((competency) => {
+    const bankQuestions = allAssessmentItems.filter((question) => getQuestionMeasures(question).some((measure) => measure.id === competency.id));
+    const signals = allSignals.filter((signal) => signal.competencyIds.includes(competency.id));
+    const difficultySpread = [...new Set(bankQuestions.map((question) => question.difficulty))].join(', ') || 'none';
+    const status = signals.length >= 4 ? 'stronger estimate' : signals.length >= 2 ? 'early estimate' : signals.length ? 'sampled once' : 'not assessed';
+    return {
+      id: competency.id,
+      domain: competency.domain,
+      label: competency.label,
+      bankCount: bankQuestions.length,
+      sampled: signals.length,
+      average: getAverage(signals.map((signal) => signal.score)),
+      difficultySpread,
+      status,
+    };
+  }).sort((left, right) => left.sampled - right.sampled || left.bankCount - right.bankCount).slice(0, 10);
+
+  const reliabilityRows = completedSignals.slice(0, 8).map((entry) => {
+    const sampledDomains = new Set(entry.questionSignals.flatMap((signal) => [signal.domain, ...(signal.secondaryDomains ?? [])])).size;
+    const sampledCompetencies = new Set(entry.questionSignals.flatMap((signal) => signal.competencyIds)).size;
+    const advancedSignals = entry.questionSignals.filter((signal) => signal.difficulty === 'advanced' || signal.difficulty === 'proficient').length;
+    const status = entry.questionSignals.length >= 20 && sampledDomains >= 5 && sampledCompetencies >= 12
+      ? 'strong estimate'
+      : entry.questionSignals.length >= 12 && sampledDomains >= 4
+        ? 'directional estimate'
+        : 'insufficient evidence';
+    return {
+      id: entry.id,
+      label: normalizeDisplayGroupLabel(entry.groupLabel),
+      questions: entry.questionSignals.length,
+      sampledDomains,
+      sampledCompetencies,
+      advancedSignals,
+      status,
+    };
+  });
+
+  const writtenAuditRows = questionIds.map((questionId) => {
+    const rows = allSignals.filter((signal) => signal.questionId === questionId && signal.interaction === 'text');
+    const blank = rows.filter((signal) => !signal.textResponseLength).length;
+    const short = rows.filter((signal) => (signal.textResponseLength ?? 0) > 0 && (signal.textResponseLength ?? 0) < 40).length;
+    const noRubricHits = rows.filter((signal) => !signal.rubricHitIds?.length).length;
+    return {
+      questionId,
+      attempts: rows.length,
+      blank,
+      short,
+      noRubricHits,
+      average: getAverage(rows.map((signal) => signal.score)),
+      status: rows.length < 3 ? 'insufficient data' : noRubricHits / rows.length > 0.5 ? 'rubric/prompt review' : short / rows.length > 0.5 ? 'prompt may invite shallow answers' : 'calibrating',
+    };
+  }).filter((row) => row.attempts > 0).sort((left, right) => right.noRubricHits - left.noRubricHits || right.short - left.short).slice(0, 8);
+
+  const routeFitRows = completedSignals.slice(0, 8).map((entry) => {
+    const targets = getProfileDomainTargets(
+      entry.mode,
+      entry.audience,
+      entry.functionTrack ?? 'general',
+      entry.industryTrack ?? 'general',
+      entry.executiveRole ?? 'board',
+      entry.questionSignals.length || 12,
+    );
+    const actual = getAnsweredDomainCounts(entry.questionSignals.map((signal) => ({
+      question: allAssessmentItems.find((item) => item.id === signal.questionId) ?? allAssessmentItems[0],
+      option: { id: signal.optionId, label: signal.optionLabel ?? signal.optionId, score: signal.score, feedback: '' },
+    })));
+    const misses = (Object.keys(domains) as DomainId[])
+      .map((domain) => ({ domain, gap: targets[domain] - actual[domain].count }))
+      .filter((item) => item.gap > 0.75)
+      .sort((a, b) => b.gap - a.gap);
+    return {
+      id: entry.id,
+      label: normalizeDisplayGroupLabel(entry.groupLabel),
+      status: misses.length ? 'route gap' : 'fit looks ok',
+      detail: misses.length ? misses.map((item) => `${item.domain} -${Number(item.gap.toFixed(1))}`).join(', ') : 'Sampled route is close to target domain mix.',
+    };
+  });
+
+  const reportEngagementRows = [...new Set(behaviorEvents.filter((event) => event.type === 'report_interest').map((event) => event.reportArea ?? 'unknown'))]
+    .map((area) => ({
+      area,
+      count: behaviorEvents.filter((event) => event.type === 'report_interest' && (event.reportArea ?? 'unknown') === area).length,
+    }))
+    .sort((left, right) => right.count - left.count);
+  const recommendationSignals = behaviorEvents.filter((event) => event.type === 'report_interest' && ['course', 'tool', 'coverage', 'continuation'].includes(event.reportArea ?? '')).length;
+
+  return {
+    discriminationRows,
+    distractorRows,
+    artifactDependencyRows,
+    clarityRows,
+    difficultyCalibrationRows,
+    competencyHeatmapRows,
+    reliabilityRows,
+    writtenAuditRows,
+    routeFitRows,
+    reportEngagementRows,
+    recommendationSignals,
+  };
+}
+
 function getAnalyticsReadinessRows({
   behaviorLog,
   scoreLog,
@@ -11492,6 +11687,10 @@ export default function Home() {
   );
   const questionBenchmarks = useMemo(() => getQuestionBenchmarks(behaviorLog), [behaviorLog]);
   const qualityInsights = useMemo(() => getQualityImprovementInsights(behaviorLog, assessmentFeedback), [assessmentFeedback, behaviorLog]);
+  const assessmentQualityAnalytics = useMemo(
+    () => getAssessmentQualityAnalytics(behaviorLog, scoreLog, profileSignalLog, qualityInsights.qualityRows),
+    [behaviorLog, profileSignalLog, qualityInsights.qualityRows, scoreLog],
+  );
   const flaggedQualityQuestionIds = useMemo(
     () => qualityInsights.qualityRows.filter((row) => row.status === 'review').map((row) => row.questionId),
     [qualityInsights.qualityRows],
@@ -13517,6 +13716,79 @@ export default function Home() {
 	                    </div>
 	                  </div>
 	                </article>
+
+                <article className="admin-card admin-wide assessment-quality-suite">
+                  <div className="admin-card-heading">
+                    <div>
+                      <span>Assessment quality</span>
+                      <h2>10-point quality analysis suite</h2>
+                    </div>
+                    <small>{adminAnalytics.totalQuestionSignals ? `${adminAnalytics.totalQuestionSignals} saved question signals` : 'Insufficient data until users complete assessments'}</small>
+                  </div>
+                  <div className="quality-suite-grid">
+                    <div>
+                      <h3>1. Item discrimination</h3>
+                      {assessmentQualityAnalytics.discriminationRows.length ? assessmentQualityAnalytics.discriminationRows.map((row) => (
+                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · high {row.highCorrect}% vs low {row.lowCorrect}% · gap {row.gap}</small></p>
+                      )) : <p>No completed item signals yet.</p>}
+                    </div>
+                    <div>
+                      <h3>2. Distractor analysis</h3>
+                      {assessmentQualityAnalytics.distractorRows.length ? assessmentQualityAnalytics.distractorRows.map((row) => (
+                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · top wrong {row.topDistractor} · {row.neverChosen} never chosen</small></p>
+                      )) : <p>No answer-option data yet.</p>}
+                    </div>
+                    <div>
+                      <h3>3. Artifact dependency</h3>
+                      {assessmentQualityAnalytics.artifactDependencyRows.length ? assessmentQualityAnalytics.artifactDependencyRows.map((row) => (
+                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · opened {row.opened}/{row.attempts} · score {row.openedScore} vs {row.notOpenedScore} · {row.timeDeltaSeconds}s delta</small></p>
+                      )) : <p>No artifact-linked attempts yet.</p>}
+                    </div>
+                    <div>
+                      <h3>4. Clarity index</h3>
+                      {assessmentQualityAnalytics.clarityRows.length ? assessmentQualityAnalytics.clarityRows.map((row) => (
+                        <p key={row.questionId}><strong>{row.questionId}</strong><small>risk {row.clarityRisk}/100 · {row.unclear} unclear · {row.confusionRate}% confusing · {row.actionLabel}</small></p>
+                      )) : <p>No clarity risk signals yet.</p>}
+                    </div>
+                    <div>
+                      <h3>5. Difficulty calibration</h3>
+                      {assessmentQualityAnalytics.difficultyCalibrationRows.map((row) => (
+                        <p key={row.difficulty}><strong>{difficultyLabels[row.difficulty]}</strong><small>{row.status} · {row.count} signals · {row.average}/100 avg · {row.quickHigh} fast-high</small></p>
+                      ))}
+                    </div>
+                    <div>
+                      <h3>6. Competency heatmap</h3>
+                      {assessmentQualityAnalytics.competencyHeatmapRows.map((row) => (
+                        <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{row.status} · bank {row.bankCount} · sampled {row.sampled} · {row.average}/100 · {row.difficultySpread}</small></p>
+                      ))}
+                    </div>
+                    <div>
+                      <h3>7. Reliability estimate</h3>
+                      {assessmentQualityAnalytics.reliabilityRows.length ? assessmentQualityAnalytics.reliabilityRows.map((row) => (
+                        <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.questions} questions · {row.sampledDomains} domains · {row.sampledCompetencies} competencies · {row.advancedSignals} hard signals</small></p>
+                      )) : <p>No completed runs yet.</p>}
+                    </div>
+                    <div>
+                      <h3>8. Written rubric audit</h3>
+                      {assessmentQualityAnalytics.writtenAuditRows.length ? assessmentQualityAnalytics.writtenAuditRows.map((row) => (
+                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · {row.attempts} attempts · {row.noRubricHits} no-hit · {row.short} short · {row.average}/100</small></p>
+                      )) : <p>No written-response attempts yet.</p>}
+                    </div>
+                    <div>
+                      <h3>9. Route/persona fit</h3>
+                      {assessmentQualityAnalytics.routeFitRows.length ? assessmentQualityAnalytics.routeFitRows.map((row) => (
+                        <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.detail}</small></p>
+                      )) : <p>No completed route snapshots yet.</p>}
+                    </div>
+                    <div>
+                      <h3>10. Learning/report engagement</h3>
+                      {assessmentQualityAnalytics.reportEngagementRows.length ? assessmentQualityAnalytics.reportEngagementRows.map((row) => (
+                        <p key={row.area}><strong>{row.area}</strong><small>{row.count} click{row.count === 1 ? '' : 's'}</small></p>
+                      )) : <p>No report engagement clicks yet.</p>}
+                      <p><strong>Recommendation signals</strong><small>{assessmentQualityAnalytics.recommendationSignals} course/tool/coverage/continuation click{assessmentQualityAnalytics.recommendationSignals === 1 ? '' : 's'}</small></p>
+                    </div>
+                  </div>
+                </article>
 
                 <article className="admin-card admin-wide telemetry-analysis-card">
                   <div className="report-heading">
