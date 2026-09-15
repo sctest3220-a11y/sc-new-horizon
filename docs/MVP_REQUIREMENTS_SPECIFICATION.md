@@ -443,12 +443,19 @@ Admin must support:
 Agent roles:
 
 - Orchestrator Agent
+- Assessment Blueprint Agent
 - AI Concepts Scout
 - AI Newsfeed Agent
 - Training and Course Scout
 - Assessment Item Generator
+- Stimulus Builder Agent
 - Reviewer/QA Agent
 - Feedback Analysis Agent
+- Psychometric Monitor
+- Data Quality Monitor
+- Localization QA Agent
+- Report UX Agent
+- Framework Alignment Agent
 
 Agents may:
 
@@ -460,6 +467,56 @@ Agents may:
 - recommend artifact replacement
 - recommend profile/survey changes
 - recommend learning updates
+
+Specific ownership:
+
+- Orchestrator Agent owns workflow state, run coordination, budgets, retries, dedupe, and review queues.
+- Assessment Blueprint Agent owns competency, domain, difficulty, role, industry, persona, and item-format coverage planning.
+- Assessment Item Generator owns draft questions, answer keys, rubrics, partial-credit logic, difficulty estimates, and competency mapping.
+- Stimulus Builder Agent owns artifact briefs, candidate artifact requirements, realism checks, legibility checks, accessibility notes, and answer-key evidence mapping.
+- Feedback Analysis Agent owns survey/item-feedback theme analysis and action recommendations.
+- Psychometric Monitor owns difficulty drift, discrimination, guessing, partial-credit behavior, response time, fairness, cohort validity, and score-stability review.
+- Data Quality Monitor owns missing events, duplicate sessions, local-only data, version-tag gaps, incomplete score logs, stale feedback state, broken exports, and insufficient-sample warnings.
+- Localization QA Agent owns English/Thai context fit, untranslated strings, preserved technical terms, and translation-caused layout issues.
+- Report UX Agent owns report-interest analysis, continuation behavior, recommendation engagement, report ordering, and score-explanation clarity.
+- Framework Alignment Agent owns alignment to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, Gartner, McKinsey, and BCG references.
+- Reviewer/QA Agent owns final quality challenge before human review: source support, duplicates, answerability, distractors, artifact realism, accessibility, privacy, and publish readiness.
+
+Content-producing agents:
+
+- Assessment Item Generator
+- Stimulus Builder Agent
+- Training and Course Scout
+- AI Newsfeed Agent
+- AI Concepts Scout
+
+Governance and quality agents:
+
+- Reviewer/QA Agent
+- Psychometric Monitor
+- Data Quality Monitor
+- Framework Alignment Agent
+- Localization QA Agent
+- Report UX Agent
+- Feedback Analysis Agent
+
+The Orchestrator must prevent any content-producing agent from approving its own work.
+
+Proposal promotion states:
+
+```text
+draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored
+```
+
+Promotion requirements:
+
+- `draft`: generated recommendation; not live.
+- `reviewed`: basic answerability, safety, and relevance checked.
+- `pilot-ready`: approved for limited pilot use with version tags.
+- `pilot-tested`: enough telemetry exists to evaluate quality.
+- `approved`: human reviewer accepts the change.
+- `published`: versioned content is live.
+- `monitored`: post-release telemetry is watched for regressions.
 
 Agents must not:
 
@@ -645,4 +702,3 @@ The MVP is ready for proper pilot go-live when:
 - Add organization/cohort reporting.
 - Expand learning content and bootcamp catalog.
 - Move Agent Ops to durable server-side jobs with human approval.
-

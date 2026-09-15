@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-15: Agent Architecture Recommendations Adopted
+
+Agent/orchestration docs and the MVP requirements spec now adopt the full go-live agent architecture: Orchestrator, Assessment Blueprint, AI Concepts Scout, AI Newsfeed, Training/Course Scout, Assessment Item Generator, Stimulus Builder, Feedback Analysis, Psychometric Monitor, Data Quality Monitor, Localization QA, Report UX, Framework Alignment, and Reviewer/QA.
+
+Psychometric Monitor and Stimulus Builder are no longer treated as future-only concepts. The docs now position them as active MVP quality workflows because item calibration and artifact realism are core pilot risks. Data Quality Monitor, Localization QA, Report UX, Assessment Blueprint, and Framework Alignment are also documented as explicit quality agents.
+
+The docs now define content-producing agents versus governance/quality agents and require proposal promotion states: `draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored`. Human approval remains required before scored content, rubrics, scoring, artifacts, profile fields, surveys, learning recommendations, or framework mappings change.
+
 ## 2026-09-15: Profile Calibration And Feedback State Fixes
 
 The landing page `Explore more` control now uses an explicit React toggle instead of relying on native `details`, fixing cases where the panel did not expand in the app browser.

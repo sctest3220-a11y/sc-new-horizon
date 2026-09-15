@@ -48,7 +48,13 @@ OPENROUTER_API_KEY=
 
 Browser code should never read these secret keys. Report generation should be handled by API routes or server actions.
 
-The MVP Agent Ops screen is local and deterministic. It demonstrates orchestrator delegation, AI concept scouting, AI Watch drafting, training/course discovery, assessment-item generation, reviewer/QA gates, activity reports, and a safety cut for repeated draft loops. Production agent workflows should move behind server-side routes, scheduled jobs, durable queues, persisted run state, retry counts, draft artifacts, rejected outputs, source records, course freshness checks, cost telemetry, and admin approvals before any content is published.
+The MVP Agent Ops screen is local and deterministic. It demonstrates orchestrator delegation, assessment blueprint review, AI concept scouting, AI Watch drafting, training/course discovery, assessment-item generation, stimulus/artifact improvement, feedback analysis, psychometric monitoring, data-quality monitoring, localization QA, report UX review, framework alignment, reviewer/QA gates, activity reports, and a safety cut for repeated draft loops. Production agent workflows should move behind server-side routes, scheduled jobs, durable queues, persisted run state, retry counts, draft artifacts, rejected outputs, source records, course freshness checks, cost telemetry, promotion states, and admin approvals before any content is published.
+
+Production agent proposal states should be:
+
+```text
+draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored
+```
 
 The local `pnpm crawl:training` command is the first real Playwright crawler prototype for the Training and Course Scout. It writes review reports to `.agent-drafts/` and should remain an operator/admin testing command until production source policies, robots/terms review, database persistence, and approval workflows are implemented.
 

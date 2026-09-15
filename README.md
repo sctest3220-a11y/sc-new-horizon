@@ -28,7 +28,7 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
-- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
+- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, promotion gates, approval/rejection states, activity reports, and safety-cut handling for repeated loops
 - Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
 - Global framework crosswalk mapping D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
@@ -159,7 +159,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
 
-The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. Each proposal stays in pending review until an admin approves or rejects it. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
+The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, assessment blueprint agent, AI concepts scout, AI newsfeed agent, training/course scout, assessment item generator, stimulus builder, feedback analysis agent, psychometric monitor, data quality monitor, localization QA agent, report UX agent, framework alignment agent, and reviewer/QA agent. Each proposal must move through review and promotion gates before publishing. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
 
 Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
 

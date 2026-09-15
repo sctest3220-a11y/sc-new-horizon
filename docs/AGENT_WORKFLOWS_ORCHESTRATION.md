@@ -24,11 +24,15 @@ Stored state:
 
 - `new-horizon-supervised-agent-runs-v1`: local run history, draft proposals, reviewer notes, and approval/rejection states.
 
-## Agent Roles
+## MVP Go-Live Agent Roles
 
 ### Orchestrator Agent
 
 Coordinates runs, source limits, budgets, retries, dedupe, workflow status, and admin review queues. Owns workflow state, not content truth.
+
+### Assessment Blueprint Agent
+
+Owns coverage design before item generation. It reviews the 22 competencies, D1-D6 domain targets, four difficulty levels, role/function/industry mappings, profile-weighted routing rules, and evidence minimums. Its output is a gap map showing which competencies, personas, industries, and difficulty levels need more or better items.
 
 ### AI Concepts Scout
 
@@ -44,7 +48,11 @@ Finds courses, tutorials, certificates, tools, and practice resources. Drafts ne
 
 ### Assessment Item Generator
 
-Drafts questions, answer keys, rubrics, partial-credit rules, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize practical formats such as artifact review, matching, multi-select, ranking, written response, and multi-part concept clusters.
+Drafts questions, answer keys, rubrics, partial-credit rules, difficulty estimates, competency mappings, and stimulus requirements from the Assessment Blueprint. It should prioritize practical formats such as artifact review, matching, multi-select, ranking, written response, and multi-part concept clusters.
+
+### Stimulus Builder Agent
+
+Creates or refreshes realistic artifacts after telemetry, feedback, or blueprint evidence identifies a need. It produces artifact briefs, candidate asset requirements, realism checks, legibility checks, accessibility notes, and answer-key evidence mapping. Human review confirms relevance, legibility, accessibility, and answerability before publishing or replacing official artifact paths.
 
 ### Feedback Analysis Agent
 
@@ -65,13 +73,65 @@ This agent should produce suggestions, not changes. It should help admins decide
 
 Checks source support, duplicates, answerability, distractor quality, artifact realism, artifact readability, accessibility, privacy/risk issues, item-format balance, and readiness for human review.
 
-### Future Psychometric Monitor
+### Psychometric Monitor
 
-Once enough pilot data exists, reviews difficulty drift, discrimination, guessing, partial-credit thresholds, response time, fairness, cohort validity, and score stability.
+Reviews difficulty drift, discrimination, guessing, partial-credit thresholds, response time, fairness, cohort validity, and score stability. During MVP, it labels low-volume findings as `insufficient data` and uses pilot signals to recommend monitoring, recalibration, or human item review.
 
-### Future Stimulus Builder
+### Data Quality Monitor
 
-Creates or refreshes realistic artifacts only after telemetry or survey evidence identifies a need. Human review confirms relevance, legibility, accessibility, and answerability before publishing.
+Checks whether telemetry is complete enough for analysis. It flags missing events, duplicate sessions, local-only data, missing question/rubric/artifact versions, incomplete score logs, stale feedback state, broken exports, and analytics views with insufficient sample size.
+
+### Localization QA Agent
+
+Reviews English and Thai surfaces for untranslated strings, awkward literal translation, context mismatch, preserved technical terms, layout overflow, and wording that may confuse Thai users. It should test landing, onboarding, assessment, report, feedback, Admin, telemetry, and scoring surfaces.
+
+### Report UX Agent
+
+Analyzes report-interest clicks, continuation behavior, survey feedback, and learning-resource engagement. It recommends changes to report ordering, wording, score explanations, course/bootcamp placement, and `Did you know?` prompts so users see the most useful next action first.
+
+### Framework Alignment Agent
+
+Checks whether domains, competencies, question types, scoring explanations, telemetry usage, and learning recommendations remain aligned with New Horizon's external framework crosswalk. It should reference UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, Gartner, McKinsey, and BCG where applicable, without claiming certification equivalence.
+
+## Content and Governance Separation
+
+Content-producing agents:
+
+- Assessment Item Generator
+- Stimulus Builder Agent
+- Training and Course Scout
+- AI Newsfeed Agent
+- AI Concepts Scout
+
+Governance and quality agents:
+
+- Reviewer and QA Agent
+- Psychometric Monitor
+- Data Quality Monitor
+- Framework Alignment Agent
+- Localization QA Agent
+- Report UX Agent
+- Feedback Analysis Agent
+
+The Orchestrator coordinates both groups and prevents a content-producing agent from approving its own work.
+
+## Proposal Promotion Gates
+
+Agent proposals must move through explicit states:
+
+```text
+draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored
+```
+
+State rules:
+
+- `draft`: generated recommendation; not used in scored assessment.
+- `reviewed`: human or Reviewer/QA agent has checked basic answerability, safety, and relevance.
+- `pilot-ready`: approved for limited pilot exposure with version tags.
+- `pilot-tested`: enough telemetry exists to review performance.
+- `approved`: human reviewer accepts the item/artifact/rubric/scoring/profile/survey/learning change.
+- `published`: versioned content is live.
+- `monitored`: post-release telemetry is watched for regressions.
 
 ## Human Review Gates
 
