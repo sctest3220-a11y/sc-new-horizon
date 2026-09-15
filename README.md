@@ -49,6 +49,7 @@ Detailed telemetry and agent documentation:
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+- [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
 
 Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
 
