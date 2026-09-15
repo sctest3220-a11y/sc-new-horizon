@@ -1036,6 +1036,16 @@ function applyUiLanguage(language: AppLanguage) {
 
 const broadSurveyQuestions: SurveyQuestion[] = [
   {
+    id: 'ai-experience-level',
+    label: 'How would you describe your AI experience?',
+    options: ['New to AI', 'Basic user', 'Regular user', 'Power user', 'I build or manage AI systems'],
+  },
+  {
+    id: 'ai-confidence-level',
+    label: 'How confident are you using AI for real work or study?',
+    options: ['Not confident yet', 'Somewhat confident', 'Confident with common tasks', 'Very confident with complex tasks'],
+  },
+  {
     id: 'llm-tools',
     label: 'Which AI tools do you use most often?',
     options: ['ChatGPT', 'Claude', 'Gemini', 'Copilot', 'Perplexity', 'Canva AI', 'I rarely use AI tools'],
@@ -1065,6 +1075,8 @@ const broadSurveyQuestions: SurveyQuestion[] = [
     multi: true,
   },
 ];
+
+const startingDifficultySurveyQuestions = broadSurveyQuestions.slice(0, 2);
 
 const functionSurveyQuestions: Record<FunctionTrack, SurveyQuestion[]> = {
   general: broadSurveyQuestions,
@@ -9942,8 +9954,8 @@ function getTelemetryAnalysis(
 }
 
 function getSurveyQuestionsForProfile(assessmentMode: AssessmentMode, audience: Audience, functionTrack: FunctionTrack, executiveRole: ExecutiveRole) {
-  if (assessmentMode === 'executive') return executiveSurveyQuestions[executiveRole];
-  if (assessmentMode === 'premium') return functionSurveyQuestions[functionTrack];
+  if (assessmentMode === 'executive') return [...startingDifficultySurveyQuestions, ...executiveSurveyQuestions[executiveRole]];
+  if (assessmentMode === 'premium') return [...startingDifficultySurveyQuestions, ...functionSurveyQuestions[functionTrack]];
   if (audience === 'professional' || audience === 'team') return functionSurveyQuestions.general;
   return broadSurveyQuestions;
 }
@@ -9959,6 +9971,15 @@ function buildProfileTags(survey: Record<string, string[]>, questions: SurveyQue
     (survey[question.id] ?? []).map((answer) => `${question.label}: ${answer}`),
   );
   return [`Context: ${context}`, ...answerTags].slice(0, 14);
+}
+
+function getProfileStartingDifficulty(profileTags: string[]): Difficulty {
+  const text = profileTags.join(' ').toLowerCase();
+  if (/new to ai|not confident yet|rarely|not yet|i rarely use ai/.test(text)) return 'awareness';
+  if (/basic user|somewhat confident|few times a month/.test(text)) return 'applied';
+  if (/regular user|daily|several times|confident with common/.test(text)) return 'proficient';
+  if (/power user|build or manage|very confident|complex tasks|openai api|agents|rag|model evaluation/.test(text)) return 'advanced';
+  return 'applied';
 }
 
 function getProfileTargetCompetencyIds(profileTags: string[], functionTrack: FunctionTrack, executiveRole: ExecutiveRole) {
@@ -10961,7 +10982,7 @@ function selectNextQuestion(
   answers: Answer[],
   assessmentMode: AssessmentMode = 'free',
   seed = 0,
-  profile: { audience?: Audience; functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; executiveRole?: ExecutiveRole; targetDomain?: DomainId; targetCompetencyIds?: string[]; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
+  profile: { audience?: Audience; functionTrack?: FunctionTrack; industryTrack?: IndustryTrack; executiveRole?: ExecutiveRole; targetDomain?: DomainId; targetCompetencyIds?: string[]; initialDifficulty?: Difficulty; totalQuestions?: number; flaggedQuestionIds?: string[] } = {},
 ) {
   const bank = getAssessmentBank(assessmentMode);
   const answered = new Set(answers.map((answer) => answer.question.id));
@@ -11009,7 +11030,12 @@ function selectNextQuestion(
     const starterCandidates = starterIds
       .map((id) => bank.find((question) => question.id === id))
       .filter((question): question is Question => Boolean(question));
-    return starterCandidates[seededValue(`${assessmentMode}-starter`, seed) % starterCandidates.length] ?? selectableCandidates[0];
+    const preferredStarterDifficulty = profile.initialDifficulty;
+    const difficultyMatchedStarters = preferredStarterDifficulty
+      ? starterCandidates.filter((question) => question.difficulty === preferredStarterDifficulty)
+      : [];
+    const calibratedStarters = difficultyMatchedStarters.length ? difficultyMatchedStarters : starterCandidates;
+    return calibratedStarters[seededValue(`${assessmentMode}-starter`, seed) % calibratedStarters.length] ?? selectableCandidates[0];
   }
   const latestAnswer = answers.at(-1);
   const consecutiveSameDomain = latestAnswer
@@ -11574,6 +11600,7 @@ export default function Home() {
   const [selectedPreviewDomain, setSelectedPreviewDomain] = useState<DomainId>('D3');
   const [selectedRadarDomain, setSelectedRadarDomain] = useState<DomainId>('D1');
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
+  const [homeMoreOpen, setHomeMoreOpen] = useState(false);
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -11974,8 +12001,13 @@ export default function Home() {
     }));
   }
 
-  function submitQuestionFeedback(question = current) {
-    const comment = (questionFeedbackComments[question.id] ?? '').trim();
+  function getQuestionFeedbackCommentKey(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
+    return `${behaviorSessionId}:${question.id}:${placement}`;
+  }
+
+  function submitQuestionFeedback(question = current, placement: 'assessment' | 'reveal' = 'assessment') {
+    const commentKey = getQuestionFeedbackCommentKey(question, placement);
+    const comment = (questionFeedbackComments[commentKey] ?? '').trim();
     const selectedKind = questionFeedbackDraft[question.id];
     const kind = selectedKind ?? (comment ? 'comment' : null);
     if (!kind) return;
@@ -12002,14 +12034,15 @@ export default function Home() {
       return next;
     });
     setQuestionFeedbackDraft((existing) => ({ ...existing, [question.id]: null }));
-    setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: '' }));
+    setQuestionFeedbackComments((existing) => ({ ...existing, [commentKey]: '' }));
   }
 
   function renderQuestionFeedback(question: Question, placement: 'assessment' | 'reveal' = 'assessment') {
+    const commentKey = getQuestionFeedbackCommentKey(question, placement);
     const draftKind = questionFeedbackDraft[question.id] ?? null;
     const savedKind = questionFeedbackSubmitted[question.id];
     const activeKind = draftKind === 'clear' ? null : draftKind ?? savedKind ?? null;
-    const questionComment = questionFeedbackComments[question.id] ?? '';
+    const questionComment = questionFeedbackComments[commentKey] ?? '';
     const hasDraftChange = draftKind !== null || Boolean(questionComment.trim());
     return (
       <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
@@ -12040,7 +12073,7 @@ export default function Home() {
           <input
             key={`${behaviorSessionId}:${question.id}:${placement}`}
             value={questionComment}
-            onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [question.id]: event.target.value }))}
+            onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [commentKey]: event.target.value }))}
             placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
             autoComplete="off"
           />
@@ -12049,7 +12082,7 @@ export default function Home() {
           type="button"
           className="secondary dark"
           disabled={!hasDraftChange}
-          onClick={() => submitQuestionFeedback(question)}
+          onClick={() => submitQuestionFeedback(question, placement)}
         >
           {draftKind === 'clear' && !questionComment.trim() ? 'Clear' : 'Save'}
         </button>
@@ -12303,7 +12336,7 @@ export default function Home() {
     });
   }
 
-  function startAssessment(nextMode: AssessmentMode, targetCompetencyIds = profileTargetCompetencyIds) {
+  function startAssessment(nextMode: AssessmentMode, targetCompetencyIds = profileTargetCompetencyIds, initialDifficulty = getProfileStartingDifficulty(userProfileTags)) {
     const nextSeed = createAssessmentSeed();
     const nextSessionId = `session-${nextSeed.toString(36)}-${new Date().getTime().toString(36)}`;
     behaviorSessionIdRef.current = nextSessionId;
@@ -12314,6 +12347,7 @@ export default function Home() {
       industryTrack,
       executiveRole,
       targetCompetencyIds,
+      initialDifficulty,
       flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setMode(nextMode);
@@ -12342,7 +12376,7 @@ export default function Home() {
       industryTrack,
       executiveRole,
     };
-    appendBehaviorEvent({ type: 'assessment_started', mode: nextMode, answeredCount: 0, targetCount: modeConfig[nextMode].totalQuestions });
+    appendBehaviorEvent({ type: 'assessment_started', mode: nextMode, answeredCount: 0, targetCount: modeConfig[nextMode].totalQuestions, label: `Initial difficulty: ${initialDifficulty}` });
     resetInteractionState(firstQuestion, nextSeed, 0);
     setStep('assessment');
   }
@@ -12418,7 +12452,7 @@ export default function Home() {
     writeLocalStorage(userProfileStorageKey, JSON.stringify(profile));
     syncUserProfileToSupabase(authProfile, profile, localProfileId);
     setSurveyOpen(false);
-    startAssessment(surveyMode, getProfileTargetCompetencyIds(tags, functionTrack, executiveRole));
+    startAssessment(surveyMode, getProfileTargetCompetencyIds(tags, functionTrack, executiveRole), getProfileStartingDifficulty(tags));
   }
 
   function skipProfileSurvey() {
@@ -12804,7 +12838,7 @@ export default function Home() {
                 <h1 id="profile-survey-title">Personalize your assessment.</h1>
                 <p>
                   Tell us what you already use, what similar people in your role are exploring, and what you may want to learn next.
-                  New Horizon uses these signals to tune examples, learning paths, and cohort analysis.
+                  New Horizon uses these signals to tune examples, learning paths, cohort analysis, and the starting difficulty before your answers take over.
                 </p>
               </div>
               <button type="button" className="icon-close" onClick={skipProfileSurvey} aria-label="Skip profile survey">X</button>
@@ -13066,12 +13100,19 @@ export default function Home() {
             </div>
           </section>
 
-          <details className="home-more-panel">
-            <summary>
+          <section className={`home-more-panel ${homeMoreOpen ? 'open' : ''}`}>
+            <button
+              type="button"
+              className="home-more-summary"
+              onClick={() => setHomeMoreOpen((open) => !open)}
+              aria-expanded={homeMoreOpen}
+            >
               <span>Explore more</span>
-              <strong>Learning prompts, practice labs, scoring, and frameworks</strong>
-            </summary>
+              <strong>{homeMoreOpen ? 'Hide learning prompts, practice labs, scoring, and frameworks' : 'Learning prompts, practice labs, scoring, and frameworks'}</strong>
+            </button>
 
+          {homeMoreOpen && (
+            <div className="home-more-content">
           <section id="labs" className="section field-lab">
             <div>
               <p className="eyebrow">Learn by doing</p>
@@ -13302,7 +13343,9 @@ export default function Home() {
               <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
             </div>
           </section>
-          </details>
+            </div>
+          )}
+          </section>
         </>
       )}
 

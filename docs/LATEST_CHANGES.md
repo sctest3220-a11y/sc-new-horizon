@@ -1,5 +1,13 @@
 # Latest Changes
 
+## 2026-09-15: Profile Calibration And Feedback State Fixes
+
+The landing page `Explore more` control now uses an explicit React toggle instead of relying on native `details`, fixing cases where the panel did not expand in the app browser.
+
+Per-question feedback notes are now keyed by assessment session, question id, and placement, so optional notes from a previous run/user cannot appear as stale text on the next assessment. New assessments also continue to clear submitted/draft feedback state.
+
+The optional profile survey now asks users to self-rate AI experience and confidence. Those signals calibrate the starting item difficulty before the adaptive engine switches to observed answer evidence.
+
 ## 2026-09-15: Assessment Quality Analytics Suite
 
 Admin now includes a 10-point assessment-quality suite: item discrimination, distractor analysis, artifact dependency, question clarity index, difficulty calibration, competency coverage heatmap, reliability estimate, written-response rubric audit, route/persona fit, and learning/report engagement. Each panel uses existing local MVP telemetry and labels insufficient data plainly when pilot volume is too low.

@@ -1205,9 +1205,11 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.home-more-panel > summary {
+.home-more-summary {
+  appearance: none;
   align-items: center;
   background: #ffffff;
+  border: 0;
   border-bottom: 1px solid var(--line);
   cursor: pointer;
   display: grid;
@@ -1215,13 +1217,11 @@ h3 {
   grid-template-columns: auto 1fr;
   list-style: none;
   padding: 22px clamp(20px, 5vw, 72px);
+  text-align: left;
+  width: 100%;
 }
 
-.home-more-panel > summary::-webkit-details-marker {
-  display: none;
-}
-
-.home-more-panel > summary span {
+.home-more-summary span {
   background: #17201d;
   border-radius: 999px;
   color: #fff;
@@ -1231,9 +1231,13 @@ h3 {
   text-transform: uppercase;
 }
 
-.home-more-panel > summary strong {
+.home-more-summary strong {
   color: var(--ink);
   font-size: clamp(18px, 2vw, 24px);
+}
+
+.home-more-content {
+  display: block;
 }
 
 .dashboard-shell {
