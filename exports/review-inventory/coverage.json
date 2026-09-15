@@ -1,0 +1,5925 @@
+{
+  "total": 3328,
+  "uniqueIds": 3328,
+  "layerCounts": {
+    "core": 768,
+    "function": 1296,
+    "industry": 320,
+    "executive": 944
+  },
+  "byDifficulty": {
+    "awareness": 832,
+    "applied": 832,
+    "proficient": 832,
+    "advanced": 832
+  },
+  "answerPositions": {
+    "a": 832,
+    "b": 832,
+    "c": 832,
+    "d": 832
+  },
+  "competencyDifficultyFamilies": 96,
+  "baseEvidencePatterns": 384,
+  "coverageCells": 736,
+  "coverage": [
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-core-concepts",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-core-concepts",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-core-concepts",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-core-concepts",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-capability-limits",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-capability-limits",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-capability-limits",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-capability-limits",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-media-provenance",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-media-provenance",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-media-provenance",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-media-provenance",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "core",
+      "scope": "general",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 8,
+      "actual": 8
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "general",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-media-provenance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-media-provenance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-media-provenance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D3-media-provenance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "marketing",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D1-capability-limits",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D1-capability-limits",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D1-capability-limits",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D1-capability-limits",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "sales",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D1-capability-limits",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D1-capability-limits",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D1-capability-limits",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D1-capability-limits",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-prompt-design",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-prompt-design",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-prompt-design",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-prompt-design",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "customerService",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "technical",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "function",
+      "scope": "operations",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "education",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "financial",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "healthcare",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-media-provenance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-media-provenance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-media-provenance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D3-media-provenance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "retail",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "industry",
+      "scope": "public",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "ceo",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D1-capability-limits",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D1-capability-limits",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D1-capability-limits",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D1-capability-limits",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "board",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-fairness-ethics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-trust-culture",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "people",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-data-chart-judgment",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D3-fraud-detection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-regulatory-policy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "finance",
+      "competency": "D6-role-clarity",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-genai-mechanics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-tool-selection",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-tool-selection",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-tool-selection",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-tool-selection",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-data-privacy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-data-privacy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-data-privacy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-data-privacy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "technology",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D1-ai-systems",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D1-ai-systems",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D1-ai-systems",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D1-ai-systems",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-agentic-workflows",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-output-refinement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-output-refinement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-output-refinement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D2-output-refinement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D3-source-verification",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D3-source-verification",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D3-source-verification",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D3-source-verification",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D4-security-governance",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D4-security-governance",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D4-security-governance",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D4-security-governance",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-usecase-fit",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-usecase-fit",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-usecase-fit",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-usecase-fit",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-roi-metrics",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-roi-metrics",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-roi-metrics",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-roi-metrics",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-portfolio-prioritization",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D5-transformation-strategy",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-change-enablement",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-change-enablement",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-change-enablement",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-change-enablement",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-learning-loops",
+      "difficulty": "awareness",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-learning-loops",
+      "difficulty": "applied",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-learning-loops",
+      "difficulty": "proficient",
+      "target": 4,
+      "actual": 4
+    },
+    {
+      "layer": "executive",
+      "scope": "transformation",
+      "competency": "D6-learning-loops",
+      "difficulty": "advanced",
+      "target": 4,
+      "actual": 4
+    }
+  ],
+  "longestAnswerReviewCount": 6,
+  "longestAnswerReviewIds": [
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-02",
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-06",
+    "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-AWARENESS-04",
+    "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-AWARENESS-08",
+    "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
+    "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-07"
+  ],
+  "liveInventoryCount": 634
+}
