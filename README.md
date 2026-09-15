@@ -1,32 +1,44 @@
 # SC Horizon / New Horizon
 
-Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, executive assessment, learning paths, and AI trend awareness.
+Adaptive AI readiness assessment MVP for practical AI literacy, role/function diagnostics, premium role context, learning paths, and AI trend awareness.
 
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
+- Simplified public tiers: Free Assessment and Premium Diagnostic, with executive/leadership context handled inside Premium
+- Home-page tabs for global AI framework mapping and transparent scoring/adaptive-testing logic
 - Free, premium, executive, and function-aware assessment flows
 - Adaptive question routing with visible difficulty and psychometric/IRT-style indicators
 - Multimodal and artifact-based question bank with realistic screenshots, invoices, dashboards, logs, source excerpts, workflows, and fraud/media-review tasks
 - Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
+- Artifact relevance gate that hides decorative, redundant, generic, or non-evidence artifacts during scored assessment
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores
 - Continue-assessment option after mandatory 12/20-question routes when confidence or coverage is weak
+- Assessment-mapped AI bootcamp/workshop recommendations with expandable details for audience, learning outputs, rationale, labs, and framework alignment
 - User profile builder and signal logging
 - Optional landing-page profile pulse that asks for current AI interests and routes later questions accordingly
 - Per-question behavior telemetry for timing, revisions, hesitation, selected versus expected answers, abandonment, mandatory completion, optional continuation, and report engagement
 - End-of-assessment feedback exchange that unlocks question-level response and local benchmark analysis
 - Top-10 score leaderboard scoped to the user's assessment persona/group
+- Anonymous leaderboard display by default, with real names or aliases reserved for future explicit opt-in
 - Landing-page daily/weekly top-10 teaser and peer-insight cards to motivate users to see where they rank
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
-- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
+- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, promotion gates, approval/rejection states, activity reports, and safety-cut handling for repeated loops
 - Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
+- Global framework crosswalk mapping D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
 - Supabase schema draft for user profiles and assessment sessions
+
+## Language Support
+
+The app supports English and Thai through the `EN` / `TH` toggle in the top navigation. The selected language is stored in local browser storage with `new-horizon-language-v1`.
+
+Thai copy should be simple, natural Thailand Thai. Do not translate core technical terms that users need to recognize in the market or tools, including AI, Workflow, Prompt, Model, Agent, API, RAG, LLM, ROI, KPI, Domain, Competency, telemetry, Platform, and Assessment.
 
 ## Latest Change Report
 
@@ -35,10 +47,41 @@ Detailed telemetry and agent documentation:
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
+- [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
+- [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+- [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
+
+Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
+
+Latest framework/artifact quality update: the D1-D6 framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. Artifact and lab quality standards now require relevant, necessary, realistic, legible evidence and complete pilot-lab instructions, scoring criteria, expected outputs, and debriefs before release.
+
+Latest assessment-quality analytics update: Admin now includes 10 quality-analysis panels covering item discrimination, distractors, artifact dependency, clarity risk, difficulty calibration, competency coverage, reliability, written-rubric behavior, route/persona fit, and report recommendation engagement. These use local MVP telemetry and clearly mark insufficient data until pilot volume is large enough.
+
+Latest calibration update: Admin quality review now includes an item calibration dashboard with attempt count, average score/time, confusion rate, artifact action rate, feedback polarity, difficulty mismatch, artifact presence, and recommended human-review action. Review signals can de-prioritize weak items in routing, but item rewrites, artifact replacement, recalibration, and retirement remain human-approved.
+
+Latest routing update: adaptive question selection now uses profile domain targets before general weak-domain balancing. General free users are routed mostly toward D1/D2/D3/D6, while premium routes blend function, industry, and professional baseline targets. The analysis tab shows target counts by domain, and answer review now includes a practice cue after each question.
+
+Research documentation update: `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` now records the source-backed rationale for profile-weighted question routing and radar targets. It maps the recommendation to UNESCO, OECD/European Commission, EU AI Act Article 4, NIST AI RMF, DigComp 2.2, ISO/IEC 42001, and Singapore AI Verify/MGF GenAI.
+
+Latest radar-target update: profile targets now show distinct radar shapes. General users emphasize foundations, practical tooling, and critical judgment; work/team/function/industry/premium contexts shift targets toward the domains most relevant to the selected profile. Premium target blending now weights function first, industry second, and professional baseline third.
+
+Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
+
+Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
+
+Latest UX priority update: the landing page is simplified around Free Assessment, Premium Diagnostic, peer comparison, and concise guide cards. Heavier explanatory content now sits behind an expandable `Explore more` panel. Leaderboards use anonymous labels by default. Premium now includes role, function, and industry context instead of exposing a separate executive assessment tier. Question-level feedback resets at the start of each assessment and disables browser autocomplete on the comment input to prevent stale notes from prior users. Artifact cards now show an `Inspect for` cue so users know why the document/image matters before spending time on it.
+
+Latest bootcamp update: the report learning path now recommends New Horizon bootcamps and workshops when guided practice is a better next step than a self-paced course alone. Recommendations use weak domains, overall score, assessment mode, function track, executive role, weak competencies, and profile tags. Users can expand each workshop to see who it is for, why to take it, expected learning outputs, labs, best-fit roles, and framework alignment.
+
+Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
+
+Latest artifact relevance cleanup: more low-value concept cards, simple workflow diagrams, generic product maps, and explanatory visual cards are hidden when the question can be answered without inspecting them. The same helpful-artifact gate now drives artifact-backed item counts, adaptive routing, telemetry analysis, and admin artifact replacement briefs. Future questions should show artifacts only when they contain evidence needed by the answer key, clarify context, or simulate realistic document inspection.
 
 Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
 
 Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
+
+Latest artifact relevance update: the assessment now hides several low-value concept/rollout artifacts when the scenario and answer options already contain enough evidence. Adaptive routing also counts only helpful displayed visuals, so the system does not reward decorative images as artifact-backed evidence. Future artifacts should either contain necessary evidence, make the scenario clearer, or simulate realistic document inspection.
 
 Latest evidence-completion update: after the standard 12-question or 20-question milestone, users can continue in targeted batches until planned and profile-priority competencies have high-confidence evidence or the safety cap is reached. This makes the full assessment more adaptive than a fixed-length quiz while still keeping a clear stopping rule.
 
@@ -116,7 +159,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
 
-The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. Each proposal stays in pending review until an admin approves or rejects it. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
+The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, assessment blueprint agent, AI concepts scout, AI newsfeed agent, training/course scout, assessment item generator, stimulus builder, feedback analysis agent, psychometric monitor, data quality monitor, localization QA agent, report UX agent, framework alignment agent, and reviewer/QA agent. Each proposal must move through review and promotion gates before publishing. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
 
 Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
 
@@ -128,6 +171,8 @@ See:
 - `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
 - `docs/TELEMETRY_TRACKING_PURPOSE.md`
 - `docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`
+- `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`
+- `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`
 
 Draft tables:
 
@@ -170,6 +215,18 @@ pnpm crawl:training
 - Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
 - The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
 
+## Production Analytics Readiness Checklist
+
+Before calling the platform production-ready, move the analysis loop from browser-local MVP logs to governed server-side data:
+
+- Persist assessment behavior events, question answers, question feedback, survey responses, profile signals, score logs, artifact interactions, continuation decisions, report-interest clicks, and agent-review decisions in Supabase/Postgres or an equivalent warehouse.
+- Create anonymized aggregate views for question quality, artifact quality, competency coverage, profile routing, score distribution, leaderboard cohorts, abandonment, continuation, and report engagement.
+- Separate identifiable account/profile data from assessment evidence, with clear consent, retention, deletion, and export rules.
+- Add admin role claims, tenant/organization scoping, RLS policies, audit logs, and export controls before exposing analytics dashboards.
+- Version questions, rubrics, artifacts, scoring parameters, profile ontology, surveys, and learning recommendations so historical scores remain explainable after changes.
+- Calibrate item difficulty, discrimination, guessing, partial-credit thresholds, confidence, and score bands from pilot data before using scores for high-stakes decisions.
+- Require human approval for agent-proposed edits to scored content, artifacts, rubrics, profile fields, survey wording, learning paths, and framework mappings.
+
 ## Scoring Model
 
 The assessment separates answer quality from readiness evidence.
@@ -179,6 +236,8 @@ The assessment separates answer quality from readiness evidence.
 - Easier items are capped below advanced readiness even when answered perfectly.
 - Harder items can award stronger readiness evidence, including meaningful credit for partially correct proficient or advanced work.
 - The final readiness label is evidence-gated: Advanced requires strong advanced-item evidence, and Proficient requires strong proficient-item evidence.
+- Blank or unattempted responses receive `0` raw score and `0` readiness evidence.
+- Correct answers are not automatically `100`; most expert-seeded top answers are `95` or `98` to leave room for calibration and more complete advanced evidence.
 
 Current seeded readiness bands:
 
@@ -190,6 +249,29 @@ Current seeded readiness bands:
 | Advanced | 82 | 100 |
 
 This is still an MVP calibration model. Production scoring should tune item difficulty, discrimination, guessing, and partial-credit thresholds from pilot response data.
+
+No-response handling:
+
+- Blank written response: `0`
+- Multi-select submitted with no choices: `0`
+- Matching submitted with no selected pairs: `0`
+- Unanswered mini-parts: `0` for each missing part
+- Partial credit begins only when the user submits actual scored evidence
+
+During test review, the platform shows a score explanation panel after each answer. It explains the raw answer score, the difficulty-adjusted readiness evidence, and the maximum evidence allowed by the item difficulty band.
+
+Score derivation:
+
+1. Question raw score: selected option score, multi-select credit minus distractor penalty, matching accuracy, ranking exact-position accuracy, written rubric hits, or average mini-part score.
+2. Question readiness evidence: raw score is converted through the difficulty band. Awareness, Applied, Proficient, and Advanced items have different partial anchors and maximum contribution caps.
+3. Competency score: average readiness evidence from all question signals mapped to that competency.
+4. Domain score: average readiness evidence for the domain. Secondary-domain evidence contributes at `0.35` weight.
+5. Overall score: average of D1-D6 domain scores. Unsampled domains score `0` in the MVP.
+6. Readiness label: evidence-gated. Advanced requires `85+` overall plus strong advanced-item evidence; Proficient requires `70+` overall plus strong proficient-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, item discrimination `a`, difficulty `b`, guessing `c`, information, and SEM are currently telemetry/calibration signals. They affect routing, reporting, and future review, but they do not directly add or subtract score yet.
+
+Pilot confidence is a separate evidence-stability estimate, not a correctness score. In the current MVP it starts from the assessment-mode base (`38` free, `48` premium, `54` executive), adds the mode step for each answered item (`4`, `3`, and `3` respectively), and is capped at `88`, `94`, or `96`. Competency-level confidence is more granular: it reflects repeated evidence for that competency (`sampled once`, `early estimate`, or `stronger estimate`). The large number shown in a continuation card is the recommended follow-up question count, not confidence; the report now labels it explicitly as “questions” and shows the actual confidence percentage beside the recommendation.
 
 The live bank now includes 240 generated advanced competency items: 10 advanced items for each of the 24 granular competencies. These items are explicitly mapped to one competency each and are available to the regular/premium bank and as advanced extension items for the executive route.
 

@@ -20,6 +20,7 @@ Captured events:
 - `assessment_started`: mode, audience, function, industry, executive role, target question count.
 - `question_shown`: question id, domain, competency ids, difficulty, interaction type, answered count, target count.
 - `question_answered`: selected answer, expected answer ids, readiness score, domain, competency ids, difficulty, interaction type, elapsed time, interaction count, revision count, hesitation classification.
+- `question_feedback`: item-level user feedback while the question is still visible; captures useful/unclear/comment signal, optional note, question id, domain, competency ids, difficulty, interaction type, answered count, and target count.
 - `assessment_abandoned`: active question, answered count, target count, profile context.
 - `mandatory_completed`: completion of the required 12-question or 20-question milestone.
 - `continuation_accepted`: chosen continuation route, route kind, target count, reason label.
@@ -99,6 +100,29 @@ Telemetry supports five product loops.
 
 The assessment separates raw correctness from readiness evidence. Easier items are capped below advanced readiness, while proficient and advanced items can produce stronger readiness evidence.
 
+Correct answers are not automatically scored as `100`; top seeded answers commonly score `95` or `98` so later pilot calibration can distinguish strong, complete, and advanced evidence. Blank or unattempted responses receive `0` raw score and `0` readiness evidence. Written responses with no rubric hits also receive `0`; the system should not award a courtesy floor for irrelevant text.
+
+The product shows the score derivation during answer review and in the final report:
+
+1. Question raw score is derived from selected option, multi-select, matching, ranking, written rubric, or mini-part scoring.
+2. Raw score is converted into difficulty-adjusted readiness evidence.
+3. Competency score averages readiness evidence for mapped competency signals.
+4. Domain score averages readiness evidence by domain, with secondary domains weighted at `0.35`.
+5. Overall assessment score averages D1-D6 domain scores.
+6. Readiness label is evidence-gated by overall score and strong harder-item evidence.
+
+Response time, hesitation, artifact zoom/open behavior, guessing estimate `c`, item discrimination `a`, item difficulty `b`, information, and SEM are currently telemetry/calibration signals. They inform routing, confidence, and quality review, but they do not directly change score yet.
+
+Guessing control rules:
+
+- Multi-select items should use all-that-apply scoring with wrong-selection penalties and no positive floor.
+- Matching items should score only the percentage of correct pairings and no positive floor.
+- Ranking items should score exact-position evidence and no positive floor.
+- Written items should score only detected rubric evidence; blank or unsupported text is `0`.
+- Single-choice items should be phased down for advanced evidence unless the distractors are genuinely plausible and artifact-dependent.
+
+The report's pilot-confidence percentage is currently an evidence-stability heuristic: mode base plus a mode-specific increment for each answered item, capped by mode (`38 + 4/item`, cap `88` for free; `48 + 3/item`, cap `94` for premium; `54 + 3/item`, cap `96` for executive). This is intentionally separate from correctness and readiness scoring. Competency confidence is based on repeated evidence for the mapped competency. A continuation card's prominent number is the recommended number of follow-up questions; the UI labels it as such and shows the confidence percentage separately.
+
 Telemetry helps estimate:
 
 - whether a score is based on enough evidence
@@ -151,15 +175,26 @@ Personalization should be explainable to users. The product should avoid hidden 
 Telemetry can nominate improvement candidates:
 
 - confusing question wording
+- question-level useful/unclear/comment feedback
 - weak distractors
 - overly easy advanced items
 - unrealistic or illegible artifacts
+- artifacts that are decorative, irrelevant, or missing the evidence required by the answer key
+- written prompts that are too broad, ambiguous, or impossible to score consistently
 - bad competency mapping
 - missing profile fields
 - intrusive or low-value survey questions
 - low continuation conversion
 - high abandonment points
 - report sections nobody engages with
+
+The admin quality gate classifies question candidates as:
+
+- `keep`: no meaningful negative signal yet; the item can stay in active routing.
+- `watch`: at least one negative or unclear signal; gather more attempts and inspect the item.
+- `review`: repeated unclear/comment signals or high confusion; quarantine for rewrite, artifact replacement, rubric tuning, or retirement before heavy scored use.
+
+Adaptive routing applies a penalty to `review` items so they are not favored while still allowing them as a fallback when competency coverage has no better alternative.
 
 ## Agent Orchestration
 
@@ -185,14 +220,19 @@ Draft proposal types:
 - `artifact`: replace or improve a stimulus.
 - `profile`: update profile ontology or routing tags.
 - `survey`: change survey wording, timing, or unlock value exchange.
+- `feedback`: summarize survey and behavior themes before recommending platform edits.
 - `learning`: refresh learning recommendations.
 - `news`: draft AI Watch briefs.
 
-## Agent Roles
+## MVP Go-Live Agent Roles
 
 ### Orchestrator Agent
 
 Coordinates runs, budgets, source limits, dedupe, state transitions, and admin review queues. Owns workflow state, not truth.
+
+### Assessment Blueprint Agent
+
+Owns the assessment blueprint before items are created or revised. It checks the 22 competencies, D1-D6 domain targets, four difficulty levels, role/function/industry mappings, profile-weighted routing rules, and evidence minimums. Its output is a coverage gap map for competencies, personas, industries, difficulty levels, and item formats.
 
 ### AI Concepts Scout
 
@@ -208,19 +248,90 @@ Finds courses, tutorials, tools, certificates, and practice resources. Recommend
 
 ### Assessment Item Generator
 
-Drafts new questions, answer keys, rubrics, partial-credit logic, difficulty estimates, competency mappings, and stimulus recommendations. It should prioritize artifact review, matching, multi-select, drag-order, written response, and concept clusters.
+Drafts new questions, answer keys, rubrics, partial-credit logic, difficulty estimates, competency mappings, and stimulus requirements from the Assessment Blueprint. It should prioritize artifact review, matching, multi-select, drag-order, written response, and concept clusters.
+
+Item drafts are not ready for scored use unless they pass these checks:
+
+- The artifact is necessary to answer the question.
+- The artifact contains the same evidence referenced by the correct answer, distractors, rubric, and explanation.
+- The artifact looks like a plausible real-world work document, screenshot, message, chart, workflow, or source packet rather than a decorative mockup.
+- Distractors are plausible misconceptions, not obviously wrong wording patterns.
+- Written-response prompts name the task, context, expected evidence, and scoring lens clearly enough for repeatable rubric scoring.
+- Advanced items require synthesis, tradeoff judgment, verification, governance, or implementation reasoning; they cannot be answered by spotting generic "human, AI, or both" ownership language alone.
+
+### Feedback Analysis Agent
+
+Analyzes assessment survey ratings, free-text suggestions, abandonment, continuation choices, hesitation signals, long answer times, and artifact zoom/open behavior. It groups feedback into themes, estimates evidence strength, identifies affected users or personas, and recommends whether admins should monitor, rewrite, replace an artifact, recalibrate difficulty, adjust profile collection, or revise survey wording.
+
+This agent should produce suggestions before edits. It should not change scored content, survey questions, artifacts, profile fields, or scoring by itself.
 
 ### Reviewer and QA Agent
 
 Checks source support, duplicates, item answerability, distractor quality, artifact realism, accessibility, privacy/risk issues, format balance, and publish readiness.
 
-### Future Psychometric Monitor
+### Psychometric Monitor
 
-Should review item difficulty drift, discrimination, guessing, partial-credit thresholds, response time, fairness, and cohort validity once enough pilot data exists.
+Reviews item difficulty drift, discrimination, guessing, partial-credit thresholds, response time, fairness, cohort validity, and score stability. During MVP, it must label low-volume findings as `insufficient data` and recommend monitor/recalibrate/rewrite decisions rather than silently changing scoring.
 
-### Future Stimulus Builder
+### Stimulus Builder Agent
 
-Should create or refresh realistic artifacts, but only after telemetry or survey evidence identifies a need. Human review should confirm relevance, readability, and answerability.
+Creates or refreshes realistic artifacts after telemetry, feedback, or blueprint evidence identifies a need. It produces artifact briefs, candidate asset requirements, realism checks, legibility checks, accessibility notes, and answer-key evidence mapping. Human review confirms relevance, readability, accessibility, and answerability before publishing.
+
+### Data Quality Monitor
+
+Checks whether telemetry is complete enough for analysis. It flags missing events, duplicate sessions, local-only data, missing question/rubric/artifact versions, incomplete score logs, stale feedback state, broken exports, and analytics views with insufficient sample size.
+
+### Localization QA Agent
+
+Reviews English and Thai surfaces for untranslated strings, awkward literal translation, context mismatch, preserved technical terms, layout overflow, and wording that may confuse Thai users. It should test landing, onboarding, assessment, report, feedback, Admin, telemetry, and scoring surfaces.
+
+### Report UX Agent
+
+Analyzes report-interest clicks, continuation behavior, survey feedback, and learning-resource engagement. It recommends changes to report ordering, wording, score explanations, course/bootcamp placement, and `Did you know?` prompts so users see the most useful next action first.
+
+### Framework Alignment Agent
+
+Checks whether domains, competencies, questions, scoring explanations, telemetry usage, agent recommendations, and learning resources remain aligned with the external framework crosswalk. It should reference UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, Gartner, McKinsey, and BCG where applicable, without claiming certification equivalence.
+
+## Content and Governance Separation
+
+Content-producing agents:
+
+- Assessment Item Generator
+- Stimulus Builder Agent
+- Training and Course Scout
+- AI Newsfeed Agent
+- AI Concepts Scout
+
+Governance and quality agents:
+
+- Reviewer and QA Agent
+- Psychometric Monitor
+- Data Quality Monitor
+- Framework Alignment Agent
+- Localization QA Agent
+- Report UX Agent
+- Feedback Analysis Agent
+
+The Orchestrator coordinates both groups and prevents a content-producing agent from approving its own work.
+
+## Proposal Promotion Gates
+
+Agent proposals must move through explicit states:
+
+```text
+draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored
+```
+
+State rules:
+
+- `draft`: generated recommendation; not used in scored assessment.
+- `reviewed`: human or Reviewer/QA agent has checked basic answerability, safety, and relevance.
+- `pilot-ready`: approved for limited pilot exposure with version tags.
+- `pilot-tested`: enough telemetry exists to review performance.
+- `approved`: human reviewer accepts the item/artifact/rubric/scoring/profile/survey/learning change.
+- `published`: versioned content is live.
+- `monitored`: post-release telemetry is watched for regressions.
 
 ## Human Review Gates
 
@@ -255,6 +366,7 @@ Recommended production tables:
 - `agent_steps`
 - `agent_draft_proposals`
 - `agent_review_decisions`
+- `feedback_theme_summaries`
 - `content_versions`
 - `source_records`
 - `audit_events`
