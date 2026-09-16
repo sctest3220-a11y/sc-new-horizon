@@ -4,7 +4,9 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Draft Question Inventory
 
-A separate 3,328-item review inventory is available on `Lufy-branch`: 768 core, 1,296 function, 320 industry, and 944 executive variants. All are English drafts with provisional difficulty and pending review. They share 96 decision families and 384 base evidence patterns; they are not calibrated independent items. The existing 634 live questions are unchanged. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md) and [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx).
+A separate **3,328-item draft review inventory** is now tracked on `main`: 768 core, 1,296 function, 320 industry, and 944 executive variants. The draft bank includes English content plus machine-assisted Thai review fields for the question inventory workflow. It also includes recommended live formats, artifact-need analysis, user-facing rewrite drafts, review metadata, and translation QA output. The items share 96 decision families and 384 base evidence patterns; they are coverage variants, not calibrated independent items.
+
+The existing **634 live questions remain separate** and are exported for side-by-side admin review. Use the admin inventory page at `/admin/question-inventory` to review draft and live questions, switch English/Thai at page and question level, filter by domain/competency/difficulty/profile, and capture reviewer ratings/comments locally. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md), [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx), [question JSON](exports/review-inventory/questions.json), [live-bank export](exports/review-inventory/live-questions.json), [artifact needs](exports/review-inventory/artifact-needs.md), and [Thai translation QA](exports/review-inventory/thai-translation-qa.json).
 
 ## What It Includes
 
@@ -54,6 +56,8 @@ Detailed telemetry and agent documentation:
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 - [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
+
+Latest question-inventory update: the 3,328-item review inventory and the existing 634 live questions are now available from the Admin Question Inventory page. The review workflow supports English/Thai viewing, question-level language overrides, role/function/industry/profile filters, reviewer ratings, saved feedback history, review-count/status indicators, artifact-need briefs, and translation QA output. Thai fields are machine-assisted reviewer drafts and should receive human language review before production use. The inventory is on `main`; references to the older `Lufy-branch` milestone are obsolete.
 
 Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
 
