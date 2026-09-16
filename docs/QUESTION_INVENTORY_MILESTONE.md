@@ -20,8 +20,16 @@ Every difficulty level contains 832 drafts. All 736 mapped competency/difficulty
 - [Question data](../exports/review-inventory/questions.json): complete item content, option-level feedback, proposed scoring, profile tags, provenance, review status, and content hashes.
 - [Coverage audit](../exports/review-inventory/coverage.json): exact counts and mechanical review candidates.
 - [48 samples](../exports/review-inventory/samples.md): one applied core and one advanced specialized example for each competency.
+- [Artifact needs](../exports/review-inventory/artifact-needs.md): scanner output showing which draft questions require or benefit from artifacts, grouped into reusable artifact families.
+- [Artifact candidate CSV](../exports/review-inventory/artifact-needs.csv): item-level artifact recommendations for offline review.
+- [Artifact family backlog](../exports/review-inventory/artifact-family-backlog.csv): reusable generation backlog so reviewers do not create one-off duplicate visuals for similar items.
+- [User-facing rewrite samples](../exports/review-inventory/user-facing-rewrite-samples.md): before/after examples showing the writing and interaction standard required before draft items can become live assessment questions.
 
 The earlier `exports/new-horizon-question-bank-review.xlsx` still describes the existing live bank.
+
+## Live readiness warning
+
+The generated review inventory should not be promoted directly into the live assessment. The bank is useful as a coverage scaffold, but many draft items still read as abstract, repetitive, and overly generator-shaped. Before pilot use, selected item families need human-facing rewrites that use plain scenarios, concrete actions, realistic artifacts, and varied formats such as multi-part, matching, select-all, ranking, and artifact review. The rewrite samples linked above define the current target standard.
 
 ## What was authored
 
@@ -29,7 +37,13 @@ The bank uses **96 competency/difficulty decision families**, containing **384 b
 
 These are related item variants, not 3,328 independently authored or empirically calibrated problems. Shared `familyId` and `casePatternId` values make this relationship explicit. Reviewers should compare sibling forms and flag superficial variation, overly obvious distractors, and repeated answer clues. Unique IDs and non-identical full text do not establish psychometric independence.
 
-All drafts use a single-best-answer interaction with four options. Calculation examples have scenario-specific distractors for plausible arithmetic or interpretation errors. Each option has feedback. The proposed raw key is 100 for the best answer and 0 for the other choices; partial credit has not been inferred. These items measure scenario judgment and knowledge, not observed hands-on task performance. No new visual artifacts, live tool tasks, or Thai translations are included.
+All drafts currently preserve a single-best-answer audit key with four options so reviewers can compare coverage, keys, and distractors consistently. This is not the intended final live-test experience for every item. Each draft now includes a recommended live format such as scenario choice, select-all-safe-actions, matching, compare-and-choose, ranked decision, or multi-part scenario. Multi-part questions are especially recommended when one item asks users to diagnose the AI issue and also apply a role, industry, or executive constraint.
+
+Calculation examples have scenario-specific distractors for plausible arithmetic or interpretation errors. Each option has feedback. The proposed raw key is 100 for the best answer and 0 for the other choices; partial credit has not been inferred. These items measure scenario judgment and knowledge, not observed hands-on task performance. No new visual artifacts, live tool tasks, or Thai translations are included.
+
+After early review, the generated visible stem was shortened so users do not have to parse a long administrative paragraph before answering. Each item now uses a compact structure: scenario, source, rule, risk, evidence, and optional profile cue. The original source scenario remains available in structured metadata for audit and future rewriting. Each item also includes readability metadata for context words, prompt words, and longest option words; items exceeding the provisional target are flagged with `readability-review`.
+
+An artifact-needs scanner now reviews the draft inventory for cases where a visual/document artifact would improve answerability. The latest scan finds 3,235 artifact candidates: 2,667 require an artifact and 568 would be helped by one. These are grouped into 389 reusable artifact families across source/version comparisons, workflow traces, security/audit logs, data dashboards, communication threads, media provenance boards, and policy excerpts. Generate reusable, legible artifact templates from the family backlog before wiring these draft questions into live assessment.
 
 Difficulty describes intended cognitive demand:
 
@@ -45,9 +59,10 @@ The labels remain provisional. A long stem, technical terminology, or an executi
 1. Filter the workbook by competency, difficulty, layer, and profile. Review a family together before inspecting all contextual variants.
 2. Check that the evidence is sufficient, exactly one option is best, and each distractor is plausible for this scenario. Use the notes column for a proposed correction.
 3. Check that the profile constraint creates a meaningful specialized decision. Reject variants that only change vocabulary or combine unrelated problems.
-4. Review difficulty, reading load, language, answer-length clues, cultural assumptions, and similarity. The audit currently flags six items for an answer-length comparison; this is a heuristic, not an item-quality verdict.
-5. Record a reviewer, check results, and a decision: Pending, Approve for pilot, Revise, or Reject. Approval in the workbook is a recorded decision only; it does not change the JSON or publish a question.
-6. Reconcile approved revisions into versioned source before a separately authorized pilot. Track item and family exposure, response accuracy, distractor selection, timing, discrimination, subgroup performance, and uncertainty. Use fresh or held-out forms to distinguish transfer from answer recall.
+4. Review the recommended live format. Convert suitable drafts into multi-part, select-all, matching, ranking, short response, or artifact-based tasks before pilot use.
+5. Review difficulty, reading load, language, answer-length clues, cultural assumptions, and similarity. The audit currently flags six items for an answer-length comparison and separately flags any item that exceeds the readability target; these are heuristics, not item-quality verdicts.
+6. Record a reviewer, check results, and a decision: Pending, Approve for pilot, Revise, or Reject. Approval in the workbook is a recorded decision only; it does not change the JSON or publish a question.
+7. Reconcile approved revisions into versioned source before a separately authorized pilot. Track item and family exposure, response accuracy, distractor selection, timing, discrimination, subgroup performance, and uncertainty. Use fresh or held-out forms to distinguish transfer from answer recall.
 
 Keep related evidence patterns out of the same scored session when possible. Later routing should match function, industry, and executive tags, respect reviewed status, and avoid treating repeated forms as independent evidence. None of those live-routing changes are part of this draft-only milestone.
 

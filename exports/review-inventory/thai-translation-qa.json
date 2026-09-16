@@ -1,0 +1,4950 @@
+{
+  "issueCount": 22492,
+  "topFragments": [
+    [
+      "The",
+      1412
+    ],
+    [
+      "the",
+      732
+    ],
+    [
+      "Which",
+      316
+    ],
+    [
+      "Finance",
+      304
+    ],
+    [
+      "operating",
+      204
+    ],
+    [
+      "Cross-functional professional",
+      176
+    ],
+    [
+      "Transformation",
+      176
+    ],
+    [
+      "ed",
+      166
+    ],
+    [
+      "Marketing",
+      160
+    ],
+    [
+      "Sales",
+      160
+    ],
+    [
+      "Customer",
+      160
+    ],
+    [
+      "Technical",
+      160
+    ],
+    [
+      "engineering",
+      160
+    ],
+    [
+      "escalation",
+      160
+    ],
+    [
+      "Technology",
+      160
+    ],
+    [
+      "boundary",
+      150
+    ],
+    [
+      "Board",
+      144
+    ],
+    [
+      "management executes controls",
+      144
+    ],
+    [
+      "of their effectiveness",
+      144
+    ],
+    [
+      "it",
+      129
+    ],
+    [
+      "ments",
+      119
+    ],
+    [
+      "and",
+      118
+    ],
+    [
+      "ing",
+      117
+    ],
+    [
+      "ment",
+      116
+    ],
+    [
+      "value",
+      105
+    ],
+    [
+      "trans",
+      98
+    ],
+    [
+      "Compare",
+      96
+    ],
+    [
+      "while the",
+      96
+    ],
+    [
+      "channel",
+      96
+    ],
+    [
+      "to the",
+      89
+    ],
+    [
+      "Select all that apply",
+      88
+    ],
+    [
+      "authorized approver",
+      81
+    ],
+    [
+      "rely on the",
+      80
+    ],
+    [
+      "s before",
+      80
+    ],
+    [
+      "test only the",
+      80
+    ],
+    [
+      "terms",
+      80
+    ],
+    [
+      "management",
+      72
+    ],
+    [
+      "An",
+      70
+    ],
+    [
+      "with",
+      70
+    ],
+    [
+      "lifecycle",
+      68
+    ],
+    [
+      "based",
+      65
+    ],
+    [
+      "business",
+      64
+    ],
+    [
+      "Education",
+      64
+    ],
+    [
+      "staff  learner-impacting recommendations",
+      64
+    ],
+    [
+      "no student",
+      64
+    ],
+    [
+      "can leave the",
+      64
+    ],
+    [
+      "Financial",
+      64
+    ],
+    [
+      "s need independent verification and an",
+      64
+    ],
+    [
+      "Healthcare administration",
+      64
+    ],
+    [
+      "the assistant supports administration only",
+      64
+    ],
+    [
+      "clinical questions go to a qualified",
+      64
+    ],
+    [
+      "Retail",
+      64
+    ],
+    [
+      "returns promises has to match the",
+      64
+    ],
+    [
+      "Public",
+      64
+    ],
+    [
+      "eligibility decisions need authorized staff and",
+      64
+    ],
+    [
+      "a usable",
+      64
+    ],
+    [
+      "vali",
+      63
+    ],
+    [
+      "results",
+      60
+    ],
+    [
+      "addresses the immediate security",
+      60
+    ],
+    [
+      "control architecture",
+      60
+    ],
+    [
+      "treat the",
+      60
+    ],
+    [
+      "but the",
+      59
+    ],
+    [
+      "is",
+      59
+    ],
+    [
+      "to change the",
+      55
+    ],
+    [
+      "has no",
+      55
+    ],
+    [
+      "s and",
+      53
+    ],
+    [
+      "Local",
+      53
+    ],
+    [
+      "dependency",
+      52
+    ],
+    [
+      "business-",
+      52
+    ],
+    [
+      "against the",
+      51
+    ],
+    [
+      "One",
+      51
+    ],
+    [
+      "full",
+      51
+    ],
+    [
+      "is visible in the",
+      48
+    ],
+    [
+      "its",
+      48
+    ],
+    [
+      "master",
+      48
+    ],
+    [
+      "Which use-",
+      48
+    ],
+    [
+      "ment is missing",
+      48
+    ],
+    [
+      "the proposal",
+      48
+    ],
+    [
+      "Which  decision is best justified by",
+      48
+    ],
+    [
+      "The new",
+      48
+    ],
+    [
+      "Treat the",
+      46
+    ],
+    [
+      "is directly described",
+      44
+    ],
+    [
+      "data flow",
+      44
+    ],
+    [
+      "Which system-level control addresses the",
+      44
+    ],
+    [
+      "Which statement follows",
+      44
+    ],
+    [
+      "the exercise",
+      44
+    ],
+    [
+      "Which  interpretation is justified by the",
+      44
+    ],
+    [
+      "Which governance change addresses the documented",
+      44
+    ],
+    [
+      "Which responsibility is missing",
+      44
+    ],
+    [
+      "Which assignment resolves the stated",
+      44
+    ],
+    [
+      "Which interpretation best",
+      44
+    ],
+    [
+      "flow",
+      44
+    ],
+    [
+      "Which operating- change best addresses the",
+      44
+    ],
+    [
+      "Two departments disagree about a dependency",
+      44
+    ],
+    [
+      "and neither has accepted the",
+      44
+    ],
+    [
+      "Distributing a document",
+      44
+    ],
+    [
+      "resolve responsibility for the",
+      44
+    ],
+    [
+      "resolve the dependency with a named",
+      44
+    ],
+    [
+      "receiving",
+      44
+    ],
+    [
+      "send the",
+      44
+    ]
+  ],
+  "issues": [
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-04",
+      "field": "context",
+      "fragments": [
+        "search"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Workflow นี้ใช้หลายส่วนร่วมกัน: Model, search index, สิทธิ์ และหน้าจอ review. ทีมต้องเข้าใจว่าการตั้งค่าแบบใดเหมาะกับงานนี้ เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-08",
+      "field": "context",
+      "fragments": [
+        "search"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Workflow นี้ใช้หลายส่วนร่วมกัน: Model, search index, สิทธิ์ และหน้าจอ review. ทีมต้องเข้าใจว่าการตั้งค่าแบบใดเหมาะกับงานนี้ เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-01",
+      "field": "option:a",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-01",
+      "field": "option:d",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
+      "field": "option:a",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
+      "field": "option:d",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-03",
+      "field": "option:c",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-03",
+      "field": "option:d",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04",
+      "field": "option:b",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04",
+      "field": "option:d",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-05",
+      "field": "option:b",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-05",
+      "field": "option:d",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
+      "field": "option:a",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
+      "field": "option:c",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-07",
+      "field": "option:a",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-07",
+      "field": "option:c",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08",
+      "field": "option:a",
+      "fragments": [
+        "lookup"
+      ],
+      "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08",
+      "field": "option:d",
+      "fragments": [
+        "tool"
+      ],
+      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
+      "field": "context",
+      "fragments": [
+        "A template",
+        "selects the wrong category before any",
+        "is called"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A template กฎ selects the wrong category before any Model is called. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
+      "field": "explanation",
+      "fragments": [
+        "The wrong  path precedes the generative",
+        "component"
+      ],
+      "text": "The wrong input path precedes the generative component."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
+      "field": "option:b",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
+      "field": "context",
+      "fragments": [
+        "Two apps use the same",
+        "Only one can",
+        "the",
+        "and only that app answers the",
+        "question correctly"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด สื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว and only that app answers the เวอร์ชัน question correctly. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
+      "field": "explanation",
+      "fragments": [
+        "A shared",
+        "imply shared"
+      ],
+      "text": "A shared Model ไม่ได้ imply shared แหล่งข้อมูล การเข้าถึง."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
+      "field": "option:d",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
+      "field": "context",
+      "fragments": [
+        "The same app and",
+        "are held fixed",
+        "B misses a",
+        "d distinction that  A makes on",
+        "tests"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "difference remains after the",
+        "and application are held fixed"
+      ],
+      "text": "The ที่พบ difference remains after the แหล่งข้อมูล and application are held fixed."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
+      "field": "option:a",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
+      "field": "context",
+      "fragments": [
+        "A correct",
+        "is visible",
+        "but the send",
+        "fails with a permission denial"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "occurs during",
+        "rather than text generation"
+      ],
+      "text": "The ความล้มเหลว occurs during การดำเนินงาน rather than text generation."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
+      "field": "option:b",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
+      "field": "context",
+      "fragments": [
+        "A template",
+        "selects the wrong category before any",
+        "is called"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A template กฎ selects the wrong category before any Model is called. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
+      "field": "explanation",
+      "fragments": [
+        "The wrong  path precedes the generative",
+        "component"
+      ],
+      "text": "The wrong input path precedes the generative component."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
+      "field": "option:b",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
+      "field": "context",
+      "fragments": [
+        "Two apps use the same",
+        "Only one can",
+        "the",
+        "and only that app answers the",
+        "question correctly"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด ตารางอาสาสมัครที่อนุมัติแล้ว and only that app answers the เวอร์ชัน question correctly. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
+      "field": "explanation",
+      "fragments": [
+        "A shared",
+        "imply shared"
+      ],
+      "text": "A shared Model ไม่ได้ imply shared แหล่งข้อมูล การเข้าถึง."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
+      "field": "option:a",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
+      "field": "context",
+      "fragments": [
+        "The same app and",
+        "are held fixed",
+        "B misses a",
+        "d distinction that  A makes on",
+        "tests"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "difference remains after the",
+        "and application are held fixed"
+      ],
+      "text": "The ที่พบ difference remains after the แหล่งข้อมูล and application are held fixed."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
+      "field": "option:a",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
+      "field": "context",
+      "fragments": [
+        "A correct",
+        "is visible",
+        "but the send",
+        "fails with a permission denial"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
+      "field": "prompt",
+      "fragments": [
+        "Which conclusion is justified by this"
+      ],
+      "text": "Which conclusion is justified by this การเปรียบเทียบ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "occurs during",
+        "rather than text generation"
+      ],
+      "text": "The ความล้มเหลว occurs during การดำเนินงาน rather than text generation."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
+      "field": "option:c",
+      "fragments": [
+        "routing"
+      ],
+      "text": "แก้กฎ routing แบบกำหนดตายตัว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-03",
+      "field": "context",
+      "fragments": [
+        "A sponsor attributes",
+        "to a new",
+        "but the",
+        "also changed the"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-03",
+      "field": "explanation",
+      "fragments": [
+        "Holding  fixed separates the  effect"
+      ],
+      "text": "Holding retrieval fixed separates the Model effectจากแหล่งข้อมูล การเปลี่ยนแปลง."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-07",
+      "field": "context",
+      "fragments": [
+        "A sponsor attributes",
+        "to a new",
+        "but the",
+        "also changed the"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-07",
+      "field": "explanation",
+      "fragments": [
+        "Holding  fixed separates the  effect"
+      ],
+      "text": "Holding retrieval fixed separates the Model effectจากแหล่งข้อมูล การเปลี่ยนแปลง."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "context",
+      "fragments": [
+        "A document is broken into short",
+        "encoded units before the",
+        "es it"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A document is broken into short encoded units before the Model กระบวนการes it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "explanation",
+      "fragments": [
+        "Tokens are",
+        "ing units and need not correspond",
+        "to whole words"
+      ],
+      "text": "Tokens are กระบวนการing units and need not correspond to whole words."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "option:a",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "option:b",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
+      "field": "option:d",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "context",
+      "fragments": [
+        "Texts about similar ideas are placed",
+        "near one another in a numerical",
+        "representation"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Texts about similar ideas are placed near one another in a numerical representation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "explanation",
+      "fragments": [
+        "The representation supports",
+        "rather than a truth guarantee"
+      ],
+      "text": "The representation supports semantic การเปรียบเทียบ rather than a truth guarantee."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "option:b",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "option:c",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
+      "field": "option:d",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "context",
+      "fragments": [
+        "The assistant searches",
+        "and places matching",
+        "beside the user"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The assistant searches ข้อมูลบริการที่อนุมัติแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "explanation",
+      "fragments": [
+        "External",
+        "are supplied at answer time"
+      ],
+      "text": "External ข้อความต้นทาง are supplied at answer time."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "option:a",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "option:b",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
+      "field": "option:c",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "context",
+      "fragments": [
+        "Training up",
+        "s change  parameters using a curated",
+        "set of",
+        "examples"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Training upวันที่s change Model parameters using a curated set of งาน examples. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "explanation",
+      "fragments": [
+        "The described up",
+        "parameters rather than only the"
+      ],
+      "text": "The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "option:b",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "option:c",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
+      "field": "option:d",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "context",
+      "fragments": [
+        "A document is broken into short",
+        "encoded units before the",
+        "es it"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A document is broken into short encoded units before the Model กระบวนการes it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "explanation",
+      "fragments": [
+        "Tokens are",
+        "ing units and need not correspond",
+        "to whole words"
+      ],
+      "text": "Tokens are กระบวนการing units and need not correspond to whole words."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "option:a",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "option:b",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
+      "field": "option:d",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "context",
+      "fragments": [
+        "Texts about similar ideas are placed",
+        "near one another in a numerical",
+        "representation"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Texts about similar ideas are placed near one another in a numerical representation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "explanation",
+      "fragments": [
+        "The representation supports",
+        "rather than a truth guarantee"
+      ],
+      "text": "The representation supports semantic การเปรียบเทียบ rather than a truth guarantee."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "option:a",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "option:c",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
+      "field": "option:d",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "context",
+      "fragments": [
+        "The assistant searches",
+        "and places matching",
+        "beside the user"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The assistant searches ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "explanation",
+      "fragments": [
+        "External",
+        "are supplied at answer time"
+      ],
+      "text": "External ข้อความต้นทาง are supplied at answer time."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "option:a",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "option:b",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
+      "field": "option:d",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "context",
+      "fragments": [
+        "Training up",
+        "s change  parameters using a curated",
+        "set of",
+        "examples"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Training upวันที่s change Model parameters using a curated set of งาน examples. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "prompt",
+      "fragments": [
+        "Which mechanism explains the observation"
+      ],
+      "text": "Which mechanism explains the observation?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "explanation",
+      "fragments": [
+        "The described up",
+        "parameters rather than only the"
+      ],
+      "text": "The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "option:a",
+      "fragments": [
+        "Retrieval"
+      ],
+      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "option:b",
+      "fragments": [
+        "fine-tune"
+      ],
+      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
+      "field": "option:d",
+      "fragments": [
+        "Embedding"
+      ],
+      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01",
+      "field": "explanation",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "เมื่อพฤติกรรมคงที่และมีตัวอย่างที่รีวิวแล้ว การทดลอง fine-tuning แบบควบคุมตัวแปรจึงเหมาะสม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01",
+      "field": "option:c",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02",
+      "field": "option:a",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
+      "field": "context",
+      "fragments": [
+        "The",
+        "must cite a procedure that",
+        "each week"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The สรุปบริการ must cite a procedure that การเปลี่ยนแปลง each week. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
+      "field": "explanation",
+      "fragments": [
+        "Frequently changing facts should be supplied",
+        "an up"
+      ],
+      "text": "Frequently changing facts should be suppliedจากan upวันที่d แหล่งข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
+      "field": "option:d",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
+      "field": "context",
+      "fragments": [
+        "Search must find related",
+        "s even when users choose different",
+        "words"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Search must find related เคสs even when users choose different words. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
+      "field": "explanation",
+      "fragments": [
+        "Semantic similarity helps match differently worded"
+      ],
+      "text": "Semantic similarity helps match differently worded คำขอ."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
+      "field": "option:d",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05",
+      "field": "explanation",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "เมื่อพฤติกรรมคงที่และมีตัวอย่างที่รีวิวแล้ว การทดลอง fine-tuning แบบควบคุมตัวแปรจึงเหมาะสม"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05",
+      "field": "option:c",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06",
+      "field": "option:a",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
+      "field": "context",
+      "fragments": [
+        "The",
+        "must cite a procedure that",
+        "each week"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The แบบฝึกหัด must cite a procedure that การเปลี่ยนแปลง each week. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
+      "field": "explanation",
+      "fragments": [
+        "Frequently changing facts should be supplied",
+        "an up"
+      ],
+      "text": "Frequently changing facts should be suppliedจากan upวันที่d แหล่งข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
+      "field": "option:c",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
+      "field": "context",
+      "fragments": [
+        "Search must find related",
+        "s even when users choose different",
+        "words"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Search must find related เคสs even when users choose different words. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
+      "field": "explanation",
+      "fragments": [
+        "Semantic similarity helps match differently worded"
+      ],
+      "text": "Semantic similarity helps match differently worded คำขอ."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
+      "field": "option:c",
+      "fragments": [
+        "fine-tuning"
+      ],
+      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
+      "field": "context",
+      "fragments": [
+        "A tuned  improves style but continues",
+        "to invent this week"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
+      "field": "explanation",
+      "fragments": [
+        "Style adaptation",
+        "create reliable",
+        "to changing facts"
+      ],
+      "text": "Style adaptation ไม่ได้ create reliable การเข้าถึง to changing facts."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
+      "field": "option:a",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02",
+      "field": "context",
+      "fragments": [
+        "Search returns the correct",
+        "passage",
+        "but the answer contradicts its explicit"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02",
+      "field": "explanation",
+      "fragments": [
+        "Retrieval succeeded",
+        "faithful synthesis still"
+      ],
+      "text": "Retrieval succeeded แต่faithful synthesis still ต้องการ การประเมิน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02",
+      "field": "option:d",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03",
+      "field": "context",
+      "fragments": [
+        "The answer accurately summarizes a retrieved",
+        "passage whose",
+        "was retired last month"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03",
+      "field": "explanation",
+      "fragments": [
+        "Faithful use of an obsolete",
+        "still produces a stale answer"
+      ],
+      "text": "Faithful use of an obsolete แหล่งข้อมูล still produces a stale answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03",
+      "field": "option:a",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04",
+      "field": "context",
+      "fragments": [
+        "Semantically related",
+        "s appear",
+        "but exact",
+        "code matches disappear"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Semantically related เคสs appear, but exact account-code matches disappear. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04",
+      "field": "explanation",
+      "fragments": [
+        "Similarity alone is insufficient for",
+        "that must match exactly"
+      ],
+      "text": "Similarity alone is insufficient for รหัสอ้างอิง that must match exactly."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04",
+      "field": "option:a",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05",
+      "field": "context",
+      "fragments": [
+        "A tuned  improves style but continues",
+        "to invent this week"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05",
+      "field": "explanation",
+      "fragments": [
+        "Style adaptation",
+        "create reliable",
+        "to changing facts"
+      ],
+      "text": "Style adaptation ไม่ได้ create reliable การเข้าถึง to changing facts."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05",
+      "field": "option:c",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06",
+      "field": "context",
+      "fragments": [
+        "Search returns the correct",
+        "passage",
+        "but the answer contradicts its explicit"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06",
+      "field": "explanation",
+      "fragments": [
+        "Retrieval succeeded",
+        "faithful synthesis still"
+      ],
+      "text": "Retrieval succeeded แต่faithful synthesis still ต้องการ การประเมิน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06",
+      "field": "option:b",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07",
+      "field": "context",
+      "fragments": [
+        "The answer accurately summarizes a retrieved",
+        "passage whose",
+        "was retired last month"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07",
+      "field": "explanation",
+      "fragments": [
+        "Faithful use of an obsolete",
+        "still produces a stale answer"
+      ],
+      "text": "Faithful use of an obsolete แหล่งข้อมูล still produces a stale answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07",
+      "field": "option:c",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08",
+      "field": "context",
+      "fragments": [
+        "Semantically related",
+        "s appear",
+        "but exact",
+        "code matches disappear"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Semantically related เคสs appear, but exact account-code matches disappear. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08",
+      "field": "prompt",
+      "fragments": [
+        "Which diagnosis is most consistent with",
+        "the"
+      ],
+      "text": "Which diagnosis is most consistent with the หลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08",
+      "field": "explanation",
+      "fragments": [
+        "Similarity alone is insufficient for",
+        "that must match exactly"
+      ],
+      "text": "Similarity alone is insufficient for รหัสอ้างอิง that must match exactly."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08",
+      "field": "option:a",
+      "fragments": [
+        "Semantic",
+        "exact match"
+      ],
+      "text": "Semantic retrieval ต้องมีเส้นทางค้นหาแบบ exact match ร่วมด้วย"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "context",
+      "fragments": [
+        "Long inputs",
+        "more",
+        "but aggressive summarization removes important exceptions"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "explanation",
+      "fragments": [
+        "Cost reduction must be evaluated against",
+        "lost decision-critical"
+      ],
+      "text": "Cost reduction must be evaluated against lost decision-critical หลักฐาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "rewriteNotes",
+      "fragments": [
+        "compression"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "option:a",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "option:b",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "option:c",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
+      "field": "option:d",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "context",
+      "fragments": [
+        "Grounded answer accuracy is low",
+        "the",
+        "know whether search or synthesis fails"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "explanation",
+      "fragments": [
+        "Separating stages identifies which mechanism",
+        "intervention"
+      ],
+      "text": "Separating stages identifies which mechanism ต้องการ intervention."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "rewriteNotes",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "option:a",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "option:b",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "option:c",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
+      "field": "option:d",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "context",
+      "fragments": [
+        "An  upgrade improves global recall but",
+        "reduces exact-code"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. An embedding upgrade improves global recall but reduces exact-code retrieval. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "explanation",
+      "fragments": [
+        "The deployment decision must preserve both"
+      ],
+      "text": "The deployment decision must preserve both retrieval ต้องการ."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "rewriteNotes",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "option:a",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "option:b",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "option:c",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
+      "field": "option:d",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "context",
+      "fragments": [
+        "Fine-tuning improves training examples but no",
+        "unseen",
+        "s have been evaluated"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Fine-tuning improves training examples but no unseen เคสs have been evaluated. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "explanation",
+      "fragments": [
+        "Generalization",
+        "beyond examples used for training"
+      ],
+      "text": "Generalization ต้องการs หลักฐาน beyond examples used for training."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "rewriteNotes",
+      "fragments": [
+        "tune"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "option:a",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "option:b",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "option:c",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
+      "field": "option:d",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "context",
+      "fragments": [
+        "Long inputs",
+        "more",
+        "but aggressive summarization removes important exceptions"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "explanation",
+      "fragments": [
+        "Cost reduction must be evaluated against",
+        "lost decision-critical"
+      ],
+      "text": "Cost reduction must be evaluated against lost decision-critical หลักฐาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "rewriteNotes",
+      "fragments": [
+        "compression"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "option:a",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "option:b",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "option:c",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
+      "field": "option:d",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "context",
+      "fragments": [
+        "Grounded answer accuracy is low",
+        "the",
+        "know whether search or synthesis fails"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "explanation",
+      "fragments": [
+        "Separating stages identifies which mechanism",
+        "intervention"
+      ],
+      "text": "Separating stages identifies which mechanism ต้องการ intervention."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "rewriteNotes",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "option:a",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "option:b",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "option:c",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
+      "field": "option:d",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "context",
+      "fragments": [
+        "An  upgrade improves global recall but",
+        "reduces exact-code"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. An embedding upgrade improves global recall but reduces exact-code retrieval. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "explanation",
+      "fragments": [
+        "The deployment decision must preserve both"
+      ],
+      "text": "The deployment decision must preserve both retrieval ต้องการ."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "rewriteNotes",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "option:a",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "option:b",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "option:c",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
+      "field": "option:d",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "context",
+      "fragments": [
+        "Fine-tuning improves training examples but no",
+        "unseen",
+        "s have been evaluated"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Fine-tuning improves training examples but no unseen เคสs have been evaluated. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "explanation",
+      "fragments": [
+        "Generalization",
+        "beyond examples used for training"
+      ],
+      "text": "Generalization ต้องการs หลักฐาน beyond examples used for training."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "rewriteNotes",
+      "fragments": [
+        "tune"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "option:a",
+      "fragments": [
+        "passage recall"
+      ],
+      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "option:b",
+      "fragments": [
+        "tune"
+      ],
+      "text": "ใช้ชุดงานที่กันไว้ทดสอบ แล้วเปรียบเทียบกับbaseline ที่ยังไม่ได้ tune"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "option:c",
+      "fragments": [
+        "compression"
+      ],
+      "text": "เปรียบเทียบกลยุทธ์ compression ด้านการรักษาข้อยกเว้นและต้นทุน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
+      "field": "option:d",
+      "fragments": [
+        "hybrid",
+        "identifier",
+        "slice"
+      ],
+      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01",
+      "field": "context",
+      "fragments": [
+        "The assistant describes a file that",
+        "was never attached or made",
+        "ible"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The assistant describes a file that was never attached or made การเข้าถึงible. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this รายงานอัปเดตโครงการ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01",
+      "field": "explanation",
+      "fragments": [
+        "A  cannot establish the contents of",
+        "unavailable material"
+      ],
+      "text": "A Model cannot establish the contents of unavailable material."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02",
+      "field": "context",
+      "fragments": [
+        "Two runs give different uncertain estimates",
+        "the same incomplete"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this คู่มือ workshop?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02",
+      "field": "explanation",
+      "fragments": [
+        "Variation and missing",
+        "how firmly the result can be",
+        "stated"
+      ],
+      "text": "Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03",
+      "field": "context",
+      "fragments": [
+        "A confident answer names a",
+        "that cannot be found in"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. A confident answer names a ข้อมูล that cannot be found in ข้อมูลบริการที่อนุมัติแล้ว. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this สรุปบริการ?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03",
+      "field": "explanation",
+      "fragments": [
+        "Fluent confidence",
+        "prove the",
+        "exists"
+      ],
+      "text": "Fluent confidence ไม่ได้ prove the ข้อมูล exists."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-04",
+      "field": "context",
+      "fragments": [
+        "The answer quotes a procedure accurately",
+        "but that",
+        "has been replaced"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-04",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this คำตอบสำหรับงาน support?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-04",
+      "field": "explanation",
+      "fragments": [
+        "Accuracy about an old",
+        "is not",
+        "accuracy"
+      ],
+      "text": "Accuracy about an old เวอร์ชัน is not ล่าสุด accuracy."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-05",
+      "field": "context",
+      "fragments": [
+        "The assistant describes a file that",
+        "was never attached or made",
+        "ible"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The assistant describes a file that was never attached or made การเข้าถึงible. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-05",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this สรุปหลักฐาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-05",
+      "field": "explanation",
+      "fragments": [
+        "A  cannot establish the contents of",
+        "unavailable material"
+      ],
+      "text": "A Model cannot establish the contents of unavailable material."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-06",
+      "field": "context",
+      "fragments": [
+        "Two runs give different uncertain estimates",
+        "the same incomplete"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-06",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this แผนประสานงาน?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-06",
+      "field": "explanation",
+      "fragments": [
+        "Variation and missing",
+        "how firmly the result can be",
+        "stated"
+      ],
+      "text": "Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-07",
+      "field": "context",
+      "fragments": [
+        "A confident answer names a",
+        "that cannot be found in"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. A confident answer names a ข้อมูล that cannot be found in ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-07",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this แบบฝึกหัด?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-07",
+      "field": "explanation",
+      "fragments": [
+        "Fluent confidence",
+        "prove the",
+        "exists"
+      ],
+      "text": "Fluent confidence ไม่ได้ prove the ข้อมูล exists."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-08",
+      "field": "context",
+      "fragments": [
+        "The answer quotes a procedure accurately",
+        "but that",
+        "has been replaced"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-08",
+      "field": "prompt",
+      "fragments": [
+        "What",
+        "ation is demonstrated by this"
+      ],
+      "text": "What ขีดจำกัดation is demonstrated by this บันทึก release?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-08",
+      "field": "explanation",
+      "fragments": [
+        "Accuracy about an old",
+        "is not",
+        "accuracy"
+      ],
+      "text": "Accuracy about an old เวอร์ชัน is not ล่าสุด accuracy."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01",
+      "field": "context",
+      "fragments": [
+        "The",
+        "explicitly leaves a material condition undecided"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The แหล่งข้อมูล explicitly leaves a material condition undecided. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used"
+      ],
+      "text": "What should happen next before the รายงานอัปเดตโครงการ is used?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01",
+      "field": "explanation",
+      "fragments": [
+        "A decisive answer would invent a",
+        "condition the",
+        "establish"
+      ],
+      "text": "A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
+      "field": "context",
+      "fragments": [
+        "A material  includes an untraceable",
+        "identifier"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. A material claim includes an untraceable ข้อมูล identifier. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used",
+        "Select all that apply"
+      ],
+      "text": "What should happen next before the คู่มือ workshop is used? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
+      "field": "explanation",
+      "fragments": [
+        "The identifier must resolve to",
+        "before it supports the"
+      ],
+      "text": "The identifier must resolve to หลักฐาน before it supports the claim."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-03",
+      "field": "context",
+      "fragments": [
+        "The only cited procedure is marked",
+        "superseded"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The only cited procedure is marked superseded. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-03",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used"
+      ],
+      "text": "What should happen next before the สรุปบริการ is used?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-03",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "rather than a better paraphrase"
+      ],
+      "text": "The งาน ต้องการ ล่าสุด หลักฐาน rather than a better paraphrase."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
+      "field": "context",
+      "fragments": [
+        "The assistant has no",
+        "to the necessary attachment"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The assistant has no การเข้าถึง to the necessary attachment. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used",
+        "Select all that apply"
+      ],
+      "text": "What should happen next before the คำตอบสำหรับงาน support is used? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "must be resolved or disclosed"
+      ],
+      "text": "The หลักฐาน ช่องว่าง must be resolved or disclosed."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-05",
+      "field": "context",
+      "fragments": [
+        "The",
+        "explicitly leaves a material condition undecided"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The แหล่งข้อมูล explicitly leaves a material condition undecided. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-05",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used"
+      ],
+      "text": "What should happen next before the สรุปหลักฐาน is used?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-05",
+      "field": "explanation",
+      "fragments": [
+        "A decisive answer would invent a",
+        "condition the",
+        "establish"
+      ],
+      "text": "A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
+      "field": "context",
+      "fragments": [
+        "A material  includes an untraceable",
+        "identifier"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. A material claim includes an untraceable ข้อมูล identifier. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used",
+        "Select all that apply"
+      ],
+      "text": "What should happen next before the แผนประสานงาน is used? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
+      "field": "explanation",
+      "fragments": [
+        "The identifier must resolve to",
+        "before it supports the"
+      ],
+      "text": "The identifier must resolve to หลักฐาน before it supports the claim."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-07",
+      "field": "context",
+      "fragments": [
+        "The only cited procedure is marked",
+        "superseded"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The only cited procedure is marked superseded. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-07",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used"
+      ],
+      "text": "What should happen next before the แบบฝึกหัด is used?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-07",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "rather than a better paraphrase"
+      ],
+      "text": "The งาน ต้องการ ล่าสุด หลักฐาน rather than a better paraphrase."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
+      "field": "context",
+      "fragments": [
+        "The assistant has no",
+        "to the necessary attachment"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The assistant has no การเข้าถึง to the necessary attachment. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
+      "field": "prompt",
+      "fragments": [
+        "What should happen next before the",
+        "is used",
+        "Select all that apply"
+      ],
+      "text": "What should happen next before the บันทึก release is used? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "must be resolved or disclosed"
+      ],
+      "text": "The หลักฐาน ช่องว่าง must be resolved or disclosed."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-01",
+      "field": "context",
+      "fragments": [
+        "cache"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-03",
+      "field": "context",
+      "fragments": [
+        "Five identical Prompts repeat the same",
+        "uncited",
+        "no original",
+        "supports it"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-03",
+      "field": "explanation",
+      "fragments": [
+        "The same system can repeat the",
+        "same unsupported statement"
+      ],
+      "text": "The same system can repeat the same unsupported statement."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-04",
+      "field": "context",
+      "fragments": [
+        "A  reports high average accuracy",
+        "but excludes the  needed here"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A benchmark reports high average accuracy, but excludes the exception needed here. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-04",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "specific boundary is absent",
+        "the measured sample"
+      ],
+      "text": "The งาน-specific boundary is absentจากthe measured sample."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-05",
+      "field": "context",
+      "fragments": [
+        "cache"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-07",
+      "field": "context",
+      "fragments": [
+        "Five identical Prompts repeat the same",
+        "uncited",
+        "no original",
+        "supports it"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-07",
+      "field": "explanation",
+      "fragments": [
+        "The same system can repeat the",
+        "same unsupported statement"
+      ],
+      "text": "The same system can repeat the same unsupported statement."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-08",
+      "field": "context",
+      "fragments": [
+        "A  reports high average accuracy",
+        "but excludes the  needed here"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A benchmark reports high average accuracy, but excludes the exception needed here. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-08",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "specific boundary is absent",
+        "the measured sample"
+      ],
+      "text": "The งาน-specific boundary is absentจากthe measured sample."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01",
+      "field": "context",
+      "fragments": [
+        "Unsupported",
+        "recur in a material subset of"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of รายงานอัปเดตโครงการ ร่างs. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01",
+      "field": "explanation",
+      "fragments": [
+        "The control directly tests the",
+        "unsupported-reference"
+      ],
+      "text": "The control directly tests the ซ้ำ unsupported-reference ความล้มเหลว."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02",
+      "field": "context",
+      "fragments": [
+        "Failures cluster immediately after",
+        "up",
+        "older",
+        "s remain accurate"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "pattern points to freshness rather than",
+        "general language quality"
+      ],
+      "text": "The ความล้มเหลว pattern points to freshness rather than general language quality."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03",
+      "field": "context",
+      "fragments": [
+        "Performance is reliable on ordinary",
+        "s but un",
+        "on a defined  class"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03",
+      "field": "explanation",
+      "fragments": [
+        "A targeted boundary preserves useful capability",
+        "while containing the weak slice"
+      ],
+      "text": "A targeted boundary preserves useful capability while containing the weak slice."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-04",
+      "field": "context",
+      "fragments": [
+        "The assistant produces confident answers even",
+        "when",
+        "d fields are absent"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The assistant produces confident answers even when ต้องการd fields are absent. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-04",
+      "field": "explanation",
+      "fragments": [
+        "The system",
+        "measurable missing-",
+        "boundary"
+      ],
+      "text": "The system ต้องการ measurable missing-หลักฐาน boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05",
+      "field": "context",
+      "fragments": [
+        "Unsupported",
+        "recur in a material subset of"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of สรุปหลักฐาน ร่างs. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05",
+      "field": "explanation",
+      "fragments": [
+        "The control directly tests the",
+        "unsupported-reference"
+      ],
+      "text": "The control directly tests the ซ้ำ unsupported-reference ความล้มเหลว."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06",
+      "field": "context",
+      "fragments": [
+        "Failures cluster immediately after",
+        "up",
+        "older",
+        "s remain accurate"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "pattern points to freshness rather than",
+        "general language quality"
+      ],
+      "text": "The ความล้มเหลว pattern points to freshness rather than general language quality."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07",
+      "field": "context",
+      "fragments": [
+        "Performance is reliable on ordinary",
+        "s but un",
+        "on a defined  class"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07",
+      "field": "explanation",
+      "fragments": [
+        "A targeted boundary preserves useful capability",
+        "while containing the weak slice"
+      ],
+      "text": "A targeted boundary preserves useful capability while containing the weak slice."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-08",
+      "field": "context",
+      "fragments": [
+        "The assistant produces confident answers even",
+        "when",
+        "d fields are absent"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The assistant produces confident answers even when ต้องการd fields are absent. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-08",
+      "field": "explanation",
+      "fragments": [
+        "The system",
+        "measurable missing-",
+        "boundary"
+      ],
+      "text": "The system ต้องการ measurable missing-หลักฐาน boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "context",
+      "fragments": [
+        "The assistant reads",
+        "through an authorized external integration"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The assistant reads ข้อมูลโครงการที่อนุมัติแล้ว through an authorized external integration. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "explanation",
+      "fragments": [
+        "The integration provides",
+        "to a system outside the"
+      ],
+      "text": "The integration provides การเข้าถึง to a system outside the Model."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "option:a",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "option:b",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "option:c",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
+      "field": "option:d",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "context",
+      "fragments": [
+        "The assistant plans steps",
+        "calls tools",
+        "checks",
+        "and repeats until a stop"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "explanation",
+      "fragments": [
+        "The loop coordinates",
+        "s and",
+        "checks over multiple steps"
+      ],
+      "text": "The loop coordinates การดำเนินการs and ผลลัพธ์ checks over multiple steps."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "option:a",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "option:b",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "option:c",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
+      "field": "option:d",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "context",
+      "fragments": [
+        "An earlier instruction disappears after the",
+        "conversation becomes too long"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. An earlier instruction disappears after the conversation becomes too long. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "explanation",
+      "fragments": [
+        "The system cannot necessarily retain every",
+        "earlier message in its active"
+      ],
+      "text": "The system cannot necessarily retain every earlier message in its active input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "option:a",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "option:b",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "option:c",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
+      "field": "option:d",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "context",
+      "fragments": [
+        "A preference is restored in a",
+        "new session",
+        "a saved profile"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A preference is restored in a new sessionจากa saved profile ข้อมูล. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "explanation",
+      "fragments": [
+        "Cross-session restoration",
+        "s stored state",
+        "not only the",
+        "conversation"
+      ],
+      "text": "Cross-session restoration ต้องการs stored state, not only the ล่าสุด conversation."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "option:a",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "option:b",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "option:c",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
+      "field": "option:d",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "context",
+      "fragments": [
+        "The assistant reads",
+        "through an authorized external integration"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The assistant reads ข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้ through an authorized external integration. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "explanation",
+      "fragments": [
+        "The integration provides",
+        "to a system outside the"
+      ],
+      "text": "The integration provides การเข้าถึง to a system outside the Model."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "option:a",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "option:b",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "option:c",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
+      "field": "option:d",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "context",
+      "fragments": [
+        "The assistant plans steps",
+        "calls tools",
+        "checks",
+        "and repeats until a stop"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "explanation",
+      "fragments": [
+        "The loop coordinates",
+        "s and",
+        "checks over multiple steps"
+      ],
+      "text": "The loop coordinates การดำเนินการs and ผลลัพธ์ checks over multiple steps."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "option:a",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "option:b",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "option:c",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
+      "field": "option:d",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "context",
+      "fragments": [
+        "An earlier instruction disappears after the",
+        "conversation becomes too long"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. An earlier instruction disappears after the conversation becomes too long. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "explanation",
+      "fragments": [
+        "The system cannot necessarily retain every",
+        "earlier message in its active"
+      ],
+      "text": "The system cannot necessarily retain every earlier message in its active input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "option:a",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "option:b",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "option:c",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
+      "field": "option:d",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "context",
+      "fragments": [
+        "A preference is restored in a",
+        "new session",
+        "a saved profile"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A preference is restored in a new sessionจากa saved profile ข้อมูล. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "prompt",
+      "fragments": [
+        "Which component is directly responsible for",
+        "the",
+        "behavior"
+      ],
+      "text": "Which component is directly responsible for the ที่พบ behavior?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "explanation",
+      "fragments": [
+        "Cross-session restoration",
+        "s stored state",
+        "not only the",
+        "conversation"
+      ],
+      "text": "Cross-session restoration ต้องการs stored state, not only the ล่าสุด conversation."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "option:a",
+      "fragments": [
+        "An  control loop"
+      ],
+      "text": "An Agent control loop."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "option:b",
+      "fragments": [
+        "A tool connector"
+      ],
+      "text": "A tool connector."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "option:c",
+      "fragments": [
+        "The available context window"
+      ],
+      "text": "The available context window."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
+      "field": "option:d",
+      "fragments": [
+        "Persistent application memory"
+      ],
+      "text": "Persistent application memory."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "context",
+      "fragments": [
+        "Critical",
+        "s disappear in long",
+        "ing sessions"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Critical ข้อจำกัดs disappear in long ร่างing sessions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "explanation",
+      "fragments": [
+        "Task-critical instructions should not depend on",
+        "un",
+        "ed conversation history"
+      ],
+      "text": "Task-critical instructions should not depend on unขีดจำกัดed conversation history."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "option:b",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "option:c",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
+      "field": "option:d",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "context",
+      "fragments": [
+        "Users must see the same",
+        "preferences next session"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Users must see the same ที่อนุมัติแล้ว preferences next session. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment",
+        "Select all that apply"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "explanation",
+      "fragments": [
+        "Durable preferences",
+        "managed storage and lifecycle behavior"
+      ],
+      "text": "Durable preferences ต้องการ managed storage and lifecycle behavior."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "option:b",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "option:c",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
+      "field": "option:d",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "context",
+      "fragments": [
+        "The assistant must inspect",
+        "but must never change them"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The assistant must inspect ข้อมูล but must never change them. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "d capability is reading",
+        "so write permission is unnecessary"
+      ],
+      "text": "The ต้องการd capability is reading, so write permission is unnecessary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "option:b",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "option:c",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
+      "field": "option:d",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "context",
+      "fragments": [
+        "A tool-using",
+        "repeats retries without reaching a decision"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A tool-using งาน repeats retries without reaching a decision. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment",
+        "Select all that apply"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "explanation",
+      "fragments": [
+        "The control loop",
+        "explicit bounds and an unresolved-state exit"
+      ],
+      "text": "The control loop ต้องการ explicit bounds and an unresolved-state exit."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "option:b",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "option:c",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
+      "field": "option:d",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "context",
+      "fragments": [
+        "Critical",
+        "s disappear in long",
+        "ing sessions"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Critical ข้อจำกัดs disappear in long ร่างing sessions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "explanation",
+      "fragments": [
+        "Task-critical instructions should not depend on",
+        "un",
+        "ed conversation history"
+      ],
+      "text": "Task-critical instructions should not depend on unขีดจำกัดed conversation history."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "option:a",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "option:b",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "option:c",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
+      "field": "option:d",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "context",
+      "fragments": [
+        "Users must see the same",
+        "preferences next session"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Users must see the same ที่อนุมัติแล้ว preferences next session. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment",
+        "Select all that apply"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "explanation",
+      "fragments": [
+        "Durable preferences",
+        "managed storage and lifecycle behavior"
+      ],
+      "text": "Durable preferences ต้องการ managed storage and lifecycle behavior."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "option:b",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "option:c",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
+      "field": "option:d",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "context",
+      "fragments": [
+        "The assistant must inspect",
+        "but must never change them"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The assistant must inspect ข้อมูล but must never change them. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "d capability is reading",
+        "so write permission is unnecessary"
+      ],
+      "text": "The ต้องการd capability is reading, so write permission is unnecessary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "option:b",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "option:c",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
+      "field": "option:d",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "context",
+      "fragments": [
+        "A tool-using",
+        "repeats retries without reaching a decision"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A tool-using งาน repeats retries without reaching a decision. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "prompt",
+      "fragments": [
+        "Which configuration change addresses the specific",
+        "ment",
+        "Select all that apply"
+      ],
+      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "explanation",
+      "fragments": [
+        "The control loop",
+        "explicit bounds and an unresolved-state exit"
+      ],
+      "text": "The control loop ต้องการ explicit bounds and an unresolved-state exit."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "option:a",
+      "fragments": [
+        "Grant the connector read-only",
+        "to the needed"
+      ],
+      "text": "Grant the connector read-only การเข้าถึง to the needed ข้อมูล."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "option:b",
+      "fragments": [
+        "Add retry",
+        "and stop",
+        "s with an escalation path"
+      ],
+      "text": "Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "option:c",
+      "fragments": [
+        "Supply the",
+        "s in the bounded context for",
+        "each"
+      ],
+      "text": "Supply the ข้อจำกัดs in the bounded context for each งาน."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
+      "field": "option:d",
+      "fragments": [
+        "Store",
+        "ed preferences with explicit read and",
+        "up"
+      ],
+      "text": "Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "context",
+      "fragments": [
+        "Every tool call succeeds",
+        "yet the  repeats the same completed"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "explanation",
+      "fragments": [
+        "Successful calls are not being recognized",
+        "as progress toward completion"
+      ],
+      "text": "Successful calls are not being recognized as progress toward completion."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "option:a",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "option:b",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "option:c",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
+      "field": "option:d",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "context",
+      "fragments": [
+        "The instruction is absent",
+        "the final   but present in the",
+        "original conversation"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The instruction is absentจากthe final Model input but present in the original conversation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "locates the loss before",
+        "ing"
+      ],
+      "text": "The หลักฐาน locates the loss before Model กระบวนการing."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "option:a",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "option:b",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "option:c",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
+      "field": "option:d",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "context",
+      "fragments": [
+        "The  is",
+        "but a saved user preference overrides",
+        "the new",
+        "setting"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "explanation",
+      "fragments": [
+        "Stale persistent state is winning over",
+        "a newer instruction"
+      ],
+      "text": "Stale persistent state is winning over a newer instruction."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "option:a",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "option:b",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "option:c",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
+      "field": "option:d",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "context",
+      "fragments": [
+        "The retrieved",
+        "is correct",
+        "but the tool reports a denied",
+        "write scope"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The retrieved ข้อมูล is correct, but the tool reports a denied write scope. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "fails at the permission boundary"
+      ],
+      "text": "The การดำเนินการ fails at the permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "option:a",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "option:b",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "option:c",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
+      "field": "option:d",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "context",
+      "fragments": [
+        "Every tool call succeeds",
+        "yet the  repeats the same completed"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "explanation",
+      "fragments": [
+        "Successful calls are not being recognized",
+        "as progress toward completion"
+      ],
+      "text": "Successful calls are not being recognized as progress toward completion."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "option:a",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "option:b",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "option:c",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
+      "field": "option:d",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "context",
+      "fragments": [
+        "The instruction is absent",
+        "the final   but present in the",
+        "original conversation"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The instruction is absentจากthe final Model input but present in the original conversation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "locates the loss before",
+        "ing"
+      ],
+      "text": "The หลักฐาน locates the loss before Model กระบวนการing."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "option:a",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "option:b",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "option:c",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
+      "field": "option:d",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "context",
+      "fragments": [
+        "The  is",
+        "but a saved user preference overrides",
+        "the new",
+        "setting"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "explanation",
+      "fragments": [
+        "Stale persistent state is winning over",
+        "a newer instruction"
+      ],
+      "text": "Stale persistent state is winning over a newer instruction."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "option:a",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "option:b",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "option:c",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
+      "field": "option:d",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "context",
+      "fragments": [
+        "The retrieved",
+        "is correct",
+        "but the tool reports a denied",
+        "write scope"
+      ],
+      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The retrieved ข้อมูล is correct, but the tool reports a denied write scope. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "prompt",
+      "fragments": [
+        "Where should the",
+        "investigate first"
+      ],
+      "text": "Where should the ทีม investigate first?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "fails at the permission boundary"
+      ],
+      "text": "The การดำเนินการ fails at the permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "option:a",
+      "fragments": [
+        "The context assembly and truncation step"
+      ],
+      "text": "The context assembly and truncation step."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "option:b",
+      "fragments": [
+        "The loop",
+        "s state up",
+        "and completion detection"
+      ],
+      "text": "The loop’s state upวันที่ and completion detection."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "option:c",
+      "fragments": [
+        "The memory precedence and"
+      ],
+      "text": "The memory precedence and เวอร์ชัน กฎs."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
+      "field": "option:d",
+      "fragments": [
+        "The connector authorization configuration"
+      ],
+      "text": "The connector authorization configuration."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "context",
+      "fragments": [
+        "One user",
+        "s saved context sometimes appears in",
+        "another user"
+      ],
+      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. One user’s saved context sometimes appears in another user’s งาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "s a storage and",
+        "boundary",
+        "not a longer"
+      ],
+      "text": "The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Isolate memory by identity and test cross-user การเข้าถึง denial.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "option:b",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "option:c",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
+      "field": "option:d",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "context",
+      "fragments": [
+        "The same connector identity reads",
+        "and performs unrestricted  writes"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The same connector identity reads ข้อมูล and performs unrestricted production writes. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "explanation",
+      "fragments": [
+        "Distinct capabilities allow enforcement of narrower"
+      ],
+      "text": "Distinct capabilities allow enforcement of narrower การดำเนินการ สิทธิ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "option:b",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "option:c",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
+      "field": "option:d",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "context",
+      "fragments": [
+        "Multiple Agents retry one another",
+        "s indefinitely"
+      ],
+      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "explanation",
+      "fragments": [
+        "Local retry",
+        "s alone do not bound a",
+        "multi- cycle"
+      ],
+      "text": "Local retry ขีดจำกัดs alone do not bound a multi-Agent cycle."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Use shared run state, idempotent การส่งต่อs, and a global stop budget.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "option:b",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "option:c",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
+      "field": "option:d",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "context",
+      "fragments": [
+        "Different",
+        "s build Prompts independently and omit",
+        "critical",
+        "s inconsistently"
+      ],
+      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "explanation",
+      "fragments": [
+        "The control targets inconsistent construction of",
+        "the"
+      ],
+      "text": "The control targets inconsistent construction of the Model input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "option:b",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "option:c",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
+      "field": "option:d",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "context",
+      "fragments": [
+        "One user",
+        "s saved context sometimes appears in",
+        "another user"
+      ],
+      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. One user’s saved context sometimes appears in another user’s งาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "explanation",
+      "fragments": [
+        "The",
+        "s a storage and",
+        "boundary",
+        "not a longer"
+      ],
+      "text": "The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Isolate memory by identity and test cross-user การเข้าถึง denial.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "option:a",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "option:b",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "option:c",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
+      "field": "option:d",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "context",
+      "fragments": [
+        "The same connector identity reads",
+        "and performs unrestricted  writes"
+      ],
+      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The same connector identity reads ข้อมูล and performs unrestricted production writes. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "explanation",
+      "fragments": [
+        "Distinct capabilities allow enforcement of narrower"
+      ],
+      "text": "Distinct capabilities allow enforcement of narrower การดำเนินการ สิทธิ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "option:b",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "option:c",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
+      "field": "option:d",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "context",
+      "fragments": [
+        "Multiple Agents retry one another",
+        "s indefinitely"
+      ],
+      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    }
+  ]
+}
