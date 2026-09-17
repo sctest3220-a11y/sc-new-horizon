@@ -1,13 +1,13 @@
 {
-  "issueCount": 22492,
+  "issueCount": 22468,
   "topFragments": [
     [
       "The",
-      1412
+      1402
     ],
     [
       "the",
-      732
+      740
     ],
     [
       "Which",
@@ -16,10 +16,6 @@
     [
       "Finance",
       304
-    ],
-    [
-      "operating",
-      204
     ],
     [
       "Cross-functional professional",
@@ -70,7 +66,7 @@
       144
     ],
     [
-      "management executes controls",
+      "Management executes controls",
       144
     ],
     [
@@ -118,16 +114,12 @@
       96
     ],
     [
-      "to the",
-      89
-    ],
-    [
       "Select all that apply",
       88
     ],
     [
-      "authorized approver",
-      81
+      "to the",
+      88
     ],
     [
       "rely on the",
@@ -139,10 +131,6 @@
     ],
     [
       "test only the",
-      80
-    ],
-    [
-      "terms",
       80
     ],
     [
@@ -174,23 +162,7 @@
       64
     ],
     [
-      "staff  learner-impacting recommendations",
-      64
-    ],
-    [
-      "no student",
-      64
-    ],
-    [
-      "can leave the",
-      64
-    ],
-    [
       "Financial",
-      64
-    ],
-    [
-      "s need independent verification and an",
       64
     ],
     [
@@ -198,19 +170,7 @@
       64
     ],
     [
-      "the assistant supports administration only",
-      64
-    ],
-    [
-      "clinical questions go to a qualified",
-      64
-    ],
-    [
       "Retail",
-      64
-    ],
-    [
-      "returns promises has to match the",
       64
     ],
     [
@@ -218,15 +178,11 @@
       64
     ],
     [
-      "eligibility decisions need authorized staff and",
-      64
-    ],
-    [
-      "a usable",
-      64
-    ],
-    [
       "vali",
+      63
+    ],
+    [
+      "its",
       63
     ],
     [
@@ -282,19 +238,11 @@
       51
     ],
     [
-      "One",
-      51
-    ],
-    [
       "full",
       51
     ],
     [
       "is visible in the",
-      48
-    ],
-    [
-      "its",
       48
     ],
     [
@@ -319,7 +267,11 @@
     ],
     [
       "The new",
-      48
+      47
+    ],
+    [
+      "One",
+      46
     ],
     [
       "Treat the",
@@ -400,6 +352,54 @@
     [
       "send the",
       44
+    ],
+    [
+      "to both",
+      44
+    ],
+    [
+      "s and treat  as acceptance",
+      44
+    ],
+    [
+      "The briefing mixes confirmed",
+      44
+    ],
+    [
+      "with planning",
+      44
+    ],
+    [
+      "Decision makers need to distinguish",
+      44
+    ],
+    [
+      "an unverified planning",
+      44
+    ],
+    [
+      "combine both into one recommendation without",
+      44
+    ],
+    [
+      "distinction",
+      44
+    ],
+    [
+      "label",
+      44
+    ],
+    [
+      "s separately",
+      44
+    ],
+    [
+      "confirmed facts",
+      44
+    ],
+    [
+      "can authorize this",
+      44
     ]
   ],
   "issues": [
@@ -407,17 +407,19 @@
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-04",
       "field": "context",
       "fragments": [
+        "Workspace",
         "search"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Workflow นี้ใช้หลายส่วนร่วมกัน: Model, search index, สิทธิ์ และหน้าจอ review. ทีมต้องเข้าใจว่าการตั้งค่าแบบใดเหมาะกับงานนี้ เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-08",
       "field": "context",
       "fragments": [
+        "Workspace",
         "search"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Workflow นี้ใช้หลายส่วนร่วมกัน: Model, search index, สิทธิ์ และหน้าจอ review. ทีมต้องเข้าใจว่าการตั้งค่าแบบใดเหมาะกับงานนี้ เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-01",
@@ -428,36 +430,12 @@
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
     },
     {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-01",
-      "field": "option:d",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
       "field": "option:a",
       "fragments": [
         "lookup"
       ],
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
-      "field": "option:d",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-03",
-      "field": "option:c",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-03",
@@ -476,14 +454,6 @@
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
     },
     {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04",
-      "field": "option:d",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-05",
       "field": "option:b",
       "fragments": [
@@ -492,36 +462,12 @@
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
     },
     {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-05",
-      "field": "option:d",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
       "field": "option:a",
       "fragments": [
         "lookup"
       ],
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
-      "field": "option:c",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-07",
-      "field": "option:a",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-07",
@@ -538,14 +484,6 @@
         "lookup"
       ],
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08",
-      "field": "option:d",
-      "fragments": [
-        "tool"
-      ],
-      "text": "ใช้แอปพลิเคชันที่มี retrieval และขั้นตอนใช้ tool แบบมีเงื่อนไขอนุมัติ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
@@ -555,7 +493,7 @@
         "selects the wrong category before any",
         "is called"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A template กฎ selects the wrong category before any Model is called. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ A template กฎ selects the wrong category before any Model is called. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
@@ -576,6 +514,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
+      "field": "option:a",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01",
       "field": "option:b",
       "fragments": [
         "routing"
@@ -592,7 +539,7 @@
         "and only that app answers the",
         "question correctly"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด สื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว and only that app answers the เวอร์ชัน question correctly. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด สื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว and only that app answers the เวอร์ชัน question correctly. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
@@ -613,6 +560,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
+      "field": "option:b",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02",
       "field": "option:d",
       "fragments": [
         "routing"
@@ -629,7 +585,7 @@
         "d distinction that  A makes on",
         "tests"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
@@ -658,6 +614,15 @@
       "text": "แก้กฎ routing แบบกำหนดตายตัว"
     },
     {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03",
+      "field": "option:b",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
       "field": "context",
       "fragments": [
@@ -666,7 +631,7 @@
         "but the send",
         "fails with a permission denial"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
@@ -688,6 +653,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
+      "field": "option:a",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04",
       "field": "option:b",
       "fragments": [
         "routing"
@@ -702,7 +676,7 @@
         "selects the wrong category before any",
         "is called"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A template กฎ selects the wrong category before any Model is called. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน A template กฎ selects the wrong category before any Model is called. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
@@ -730,6 +704,15 @@
       "text": "แก้กฎ routing แบบกำหนดตายตัว"
     },
     {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05",
+      "field": "option:c",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
       "field": "context",
       "fragments": [
@@ -739,7 +722,7 @@
         "and only that app answers the",
         "question correctly"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด ตารางอาสาสมัครที่อนุมัติแล้ว and only that app answers the เวอร์ชัน question correctly. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด ตารางอาสาสมัครที่อนุมัติแล้ว and only that app answers the เวอร์ชัน question correctly. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
@@ -767,6 +750,15 @@
       "text": "แก้กฎ routing แบบกำหนดตายตัว"
     },
     {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06",
+      "field": "option:d",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
       "field": "context",
       "fragments": [
@@ -776,7 +768,7 @@
         "d distinction that  A makes on",
         "tests"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
@@ -805,6 +797,15 @@
       "text": "แก้กฎ routing แบบกำหนดตายตัว"
     },
     {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07",
+      "field": "option:c",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
       "field": "context",
       "fragments": [
@@ -813,7 +814,7 @@
         "but the send",
         "fails with a permission denial"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
@@ -835,6 +836,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
+      "field": "option:a",
+      "fragments": [
+        "Check the",
+        "permission boundary"
+      ],
+      "text": "Check the การดำเนินการ permission boundary."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08",
       "field": "option:c",
       "fragments": [
         "routing"
@@ -850,7 +860,7 @@
         "but the",
         "also changed the"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-03",
@@ -869,7 +879,7 @@
         "but the",
         "also changed the"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-07",
@@ -887,7 +897,7 @@
         "encoded units before the",
         "es it"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A document is broken into short encoded units before the Model กระบวนการes it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ A document is broken into short encoded units before the Model กระบวนการes it. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
@@ -908,30 +918,6 @@
       "text": "Tokens are กระบวนการing units and need not correspond to whole words."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
-      "field": "option:a",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
-      "field": "option:b",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01",
-      "field": "option:d",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
       "field": "context",
       "fragments": [
@@ -939,7 +925,7 @@
         "near one another in a numerical",
         "representation"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Texts about similar ideas are placed near one another in a numerical representation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Texts about similar ideas are placed near one another in a numerical representation. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
@@ -959,30 +945,6 @@
       "text": "The representation supports semantic การเปรียบเทียบ rather than a truth guarantee."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
-      "field": "option:b",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
-      "field": "option:c",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02",
-      "field": "option:d",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
       "field": "context",
       "fragments": [
@@ -990,7 +952,7 @@
         "and places matching",
         "beside the user"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The assistant searches ข้อมูลบริการที่อนุมัติแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The assistant searches ข้อมูลบริการที่อนุมัติแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
@@ -1010,30 +972,6 @@
       "text": "External ข้อความต้นทาง are supplied at answer time."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
-      "field": "option:a",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
-      "field": "option:b",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03",
-      "field": "option:c",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
       "field": "context",
       "fragments": [
@@ -1042,7 +980,7 @@
         "set of",
         "examples"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Training upวันที่s change Model parameters using a curated set of งาน examples. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Training upวันที่s change Model parameters using a curated set of งาน examples. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
@@ -1060,30 +998,6 @@
         "parameters rather than only the"
       ],
       "text": "The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
-      "field": "option:b",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
-      "field": "option:c",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04",
-      "field": "option:d",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
@@ -1093,7 +1007,7 @@
         "encoded units before the",
         "es it"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A document is broken into short encoded units before the Model กระบวนการes it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน A document is broken into short encoded units before the Model กระบวนการes it. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
@@ -1114,30 +1028,6 @@
       "text": "Tokens are กระบวนการing units and need not correspond to whole words."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
-      "field": "option:a",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
-      "field": "option:b",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05",
-      "field": "option:d",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
       "field": "context",
       "fragments": [
@@ -1145,7 +1035,7 @@
         "near one another in a numerical",
         "representation"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Texts about similar ideas are placed near one another in a numerical representation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Texts about similar ideas are placed near one another in a numerical representation. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
@@ -1165,30 +1055,6 @@
       "text": "The representation supports semantic การเปรียบเทียบ rather than a truth guarantee."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
-      "field": "option:a",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
-      "field": "option:c",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06",
-      "field": "option:d",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
       "field": "context",
       "fragments": [
@@ -1196,7 +1062,7 @@
         "and places matching",
         "beside the user"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The assistant searches ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The assistant searches ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว and places matching ข้อความต้นทาง beside the user คำขอ. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
@@ -1216,30 +1082,6 @@
       "text": "External ข้อความต้นทาง are supplied at answer time."
     },
     {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
-      "field": "option:a",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
-      "field": "option:b",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07",
-      "field": "option:d",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
       "field": "context",
       "fragments": [
@@ -1248,7 +1090,7 @@
         "set of",
         "examples"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Training upวันที่s change Model parameters using a curated set of งาน examples. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Training upวันที่s change Model parameters using a curated set of งาน examples. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
@@ -1266,30 +1108,6 @@
         "parameters rather than only the"
       ],
       "text": "The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
-      "field": "option:a",
-      "fragments": [
-        "Retrieval"
-      ],
-      "text": "Retrieval ที่ใช้เป็นหลักฐานให้การสร้างคำตอบ"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
-      "field": "option:b",
-      "fragments": [
-        "fine-tune"
-      ],
-      "text": "การ fine-tune ด้วยตัวอย่างเพิ่มเติม"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08",
-      "field": "option:d",
-      "fragments": [
-        "Embedding"
-      ],
-      "text": "Embedding ที่ใช้วัดความคล้ายกัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01",
@@ -1301,19 +1119,37 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01",
+      "field": "option:a",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01",
       "field": "option:c",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02",
       "field": "option:a",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02",
+      "field": "option:d",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
@@ -1323,7 +1159,7 @@
         "must cite a procedure that",
         "each week"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The สรุปบริการ must cite a procedure that การเปลี่ยนแปลง each week. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The สรุปบริการ must cite a procedure that การเปลี่ยนแปลง each week. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
@@ -1336,11 +1172,20 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
+      "field": "option:b",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03",
       "field": "option:d",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
@@ -1350,7 +1195,7 @@
         "s even when users choose different",
         "words"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Search must find related เคสs even when users choose different words. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Search must find related เคสs even when users choose different words. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
@@ -1362,11 +1207,20 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
+      "field": "option:a",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
       "field": "option:d",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05",
@@ -1380,17 +1234,35 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05",
       "field": "option:c",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05",
+      "field": "option:d",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06",
       "field": "option:a",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06",
+      "field": "option:d",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
@@ -1400,7 +1272,7 @@
         "must cite a procedure that",
         "each week"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The แบบฝึกหัด must cite a procedure that การเปลี่ยนแปลง each week. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The แบบฝึกหัด must cite a procedure that การเปลี่ยนแปลง each week. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
@@ -1413,11 +1285,20 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
+      "field": "option:b",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07",
       "field": "option:c",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
@@ -1427,7 +1308,7 @@
         "s even when users choose different",
         "words"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Search must find related เคสs even when users choose different words. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Search must find related เคสs even when users choose different words. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
@@ -1441,9 +1322,18 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
       "field": "option:c",
       "fragments": [
-        "fine-tuning"
+        "Test fine-tuning against the"
       ],
-      "text": "ประเมินผล fine-tuning เทียบกับbaseline ของ Prompt"
+      "text": "Test fine-tuning against the Prompt baseline."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
+      "field": "option:d",
+      "fragments": [
+        "Check tokens and reduce or split",
+        "the"
+      ],
+      "text": "Check tokens and reduce or split the input."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
@@ -1452,7 +1342,7 @@
         "A tuned  improves style but continues",
         "to invent this week"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01",
@@ -1490,7 +1380,7 @@
         "passage",
         "but the answer contradicts its explicit"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02",
@@ -1527,7 +1417,7 @@
         "passage whose",
         "was retired last month"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03",
@@ -1565,7 +1455,7 @@
         "but exact",
         "code matches disappear"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Semantically related เคสs appear, but exact account-code matches disappear. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Semantically related เคสs appear, but exact account-code matches disappear. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04",
@@ -1601,7 +1491,7 @@
         "A tuned  improves style but continues",
         "to invent this week"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05",
@@ -1639,7 +1529,7 @@
         "passage",
         "but the answer contradicts its explicit"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06",
@@ -1676,7 +1566,7 @@
         "passage whose",
         "was retired last month"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07",
@@ -1714,7 +1604,7 @@
         "but exact",
         "code matches disappear"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Semantically related เคสs appear, but exact account-code matches disappear. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Semantically related เคสs appear, but exact account-code matches disappear. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08",
@@ -1751,7 +1641,7 @@
         "more",
         "but aggressive summarization removes important exceptions"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
@@ -1774,19 +1664,18 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
       "field": "option:a",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
       "field": "option:b",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01",
@@ -1812,7 +1701,7 @@
         "the",
         "know whether search or synthesis fails"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
@@ -1827,9 +1716,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
       "field": "rewriteNotes",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Check passage recall and answer faithfulness separately.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
@@ -1843,11 +1733,9 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
       "field": "option:b",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
@@ -1861,9 +1749,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02",
       "field": "option:d",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
@@ -1872,7 +1761,7 @@
         "An  upgrade improves global recall but",
         "reduces exact-code"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. An embedding upgrade improves global recall but reduces exact-code retrieval. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ An embedding upgrade improves global recall but reduces exact-code retrieval. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
@@ -1886,21 +1775,17 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
       "field": "rewriteNotes",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Test hybrid retrieval on identifier and semantic slices.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
       "field": "option:a",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
@@ -1914,9 +1799,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
       "field": "option:c",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03",
@@ -1934,7 +1820,7 @@
         "unseen",
         "s have been evaluated"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Fine-tuning improves training examples but no unseen เคสs have been evaluated. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Fine-tuning improves training examples but no unseen เคสs have been evaluated. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
@@ -1973,19 +1859,18 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
       "field": "option:c",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04",
       "field": "option:d",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
@@ -1995,7 +1880,7 @@
         "more",
         "but aggressive summarization removes important exceptions"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน Long inputs ต้นทุน more, but aggressive summarization removes important exceptions. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
@@ -2026,11 +1911,9 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
       "field": "option:b",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
@@ -2044,9 +1927,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05",
       "field": "option:d",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
@@ -2056,7 +1940,7 @@
         "the",
         "know whether search or synthesis fails"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
@@ -2071,19 +1955,18 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
       "field": "rewriteNotes",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Check passage recall and answer faithfulness separately.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
       "field": "option:a",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
@@ -2105,9 +1988,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06",
       "field": "option:d",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
@@ -2116,7 +2000,7 @@
         "An  upgrade improves global recall but",
         "reduces exact-code"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. An embedding upgrade improves global recall but reduces exact-code retrieval. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด An embedding upgrade improves global recall but reduces exact-code retrieval. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
@@ -2130,29 +2014,26 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
       "field": "rewriteNotes",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Test hybrid retrieval on identifier and semantic slices.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
       "field": "option:a",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
       "field": "option:b",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07",
@@ -2178,7 +2059,7 @@
         "unseen",
         "s have been evaluated"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. Fine-tuning improves training examples but no unseen เคสs have been evaluated. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Fine-tuning improves training examples but no unseen เคสs have been evaluated. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
@@ -2201,9 +2082,10 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
       "field": "option:a",
       "fragments": [
-        "passage recall"
+        "Check passage recall and answer faithfulness",
+        "separately"
       ],
-      "text": "วัด passage recall และความตรงตามหลักฐานของคำตอบแยกกัน"
+      "text": "Check passage recall and answer faithfulness separately."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
@@ -2225,11 +2107,9 @@
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08",
       "field": "option:d",
       "fragments": [
-        "hybrid",
-        "identifier",
-        "slice"
+        "Test hybrid  on identifier and  slices"
       ],
-      "text": "ประเมิน hybrid retrieval แยกตาม identifier และ semantic slice"
+      "text": "Test hybrid retrieval on identifier and semantic slices."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01",
@@ -2239,7 +2119,7 @@
         "was never attached or made",
         "ible"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The assistant describes a file that was never attached or made การเข้าถึงible. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ The assistant describes a file that was never attached or made การเข้าถึงible. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01",
@@ -2266,7 +2146,7 @@
         "Two runs give different uncertain estimates",
         "the same incomplete"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02",
@@ -2294,7 +2174,7 @@
         "A confident answer names a",
         "that cannot be found in"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. A confident answer names a ข้อมูล that cannot be found in ข้อมูลบริการที่อนุมัติแล้ว. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ A confident answer names a ข้อมูล that cannot be found in ข้อมูลบริการที่อนุมัติแล้ว. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03",
@@ -2323,7 +2203,7 @@
         "but that",
         "has been replaced"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-04",
@@ -2352,7 +2232,7 @@
         "was never attached or made",
         "ible"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The assistant describes a file that was never attached or made การเข้าถึงible. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน The assistant describes a file that was never attached or made การเข้าถึงible. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-05",
@@ -2379,7 +2259,7 @@
         "Two runs give different uncertain estimates",
         "the same incomplete"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-06",
@@ -2407,7 +2287,7 @@
         "A confident answer names a",
         "that cannot be found in"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. A confident answer names a ข้อมูล that cannot be found in ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด A confident answer names a ข้อมูล that cannot be found in ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-07",
@@ -2436,7 +2316,7 @@
         "but that",
         "has been replaced"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-08",
@@ -2464,7 +2344,7 @@
         "The",
         "explicitly leaves a material condition undecided"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The แหล่งข้อมูล explicitly leaves a material condition undecided. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ The แหล่งข้อมูล explicitly leaves a material condition undecided. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01",
@@ -2492,7 +2372,7 @@
         "A material  includes an untraceable",
         "identifier"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. A material claim includes an untraceable ข้อมูล identifier. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop A material claim includes an untraceable ข้อมูล identifier. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
@@ -2520,7 +2400,7 @@
         "The only cited procedure is marked",
         "superseded"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The only cited procedure is marked superseded. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The only cited procedure is marked superseded. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-03",
@@ -2547,7 +2427,7 @@
         "The assistant has no",
         "to the necessary attachment"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The assistant has no การเข้าถึง to the necessary attachment. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support The assistant has no การเข้าถึง to the necessary attachment. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
@@ -2575,7 +2455,7 @@
         "The",
         "explicitly leaves a material condition undecided"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The แหล่งข้อมูล explicitly leaves a material condition undecided. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน The แหล่งข้อมูล explicitly leaves a material condition undecided. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-05",
@@ -2603,7 +2483,7 @@
         "A material  includes an untraceable",
         "identifier"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. A material claim includes an untraceable ข้อมูล identifier. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน A material claim includes an untraceable ข้อมูล identifier. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
@@ -2631,7 +2511,7 @@
         "The only cited procedure is marked",
         "superseded"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The only cited procedure is marked superseded. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The only cited procedure is marked superseded. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-07",
@@ -2658,7 +2538,7 @@
         "The assistant has no",
         "to the necessary attachment"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The assistant has no การเข้าถึง to the necessary attachment. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release The assistant has no การเข้าถึง to the necessary attachment. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
@@ -2685,7 +2565,7 @@
       "fragments": [
         "cache"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-03",
@@ -2696,7 +2576,7 @@
         "no original",
         "supports it"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-03",
@@ -2714,7 +2594,7 @@
         "A  reports high average accuracy",
         "but excludes the  needed here"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A benchmark reports high average accuracy, but excludes the exception needed here. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support A benchmark reports high average accuracy, but excludes the exception needed here. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-04",
@@ -2732,7 +2612,7 @@
       "fragments": [
         "cache"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-07",
@@ -2743,7 +2623,7 @@
         "no original",
         "supports it"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-07",
@@ -2761,7 +2641,7 @@
         "A  reports high average accuracy",
         "but excludes the  needed here"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A benchmark reports high average accuracy, but excludes the exception needed here. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release A benchmark reports high average accuracy, but excludes the exception needed here. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-08",
@@ -2780,7 +2660,7 @@
         "Unsupported",
         "recur in a material subset of"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of รายงานอัปเดตโครงการ ร่างs. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of รายงานอัปเดตโครงการ ร่างs. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01",
@@ -2800,7 +2680,7 @@
         "older",
         "s remain accurate"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02",
@@ -2820,7 +2700,7 @@
         "s but un",
         "on a defined  class"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03",
@@ -2839,7 +2719,7 @@
         "when",
         "d fields are absent"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The assistant produces confident answers even when ต้องการd fields are absent. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support The assistant produces confident answers even when ต้องการd fields are absent. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-04",
@@ -2858,7 +2738,7 @@
         "Unsupported",
         "recur in a material subset of"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of สรุปหลักฐาน ร่างs. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of สรุปหลักฐาน ร่างs. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05",
@@ -2878,7 +2758,7 @@
         "older",
         "s remain accurate"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06",
@@ -2898,7 +2778,7 @@
         "s but un",
         "on a defined  class"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด Performance is reliable on ordinary งานs but unคงที่ on a defined exception class. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07",
@@ -2917,7 +2797,7 @@
         "when",
         "d fields are absent"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The assistant produces confident answers even when ต้องการd fields are absent. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release The assistant produces confident answers even when ต้องการd fields are absent. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-08",
@@ -2936,7 +2816,7 @@
         "The assistant reads",
         "through an authorized external integration"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. The assistant reads ข้อมูลโครงการที่อนุมัติแล้ว through an authorized external integration. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ The assistant reads ข้อมูลโครงการที่อนุมัติแล้ว through an authorized external integration. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
@@ -2961,33 +2841,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
       "field": "option:a",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
-      "field": "option:b",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
       "field": "option:c",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
       "field": "option:d",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
@@ -2998,7 +2870,7 @@
         "checks",
         "and repeats until a stop"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
@@ -3022,35 +2894,27 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
-      "field": "option:a",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
       "field": "option:b",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
       "field": "option:c",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
       "field": "option:d",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
@@ -3059,7 +2923,7 @@
         "An earlier instruction disappears after the",
         "conversation becomes too long"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. An earlier instruction disappears after the conversation becomes too long. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ An earlier instruction disappears after the conversation becomes too long. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
@@ -3084,33 +2948,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
       "field": "option:a",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
       "field": "option:b",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
-      "field": "option:c",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
       "field": "option:d",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
@@ -3120,7 +2976,7 @@
         "new session",
         "a saved profile"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A preference is restored in a new sessionจากa saved profile ข้อมูล. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support A preference is restored in a new sessionจากa saved profile ข้อมูล. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
@@ -3145,35 +3001,27 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
-      "field": "option:a",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
       "field": "option:b",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
       "field": "option:c",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
       "field": "option:d",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
@@ -3182,7 +3030,7 @@
         "The assistant reads",
         "through an authorized external integration"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. The assistant reads ข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้ through an authorized external integration. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน The assistant reads ข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้ through an authorized external integration. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
@@ -3207,33 +3055,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
       "field": "option:a",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
       "field": "option:b",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
-      "field": "option:c",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05",
       "field": "option:d",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
@@ -3244,7 +3084,7 @@
         "checks",
         "and repeats until a stop"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
@@ -3270,33 +3110,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
       "field": "option:a",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
       "field": "option:b",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
       "field": "option:c",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06",
-      "field": "option:d",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
@@ -3305,7 +3137,7 @@
         "An earlier instruction disappears after the",
         "conversation becomes too long"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. An earlier instruction disappears after the conversation becomes too long. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด An earlier instruction disappears after the conversation becomes too long. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
@@ -3330,33 +3162,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
       "field": "option:a",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
       "field": "option:b",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
-      "field": "option:c",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07",
       "field": "option:d",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
@@ -3366,7 +3190,7 @@
         "new session",
         "a saved profile"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A preference is restored in a new sessionจากa saved profile ข้อมูล. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release A preference is restored in a new sessionจากa saved profile ข้อมูล. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
@@ -3393,33 +3217,25 @@
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
       "field": "option:a",
       "fragments": [
-        "An  control loop"
+        "loop"
       ],
-      "text": "An Agent control loop."
+      "text": "ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
       "field": "option:b",
       "fragments": [
-        "A tool connector"
+        "connector"
       ],
-      "text": "A tool connector."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
-      "field": "option:c",
-      "fragments": [
-        "The available context window"
-      ],
-      "text": "The available context window."
+      "text": "ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08",
       "field": "option:d",
       "fragments": [
-        "Persistent application memory"
+        "memory"
       ],
-      "text": "Persistent application memory."
+      "text": "โหลดข้อมูลที่บันทึกไว้จากmemory ของแอปพลิเคชัน"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
@@ -3429,7 +3245,7 @@
         "s disappear in long",
         "ing sessions"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Critical ข้อจำกัดs disappear in long ร่างing sessions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ Critical ข้อจำกัดs disappear in long ร่างing sessions. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
@@ -3496,7 +3312,7 @@
         "Users must see the same",
         "preferences next session"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. Users must see the same ที่อนุมัติแล้ว preferences next session. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Users must see the same ที่อนุมัติแล้ว preferences next session. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
@@ -3563,7 +3379,7 @@
         "The assistant must inspect",
         "but must never change them"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The assistant must inspect ข้อมูล but must never change them. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The assistant must inspect ข้อมูล but must never change them. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03",
@@ -3630,7 +3446,7 @@
         "A tool-using",
         "repeats retries without reaching a decision"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. A tool-using งาน repeats retries without reaching a decision. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support A tool-using งาน repeats retries without reaching a decision. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
@@ -3698,7 +3514,7 @@
         "s disappear in long",
         "ing sessions"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Critical ข้อจำกัดs disappear in long ร่างing sessions. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน Critical ข้อจำกัดs disappear in long ร่างing sessions. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05",
@@ -3765,7 +3581,7 @@
         "Users must see the same",
         "preferences next session"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. Users must see the same ที่อนุมัติแล้ว preferences next session. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Users must see the same ที่อนุมัติแล้ว preferences next session. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
@@ -3832,7 +3648,7 @@
         "The assistant must inspect",
         "but must never change them"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The assistant must inspect ข้อมูล but must never change them. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The assistant must inspect ข้อมูล but must never change them. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07",
@@ -3899,7 +3715,7 @@
         "A tool-using",
         "repeats retries without reaching a decision"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. A tool-using งาน repeats retries without reaching a decision. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release A tool-using งาน repeats retries without reaching a decision. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
@@ -3966,7 +3782,7 @@
         "Every tool call succeeds",
         "yet the  repeats the same completed"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01",
@@ -4028,7 +3844,7 @@
         "the final   but present in the",
         "original conversation"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The instruction is absentจากthe final Model input but present in the original conversation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop The instruction is absentจากthe final Model input but present in the original conversation. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02",
@@ -4092,7 +3908,7 @@
         "the new",
         "setting"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03",
@@ -4155,7 +3971,7 @@
         "but the tool reports a denied",
         "write scope"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. The retrieved ข้อมูล is correct, but the tool reports a denied write scope. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support The retrieved ข้อมูล is correct, but the tool reports a denied write scope. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04",
@@ -4216,7 +4032,7 @@
         "Every tool call succeeds",
         "yet the  repeats the same completed"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05",
@@ -4278,7 +4094,7 @@
         "the final   but present in the",
         "original conversation"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The instruction is absentจากthe final Model input but present in the original conversation. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน The instruction is absentจากthe final Model input but present in the original conversation. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06",
@@ -4342,7 +4158,7 @@
         "the new",
         "setting"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07",
@@ -4405,7 +4221,7 @@
         "but the tool reports a denied",
         "write scope"
       ],
-      "text": "ทีมผลิตภัณฑ์กำลังเตรียมบันทึก release ด้วย AI. The retrieved ข้อมูล is correct, but the tool reports a denied write scope. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่อธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release The retrieved ข้อมูล is correct, but the tool reports a denied write scope. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08",
@@ -4467,7 +4283,7 @@
         "s saved context sometimes appears in",
         "another user"
       ],
-      "text": "ทีมโครงการกำลังเตรียมรายงานอัปเดตโครงการด้วย AI. One user’s saved context sometimes appears in another user’s งาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะเผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น"
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ One user’s saved context sometimes appears in another user’s งาน. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01",
@@ -4546,7 +4362,7 @@
         "The same connector identity reads",
         "and performs unrestricted  writes"
       ],
-      "text": "กลุ่มการเรียนรู้ชุมชนกำลังเตรียมคู่มือ workshop ด้วย AI. The same connector identity reads ข้อมูล and performs unrestricted production writes. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะคู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop The same connector identity reads ข้อมูล and performs unrestricted production writes. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02",
@@ -4622,7 +4438,7 @@
         "Multiple Agents retry one another",
         "s indefinitely"
       ],
-      "text": "ธุรกิจขนาดเล็กกำลังเตรียมสรุปบริการด้วย AI. Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
+      "text": "ธุรกิจขนาดเล็กใช้ AI เพื่อเตรียมสรุปบริการ Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03",
@@ -4702,7 +4518,7 @@
         "critical",
         "s inconsistently"
       ],
-      "text": "ทีมสนับสนุนภายในกำลังเตรียมคำตอบสำหรับงาน support ด้วย AI. Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะพนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
+      "text": "ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently. พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04",
@@ -4780,7 +4596,7 @@
         "s saved context sometimes appears in",
         "another user"
       ],
-      "text": "ทีมวิจัยกำลังเตรียมสรุปหลักฐานด้วย AI. One user’s saved context sometimes appears in another user’s งาน. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
+      "text": "ทีมวิจัยใช้ AI เพื่อเตรียมสรุปหลักฐาน One user’s saved context sometimes appears in another user’s งาน. ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05",
@@ -4859,7 +4675,7 @@
         "The same connector identity reads",
         "and performs unrestricted  writes"
       ],
-      "text": "องค์กรอาสาสมัครกำลังเตรียมแผนประสานงานด้วย AI. The same connector identity reads ข้อมูล and performs unrestricted production writes. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
+      "text": "องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน The same connector identity reads ข้อมูล and performs unrestricted production writes. ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06",
@@ -4935,7 +4751,7 @@
         "Multiple Agents retry one another",
         "s indefinitely"
       ],
-      "text": "ทีมฝึกอบรมกำลังเตรียมแบบฝึกหัดด้วย AI. Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ทีมต้องจัดการผลลัพธ์จาก AI อย่างระมัดระวัง เพราะตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
+      "text": "ทีมฝึกอบรมใช้ AI เพื่อเตรียมแบบฝึกหัด Multiple Agents retry one another’s ล้มเหลว งานs indefinitely. ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
@@ -4945,6 +4761,241 @@
         "stated systemic"
       ],
       "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "explanation",
+      "fragments": [
+        "Local retry",
+        "s alone do not bound a",
+        "multi- cycle"
+      ],
+      "text": "Local retry ขีดจำกัดs alone do not bound a multi-Agent cycle."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Use shared run state, idempotent การส่งต่อs, and a global stop budget.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "option:a",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "option:b",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "option:c",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07",
+      "field": "option:d",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "context",
+      "fragments": [
+        "Different",
+        "s build Prompts independently and omit",
+        "critical",
+        "s inconsistently"
+      ],
+      "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "prompt",
+      "fragments": [
+        "Which architecture decision best addresses the",
+        "stated systemic"
+      ],
+      "text": "Which architecture decision best addresses the stated systemic ความเสี่ยง?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "explanation",
+      "fragments": [
+        "The control targets inconsistent construction of",
+        "the"
+      ],
+      "text": "The control targets inconsistent construction of the Model input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "rewriteNotes",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "สิ่งแรกที่ควรตรวจสอบคือ \"Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.\". ผู้รีวิวควรปรับตัวเลือกให้เป็นลำดับขั้นตอนที่ชัดเจนก่อนนำไปใช้จริง"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "option:a",
+      "fragments": [
+        "Separate read and",
+        "identities with",
+        "bound scopes"
+      ],
+      "text": "Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "option:b",
+      "fragments": [
+        "Centralize",
+        "ed",
+        "context assembly and test its"
+      ],
+      "text": "Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "option:c",
+      "fragments": [
+        "Use shared run state",
+        "idempotent",
+        "and a global stop budget"
+      ],
+      "text": "Use shared run state, idempotent การส่งต่อs, and a global stop budget."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08",
+      "field": "option:d",
+      "fragments": [
+        "Isolate memory by identity and test",
+        "cross-user",
+        "denial"
+      ],
+      "text": "Isolate memory by identity and test cross-user การเข้าถึง denial."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "context",
+      "fragments": [
+        "The",
+        "says",
+        "help with this",
+        "and supplies",
+        "but never names the expected"
+      ],
+      "text": "ทีมโครงการใช้ AI เพื่อเตรียมรายงานอัปเดตโครงการ The คำขอ says “help with this” and supplies ข้อมูลโครงการที่อนุมัติแล้ว, but never names the expected ผลลัพธ์. เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "prompt",
+      "fragments": [
+        "Which missing  element is most directly",
+        "causing this problem"
+      ],
+      "text": "Which missing Prompt element is most directly causing this problem?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "explanation",
+      "fragments": [
+        "The assistant has",
+        "material without a defined objective"
+      ],
+      "text": "The assistant has แหล่งข้อมูล material without a defined objective."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "option:a",
+      "fragments": [
+        "A specific",
+        "and deliverable"
+      ],
+      "text": "A specific งาน and deliverable."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "option:b",
+      "fragments": [
+        "An explicit",
+        "structure"
+      ],
+      "text": "An explicit ผลลัพธ์ structure."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "option:c",
+      "fragments": [
+        "The necessary",
+        "and context"
+      ],
+      "text": "The necessary หลักฐาน and context."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
+      "field": "option:d",
+      "fragments": [
+        "The decision-relevant"
+      ],
+      "text": "The decision-relevant ข้อจำกัด."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
+      "field": "context",
+      "fragments": [
+        "The",
+        "ed",
+        "is clear",
+        "but a crucial eligibility",
+        "is absent",
+        "the"
+      ],
+      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop The คำขอed คู่มือ workshop is clear, but a crucial eligibility กฎ is absentจากthe Prompt. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
+      "field": "prompt",
+      "fragments": [
+        "Which missing  element is most directly",
+        "causing this problem"
+      ],
+      "text": "Which missing Prompt element is most directly causing this problem?"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
+      "field": "explanation",
+      "fragments": [
+        "The  was not given the",
+        "needed to bound its answer"
+      ],
+      "text": "The Model was not given the กฎ needed to bound its answer."
     }
   ]
 }

@@ -1478,6 +1478,18 @@ h3 {
   line-height: 1.55;
 }
 
+.admin-hero-actions {
+  align-items: stretch;
+  display: grid;
+  gap: 10px;
+  justify-self: end;
+  min-width: 220px;
+}
+
+.admin-hero-actions > * {
+  width: 100%;
+}
+
 .admin-login-card {
   background: var(--ink);
   border-radius: 8px;
@@ -6011,6 +6023,11 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .admin-hero-actions {
+    justify-self: stretch;
+    min-width: 0;
+  }
+
   .lab-top,
   .lab-workbench,
   .agent-status-grid,
@@ -6210,6 +6227,17 @@ h3 {
   color: #246b53;
   font-weight: 700;
   text-decoration: none;
+}
+
+.inventory-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.inventory-assessment-link {
+  background: var(--ink);
+  color: white;
 }
 
 .inventory-hero h1 {

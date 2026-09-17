@@ -8,6 +8,8 @@ A separate **3,328-item draft review inventory** is now tracked on `main`: 768 c
 
 The existing **634 live questions remain separate** and are exported for side-by-side admin review. Use the admin inventory page at `/admin/question-inventory` to review draft and live questions, switch English/Thai at page and question level, filter by domain/competency/difficulty/profile, and capture reviewer ratings/comments locally. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md), [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx), [question JSON](exports/review-inventory/questions.json), [live-bank export](exports/review-inventory/live-questions.json), [artifact needs](exports/review-inventory/artifact-needs.md), and [Thai translation QA](exports/review-inventory/thai-translation-qa.json).
 
+Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
+
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
@@ -137,6 +139,14 @@ Open:
 ```text
 http://localhost:3000/
 ```
+
+Question inventory reviewer:
+
+```text
+http://localhost:3000/admin/question-inventory
+```
+
+For collaborator setup and a smaller sparse checkout, see [`docs/QUESTION_INVENTORY_LOCAL_REVIEW.md`](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md).
 
 ## Google and Email Auth
 

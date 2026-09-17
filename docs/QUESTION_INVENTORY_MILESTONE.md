@@ -43,6 +43,8 @@ Use `/admin/question-inventory` to review the draft and live banks in one place.
 
 The current reviewer feedback store is browser-local. For external tester review, the intended deployment path is a lightweight Vercel review app backed by a central database such as Supabase or Vercel Postgres, so reviewer comments, ratings, suggested rewrites, language reviewed, question version/hash, and timestamps can later be imported into the repo through a human-approved update workflow.
 
+For collaborator clone, sparse-checkout, installation, local-server, and update instructions, see [Review the question inventory locally](QUESTION_INVENTORY_LOCAL_REVIEW.md). The guide also explains which files are required for the reduced review app and why locally saved comments do not yet sync back to the repository.
+
 ## Live readiness warning
 
 The generated review inventory should not be promoted directly into the live assessment. The bank is useful as a coverage scaffold, but many draft items still read as abstract, repetitive, and overly generator-shaped. Before pilot use, selected item families need human-facing rewrites that use plain scenarios, concrete actions, realistic artifacts, and varied formats such as multi-part, matching, select-all, ranking, and artifact review. The rewrite samples linked above define the current target standard.

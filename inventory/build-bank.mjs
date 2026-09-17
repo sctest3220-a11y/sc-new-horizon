@@ -13,7 +13,7 @@ import { getArtifactNeedFromText } from './artifact-needs.mjs';
 export const difficulties = ['awareness', 'applied', 'proficient', 'advanced'];
 export const blueprints = { ...foundations, ...application, ...evaluation, ...governance, ...strategy, ...collaboration };
 export const layerTargets = { core: 768, function: 1296, industry: 320, executive: 944 };
-export const inventoryVersion = '2026-09-10.1';
+export const inventoryVersion = '2026-09-17.1';
 const digest = (value) => createHash('sha256').update(value).digest('hex');
 const numberHash = (value) => Number.parseInt(digest(value).slice(0, 8), 16);
 const cognitiveTasks = {
@@ -109,38 +109,63 @@ function uniqueChoices(values) {
   }));
 }
 
-function softenRule(rule) {
-  return rule
-    .replace('must', 'has to')
-    .replace('may', 'can')
-    .replace('require', 'need')
-    .replace('requires', 'needs');
+const plainChoiceRewrites = new Map([
+  ['A generative model producing a draft.', 'Generating an answer without retrieving supporting sources.'],
+  ['A search system retrieving existing text.', 'Retrieving exact passages from the approved sources.'],
+  ['A rules-based automation selecting text.', 'Following a fixed rule to select approved text.'],
+  ['An application coordinating several components.', 'Coordinating a model, search, permissions, and review tools.'],
+  ['Tokenization of the input.', 'Breaking the input into tokens that the model can process.'],
+  ['An embedding used for similarity.', 'Representing meaning numerically so related content can be found.'],
+  ['Retrieval used to ground generation.', 'Retrieving relevant sources before generating the answer.'],
+  ['Fine-tuning on additional examples.', 'Updating the model using additional reviewed examples.'],
+  ['A tool connector.', 'Using an authorized connector to access another system.'],
+  ['An agent control loop.', 'Using an agent loop to plan, act, check results, and stop.'],
+  ['Persistent application memory.', 'Loading saved information from application memory.'],
+  ['The available context window.', 'Reaching the limit of what the model can keep in its current input.'],
+]);
+
+function makeChoicePlain(label) {
+  const split = splitCombinedChoice(label);
+  if (split) {
+    return `${makeChoicePlain(`${split.decision}.`).replace(/\.$/, '')}; ${makeChoicePlain(`${split.action}.`).replace(/\.$/, '')}.`;
+  }
+  const exact = plainChoiceRewrites.get(label);
+  if (exact) return exact;
+  return label
+    .replace(/^A generative model /, 'A language model ')
+    .replace(/^Use search that returns the original source passage\.$/, 'Retrieve the original passage from the approved sources.')
+    .replace(/^Use search that /, 'Use search that ')
+    .replace(/^Use an application with /, 'Use a workflow with ')
+    .replace(/^Investigate /, 'Check ')
+    .replace(/^Evaluate /, 'Test ')
+    .replace(/^Measure /, 'Check ');
 }
 
 function createNaturalScenario(context, caseEvidence, overlay) {
   const deliverable = context.deliverable;
   const source = context.source;
-  const rule = softenRule(context.constraint);
-  const setting = `${context.label} is preparing ${articleFor(deliverable)} ${deliverable} with AI.`;
+  const rule = context.constraint;
+  const setting = `${context.label} uses AI to prepare ${articleFor(deliverable)} ${deliverable}.`;
 
   let scenario;
   if (/creates new sentences from learned patterns; it has no connection to/i.test(caseEvidence)) {
-    scenario = `${setting} The AI composes new draft wording from learned patterns instead of retrieving text from ${source}. That matters because ${rule.charAt(0).toLowerCase()}${rule.slice(1)}`;
+    scenario = `${setting} The assistant writes an answer using its language model, but it does not search ${source}. ${rule}`;
   } else if (/returns unchanged passages with record identifiers/i.test(caseEvidence)) {
-    scenario = `${setting} The AI returns exact passages from ${source}, including record identifiers, rather than writing a new explanation. The team still has to follow this rule: ${rule}`;
+    scenario = `${setting} The assistant returns exact passages from ${source}, including their record identifiers, instead of writing a new explanation. ${rule}`;
   } else if (/follows an explicit if-then rule/i.test(caseEvidence)) {
-    scenario = `${setting} The AI is not really interpreting the request; it follows a fixed if-then rule and copies an approved sentence. The output still has to respect this rule: ${rule}`;
+    scenario = `${setting} The system follows a fixed if-then rule and copies an approved sentence; it does not interpret the request with a language model. ${rule}`;
   } else if (/workspace combines a model, a search index, permissions, and a review screen/i.test(caseEvidence)) {
-    scenario = `${setting} The workflow uses several parts together: a model, a search index, permissions, and a review screen. The team needs to understand which setup fits the work because ${rule.charAt(0).toLowerCase()}${rule.slice(1)}`;
+    scenario = `${setting} The workflow combines a language model, a search index, access permissions, and a review screen. ${rule}`;
   } else {
-    scenario = `${setting} ${caseEvidence} The team has to handle the AI output carefully because ${rule.charAt(0).toLowerCase()}${rule.slice(1)}`;
+    scenario = `${setting} ${caseEvidence} ${rule}`;
   }
 
   return [scenario, ...(overlay ? [`Additional detail: ${overlay[0]}`] : [])].join('\n');
 }
 
 function createUserFacingDraft(questionBase, context, caseEvidence, overlay, prompt, options, correctOptionId) {
-  const correctOption = options.find((option) => option.id === correctOptionId);
+  const plainOptions = options.map((option) => ({ ...option, label: makeChoicePlain(option.label) }));
+  const correctOption = plainOptions.find((option) => option.id === correctOptionId);
   const naturalScenario = createNaturalScenario(context, caseEvidence, overlay);
   const basePrompt = prompt.replace(' Also apply the profile cue.', '').trim();
   const friendlyPrompt = basePrompt
@@ -150,7 +175,7 @@ function createUserFacingDraft(questionBase, context, caseEvidence, overlay, pro
     .replace('Which check should resolve the specific evidence gap first?', 'What should they check first?');
 
   if (overlay) {
-    const splitOptions = options.map((option) => ({ option, split: splitCombinedChoice(option.label) })).filter((item) => item.split);
+    const splitOptions = plainOptions.map((option) => ({ option, split: splitCombinedChoice(option.label) })).filter((item) => item.split);
     const correctSplit = splitOptions.find((item) => item.option.id === correctOptionId)?.split;
     const decisionChoices = uniqueChoices(splitOptions.map((item) => item.split?.decision));
     const actionChoices = uniqueChoices(splitOptions.map((item) => item.split?.action));
@@ -188,7 +213,7 @@ function createUserFacingDraft(questionBase, context, caseEvidence, overlay, pro
       format: 'select all safe actions',
       context: naturalScenario,
       prompt: `${friendlyPrompt} Select all that apply.`,
-      options: options.map(({ id, label }) => ({ id, label })),
+      options: plainOptions.map(({ id, label }) => ({ id, label })),
       correctOptionIds: [correctOptionId],
       explanation: correctOption?.feedback ?? questionBase.rationale,
       rewriteNotes: 'This is still a draft: reviewers should add one more defensible correct action before live use.',
@@ -203,7 +228,7 @@ function createUserFacingDraft(questionBase, context, caseEvidence, overlay, pro
       format: 'ranked decision',
       context: naturalScenario,
       prompt: friendlyPrompt,
-      options: options.map(({ id, label }) => ({ id, label })),
+      options: plainOptions.map(({ id, label }) => ({ id, label })),
       correctOptionIds: [correctOptionId],
       explanation: correctOption?.feedback ?? questionBase.rationale,
       rewriteNotes: `The best first check is "${correctLabel}". Reviewers should convert sibling options into an explicit sequence before live use.`,
@@ -216,7 +241,7 @@ function createUserFacingDraft(questionBase, context, caseEvidence, overlay, pro
     format: questionBase.recommendedFormat.format,
     context: naturalScenario,
     prompt: friendlyPrompt,
-    options: options.map(({ id, label }) => ({ id, label })),
+    options: plainOptions.map(({ id, label }) => ({ id, label })),
     correctOptionIds: [correctOptionId],
     explanation: correctOption?.feedback ?? questionBase.rationale,
     rewriteNotes: 'Plain-language draft generated from the coverage item; still requires human review before pilot use.',

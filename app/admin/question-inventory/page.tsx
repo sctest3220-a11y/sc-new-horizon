@@ -184,6 +184,18 @@ function labelForProfile(value: string) {
 const thaiSentencePatterns: Array<[RegExp, string]> = [
   [/What is the AI tool doing in this (.*?)\?/g, 'เครื่องมือ AI กำลังทำอะไรใน$1นี้'],
   [/What is the AI tool doing in (.*?)\?/g, 'เครื่องมือ AI กำลังทำอะไรใน$1'],
+  [/(.*?) uses AI to prepare an? (.*?)\. The assistant writes an answer using its language model, but it does not search (.*?)\. (.*?)\./g, '$1ใช้ AI ช่วยจัดทำ$2 โดย Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาใน$3 $4.'],
+  [/The assistant writes an answer using its language model, but it does not search (.*?)\./g, 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาใน$1'],
+  [/The assistant returns exact passages with record identifiers from (.*?)\./g, 'Assistant ดึงข้อความตรงจาก$1พร้อมรหัสอ้างอิงข้อมูล'],
+  [/The system follows a fixed if-then rule and copies an approved sentence\./g, 'ระบบทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว'],
+  [/The workspace combines a language model, a search index, permissions, and a review screen\./g, 'Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน'],
+  [/(.*?) uses AI to prepare an? (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2'],
+  [/(.*?) uses AI to prepare an? (.*?)\. The assistant writes an answer using its language model, but it does not search (.*?)\. Before the result is used, the team needs to follow this requirement: (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 Assistant สร้างคำตอบด้วย language model แต่ไม่ได้ค้นหาข้อมูลจาก$3 ก่อนนำผลลัพธ์ไปใช้ ทีมต้องทำตามข้อกำหนดนี้: $4'],
+  [/(.*?) uses AI to prepare an? (.*?)\. The assistant returns exact passages from (.*?), including their record identifiers, instead of writing a new explanation\. (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 Assistant ดึงข้อความเดิมจาก$3พร้อมรหัสอ้างอิงข้อมูล แทนที่จะเขียนคำอธิบายใหม่ $4'],
+  [/(.*?) uses AI to prepare an? (.*?)\. The system follows a fixed if-then rule and copies an approved sentence; it does not interpret the request with a language model\. (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 ระบบทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว โดยไม่ได้ใช้ language model ตีความคำขอ $3'],
+  [/(.*?) uses AI to prepare an? (.*?)\. The workflow combines a language model, a search index, access permissions, and a review screen\. (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 Workflow นี้ใช้ language model, search index, สิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน $3'],
+  [/(.*?) uses AI to prepare an? (.*?)\. (.*?) (Only|Every|Customer|Staff|Recommendations|Employment|No payment|Performance|Refunds|Production|Each operational|Account actions|Returns promises|Eligibility decisions|Scaling decisions|Management|Workforce-impacting decisions|Benefits|Scale decisions)(.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 $3 $4$5.'],
+  [/(.*?) uses AI to prepare an? (.*?)\. (.*?) Before the result is used, the team needs to follow this requirement: (.*?)\./g, '$1ใช้ AI เพื่อเตรียม$2 $3 ก่อนนำผลลัพธ์ไปใช้ ทีมต้องทำตามข้อกำหนดนี้: $4'],
   [/(.*?) is preparing an? (.*?) with AI\. The AI composes new draft wording from learned patterns instead of retrieving text from (.*?)\. That matters because (.*?)\./g, '$1กำลังเตรียม$2ด้วย AI. AI เขียนร่างข้อความใหม่จากรูปแบบที่เรียนรู้มา แทนที่จะดึงข้อความจาก$3. ประเด็นนี้สำคัญเพราะ$4'],
   [/(.*?) is preparing an? (.*?) with AI\. The AI returns exact passages from (.*?), including record identifiers, rather than writing a new explanation\. The team still has to follow this rule: (.*?)\./g, '$1กำลังเตรียม$2ด้วย AI. AI ดึงข้อความเดิมจาก$3พร้อมรหัสอ้างอิงข้อมูล แทนที่จะเขียนคำอธิบายใหม่. ทีมยังต้องทำตามกฎนี้: $4'],
   [/(.*?) is preparing an? (.*?) with AI\. The AI is not really interpreting the request; it follows a fixed if-then rule and copies an approved sentence\. The output still has to respect this rule: (.*?)\./g, '$1กำลังเตรียม$2ด้วย AI. AI ไม่ได้ตีความคำขอจริง ๆ แต่ทำตามกฎ if-then ที่กำหนดไว้ และคัดลอกประโยคที่อนุมัติแล้ว. ผลลัพธ์ยังต้องทำตามกฎนี้: $3'],
@@ -237,6 +249,37 @@ const thaiSentencePatterns: Array<[RegExp, string]> = [
 ];
 
 const thaiExactPhrases: Record<string, string> = {
+  'Generating an answer without retrieving supporting sources.': 'สร้างคำตอบโดยไม่ค้นหาแหล่งข้อมูลสนับสนุน',
+  'Retrieving exact passages from the approved sources.': 'ดึงข้อความตรงจากแหล่งข้อมูลที่อนุมัติแล้ว',
+  'Following a fixed rule to select approved text.': 'ทำตามกฎที่กำหนดไว้เพื่อเลือกข้อความที่อนุมัติแล้ว',
+  'Coordinating a model, search, permissions, and review tools.': 'ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review',
+  'Breaking the input into tokens that the model can process.': 'แบ่ง input เป็น token ที่ Model ประมวลผลได้',
+  'Representing meaning numerically so related content can be found.': 'แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง',
+  'Retrieving relevant sources before generating the answer.': 'ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ',
+  'Updating the model using additional reviewed examples.': 'ปรับ Model ด้วยตัวอย่างเพิ่มเติมที่ผ่านการ review แล้ว',
+  'Using an authorized connector to access another system.': 'ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น',
+  'Using an agent loop to plan, act, check results, and stop.': 'ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข',
+  'Loading saved information from application memory.': 'โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน',
+  'Reaching the limit of what the model can keep in its current input.': 'ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้',
+  'The assistant is generating text, but the answer is not grounded in the approved sources.': 'Assistant กำลังสร้างข้อความ แต่คำตอบไม่ได้อ้างอิงแหล่งข้อมูลที่อนุมัติแล้ว',
+  'The assistant is finding existing records rather than writing new content.': 'Assistant กำลังค้นหาข้อมูลเดิม ไม่ได้เขียนเนื้อหาใหม่',
+  'The system selects text using a defined rule rather than asking a language model to generate it.': 'ระบบเลือกข้อความตามกฎที่กำหนดไว้ แทนที่จะให้ language model สร้างข้อความ',
+  'The application combines several components to complete the workflow.': 'แอปพลิเคชันใช้หลายส่วนประกอบร่วมกันเพื่อทำ Workflow ให้เสร็จ',
+  'Retrieve the original passage from the approved sources.': 'ดึงข้อความต้นฉบับจากแหล่งข้อมูลที่อนุมัติแล้ว',
+  'Use a workflow with retrieval and gated tool steps.': 'ใช้ Workflow ที่ค้นหาข้อมูลและควบคุมขั้นตอนการใช้เครื่องมือด้วยจุดอนุมัติ',
+  'Use a lookup table with explicit category rules.': 'ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน',
+  'Use a generative drafting assistant with review.': 'ใช้ Assistant ช่วยร่างข้อความ และให้คน review ก่อนใช้งาน',
+  'The assistant writes an answer using its language model, but it does not search approved project records.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาข้อมูลโครงการที่อนุมัติแล้ว',
+  'The assistant writes an answer using its language model, but it does not search reviewed learning materials.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาสื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว',
+  'The assistant writes an answer using its language model, but it does not search approved service records.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาข้อมูลบริการที่อนุมัติแล้ว',
+  'The assistant writes an answer using its language model, but it does not search maintained knowledge articles.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาบทความความรู้ที่ดูแลให้เป็นปัจจุบัน',
+  'The assistant writes an answer using its language model, but it does not search documented source extracts.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้',
+  'The assistant writes an answer using its language model, but it does not search approved volunteer schedules.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาตารางอาสาสมัครที่อนุมัติแล้ว',
+  'The assistant writes an answer using its language model, but it does not search reviewed training examples.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว',
+  'The assistant writes an answer using its language model, but it does not search approved release records.': 'Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาข้อมูล release ที่อนุมัติแล้ว',
+  'The assistant returns exact passages with record identifiers from approved project records.': 'Assistant ดึงข้อความตรงจากข้อมูลโครงการที่อนุมัติแล้ว พร้อมรหัสอ้างอิงข้อมูล',
+  'The workspace combines a language model, a search index, permissions, and a review screen.': 'Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน',
+  'language model': 'โมเดลภาษา',
   'project team': 'ทีมโครงการ',
   'Project team': 'ทีมโครงการ',
   'project update': 'รายงานอัปเดตโครงการ',
@@ -826,7 +869,10 @@ export default function QuestionInventoryPage({
     <main className="inventory-page">
       <section className="inventory-hero">
         <div>
-          <Link href="/" className="inventory-back-link">Back to assessment</Link>
+          <div className="inventory-nav-links">
+            <Link href="/" className="inventory-back-link">Main page</Link>
+            <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+          </div>
           <p className="eyebrow">Draft question review inventory</p>
           <h1>Question Inventory</h1>
           <p>

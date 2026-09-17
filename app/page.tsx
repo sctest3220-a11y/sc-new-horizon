@@ -750,6 +750,7 @@ const thaiUiCopy: Record<string, string> = {
   'Open admin dashboard preview': 'เปิดตัวอย่าง Admin Dashboard',
   'Admin dashboard': 'Admin Dashboard',
   'Assessment analytics across users and groups.': 'Analytics ของ Assessment ตามผู้ใช้และกลุ่ม',
+  'Question inventory': 'คลังคำถาม',
   'Sign out preview': 'ออกจากโหมดตัวอย่าง',
   'Started': 'เริ่มแล้ว',
   'Continued': 'ทำต่อ',
@@ -11566,7 +11567,11 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
+      ? 'onboarding'
+      : 'home'
+  ));
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
@@ -11628,6 +11633,7 @@ export default function Home() {
   const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>(() => (
     parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey))
   ));
+
   const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>(() => (
     parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
   ));
@@ -13547,7 +13553,10 @@ export default function Home() {
                     The current view summarizes saved local MVP runs; production should query Supabase analytics views.
                   </p>
                 </div>
-                <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
+                <div className="admin-hero-actions">
+                  <a className="primary" href="/admin/question-inventory">Question inventory</a>
+                  <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
+                </div>
               </div>
 
               <div className="admin-kpi-grid">
