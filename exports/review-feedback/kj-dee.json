@@ -1,7 +1,332 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T08:55:02.145Z",
+  "updatedAt": "2026-09-18T09:05:14.604Z",
   "questions": {
+    "DEPTH-D1-CONCEPTS-025": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good single-answer MCQ: realistic quote, clear stem ('Which explanation is most accurate?'), one defensible key (A) and plausible distractors. Reads once → understood. The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้ใช้ใหม่บอกว่า “AI ตอบอย่างมั่นใจ แสดงว่ามันต้องรู้ความจริง” คำอธิบายข้อใดถูกต้องที่สุด\nA. LLM สร้างข้อความตามรูปแบบที่น่าจะเป็น จึงยังต้องตรวจสอบหลักฐาน\nB. LLM เก็บเฉพาะข้อเท็จจริงที่ได้รับการอนุมัติจากอินเทอร์เน็ต\nC. LLM ตอบไม่ได้เลยถ้ายังไม่ได้ตรวจสอบทุกข้อเท็จจริง\nD. น้ำเสียงที่มั่นใจก็เพียงพอสำหรับการตัดสินใจที่ความเสี่ยงต่ำ\nReason: translation only; key A unchanged; add explanation: 'โมเดลสร้างคำตอบจากความน่าจะเป็นของภาษา ไม่ใช่จากการตรวจสอบความจริง'.",
+          "id": "2026-09-18T08:58:13.066Z",
+          "savedAt": "2026-09-18T08:58:13.066Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.066Z"
+    },
+    "DEPTH-D1-CONCEPTS-026": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Matching item; the four needs are concrete and each maps to exactly one concept (RAG / fine-tuning or examples / embeddings / prompting), so the format works. Issues: the reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' is shown in the user-facing text; the labels SEARCH/STYLE/SIMILAR/INSTRUCTION are internal codes. Matching is the right format (the dropdown has no 'matching' option; multi-part is the closest). The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมผลิตภัณฑ์กำลังเปรียบเทียบวิธีปรับปรุงผู้ช่วยตอบคำถามลูกค้า จับคู่ความต้องการแต่ละข้อกับแนวคิดที่เกี่ยวข้องที่สุด\nตอบโดยใช้เอกสารนโยบายฉบับปัจจุบัน → RAG\nให้โมเดลเขียนตามสไตล์ของแบรนด์ → Fine-tuning หรือการให้ตัวอย่าง\nค้นหาเอกสารที่มีความหมายคล้ายกัน ไม่ใช่คำตรงกัน → Embeddings\nบอกผู้ช่วยว่าจะให้สวมบทบาทใดและตอบในรูปแบบใด → Prompting\nReason: remove the reviewer note and the internal codes from the user view; translation only; pairs unchanged.",
+          "id": "2026-09-18T08:58:13.110Z",
+          "savedAt": "2026-09-18T08:58:13.110Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.110Z"
+    },
+    "DEPTH-D1-CONCEPTS-027": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Open-response item with a model answer in the explanation. The prompt is clear and realistic for students, but it asks two things at once ('when could it be useful' and 'what must be checked first') with no rubric visible, so scoring consistency is a risk. No dropdown option matches open response; multi-part is the closest because the two questions can be scored separately. The Thai view is not translated ('cited แหล่งข้อมูลs', 'แหล่งข้อมูล review').",
+          "suggestedChange": "Recommended Thai (full):\nนักศึกษาคนหนึ่งจะใช้คำตอบจาก AI ที่มีการอ้างอิง แต่แหล่งที่อ้างอาจไม่รองรับข้อความนั้นจริง\nส่วนที่ 1: คำตอบจาก AI นี้มีประโยชน์ในกรณีใด\nส่วนที่ 2: ต้องตรวจสอบอะไรก่อนนำไปใช้\nModel answer (Thai): AI ช่วยอธิบายหรือจัดระเบียบหัวข้อได้ แต่ไม่ควรถือเป็นหลักฐาน ต้องตรวจว่าแหล่งที่อ้างมีอยู่จริงและรองรับข้อความนั้นตรง ๆ จากนั้นเขียนใหม่ด้วยคำของตนเอง และทำเครื่องหมายส่วนที่ไม่แน่ใจไว้ให้อาจารย์หรือตรวจกับแหล่งข้อมูล\nReason: split into two scorable parts and publish a 2–3 point rubric; content of the model answer unchanged.",
+          "id": "2026-09-18T08:58:13.127Z",
+          "savedAt": "2026-09-18T08:58:13.127Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.127Z"
+    },
+    "DEPTH-D1-SYSTEMS-028": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear stem and a strong key (A: apps add tools, memory, policies, permissions around the model). Distractor C ('depends only on the user interface color') is not plausible and wastes a slot; D is fine. Suggest a more plausible C. The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้ใช้ถามว่าทำไมโมเดลเดียวกันจึงปลอดภัยกว่าในแอปหนึ่งเมื่อเทียบกับอีกแอป คำตอบใดดีที่สุด\nA. แอปสามารถเพิ่มเครื่องมือ memory นโยบาย และการกำหนดสิทธิ์รอบ ๆ โมเดลได้\nB. ชื่อโมเดลเพียงอย่างเดียวกำหนดความเสี่ยงของผลิตภัณฑ์ได้ครบถ้วนเสมอ\nC. ความปลอดภัยขึ้นอยู่กับว่าแอปนั้นเป็นแบบเสียเงินหรือฟรีเท่านั้น (replace the 'interface color' distractor)\nD. แชตบอตไม่สามารถเชื่อมต่อกับระบบภายนอกได้\nReason: key A unchanged; C replaced with a plausible misconception; add explanation.",
+          "id": "2026-09-18T08:58:13.144Z",
+          "savedAt": "2026-09-18T08:58:13.144Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.144Z"
+    },
+    "DEPTH-D1-SYSTEMS-029": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "multi",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "multi",
+          "comment": "AI review (Claude): Select-all item with four correct checks (license, data, evaluation, limitations) and one clear distractor (likes/downloads). Content is accurate and relevant, but the stem does not say 'select all that apply', so a test taker may pick only one. Internal codes LICENSE/DATA/EVAL/LIMITS/LIKES appear in the user text. The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nนักพัฒนาต้องการใช้โมเดลจาก Hugging Face ในผู้ช่วยที่ให้บริการลูกค้าโดยตรง ควรตรวจสอบรายละเอียดใดใน model card (เลือกทุกข้อที่ควรตรวจ)\n☐ license และสิทธิ์การใช้เชิงพาณิชย์\n☐ สรุปข้อมูลที่ใช้ฝึก และข้อควรระวังด้านความเป็นส่วนตัว\n☐ งานที่ใช้ประเมิน ภาษาที่รองรับ และกรณีที่ล้มเหลว\n☐ ข้อจำกัดที่ทราบ และขอบเขตการใช้งานที่ตั้งใจไว้\n☐ จำนวน like และจำนวนดาวน์โหลดเท่านั้น\nReason: add the select-all instruction, drop internal codes, translate; keyed set unchanged.",
+          "id": "2026-09-18T08:58:13.161Z",
+          "savedAt": "2026-09-18T08:58:13.161Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.161Z"
+    },
+    "DEPTH-D1-SYSTEMS-030": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Ranking item with sensible steps, but as displayed the option text contains the answer: each step is prefixed '1.'…'5.' in the correct order, and the reviewer-facing instruction 'Reviewer should convert these choices into a drag-to-rank sequence' is in the user text. If this is what test takers see, the item is not measuring anything. Internal codes PURPOSE/LICENSE/RISK/TEST/APPROVE also visible. The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Current: 'PURPOSE. 1. Confirm the package solves…' … 'APPROVE. 5. Approve with owner…'\nRecommended Thai (full, numerals removed, present shuffled):\nทีมกำลังพิจารณาใช้แพ็กเกจ AI แบบ open source จาก GitHub จัดลำดับขั้นตอนการตรวจสอบ repo ก่อนนำมาใช้ จากสิ่งที่ควรทำก่อนไปหลัง\n• ยืนยันว่าแพ็กเกจแก้ปัญหาที่ workflow ต้องการจริง\n• ตรวจ license การดูแลรักษา release ประเด็นค้าง และนโยบายความปลอดภัย\n• ตรวจ dependency สิทธิ์ การจัดการข้อมูล และช่องโหว่ที่ทราบ\n• ทดสอบใน sandbox ด้วยข้อมูลตัวแทน\n• อนุมัติโดยมีผู้รับผิดชอบ การติดตาม และแผน rollback\nReason: remove the numbers and reviewer note from the user view; keyed order unchanged.",
+          "id": "2026-09-18T08:58:13.191Z",
+          "savedAt": "2026-09-18T08:58:13.191Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:13.191Z"
+    },
+    "DEPTH-EXP-D1-CONCEPTS-090": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "multi",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "multi",
+          "comment": "AI review (Claude): Select-all with four correct corrections and one distractor (GUARANTEE). The misconception is realistic and the corrections are accurate. Issues: no 'select all that apply' cue; internal codes visible; Thai view contains broken tokens ('valiวันที่d หลักฐาน'). The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้เข้าร่วมเวิร์กช็อปบอกว่า temperature ที่ต่ำ prompt ที่ยาว และการอ้างอิงที่ดูมั่นใจ รับประกันว่าคำตอบของ AI เป็นความจริง ผู้ดำเนินการควรแก้ความเข้าใจข้อใด (เลือกทุกข้อที่ถูกต้อง)\n☐ ความจริงต้องมีแหล่งข้อมูลที่เชื่อถือได้หรือหลักฐานที่ผ่านการตรวจสอบรองรับ\n☐ temperature ต่ำอาจลดความแปรปรวน แต่ไม่รับประกันความถูกต้อง\n☐ รูปแบบการอ้างอิงต้องตรวจเทียบกับแหล่งข้อมูลจริง\n☐ ผู้ใช้ควรเทียบข้อความสำคัญกับต้นฉบับก่อนนำไปใช้\n☐ คำตอบที่มั่นใจก็เพียงพอแล้วเมื่อ prompt ละเอียด\nReason: add select-all cue, translation; keyed set unchanged.",
+          "id": "2026-09-18T08:59:40.551Z",
+          "savedAt": "2026-09-18T08:59:40.551Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.551Z"
+    },
+    "DEPTH-EXP-D1-D2-067": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three-part item whose parts have no question text: the test taker sees only machine labels 'CURRENT-POLICY:A.', 'PROMPT-CONSTRAINT:B.', 'CONTEXT-LIMIT:C.' followed by options, and must guess what each part asks. The intro is also long and abstract ('keeps treating longer prompts, retrieval, and memory as interchangeable fixes'). The options themselves are good and each part has one clear key (B, A, C). Needs an explicit stem per part. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมกำลังสร้างผู้ช่วยด้านนโยบาย และมักใช้ prompt ที่ยาวขึ้น การค้นข้อมูล (retrieval) และ memory แทนกันไปมาเหมือนเป็นวิธีแก้เดียวกัน ตอบทั้ง 3 ส่วน\nส่วนที่ 1 — ต้องการให้ตอบตามนโยบายฉบับปัจจุบัน ควรทำอย่างไร\nA. พึ่งพาข้อมูลที่โมเดลถูกฝึกมา เพราะครอบคลุมกว้าง | B. ค้นเอกสารนโยบายที่อนุมัติแล้วมาใช้ตอน ตอบ | C. สั่งให้ตอบด้วยน้ำเสียงมั่นใจขึ้น\nส่วนที่ 2 — ข้อจำกัดใน prompt ข้อใดเหมาะสม\nA. ใช้เฉพาะนโยบายที่ให้มา และระบุจุดที่ไม่มีหลักฐาน | B. ตอบให้กระชับและน่าเชื่อ | C. ถ้าไฟล์ไม่ชัด ให้ตอบตามแนวปฏิบัติทั่วไป\nส่วนที่ 3 — ข้อใดอธิบายขีดจำกัดของ context ได้ถูกต้อง\nA. โมเดลจำข้อความต้นฉบับได้ไม่จำกัดและแม่นยำ | B. ยิ่งวางข้อมูลเยอะ ความเสี่ยงยิ่งลดลงเสมอ | C. รายละเอียดสำคัญอาจถูกตัด ถูกกลบ หรือถูกบริบทที่ไม่เกี่ยวข้องบดบัง\nReason: add a real stem to each part and replace machine labels; keys B / A / C unchanged.",
+          "id": "2026-09-18T08:59:40.466Z",
+          "savedAt": "2026-09-18T08:59:40.466Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.466Z"
+    },
+    "DEPTH-EXP-D1-D2-086": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Matching item: four observed behaviours each map to one explanation (stale training/context, retrieval grounding, saved memory, prompt constraints). Realistic and unambiguous. Matching is the right format (the dropdown has no 'matching' option; multi-part is the closest). The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are visible in the user text and should be removed. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มผู้เข้าอบรมกำลังทบทวนว่าทำไมผู้ช่วย AI ตัวหนึ่งตอบจาก memory ที่ล้าสมัย ขณะที่อีกตัวใช้แหล่งข้อมูลนโยบายฉบับปัจจุบัน จับคู่พฤติกรรมกับคำอธิบายที่เหมาะสมที่สุด\nโมเดลให้คำตอบที่ดูสมเหตุสมผลแต่ไม่มีนโยบายใหม่ → ข้อมูลที่ฝึกหรือบริบทก่อนหน้าอาจล้าสมัย\nผู้ช่วยอ้างอิงคลังนโยบายที่อนุมัติแล้ว → การค้นข้อมูล (retrieval) ทำให้คำตอบยึดกับแหล่งข้อมูล\nแอปจำการตั้งค่าของผู้ใช้ได้ในสัปดาห์ถัดไป → memory ที่บันทึกไว้เป็นส่วนหนึ่งของระบบผลิตภัณฑ์\nผู้ใช้สั่งให้ AI อ้างอิงหลักฐานและระบุความไม่แน่นอน → ข้อจำกัดใน prompt กำหนดงานและพฤติกรรมการตรวจสอบ\nReason: translation only; pairs unchanged.",
+          "id": "2026-09-18T08:59:40.526Z",
+          "savedAt": "2026-09-18T08:59:40.526Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.526Z"
+    },
+    "DEPTH-EXP-D1-D3-069": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "multi",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "multi",
+          "comment": "AI review (Claude): Select-all with four correct checks and one distractor (trust the newest model). Content is right for the competency. Issues: the stem does not say 'select all that apply'; 'a literate buyer' is awkward wording (say 'a careful buyer'); internal codes TASK/SOURCES/FAILURES/LOCAL/HEADLINE are visible. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้ขายบอกว่าโมเดลรุ่นใหม่ล่าสุดทำให้ปัญหา hallucination ในงานด้านนโยบาย “แก้ได้แล้ว” ผู้ซื้อที่รอบคอบควรขอตรวจสอบอะไรก่อนยอมรับคำกล่าวอ้างนี้ (เลือกทุกข้อที่ถูกต้อง)\n☐ ตรวจว่างานที่ใช้ประเมินตรงกับ workflow ด้านนโยบายจริงหรือไม่\n☐ ตรวจว่าคำตอบอ้างอิงจากแหล่งข้อมูลที่อนุมัติแล้วหรือไม่\n☐ ขอดูกรณีที่ล้มเหลว พฤติกรรมการปฏิเสธ และการจัดการความไม่แน่นอน\n☐ ทดสอบเองกับนโยบายตัวแทนและกรณีขอบ (edge case)\n☐ เชื่อคำกล่าวอ้างเพราะเป็นโมเดลรุ่นใหม่ล่าสุด\nReason: add select-all instruction, plain wording, translation; keyed set unchanged.",
+          "id": "2026-09-18T08:59:40.505Z",
+          "savedAt": "2026-09-18T08:59:40.505Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.505Z"
+    },
+    "DEPTH-EXP-D1-SYSTEMS-068": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Matching item: four system features each paired with one operational question; realistic buyer scenario and readable in one pass. Matching is the right format (the dropdown has no 'matching' option; multi-part is the closest). The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are visible in the user text and should be removed. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้ซื้อเปรียบเทียบผู้ช่วย AI สองตัวที่ใช้โมเดลเดียวกันแต่ตั้งค่าผลิตภัณฑ์ต่างกัน จับคู่คุณสมบัติของระบบกับคำถามด้านการใช้งานที่เกิดขึ้น\nMemory ที่บันทึกไว้ → เก็บอะไรไว้ แก้ไขได้ไหม และผู้ใช้เห็นอะไร\nConnector กับ CRM → อ่านหรือแก้ไขข้อมูลชุดใดได้บ้าง\nนโยบายข้อมูลองค์กร → ข้อมูลใดเข้าสู่ผู้ช่วยได้ และภายใต้เงื่อนไขใด\nบันทึกการดำเนินการ (action log) → ใครตรวจสอบ prompt แหล่งข้อมูล การดำเนินการ และการอนุมัติได้\nReason: translation only; pairs unchanged.",
+          "id": "2026-09-18T08:59:40.484Z",
+          "savedAt": "2026-09-18T08:59:40.484Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.484Z"
+    },
+    "MATCH-AI-COMPONENTS-061": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Four clean one-to-one pairs (LLM, RAG, prompt, memory) with plain-language descriptions; a good awareness-level matching item. Matching is the right format (the dropdown has no 'matching' option; multi-part is the closest). The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are visible in the user text and should be removed. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมใหม่กำลังเรียนรู้ว่าผลิตภัณฑ์ AI ประกอบขึ้นจากอะไร จับคู่องค์ประกอบ AI แต่ละอย่างกับคำอธิบายแบบภาษาง่าย ๆ\nLLM → สร้างภาษาจากรูปแบบที่เรียนรู้มา\nRAG → ค้นแหล่งข้อมูลที่เกี่ยวข้องก่อนตอบ\nPrompt → คำสั่งและบริบทที่ให้สำหรับงานนั้น\nMemory → ข้อมูลที่บันทึกไว้และนำกลับมาใช้ข้ามเซสชัน\nReason: translation only; pairs unchanged; remove reviewer note and codes from user view.",
+          "id": "2026-09-18T08:59:40.423Z",
+          "savedAt": "2026-09-18T08:59:40.423Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.423Z"
+    },
+    "MATCH-AI-PRODUCTS-062": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Useful matching item on governance focus per product surface. Pairs are distinct and defensible. The right-hand descriptions are dense (3–4 nouns each) and use 'GitHub-style' / 'Hugging Face-style' brand anchors that non-technical students may not know; acceptable for a general audience if the left side keeps the plain label (coding assistant, model hub). Matching is the right format (the dropdown has no 'matching' option; multi-part is the closest). The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are visible in the user text and should be removed. The Thai view is not translated: it is the English text with a few substituted words ('แหล่งข้อมูลs', 'การดำเนินการs', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้จัดการถามว่าผลิตภัณฑ์ AI ทุกประเภทควรกำกับดูแลแบบเดียวกันหรือไม่ จับคู่ผลิตภัณฑ์แต่ละแบบกับจุดที่ควรตรวจสอบ\nผู้ช่วยแชตทั่วไป → ข้อมูลที่ผู้ใช้วางลงไป และพฤติกรรมการตรวจสอบแหล่งที่มา\nผู้ช่วยเขียนโค้ด (แบบ GitHub Copilot) → สิทธิ์เข้าถึง repository การรีวิวโค้ด การทดสอบ และความเสี่ยงด้าน license\nคลังโมเดล (แบบ Hugging Face) → model card, license, ชุดข้อมูล และขอบเขตการใช้งานที่ตั้งใจไว้\nAgent ที่ใช้เครื่องมือทำงาน → สิทธิ์อ่าน/เขียน จุดตรวจก่อนดำเนินการ และบันทึกการตรวจสอบ (audit log)\nReason: translation; pairs unchanged.",
+          "id": "2026-09-18T08:59:40.445Z",
+          "savedAt": "2026-09-18T08:59:40.445Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:59:40.445Z"
+    },
     "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
         "decision": "revise",
@@ -195,7 +520,7 @@
           "artifact": "not-needed",
           "format": "rank",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently.' Explanation: 'The control targets inconsistent construction of the Model input.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience. 'บันทึก release' → 'release note'.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอน���มัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
           "id": "2026-09-18T04:35:32.159Z",
           "savedAt": "2026-09-18T04:35:32.159Z"
         }
@@ -795,7 +1120,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The retrieved ข้อมูล is correct, but the tool reports a denied write scope.' Explanation: 'The การดำเนินการ fails at the permission boundary.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'บันทึก release' → 'release note'.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop ���ละการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์\nReason: complete Thai; keyed answer (D) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์\nReason: complete Thai; keyed answer (D) unchanged.",
           "id": "2026-09-18T04:33:21.834Z",
           "savedAt": "2026-09-18T04:33:21.834Z"
         }
@@ -2331,7 +2656,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.' and 'Which conclusion is justified by this การเปรียบเทียบ?' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. The stem says 'this comparison' but the scenario is a single observation.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมวิจัยใช้ AI ช่วยจัดทำสรุปหลักฐาน กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (ก���รเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai; keyed answer (B) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมวิจัยใช้ AI ช่วยจัดทำสรุปหลักฐาน กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai; keyed answer (B) unchanged.",
           "id": "2026-09-18T03:50:56.162Z",
           "savedAt": "2026-09-18T03:50:56.162Z"
         }
@@ -2481,7 +2806,7 @@
           "artifact": "not-needed",
           "format": "rank",
           "comment": "AI review (Claude): The evidence sentence is word-salad: 'An embedding upgrade improves global recall but reduces exact-code retrieval.' is left entirely in English, and the keyed first check A 'Test hybrid retrieval on identifier and semantic slices.' is English too — neither the problem nor the correct action is readable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
-          "suggestedChange": "Recommended Thai:\nEvidence: การอัปเกรด embedding ทำให้ค้นเจอข้อมูลโดยรว���ดีขึ้น แต่ค้นหาด้วยรหัสแบบตรงตัวได้แย่ลง\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การตัดสินใจนำไปใช้ต้องรักษาความสามารถในการค้นหาทั้งสองแบบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การอัปเกรด embedding ทำให้ค้นเจอข้อมูลโดยรวมดีขึ้น แต่ค้นหาด้วยรหัสแบบตรงตัวได้แย่ลง\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การตัดสินใจนำไปใช้ต้องรักษาความสามารถในการค้นหาทั้งสองแบบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
           "id": "2026-09-18T04:11:14.160Z",
           "savedAt": "2026-09-18T04:11:14.160Z"
         }
@@ -2531,7 +2856,7 @@
           "artifact": "not-needed",
           "format": "rank",
           "comment": "AI review (Claude): The evidence sentence is word-salad: 'Long inputs ต้นทุน more, but aggressive summarization removes important exceptions.' — the cost-vs-lost-exceptions trade-off the item is about is unreadable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
-          "suggestedChange": "Recommended Thai:\nEvidence: input ที่ยาวมีต้นทุนสูงกว่า แต่การย่อความแบบเข้มข้นทำให้ข้อยกเว้นสำคัญหายไป\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อคว��มที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การลดต้นทุนต้องประเมินเทียบกับหลักฐานสำคัญต่อการตัดสินใจที่อาจสูญหาย\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
+          "suggestedChange": "Recommended Thai:\nEvidence: input ที่ยาวมีต้นทุนสูงกว่า แต่การย่อความแบบเข้มข้นทำให้ข้อยกเว้นสำคัญหายไป\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การลดต้นทุนต้องประเมินเทียบกับหลักฐานสำคัญต่อการตัดสินใจที่อาจสูญหาย\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
           "id": "2026-09-18T04:11:15.329Z",
           "savedAt": "2026-09-18T04:11:15.329Z"
         }
@@ -3580,7 +3905,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "parts",
-          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกัน…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแ���้งกัน…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
           "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ\nรายละเอียดเพิ่มเติม: รายงานพอร์ตโฟลิโอละเว้นการกระจุกตัวของ vendor ที่ใช้ร่วมกันหลายโครงการ\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินแต่ละโครงการแยกกันแล้วบวกคะแนนความเสี่ยง | ขอภาพรวมความเสี่ยงจาก dependency ที่สัมพันธ์กันแบบรวมศูนย์\nExplanation: การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน dependency ที่ใช้ร่วมกันอาจก่อความล้มเหลวพร้อมกันซึ่งคะแนนแบบแยกส่วนมองไม่เห็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: surface the unresolved conflict; part 2: request a consolidated view of correlated risk).",
           "id": "2026-09-18T08:29:07.962Z",
           "savedAt": "2026-09-18T08:29:07.962Z"
@@ -4031,7 +4356,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Finance executiveใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate; the English part-1 options are very jargon-heavy for a finance-executive audience.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nรายละเอียดเพิ่มเติม: เวลาที่ประหยัดได้ก้อนเดียวถูกนับทั้งเป็นรายจ่ายที่ลดลงและเป็นผลผลิตที่เพิ่มขึ้นในเคสขอเงินทุน\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: รวมทั้งสองประมาณการเพราะเป็นประโยชน์ต่างหมวดกัน | ตัดการนับซ้ำออก และระบุกลไกที่ทำให้ประโยชน์เกิดขึ้นจริง\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน กำลังการทำงานที่เพิ��มขึ้นก้อนเดียวไม่สามารถถูกนับเป็นประโยชน์เต็มสองครั้งได้โดยไม่มีหลักฐานรองรับ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: centralize versioned context assembly; part 2: remove double counting).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nรายละเอียดเพิ่มเติม: เวลาที่ประหยัดได้ก้อนเดียวถูกนับทั้งเป็นรายจ่ายที่ลดลงและเป็นผลผลิตที่เพิ่มขึ้นในเคสขอเงินทุน\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: รวมทั้งสองประมาณการเพราะเป็นประโยชน์ต่างหมวดกัน | ตัดการนับซ้ำออก และระบุกลไกที่ทำให้ประโยชน์เกิดขึ้นจริง\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน กำลังการทำงานที่เพิ่มขึ้นก้อนเดียวไม่สามารถถูกนับเป็นประโยชน์เต็มสองครั้งได้โดยไม่มีหลักฐานรองรับ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: centralize versioned context assembly; part 2: remove double counting).",
           "id": "2026-09-18T08:34:27.084Z",
           "savedAt": "2026-09-18T08:34:27.084Z"
         }
@@ -4981,7 +5306,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Technology executiveใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is half English. Evidence: 'The คำแนะนำสถาปัตยกรรม platform must cite a procedure that การเปลี่ยนแปลง each week.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำแนะนำด้านสถาปัตยกรรม platform ต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieve current procedure; part 2: evaluate representative dependent services first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำแนะนำด้านสถาปัตยกรรม platform ต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน���ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieve current procedure; part 2: evaluate representative dependent services first).",
           "id": "2026-09-18T08:37:58.480Z",
           "savedAt": "2026-09-18T08:37:58.480Z"
         }
@@ -5106,7 +5431,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad ('…expand its own production สิทธิ์'), and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'A document is broken into short encoded units before the Model กระบวนการes it.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: เอกสารถูกแบ่งเป็นหน่วยย่อยสั้น ๆ ที่เข้ารหั���ไว้ ก่อนที่โมเดลจะประมวลผล\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ | แบ่ง input เป็น token ที่ Model ประมวลผลได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: token คือหน่วยที่โมเดลใช้ประมวลผล ไม่จำเป็นต้องตรงกับคำเต็มคำ ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: tokens; part 2: extend identity-scoped access to cached retrieval).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: เอกสารถูกแบ่งเป็นหน่วยย่อยสั้น ๆ ที่เข้ารหัสไว้ ก่อนที่โมเดลจะประมวลผล\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ | แบ่ง input เป็น token ที่ Model ประมวลผลได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: token คือหน่วยที่โมเดลใช้ประมวลผล ไม่จำเป็นต้องตรงกับคำเต็มคำ ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: tokens; part 2: extend identity-scoped access to cached retrieval).",
           "id": "2026-09-18T08:37:18.824Z",
           "savedAt": "2026-09-18T08:37:18.824Z"
         }
@@ -5481,7 +5806,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space and is half English ('Transformation executiveใช้ AI เพื่อเตรียมคำแนะนำ operating Model'), the rule sentence is mixed ('การตัดสินใจ scale ต้องคำนึงถึง ownership ของ Workflow และหลักฐานการ adoption'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the part-2 stem and rewrite note are Thai. Evidence: 'The assistant reads pilot outcomes and approved change plans through an authorized external integration. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: Assistant อ่านผลลัพธ์ของ pilot และแผนการเปลี่ยนแปลงที่อนุมัติแล้วผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: ทีมในแต่ละพื้นที่มีข้อกำหนดด้านการควบคุมที่แตกต่างกันอย่างมีเหตุผล\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: บังคับใช้การควบคุมของ pilot แบบเดิมทุกประการกับทุกทีม | กำหนดหลักการร่วม พร้อมให้ปรับตามบริบทท้องถิ่นได้โดยผ่านการทบทวน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้ ทิศทางร่วมกันไม่ได้หมายความว่าข้อจำกัดในการปฏิบัติงานต้องเหมือนกันทุกที่\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector; part 2: common principles with reviewed local adaptations).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: Assistant อ่านผลลัพธ์ของ pilot และแผนการเปลี่ยนแปลงที่อนุมัติแล้วผ่านการเชื่อมต่อกับระบบ���ายนอกที่ได้รับอนุญาต\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: ทีมในแต่ละพื้นที่มีข้อกำหนดด้านการควบคุมที่แตกต่างกันอย่างมีเหตุผล\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: บังคับใช้การควบคุมของ pilot แบบเดิมทุกประการกับทุกทีม | กำหนดหลักการร่วม พร้อมให้ปรับตามบริบทท้องถิ่นได้โดยผ่านการทบทวน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้ ทิศทางร่วมกันไม่ได้หมายความว่าข้อจำกัดในการปฏิบัติงานต้องเหมือนกันทุกที่\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector; part 2: common principles with reviewed local adaptations).",
           "id": "2026-09-18T08:52:56.943Z",
           "savedAt": "2026-09-18T08:52:56.943Z"
         }
@@ -5581,7 +5906,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space and is half English ('Transformation executiveใช้ AI เพื่อเตรียมคำแนะนำ operating Model'), the rule sentence is mixed ('การตัดสินใจ scale ต้องคำนึงถึง ownership ของ Workflow และหลักฐานการ adoption'), the part-1 stem is half English ('Where should the ทีม investigate first?'), all part-1 and part-2 options are English or word-salad ('The loop’s state upวันที่ and completion detection'), the 'Additional detail' sentence is English, and the explanation is mixed ('The หลักฐาน locates the loss before Model กระบวนการing'). Only the part-2 stem and rewrite note are Thai. Evidence: 'The retrieved ข้อมูล is correct, but the tool reports a denied write scope.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: ทีมในแต่ละพื้นที่มีข้อกำหนดด้านการควบคุมที่แตกต่างกันอย่างมีเหตุผล\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: การตั้งค่าสิทธิ์ของ connector | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดหลักการร่วม พร้อมให้ปรับตามบริบทท้องถิ่นได้โดยผ่านการทบทวน | บังคับใช้การควบคุมของ pilot แบบเดิมทุกประการกับทุกท���ม\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์ ทิศทางร่วมกันไม่ได้หมายความว่าข้อจำกัดในการปฏิบัติงานต้องเหมือนกันทุกที่\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector authorization; part 2: common principles with reviewed local adaptations).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: ทีมในแต่ละพื้นที่มีข้อกำหนดด้านการควบคุมที่แตกต่างกันอย่างมีเหตุผล\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: การตั้งค่าสิทธิ์ของ connector | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดหลักการร่วม พร้อมให้ปรับตามบริบทท้องถิ่นได้โดยผ่านการทบทวน | บังคับใช้การควบคุมของ pilot แบบเดิมทุกประการกับทุกทีม\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์ ทิศทางร่วมกันไม่ได้หมายความว่าข้อจำกัดในการปฏิบัติงานต้องเหมือนกันทุกที่\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector authorization; part 2: common principles with reviewed local adaptations).",
           "id": "2026-09-18T08:54:16.472Z",
           "savedAt": "2026-09-18T08:54:16.472Z"
         }
@@ -6981,7 +7306,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: '(evidence itself is readable Thai here: 'รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว…') but the options, extra detail ('…the full ข้อมูลing') and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 options: ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ | ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้ | ใช้คำพูดสั้นเพราะทุกคำเป็นของจร��ง\nExplanation: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: fine-tuning trial; part 2: restore the qualification).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 options: ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ | ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้ | ใช้คำพูดสั้นเพราะทุกคำเป็นของจริง\nExplanation: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: fine-tuning trial; part 2: restore the qualification).",
           "id": "2026-09-18T04:50:02.160Z",
           "savedAt": "2026-09-18T04:50:02.160Z"
         }
@@ -8131,7 +8456,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technical / engineeringใช้ AI'), the part-1 stem is half English ('Which configuration change addresses the specific ต้องการment?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'A tool-using งาน repeats retries without reaching a decision.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: งานที่ใช้เครื่องมือลองใหม่ซ้ำไปเรื่อย ๆ โดยไม่ได้ข้อสรุป\nรายละเอียดเพิ่มเติม: คำแนะนำนี้มีการเขียนลงระบบ production แต่เครื่องมือนี้มีสิทธิ์แค่ review\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งการเปลี่ยนแปลงผ่านกระบวนการ review ของ production | เขียนลงระบบโดยใช้สิทธิ์ผู้ดูแลระบบที่มีอยู่\nExplanation: loop ควบคุมต้องมีขอบเขตชัดเจน และมีทางออกเมื่อยังไม่ได้ข้อสรุป การมีสิทธิ์อยู่ในมือไม่ได้อนุญาตให้ข้ามกระบวนการเปลี��ยนแปลง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retry/cost/stop limits; part 2: submit through the production review process).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: งานที่ใช้เครื่องมือลองใหม่ซ้ำไปเรื่อย ๆ โดยไม่ได้ข้อสรุป\nรายละเอียดเพิ่มเติม: คำแนะนำนี้มีการเขียนลงระบบ production แต่เครื่องมือนี้มีสิทธิ์แค่ review\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งการเปลี่ยนแปลงผ่านกระบวนการ review ของ production | เขียนลงระบบโดยใช้สิทธิ์ผู้ดูแลระบบที่มีอยู่\nExplanation: loop ควบคุมต้องมีขอบเขตชัดเจน และมีทางออกเมื่อยังไม่ได้ข้อสรุป การมีสิทธิ์อยู่ในมือไม่ได้อนุญาตให้ข้ามกระบวนการเปลี่ยนแปลง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retry/cost/stop limits; part 2: submit through the production review process).",
           "id": "2026-09-18T08:15:16.745Z",
           "savedAt": "2026-09-18T08:15:16.745Z"
         }
@@ -8812,6 +9137,731 @@
         }
       ],
       "updatedAt": "2026-09-18T08:10:09.188Z"
+    },
+    "REL-G-D1-004": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): English is short and immediately understandable (one-line situation, 'Who should handle it?', three reliance levels ME/TOGETHER/AI). Low-stakes task; TOGETHER and AI are both defensible for a simple explanation, so the scoring rubric must accept the intended answer(s) consistently. The Thai view is not translated: it is the English text with a few substituted words ('หลักฐาน checks', 'factsจากthe internet', 'ผู้รีวิว inspection'), so a Thai-only test taker cannot read this item. Explanation field is empty.",
+          "suggestedChange": "Current: 'You heard an AI term in a meeting and want a simple explanation. Who should handle it?'\nRecommended Thai (full):\nคุณได้ยินคำศัพท์ AI ในที่ประชุม และอยากได้คำอธิบายง่าย ๆ ใครควรเป็นคนจัดการ\nฉันเอง — คนเป็นผู้ตัดสินใจเองทั้งหมด | ทำร่วมกัน — ใช้ AI ช่วย แล้วตรวจสอบก่อนตัดสินใจ | AI — ให้ AI จัดการทั้งหมด\nReason: real Thai translation needed; keep the ME/TOGETHER/AI structure and scoring unchanged; add a one-line explanation of the keyed reliance level.",
+          "id": "2026-09-18T08:58:12.952Z",
+          "savedAt": "2026-09-18T08:58:12.952Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:58:12.952Z"
+    },
+    "TREND-D1-AI-SYSTEMS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Executive-level scenario; the stem's '2026 AI market shift from experimentation to operating model' is opinion framing and will date quickly — ask simply which decision best moves from experiments to an operating model. Keyed option is a six-item list; acceptable for an advanced item but heavy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: operating-model design is governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้บริหารต้องการขยายการใช้ generative AI, agent และ workflow แบบหลายรูปแบบ (multimodal) ไปทุกฝ่าย ขณะที่กำลังด้านการกำกับดูแลมีจำกัด การตัดสินใจข้อใดช่วยเปลี่ยนจากการทดลองไปสู่ operating model ได้ดีที่สุด\nA. สร้าง operating model แบบแบ่งระดับ: ช่องทางรับ use case การควบคุมตามความเสี่ยง หลักฐานการประเมิน การทบทวนเหตุการณ์ การอบรมตามบทบาท และเกณฑ์วัดคุณค่าที่ชัดเจน\nB. ตั้งคณะกรรมการกลางชุดเดียวอนุมัติทุกคำขอ AI\nC. ให้แต่ละทีมเลือกเครื่องมือเองเพื่อความเร็ว\nD. ชะลอการนำมาใช้ทั้งหมดจนกฎระเบียบนิ่ง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.523Z",
+          "savedAt": "2026-09-18T09:05:13.523Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.523Z"
+    },
+    "TREND-D1-AI-SYSTEMS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Relevant regional/sovereignty scenario for Thai organisations. 'What is the strongest advanced response?' leaks the level name. The TREND-CHASING distractor ('treat sovereignty as a hosting choice rather than…') is a well-written distractor. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: residency and vendor exit paths are system-architecture concerns, but the item is framed as governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎของอุตสาหกรรม ข้อกำหนดที่ตั้งของข้อมูล (data residency) และลดการพึ่งพาผู้ขาย การตอบสนองข้อใดดีที่สุด\nA. เปรียบเทียบความสามารถของโมเดลควบคู่กับ data residency ผลงานด้านภาษา ความสามารถในการตรวจสอบ ทางออกจากผู้ขาย และข้อผูกพันตามกฎหมายท้องถิ่น ก่อนออกแบบการ rollout\nB. เลือกโมเดลระดับโลกที่แข็งที่สุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น\nC. ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน\nD. มองอธิปไตยข้อมูลเป็นแค่เรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.542Z",
+          "savedAt": "2026-09-18T09:05:13.542Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.542Z"
+    },
+    "TREND-D1-AI-SYSTEMS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Realistic multimodal-content scenario; keyed option is a long four-clause list (brief, brand/IP checks, separate image/video review, revision rate) which is hard to read once, while distractors are one clause each — length alone signals the answer. Assigned artifact (media provenance board) is not needed for this judgment item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: multimodal provenance review is not about context windows, memory or connectors.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.385Z",
+          "savedAt": "2026-09-18T09:05:13.385Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.385Z"
+    },
+    "TREND-D1-AI-SYSTEMS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good scenario (prompt-only chat → RAG). 'Context engineering' in the stem is jargon for a general audience; say 'preparing the context and checking retrieval quality'. Keyed option is clear and distractors are plausible misconceptions. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: retrieval pipelines are system components, but the competency tag says context windows/memory/connectors.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้คนตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.422Z",
+          "savedAt": "2026-09-18T09:05:13.422Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.422Z"
+    },
+    "TREND-D1-AI-SYSTEMS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Stem is written from the assessor's viewpoint ('Which first question best checks whether the user understands this current AI trend?') instead of asking the test taker what they would ask first; otherwise the scenario is realistic and the keyed option (ask task, tools, approval gates, accountability) is clearly best once labels are removed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is good: tool access, approval gates and accountability are AI-systems questions — keep this copy.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nเพื่อนร่วมทีมบอกว่าบริษัทควรนำ AI agent มาใช้ เพราะโมเดลรุ่นใหม่ทุกตัวสามารถดำเนินการข้ามเครื่องมือต่าง ๆ ได้แล้ว คุณควรถามอะไรเป็นคำถามแรก\nA. agent จะทำงานอะไร เข้าถึงเครื่องมือใดได้ มีจุดอนุมัติตรงไหน และใครเป็นคนรับผิดชอบ\nB. โมเดลใดใหม่ที่สุด ก่อนตัดสินใจทดลอง agent\nC. ไม่ต้องถาม — แชตบอตที่เข้าถึงเครื่องมือได้ปลอดภัยพอจะทำงานเองได้\nD. ไม่ต้องถาม — นำ agent มาใช้เพราะคู่แข่งกำลังพูดถึง agentic AI\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.345Z",
+          "savedAt": "2026-09-18T09:05:13.345Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.345Z"
+    },
+    "TREND-D1-AI-SYSTEMS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Strong scenario and a defensible key (read-only start, logging, approval for customer-impacting writes, staged authority). Keyed option is a five-clause sentence — the longest by far. Assigned artifact (workflow/agent trace) would only matter if the item asked the taker to read a trace; here it is not needed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is good: agent permissions, logging and staged authority are AI-systems literacy — keep this copy.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nฝ่ายปฏิบัติการต้องการให้ AI agent คัดแยกคำขอ อัปเดตข้อมูล และส่งอีเมลติดตามผล การตอบสนองข้อใดจัดการข้อแลกเปลี่ยนของการใช้ agent ได้ดีที่สุด\nA. เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการดำเนินการที่เสนอ ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายอำนาจเมื่อมีหลักฐานว่าดีขึ้น\nB. ให้ agent ทำงานมูลค่าต่ำ แล้วสุ่มตรวจรายสัปดาห์\nC. ให้สิทธิ์กว้างเพื่อให้ agent เรียนรู้ workflow ได้เร็วขึ้น\nD. วัดความสำเร็จจากจำนวน ticket ที่ปิดต่อชั่วโมงเท่านั้น\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.458Z",
+          "savedAt": "2026-09-18T09:05:13.458Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.458Z"
+    },
+    "TREND-D1-AI-SYSTEMS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Clear vendor-benchmark scenario; key (task-specific eval with own data, failure cases, cost/latency, safety, reviewer agreement) is correct and distractors are plausible. 'What is the strongest proficient evaluation response?' leaks the level name 'proficient' — say 'What is the best response?'. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / CAPABILITY-LIMITS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes ai systems literacy using practical signals such as context windows, memory, tool connectors.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: model evaluation is not a systems-configuration question.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้ขายแสดงคะแนน benchmark สูงของโมเดลเฉพาะทาง และอ้างว่าจะทำได้ดีกว่าโมเดลทั่วไปใน workflow ของคุณ การตอบสนองข้อใดดีที่สุด\nA. ทำการประเมินเฉพาะงานด้วยข้อมูลของคุณเอง รวมกรณีที่ล้มเหลว ข้อจำกัดด้านต้นทุน/ความหน่วง การตรวจความปลอดภัย และความเห็นตรงกันของผู้ตรวจ ก่อนเลือกโมเดล\nB. เลือกโมเดลเฉพาะทางถ้า benchmark ที่เผยแพร่สูงกว่า\nC. ปฏิเสธ benchmark ของผู้ขายทั้งหมดเพราะเป็นการตลาด\nD. เลือกโมเดลที่มี context window ใหญ่ที่สุด\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:05:13.498Z",
+          "savedAt": "2026-09-18T09:05:13.498Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:05:13.498Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Executive-level scenario; the stem's '2026 AI market shift from experimentation to operating model' is opinion framing and will date quickly — ask simply which decision best moves from experiments to an operating model. Keyed option is a six-item list; acceptable for an advanced item but heavy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: operating-model design is governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้บริหารต้องการขยายการใช้ generative AI, agent และ workflow แบบหลายรูปแบบ (multimodal) ไปทุกฝ่าย ขณะที่กำลังด้านการกำกับดูแลมีจำกัด การตัดสินใจข้อใดช่วยเปลี่ยนจากการทดลองไปสู่ operating model ได้ดีที่สุด\nA. สร้าง operating model แบบแบ่งระดับ: ช่องทางรับ use case การควบคุมตามความเสี่ยง หลักฐานการประเมิน การทบทวนเหตุการณ์ การอบรมตามบทบาท และเกณฑ์วัดคุณค่าที่ชัดเจน\nB. ตั้งคณะกรรมการกลางชุดเดียวอนุมัติทุกคำขอ AI\nC. ให้แต่ละทีมเลือกเครื่องมือเองเพื่อความเร็ว\nD. ชะลอการนำมาใช้ทั้งหมดจนกฎระเบียบนิ่ง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.570Z",
+          "savedAt": "2026-09-18T09:04:23.570Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.570Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Relevant regional/sovereignty scenario for Thai organisations. 'What is the strongest advanced response?' leaks the level name. The TREND-CHASING distractor ('treat sovereignty as a hosting choice rather than…') is a well-written distractor. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: sovereignty/residency is governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎของอุตสาหกรรม ข้อกำหนดที่ตั้งของข้อมูล (data residency) และลดการพึ่งพาผู้ขาย การตอบสนองข้อใดดีที่สุด\nA. เปรียบเทียบความสามารถของโมเดลควบคู่กับ data residency ผลงานด้านภาษา ความสามารถในการตรวจสอบ ทางออกจากผู้ขาย และข้อผูกพันตามกฎหมายท้องถิ่น ก่อนออกแบบการ rollout\nB. เลือกโมเดลระดับโลกที่แข็งที่สุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น\nC. ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน\nD. มองอธิปไตยข้อมูลเป็นแค่เรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.591Z",
+          "savedAt": "2026-09-18T09:04:23.591Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.591Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Realistic multimodal-content scenario; keyed option is a long four-clause list (brief, brand/IP checks, separate image/video review, revision rate) which is hard to read once, while distractors are one clause each — length alone signals the answer. Assigned artifact (media provenance board) is not needed for this judgment item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: over-trusting synthetic output touches capability limits, but the options are process choices.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.430Z",
+          "savedAt": "2026-09-18T09:04:23.430Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.430Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good scenario (prompt-only chat → RAG). 'Context engineering' in the stem is jargon for a general audience; say 'preparing the context and checking retrieval quality'. Keyed option is clear and distractors are plausible misconceptions. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: source currency/sufficiency relates to staleness, but the item is framed as RAG mechanics.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้คนตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.465Z",
+          "savedAt": "2026-09-18T09:04:23.465Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.465Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Stem is written from the assessor's viewpoint ('Which first question best checks whether the user understands this current AI trend?') instead of asking the test taker what they would ask first; otherwise the scenario is realistic and the keyed option (ask task, tools, approval gates, accountability) is clearly best once labels are removed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: the item never mentions hallucination, staleness or uncertainty; it tests agent governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nเพื่อนร่วมทีมบอกว่าบริษัทควรนำ AI agent มาใช้ เพราะโมเดลรุ่นใหม่ทุกตัวสามารถดำเนินการข้ามเครื่องมือต่าง ๆ ได้แล้ว คุณควรถามอะไรเป็นคำถามแรก\nA. agent จะทำงานอะไร เข้าถึงเครื่องมือใดได้ มีจุดอนุมัติตรงไหน และใครเป็นคนรับผิดชอบ\nB. โมเดลใดใหม่ที่สุด ก่อนตัดสินใจทดลอง agent\nC. ไม่ต้องถาม — แชตบอตที่เข้าถึงเครื่องมือได้ปลอดภัยพอจะทำงานเองได้\nD. ไม่ต้องถาม — นำ agent มาใช้เพราะคู่แข่งกำลังพูดถึง agentic AI\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.394Z",
+          "savedAt": "2026-09-18T09:04:23.394Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.394Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Strong scenario and a defensible key (read-only start, logging, approval for customer-impacting writes, staged authority). Keyed option is a five-clause sentence — the longest by far. Assigned artifact (workflow/agent trace) would only matter if the item asked the taker to read a trace; here it is not needed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: agent permissions are not capability boundaries.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nฝ่ายปฏิบัติการต้องการให้ AI agent คัดแยกคำขอ อัปเดตข้อมูล และส่งอีเมลติดตามผล การตอบสนองข้อใดจัดการข้อแลกเปลี่ยนของการใช้ agent ได้ดีที่สุด\nA. เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการดำเนินการที่เสนอ ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายอำนาจเมื่อมีหลักฐานว่าดีขึ้น\nB. ให้ agent ทำงานมูลค่าต่ำ แล้วสุ่มตรวจรายสัปดาห์\nC. ให้สิทธิ์กว้างเพื่อให้ agent เรียนรู้ workflow ได้เร็วขึ้น\nD. วัดความสำเร็จจากจำนวน ticket ที่ปิดต่อชั่วโมงเท่านั้น\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.500Z",
+          "savedAt": "2026-09-18T09:04:23.500Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.500Z"
+    },
+    "TREND-D1-CAPABILITY-LIMITS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Clear vendor-benchmark scenario; key (task-specific eval with own data, failure cases, cost/latency, safety, reviewer agreement) is correct and distractors are plausible. 'What is the strongest proficient evaluation response?' leaks the level name 'proficient' — say 'What is the best response?'. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is good: benchmark claims vs real failure cases is a capability-limits question — keep this copy.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้ขายแสดงคะแนน benchmark สูงของโมเดลเฉพาะทาง และอ้างว่าจะทำได้ดีกว่าโมเดลทั่วไปใน workflow ของคุณ การตอบสนองข้อใดดีที่สุด\nA. ทำการประเมินเฉพาะงานด้วยข้อมูลของคุณเอง รวมกรณีที่ล้มเหลว ข้อจำกัดด้านต้นทุน/ความหน่วง การตรวจความปลอดภัย และความเห็นตรงกันของผู้ตรวจ ก่อนเลือกโมเดล\nB. เลือกโมเดลเฉพาะทางถ้า benchmark ที่เผยแพร่สูงกว่า\nC. ปฏิเสธ benchmark ของผู้ขายทั้งหมดเพราะเป็นการตลาด\nD. เลือกโมเดลที่มี context window ใหญ่ที่สุด\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:04:23.536Z",
+          "savedAt": "2026-09-18T09:04:23.536Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:04:23.536Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Executive-level scenario; the stem's '2026 AI market shift from experimentation to operating model' is opinion framing and will date quickly — ask simply which decision best moves from experiments to an operating model. Keyed option is a six-item list; acceptable for an advanced item but heavy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: operating-model design is a governance item, not core concepts.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้บริหารต้องการขยายการใช้ generative AI, agent และ workflow แบบหลายรูปแบบ (multimodal) ไปทุกฝ่าย ขณะที่กำลังด้านการกำกับดูแลมีจำกัด การตัดสินใจข้อใดช่วยเปลี่ยนจากการทดลองไปสู่ operating model ได้ดีที่สุด\nA. สร้าง operating model แบบแบ่งระดับ: ช่องทางรับ use case การควบคุมตามความเสี่ยง หลักฐานการประเมิน การทบทวนเหตุการณ์ การอบรมตามบทบาท และเกณฑ์วัดคุณค่าที่ชัดเจน\nB. ตั้งคณะกรรมการกลางชุดเดียวอนุมัติทุกคำขอ AI\nC. ให้แต่ละทีมเลือกเครื่องมือเองเพื่อความเร็ว\nD. ชะลอการนำมาใช้ทั้งหมดจนกฎระเบียบนิ่ง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.267Z",
+          "savedAt": "2026-09-18T09:02:40.267Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.267Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Relevant regional/sovereignty scenario for Thai organisations. 'What is the strongest advanced response?' leaks the level name. The TREND-CHASING distractor ('treat sovereignty as a hosting choice rather than…') is a well-written distractor. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: sovereignty/residency is governance, not core concepts.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎของอุตสาหกรรม ข้อกำหนดที่ตั้งของข้อมูล (data residency) และลดการพึ่งพาผู้ขาย การตอบสนองข้อใดดีที่สุด\nA. เปรียบเทียบความสามารถของโมเดลควบคู่กับ data residency ผลงานด้านภาษา ความสามารถในการตรวจสอบ ทางออกจากผู้ขาย และข้อผูกพันตามกฎหมายท้องถิ่น ก่อนออกแบบการ rollout\nB. เลือกโมเดลระดับโลกที่แข็งที่สุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น\nC. ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน\nD. มองอธิปไตยข้อมูลเป็นแค่เรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.292Z",
+          "savedAt": "2026-09-18T09:02:40.292Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.292Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Realistic multimodal-content scenario; keyed option is a long four-clause list (brief, brand/IP checks, separate image/video review, revision rate) which is hard to read once, while distractors are one clause each — length alone signals the answer. Assigned artifact (media provenance board) is not needed for this judgment item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: the item is about provenance/brand review of multimodal output, not core AI vocabulary.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.168Z",
+          "savedAt": "2026-09-18T09:02:40.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.168Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good scenario (prompt-only chat → RAG). 'Context engineering' in the stem is jargon for a general audience; say 'preparing the context and checking retrieval quality'. Keyed option is clear and distractors are plausible misconceptions. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is acceptable (RAG vs prompt-only is a core-concept distinction).",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้คนตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.193Z",
+          "savedAt": "2026-09-18T09:02:40.193Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.193Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Stem is written from the assessor's viewpoint ('Which first question best checks whether the user understands this current AI trend?') instead of asking the test taker what they would ask first; otherwise the scenario is realistic and the keyed option (ask task, tools, approval gates, accountability) is clearly best once labels are removed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. For this competency the fit is acceptable (models vs apps, agent = app-level capability).",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nเพื่อนร่วมทีมบอกว่าบริษัทควรนำ AI agent มาใช้ เพราะโมเดลรุ่นใหม่ทุกตัวสามารถดำเนินการข้ามเครื่องมือต่าง ๆ ได้แล้ว คุณควรถามอะไรเป็นคำถามแรก\nA. agent จะทำงานอะไร เข้าถึงเครื่องมือใดได้ มีจุดอนุมัติตรงไหน และใครเป็นคนรับผิดชอบ\nB. โมเดลใดใหม่ที่สุด ก่อนตัดสินใจทดลอง agent\nC. ไม่ต้องถาม — แชตบอตที่เข้าถึงเครื่องมือได้ปลอดภัยพอจะทำงานเองได้\nD. ไม่ต้องถาม — นำ agent มาใช้เพราะคู่แข่งกำลังพูดถึง agentic AI\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.142Z",
+          "savedAt": "2026-09-18T09:02:40.142Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.142Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Strong scenario and a defensible key (read-only start, logging, approval for customer-impacting writes, staged authority). Keyed option is a five-clause sentence — split with commas is fine but it is the longest by far. Assigned artifact (workflow/agent trace) would only matter if the item asked the taker to read a trace; here it is not needed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: this is agent governance, not core concepts.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nฝ่ายปฏิบัติการต้องการให้ AI agent คัดแยกคำขอ อัปเดตข้อมูล และส่งอีเมลติดตามผล การตอบสนองข้อใดจัดการข้อแลกเปลี่ยนของการใช้ agent ได้ดีที่สุด\nA. เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการดำเนินการที่เสนอ ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายอำนาจเมื่อมีหลักฐานว่าดีขึ้น\nB. ให้ agent ทำงานมูลค่าต่ำ แล้วสุ่มตรวจรายสัปดาห์\nC. ให้สิทธิ์กว้างเพื่อให้ agent เรียนรู้ workflow ได้เร็วขึ้น\nD. วัดความสำเร็จจากจำนวน ticket ที่ปิดต่อชั่วโมงเท่านั้น\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.219Z",
+          "savedAt": "2026-09-18T09:02:40.219Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.219Z"
+    },
+    "TREND-D1-CORE-CONCEPTS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Clear vendor-benchmark scenario; key (task-specific eval with own data, failure cases, cost/latency, safety, reviewer agreement) is correct and distractors are plausible. 'What is the strongest proficient evaluation response?' leaks the level name 'proficient' — say 'What is the best response?'. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under GENAI-MECHANICS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes core ai concepts using practical signals such as AI vocabulary, LLM basics, models vs apps.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is acceptable (benchmarks vs task-specific evaluation).",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้ขายแสดงคะแนน benchmark สูงของโมเดลเฉพาะทาง และอ้างว่าจะทำได้ดีกว่าโมเดลทั่วไปใน workflow ของคุณ การตอบสนองข้อใดดีที่สุด\nA. ทำการประเมินเฉพาะงานด้วยข้อมูลของคุณเอง รวมกรณีที่ล้มเหลว ข้อจำกัดด้านต้นทุน/ความหน่วง การตรวจความปลอดภัย และความเห็นตรงกันของผู้ตรวจ ก่อนเลือกโมเดล\nB. เลือกโมเดลเฉพาะทางถ้า benchmark ที่เผยแพร่สูงกว่า\nC. ปฏิเสธ benchmark ของผู้ขายทั้งหมดเพราะเป็นการตลาด\nD. เลือกโมเดลที่มี context window ใหญ่ที่สุด\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:02:40.242Z",
+          "savedAt": "2026-09-18T09:02:40.242Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:02:40.242Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Executive-level scenario; the stem's '2026 AI market shift from experimentation to operating model' is opinion framing and will date quickly — ask simply which decision best moves from experiments to an operating model. Keyed option is a six-item list; acceptable for an advanced item but heavy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: operating-model design is governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้บริหารต้องการขยายการใช้ generative AI, agent และ workflow แบบหลายรูปแบบ (multimodal) ไปทุกฝ่าย ขณะที่กำลังด้านการกำกับดูแลมีจำกัด การตัดสินใจข้อใดช่วยเปลี่ยนจากการทดลองไปสู่ operating model ได้ดีที่สุด\nA. สร้าง operating model แบบแบ่งระดับ: ช่องทางรับ use case การควบคุมตามความเสี่ยง หลักฐานการประเมิน การทบทวนเหตุการณ์ การอบรมตามบทบาท และเกณฑ์วัดคุณค่าที่ชัดเจน\nB. ตั้งคณะกรรมการกลางชุดเดียวอนุมัติทุกคำขอ AI\nC. ให้แต่ละทีมเลือกเครื่องมือเองเพื่อความเร็ว\nD. ชะลอการนำมาใช้ทั้งหมดจนกฎระเบียบนิ่ง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.286Z",
+          "savedAt": "2026-09-18T09:03:33.286Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.286Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Relevant regional/sovereignty scenario for Thai organisations. 'What is the strongest advanced response?' leaks the level name. The TREND-CHASING distractor ('treat sovereignty as a hosting choice rather than…') is a well-written distractor. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: sovereignty/residency is governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎของอุตสาหกรรม ข้อกำหนดที่ตั้งของข้อมูล (data residency) และลดการพึ่งพาผู้ขาย การตอบสนองข้อใดดีที่สุด\nA. เปรียบเทียบความสามารถของโมเดลควบคู่กับ data residency ผลงานด้านภาษา ความสามารถในการตรวจสอบ ทางออกจากผู้ขาย และข้อผูกพันตามกฎหมายท้องถิ่น ก่อนออกแบบการ rollout\nB. เลือกโมเดลระดับโลกที่แข็งที่สุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น\nC. ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน\nD. มองอธิปไตยข้อมูลเป็นแค่เรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.317Z",
+          "savedAt": "2026-09-18T09:03:33.317Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.317Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Realistic multimodal-content scenario; keyed option is a long four-clause list (brief, brand/IP checks, separate image/video review, revision rate) which is hard to read once, while distractors are one clause each — length alone signals the answer. Assigned artifact (media provenance board) is not needed for this judgment item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: multimodal provenance review is not a mechanics question.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.167Z",
+          "savedAt": "2026-09-18T09:03:33.167Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.167Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good scenario (prompt-only chat → RAG). 'Context engineering' in the stem is jargon for a general audience; say 'preparing the context and checking retrieval quality'. Keyed option is clear and distractors are plausible misconceptions. This is the one variant of the set that genuinely belongs to this competency — keep this copy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is good: RAG grounding and retrieval quality are exactly this competency.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้คนตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.197Z",
+          "savedAt": "2026-09-18T09:03:33.197Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.197Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Stem is written from the assessor's viewpoint ('Which first question best checks whether the user understands this current AI trend?') instead of asking the test taker what they would ask first; otherwise the scenario is realistic and the keyed option (ask task, tools, approval gates, accountability) is clearly best once labels are removed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: nothing in the item involves tokens, embeddings, RAG or grounding; it is about agent governance.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nเพื่อนร่วมทีมบอกว่าบริษัทควรนำ AI agent มาใช้ เพราะโมเดลรุ่นใหม่ทุกตัวสามารถดำเนินการข้ามเครื่องมือต่าง ๆ ได้แล้ว คุณควรถามอะไรเป็นคำถามแรก\nA. agent จะทำงานอะไร เข้าถึงเครื่องมือใดได้ มีจุดอนุมัติตรงไหน และใครเป็นคนรับผิดชอบ\nB. โมเดลใดใหม่ที่สุด ก่อนตัดสินใจทดลอง agent\nC. ไม่ต้องถาม — แชตบอตที่เข้าถึงเครื่องมือได้ปลอดภัยพอจะทำงานเองได้\nD. ไม่ต้องถาม — นำ agent มาใช้เพราะคู่แข่งกำลังพูดถึง agentic AI\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.138Z",
+          "savedAt": "2026-09-18T09:03:33.138Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.138Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Strong scenario and a defensible key (read-only start, logging, approval for customer-impacting writes, staged authority). Keyed option is a five-clause sentence — the longest by far. Assigned artifact (workflow/agent trace) would only matter if the item asked the taker to read a trace; here it is not needed. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is weak: agent permissions are not generative-AI mechanics.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nฝ่ายปฏิบัติการต้องการให้ AI agent คัดแยกคำขอ อัปเดตข้อมูล และส่งอีเมลติดตามผล การตอบสนองข้อใดจัดการข้อแลกเปลี่ยนของการใช้ agent ได้ดีที่สุด\nA. เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการดำเนินการที่เสนอ ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายอำนาจเมื่อมีหลักฐานว่าดีขึ้น\nB. ให้ agent ทำงานมูลค่าต่ำ แล้วสุ่มตรวจรายสัปดาห์\nC. ให้สิทธิ์กว้างเพื่อให้ agent เรียนรู้ workflow ได้เร็วขึ้น\nD. วัดความสำเร็จจากจำนวน ticket ที่ปิดต่อชั่วโมงเท่านั้น\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.231Z",
+          "savedAt": "2026-09-18T09:03:33.231Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.231Z"
+    },
+    "TREND-D1-GENAI-MECHANICS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "wordy",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "wordy",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): Clear vendor-benchmark scenario; key (task-specific eval with own data, failure cases, cost/latency, safety, reviewer agreement) is correct and distractors are plausible. 'What is the strongest proficient evaluation response?' leaks the level name 'proficient' — say 'What is the best response?'. Assigned artifact (security/access evidence) is unrelated to this item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: evaluation of models touches mechanics only indirectly.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nผู้ขายแสดงคะแนน benchmark สูงของโมเดลเฉพาะทาง และอ้างว่าจะทำได้ดีกว่าโมเดลทั่วไปใน workflow ของคุณ การตอบสนองข้อใดดีที่สุด\nA. ทำการประเมินเฉพาะงานด้วยข้อมูลของคุณเอง รวมกรณีที่ล้มเหลว ข้อจำกัดด้านต้นทุน/ความหน่วง การตรวจความปลอดภัย และความเห็นตรงกันของผู้ตรวจ ก่อนเลือกโมเดล\nB. เลือกโมเดลเฉพาะทางถ้า benchmark ที่เผยแพร่สูงกว่า\nC. ปฏิเสธ benchmark ของผู้ขายทั้งหมดเพราะเป็นการตลาด\nD. เลือกโมเดลที่มี context window ใหญ่ที่สุด\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "id": "2026-09-18T09:03:33.257Z",
+          "savedAt": "2026-09-18T09:03:33.257Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:03:33.257Z"
     }
   }
 }
