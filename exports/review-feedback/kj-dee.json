@@ -1,18 +1,429 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T02:50:49.331Z",
+  "updatedAt": "2026-09-18T03:56:26.172Z",
   "questions": {
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering of 'isolate the disputed source of performance' and needs a second read; 'ผลการดำเนินงานแตกต่างกันตามบทบาทของพนักงาน' shifts the meaning of 'completed actions vary across staff roles' (which actions succeed depends on role) toward general 'performance differs'. Options are readable and parallel; 'ข้อความที่ค้นคืน' (retrieved passages) is formal but understandable. Explanation 'ชั้นสิทธิ์อนุมัติ' is an awkward rendering of 'authorization layer'.",
+          "suggestedChange": "Current: คุณภาพของร่างค่อนข้างคงที่ แต่ผลการดำเนินงานแตกต่างกันตามบทบาทของพนักงาน | การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด\nRecommended: คุณภาพของร่างค่อนข้างคงที่ แต่การดำเนินการสำเร็จหรือไม่ขึ้นอยู่กับบทบาทของพนักงาน | Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์ | Explanation: เมื่อผลต่างกันตามบทบาท ควรแยกทดสอบชั้นการกำหนดสิทธิ์ก่อน\nReason: restores the English meaning (role-dependent success of actions) and a stem that reads once. Remove the reviewer-facing 'รูปแบบที่ควรใช้…' block from the test-taker view, or convert the item to a real ranking task as intended. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T03:53:34.165Z",
+          "savedAt": "2026-09-18T03:53:34.165Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:34.165Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering of 'isolate the disputed source of performance' and needs a second read; otherwise the Thai scenario is clear and natural ('การทดสอบแต่ละส่วนผ่านทั้งหมด แต่ข้อมูลสูญหายระหว่างขั้นตอนร่างและขั้นตอนอนุมัติ'), options are parallel, and the explanation correctly conveys 'component success does not verify end-to-end transfer'. 'กลุ่มการเรียนรู้ชุมชน' is literal ('กลุ่มเรียนรู้ในชุมชน').",
+          "suggestedChange": "Current: การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด\nRecommended: Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์\nReason: one-read stem with the same meaning. Remove the reviewer-facing 'รูปแบบที่ควรใช้…' block from the test-taker view or convert to a real ranking task. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T03:53:41.171Z",
+          "savedAt": "2026-09-18T03:53:41.171Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:41.171Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The key sentence of the scenario is word-salad: 'A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index.' — this is the whole point of the item (two things changed at once), and a Thai-only reader cannot get it. The explanation is also broken: 'Holding retrieval fixed separates the Model effectจากแหล่งข้อมูล การเปลี่ยนแปลง.' The stem, options and rule sentence are readable Thai. Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. ",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: ผู้บริหารที่สนับสนุนโครงการ (sponsor) เชื่อว่าผลลัพธ์ดีขึ้นเพราะโมเดลใหม่ แต่ทีมก็เปลี่ยน index ที่ใช้ค้นหาข้อมูล (retrieval index) ไปด้วยในช่วงเดียวกัน\nStem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์\nExplanation: เมื่อคง retrieval ไว้เหมือนเดิม จะแยกผลของโมเดลออกจากผลของการเปลี่ยนแหล่งข้อมูลได้\nReason: restores the two-changes-at-once meaning that the question depends on. Remove the reviewer-facing 'รูปแบบที่ควรใช้…' block or convert to a real ranking task. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T03:53:52.901Z",
+          "savedAt": "2026-09-18T03:53:52.901Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:52.901Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering of 'isolate the disputed source of performance' and needs a second read; otherwise this is the best-translated item in the family: 'ผู้สนับสนุนบอกว่าผลลัพธ์ดีขึ้นเพราะ index ใหม่ แต่ Model และ checklist การรีวิวก็เปลี่ยนไปด้วย' is natural and keeps the two-changes-at-once meaning; options are parallel; the explanation is clear. Consider 'ผู้บริหารที่สนับสนุนโครงการ (sponsor)' on first mention since 'ผู้สนับสนุน' alone can read as a donor.",
+          "suggestedChange": "Current: การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด\nRecommended: Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์\nReason: one-read stem, same meaning. Remove the reviewer-facing 'รูปแบบที่ควรใช้…' block from the test-taker view or convert to a real ranking task. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T03:53:59.169Z",
+          "savedAt": "2026-09-18T03:53:59.169Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:59.169Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering of 'isolate the disputed source of performance' and needs a second read; 'ผลการดำเนินงานแตกต่างกันตามบทบาทของพนักงาน' drifts from 'completed actions vary across staff roles' (whether an action succeeds depends on role) toward general 'performance differs'. The rule sentence 'ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้' and the options are clear.",
+          "suggestedChange": "Current: คุณภาพของร่างค่อนข้างคงที่ แต่ผลการดำเนินงานแตกต่างกันตามบทบาทของพนักงาน | การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด\nRecommended: คุณภาพของร่างค่อนข้างคงที่ แต่การดำเนินการสำเร็จหรือไม่ขึ้นอยู่กับบทบาทของพนักงาน | Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์ | Explanation: เมื่อผลต่างกันตามบทบาท ควรแยกทดสอบชั้นการกำหนดสิทธิ์ก่อน\nReason: restores the role-dependent-success meaning; one-read stem. Remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T03:54:06.163Z",
+          "savedAt": "2026-09-18T03:54:06.163Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:54:06.163Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง' (EN: 'Proposed format: ranking task. Reviewer should convert these choices…'). If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering of 'isolate the disputed source of performance' and needs a second read; otherwise the scenario is clear and natural ('การทดสอบแต่ละส่วนผ่านทั้งหมด แต่ข้อมูลสูญหายระหว่างขั้นตอนร่างและขั้นตอนอนุมัติ'), options are parallel, and the explanation is correct. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' is stiff ('ผู้ที่มีชื่อในแผน').",
+          "suggestedChange": "Current: การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด | ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nRecommended: Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์ | ผู้ที่มีชื่อในแผนต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nReason: one-read stem; natural phrasing for named people. Remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T03:54:13.105Z",
+          "savedAt": "2026-09-18T03:54:13.105Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:54:13.106Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The key sentence of the scenario is word-salad: 'A sponsor attributes การปรับปรุง to a new Model, but the ทีม also changed the retrieval index.' — the two-changes-at-once fact the whole item depends on is unreadable for a Thai-only test taker; the explanation ('Holding retrieval fixed separates the Model effectจากแหล่งข้อมูล การเปลี่ยนแปลง.') is also broken. Stem, options and rule sentence are readable Thai. Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง'. If this ships, the test taker is told to rank but can only pick one answer. ",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: ผู้บริหารที่สนับสนุนโครงการ (sponsor) เชื่อว่าผลลัพธ์ดีขึ้นเพราะโมเดลใหม่ แต่ทีมก็เปลี่ยน index ที่ใช้ค้นหาข้อมูล (retrieval index) ไปด้วยในช่วงเดียวกัน\nStem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์\nExplanation: เมื่อคง retrieval ไว้เหมือนเดิม จะแยกผลของโมเดลออกจากผลของการเปลี่ยนแหล่งข้อมูลได้\nReason: restores the meaning the question depends on. Remove the reviewer-facing block or convert to a real ranking task. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T03:55:38.950Z",
+          "savedAt": "2026-09-18T03:55:38.950Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:55:38.950Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "wordy",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "wordy",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Reviewer-facing text is rendered inside the test-taker draft: 'รูปแบบที่ควรใช้: จัดลำดับคำตอบให้ผู้ใช้ลากหรือจัดลำดับทางเลือกจากควรทำก่อน ไปควรทำทีหลัง'. If this ships, the test taker is told to rank but can only pick one answer. The stem 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด' is a literal rendering and needs a second read. Otherwise well translated: 'ผู้สนับสนุนบอกว่าผลลัพธ์ดีขึ้นเพราะ index ใหม่ แต่ Model และ checklist การรีวิวก็เปลี่ยนไปด้วย' keeps the two-changes-at-once meaning, options are parallel, explanation is clear. 'บันทึก release' → 'release note'; consider 'ผู้บริหารที่สนับสนุนโครงการ (sponsor)' on first mention.",
+          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release … การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note … Stem: การทดลองใดจะช่วยชี้ชัดได้ดีที่สุดว่าอะไรคือสาเหตุที่แท้จริงของผลลัพธ์\nReason: familiar term; one-read stem with the same meaning. Remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T03:55:45.173Z",
+          "savedAt": "2026-09-18T03:55:45.173Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:55:45.173Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Understandable and the correct answer requires real judgment (the scenario does not echo option D verbatim) — good. Wording issues for a general audience: 'การตั้งค่าแบบใด' suggests configuration settings rather than an approach; 'ตรวจข้อมูลหนึ่งรายการ' ('inspect a record') makes the reader ask which single record; 'ก่อนเขียนข้อมูล' ('before a write') is developer language. There is a stray space in the stem ('รายงานอัปเดตโครงการ มากที่สุด'). Options are clear and consistently structured; option C's 'ดึงข้อความต้นฉบับ' is the clearer wording that the AWARENESS items should also use.",
+          "suggestedChange": "Current: ระบบต้องตรวจข้อมูลหนึ่งรายการ ร่างคำตอบ และขออนุมัติก่อนเขียนข้อมูล … การตั้งค่าแบบใดเหมาะกับรายงานอัปเดตโครงการ มากที่สุด\nRecommended: ระบบต้องตรวจสอบข้อมูลที่เกี่ยวข้อง ร่างเนื้อหา และขออนุมัติก่อนบันทึกลงระบบ … แนวทางการใช้ AI แบบใดเหมาะกับรายงานอัปเดตโครงการมากที่สุด\nReason: plain Thai for the three steps, 'แนวทางการใช้ AI' matches what the options actually describe, and the stray space is removed. Meaning and correct answer (D) unchanged.",
+          "id": "2026-09-18T03:45:48.173Z",
+          "savedAt": "2026-09-18T03:45:48.173Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:45:48.173Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Structural contradiction: the stem asks which setup fits 'มากที่สุด' (best — implies one answer) and then says 'เลือกได้มากกว่าหนึ่งข้อ' (select all that apply), yet only option A is keyed; the rewrite note itself says a second correct action is still missing. A test taker who correctly reads 'select all' will look for a second answer that does not exist. The Thai requirement sentence 'ทุกผลลัพธ์ต้องแสดงประโยคที่อนุมัติแล้วเหมือนเดิม เมื่อเลือกหมวดหมู่เดียวกัน' is understandable but puts the condition last; 'กลุ่มการเรียนรู้ชุมชน' is literal. English–Thai meaning matches.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคู่มือ workshop มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | ทุกผลลัพธ์ต้องแสดงประโยคที่อนุมัติแล้วเหมือนเดิม เมื่อเลือกหมวดหมู่เดียวกัน\nRecommended: either make it single-choice — 'แนวทางการใช้ AI แบบใดเหมาะกับคู่มือ workshop มากที่สุด' — or add a second defensible correct option and drop 'มากที่สุด'. Requirement: 'เมื่อเลือกหมวดหมู่เดียวกัน ระบบต้องให้ประโยคที่อนุมัติแล้วประโยคเดิมทุกครั้ง'\nReason: removes the one-answer vs select-all contradiction; condition-first order reads naturally in Thai. Correct answer (A) unchanged.",
+          "id": "2026-09-18T03:45:56.170Z",
+          "savedAt": "2026-09-18T03:45:56.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:45:56.170Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read and the answer requires judgment (varied wording + staff approval → drafting assistant with review). Minor Thai naturalness issues: 'บันทึกที่ไม่อ่อนไหว' is a calque of 'non-sensitive notes' — Thai readers say 'บันทึกที่ไม่มีข้อมูลอ่อนไหว' or 'ไม่เป็นความลับ'; 'ข้อความที่หลากหลาย' is acceptable but 'สำนวนที่หลากหลาย' conveys 'varied wording' better. 'การตั้งค่าแบบใด' and the stray space before 'มากที่สุด' as in the other APPLIED items. Options clear and consistent.",
+          "suggestedChange": "Current: พนักงานต้องการข้อความที่หลากหลายจากบันทึกที่ไม่อ่อนไหว และจะอนุมัติร่างสุดท้ายทุกครั้ง … การตั้งค่าแบบใดเหมาะกับสรุปบริการ มากที่สุด\nRecommended: พนักงานต้องการสำนวนที่หลากหลายจากบันทึกที่ไม่มีข้อมูลอ่อนไหว และจะอนุมัติร่างสุดท้ายทุกครั้ง … แนวทางการใช้ AI แบบใดเหมาะกับสรุปบริการมากที่สุด\nReason: natural Thai for the same meaning; stray space removed. Correct answer (B) unchanged.",
+          "id": "2026-09-18T03:46:02.331Z",
+          "savedAt": "2026-09-18T03:46:02.331Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:46:02.331Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Same contradiction as the other select-all items: 'มากที่สุด' (one best answer) followed by 'เลือกได้มากกว่าหนึ่งข้อ' with only option C keyed, and the rewrite note admits a second correct action is missing. The scenario itself is clear ('ข้อกำหนดล่าสุดแบบตรงตัว พร้อมรหัสอ้างอิงข้อมูล โดยไม่เรียบเรียงใหม่' reads well). The Thai explanation ends with a bare English term — 'งานนี้ควรใช้ retrieval' — which no option uses; a Thai reader may not connect it to option C 'ดึงข้อความต้นฉบับ'.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
+          "id": "2026-09-18T03:46:09.161Z",
+          "savedAt": "2026-09-18T03:46:09.161Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:46:09.161Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Understandable, and the correct answer needs judgment rather than word-matching — good. Same wording issues as APPLIED-01: 'การตั้งค่าแบบใด' reads as configuration settings; 'ตรวจข้อมูลหนึ่งรายการ' (which one record?) and 'ก่อนเขียนข้อมูล' are developer phrasing for a general audience; stray space before 'มากที่สุด'. The rule sentence 'ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้' is clear and natural. Options clear and consistent.",
+          "suggestedChange": "Current: ระบบต้องตรวจข้อมูลหนึ่งรายการ ร่างคำตอบ และขออนุมัติก่อนเขียนข้อมูล … การตั้งค่าแบบใดเหมาะกับสรุปหลักฐาน มากที่สุด\nRecommended: ระบบต้องตรวจสอบข้อมูลที่เกี่ยวข้อง ร่างสรุป และขออนุมัติก่อนบันทึกลงระบบ … แนวทางการใช้ AI แบบใดเหมาะกับสรุปหลักฐานมากที่สุด\nReason: plain Thai for the same three steps; 'ร่างสรุป' matches the task; stray space removed. Correct answer (D) unchanged.",
+          "id": "2026-09-18T03:46:15.168Z",
+          "savedAt": "2026-09-18T03:46:15.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:46:15.168Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Same select-all contradiction: 'มากที่สุด' implies one best answer, 'เลือกได้มากกว่าหนึ่งข้อ' invites several, only option A is keyed, and the rewrite note says a second correct action is still missing. Requirement sentence 'ทุกผลลัพธ์ต้องแสดงประโยคที่อนุมัติแล้วเหมือนเดิม เมื่อเลือกหมวดหมู่เดียวกัน' is understandable but condition-last; 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' is stiff. English–Thai meaning matches.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับแผนประสานงาน มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | ทุกผลลัพธ์ต้องแสดงประโยคที่อนุมัติแล้วเหมือนเดิม เมื่อเลือกหมวดหมู่เดียวกัน ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับแผนประสานงานมากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | เมื่อเลือกหมวดหมู่เดียวกัน ระบบต้องให้ประโยคที่อนุมัติแล้วประโยคเดิมทุกครั้ง ผู้ที่มีชื่อในแผนต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nReason: removes the contradiction; condition-first order and 'ผู้ที่มีชื่อในแผน' read naturally. Correct answer (A) unchanged.",
+          "id": "2026-09-18T03:46:21.173Z",
+          "savedAt": "2026-09-18T03:46:21.173Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:46:21.173Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read; the answer (varied wording + staff approval → drafting assistant with review) needs judgment rather than word-matching. Minor Thai naturalness issues shared with APPLIED-03: 'บันทึกที่ไม่อ่อนไหว' is a calque of 'non-sensitive notes'; 'ข้อความที่หลากหลาย' is acceptable but 'สำนวนที่หลากหลาย' is closer to 'varied wording'; 'ผู้ใช้ที่มีประสบการณ์หลายระดับ' → 'ผู้เรียนที่มีประสบการณ์ต่างกัน'; 'การตั้งค่าแบบใด' reads as configuration settings; stray space before 'มากที่สุด'. Options clear and consistent.",
+          "suggestedChange": "Current: พนักงานต้องการข้อความที่หลากหลายจากบันทึกที่ไม่อ่อนไหว และจะอนุมัติร่างสุดท้ายทุกครั้ง ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ การตั้งค่าแบบใดเหมาะกับแบบฝึกหัด มากที่สุด\nRecommended: พนักงานต้องการสำนวนที่หลากหลายจากบันทึกที่ไม่มีข้อมูลอ่อนไหว และจะอนุมัติร่างสุดท้ายทุกครั้ง ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์ต่างกัน แนวทางการใช้ AI แบบใดเหมาะกับแบบฝึกหัดมากที่สุด\nReason: natural Thai, same meaning; stray space removed. Correct answer (B) unchanged.",
+          "id": "2026-09-18T03:49:07.168Z",
+          "savedAt": "2026-09-18T03:49:07.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:49:07.168Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Select-all contradiction as in APPLIED-02/-04/-06: the stem asks for the setup that fits 'มากที่สุด' (one best answer) and then says 'เลือกได้มากกว่าหนึ่งข้อ', but only option C is keyed and the rewrite note admits a second correct action is missing. 'บันทึก release' is a half-translation ('release note' is the term Thai product teams use). The requirement sentence 'ข้อกำหนดล่าสุดแบบตรงตัว พร้อมรหัสอ้างอิงข้อมูล โดยไม่เรียบเรียงใหม่' reads well. The explanation ends in bare English ('ควรใช้ retrieval') that no option uses.",
+          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release … การตั้งค่าแบบใดเหมาะกับบันทึก release มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note … either single-choice 'แนวทางการใช้ AI แบบใดเหมาะกับ release note มากที่สุด' or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; consistent term; explanation reuses the option wording. Correct answer (C) unchanged.",
+          "id": "2026-09-18T03:49:14.163Z",
+          "savedAt": "2026-09-18T03:49:14.163Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:49:14.163Z"
+    },
     "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-01": {
       "draft": {
         "decision": "revise",
         "rating": "4",
         "clarity": "clear",
         "artifact": "not-needed",
-        "format": "parts",
+        "format": "single",
         "comment": "",
         "suggestedChange": ""
       },
       "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Scenario and question are clear and natural in Thai; understandable at first read, and the Thai matches the English meaning. Minor issues: (1) option 'ดึงข้อความตรงจากแหล่งข้อมูลที่อนุมัติแล้ว' — 'ตรง' can be read as 'directly' rather than 'exact/verbatim'; (2) option 'ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review' mixes English/Thai terms inconsistently with the scenario ('โมเดลภาษา'); (3) the correct option C ('ไม่ค้นหาแหล่งข้อมูลสนับสนุน') closely echoes the scenario sentence ('ไม่ได้ค้นหาในข้อมูลโครงการที่อนุมัติแล้ว'), so it can be answered by word-matching — too easy for the intended judgment. 'สร้างคำตอบ' (answer) is slightly odd for a project update; 'สร้างเนื้อหา' fits better.",
+          "suggestedChange": "Current: B. ดึงข้อความตรงจากแหล่งข้อมูลที่อนุมัติแล้ว | D. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review | scenario: …Assistant สร้างคำตอบด้วยโมเดลภาษา…\nRecommended: B. ดึงข้อความต้นฉบับจากแหล่งข้อมูลที่อนุมัติแล้ว | D. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review | scenario: …Assistant สร้างเนื้อหาด้วยโมเดลภาษา…\nReason: 'ต้นฉบับ' states exact/verbatim unambiguously; identical terms in scenario and options reduce decoding effort; 'เนื้อหา' matches the task (a project update, not an answer). Consider rewording the scenario evidence so option C is not a near-verbatim match. Meaning and correct answer unchanged.",
+          "id": "2026-09-18T03:41:58.173Z",
+          "savedAt": "2026-09-18T03:41:58.173Z"
+        },
         {
           "decision": "revise",
           "rating": "4",
@@ -25,7 +436,532 @@
           "savedAt": "2026-09-18T02:35:56.519Z"
         }
       ],
-      "updatedAt": "2026-09-18T02:50:28.785Z"
+      "updatedAt": "2026-09-18T03:41:58.174Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The Thai scenario has no sentence break between sentences 1 and 2: 'เตรียมคู่มือ workshop Assistant ดึงข้อความ…' reads at first pass as 'a workshop Assistant', so the test taker must re-read to see that 'Assistant' starts a new sentence. This is the main clarity problem. Also: 'กลุ่มการเรียนรู้ชุมชน' is a literal rendering (more natural: 'กลุ่มเรียนรู้ในชุมชน'); 'ดึงข้อความตรง' is ambiguous (directly vs exact); and the correct option D repeats the scenario phrase 'ดึงข้อความตรงจาก…ที่อนุมัติแล้ว', making the answer guessable by word-matching. English and Thai meaning otherwise match.",
+          "suggestedChange": "Current: กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop Assistant ดึงข้อความตรงจากสื่อการเรียนรู้ที่ผ่านการตรวจทานแล้วพร้อมรหัสอ้างอิงข้อมูล\nRecommended: กลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยจัดทำคู่มือ workshop โดย Assistant ดึงข้อความต้นฉบับพร้อมรหัสอ้างอิงมาจากสื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว\nReason: 'โดย' marks the sentence boundary so 'workshop' and 'Assistant' are not read as one phrase; 'ต้นฉบับ' makes 'exact passages' unambiguous; shorter noun chain. Note: the missing break comes from the template pattern '…ใช้ AI เพื่อเตรียม<X>' and recurs in every item whose next sentence starts with an English word — fix at template level.",
+          "id": "2026-09-18T03:42:04.173Z",
+          "savedAt": "2026-09-18T03:42:04.173Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:42:04.173Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear and natural Thai; scenario, rule and question are understood at first read, and the Thai matches the English meaning. Minor: 'กฎ if-then' is fine for technical readers but may slow non-technical test takers — a short Thai gloss helps. The explanation shows stray spaces around 'โมเดลภาษา' ('ให้ โมเดลภาษา สร้าง'). The correct option A ('ทำตามกฎที่กำหนดไว้เพื่อเลือกข้อความที่อนุมัติแล้ว') closely mirrors the scenario sentence ('ทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว'), so it can be answered by word-matching — too easy.",
+          "suggestedChange": "Current: ระบบทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว\nRecommended: ระบบทำตามกฎแบบ 'ถ้า…ให้…' (if-then) ที่กำหนดไว้ แล้วคัดลอกประโยคที่อนุมัติแล้วมาใช้\nReason: gives non-technical readers the meaning of if-then without removing the term; 'มาใช้' completes the action naturally. Also remove the extra spaces around โมเดลภาษา in the explanation. Correct answer unchanged.",
+          "id": "2026-09-18T03:42:10.168Z",
+          "savedAt": "2026-09-18T03:42:10.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:42:10.168Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Two problems make this harder than it should be. (1) No sentence break: 'คำตอบสำหรับงาน support Workspace ใช้โมเดลภาษา…' reads as 'support Workspace' at first pass. (2) Terminology in the scenario ('โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review') does not match the correct option B ('Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review') — Model vs โมเดลภาษา, search index vs ระบบค้นหา, หน้าจอ vs เครื่องมือ — so the test taker maps four terms across two languages before answering. The scenario also carries four English words in one Thai sentence, heavy for non-technical readers. English–Thai meaning is preserved.",
+          "suggestedChange": "Current: ทีมสนับสนุนภายในใช้ AI เพื่อเตรียมคำตอบสำหรับงาน support Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีม support ภายในใช้ AI ช่วยจัดทำคำตอบให้ลูกค้า โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) สิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' creates the sentence break; the same four terms appear in both scenario and option so the test taker matches concepts, not vocabulary. Use this option wording consistently across the family.",
+          "id": "2026-09-18T03:42:14.167Z",
+          "savedAt": "2026-09-18T03:42:14.167Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:42:14.168Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Understandable at first read; the question and rule are natural Thai and match the English. Minor readability issues: 'ข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้' is a literal five-word chain for 'documented source extracts' and slows reading; 'สร้างคำตอบ' is odd for an evidence summary ('เขียนสรุป' fits). Family-level notes also apply: 'ดึงข้อความตรง' in option D is ambiguous, and the correct option C echoes the scenario wording ('ไม่ได้ค้นหา…'), so the item is answerable by word-matching.",
+          "suggestedChange": "Current: โดย Assistant สร้างคำตอบด้วยโมเดลภาษา แต่ไม่ได้ค้นหาในข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้\nRecommended: โดย Assistant เขียนสรุปด้วยโมเดลภาษา แต่ไม่ได้ค้นหาจากเอกสารอ้างอิงที่บันทึกไว้\nReason: shorter, natural Thai with the same meaning (the AI generates text without retrieving from the documented sources). Correct answer unchanged.",
+          "id": "2026-09-18T03:42:20.159Z",
+          "savedAt": "2026-09-18T03:42:20.159Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:42:20.159Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Same sentence-boundary problem as other items in this family: 'เตรียมแผนประสานงาน Assistant ดึงข้อความ…' has no break, so 'Assistant' attaches to the previous phrase on first read. 'ดึงข้อความตรงจาก…พร้อมรหัสอ้างอิงข้อมูล' is long and 'ตรง' is ambiguous. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง' is understandable but stiff ('ผู้ที่มีชื่อในตาราง' is clearer). The correct option D repeats the scenario phrase, so the answer is guessable by word-matching. English–Thai meaning matches.",
+          "suggestedChange": "Current: องค์กรอาสาสมัครใช้ AI เพื่อเตรียมแผนประสานงาน Assistant ดึงข้อความตรงจากตารางอาสาสมัครที่อนุมัติแล้วพร้อมรหัสอ้างอิงข้อมูล ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nRecommended: องค์กรอาสาสมัครใช้ AI ช่วยจัดทำแผนประสานงาน โดย Assistant ดึงข้อความต้นฉบับพร้อมรหัสอ้างอิงมาจากตารางอาสาสมัครที่อนุมัติแล้ว ผู้ที่มีชื่อในตารางต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nReason: 'โดย' restores the sentence break; 'ต้นฉบับ' clarifies 'exact passages'; 'ผู้ที่มีชื่อในตาราง' is more natural. Meaning and correct answer unchanged.",
+          "id": "2026-09-18T03:42:27.162Z",
+          "savedAt": "2026-09-18T03:42:27.162Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:42:27.162Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear and natural Thai; scenario, rule and question are understood at first read and match the English. Minor: 'กฎ if-then' may slow non-technical test takers without a short Thai gloss; the explanation has stray spaces around 'โมเดลภาษา'. The correct option A ('ทำตามกฎที่กำหนดไว้เพื่อเลือกข้อความที่อนุมัติแล้ว') mirrors the scenario sentence ('ทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว'), so the item is answerable by word-matching — too easy for an awareness check of the concept.",
+          "suggestedChange": "Current: ระบบทำตามกฎ if-then ที่กำหนดไว้และคัดลอกประโยคที่อนุมัติแล้ว ตัวอย่างต้องเหมาะกับผู้ใช้ที่มีประสบการณ์หลายระดับ\nRecommended: ระบบทำตามกฎแบบ 'ถ้า…ให้…' (if-then) ที่กำหนดไว้ แล้วคัดลอกประโยคที่อนุมัติแล้วมาใช้ ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์ต่างกัน\nReason: glosses if-then for non-technical readers; 'ผู้เรียนที่มีประสบการณ์ต่างกัน' is the natural Thai for 'mixed levels of experience'. Remove the extra spaces around โมเดลภาษา in the explanation. Correct answer unchanged.",
+          "id": "2026-09-18T03:45:34.159Z",
+          "savedAt": "2026-09-18T03:45:34.159Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:45:34.159Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): (1) No sentence break: 'เตรียมบันทึก release Workspace ใช้โมเดลภาษา…' reads as 'release Workspace note' on first pass; the test taker must re-read to find where sentence 2 starts. (2) 'บันทึก release' is a half-translation — Thai product teams say 'release note' as a unit. (3) Scenario terms ('โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review') do not match the correct option B ('Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review'), forcing a four-term mapping across two languages. The rule sentence 'ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว' is clear. English–Thai meaning is preserved.",
+          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) สิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' restores the sentence boundary; 'release note' kept as the familiar term; identical terms in scenario and option so the test taker matches the concept, not vocabulary.",
+          "id": "2026-09-18T03:45:41.160Z",
+          "savedAt": "2026-09-18T03:45:41.160Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:45:41.160Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: the scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.', 'Which conclusion is justified by this การเปรียบเทียบ?', 'A. Check the การดำเนินการ permission boundary.' A Thai-speaking test taker cannot understand what is asked; this must not be piloted in Thai until fully translated. Two English-level issues as well: the stem says 'this comparison' but the scenario describes a single observation (a rule picks the wrong category), and options A–B are actions ('Check…', 'Correct…') while C–D are statements, so the choices are not parallel.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมโครงการใช้ AI ช่วยจัดทำรายงานอัปเดตโครงการ กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai with the same meaning; stem no longer claims a 'comparison' that the scenario does not contain. Consider making the English options parallel too. Correct answer (B) unchanged. Note: this whole PROFICIENT 'compare and choose' family has no Thai sentence pattern and falls back to word substitution — fix at template level.",
+          "id": "2026-09-18T03:49:21.172Z",
+          "savedAt": "2026-09-18T03:49:21.172Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:49:21.172Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: the scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด สื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว and only that app answers the เวอร์ชัน question correctly.' and the explanation 'A shared Model ไม่ได้ imply shared แหล่งข้อมูล การเข้าถึง.' A Thai-speaking test taker cannot read this; it must not be piloted in Thai until fully translated. The English item itself is sound and does contain a real comparison. Options A–B are actions while C–D are statements (not parallel).",
+          "suggestedChange": "Recommended Thai (full):\nScenario: กลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยจัดทำคู่มือ workshop แอปสองตัวใช้โมเดลเดียวกัน แต่มีเพียงแอปเดียวที่เข้าถึงสื่อการเรียนรู้เวอร์ชันล่าสุดที่ผ่านการตรวจทานแล้วได้ และมีเพียงแอปนั้นที่ตอบคำถามเรื่องเวอร์ชันได้ถูกต้อง คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: การใช้โมเดลเดียวกันไม่ได้หมายความว่าเข้าถึงแหล่งข้อมูลเดียวกัน\nReason: complete, natural Thai preserving the English meaning and the keyed answer (C).",
+          "id": "2026-09-18T03:49:28.169Z",
+          "savedAt": "2026-09-18T03:49:28.169Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:49:28.169Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests.' (note the broken token 'ต้องการd' from 'required'). A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ธุรกิจขนาดเล็กใช้ AI ช่วยจัดทำสรุปบริการ โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai preserving the English meaning and the keyed answer (D).",
+          "id": "2026-09-18T03:50:43.174Z",
+          "savedAt": "2026-09-18T03:50:43.174Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:50:43.175Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial.' and 'The ความล้มเหลว occurs during การดำเนินงาน rather than text generation.' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. Also, the stem says 'this comparison' but the scenario is a single observation (a send fails).",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีม support ภายในใช้ AI ช่วยจัดทำคำตอบให้ลูกค้า ร่างคำตอบที่ถูกต้องแสดงอยู่บนหน้าจอ แต่เมื่อกดส่ง ระบบปฏิเสธเพราะไม่มีสิทธิ์ (permission denied) พนักงานต้องอนุมัติคำตอบก่อนส่งออกไป\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดในขั้นตอนดำเนินการ (การส่ง) ไม่ใช่ขั้นตอนสร้างข้อความ\nReason: complete, natural Thai; stem no longer claims a comparison. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T03:50:50.172Z",
+          "savedAt": "2026-09-18T03:50:50.172Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:50:50.172Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.' and 'Which conclusion is justified by this การเปรียบเทียบ?' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. The stem says 'this comparison' but the scenario is a single observation.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมวิจัยใช้ AI ช่วยจัดทำสรุปหลักฐาน กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T03:50:56.162Z",
+          "savedAt": "2026-09-18T03:50:56.162Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:50:56.162Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'Only one can การเข้าถึง the ล่าสุด ตารางอาสาสมัครที่อนุมัติแล้ว and only that app answers the เวอร์ชัน question correctly.' and the explanation 'A shared Model ไม่ได้ imply shared แหล่งข้อมูล การเข้าถึง.' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: องค์กรอาสาสมัครใช้ AI ช่วยจัดทำแผนประสานงาน แอปสองตัวใช้โมเดลเดียวกัน แต่มีเพียงแอปเดียวที่เข้าถึงตารางอาสาสมัครเวอร์ชันล่าสุดที่อนุมัติแล้วได้ และมีเพียงแอปนั้นที่ตอบคำถามเรื่องเวอร์ชันได้ถูกต้อง ผู้ที่มีชื่อในแผนต้องยืนยันการเปลี่ยนแปลงงานของตนเอง\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: การใช้โมเดลเดียวกันไม่ได้หมายความว่าเข้าถึงแหล่งข้อมูลเดียวกัน\nReason: complete, natural Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T03:51:03.176Z",
+          "savedAt": "2026-09-18T03:51:03.176Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:51:03.177Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests.' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมฝึกอบรมใช้ AI ช่วยจัดทำแบบฝึกหัด โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์ต่างกัน\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T03:53:22.170Z",
+          "savedAt": "2026-09-18T03:53:22.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:22.170Z"
+    },
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-PROFICIENT-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial.' and 'The ความล้มเหลว occurs during การดำเนินงาน rather than text generation.' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. The stem says 'this comparison' but the scenario is a single observation. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note ร่างที่ถูกต้องแสดงอยู่บนหน้าจอ แต่เมื่อกดส่ง ระบบปฏิเสธเพราะไม่มีสิทธิ์ (permission denied) ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดในขั้นตอนดำเนินการ (การส่ง) ไม่ใช่ขั้นตอนสร้างข้อความ\nReason: complete, natural Thai; stem no longer claims a comparison. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T03:53:27.619Z",
+          "savedAt": "2026-09-18T03:53:27.619Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:53:27.619Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'A document is broken into short encoded units before the Model กระบวนการes it.' (the verb 'processes' became 'กระบวนการes'). The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: เอกสารถูกแบ่งเป็นหน่วยย่อยสั้น ๆ ที่เข้ารหัสไว้ ก่อนที่โมเดลจะประมวลผล\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: token คือหน่วยที่โมเดลใช้ประมวลผล ไม่จำเป็นต้องตรงกับคำเต็มคำ\nReason: complete Thai for the evidence, stem and explanation; options unchanged. Keyed answer (C) unchanged. Note: the whole GENAI-MECHANICS family has no Thai sentence pattern for its observation sentences — fix at template level.",
+          "id": "2026-09-18T03:55:52.169Z",
+          "savedAt": "2026-09-18T03:55:52.169Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:55:52.170Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'Texts about similar ideas are placed near one another in a numerical representation.' is left entirely in English, and the explanation reads 'The representation supports semantic การเปรียบเทียบ rather than a truth guarantee.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. Also 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง\nReason: complete Thai; options unchanged. Keyed answer (D) unchanged.",
+          "id": "2026-09-18T03:55:59.131Z",
+          "savedAt": "2026-09-18T03:55:59.131Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:55:59.131Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'The assistant searches ข้อมูลบริการที่อนุมัติแล้ว and places matching ข้อความต้นทาง beside the user คำขอ.' and the explanation 'External ข้อความต้นทาง are supplied at answer time.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: Assistant ค้นหาในข้อมูลบริการที่อนุมัติแล้ว และนำข้อความที่ตรงกับคำขอมาวางไว้คู่กับคำขอของผู้ใช้\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: ระบบนำข้อความจากแหล่งข้อมูลภายนอกมาให้โมเดลใช้ตอนสร้างคำตอบ\nReason: complete Thai for evidence, stem and explanation; options unchanged. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T03:56:08.167Z",
+          "savedAt": "2026-09-18T03:56:08.167Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:56:08.168Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'Training upวันที่s change Model parameters using a curated set of งาน examples.' (the word 'updates' became 'upวันที่s'), and the explanation 'The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: การฝึกเพิ่มเติม (training update) เปลี่ยนค่าพารามิเตอร์ของโมเดล โดยใช้ชุดตัวอย่างงานที่คัดเลือกไว้\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: การปรับแบบนี้เปลี่ยนตัวโมเดล ไม่ใช่แค่เปลี่ยน Prompt ที่ใช้ในครั้งนั้น\nReason: complete Thai; options unchanged. Keyed answer (B) unchanged.",
+          "id": "2026-09-18T03:56:12.322Z",
+          "savedAt": "2026-09-18T03:56:12.322Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:56:12.322Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'A document is broken into short encoded units before the Model กระบวนการes it.' ('processes' → 'กระบวนการes'), explanation 'Tokens are กระบวนการing units…'. The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: เอกสารถูกแบ่งเป็นหน่วยย่อยสั้น ๆ ที่เข้ารหัสไว้ ก่อนที่โมเดลจะประมวลผล\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: token คือหน่วยที่โมเดลใช้ประมวลผล ไม่จำเป็นต้องตรงกับคำเต็มคำ\nReason: complete Thai; options unchanged. Keyed answer (C) unchanged.",
+          "id": "2026-09-18T03:56:18.170Z",
+          "savedAt": "2026-09-18T03:56:18.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:56:18.170Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'Texts about similar ideas are placed near one another in a numerical representation.' is left entirely in English; explanation 'The representation supports semantic การเปรียบเทียบ rather than a truth guarantee.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง\nReason: complete Thai; options unchanged. Keyed answer (D) unchanged.",
+          "id": "2026-09-18T03:56:24.462Z",
+          "savedAt": "2026-09-18T03:56:24.462Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T03:56:24.462Z"
     }
   }
 }
