@@ -1,7 +1,407 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T03:56:26.172Z",
+  "updatedAt": "2026-09-18T04:15:18.883Z",
   "questions": {
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The แหล่งข้อมูล explicitly leaves a material condition undecided.'; explanation 'A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง\nReason: complete Thai; options unchanged; keyed answer (A) unchanged. The CAPABILITY-LIMITS-APPLIED family has no Thai pattern for its stem or evidence sentences — fix at template level.",
+          "id": "2026-09-18T04:14:19.217Z",
+          "savedAt": "2026-09-18T04:14:19.217Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:19.217Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'A material claim includes an untraceable ข้อมูล identifier.'; the instruction 'Select all that apply.' is also left in English, yet only option B is keyed and the rewrite note admits a second correct action is missing. Explanation: 'The identifier must resolve to หลักฐาน before it supports the claim.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ข้อกล่าวอ้างสำคัญข้อหนึ่งอ้างรหัสอ้างอิงข้อมูลที่ตรวจสอบย้อนกลับไม่ได้\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise make it single-choice)\nExplanation: รหัสอ้างอิงต้องเชื่อมไปถึงหลักฐานจริงได้ก่อน จึงจะใช้รองรับข้อกล่าวอ้างนั้นได้\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:14:19.788Z",
+          "savedAt": "2026-09-18T04:14:19.788Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:19.788Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The only cited procedure is marked superseded.' is left entirely in English; explanation 'The งาน ต้องการ ล่าสุด หลักฐาน rather than a better paraphrase.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ขั้นตอนเดียวที่อ้างถึงถูกระบุว่ายกเลิกใช้แล้ว (superseded)\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nExplanation: งานนี้ต้องการหลักฐานที่เป็นปัจจุบัน ไม่ใช่การเรียบเรียงใหม่ให้ดีขึ้น\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:14:40.342Z",
+          "savedAt": "2026-09-18T04:14:40.342Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:40.342Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The assistant has no การเข้าถึง to the necessary attachment.'; explanation 'The หลักฐาน ช่องว่าง must be resolved or disclosed.' The instruction 'Select all that apply.' is left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant ไม่มีสิทธิ์เข้าถึงไฟล์แนบที่จำเป็น\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise make it single-choice)\nExplanation: ช่องว่างของหลักฐานต้องได้รับการแก้ไข หรือไม่ก็ต้องแจ้งให้ชัด\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:14:40.908Z",
+          "savedAt": "2026-09-18T04:14:40.908Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:40.908Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The แหล่งข้อมูล explicitly leaves a material condition undecided.'; explanation 'A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:14:41.465Z",
+          "savedAt": "2026-09-18T04:14:41.465Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:41.465Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'A material claim includes an untraceable ข้อมูล identifier.'; explanation 'The identifier must resolve to หลักฐาน before it supports the claim.' The instruction 'Select all that apply.' is left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ข้อกล่าวอ้างสำคัญข้อหนึ่งอ้างรหัสอ้างอิงข้อมูลที่ตรวจสอบย้อนกลับไม่ได้\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise make it single-choice)\nExplanation: รหัสอ้างอิงต้องเชื่อมไปถึงหลักฐานจริงได้ก่อน จึงจะใช้รองรับข้อกล่าวอ้างนั้นได้\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:14:42.026Z",
+          "savedAt": "2026-09-18T04:14:42.026Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:42.026Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The only cited procedure is marked superseded.' is left entirely in English; explanation 'The งาน ต้องการ ล่าสุด หลักฐาน rather than a better paraphrase.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ขั้นตอนเดียวที่อ้างถึงถูกระบุว่ายกเลิกใช้แล้ว (superseded)\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nExplanation: งานนี้ต้องการหลักฐานที่เป็นปัจจุบัน ไม่ใช่การเรียบเรียงใหม่ให้ดีขึ้น\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:14:55.346Z",
+          "savedAt": "2026-09-18T04:14:55.346Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:55.346Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The assistant has no การเข้าถึง to the necessary attachment.'; explanation 'The หลักฐาน ช่องว่าง must be resolved or disclosed.' The instruction 'Select all that apply.' is left in English, yet only option D is keyed and the rewrite note admits a second correct action is missing. The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant ไม่มีสิทธิ์เข้าถึงไฟล์แนบที่จำเป็น\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise make it single-choice)\nExplanation: ช่องว่างของหลักฐานต้องได้รับการแก้ไข หรือไม่ก็ต้องแจ้งให้ชัด\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:14:56.165Z",
+          "savedAt": "2026-09-18T04:14:56.165Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:56.165Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'The assistant describes a file that was never attached or made การเข้าถึงible.' ('accessible' → 'การเข้าถึง'+'ible'); explanation 'A Model cannot establish the contents of unavailable material.' left in English. The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant บรรยายเนื้อหาของไฟล์ที่ไม่เคยแนบมาและไม่มีสิทธิ์เข้าถึง\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: โมเดลไม่สามารถรู้เนื้อหาของเอกสารที่มันเข้าถึงไม่ได้\nReason: complete Thai; keyed answer (B) unchanged. The CAPABILITY-LIMITS family has no Thai pattern for its evidence sentences or stem — fix at template level.",
+          "id": "2026-09-18T04:12:36.445Z",
+          "savedAt": "2026-09-18T04:12:36.445Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:12:36.445Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน.'; explanation 'Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:12:36.991Z",
+          "savedAt": "2026-09-18T04:12:36.991Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:12:36.991Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'A confident answer names a ข้อมูล that cannot be found in ข้อมูลบริการที่อนุมัติแล้ว.'; explanation 'Fluent confidence ไม่ได้ prove the ข้อมูล exists.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบที่ฟังดูมั่นใจอ้างถึงข้อมูลรายการหนึ่ง ซึ่งไม่พบในข้อมูลบริการที่อนุมัติแล้ว\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความมั่นใจและความลื่นไหลของภาษาไม่ได้พิสูจน์ว่าข้อมูลนั้นมีอยู่จริง\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:13:02.169Z",
+          "savedAt": "2026-09-18T04:13:02.169Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:13:02.169Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced.'; explanation 'Accuracy about an old เวอร์ชัน is not ล่าสุด accuracy.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบอ้างอิงขั้นตอนได้ถูกต้อง แต่เป็นเวอร์ชันที่ถูกแทนที่ไปแล้ว\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความถูกต้องตามเวอร์ชันเก่าไม่ใช่ความถูกต้องในปัจจุบัน\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:13:02.822Z",
+          "savedAt": "2026-09-18T04:13:02.822Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:13:02.822Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'The assistant describes a file that was never attached or made การเข้าถึงible.'; explanation left in English. The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant บรรยายเนื้อหาของไฟล์ที่ไม่เคยแนบมาและไม่มีสิทธิ์เข้าถึง\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: โมเดลไม่สามารถรู้เนื้อหาของเอกสารที่มันเข้าถึงไม่ได้\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:13:03.403Z",
+          "savedAt": "2026-09-18T04:13:03.403Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:13:03.403Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน.'; explanation 'Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:13:03.967Z",
+          "savedAt": "2026-09-18T04:13:03.967Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:13:03.967Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' — and the evidence sentence, the only clue the test taker gets, is word-salad: 'A confident answer names a ข้อมูล that cannot be found in ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว.'; explanation 'Fluent confidence ไม่ได้ prove the ข้อมูล exists.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบที่ฟังดูมั่นใจอ้างถึงข้อมูลรายการหนึ่ง ซึ่งไม่พบในตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความมั่นใจและความลื่นไหลของภาษาไม่ได้พิสูจน์ว่าข้อมูลนั้นมีอยู่จริง\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:14:18.104Z",
+          "savedAt": "2026-09-18T04:14:18.104Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:18.104Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' — and the evidence sentence, the only clue the test taker gets, is word-salad: 'The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced.'; explanation 'Accuracy about an old เวอร์ชัน is not ล่าสุด accuracy.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบอ้างอิงขั้นตอนได้ถูกต้อง แต่เป็นเวอร์ชันที่ถูกแทนที่ไปแล้ว\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความถูกต้องตามเวอร์ชันเก่าไม่ใช่ความถูกต้องในปัจจุบัน\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:14:18.668Z",
+          "savedAt": "2026-09-18T04:14:18.668Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:14:18.668Z"
+    },
     "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-01": {
       "draft": {
         "decision": "revise",
@@ -295,7 +695,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Same contradiction as the other select-all items: 'มากที่สุด' (one best answer) followed by 'เลือกได้มากกว่าหนึ่งข้อ' with only option C keyed, and the rewrite note admits a second correct action is missing. The scenario itself is clear ('ข้อกำหนดล่าสุดแบบตรงตัว พร้อมรหัสอ้างอิงข้อมูล โดยไม่เรียบเรียงใหม่' reads well). The Thai explanation ends with a bare English term — 'งานนี้ควรใช้ retrieval' — which no option uses; a Thai reader may not connect it to option C 'ดึงข้อความต้นฉบับ'.",
-          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนว���างการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
           "id": "2026-09-18T03:46:09.161Z",
           "savedAt": "2026-09-18T03:46:09.161Z"
         }
@@ -442,10 +842,10 @@
       "draft": {
         "decision": "revise",
         "rating": "3",
-        "clarity": "confusing",
+        "clarity": "wordy",
         "artifact": "not-needed",
         "format": "single",
-        "comment": "",
+        "comment": "In the question context, It's all action by AI, when using \"AI\" is most understandable, but using \"The assistant\" it can be define to human and it's made confuse, also there're unnecessary words in the questions, the sentence \" The guide must work for readers with no AI background\" needs adjust for more easy. ",
         "suggestedChange": ""
       },
       "entries": [
@@ -461,7 +861,7 @@
           "savedAt": "2026-09-18T03:42:04.173Z"
         }
       ],
-      "updatedAt": "2026-09-18T03:42:04.173Z"
+      "updatedAt": "2026-09-18T04:15:17.871Z"
     },
     "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-03": {
       "draft": {
@@ -813,6 +1213,406 @@
       ],
       "updatedAt": "2026-09-18T03:53:27.619Z"
     },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Long inputs ต้นทุน more, but aggressive summarization removes important exceptions.' — the cost-vs-lost-exceptions trade-off the item is about is unreadable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: input ที่ยาวมีต้นทุนสูงกว่า แต่การย่อความแบบเข้มข้นทำให้ข้อยกเว้นสำคัญหายไป\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การลดต้นทุนต้องประเมินเทียบกับหลักฐานสำคัญต่อการตัดสินใจที่อาจสูญหาย\nReason: complete Thai; remove the reviewer-facing block or convert to a real ranking task. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T04:10:49.739Z",
+          "savedAt": "2026-09-18T04:10:49.739Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:10:49.739Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails.' — and the keyed first check D 'Check passage recall and answer faithfulness separately.' is itself in English, so neither the problem nor the correct action is readable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบที่อ้างอิงหลักฐานยังแม่นยำต่ำ และทีมไม่รู้ว่าปัญหาอยู่ที่ขั้นค้นหาหรือขั้นสรุปคำตอบ\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การแยกทดสอบทีละขั้นจะบอกได้ว่ากลไกใดต้องแก้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:10:50.316Z",
+          "savedAt": "2026-09-18T04:10:50.316Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:10:50.316Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'An embedding upgrade improves global recall but reduces exact-code retrieval.' is left entirely in English, and the keyed first check A 'Test hybrid retrieval on identifier and semantic slices.' is English too — neither the problem nor the correct action is readable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การอัปเกรด embedding ทำให้ค้นเจอข้อมูลโดยรวมดีขึ้น แต่ค้นหาด้วยรหัสแบบตรงตัวได้แย่ลง\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การตัดสินใจนำไปใช้ต้องรักษาความสามารถในการค้นหาทั้งสองแบบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:11:14.160Z",
+          "savedAt": "2026-09-18T04:11:14.160Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:11:14.160Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Fine-tuning improves training examples but no unseen เคสs have been evaluated.'; explanation 'Generalization ต้องการs หลักฐาน beyond examples used for training.' (an English suffix glued to a Thai verb). Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การ fine-tune ทำให้ผลดีขึ้นกับตัวอย่างที่ใช้ฝึก แต่ยังไม่เคยประเมินกับเคสที่โมเดลไม่เคยเห็น\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การพิสูจน์ว่าใช้ได้ทั่วไป (generalization) ต้องมีหลักฐานจากเคสที่ไม่ได้ใช้ฝึก\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:11:14.736Z",
+          "savedAt": "2026-09-18T04:11:14.736Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:11:14.736Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Long inputs ต้นทุน more, but aggressive summarization removes important exceptions.' — the cost-vs-lost-exceptions trade-off the item is about is unreadable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: input ที่ยาวมีต้นทุนสูงกว่า แต่การย่อความแบบเข้มข้นทำให้ข้อยกเว้นสำคัญหายไป\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การลดต้นทุนต้องประเมินเทียบกับหลักฐานสำคัญต่อการตัดสินใจที่อาจสูญหาย\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T04:11:15.329Z",
+          "savedAt": "2026-09-18T04:11:15.329Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:11:15.329Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails.' — and the keyed first check D 'Check passage recall and answer faithfulness separately.' is in English, so neither the problem nor the correct action is readable. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option D is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบที่อ้างอิงหลักฐานยังแม่นยำต่ำ และทีมไม่รู้ว่าปัญหาอยู่ที่ขั้นค้นหาหรือขั้นสรุปคำตอบ\nOptions: A → ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | B → ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | C → เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | D → ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การแยกทดสอบทีละขั้นจะบอกได้ว่ากลไกใดต้องแก้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:11:15.890Z",
+          "savedAt": "2026-09-18T04:11:15.890Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:11:15.890Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'An embedding upgrade improves global recall but reduces exact-code retrieval.' is left entirely in English, and the keyed first check A 'Test hybrid retrieval on identifier and semantic slices.' is English too. Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option C/B is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การอัปเกรด embedding ทำให้ค้นเจอข้อมูลโดยรวมดีขึ้น แต่ค้นหาด้วยรหัสแบบตรงตัวได้แย่ลง\nOptions: ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การตัดสินใจนำไปใช้ต้องรักษาความสามารถในการค้นหาทั้งสองแบบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:12:35.328Z",
+          "savedAt": "2026-09-18T04:12:35.328Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:12:35.329Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-ADVANCED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The evidence sentence is word-salad: 'Fine-tuning improves training examples but no unseen เคสs have been evaluated.'; explanation 'Generalization ต้องการs หลักฐาน beyond examples used for training.' Two of the four options are left in English ('Check passage recall and answer faithfulness separately.' / 'Test hybrid retrieval on identifier and semantic slices.'), option C/B is missing a space ('กับbaseline'), the explanation is broken, and a reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. The stem 'ทีมควรทดสอบอะไรก่อน' is good Thai. Must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การ fine-tune ทำให้ผลดีขึ้นกับตัวอย่างที่ใช้ฝึก แต่ยังไม่เคยประเมินกับเคสที่โมเดลไม่เคยเห็น\nOptions: ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย | เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nExplanation: การพิสูจน์ว่าใช้ได้ทั่วไป (generalization) ต้องมีหลักฐานจากเคสที่ไม่ได้ใช้ฝึก\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:12:35.895Z",
+          "savedAt": "2026-09-18T04:12:35.895Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:12:35.895Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Two of the four options are left in English — A 'Check tokens and reduce or split the input.' and C 'Test fine-tuning against the Prompt baseline.' — and C is the keyed answer, so a Thai-only test taker cannot evaluate the correct choice. The scenario and stem are good Thai ('รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก'). The explanation 'เมื่อพฤติกรรมคงที่…' appears to contradict the scenario ('ยังไม่คงที่'); the English 'stable behavior' means the desired behaviour is well defined, which the Thai loses. Option D is heavy jargon for a general audience.",
+          "suggestedChange": "Current: A/… 'Check tokens and reduce or split the input.' | 'Test fine-tuning against the Prompt baseline.' | คำอธิบาย: เมื่อพฤติกรรมคงที่และมีตัวอย่างที่รีวิวแล้ว…\nRecommended: A/… 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline) | 'ใช้ semantic retrieval พร้อม embedding ที่ผ่านการทดสอบ' → ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | 'ค้นคืนขั้นตอนล่าสุดตอนตอบคำถาม' → ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ | คำอธิบาย: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล\nReason: all four options readable in Thai and parallel; explanation no longer contradicts the scenario. Keyed answer (C) unchanged. Same two English options recur across the GENAI-MECHANICS-APPLIED family — fix once in the option table.",
+          "id": "2026-09-18T04:07:09.077Z",
+          "savedAt": "2026-09-18T04:07:09.077Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:09.077Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The keyed answer D 'Check tokens and reduce or split the input.' and option A are left in English, so a Thai-only test taker cannot read the correct choice. Separately, the stem asks for the mechanism that fits 'ได้ดีที่สุด' (one best answer) and then says 'เลือกได้มากกว่าหนึ่งข้อ', but only D is keyed and the rewrite note admits a second correct action is missing. The scenario itself is clear and natural ('คำขอที่ยาวเกินไปล้มเหลวก่อนเริ่มสร้างคำตอบ เพราะเกินขีดจำกัด input'). 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended: A/… 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline) | make it single-choice ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด' without 'เลือกได้มากกว่าหนึ่งข้อ') or add a second defensible correct option and drop 'ได้ดีที่สุด'.\nReason: the correct option becomes readable; the one-answer vs select-all contradiction is removed. Keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:07:09.653Z",
+          "savedAt": "2026-09-18T04:07:09.653Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:09.653Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The requirement sentence — the fact the item turns on — is word-salad: 'The สรุปบริการ must cite a procedure that การเปลี่ยนแปลง each week.'; the explanation is broken too ('Frequently changing facts should be suppliedจากan upวันที่d แหล่งข้อมูล.'); options B and D are left in English. The keyed option A is readable Thai, but a Thai-only test taker cannot see why it is correct because the weekly-change fact is unreadable. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nRequirement sentence: สรุปบริการต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nOptions: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล\nReason: complete Thai for the evidence, options and explanation. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:07:33.166Z",
+          "savedAt": "2026-09-18T04:07:33.166Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:33.166Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The requirement sentence is word-salad: 'Search must find related เคสs even when users choose different words.' (with an English plural glued to a Thai word), the explanation is mixed ('Semantic similarity helps match differently worded คำขอ.'), and options A and D are left in English. The keyed option B is readable Thai but heavy jargon. Separately, the stem asks for the mechanism that fits 'ได้ดีที่สุด' (one best answer) and then says 'เลือกได้มากกว่าหนึ่งข้อ', but only one option is keyed and the rewrite note admits a second correct action is missing. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nRequirement sentence: ระบบค้นหาต้องหาเคสที่เกี่ยวข้องได้ แม้ผู้ใช้จะใช้คำต่างกัน\nOptions: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline) | B → ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว\nExplanation: การเทียบความคล้ายเชิงความหมายช่วยจับคู่คำขอที่ใช้คำต่างกันได้\nReason: complete Thai; keyed answer (B) unchanged. Make it single-choice or add a second defensible correct option and drop 'ได้ดีที่สุด'.",
+          "id": "2026-09-18T04:07:33.746Z",
+          "savedAt": "2026-09-18T04:07:33.746Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:33.746Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Options C 'Test fine-tuning against the Prompt baseline.' (the keyed answer) and D 'Check tokens and reduce or split the input.' are left in English, so a Thai-only test taker cannot evaluate the correct choice. Scenario, stem and rule sentence are good Thai. The explanation 'เมื่อพฤติกรรมคงที่…' contradicts the scenario's 'ยังไม่คงที่' — the English 'stable behavior' means the desired behaviour is well defined, which the Thai loses.",
+          "suggestedChange": "Recommended: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline) | คำอธิบาย: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล\nReason: all options readable and parallel; explanation consistent with the scenario. Keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:07:34.290Z",
+          "savedAt": "2026-09-18T04:07:34.290Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:34.290Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The keyed answer D 'Check tokens and reduce or split the input.' and option A are left in English, so a Thai-only test taker cannot read the correct choice. The scenario is clear and natural ('คำขอที่ยาวเกินไปล้มเหลวก่อนเริ่มสร้างคำตอบ เพราะเกินขีดจำกัด input'). Separately, the stem asks for the mechanism that fits 'ได้ดีที่สุด' (one best answer) and then says 'เลือกได้มากกว่าหนึ่งข้อ', but only one option is keyed and the rewrite note admits a second correct action is missing. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nReason: the correct option becomes readable. Keyed answer (D) unchanged. Make it single-choice or add a second defensible correct option and drop 'ได้ดีที่สุด'.",
+          "id": "2026-09-18T04:07:34.822Z",
+          "savedAt": "2026-09-18T04:07:34.822Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:34.822Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The requirement sentence the item turns on is word-salad: 'The แบบฝึกหัด must cite a procedure that การเปลี่ยนแปลง each week.'; the explanation is broken ('…suppliedจากan upวันที่d แหล่งข้อมูล.'); options B and C are left in English. Keyed option A is readable Thai, but the weekly-change fact that justifies it is unreadable. Must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nRequirement sentence: แบบฝึกหัดต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nOptions: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล\nReason: complete Thai for evidence, options and explanation. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:08:56.350Z",
+          "savedAt": "2026-09-18T04:08:56.350Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:08:56.351Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The requirement sentence is word-salad: 'Search must find related เคสs even when users choose different words.'; explanation mixed ('…differently worded คำขอ.'); options C and D left in English. Keyed option B is readable but jargon-heavy. The stem also says 'ได้ดีที่สุด' (one best) and then 'เลือกได้มากกว่าหนึ่งข้อ' with only B keyed; the rewrite note admits a second correct action is missing. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nRequirement sentence: ระบบค้นหาต้องหาเคสที่เกี่ยวข้องได้ แม้ผู้ใช้จะใช้คำต่างกัน\nOptions: 'Check tokens and reduce or split the input.' → ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | 'Test fine-tuning against the Prompt baseline.' → ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline) | B → ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว\nExplanation: การเทียบความคล้ายเชิงความหมายช่วยจับคู่คำขอที่ใช้คำต่างกันได้\nReason: complete Thai; keyed answer (B) unchanged. Make it single-choice or add a second defensible correct option and drop 'ได้ดีที่สุด'.",
+          "id": "2026-09-18T04:08:56.884Z",
+          "savedAt": "2026-09-18T04:08:56.884Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:08:56.884Z"
+    },
     "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-01": {
       "draft": {
         "decision": "revise",
@@ -962,6 +1762,256 @@
         }
       ],
       "updatedAt": "2026-09-18T03:56:24.462Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'The assistant searches ตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว and places matching ข้อความต้นทาง beside the user คำขอ.' and explanation 'External ข้อความต้นทาง are supplied at answer time.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nScenario sentence: Assistant ค้นหาในตัวอย่างการฝึกอบรมที่ผ่านการตรวจทานแล้ว และนำข้อความที่ตรงกับคำขอมาวางไว้คู่กับคำขอของผู้ใช้\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: ระบบนำข้อความจากแหล่งข้อมูลภายนอกมาให้โมเดลใช้ตอนสร้างคำตอบ\nReason: complete Thai for evidence, stem and explanation; options unchanged. Keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:07:07.967Z",
+          "savedAt": "2026-09-18T04:07:07.967Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:07.967Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-AWARENESS-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is left in English ('Which mechanism explains the observation?') and the observation sentence — the only evidence the test taker has — is word-salad: 'Training upวันที่s change Model parameters using a curated set of งาน examples.' ('updates' → 'upวันที่s'); explanation 'The described upวันที่ การเปลี่ยนแปลง parameters rather than only the ล่าสุด Prompt.' The explanation is also broken. The four options are proper Thai and parallel, so only the scenario sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nScenario: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note การฝึกเพิ่มเติม (training update) เปลี่ยนค่าพารามิเตอร์ของโมเดล โดยใช้ชุดตัวอย่างงานที่คัดเลือกไว้\nStem: กลไกใดอธิบายสิ่งที่พบนี้\nExplanation: การปรับแบบนี้เปลี่ยนตัวโมเดล ไม่ใช่แค่เปลี่ยน Prompt ที่ใช้ในครั้งนั้น\nReason: complete Thai; options unchanged. Keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:07:08.531Z",
+          "savedAt": "2026-09-18T04:07:08.531Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:07:08.532Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'A tuned Model improves style but continues to invent this week's Policy การเปลี่ยนแปลง.'; explanation 'Style adaptation ไม่ได้ create reliable การเข้าถึง to changing facts.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: โมเดลที่ผ่านการปรับจูน (tuned) เขียนได้ดีขึ้นในด้านสำนวน แต่ยังคงแต่งรายละเอียดการเปลี่ยนแปลงนโยบายของสัปดาห์นี้ขึ้นมาเอง\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: การปรับสำนวนหรือพฤติกรรมไม่ได้ทำให้โมเดลเข้าถึงข้อเท็จจริงที่เปลี่ยนแปลงอยู่เสมอได้อย่างน่าเชื่อถือ\nReason: complete Thai; keyed answer (B) unchanged. The whole GENAI-MECHANICS-PROFICIENT family lacks a Thai pattern for its evidence sentences — fix at template level.",
+          "id": "2026-09-18T04:08:57.452Z",
+          "savedAt": "2026-09-18T04:08:57.452Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:08:57.452Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception.'; explanation 'Retrieval succeeded แต่faithful synthesis still ต้องการ การประเมิน.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบค้นหาดึงข้อความเวอร์ชันล่าสุดที่ถูกต้องมาได้ แต่คำตอบกลับขัดกับข้อยกเว้นที่ระบุไว้ชัดเจนในข้อความนั้น\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: การค้นหาทำงานถูกต้องแล้ว แต่ยังต้องประเมินว่าคำตอบสรุปตามหลักฐานอย่างซื่อตรงหรือไม่\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:08:58.000Z",
+          "savedAt": "2026-09-18T04:08:58.000Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:08:58.000Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month.'; explanation 'Faithful use of an obsolete แหล่งข้อมูล still produces a stale answer.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบสรุปข้อความที่ค้นมาได้อย่างถูกต้อง แต่ข้อความนั้นเป็นเวอร์ชันที่ยกเลิกไปแล้วเมื่อเดือนก่อน\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: แม้จะใช้แหล่งข้อมูลอย่างซื่อตรง แต่ถ้าแหล่งข้อมูลล้าสมัย คำตอบก็ล้าสมัยตาม\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:09:21.256Z",
+          "savedAt": "2026-09-18T04:09:21.256Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:09:21.256Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'Semantically related เคสs appear, but exact account-code matches disappear.' (English plural glued to a Thai word); explanation 'Similarity alone is insufficient for รหัสอ้างอิง that must match exactly.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบค้นหาแสดงเคสที่เกี่ยวข้องเชิงความหมายได้ แต่เคสที่รหัสบัญชีตรงกันแบบตรงตัวกลับหายไป\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: ความคล้ายเชิงความหมายอย่างเดียวไม่พอสำหรับรหัสที่ต้องตรงกันทุกตัวอักษร\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:09:21.801Z",
+          "savedAt": "2026-09-18T04:09:21.801Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:09:21.801Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'A tuned Model improves style but continues to invent this week's Policy การเปลี่ยนแปลง.'; explanation 'Style adaptation ไม่ได้ create reliable การเข้าถึง to changing facts.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: โมเดลที่ผ่านการปรับจูน (tuned) เขียนได้ดีขึ้นในด้านสำนวน แต่ยังคงแต่งรายละเอียดการเปลี่ยนแปลงนโยบายของสัปดาห์นี้ขึ้นมาเอง\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: การปรับสำนวนหรือพฤติกรรมไม่ได้ทำให้โมเดลเข้าถึงข้อเท็จจริงที่เปลี่ยนแปลงอยู่เสมอได้อย่างน่าเชื่อถือ\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:09:22.379Z",
+          "savedAt": "2026-09-18T04:09:22.379Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:09:22.379Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception.'; explanation 'Retrieval succeeded แต่faithful synthesis still ต้องการ การประเมิน.' The four options are readable Thai and parallel (A and D are jargon-heavy). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบค้นหาดึงข้อความเวอร์ชันล่าสุดที่ถูกต้องมาได้ แต่คำตอบกลับขัดกับข้อยกเว้นที่ระบุไว้ชัดเจนในข้อความนั้น\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: การค้นหาทำงานถูกต้องแล้ว แต่ยังต้องประเมินว่าคำตอบสรุปตามหลักฐานอย่างซื่อตรงหรือไม่\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:09:22.972Z",
+          "savedAt": "2026-09-18T04:09:22.972Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:09:22.972Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month.'; explanation 'Faithful use of an obsolete แหล่งข้อมูล still produces a stale answer.' The four options are readable Thai and parallel. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำตอบสรุปข้อความที่ค้นมาได้อย่างถูกต้อง แต่ข้อความนั้นเป็นเวอร์ชันที่ยกเลิกไปแล้วเมื่อเดือนก่อน\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: แม้จะใช้แหล่งข้อมูลอย่างซื่อตรง แต่ถ้าแหล่งข้อมูลล้าสมัย คำตอบก็ล้าสมัยตาม\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:10:48.631Z",
+          "savedAt": "2026-09-18T04:10:48.631Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:10:48.631Z"
+    },
+    "NH-CORE-GENERAL-D1-GENAI-MECHANICS-PROFICIENT-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which diagnosis is most consistent with the หลักฐาน?') and the evidence sentence — the whole basis of the diagnosis — is word-salad: 'Semantically related เคสs appear, but exact account-code matches disappear.'; explanation 'Similarity alone is insufficient for รหัสอ้างอิง that must match exactly.' The four options are readable Thai and parallel. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบค้นหาแสดงเคสที่เกี่ยวข้องเชิงความหมายได้ แต่เคสที่รหัสบัญชีตรงกันแบบตรงตัวกลับหายไป\nStem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nOptions A/D (clearer): การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nExplanation: ความคล้ายเชิงความหมายอย่างเดียวไม่พอสำหรับรหัสที่ต้องตรงกันทุกตัวอักษร\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:10:49.183Z",
+          "savedAt": "2026-09-18T04:10:49.183Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:10:49.183Z"
     }
   }
 }
