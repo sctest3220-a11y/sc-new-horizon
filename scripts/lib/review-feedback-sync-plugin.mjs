@@ -109,7 +109,13 @@ export function reviewFeedbackSync({ root = process.cwd() } = {}) {
           }
           if (request.method === 'POST') {
             const body = JSON.parse((await readBody(request)) || '{}');
-            const merged = mergeStores({ ...readStore(filePath, reviewer), reviewer }, body.questions);
+            const existing = { ...readStore(filePath, reviewer), reviewer };
+            const merged = mergeStores(existing, body.questions);
+            // Only touch the file when the feedback itself changed, so a plain
+            // page visit never leaves the export showing as modified in git.
+            if (JSON.stringify(merged.questions) === JSON.stringify(existing.questions) && fs.existsSync(filePath)) {
+              return sendJson(response, 200, { reviewer, file: relativePath, store: existing });
+            }
             fs.mkdirSync(path.dirname(filePath), { recursive: true });
             fs.writeFileSync(filePath, `${JSON.stringify(merged, null, 2)}\n`);
             return sendJson(response, 200, { reviewer, file: relativePath, store: merged });
