@@ -6402,6 +6402,64 @@ h3 {
   text-transform: none;
 }
 
+.inventory-review-sync-panel {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.inventory-review-sync-panel > div {
+  display: grid;
+  gap: 4px;
+}
+
+.inventory-review-sync-panel span {
+  color: #6a746d;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.inventory-review-sync-panel strong {
+  color: #17211c;
+}
+
+.inventory-review-sync-panel small {
+  color: #6a746d;
+}
+
+.inventory-review-sync-panel code {
+  font-size: 0.85em;
+}
+
+.inventory-review-sync-panel[data-review-sync='saved'] strong {
+  color: #1f6f4a;
+}
+
+.inventory-review-sync-panel[data-review-sync='error'] strong,
+.inventory-review-sync-error {
+  color: #a13d2d;
+}
+
+.inventory-review-sync-panel button {
+  background: #246b53;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+  padding: 9px 14px;
+}
+
+.inventory-review-sync-panel button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
 .artifact-summary-panel {
   display: grid;
   grid-template-columns: 180px 180px minmax(0, 1fr);

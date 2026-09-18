@@ -6,11 +6,12 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
+    "dev": "node scripts/build-review-inventory-assets.mjs && vinext dev",
+    "build": "node scripts/build-review-inventory-assets.mjs && vinext build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "crawl:training": "node scripts/crawl-ai-training.mjs"
+    "crawl:training": "node scripts/crawl-ai-training.mjs",
+    "inventory:assets": "node scripts/build-review-inventory-assets.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

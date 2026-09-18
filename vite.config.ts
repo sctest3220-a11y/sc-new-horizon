@@ -1,6 +1,7 @@
 import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
+import { reviewFeedbackSync } from './scripts/lib/review-feedback-sync-plugin.mjs';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
 
@@ -63,6 +64,7 @@ export default defineConfig(async () => {
       : undefined,
     plugins: [
       vinext(),
+      reviewFeedbackSync(),
       sites(),
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
