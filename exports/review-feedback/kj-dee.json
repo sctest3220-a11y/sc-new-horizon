@@ -1,7 +1,207 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T04:15:18.883Z",
+  "updatedAt": "2026-09-18T04:19:01.503Z",
   "questions": {
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of รายงานอัปเดตโครงการ ร่างs.' (English plural glued to Thai 'ร่าง'); explanation 'The control directly tests the ซ้ำ unsupported-reference ความล้มเหลว.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รหัสอ้างอิงข้อมูลที่ไม่มีหลักฐานรองรับปรากฏซ้ำในร่างรายงานอัปเดตโครงการจำนวนมากพอสมควร\nExplanation: มาตรการนี้ทดสอบความผิดพลาดที่พบซ้ำ (การอ้างอิงที่ไม่มีหลักฐาน) ได้โดยตรง\nReason: complete Thai; remove the reviewer-facing block or convert to a real ranking task. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:18:41.966Z",
+          "savedAt": "2026-09-18T04:18:41.966Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:41.966Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate.' ('updates' → 'upวันที่s'); explanation 'The ความล้มเหลว pattern points to freshness rather than general language quality.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ความผิดพลาดกระจุกตัวทันทีหลังการอัปเดตแหล่งข้อมูล ส่วนเคสเก่ายังถูกต้อง\nExplanation: รูปแบบความผิดพลาดนี้ชี้ไปที่ความเป็นปัจจุบันของข้อมูล ไม่ใช่คุณภาพภาษาโดยรวม\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:18:48.075Z",
+          "savedAt": "2026-09-18T04:18:48.075Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:48.075Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Performance is reliable on ordinary งานs but unคงที่ on a defined exception class.' ('unstable' → 'un'+'คงที่'); explanation left in English. The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบทำงานได้น่าเชื่อถือกับงานทั่วไป แต่ไม่คงที่กับกรณียกเว้นประเภทหนึ่งที่ระบุได้ชัด\nExplanation: การกำหนดขอบเขตเฉพาะจุดช่วยรักษาความสามารถที่มีประโยชน์ไว้ พร้อมกับควบคุมส่วนที่ยังอ่อน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:18:48.969Z",
+          "savedAt": "2026-09-18T04:18:48.969Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:48.969Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'The assistant produces confident answers even when ต้องการd fields are absent.' ('required' → 'ต้องการ'+'d'); explanation 'The system ต้องการ measurable missing-หลักฐาน boundary.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T04:18:49.516Z",
+          "savedAt": "2026-09-18T04:18:49.516Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:49.516Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of สรุปหลักฐาน ร่างs.'; explanation 'The control directly tests the ซ้ำ unsupported-reference ความล้มเหลว.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รหัสอ้างอิงข้อมูลที่ไม่มีหลักฐานรองรับปรากฏซ้ำในร่างสรุปหลักฐานจำนวนมากพอสมควร\nExplanation: มาตรการนี้ทดสอบความผิดพลาดที่พบซ้ำ (การอ้างอิงที่ไม่มีหลักฐาน) ได้โดยตรง\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:18:58.892Z",
+          "savedAt": "2026-09-18T04:18:58.892Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:58.892Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate.'; explanation 'The ความล้มเหลว pattern points to freshness rather than general language quality.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ความผิดพลาดกระจุกตัวทันทีหลังการอัปเดตแหล่งข้อมูล ส่วนเคสเก่ายังถูกต้อง\nExplanation: รูปแบบความผิดพลาดนี้ชี้ไปที่ความเป็นปัจจุบันของข้อมูล ไม่ใช่คุณภาพภาษาโดยรวม\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:18:59.408Z",
+          "savedAt": "2026-09-18T04:18:59.408Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:59.408Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'Performance is reliable on ordinary งานs but unคงที่ on a defined exception class.'; explanation left in English. The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ระบบทำงานได้น่าเชื่อถือกับงานทั่วไป แต่ไม่คงที่กับกรณียกเว้นประเภทหนึ่งที่ระบุได้ชัด\nExplanation: การกำหนดขอบเขตเฉพาะจุดช่วยรักษาความสามารถที่มีประโยชน์ไว้ พร้อมกับควบคุมส่วนที่ยังอ่อน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:18:59.948Z",
+          "savedAt": "2026-09-18T04:18:59.948Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:18:59.948Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): The failure-pattern sentence — the evidence the whole item rests on — is word-salad: 'The assistant produces confident answers even when ต้องการd fields are absent.'; explanation 'The system ต้องการ measurable missing-หลักฐาน boundary.' The stem 'รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด' and all four options are good, parallel Thai, so only the evidence sentence and explanation need translation. A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is shown inside the test-taker draft. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T04:19:00.484Z",
+          "savedAt": "2026-09-18T04:19:00.484Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:19:00.484Z"
+    },
     "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-01": {
       "draft": {
         "decision": "revise",
@@ -230,8 +430,8 @@
     "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-02": {
       "draft": {
         "decision": "revise",
-        "rating": "1",
-        "clarity": "confusing",
+        "rating": "3",
+        "clarity": "wordy",
         "artifact": "not-needed",
         "format": "single",
         "comment": "",
@@ -250,7 +450,7 @@
           "savedAt": "2026-09-18T04:12:36.991Z"
         }
       ],
-      "updatedAt": "2026-09-18T04:12:36.991Z"
+      "updatedAt": "2026-09-18T04:16:45.376Z"
     },
     "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-AWARENESS-03": {
       "draft": {
@@ -401,6 +601,206 @@
         }
       ],
       "updatedAt": "2026-09-18T04:14:18.668Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-01": {
+      "draft": {
+        "decision": "approve",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "approve",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read. The scenario 'ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว' is natural Thai and carries the English meaning exactly; the stem 'การตีความใดไม่สรุปเกินหลักฐานที่มี' is concise; all four options are parallel, distinct and understandable; the explanation matches. The correct option C follows from the scenario by inference rather than word-matching. No blocking issue. Optional polish: option D 'ความขัดแย้งยังไม่ถูกแก้ไขและควรถูกแสดงให้เห็น' is a literal rendering of 'should be surfaced' — 'และควรแจ้งให้ผู้ใช้ทราบ' is more natural.",
+          "suggestedChange": "No wording change required for pilot. Optional: D. ความขัดแย้งยังไม่ถูกแก้ไขและควรถูกแสดงให้เห็น → ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ (reason: natural Thai for 'should be surfaced'; meaning unchanged).",
+          "id": "2026-09-18T04:17:05.105Z",
+          "savedAt": "2026-09-18T04:17:05.105Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:05.105Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-02": {
+      "draft": {
+        "decision": "approve",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "approve",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read. 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ' is natural Thai and matches the English; options are parallel and distinct; the explanation 'การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน' is a good rendering. Minor: 'กลุ่มการเรียนรู้ชุมชน' is literal ('กลุ่มเรียนรู้ในชุมชน'). Optional polish: option D 'ความขัดแย้งยังไม่ถูกแก้ไขและควรถูกแสดงให้เห็น' is a literal rendering of 'should be surfaced' — 'และควรแจ้งให้ผู้ใช้ทราบ' is more natural.",
+          "suggestedChange": "No wording change required for pilot. Optional: 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'; D → ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ.",
+          "id": "2026-09-18T04:17:05.631Z",
+          "savedAt": "2026-09-18T04:17:05.631Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:05.631Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The evidence sentence — the whole basis for choosing an interpretation — is word-salad: 'Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it.'; the explanation is left in English ('The same system can repeat the same unsupported statement.'). The stem 'การตีความใดไม่สรุปเกินหลักฐานที่มี' and the four options are good Thai and parallel, so only the evidence sentence and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ส่ง Prompt เดิมซ้ำห้าครั้ง ได้ข้อกล่าวอ้างเดิมที่ไม่มีการอ้างอิงทุกครั้ง และไม่มีข้อมูลต้นฉบับใดรองรับ\nExplanation: ระบบเดียวกันสามารถพูดข้อความที่ไม่มีหลักฐานรองรับซ้ำ ๆ ได้\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:17:06.148Z",
+          "savedAt": "2026-09-18T04:17:06.148Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:06.148Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The evidence sentence — the whole basis for choosing an interpretation — is word-salad: 'A benchmark reports high average accuracy, but excludes the exception needed here.' is left entirely in English; explanation 'The งาน-specific boundary is absentจากthe measured sample.' The stem 'การตีความใดไม่สรุปเกินหลักฐานที่มี' and the four options are good Thai and parallel, so only the evidence sentence and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: benchmark รายงานความแม่นยำเฉลี่ยสูง แต่ไม่ได้รวมกรณียกเว้นที่จำเป็นสำหรับงานนี้\nExplanation: ขอบเขตเฉพาะของงานนี้ไม่อยู่ในกลุ่มตัวอย่างที่ถูกวัด\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:17:06.673Z",
+          "savedAt": "2026-09-18T04:17:06.673Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:06.673Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-05": {
+      "draft": {
+        "decision": "approve",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "approve",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read. 'ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว' is natural Thai and matches the English exactly; the rule sentence 'ข้อเท็จจริงสำคัญทุกข้อ ต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้' is clear; options are parallel and distinct; the explanation matches. Correct option C follows by inference, not word-matching. No blocking issue. Optional polish: option D 'ความขัดแย้งยังไม่ถูกแก้ไขและควรถูกแสดงให้เห็น' is a literal rendering of 'should be surfaced' — 'และควรแจ้งให้ผู้ใช้ทราบ' is more natural.",
+          "suggestedChange": "No wording change required for pilot. Optional: D → ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ.",
+          "id": "2026-09-18T04:17:27.443Z",
+          "savedAt": "2026-09-18T04:17:27.443Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:27.443Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-06": {
+      "draft": {
+        "decision": "approve",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "approve",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear at first read. 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ' is natural Thai and matches the English; options parallel and distinct; explanation is a good rendering. Minor: 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' is stiff ('ผู้ที่มีชื่อในแผนต้องยืนยัน…'). Optional polish: option D 'ความขัดแย้งยังไม่ถูกแก้ไขและควรถูกแสดงให้เห็น' is a literal rendering of 'should be surfaced' — 'และควรแจ้งให้ผู้ใช้ทราบ' is more natural.",
+          "suggestedChange": "No wording change required for pilot. Optional: 'ผู้ที่ถูกระบุชื่อ ต้องยืนยันการเปลี่ยนแปลงงานของตนเอง' → 'ผู้ที่มีชื่อในแผนต้องยืนยันการเปลี่ยนแปลงงานของตนเอง'; D → ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ.",
+          "id": "2026-09-18T04:17:27.972Z",
+          "savedAt": "2026-09-18T04:17:27.972Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:27.972Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The evidence sentence — the whole basis for choosing an interpretation — is word-salad: 'Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it.'; explanation left in English. The stem 'การตีความใดไม่สรุปเกินหลักฐานที่มี' and the four options are good Thai and parallel, so only the evidence sentence and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: ส่ง Prompt เดิมซ้ำห้าครั้ง ได้ข้อกล่าวอ้างเดิมที่ไม่มีการอ้างอิงทุกครั้ง และไม่มีข้อมูลต้นฉบับใดรองรับ\nExplanation: ระบบเดียวกันสามารถพูดข้อความที่ไม่มีหลักฐานรองรับซ้ำ ๆ ได้\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:17:28.495Z",
+          "savedAt": "2026-09-18T04:17:28.495Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:28.495Z"
+    },
+    "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-PROFICIENT-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The evidence sentence — the whole basis for choosing an interpretation — is word-salad: 'A benchmark reports high average accuracy, but excludes the exception needed here.' is left in English; explanation 'The งาน-specific boundary is absentจากthe measured sample.' The stem 'การตีความใดไม่สรุปเกินหลักฐานที่มี' and the four options are good Thai and parallel, so only the evidence sentence and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: benchmark รายงานความแม่นยำเฉลี่ยสูง แต่ไม่ได้รวมกรณียกเว้นที่จำเป็นสำหรับงานนี้\nExplanation: ขอบเขตเฉพาะของงานนี้ไม่อยู่ในกลุ่มตัวอย่างที่ถูกวัด\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:17:29.036Z",
+          "savedAt": "2026-09-18T04:17:29.036Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:17:29.036Z"
     },
     "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-01": {
       "draft": {
@@ -695,7 +1095,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Same contradiction as the other select-all items: 'มากที่สุด' (one best answer) followed by 'เลือกได้มากกว่าหนึ่งข้อ' with only option C keyed, and the rewrite note admits a second correct action is missing. The scenario itself is clear ('ข้อกำหนดล่าสุดแบบตรงตัว พร้อมรหัสอ้างอิงข้อมูล โดยไม่เรียบเรียงใหม่' reads well). The Thai explanation ends with a bare English term — 'งานนี้ควรใช้ retrieval' — which no option uses; a Thai reader may not connect it to option C 'ดึงข้อความต้นฉบับ'.",
-          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนว���างการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
           "id": "2026-09-18T03:46:09.161Z",
           "savedAt": "2026-09-18T03:46:09.161Z"
         }
@@ -845,7 +1245,7 @@
         "clarity": "wordy",
         "artifact": "not-needed",
         "format": "single",
-        "comment": "In the question context, It's all action by AI, when using \"AI\" is most understandable, but using \"The assistant\" it can be define to human and it's made confuse, also there're unnecessary words in the questions, the sentence \" The guide must work for readers with no AI background\" needs adjust for more easy. ",
+        "comment": "Question context is all action by AI, when using \"AI\" is most understandable, but using \"The assistant\" it can be define to human and it's made confuse, also there're unnecessary words in the questions, the sentence \" The guide must work for readers with no AI background\" needs adjust for more easy. ",
         "suggestedChange": ""
       },
       "entries": [
@@ -861,7 +1261,7 @@
           "savedAt": "2026-09-18T03:42:04.173Z"
         }
       ],
-      "updatedAt": "2026-09-18T04:15:17.871Z"
+      "updatedAt": "2026-09-18T04:15:44.266Z"
     },
     "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-03": {
       "draft": {
@@ -1006,7 +1406,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): (1) No sentence break: 'เตรียมบันทึก release Workspace ใช้โมเดลภาษา…' reads as 'release Workspace note' on first pass; the test taker must re-read to find where sentence 2 starts. (2) 'บันทึก release' is a half-translation — Thai product teams say 'release note' as a unit. (3) Scenario terms ('โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review') do not match the correct option B ('Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review'), forcing a four-term mapping across two languages. The rule sentence 'ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว' is clear. English–Thai meaning is preserved.",
-          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) สิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' restores the sentence boundary; 'release note' kept as the familiar term; identical terms in scenario and option so the test taker matches the concept, not vocabulary.",
+          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) ��ิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' restores the sentence boundary; 'release note' kept as the familiar term; identical terms in scenario and option so the test taker matches the concept, not vocabulary.",
           "id": "2026-09-18T03:45:41.160Z",
           "savedAt": "2026-09-18T03:45:41.160Z"
         }
