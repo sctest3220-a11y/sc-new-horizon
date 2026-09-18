@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T09:29:50.469Z",
+  "updatedAt": "2026-09-18T09:34:53.170Z",
   "questions": {
     "ADV-D1-AI-SYSTEMS-01": {
       "draft": {
@@ -245,7 +245,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Critical design fault: the stem asks about what the owner should do next when the first deployment shows mixed outcomes, but the four options are the same generic 'scaling' set attached to all 10 ADV-D1 stems — the options do not address edge cases or workarounds. A test taker cannot answer the question that was asked; they can only pick the option that sounds most responsible. Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for ai systems literacy before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้องการments'); Explanation is empty. Reject in current form and rebuild with stem-specific options (draft below).",
-          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\nระบบเปิดใช้จริงรอบแรกแล้ว และทีมต่าง ๆ รายงานผลลัพธ์ที่ปะปนกัน กรณีขอบ (edge case) และวิธีเลี่ยง (workaround) เจ้าของระบบควรทำอะไรต่อไป\nA. ��วบรวมกรณีขอบและวิธีเลี่ยง จัดกลุ่มสาเหตุ แก้ที่การตั้งค่าหรือกระบวนการ และวัดผลก่อนขยายต่อ\nB. ขยายต่อทันที เพราะภาพรวมยังดี\nC. เปลี่ยนเครื่องมือทันที\nD. ถอนระบบทั้งหมดโดยไม่วิเคราะห์\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
+          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\nระบบเปิดใช้จริงรอบแรกแล้ว และทีมต่าง ๆ รายงานผลลัพธ์ที่ปะปนกัน กรณีขอบ (edge case) และวิธีเลี่ยง (workaround) เจ้าของระบบควรทำอะไรต่อไป\nA. รวบรวมกรณีขอบและวิธีเลี่ยง จัดกลุ่มสาเหตุ แก้ที่การตั้งค่าหรือกระบวนการ และวัดผลก่อนขยายต่อ\nB. ขยายต่อทันที เพราะภาพรวมยังดี\nC. เปลี่ยนเครื่องมือทันที\nD. ถอนระบบทั้งหมดโดยไม่วิเคราะห์\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
           "id": "2026-09-18T09:19:05.476Z",
           "savedAt": "2026-09-18T09:19:05.476Z"
         }
@@ -895,7 +895,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Critical design fault: the stem asks about what measurement plan should govern the next phase, but the four options are the same generic 'scaling' set attached to all 10 ADV-D1 stems — the options are not measurement plans. A test taker cannot answer the question that was asked; they can only pick the option that sounds most responsible. Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for generative ai mechanics before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้องการments'); Explanation is empty. Reject in current form and rebuild with stem-specific options (draft below).",
-          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\npilot ดูมีแนวโน้มดี แต่ทีมยังไม่ได้แยกวัดผลด้านความเร็ว คุณภาพ ความเชื่อมั่นของผู้ใช้ ต้นทุน และความเสี่ยง แผนการวัดผลข้อใดควรใช้กำกับระยะถัดไป\nA. วัดแยกกันทั้ง 5 ด้าน พร้อม���ำหนดเกณฑ์ผ่านของแต่ละด้านก่อนขยาย\nB. วัดเฉพาะเวลาที่ประหยัดได้\nC. ใช้จำนวนผู้ใช้งาน (adoption) แทนผลลัพธ์\nD. เลื่อนการวัดผลไปจนกว่าจะขยายเต็มรูปแบบ\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
+          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\npilot ดูมีแนวโน้มดี แต่ทีมยังไม่ได้แยกวัดผลด้านความเร็ว คุณภาพ ความเชื่อมั่นของผู้ใช้ ต้นทุน และความเสี่ยง แผนการวัดผลข้อใดควรใช้กำกับระยะถัดไป\nA. วัดแยกกันทั้ง 5 ด้าน พร้อมกำหนดเกณฑ์ผ่านของแต่ละด้านก่อนขยาย\nB. วัดเฉพาะเวลาที่ประหยัดได้\nC. ใช้จำนวนผู้ใช้งาน (adoption) แทนผลลัพธ์\nD. เลื่อนการวัดผลไปจนกว่าจะขยายเต็มรูปแบบ\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
           "id": "2026-09-18T09:09:19.908Z",
           "savedAt": "2026-09-18T09:09:19.908Z"
         }
@@ -2170,7 +2170,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant reads ข้อมูลโครงการที่อนุมัติแล้ว through an authorized external integration.'; explanation 'The integration provides การเข้าถึง to a system outside the Model.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
-          "suggestedChange": "Recommended Thai:\nEvidence: Assistant อ่านข้อมูลโครงการที่อนุมัติแล้วผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อม��ลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้\nReason: complete Thai; keyed answer (A) unchanged. The AI-SYSTEMS family has no Thai pattern for its stem or evidence sentences — fix at template level.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant อ่านข้อมูลโครงการที่อนุมัติแล้วผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้\nReason: complete Thai; keyed answer (A) unchanged. The AI-SYSTEMS family has no Thai pattern for its stem or evidence sentences — fix at template level.",
           "id": "2026-09-18T04:20:32.735Z",
           "savedAt": "2026-09-18T04:20:32.735Z"
         }
@@ -2995,7 +2995,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน.'; explanation 'Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
-          "suggestedChange": "Recommended Thai:\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รันสอ��ครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
           "id": "2026-09-18T04:12:36.991Z",
           "savedAt": "2026-09-18T04:12:36.991Z"
         }
@@ -4963,6 +4963,806 @@
       ],
       "updatedAt": "2026-09-18T04:10:49.183Z"
     },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Run costs grow unpredictably through delegated retries and expanding subtasks.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมโครงการใช้ AI ช่วยเตรียมรายงานความคืบหน้าโครงการ\nRisk: ต้นทุนการรันเพิ่มขึ้นอย่างคาดเดาไม่ได้ จากการลองใหม่ที่มอบหมายต่อกันและงานย่อยที่ขยายตัว\nRule: เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nB. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nKey: B\nExplanation: การควบคุมระดับทั้งการรันต้องครอบคลุม agent ทุกตัวที่เกี่ยวข้อง\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:51.925Z",
+          "savedAt": "2026-09-18T09:34:51.925Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:51.925Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Consequential actions can partially succeed across two systems.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nRisk: การดำเนินการที่มีผลกระทบอาจสำเร็จเพียงบางส่วนข้ามสองระบบ\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nB. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nKey: C\nExplanation: การดำเนินการแบบกระจายต้องกู้คืนจากผลลัพธ์กลางทางได้\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:51.952Z",
+          "savedAt": "2026-09-18T09:34:51.952Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:51.952Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Untrusted record text can instruct the agent to call an unrelated tool.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nธุรกิจขนาดเล็กใช้ AI ช่วยเตรียมสรุปข้อมูลบริการ\nRisk: ข้อความในข้อมูลที่ไม่น่าเชื่อถือสามารถสั่งให้ agent เรียกเครื่องมือที่ไม่เกี่ยวข้องได้\nRule: ต้องไม่มีข้อมูลระบุตัวลูกค้าอยู่ในสรุป\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nB. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nC. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nD. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nKey: D\nExplanation: เนื้อหาจากภายนอกเป็นหลักฐาน ไม่ใช่การอนุญาตให้ขยาย workflow\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:51.976Z",
+          "savedAt": "2026-09-18T09:34:51.976Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:51.976Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Approvers cannot see which source version and payload they are authorizing.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมสนับสนุนภายในใช้ AI ช่วยเตรียมคำตอบสำหรับผู้ใช้\nRisk: ผู้อนุมัติมองไม่เห็นว่ากำลังอนุมัติแหล่งข้อมูลเวอร์ชันใดและข้อมูลชุดใด\nRule: พนักงานต้องอนุมัติคำตอบก่อนส่งทุกครั้ง\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nB. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nKey: A\nExplanation: การอนุมัติที่มีความหมายต้องเห็นการดำเนินการที่เสนออย่างชัดเจนและตรวจสอบได้\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:52.002Z",
+          "savedAt": "2026-09-18T09:34:52.002Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:52.002Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Run costs grow unpredictably through delegated retries and expanding subtasks.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nRisk: ต้นทุนการรันเพิ่มขึ้นอย่างคาดเดาไม่ได้ จากการลองใหม่ที่มอบหมายต่อกันและงานย่อยที่ขยายตัว\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nB. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nKey: B\nExplanation: การควบคุมระดับทั้งการรันต้องครอบคลุม agent ทุกตัวที่เกี่ยวข้อง\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:52.025Z",
+          "savedAt": "2026-09-18T09:34:52.025Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:52.025Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Consequential actions can partially succeed across two systems.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nองค์กรอาสาสมัครใช้ AI ช่วยเตรียมแผนประสานงาน\nRisk: การดำเนินการที่มีผลกระทบอาจสำเร็จเพียงบางส่วนข้ามสองระบบ\nRule: ผู้ที่ถูกระบุชื่อต้องยืนยันการเปลี่ยนแปลงหน้าที่ของตนเอง\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nB. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nKey: C\nExplanation: การดำเนินการแบบกระจายต้องกู้คืนจากผลลัพธ์กลางทางได้\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:52.051Z",
+          "savedAt": "2026-09-18T09:34:52.051Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:52.051Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Untrusted record text can instruct the agent to call an unrelated tool.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nRisk: ข้อความในข้อมูลที่ไม่น่าเชื่อถือสามารถสั่งให้ agent เรียกเครื่องมือที่ไม่เกี่ยวข้องได้\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nB. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nC. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nD. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nKey: D\nExplanation: เนื้อหาจากภายนอกเป็นหลักฐาน ไม่ใช่การอนุญาตให้ขยาย workflow\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:52.072Z",
+          "savedAt": "2026-09-18T09:34:52.072Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:52.072Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-ADVANCED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow control-design item. Thai view: persona and rule are Thai; the risk sentence is English/word-salad ('Run ต้นทุนs grow unpredictably…'), the stem is half English ('Which control design best addresses the documented ความเสี่ยง?') and all four options are word-salad ('Separate retrieved contentจากอำนาจอนุมัติ…'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing 'drag-to-rank' instruction. The stem asks for ONE best control, so ranking is the wrong format — keep single choice. Evidence: 'Approvers cannot see which source version and payload they are authorizing.' English content is sound and advanced-level: one control matches the documented risk and the other three are the controls for the other risks in this set. The options are dense (three-part lists); Thai version keeps them but in plain wording. The same risk/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nRisk: ผู้อนุมัติมองไม่เห็นว่ากำลังอนุมัติแหล่งข้อมูลเวอร์ชันใดและข้อมูลชุดใด\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การออกแบบการควบคุมข้อใดจัดการความเสี่ยงที่บันทึกไว้ได้ดีที่สุด\nA. แสดงส่วนต่างจากหลักฐานไปสู่การดำเนินการแบบมีเวอร์ชันตอนขออนุมัติ\nB. แยกเนื้อหาที่ค้นมาออกจากอำนาจสั่งการ และบังคับใช้นโยบายการใช้เครื่องมือ\nC. บังคับใช้งบร่วม การมอบหมายที่มีขอบเขต และสถานะสิ้นสุดที่ชัดเจน\nD. จำลองสถานะสำเร็จบางส่วนอย่างชัดเจน พร้อมการกระทบยอดและการดำเนินการชดเชย\nKey: A\nExplanation: การอนุมัติที่มีความหมายต้องเห็นการดำเนินการที่เสนออย่างชัดเจนและตรวจสอบได้\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "id": "2026-09-18T09:34:52.084Z",
+          "savedAt": "2026-09-18T09:34:52.084Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:52.084Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A timeout causes the same approved action to run twice.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมโครงการใช้ AI ช่วยเตรียมรายงานความคืบหน้าโครงการ\nEvidence: timeout ทำให้การดำเนินการเดียวกันที่อนุมัติแล้วถูกรันซ้ำสองครั้ง\nRule: เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nB. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nC. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nD. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nKey: B\nExplanation: การลองใหม่ต้องระบุได้ว่าเป็นการดำเนินการเดียวกัน เพื่อไม่ให้ทำซ้ำ\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:33:27.896Z",
+          "savedAt": "2026-09-18T09:33:27.896Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.896Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A draft changes after approval, but the old approval still permits sending.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). This item is labelled 'Select all that apply' but only one fix is keyed; the Thai rewrite note shown to the user even says 'ผู้รีวิวควรเพิ่มคำตอบที่ถูกต้องอีกหนึ่งข้อ' (reviewer-facing, must be hidden). Make it single-choice. The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nEvidence: ร่างถูกแก้หลังอนุมัติ แต่การอนุมัติเดิมยังอนุญาตให้ส่งได้\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nB. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nC. ผูกการอนุมัติกับเวอร์ชันที่���ะดำเนินการจริงเท่านั้น\nD. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nKey: C\nExplanation: การอนุมัติเวอร์ชันหนึ่งไม่ควรอนุญาตข้อมูลที่เปลี่ยนไปแล้ว\nReason: complete Thai; keyed answer unchanged; drop the select-all instruction and the reviewer note.",
+          "id": "2026-09-18T09:33:27.911Z",
+          "savedAt": "2026-09-18T09:33:27.911Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.911Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'The receiving agent interprets an empty owner field as permission to proceed.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nธุรกิจขนาดเล็กใช้ AI ช่วยเตรียมสรุปข้อมูลบริการ\nEvidence: agent ที่รับงานตีความช่องผู้รับผิดชอบที่ว่างเปล่าว่าเป็นการอนุญาตให้ดำเนินการต่อ\nRule: ต้องไม่มีข้อมูลระบุตัวลูกค้าอยู่ในสรุป\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nB. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nC. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nD. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nKey: D\nExplanation: การไม่มีผู้รับผิดชอบต้องไม่กลายเป็นการอนุญาตโดยปริยาย\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:33:27.926Z",
+          "savedAt": "2026-09-18T09:33:27.926Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.926Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A low-confidence result goes directly into an irreversible action.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). This item is labelled 'Select all that apply' but only one fix is keyed; the Thai rewrite note shown to the user even says 'ผู้รีวิวควรเพิ่มคำตอบที่ถูกต้องอีกหนึ่งข้อ' (reviewer-facing, must be hidden). Make it single-choice. The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมสนับสนุนภายในใช้ AI ช่วยเตรียมคำตอบสำหรับผู้ใช้\nEvidence: ผลลัพธ์ที่ความมั่นใจต่ำถูกส่งเข้าสู่การดำเนินการที่ย้อนกลับไม่ได้โดยตรง\nRule: พนักงานต้องอนุมัติคำตอบก่อนส่งทุกครั้ง\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nB. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nC. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nD. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nKey: A\nExplanation: ขอบเขตการดำเนินการต้องคำนึงถึงหลักฐานที่ยังไม่ชัดเจน\nReason: complete Thai; keyed answer unchanged; drop the select-all instruction and the reviewer note.",
+          "id": "2026-09-18T09:33:27.940Z",
+          "savedAt": "2026-09-18T09:33:27.940Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.940Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A timeout causes the same approved action to run twice.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nEvidence: timeout ทำให้การดำเนินการเดียวกันที่อนุมัติแล้วถูกรันซ้ำสองครั้ง\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nB. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nC. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nD. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nKey: B\nExplanation: การลองใหม่ต้องระบุได้ว่าเป็นการดำเนินการเดียวกัน เพื่อไม่ให้ทำซ้ำ\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:33:27.955Z",
+          "savedAt": "2026-09-18T09:33:27.955Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.955Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A draft changes after approval, but the old approval still permits sending.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). This item is labelled 'Select all that apply' but only one fix is keyed; the Thai rewrite note shown to the user even says 'ผู้รีวิวควรเพิ่มคำตอบที่ถูกต้องอีกหนึ่งข้อ' (reviewer-facing, must be hidden). Make it single-choice. The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nองค์กรอาสาสมัครใช้ AI ช่วยเตรียมแผนประสานงาน\nEvidence: ร่างถูกแก้หลังอนุมัติ แต่การอนุมัติเดิมยังอนุญาตให้ส่งได้\nRule: ผู้ที่ถูกระบุชื่อต้องยืนยันการเปลี่ยนแปลงหน้าที่ของตนเอง\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nB. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nC. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nD. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nKey: C\nExplanation: การอนุมัติเวอร์ชันหนึ่งไม่ควรอนุญาตข้อมูลที่เปลี่ยนไปแล้ว\nReason: complete Thai; keyed answer unchanged; drop the select-all instruction and the reviewer note.",
+          "id": "2026-09-18T09:33:27.971Z",
+          "savedAt": "2026-09-18T09:33:27.971Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.971Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'The receiving agent interprets an empty owner field as permission to proceed.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nEvidence: agent ที่รับงานตีความช่องผู้รับผิดชอบที่ว่างเปล่าว่าเป็นการอนุญาตให้ดำเนินการต่อ\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nB. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nC. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nD. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nKey: D\nExplanation: การไม่มีผู้รับผิดชอบต้องไม่กลายเป็นการอนุญาตโดยปริยาย\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:33:27.988Z",
+          "savedAt": "2026-09-18T09:33:27.988Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:27.988Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-APPLIED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow repair item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad ('A ร่าง การเปลี่ยนแปลง after การอนุมัติ…'), the stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and all four options are word-salad ('Bind การอนุมัติ to the exact เวอร์ชัน being executed'). Evidence: 'A low-confidence result goes directly into an irreversible action.' English content is sound: each failure maps to one targeted fix (idempotency / version-bound approval / reject incomplete handoff / route to review). This item is labelled 'Select all that apply' but only one fix is keyed; the Thai rewrite note shown to the user even says 'ผู้รีวิวควรเพิ่มคำตอบที่ถูกต้องอีกหนึ่งข้อ' (reviewer-facing, must be hidden). Make it single-choice. The same failure/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: ผลลัพธ์ที่ความมั่นใจต่ำถูกส่งเข้าสู่การดำเนินการที่ย้อนกลับไม่ได้โดยตรง\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nA. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ\nB. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ\nC. ผูกการอนุมัติกับเวอร์ชันที่จะดำเนินการจริงเท่านั้น\nD. ใช้ idempotency key และกระทบยอดผลของการดำเนินการ\nKey: A\nExplanation: ขอบเขตการดำเนินการต้องคำนึงถึงหลักฐานที่ยังไม่ชัดเจน\nReason: complete Thai; keyed answer unchanged; drop the select-all instruction and the reviewer note.",
+          "id": "2026-09-18T09:33:28.004Z",
+          "savedAt": "2026-09-18T09:33:28.004Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:33:28.004Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'A successful write cannot be associated with an input record or reviewer.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมโครงการใช้ AI ช่วยเตรียมรายงานความคืบหน้าโครงการ\nEvidence: การเขียนข้อมูลที่สำเร็จไม่สามารถเชื่อมโยงกับข้อมูลนำเข้าหรือผู้ตรวจทานคนใดได้\nRule: เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nC. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nD. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nKey: A\nExplanation: การดำเนินงานที่รับผิดชอบได้ต้องเชื่อมโยงหลักฐาน การอนุมัติ และการดำเนินการเข้าด้วยกัน\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.089Z",
+          "savedAt": "2026-09-18T09:32:49.089Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.089Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'An assistant prepares a workshop guide and executes its action without a person authorizing release.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nEvidence: ผู้ช่วยจัดทำคู่มือเวิร์กช็อปแล้วดำเนินการทันที โดยไม่มีคนอนุมัติการเผยแพร่\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nC. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nD. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nKey: B\nExplanation: การร่างและการอนุมัติเป็นความรับผิดชอบที่แยกจากกัน\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.124Z",
+          "savedAt": "2026-09-18T09:32:49.124Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.124Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'The assistant sends work to a second tool without a record identifier or expected result.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nธุรกิจขนาดเล็กใช้ AI ช่วยเตรียมสรุปข้อมูลบริการ\nEvidence: ผู้ช่วยส่งงานต่อให้เครื่องมือที่สองโดยไม่มีรหัสอ้างอิงข้อมูลหรือผลลัพธ์ที่คาดหวัง\nRule: ต้องไม่มีข้อมูลระบุตัวลูกค้าอยู่ในสรุป\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nC. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nD. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nKey: C\nExplanation: ขั้นตอนที่รับงานต้องรู้ตัวตนของงาน ข้อมูลนำเข้า และผลที่ถือว่าเสร็จ\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.157Z",
+          "savedAt": "2026-09-18T09:32:49.157Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.157Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'A failed step retries indefinitely without contacting an owner.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมสนับสนุนภายในใช้ AI ช่วยเตรียมคำตอบสำหรับผู้ใช้\nEvidence: ขั้นตอนที่ล้มเหลวลองใหม่ไม่รู้จบโดยไม่ติดต่อผู้รับผิดชอบ\nRule: พนักงานต้องอนุมัติคำตอบก่อนส่งทุกครั้ง\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nB. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nC. บันทึกการดำเนินการที่ตามรอยได้\nD. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nKey: D\nExplanation: ความล้มเหลวซ้ำต้องมีจุดหยุดที่ชัดเจนและเส้นทางให้คนแก้ไข\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.170Z",
+          "savedAt": "2026-09-18T09:32:49.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.170Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'A successful write cannot be associated with an input record or reviewer.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nEvidence: การเขียนข้อมูลที่สำเร็จไม่สามารถเชื่อมโยงกับข้อมูลนำเข้าหรือผู้ตรวจทานคนใดได้\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nC. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nD. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nKey: A\nExplanation: การดำเนินงานที่รับผิดชอบได้ต้องเชื่อมโยงหลั���ฐาน การอนุมัติ และการดำเนินการเข้าด้วยกัน\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.184Z",
+          "savedAt": "2026-09-18T09:32:49.184Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.184Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'An assistant prepares a coordination plan and executes its action without a person authorizing release.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nองค์กรอาสาสมัครใช้ AI ช่วยเตรียมแผนประสานงาน\nEvidence: ผู้ช่วยจัดทำแผนประสานงานแล้วดำเนินการทันที โดยไม่มีคนอนุมัติการเผยแพร่\nRule: ผู้ที่ถูกระบุชื่อต้องยืนยันการเปลี่ยนแปลงหน้าที่ของตนเอง\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nC. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nD. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nKey: B\nExplanation: การร่างและการอนุมัติเป็นความรับผิดชอบที่แยกจากกัน\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.198Z",
+          "savedAt": "2026-09-18T09:32:49.198Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.198Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'The assistant sends work to a second tool without a record identifier or expected result.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nEvidence: ผู้ช่วยส่งงานต่อให้เครื่องมือที่สองโดยไม่มีรหัสอ้างอิงข้อมูลหรือผลลัพธ์ที่คาดหวัง\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nC. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nD. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nKey: C\nExplanation: ขั้นตอนที่รับงานต้องรู้ตัวตนของงาน ข้อมูลนำเข้า และผลที่ถือว่าเสร็จ\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.212Z",
+          "savedAt": "2026-09-18T09:32:49.212Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.212Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-AWARENESS-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad ('A successful write cannot be associated with an input ข้อมูล or ผู้รีวิว'), the stem is half English ('Which Workflow element is missing?') and all four options are word-salad ('A traceable การดำเนินการ ข้อมูล', 'A defined การส่งต่อ contract'). Evidence: 'A failed step retries indefinitely without contacting an owner.' English content is sound: each evidence points to exactly one missing element (action record / approval gate / handoff contract / retry-escalation rule). Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts are not needed for a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: ขั้นตอนที่ล้มเหลวลองใหม่ไม่รู้จบโดยไม่ติดต่อผู้รับผิดชอบ\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: องค์ประกอบใดของ workflow ที่ขาดหายไป\nA. บันทึกการดำเนินการที่ตามรอยได้\nB. ข้อตกลงการส่งต่องาน (handoff contract) ที่กำหนดไว้ชัด\nC. จุดอนุมัติก่อนการดำเนินการที่มีผลกระทบ\nD. กฎจำกัดการลองใหม่และการส่งต่อให้คน\nKey: D\nExplanation: ความล้มเหลวซ้ำต้องมีจุดหยุดที่ชัดเจนและเส้นทางให้คนแก้ไข\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:32:49.225Z",
+          "savedAt": "2026-09-18T09:32:49.225Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:32:49.225Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'One failed branch is hidden while a parallel branch marks the entire task complete.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมโครงการใช้ AI ช่วยเตรียมรายงานความคืบหน้าโครงการ\nRun history: สาขางานหนึ่งล้มเหลวแบบซ่อนอยู่ ขณะที่สาขาที่ทำขนานกันทำเครื่องหมายว่างานทั้งหมดเสร็จแล้ว\nRule: เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่อนุมัติแล้วเท่านั้น\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nB. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nC. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nD. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nKey: A\nExplanation: ความสำเร็จของงานต้องรวมทุกส่วนที่ต้องพึ่งพา\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.002Z",
+          "savedAt": "2026-09-18T09:34:06.002Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.002Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'The external write succeeds, the acknowledgment is lost, and a retry repeats the write.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nRun history: การเขียนไปยังระบบภายนอกสำเร็จ แต่คำยืนยันหายไป และการลองใหม่ทำให้เขียนซ้ำ\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nB. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nC. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nD. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nKey: B\nExplanation: คำตอบที่ไม่แน่ใจต้องกระทบยอดก่อนดำเนินการครั้งถัดไป\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.022Z",
+          "savedAt": "2026-09-18T09:34:06.022Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.022Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'Each local agent stays within its retry limit, but agents reassign the task in a cycle.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nธุรกิจขนาดเล็กใช้ AI ช่วยเตรียมสรุปข้อมูลบริการ\nRun history: agent แต่ละตัวอยู่ในขีดจำกัดการลองใหม่ของตน แต่โยนงานให้กันเป็นวงจร\nRule: ต้องไม่มีข้อมูลระบุตัวลูกค้าอยู่ในสรุป\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nB. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nC. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nD. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nKey: C\nExplanation: ขีดจำกัดเฉพาะตัวไม่สามารถจำกัดการส่งต่อซ้ำระหว่าง agent ได้\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.041Z",
+          "savedAt": "2026-09-18T09:34:06.041Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.041Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'Approval identifies the draft, while execution reads a newly refreshed record.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมสนับสนุนภายในใช้ AI ช่วยเตรียมคำตอบสำหรับผู้ใช้\nRun history: การอนุมัติอ้างถึงร่าง แต่ตอนดำเนินการกลับอ่านข้อมูลที่ถูกรีเฟรชใหม่\nRule: พนักงานต้องอนุมัติคำตอบก่อนส่งทุกครั้ง\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nB. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nC. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nD. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nKey: D\nExplanation: การเปลี่ยนสถานะอาจทำให้พื้นฐานของการอนุมัติก่อนหน้าใช้ไม่ได้\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.061Z",
+          "savedAt": "2026-09-18T09:34:06.061Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.061Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'One failed branch is hidden while a parallel branch marks the entire task complete.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nRun history: สาขางานหนึ่งล้มเหลวแบบซ่อนอยู่ ขณะที่สาขาที่ทำขนานกันทำเครื่องหมายว่างานทั้งหมดเสร็จแล้ว\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nB. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nC. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nD. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nKey: A\nExplanation: ความสำเร็จของงานต้องรวมทุกส่วนที่ต้องพึ่งพา\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.082Z",
+          "savedAt": "2026-09-18T09:34:06.082Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.082Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'The external write succeeds, the acknowledgment is lost, and a retry repeats the write.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nองค์กรอาสาสมัครใช้ AI ช่วยเตรียมแผนประสานงาน\nRun history: การเขียนไปยังระบบภายนอกสำเร็จ แต่คำยืนยันหายไป และการลองใหม่ทำให้เขียนซ้ำ\nRule: ผู้ที่ถูกระบุชื่อต้องยืนยันการเปลี่ยนแปลงหน้าที่ของตนเอง\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nB. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nC. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nD. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nKey: B\nExplanation: คำตอบที่ไม่แน่ใจต้องกระทบยอดก่อนดำเนินการครั้งถัดไป\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.107Z",
+          "savedAt": "2026-09-18T09:34:06.107Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.107Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'Each local agent stays within its retry limit, but agents reassign the task in a cycle.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nRun history: agent แต่ละตัวอยู่ในขีดจำกัดการลองใหม่ของตน แต่โยนงานให้กันเป็นวงจร\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nB. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nC. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nD. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nKey: C\nExplanation: ขีดจำกัดเฉพาะตัวไม่สามารถจำกัดการส่งต่อซ้ำระหว่าง agent ได้\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.146Z",
+          "savedAt": "2026-09-18T09:34:06.146Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.146Z"
+    },
+    "NH-CORE-GENERAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): D2 agentic-workflow diagnosis item. Thai view: persona and rule are Thai; the run-history sentence is English/word-salad ('One ล้มเหลว branch is hidden…'), the stem is half English ('Which diagnosis best fits the run history?') and all four options are word-salad ('The completion กฎ ignores ต้องการd branch ผลลัพธ์s'). Evidence: 'Approval identifies the draft, while execution reads a newly refreshed record.' English content is sound and genuinely proficient-level: each run history has one matching diagnosis and the distractors are the diagnoses of the other three histories. A short agent trace would be a good artifact for this family; the assigned 'source comparison' artifacts are unrelated. The same history/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "suggestedChange": "Recommended Thai (full):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nRun history: การอนุมัติอ้างถึงร่าง แต่ตอนดำเนินการกลับอ่านข้อมูลที่ถูกรีเฟรชใหม่\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nA. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว\nB. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent\nC. กฎการถือว่างานเสร็จละเลยผลลัพธ์ของสาขางานที่จำเป็น\nD. สถานะที่อนุมัติกับสถานะที่ดำเนินการจริงไม่ได้ผูกกัน\nKey: D\nExplanation: การเปลี่ยนสถานะอาจทำให้พื้นฐานของการอนุมัติก่อนหน้าใช้ไม่ได้\nReason: complete Thai; keyed answer unchanged.",
+          "id": "2026-09-18T09:34:06.169Z",
+          "savedAt": "2026-09-18T09:34:06.169Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:34:06.169Z"
+    },
     "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-01": {
       "draft": {
         "decision": "revise",
@@ -5156,7 +5956,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): D2 prompt-management item. Thai view: persona and rule are Thai, but the evidence sentence is English/word-salad, the stem is half English ('Which Prompt-management decision best fits the หลักฐาน?') and all four options are word-salad ('Separate หลักฐาน, ร่างing, validation, and การอนุมัติ stages'). CRITICAL: the Thai rewrite note shown to the user states the keyed answer verbatim ('สิ่งแรกที่ควรตรวจสอบคือ \"…\"'), and the English view shows the reviewer-facing instruction 'Reviewer should convert these choices into a drag-to-rank sequence'. The stem asks for ONE best decision, so ranking is the wrong format — keep single choice. Evidence: 'A growing prompt attempts to perform source retrieval, decisions, formatting, and approval in one step.' English content is sound: one decision matches the evidence and the other three are decisions for the other three evidences in this set. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: prompt ที่ยาวขึ้นเรื่อย ๆ พยายามทำทั้งค้นแหล่งข้อมูล ตัดสินใจ จัดรูปแบบ และอนุมัติในขั้นตอนเดียว\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nA. กำหนดเวอร์ชันของ prompt และผูกแต่ละ release กับตัวอย่างที่ประเมินแล้ว\nB. ทดสอบคู่ prompt–โมเดลใหม่ก่อนเปลี่ยนโมเดล\nC. แยกขั้นตอนหลักฐาน การร่าง การตรวจสอบ และการอนุมัติอ��กจากกัน\nD. ทำให้กรณียกเว้นนั้นเป็น regression case ที่ต้องผ่านก่อน release\nKey: C\nExplanation: ขั้นตอนที่แยกกันทำให้ทดสอบความล้มเหลวและการควบคุมได้อย่างอิสระ\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
+          "suggestedChange": "Recommended Thai (full, single choice, remove the answer-leaking rewrite note):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: prompt ที่ยาวขึ้นเรื่อย ๆ พยายามทำทั้งค้นแหล่งข้อมูล ตัดสินใจ จัดรูปแบบ และอนุมัติในขั้นตอนเดียว\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nA. กำหนดเวอร์ชันของ prompt และผูกแต่ละ release กับตัวอย่างที่ประเมินแล้ว\nB. ทดสอบคู่ prompt–โมเดลใหม่ก่อนเปลี่ยนโมเดล\nC. แยกขั้นตอนหลักฐาน การร่าง การตรวจสอบ และการอนุมัติออกจากกัน\nD. ทำให้กรณียกเว้นนั้นเป็น regression case ที่ต้องผ่านก่อน release\nKey: C\nExplanation: ขั้นตอนที่แยกกันทำให้ทดสอบความล้มเหลวและการควบคุมได้อย่างอิสระ\nReason: complete Thai; keyed answer unchanged; hide reviewer notes from the test taker.",
           "id": "2026-09-18T09:24:53.882Z",
           "savedAt": "2026-09-18T09:24:53.882Z"
         }
@@ -5756,7 +6556,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): D2 prompt-design diagnostic item. The Thai view has a Thai persona, rule and stem (the stem 'การทดลอง Prompt แบบใดจะช่วยแยกสาเหตุของปัญหาซ้ำได้ดีที่สุด' is fine), but the evidence sentence is English/word-salad and all four options are word-salad ('Hold the Model and งาน fixed…', 'Add missing-หลักฐาน เคสs…'), so the item cannot be answered in Thai. Evidence: 'A rewrite changes task wording, examples, model, and output format together.' English content is good: a realistic defect and one experiment that isolates it; distractors are the other three experiments. Items 01 and 05 are close calls in English too — 'hold model/task fixed while testing one change' is also a reasonable answer, so the explanation should say why testing one consistent example set is more direct. Where a 'source comparison' artifact is assigned it is unrelated; a short excerpt of the conflicting prompt would be the useful artifact. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: การแก้ครั้งหนึ่งเปลี่ยนทั้งถ้อยคำของงาน ตัวอย่าง โมเดล และรูปแบบผลลัพธ์พร้อมกัน\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การทดลอง prompt แบบ��ดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nA. เพิ่มกรณีที่หลักฐานขาดเข้าไปในชุดประเมิน และทดสอบว่าโมเดลงดตอบหรือไม่\nB. แทนกฎที่ขัดกันด้วยกฎลำดับความสำคัญที่ชัดเจนข้อเดียว\nC. คงโมเดลและงานไว้เท่าเดิม แล้วทดสอบการเปลี่ยน prompt ทีละอย่าง\nD. ทดสอบตัวอย่างชุดเดียวที่สอดคล้องกันกับ prompt ปัจจุบัน\nKey: C\nExplanation: การเปลี่ยนหลายอย่างพร้อมกันทำให้ระบุที่มาของผลไม่ได้\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nทีมผลิตภัณฑ์ใช้ AI ช่วยเตรียม release note\nEvidence: การแก้ครั้งหนึ่งเปลี่ยนทั้งถ้อยคำของงาน ตัวอย่าง โมเดล และรูปแบบผลลัพธ์พร้อมกัน\nRule: ต้องไม่บรรยายความสามารถที่ยังไม่เปิดตัวว่าใช้งานได้แล้ว\nStem: การทดลอง prompt แบบใดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nA. เพิ่มกรณีที่หลักฐานขาดเข้าไปในชุดประเมิน และทดสอบว่าโมเดลงดตอบหรือไม่\nB. แทนกฎที่ขัดกันด้วยกฎลำดับความสำคัญที่ชัดเจนข้อเดียว\nC. คงโมเดลและงานไว้เท่าเดิม แล้วทดสอบการเปลี่ยน prompt ทีละอย่าง\nD. ทดสอบตัวอย่างชุดเดียวที่สอดคล้องกันกับ prompt ปัจจุบัน\nKey: C\nExplanation: การเปลี่ยนหลายอย่างพร้อมกันทำให้ระบุที่มาของผลไม่ได้\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:24:07.551Z",
           "savedAt": "2026-09-18T09:24:07.551Z"
         }
@@ -6081,7 +6881,7 @@
           "artifact": "irrelevant",
           "format": "single",
           "comment": "AI review (Claude): D2 tool-selection item. Thai view: persona and rule are Thai; the task sentence is English/word-salad ('find and quote a ล่าสุด ที่อนุมัติแล้ว ข้อกำหนด แต่no new wording'), the stem is half English ('Which candiวันที่ best fits the stated งาน?') and all four options are word-salad. Evidence: 'The task combines record lookup, drafting, and a gated system action.' English content is sound: each task maps to exactly one of the four tool types (drafting / workflow / search / calculation). The same task/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full, single choice):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nTask: งานนี้รวมทั้งการค้นข้อมูล การร่างข้อความ และการดำเนินการในระบบที่ต้องผ่านการอนุมัติ\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nA. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้\nB. เครื่องมือ workflow ที่มี connector จำกัดขอบเขตและขั้นตอนอนุมัติ\nC. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการตรวจทาน\nD. เครื่องมือค้นหาที่อนุมัติแล้ว ซึ่งคืนข้อความต้นฉบับจากแหล่งข้อมูล\nKey: B\nExplanation: งานทั้งชุดต้องการความสามารถที่ประสานกันและขอบเขตของการดำเนินการ\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nTask: งานนี้รวมทั้งการค้นข้อมูล การร่างข้อความ และการดำเนินการในระบบที่ต้องผ่านการอนุมัติ\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nA. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้\nB. เค���ื่องมือ workflow ที่มี connector จำกัดขอบเขตและขั้นตอนอนุมัติ\nC. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการตรวจทาน\nD. เครื่องมือค้นหาที่อนุมัติแล้ว ซึ่งคืนข้อความต้นฉบับจากแหล่งข้อมูล\nKey: B\nExplanation: งานทั้งชุดต้องการความสามารถที่ประสานกันและขอบเขตของการดำเนินการ\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:28:22.808Z",
           "savedAt": "2026-09-18T09:28:22.808Z"
         }
@@ -6131,7 +6931,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): D2 tool-selection item. Thai view: persona and rule are Thai; the task sentence is English/word-salad ('find and quote a ล่าสุด ที่อนุมัติแล้ว ข้อกำหนด แต่no new wording'), the stem is half English ('Which candiวันที่ best fits the stated งาน?') and all four options are word-salad. Evidence: 'The task is to rewrite supplied non-sensitive notes into a reviewed practice exercise.' English content is sound: each task maps to exactly one of the four tool types (drafting / workflow / search / calculation). The same task/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full, single choice):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nTask: งานคือเขียนบันทึกที่ไม่มีข้อมูลอ่อนไหวใหม่ให้เป็นแบบฝึกหัดที่ผ่านการตรวจทาน\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nA. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้\nB. เครื่องมือ workflow ที่มี connector จำกัดขอบเขตและขั้นตอนอนุมัติ\nC. เครื่องมือค้นหาที่อนุมัติแล้ว ซึ่งคืนข้อความต้นฉบับจากแหล่งข้อมูล\nD. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการ��รวจทาน\nKey: D\nExplanation: ความต้องการหลักคือการแปลงภาษาโดยมีคนอนุมัติ\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nTask: งานคือเขียนบันทึกที่ไม่มีข้อมูลอ่อนไหวใหม่ให้เป็นแบบฝึกหัดที่ผ่านการตรวจทาน\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nA. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้\nB. เครื่องมือ workflow ที่มี connector จำกัดขอบเขตและขั้นตอนอนุมัติ\nC. เครื่องมือค้นหาที่อนุมัติแล้ว ซึ่งคืนข้อความต้นฉบับจากแหล่งข้อมูล\nD. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการตรวจทาน\nKey: D\nExplanation: ความต้องการหลักคือการแปลงภาษาโดยมีคนอนุมัติ\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:28:22.848Z",
           "savedAt": "2026-09-18T09:28:22.848Z"
         }
@@ -6481,7 +7281,7 @@
           "artifact": "irrelevant",
           "format": "single",
           "comment": "AI review (Claude): D2 tool-selection diagnostic item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad, the stem is half English ('Which selection หลักฐาน should determine the next step?') and all four options are word-salad ('Compare total Workflow ต้นทุน…'). Evidence: 'A tool meets quality targets but its export loses essential review history.' English content is sound: the evidence points to exactly one selection check, and the other three checks belong to the other evidences in this set. Stem wording 'selection evidence should determine the next step' is heavy — Thai version asks simply which check should decide the next step. Assigned artifacts are not needed to answer a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nEvidence: เครื่องมือผ่านเกณฑ์คุณภาพ แต่การส่งออกทำให้ประวัติการตรวจทานที่จำเป็นหายไป\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nA. ทดสอบว่าประวัติ��ารตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้\nB. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้\nC. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน\nD. ยืนยันว่าเชื่อมต่อระบบได้จริงก่อนเลือกเครื่องมือ\nKey: A\nExplanation: เครื่องมือที่เสนอไม่ผ่านคุณสมบัติด้านความต่อเนื่องที่จำเป็น\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nกลุ่มวิจัยใช้ AI ช่วยเตรียมบทสรุปหลักฐาน\nEvidence: เครื่องมือผ่านเกณฑ์คุณภาพ แต่การส่งออกทำให้ประวัติการตรวจทานที่จำเป็นหายไป\nRule: ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nA. ทดสอบว่าประวัติการตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้\nB. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้\nC. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน\nD. ยืนยันว่าเชื่อมต่อระบบได้จริงก่อนเลือกเครื่องมือ\nKey: A\nExplanation: เครื่องมือที่เสนอไม่ผ่านคุณสมบัติด้านความต่อเนื่องที่จำเป็น\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:29:02.528Z",
           "savedAt": "2026-09-18T09:29:02.528Z"
         }
@@ -6931,7 +7731,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกัน…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ\nรายละเอียดเพิ่มเติม: รายงานพอร์ตโฟลิโอละเว้นการกระจุกตัวของ vendor ที่ใช้ร่วมกันหลายโครงการ\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินแต่ละโครงการแยกกันแล้วบวกคะแนนความเสี่ยง | ขอภาพรวมความเสี่ยงจาก dependency ที่สัมพันธ์กันแบบรวมศูนย์\nExplanation: การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน dependency ที่ใช้ร่วมกันอาจก่อความล้มเหลวพ��้อมกันซึ่งคะแนนแบบแยกส่วนมองไม่เห็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: surface the unresolved conflict; part 2: request a consolidated view of correlated risk).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ\nรายละเอียดเพิ่มเติม: รายงานพอร์ตโฟลิโอละเว้นการกระจุกตัวของ vendor ที่ใช้ร่วมกันหลายโครงการ\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินแต่ละโครงการแยกกันแล้วบวกคะแนนความเสี่ยง | ขอภาพรวมความเสี่ยงจาก dependency ที่สัมพันธ์กันแบบรวมศูนย์\nExplanation: การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน dependency ที่ใช้ร่วมกันอาจก่อความล้มเหลวพร้อมกันซึ่งคะแนนแบบแยกส่วนมองไม่เห็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: surface the unresolved conflict; part 2: request a consolidated view of correlated risk).",
           "id": "2026-09-18T08:29:07.962Z",
           "savedAt": "2026-09-18T08:29:07.962Z"
         }
@@ -6981,7 +7781,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('CEOใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'One user’s saved context sometimes appears in another user’s งาน.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate; the English part-1 options are very jargon-heavy for a CEO audience.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: CEO ใช้ AI ช่วยจัดทำคำแนะนำการลงทุนระดับองค์กร\nEvidence: context ที���บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: สามแผนกเสนอให้ขยายผล (scale) แต่แต่ละแผนกคิดว่าอีกแผนกจะรับผิดชอบกรณียกเว้นที่ใช้ร่วมกัน\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดผู้รับผิดชอบข้ามสายงานให้ชัดก่อนอนุมัติการขยายผล | ให้แต่ละแผนกเริ่มไปก่อน แล้วค่อยตกลงเรื่องความรับผิดชอบทีหลัง\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น การขยายผลก่อนจะกระจายช่องว่างความรับผิดชอบที่รู้อยู่แล้วให้กว้างขึ้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: assign cross-functional ownership first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: CEO ใช้ AI ช่วยจัดทำคำแนะนำการลงทุนระดับองค์กร\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: สามแผนกเสนอให้ขยายผล (scale) แต่แต่ละแผนกคิดว่าอีกแผนกจะรับผิดชอบกรณียกเว้นที่ใช้ร่วมกัน\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดผู้รับผิดชอบข้ามสายงานให้ชัดก่อนอนุมัติการขยายผล | ให้แต่ละแผนกเริ่มไปก่อน แล้วค่อยตกลงเรื่องความรับผิดชอบทีหลัง\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น การขยายผลก่อนจะกระจายช่องว่างความรับผิดชอบที่รู้อยู่แล้วให้กว้างขึ้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: assign cross-functional ownership first).",
           "id": "2026-09-18T08:25:10.437Z",
           "savedAt": "2026-09-18T08:25:10.437Z"
         }
@@ -7781,7 +8581,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'One user’s saved context sometimes appears in another user’s งาน.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: enforce authorization in an external policy boundary).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: Agent ของ platform สาม���รถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: enforce authorization in an external policy boundary).",
           "id": "2026-09-18T08:43:07.458Z",
           "savedAt": "2026-09-18T08:43:07.458Z"
         }
@@ -7856,7 +8656,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด���านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย | ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: centralize versioned context assembly; part 2: extend identity-scoped access to cached retrieval).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย | ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: centralize versioned context assembly; part 2: extend identity-scoped access to cached retrieval).",
           "id": "2026-09-18T08:43:08.122Z",
           "savedAt": "2026-09-18T08:43:08.122Z"
         }
@@ -8131,7 +8931,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Where should the ทีม investigate first?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ทุกครั้งที่เรียกใช้เครื่องมือสำเร็จ แต่ Agent กลับทำการดำเนินการเดิมที่เสร็จไปแล้วซ้ำ\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ระบบไม่ได้รับรู้ว่าการเรียกที่สำเร็จคือความคืบหน้าไปสู่การทำงานเสร็จ ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: loop state/completion detection; part 2: evaluate representative dependent services first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ทุกครั้งที่เรียกใช้เครื่องมือสำเร็จ แต่ Agent กลับ��ำการดำเนินการเดิมที่เสร็จไปแล้วซ้ำ\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ระบบไม่ได้รับรู้ว่าการเรียกที่สำเร็จคือความคืบหน้าไปสู่การทำงานเสร็จ ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: loop state/completion detection; part 2: evaluate representative dependent services first).",
           "id": "2026-09-18T08:42:27.044Z",
           "savedAt": "2026-09-18T08:42:27.044Z"
         }
@@ -8331,7 +9131,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Technology executiveใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is half English. Evidence: 'The คำแนะนำสถาปัตยกรรม platform must cite a procedure that การเปลี่ยนแปลง each week.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำแนะนำด้านสถาปัตยกรรม platform ต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ดึงขั้นตอนเวอร์ช���นล่าสุดมาใช้ตอนตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieve current procedure; part 2: evaluate representative dependent services first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำแนะนำด้านสถาปัตยกรรม platform ต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieve current procedure; part 2: evaluate representative dependent services first).",
           "id": "2026-09-18T08:37:58.480Z",
           "savedAt": "2026-09-18T08:37:58.480Z"
         }
@@ -8356,7 +9156,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Technology executiveใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is half English. Evidence: 'Search must find related เคสs even when users choose different words.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ระบบค้นหาต้องหาเคสที่เกี่ยวข้องได้ แม้ผู้ใช้จะใช้คำต่างกัน\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอี���ดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: การเทียบความคล้ายเชิงความหมายช่วยจับคู่คำขอที่ใช้คำต่างกันได้ ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: semantic retrieval; part 2: extend identity-scoped access to cached retrieval).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ระบบค้นหาต้องหาเคสที่เกี่ยวข้องได้ แม้ผู้ใช้จะใช้คำต่างกัน\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: การเทียบความคล้ายเชิงความหมายช่วยจับคู่คำขอที่ใช้คำต่างกันได้ ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: semantic retrieval; part 2: extend identity-scoped access to cached retrieval).",
           "id": "2026-09-18T08:37:58.571Z",
           "savedAt": "2026-09-18T08:37:58.571Z"
         }
@@ -8381,7 +9181,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad ('…expand its own production สิทธิ์'), and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Texts about similar ideas are placed near one another in a numerical representation. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง | ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: numerical representation; part 2: enforce authorization in an external policy boundary).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ข้��ความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง | ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: numerical representation; part 2: enforce authorization in an external policy boundary).",
           "id": "2026-09-18T08:37:16.866Z",
           "savedAt": "2026-09-18T08:37:16.866Z"
         }
@@ -8605,7 +9405,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "parts",
-          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space and is half English ('Transformation executiveใช้ AI เพื่อเตรียมคำแน��นำ operating Model'), the rule sentence is mixed ('การตัดสินใจ scale ต้องคำนึงถึง ownership ของ Workflow และหลักฐานการ adoption'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad ('Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the part-2 stem and rewrite note are Thai. Evidence: 'The same connector identity reads ข้อมูล and performs unrestricted production writes.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space and is half English ('Transformation executiveใช้ AI เพื่อเตรียมคำแนะนำ operating Model'), the rule sentence is mixed ('การตัดสินใจ scale ต้องคำนึงถึง ownership ของ Workflow และหลักฐานการ adoption'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad ('Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the part-2 stem and rewrite note are Thai. Evidence: 'The same connector identity reads ข้อมูล and performs unrestricted production writes.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
           "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: connector ตัวเดียวกันทั้งอ่านข้อมูลและเขียนลงระบบจริงได้โดยไม่มีข้อจำกัด\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: pilot ที่สำเร็จพึ่งพาผู้เชี่ยวชาญคนเดียว ซึ่งไม่สามารถดูแลทุกทีมที่วางแผนไว้ได้\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: สร้างและทดสอบระบบสนับสนุนที่ขยายได้ก่อนขยายผล | ทำซ้ำ pilot โดยไม่เปลี่ยนรูปแบบการสนับสนุนจากผู้เชี่ยวชาญ\nExplanation: การแยกความสามารถออกจากกันทำให้บังคับใช้สิทธิ์การดำเนินการที่แคบลงได้ ปริมาณงานที่วางแผนไว้เกินกว่าที่ทรัพยากรสนับสนุนที่จำเป็นจะรองรับได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: separate read/action identities; part 2: build a scalable support capability before expansion).",
           "id": "2026-09-18T08:55:01.045Z",
           "savedAt": "2026-09-18T08:55:01.045Z"
@@ -9581,7 +10381,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Financeใช้ AI'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence ('Assistant ห้ามปล่อย payment หรือ journal entry เอง') and the part-2 stem are Thai. Evidence: 'An earlier instruction disappears after the conversation becomes too long. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการกระทบยอด\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอียดเพิ่มเต��ม: ข้อเสนอการกระทบยอดจะสร้าง journal entry แต่ Assistant ได้รับอนุญาตให้แนะนำเท่านั้น\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งรายการที่เสนอให้ controller ที่มีอำนาจอนุมัติ | ลงรายการอัตโนมัติทันทีที่ยอดรวมตรงกัน\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ ยอดรวมที่ตรงกันไม่ได้ให้อำนาจในการแก้ไขบัญชีแยกประเภท (ledger)\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: send to the authorized controller).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการกระทบยอด\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอียดเพิ่มเติม: ข้อเสนอการกระทบยอดจะสร้าง journal entry แต่ Assistant ได้รับอนุญาตให้แนะนำเท่านั้น\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งรายการที่เสนอให้ controller ที่มีอำนาจอนุมัติ | ลงรายการอัตโนมัติทันทีที่ยอดรวมตรงกัน\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ ยอดรวมที่ตรงกันไม่ได้ให้อำนาจในการแก้ไขบัญชีแยกประเภท (ledger)\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: send to the authorized controller).",
           "id": "2026-09-18T04:43:40.170Z",
           "savedAt": "2026-09-18T04:43:40.170Z"
         }
@@ -10781,7 +11581,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Operationsใช้ AI'), the rule sentence ends in a substituted word ('escalation เส้นทาง' — 'route'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Evidence: 'The assistant reads work order ที่อนุมัติแล้วและตารางบริการปัจจุบัน through an authorized external integration.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant อ่าน work order ที่อนุมัติแล้วและตารางบริการปัจจุบันผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nราย���ะเอียดเพิ่มเติม: แผนส่งต่องานระบุทีมผู้รับ แต่ยังไม่มีใครรับผิดชอบคิวกรณียกเว้น (exception queue)\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขอการยอมรับจากผู้รับผิดชอบฝั่งรับที่ระบุชื่อ | ถือว่าส่งต่องานเสร็จเมื่อส่งแผนออกไปแล้ว\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้ การส่งแผนไม่ได้ทำให้เกิดการยอมรับงานในทางปฏิบัติ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector; part 2: obtain acceptance from a named receiving owner).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant อ่าน work order ที่อนุมัติแล้วและตารางบริการปัจจุบันผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nรายละเอียดเพิ่มเติม: แผนส่งต่องานระบุทีมผู้รับ แต่ยังไม่มีใครรับผิดชอบคิวกรณียกเว้น (exception queue)\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขอการยอมรับจากผู้รับผิดชอบฝั่งรับที่ระบุชื่อ | ถือว่าส่งต่องานเสร็จเมื่อส่งแผนออกไปแล้ว\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้ การส่งแผนไม่ได้ทำให้เกิดการยอมรับงานในทางปฏิบัติ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: connector; part 2: obtain acceptance from a named receiving owner).",
           "id": "2026-09-18T08:18:45.265Z",
           "savedAt": "2026-09-18T08:18:45.265Z"
         }
@@ -11081,7 +11881,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Salesใช้ AI'), the part-1 stem is half English ('What should happen next before the ข้อเสนอลูกค้า is used?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The assistant has no การเข้าถึง to the necessary attachment.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: Assistant ไม่มีสิทธิ์เข้าถึงไฟล์แนบที่จำเป็น\nรายละเอียดเพิ่มเติม: ข้อเสนอลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: นำขั้นตอนล่าสุดที่อนุมัติแล้วมาใช้ แล้วตอบใหม่ | ให้ข้อความตัดตอนที่อนุมัติแล้ว หรือระบุว่าตรวจสอบไม่ได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ที่มีอำนาจ | ส่งข้อเสนอไปเลยเพราะลูกค้าขอคำตอบด่วน\nExplanation: ช่องว่างของหลักฐานต้องได้รับการแก้ไข หรือไม่ก็ต้องแจ้งให้ชัด ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged (part 1: provide approved extract or state it cannot be checked; part 2: seek the account owner’s pricing decision).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: Assistant ไม่มีสิทธิ์เข้าถึงไฟล์แนบที่จำเป็น\nรายละเอียดเพิ่มเติม: ข้อเสนอลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: ก่อนนำผลล���พธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: นำขั้นตอนล่าสุดที่อนุมัติแล้วมาใช้ แล้วตอบใหม่ | ให้ข้อความตัดตอนที่อนุมัติแล้ว หรือระบุว่าตรวจสอบไม่ได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ที่มีอำนาจ | ส่งข้อเสนอไปเลยเพราะลูกค้าขอคำตอบด่วน\nExplanation: ช่องว่างของหลักฐานต้องได้รับการแก้ไข หรือไม่ก็ต้องแจ้งให้ชัด ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged (part 1: provide approved extract or state it cannot be checked; part 2: seek the account owner’s pricing decision).",
           "id": "2026-09-18T07:54:23.534Z",
           "savedAt": "2026-09-18T07:54:23.534Z"
         }
@@ -12056,7 +12856,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technical / engineeringใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad ('…tokens that the Model can กระบวนการ'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The assistant searches ข้อมูล repository ที่อนุมัติแล้วและผลทดสอบ and places matching ข้อความต้นทาง beside the user คำขอ.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: Assistant ค้นหาในข้อมูล repository ที่อนุมัติแล้วและผลทดสอบ และนำข้อความที่ตรงกับคำขอมาวางไว้คู่กับคำขอของผู้ใช้\nรายละเอียดเพิ่มเติม: การแก้ไขมุ่งที่บริการเดียว แต่ component ที่เปลี่ยนถูกใช้ร่วมกันโดยสามบริการ\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ | ปรับ Model ด้วยตัวอย่างเพิ่มเติมที่ผ่านการ review แล้ว\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพา component นี้ทั้งหมดก่อน release | ทดสอบเฉพาะบริการที่พบปัญหาครั้งแรก\nExplanation: ระบบนำข้อความจากแหล่งข้อมูลภายนอกมาให้โมเดลใช้ตอนสร้างคำตอบ component ที่ใช้ร่วมกันอาจก่อผลกระทบเกินกว่ารายงานเดิม\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieval; part 2: evaluate all dependent services).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: Assistant ค้นหาในข้อมูล repository ที่อนุมัติแล้วและผลทดสอบ และนำข้อความที่ตรงกับคำขอมาวางไว้คู่กับคำขอของผู้ใช้\nรายละเอียดเพิ่มเต��ม: การแก้ไขมุ่งที่บริการเดียว แต่ component ที่เปลี่ยนถูกใช้ร่วมกันโดยสามบริการ\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ | ปรับ Model ด้วยตัวอย่างเพิ่มเติมที่ผ่านการ review แล้ว\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพา component นี้ทั้งหมดก่อน release | ทดสอบเฉพาะบริการที่พบปัญหาครั้งแรก\nExplanation: ระบบนำข้อความจากแหล่งข้อมูลภายนอกมาให้โมเดลใช้ตอนสร้างคำตอบ component ที่ใช้ร่วมกันอาจก่อผลกระทบเกินกว่ารายงานเดิม\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieval; part 2: evaluate all dependent services).",
           "id": "2026-09-18T08:07:39.946Z",
           "savedAt": "2026-09-18T08:07:39.946Z"
         }
