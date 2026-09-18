@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 const endpoint = '/__review-feedback';
 const storagePrefix = 'new-horizon-review:';
-const reloadGuardKey = 'new-horizon-review-sync-reloaded';
+export const syncedEvent = 'new-horizon-review-synced';
 
 type SavedEntry = { id?: string; savedAt?: string };
 type StoredQuestion = { draft?: unknown; entries?: SavedEntry[]; updatedAt?: string | null };
@@ -123,15 +123,12 @@ export function ReviewSync() {
         available.current = true;
         setFile(result.file);
         setReviewer(result.reviewer);
-        const changed = mergeIntoLocal(result.store.questions);
-        if (changed && !window.sessionStorage.getItem(reloadGuardKey)) {
-          // Feedback cards read localStorage once on mount; reload so the pulled
-          // reviews appear. The guard keeps a bad merge from looping.
-          window.sessionStorage.setItem(reloadGuardKey, '1');
-          window.location.reload();
-          return;
+        if (mergeIntoLocal(result.store.questions)) {
+          // Feedback cards re-read localStorage on this event; stats and filters
+          // refresh on the update event (its debounced push is a no-op).
+          window.dispatchEvent(new CustomEvent(syncedEvent));
+          window.dispatchEvent(new CustomEvent('new-horizon-review-updated'));
         }
-        window.sessionStorage.removeItem(reloadGuardKey);
         setStatus('idle');
         // Push once so reviews that only exist in this browser reach the file.
         await push();
