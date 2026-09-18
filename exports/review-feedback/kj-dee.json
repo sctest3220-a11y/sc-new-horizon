@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T04:46:56.211Z",
+  "updatedAt": "2026-09-18T05:03:59.212Z",
   "questions": {
     "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
@@ -320,7 +320,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Critical ข้อจำกัดs disappear in long ร่างing sessions.' Explanation: 'Task-critical instructions should not depend on unขีดจำกัดed conversation history.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั่งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั���งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged.",
           "id": "2026-09-18T04:31:33.508Z",
           "savedAt": "2026-09-18T04:31:33.508Z"
         }
@@ -1245,7 +1245,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): The stem is broken — 'What ขีดจำกัดation is demonstrated by this …?' ('limitation' became 'ขีดจำกัด'+'ation') — and the evidence sentence, the only clue the test taker gets, is word-salad: 'Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน.'; explanation 'Variation and missing หลักฐาน ขีดจำกัด how firmly the result can be stated.' The four options are clear Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
-          "suggestedChange": "Recommended Thai:\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวน��ละหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "suggestedChange": "Recommended Thai:\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nStem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nOption B (clearer): คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ\nReason: complete Thai; keyed answer (C) unchanged.",
           "id": "2026-09-18T04:12:36.991Z",
           "savedAt": "2026-09-18T04:12:36.991Z"
         }
@@ -2331,7 +2331,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.' and 'Which conclusion is justified by this การเปรียบเทียบ?' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. The stem says 'this comparison' but the scenario is a single observation.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมวิจัยใช้ AI ช่วยจัดทำสรุปหลักฐาน กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหม��ดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai; keyed answer (B) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมวิจัยใช้ AI ช่วยจัดทำสรุปหลักฐาน กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล ข้อเท็จจริงสำคัญทุกข้อต้องมีหลักฐานที่ตรวจสอบย้อนกลับได้\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai; keyed answer (B) unchanged.",
           "id": "2026-09-18T03:50:56.162Z",
           "savedAt": "2026-09-18T03:50:56.162Z"
         }
@@ -3956,7 +3956,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Cross-functional professionalใช้ AI'), the part-1 stem is half English ('Where should the ทีม investigate first?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้ปฏิบัติงานข้ามสายงานใช้ AI ช่วยจัดทำสรุปการดำเนินงาน\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที���ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nรายละเอียดเพิ่มเติม: สรุปนี้ปนข้อมูลที่ยืนยันแล้วกับสมมติฐานในการวางแผน\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: แยกสมมติฐานออกจากข้อเท็จจริงที่ยืนยันแล้วให้ชัด | รวมทั้งสองอย่างเป็นคำแนะนำเดียวโดยไม่แยก\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า ผู้ตัดสินใจต้องแยกหลักฐานออกจากสมมติฐานที่ยังไม่ได้ตรวจสอบ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: memory precedence/version rules; part 2: label assumptions separately).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้ปฏิบัติงานข้ามสายงานใช้ AI ช่วยจัดทำสรุปการดำเนินงาน\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที่ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nรายละเอียดเพิ่มเติม: สรุปนี้ปนข้อมูลที่ยืนยันแล้วกับสมมติฐานในการวางแผน\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: แยกสมมติฐานออกจากข้อเท็จจริงที่ยืนยันแล้วให้ชัด | รวมทั้งสองอย่างเป็นคำแนะนำเดียวโดยไม่แยก\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า ผู้ตัดสินใจต้องแยกหลักฐานออกจากสมมติฐานที่ยังไม่ได้ตรวจสอบ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: memory precedence/version rules; part 2: label assumptions separately).",
           "id": "2026-09-18T04:40:38.166Z",
           "savedAt": "2026-09-18T04:40:38.166Z"
         }
@@ -4012,6 +4012,406 @@
         }
       ],
       "updatedAt": "2026-09-18T04:40:51.163Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('ทีมควรทดสอบอะไรก่อน') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, the evidence is word-salad and the explanation is mixed. Evidence: 'Grounded answer accuracy is low แต่the ทีม ไม่ได้ know whether search or synthesis fails.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: คำตอบที่อ้างอิงหลักฐานยังแม่นยำต่ำ และทีมไม่รู้ว่าปัญหาอยู่ที่ขั้นค้นหาหรือขั้นสรุปคำตอบ\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 options: ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน | ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต | เปลี่ยน asset หรือขออนุญาตใช้สำหรับแคมเปญ\nExplanation: การแยกทดสอบทีละขั้นจะบอกได้ว่ากลไกใดต้องแก้ การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: check recall and faithfulness separately; part 2: replace or obtain permission).",
+          "id": "2026-09-18T05:03:34.510Z",
+          "savedAt": "2026-09-18T05:03:34.510Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:03:34.510Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('ทีมควรทดสอบอะไรก่อน') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, the evidence is word-salad and the explanation is mixed. Evidence: 'An embedding upgrade improves global recall but reduces exact-code retrieval. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: การอัปเกรด embedding ทำให้ค้นเจอข้อมูลโดยรวมดีขึ้น แต่ค้นหาด้วยรหัสแบบตรงตัวได้แย่ลง\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างด้านผลลัพธ์ใช้ผลจาก pilot ขนาดเล็กที่คัดเลือกมา โดยไม่ระบุข้อจำกัดนั้น\nPart-1 options: ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness) | ทดสอบการค้นหาแบบผสม (hybrid retrieval) ทั้งกับกลุ่มข้อมูลที่เป็นรหัสระบุตัวและกลุ่มที่เป็นความหมาย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: นำเสนอผล pilot เป็นผลที่ลูกค้าทุกรายจะได้ | ระบุขอบเขตที่ทดสอบจริง และไม่ทำให้เข้าใจว่าเป็นผลทั่วไป\nExplanation: การตัดสินใจนำไปใช้ต้องรักษาความสามารถในการค้นหาทั้งสองแบบ หลักฐานรองรับได้เฉพาะเงื่อนไขที่วัดจริงเท่านั้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: hybrid retrieval test; part 2: state the tested scope).",
+          "id": "2026-09-18T05:03:43.206Z",
+          "savedAt": "2026-09-18T05:03:43.206Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:03:43.206Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('ทีมควรทดสอบอะไรก่อน') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, the evidence is word-salad and the explanation is mixed. Evidence: 'Fine-tuning improves training examples but no unseen เคสs have been evaluated.' — extra detail reads 'the full ข้อมูลing'' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: การ fine-tune ทำให้ผลดีขึ้นกับตัวอย่างที่ใช้ฝึก แต่ยังไม่เคยประเมินกับเคสที่โมเดลไม่เคยเห็น\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 options: ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน | ตรวจสอบแยกกันระหว่างการค้นเจอข้อความที่ถูกต้อง (recall) กับความซื่อตรงของคำตอบต่อหลักฐาน (faithfulness)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้ | ใช้คำพูดสั้นเพราะทุกคำเป็นของจริง\nExplanation: การพิสูจน์ว่าใช้ได้ทั่วไป (generalization) ต้องมีหลักฐานจากเคสที่ไม่ได้ใช้ฝึก ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: held-out tasks vs untuned baseline; part 2: restore the qualification).",
+          "id": "2026-09-18T05:03:51.162Z",
+          "savedAt": "2026-09-18T05:03:51.162Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:03:51.162Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('ทีมควรทดสอบอะไรก่อน') but all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, the evidence is word-salad and the explanation is mixed. Evidence: 'Long inputs ต้นทุน more, but aggressive summarization removes important exceptions.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: input ที่ยาวมีต้นทุนสูงกว่า แต่การย่อความแบบเข้มข้นทำให้ข้อยกเว้นสำคัญหายไป\nรายละเอียดเพิ่มเติม: เป้าหมายของแคมเปญคือจำนวนคำขอที่ผ่านเกณฑ์ (qualified request) แต่ร่างเน้นเฉพาะยอดการมองเห็น (impressions)\nPart-1 options: เปรียบเทียบวิธีย่อข้อความ (compression) ว่ารักษาข้อยกเว้นสำคัญไว้ได้แค่ไหนและต้นทุนเท่าใด | ใช้ชุดงานที่กันไว้ (held-out) ทดสอบ แล้วเปรียบเทียบกับโมเดลเดิมที่ยังไม่ได้ปรับจูน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ถือว่ายอด impressions ที่เพิ่มขึ้นเป็นหลักฐานพอว่าแคมเปญคุ้มค่า | ประเมินคำแนะนำเทียบกับผลลัพธ์ด้าน qualified request\nExplanation: การลดต้นทุนต้องประเมินเทียบกับหลักฐานสำคัญต่อการตัดสินใจที่อาจสูญหาย การมองเห็นไม่ใช่ผลลัพธ์เดียวกับคำขอที่ผ่านเกณฑ์\nReason: complete Thai for both parts; keyed answers unchanged (part 1: compare compression strategies; part 2: evaluate against qualified-request outcomes).",
+          "id": "2026-09-18T05:03:58.160Z",
+          "savedAt": "2026-09-18T05:03:58.160Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:03:58.160Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: 'The คำแนะนำเนื้อหาแคมเปญ must cite a procedure that การเปลี่ยนแปลง each week.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: คำแนะนำเนื้อหาแคมเปญต้องอ้างอิงขั้นตอนการทำงานที่เปลี่ยนทุกสัปดาห์\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 options: ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ | ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต | เปลี่ยน asset หรือขออนุญาตใช้สำหรับแคมเปญ\nExplanation: ข้อมูลที่เปลี่ยนบ่อยควรดึงจากแหล่งข้อมูลที่อัปเดตล่าสุดตอนตอบ ไม่ใช่ฝังไว้ในโมเดล การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieve current procedure; part 2: replace or obtain permission).",
+          "id": "2026-09-18T04:49:50.170Z",
+          "savedAt": "2026-09-18T04:49:50.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:50.170Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: 'Search must find related เคสs even when users choose different words.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ระบบค้นหาต้องหาเคสที่เกี่ยวข้องได้ แม้ผู้ใช้จะใช้คำต่างกัน\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างด้านผลลัพธ์ใช้ผลจาก pilot ขนาดเล็กที่คัดเลือกมา โดยไม่ระบุข้อจำกัดนั้น\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ระบุขอบเขตที่ทดสอบจริง และไม่ทำให้เข้าใจว่าเป็นผลทั่วไป | นำเสนอผล pilot เป็นผลที่ลูกค้าทุกรายจะได้\nExplanation: การเทียบความคล้ายเชิงความหมายช่วยจับคู่คำขอที่ใช้คำต่างกันได้ หลักฐานรองรับได้เฉพาะเงื่อนไขที่วัดจริงเท่านั้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: semantic retrieval; part 2: state the tested scope).",
+          "id": "2026-09-18T04:49:56.168Z",
+          "savedAt": "2026-09-18T04:49:56.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:56.168Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: '(evidence itself is readable Thai here: 'รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว…') but the options, extra detail ('…the full ข้อมูลing') and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 options: ดึงขั้นตอนเวอร์ชันล่าสุดมาใช้ตอนตอบ | ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้ | ใช้คำพูดสั้นเพราะทุกคำเป็นของจริง\nExplanation: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: fine-tuning trial; part 2: restore the qualification).",
+          "id": "2026-09-18T04:50:02.160Z",
+          "savedAt": "2026-09-18T04:50:02.160Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:50:02.160Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Marketingใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: '(evidence itself is readable Thai here: 'คำขอที่ยาวเกินไปล้มเหลวก่อนเริ่มสร้างคำตอบ เพราะเกินขีดจำกัด input') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: คำขอที่ยาวเกินไปล้มเหลวก่อนเริ่มสร้างคำตอบ เพราะเกินขีดจำกัด input\nรายละเอียดเพิ่มเติม: เป้าหมายของแคมเปญคือจำนวนคำขอที่ผ่านเกณฑ์ (qualified request) แต่ร่างเน้นเฉพาะยอดการมองเห็น (impressions)\nPart-1 options: ใช้การค้นหาเชิงความหมาย (semantic retrieval) ด้วย embedding ที่ผ่านการทดสอบแล้ว | ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ถือว่ายอด impressions ที่เพิ่มขึ้นเป็นหลักฐานพอว่าแคมเปญคุ้มค่า | ประเมินคำแนะนำเทียบกับผลลัพธ์ด้าน qualified request\nExplanation: ปัญหาเร่งด่วนคือขีดจำกัดการประมวลผล ไม่ใช่การขาดข้อมูลฝึก การมองเห็นไม่ใช่ผลลัพธ์เดียวกับคำขอที่ผ่านเกณฑ์\nReason: complete Thai for both parts; keyed answers unchanged (part 1: check tokens/split input; part 2: evaluate against qualified-request outcomes).",
+          "id": "2026-09-18T04:50:08.165Z",
+          "savedAt": "2026-09-18T04:50:08.165Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:50:08.165Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim และสิทธิ์ของ asset ก่อนเผยแพร่'). Evidence: 'Texts about similar ideas are placed near one another in a numerical representation. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ | แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เปลี่ยน asset หรือขออนุญาตใช้สำหรับแคมเปญ | เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: numerical representation; part 2: replace or obtain permission).",
+          "id": "2026-09-18T04:49:10.168Z",
+          "savedAt": "2026-09-18T04:49:10.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:10.168Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim และสิทธิ์ของ asset ก่อนเผยแพร่'). Evidence: 'The assistant searches หลักฐานแคมเปญที่อนุมัติแล้วและข้อมูล asset ที่มีสิทธิ์ใช้งาน and places matching ข้อความต้นทาง beside the user คำขอ.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: Assistant ค้นหาในหลักฐานแคมเปญที่อนุมัติแล้วและข้อมูล asset ที่มีสิทธิ์ใช้งาน และนำข้อความที่ตรงกับคำขอมาวางไว้คู่กับคำขอของผู้ใช้\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างด้านผลลัพธ์ใช้ผลจาก pilot ขนาดเล็กที่คัดเลือกมา โดยไม่ระบุข้อจำกัดนั้น\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง | ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ระบุขอบเขตที่ทดสอบจริง และไม่ทำให้เข้าใจว่าเป็นผลทั่วไป | นำเสนอผล pilot เป็นผลที่ลูกค้าทุกรายจะได้\nExplanation: ระบบนำข้อความจากแหล่งข้อมูลภายนอกมาให้โมเดลใช้ตอนสร้างคำตอบ หลักฐานรองรับได้เฉพาะเงื่อนไขที่วัดจริงเท่านั้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: retrieval; part 2: state the tested scope).",
+          "id": "2026-09-18T04:49:17.168Z",
+          "savedAt": "2026-09-18T04:49:17.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:17.168Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim และสิทธิ์ของ asset ก่อนเผยแพร่'). Evidence: 'Training upวันที่s change Model parameters using a curated set of งาน examples.' — extra detail reads 'the full ข้อมูลing' ('recording' split)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: การฝึกเพิ่มเติม (training update) เปลี่ยนค่าพารามิเตอร์ของโมเดล โดยใช้ชุดตัวอย่างงานที่คัดเลือกไว้\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: ปรับ Model ด้วยตัวอย่างเพิ่มเติมที่ผ่านการ review แล้ว | ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้คำพูดสั้นเพราะทุกคำเป็นของจริง | ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้\nExplanation: การปรับแบบนี้เปลี่ยนตัวโมเดล ไม่ใช่แค่เปลี่ยน Prompt ที่ใช้ในครั้งนั้น ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: model update; part 2: restore the qualification).",
+          "id": "2026-09-18T04:49:23.160Z",
+          "savedAt": "2026-09-18T04:49:23.160Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:23.160Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim และสิทธิ์ของ asset ก่อนเผยแพร่'). Evidence: 'A document is broken into short encoded units before the Model กระบวนการes it.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: เอกสารถูกแบ่งเป็นหน่วยย่อยสั้น ๆ ที่เข้ารหัสไว้ ก่อนที่โมเดลจะประมวลผล\nรายละเอียดเพิ่มเติม: เป้าหมายของแคมเปญคือจำนวนคำขอที่ผ่านเกณฑ์ (qualified request) แต่ร่างเน้นเฉพาะยอดการมองเห็น (impressions)\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แบ่ง input เป็น token ที่ Model ประมวลผลได้ | แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินคำแนะนำเทียบกับผลลัพธ์ด้าน qualified request | ถือว่ายอด impressions ที่เพิ่มขึ้นเป็นหลักฐานพอว่าแคมเปญคุ้มค่า\nExplanation: token คือหน่วยที่โมเดลใช้ประมวลผล ไม่จำเป็นต้องตรงกับคำเต็มคำ การมองเห็นไม่ใช่ผลลัพธ์เดียวกับคำขอที่ผ่านเกณฑ์\nReason: complete Thai for both parts; keyed answers unchanged (part 1: tokens; part 2: evaluate against qualified-request outcomes).",
+          "id": "2026-09-18T04:49:30.172Z",
+          "savedAt": "2026-09-18T04:49:30.172Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:49:30.173Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim…'). Evidence: 'Semantically related เคสs appear, but exact account-code matches disappear.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ระบบค้นหาแสดงเคสที่เกี่ยวข้องเชิงความหมายได้ แต่เคสที่รหัสบัญชีตรงกันแบบตรงตัวกลับหายไป\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: คำตอบไม่ได้ใช้หลักฐานอ้างอิงที่มีอยู่ | การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต | เปลี่ยน asset หรือขออนุญาตใช้สำหรับแคมเปญ\nExplanation: ความคล้ายเชิงความหมายอย่างเดียวไม่พอสำหรับรหัสที่ต้องตรงกันทุกตัวอักษร การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: exact-match path; part 2: replace or obtain permission).",
+          "id": "2026-09-18T04:51:40.528Z",
+          "savedAt": "2026-09-18T04:51:40.528Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:51:40.529Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim…'). Evidence: 'A tuned Model improves style but continues to invent this week’s Policy การเปลี่ยนแปลง.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: โมเดลที่ผ่านการปรับจูน (tuned) เขียนได้ดีขึ้นในด้านสำนวน แต่ยังคงแต่งรายละเอียดการเปลี่ยนแปลงนโยบายของสัปดาห์นี้ขึ้นมาเอง\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างด้านผลลัพธ์ใช้ผลจาก pilot ขนาดเล็กที่คัดเลือกมา โดยไม่ระบุข้อจำกัดนั้น\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน | การปรับพฤติกรรมไม่ได้ให้หลักฐานข้อเท็จจริงที่เป็นปัจจุบัน\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: นำเสนอผล pilot เป็นผลที่ลูกค้าทุกรายจะได้ | ระบุขอบเขตที่ทดสอบจริง และไม่ทำให้เข้าใจว่าเป็นผลทั่วไป\nExplanation: การปรับสำนวนหรือพฤติกรรมไม่ได้ทำให้โมเดลเข้าถึงข้อเท็จจริงที่เปลี่ยนแปลงอยู่เสมอได้อย่างน่าเชื่อถือ หลักฐานรองรับได้เฉพาะเงื่อนไขที่วัดจริงเท่านั้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: behaviour tuning lacks current facts; part 2: state the tested scope).",
+          "id": "2026-09-18T05:00:54.240Z",
+          "savedAt": "2026-09-18T05:00:54.240Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:00:54.240Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim…'). Evidence: 'Search returns the correct ล่าสุด passage, but the answer contradicts its explicit exception.' — extra detail reads 'the full ข้อมูลing'' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ระบบค้นหาดึงข้อความเวอร์ชันล่าสุดที่ถูกต้องมาได้ แต่คำตอบกลับขัดกับข้อยกเว้นที่ระบุไว้ชัดเจนในข้อความนั้น\nรายละเอียดเพิ่มเติม: คำรับรอง (endorsement) ที่ยกมาอ้างตัดข้อแม้ที่มีอยู่ในบันทึกฉบับเต็มออกไป\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: คำตอบไม่ได้ใช้หลักฐานอ้างอิงที่มีอยู่ | การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้คำพูดสั้นเพราะทุกคำเป็นของจริง | ใส่ข้อแม้กลับคืนก่อนนำคำรับรองไปใช้\nExplanation: การค้นหาทำงานถูกต้องแล้ว แต่ยังต้องประเมินว่าคำตอบสรุปตามหลักฐานอย่างซื่อตรงหรือไม่ ข้อความที่ตัดตอนมาแม้เป็นของจริง ก็อาจทำให้เข้าใจผิดอย่างมีนัยสำคัญได้จากการละเว้น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: answer failed to use grounding evidence; part 2: restore the qualification).",
+          "id": "2026-09-18T05:02:48.161Z",
+          "savedAt": "2026-09-18T05:02:48.161Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:02:48.161Z"
+    },
+    "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim…'). Evidence: 'The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: คำตอบสรุปข้อความที่ค้นมาได้อย่างถูกต้อง แต่ข้อความนั้นเป็นเวอร์ชันที่ยกเลิกไปแล้วเมื่อเดือนก่อน\nรายละเอียดเพิ่มเติม: เป้าหมายของแคมเปญคือจำนวนคำขอที่ผ่านเกณฑ์ (qualified request) แต่ร่างเน้นเฉพาะยอดการมองเห็น (impressions)\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน | การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินคำแนะนำเทียบกับผลลัพธ์ด้าน qualified request | ถือว่ายอด impressions ที่เพิ่มขึ้นเป็นหลักฐานพอว่าแคมเปญคุ้มค่า\nExplanation: แม้จะใช้แหล่งข้อมูลอย่างซื่อตรง แต่ถ้าแหล่งข้อมูลล้าสมัย คำตอบก็ล้าสมัยตาม การมองเห็นไม่ใช่ผลลัพธ์เดียวกับคำขอที่ผ่านเกณฑ์\nReason: complete Thai for both parts; keyed answers unchanged (part 1: freshness failure; part 2: evaluate against qualified-request outcomes).",
+          "id": "2026-09-18T05:02:53.557Z",
+          "savedAt": "2026-09-18T05:02:53.557Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T05:02:53.557Z"
     }
   }
 }
