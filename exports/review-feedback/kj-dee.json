@@ -1,7 +1,207 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T04:19:01.503Z",
+  "updatedAt": "2026-09-18T04:21:17.200Z",
   "questions": {
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant reads ข้อมูลโครงการที่อนุมัติแล้ว through an authorized external integration.'; explanation 'The integration provides การเข้าถึง to a system outside the Model.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant อ่านข้อมูลโครงการที่อนุมัติแล้วผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้\nReason: complete Thai; keyed answer (A) unchanged. The AI-SYSTEMS family has no Thai pattern for its stem or evidence sentences — fix at template level.",
+          "id": "2026-09-18T04:20:32.735Z",
+          "savedAt": "2026-09-18T04:20:32.735Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:20:32.735Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ.' (English plural glued to Thai); explanation 'The loop coordinates การดำเนินการs and ผลลัพธ์ checks over multiple steps.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:20:33.267Z",
+          "savedAt": "2026-09-18T04:20:33.267Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:20:33.267Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'An earlier instruction disappears after the conversation becomes too long.' is left entirely in English; explanation 'The system cannot necessarily retain every earlier message in its active input.' also English. The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:20:33.788Z",
+          "savedAt": "2026-09-18T04:20:33.788Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:20:33.789Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'A preference is restored in a new sessionจากa saved profile ข้อมูล.'; explanation 'Cross-session restoration ต้องการs stored state, not only the ล่าสุด conversation.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การตั้งค่าที่ผู้ใช้เคยเลือกกลับมาใน session ใหม่ จากข้อมูลโปรไฟล์ที่บันทึกไว้\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การกู้คืนข้ามเซสชันต้องใช้ข้อมูลที่บันทึกไว้ ไม่ใช่แค่บทสนทนาปัจจุบัน\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:20:34.314Z",
+          "savedAt": "2026-09-18T04:20:34.314Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:20:34.314Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant reads ข้อความตัดตอนจากแหล่งข้อมูลที่บันทึกไว้ through an authorized external integration.'; explanation 'The integration provides การเข้าถึง to a system outside the Model.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant อ่านข้อความจากเอกสารอ้างอิงที่บันทึกไว้ผ่านการเชื่อมต่อกับระบบภายนอกที่ได้รับอนุญาต\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การเชื่อมต่อ (integration) ทำให้เข้าถึงระบบที่อยู่นอกโมเดลได้\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:21:01.175Z",
+          "savedAt": "2026-09-18T04:21:01.175Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:21:01.175Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ.'; explanation 'The loop coordinates การดำเนินการs and ผลลัพธ์ checks over multiple steps.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:21:07.170Z",
+          "savedAt": "2026-09-18T04:21:07.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:21:07.170Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'An earlier instruction disappears after the conversation becomes too long.' is left entirely in English; explanation also English. The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "suggestedChange": "Recommended Thai:\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:21:10.918Z",
+          "savedAt": "2026-09-18T04:21:10.918Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:21:10.918Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'A preference is restored in a new sessionจากa saved profile ข้อมูล.'; explanation 'Cross-session restoration ต้องการs stored state, not only the ล่าสุด conversation.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai:\nEvidence: การตั้งค่าที่ผู้ใช้เคยเลือกกลับมาใน session ใหม่ จากข้อมูลโปรไฟล์ที่บันทึกไว้\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: การกู้คืนข้ามเซสชันต้องใช้ข้อมูลที่บันทึกไว้ ไม่ใช่แค่บทสนทนาปัจจุบัน\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:21:15.165Z",
+          "savedAt": "2026-09-18T04:21:15.165Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:21:15.165Z"
+    },
     "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01": {
       "draft": {
         "decision": "revise",
@@ -1406,7 +1606,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): (1) No sentence break: 'เตรียมบันทึก release Workspace ใช้โมเดลภาษา…' reads as 'release Workspace note' on first pass; the test taker must re-read to find where sentence 2 starts. (2) 'บันทึก release' is a half-translation — Thai product teams say 'release note' as a unit. (3) Scenario terms ('โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review') do not match the correct option B ('Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review'), forcing a four-term mapping across two languages. The rule sentence 'ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว' is clear. English–Thai meaning is preserved.",
-          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) ��ิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' restores the sentence boundary; 'release note' kept as the familiar term; identical terms in scenario and option so the test taker matches the concept, not vocabulary.",
+          "suggestedChange": "Current: ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Workspace ใช้โมเดลภาษา, search index, สิทธิ์ และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของ Model, ระบบค้นหา, สิทธิ์ และเครื่องมือ review\nRecommended: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note โดยระบบใช้โมเดลภาษา ระบบค้นหา (search index) สิทธิ์การเข้าถึง และหน้าจอ review ร่วมกัน | B. ประสานการทำงานของโมเดลภาษา ระบบค้นหา สิทธิ์การเข้าถึง และหน้าจอ review\nReason: 'โดยระบบ' restores the sentence boundary; 'release note' kept as the familiar term; identical terms in scenario and option so the test taker matches the concept, not vocabulary.",
           "id": "2026-09-18T03:45:41.160Z",
           "savedAt": "2026-09-18T03:45:41.160Z"
         }
@@ -1481,7 +1681,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests.' (note the broken token 'ต้องการd' from 'required'). A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ธุรกิจขนาดเล็กใช้ AI ช่วยจัดทำสรุปบริการ โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai preserving the English meaning and the keyed answer (D).",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ธุรกิจขนาดเล็กใช้ AI ช่วยจัดทำสรุปบริการ โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่���นเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai preserving the English meaning and the keyed answer (D).",
           "id": "2026-09-18T03:50:43.174Z",
           "savedAt": "2026-09-18T03:50:43.174Z"
         }
