@@ -10,7 +10,7 @@ export async function readPlatformModel() {
   const data = source.slice(0, boundary).replace(/^import .*?;\s*/gmu, '');
   const js = stripTypeScriptTypes(data);
   return vm.runInNewContext(`${js}\nJSON.parse(JSON.stringify({
-    competencyDefinitions, functionPriorityCompetencies, industryPriorityCompetencies,
+    competencyDefinitions, broadCompetencyMap, functionPriorityCompetencies, industryPriorityCompetencies,
     executivePriorityCompetencies, functionLabels, industryLabels, executiveLabels,
     domains, allAssessmentItems
   }))`, {}, { timeout: 10000 });

@@ -32,38 +32,43 @@ function heading(sheet, range) {
   };
 }
 
-const headers = ['Question ID', 'Layer', 'Scope', 'Competency', 'Difficulty', 'Context and evidence', 'Question', 'Answer choices', 'Answer key', 'Explanation', 'Decision', 'Reviewer', 'Review notes', 'Answer-key check', 'Difficulty check', 'Specialization check', 'Language check', 'Similarity check', 'Review flags', 'Family ID', 'Case pattern', 'Content hash', 'Language'];
+const headers = ['Question ID', 'Layer', 'Scope', 'Competency', 'Difficulty', 'Recommended live format', 'Context and evidence', 'Question', 'Answer choices', 'Answer key', 'Explanation', 'Readability', 'Decision', 'Reviewer', 'Review notes', 'Answer-key check', 'Difficulty check', 'Specialization check', 'Readability check', 'Language check', 'Similarity check', 'Review flags', 'Family ID', 'Case pattern', 'Content hash', 'Language'];
 const rows = questions.map(q => [
-  q.id, q.layer, q.scopeLabel, q.competencyLabel, q.difficulty, q.context, q.prompt,
+  q.id, q.layer, q.scopeLabel, q.competencyLabel, q.difficulty,
+  `${q.recommendedFormat.format}\n${q.recommendedFormat.rewritePrompt}`,
+  q.context, q.prompt,
   q.options.map(option => `${option.id.toUpperCase()}. ${option.label}`).join('\n\n'),
   q.correctOptionIds[0].toUpperCase(), q.rationale,
+  `Context ${q.readability?.contextWords ?? 'n/a'} words\nPrompt ${q.readability?.promptWords ?? 'n/a'} words\nLongest option ${q.readability?.longestOptionWords ?? 'n/a'} words`,
   'Pending', '', '', 'Pending', 'Pending', q.layer === 'core' ? 'Not applicable' : 'Pending',
   'Pending', 'Pending', q.qualityFlags.join('\n'), q.familyId, q.casePatternId, q.contentHash, q.locale,
 ]);
-items.getRange(`A1:W${end}`).values = [headers, ...rows];
-base(items, `A1:W${end}`);
-items.getRange(`A1:W${end}`).format.wrapText = true;
+items.getRange(`A1:Z${end}`).values = [headers, ...rows];
+base(items, `A1:Z${end}`);
+items.getRange(`A1:Z${end}`).format.wrapText = true;
 items.getRange(`A1:A${end}`).format.columnWidth = 45;
 items.getRange(`B1:B${end}`).format.columnWidth = 14;
 items.getRange(`C1:D${end}`).format.columnWidth = 28;
 items.getRange(`E1:E${end}`).format.columnWidth = 14;
-items.getRange(`F1:F${end}`).format.columnWidth = 78;
-items.getRange(`G1:G${end}`).format.columnWidth = 58;
-items.getRange(`H1:H${end}`).format.columnWidth = 95;
-items.getRange(`I1:I${end}`).format.columnWidth = 12;
-items.getRange(`J1:J${end}`).format.columnWidth = 70;
-items.getRange(`K1:L${end}`).format.columnWidth = 22;
-items.getRange(`M1:M${end}`).format.columnWidth = 60;
-items.getRange(`N1:R${end}`).format.columnWidth = 24;
-items.getRange(`S1:V${end}`).format.columnWidth = 48;
-items.getRange(`W1:W${end}`).format.columnWidth = 12;
-items.getRange(`A2:W${end}`).format.rowHeight = 185;
-items.getRange(`K2:R${end}`).format.fill = palette.input;
-items.getRange(`K2:K${end}`).dataValidation = { rule: { type: 'list', values: ['Pending', 'Approve for pilot', 'Revise', 'Reject'] } };
-items.getRange(`N2:R${end}`).dataValidation = { rule: { type: 'list', values: ['Pending', 'Accept', 'Revise', 'Not applicable'] } };
-const itemTable = items.tables.add(`A1:W${end}`, true, 'ReviewQuestions');
+items.getRange(`F1:F${end}`).format.columnWidth = 42;
+items.getRange(`G1:G${end}`).format.columnWidth = 68;
+items.getRange(`H1:H${end}`).format.columnWidth = 48;
+items.getRange(`I1:I${end}`).format.columnWidth = 84;
+items.getRange(`J1:J${end}`).format.columnWidth = 12;
+items.getRange(`K1:K${end}`).format.columnWidth = 62;
+items.getRange(`L1:L${end}`).format.columnWidth = 24;
+items.getRange(`M1:N${end}`).format.columnWidth = 22;
+items.getRange(`O1:O${end}`).format.columnWidth = 60;
+items.getRange(`P1:U${end}`).format.columnWidth = 24;
+items.getRange(`V1:Y${end}`).format.columnWidth = 48;
+items.getRange(`Z1:Z${end}`).format.columnWidth = 12;
+items.getRange(`A2:Z${end}`).format.rowHeight = 165;
+items.getRange(`M2:U${end}`).format.fill = palette.input;
+items.getRange(`M2:M${end}`).dataValidation = { rule: { type: 'list', values: ['Pending', 'Approve for pilot', 'Revise', 'Reject'] } };
+items.getRange(`P2:U${end}`).dataValidation = { rule: { type: 'list', values: ['Pending', 'Accept', 'Revise', 'Not applicable'] } };
+const itemTable = items.tables.add(`A1:Z${end}`, true, 'ReviewQuestions');
 itemTable.showFilterButton = true;
-heading(items, 'A1:W1');
+heading(items, 'A1:Z1');
 items.freezePanes.freezeRows(1);
 items.freezePanes.freezeColumns(1);
 
@@ -98,7 +103,7 @@ summary.getRange('D12:E16').values = [
   ['Review decision', 'Items'], ['Pending', null], ['Approve for pilot', null], ['Revise', null], ['Reject', null],
 ];
 heading(summary, 'D12:E12');
-summary.getRange('E13').formulas = [[`=COUNTIF('Questions'!$K$2:$K$${end},D13)`]];
+summary.getRange('E13').formulas = [[`=COUNTIF('Questions'!$M$2:$M$${end},D13)`]];
 summary.getRange('E13:E16').fillDown();
 summary.getRange('H4:I9').values = [
   ['Inventory structure', 'Count'],
@@ -107,8 +112,8 @@ summary.getRange('H4:I9').values = [
   ['Existing live questions', audit.liveInventoryCount],
 ];
 heading(summary, 'H4:I4');
-summary.getRange('H12:I14').values = [
-  ['Additional review', 'Items'], ['Answer-length candidates', audit.longestAnswerReviewCount], ['Pilot-calibrated items', 0],
+summary.getRange('H12:I15').values = [
+  ['Additional review', 'Items'], ['Answer-length candidates', audit.longestAnswerReviewCount], ['Readability candidates', audit.readabilityReviewCount], ['Pilot-calibrated items', 0],
 ];
 heading(summary, 'H12:I12');
 summary.getRange('A19').values = [['How to review']];
@@ -122,7 +127,7 @@ const notes = [
   ['Review inputs', 'Filter Questions, then edit the amber decision, reviewer, notes, and check columns. Summary decision counts update from those inputs.'],
   ['Approval', 'Approve for pilot records a review decision only. Editing this workbook does not change the JSON or publish any assessment item.'],
   ['Family exposure', 'Review related variants together. Avoid using shared evidence patterns as independent observations in one assessment.'],
-  ['Checks', `Inspect key correctness, ambiguity, answer clues, role relevance, language, and similarity. ${audit.longestAnswerReviewCount} items have a mechanical answer-length flag.`],
+  ['Checks', `Inspect key correctness, ambiguity, answer clues, role relevance, readability, language, and similarity. ${audit.readabilityReviewCount} items still need readability review.`],
   ['Language', 'These new drafts are English only. Thai adaptation and bilingual equivalence checks remain pending.'],
   ['Evidence', 'The scenarios and exercise policies are synthetic. They do not state jurisdiction-specific legal requirements or clinical guidance.'],
   ['Pilot', 'Use fresh learners and track response rates, timing, distractor selection, item discrimination, subgroup effects, and family exposure.'],
@@ -164,10 +169,10 @@ heading(coverage, 'A1:F1');
 coverage.freezePanes.freezeRows(1);
 
 await fs.mkdir(outputDir, { recursive: true });
-items.getRange('K2').values = [['Approve for pilot']];
+items.getRange('M2').values = [['Approve for pilot']];
 assert.equal(summary.getRange('E13').values[0][0], 3327);
 assert.equal(summary.getRange('E14').values[0][0], 1);
-items.getRange('K2').values = [['Pending']];
+items.getRange('M2').values = [['Pending']];
 assert.equal(summary.getRange('E13').values[0][0], 3328);
 assert.equal(summary.getRange('E14').values[0][0], 0);
 console.log((await workbook.inspect({ kind: 'table', range: 'Summary!A4:F16', include: 'values,formulas', tableMaxRows: 13, tableMaxCols: 6, maxChars: 3500 })).ndjson);

@@ -1,5 +1,63 @@
 # Latest Changes
 
+## 2026-09-15: Agent Architecture Recommendations Adopted
+
+Agent/orchestration docs and the MVP requirements spec now adopt the full go-live agent architecture: Orchestrator, Assessment Blueprint, AI Concepts Scout, AI Newsfeed, Training/Course Scout, Assessment Item Generator, Stimulus Builder, Feedback Analysis, Psychometric Monitor, Data Quality Monitor, Localization QA, Report UX, Framework Alignment, and Reviewer/QA.
+
+Psychometric Monitor and Stimulus Builder are no longer treated as future-only concepts. The docs now position them as active MVP quality workflows because item calibration and artifact realism are core pilot risks. Data Quality Monitor, Localization QA, Report UX, Assessment Blueprint, and Framework Alignment are also documented as explicit quality agents.
+
+The docs now define content-producing agents versus governance/quality agents and require proposal promotion states: `draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored`. Human approval remains required before scored content, rubrics, scoring, artifacts, profile fields, surveys, learning recommendations, or framework mappings change.
+
+## 2026-09-15: Profile Calibration And Feedback State Fixes
+
+The landing page `Explore more` control now uses an explicit React toggle instead of relying on native `details`, fixing cases where the panel did not expand in the app browser.
+
+Per-question feedback notes are now keyed by assessment session, question id, and placement, so optional notes from a previous run/user cannot appear as stale text on the next assessment. New assessments also continue to clear submitted/draft feedback state.
+
+The optional profile survey now asks users to self-rate AI experience and confidence. Those signals calibrate the starting item difficulty before the adaptive engine switches to observed answer evidence.
+
+## 2026-09-15: Assessment Quality Analytics Suite
+
+Admin now includes a 10-point assessment-quality suite: item discrimination, distractor analysis, artifact dependency, question clarity index, difficulty calibration, competency coverage heatmap, reliability estimate, written-response rubric audit, route/persona fit, and learning/report engagement. Each panel uses existing local MVP telemetry and labels insufficient data plainly when pilot volume is too low.
+
+The suite is intended to answer whether each item measures the intended competency, whether answer choices separate stronger from weaker users, whether artifacts help or distract, whether difficulty labels match observed behavior, whether each persona receives the right domain mix, and whether report recommendations attract learner interest.
+
+## 2026-09-15: MVP Analytics Refinement
+
+Admin now includes an analytics readiness checklist that separates local pilot evidence from production-ready analytics. It shows whether behavior events, question evidence, survey feedback, cohort scoring, server analytics, and agent review trails are ready, insufficient, or still local-only.
+
+Pilot-review export is now available from Admin as a CSV containing run context, profile group, question id, question/rubric/artifact version tags, domain, competencies, difficulty, interaction type, readiness score, answer label, expected answer ids, timing, revisions, hesitation, quality status, quality action, and question-level feedback counts/comments.
+
+Question signal snapshots now include MVP question, rubric, and artifact version tags so pilot exports are easier to audit before production database versioning is implemented. The item calibration dashboard also shows short reviewer action labels such as `Rewrite now`, `Replace artifact`, `Recalibrate difficulty`, `Watch`, and `Keep`.
+
+## 2026-09-14: Report Explainability And Evidence Gaps
+
+Question-level score calculation now includes the question prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. This makes the calculation useful for learners and item reviewers instead of only showing math fragments.
+
+Unsampled domains now display as `Not assessed` in the report scorecard and are left unplotted on the user's radar shape. They remain visible as coverage gaps so the platform can recommend targeted continuation, but the UI no longer presents missing evidence as if it were a measured domain score.
+
+The framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside formal or public frameworks such as UNESCO, OECD/EC, NIST, EU AI Act, DigComp, ISO/IEC 42001, and AI Verify. Artifact and lab quality standards were also documented: artifacts should be relevant, necessary, realistic, legible, and tied to the answer key; pilot labs should be marked as samples until instructions, artifacts, scoring, outputs, and debriefs are complete.
+
+## 2026-09-14: Item Calibration Dashboard
+
+Admin quality review now shows an item calibration dashboard instead of a simple quality gate. Each row exposes status, domain, difficulty, interaction type, attempt count, average score, average time, confusion rate, artifact action rate, feedback count, unclear flags, difficulty mismatch, artifact presence, negative signals, and recommended human-review action.
+
+The dashboard flags candidates for review when telemetry suggests advanced items are too easy, awareness items are too hard, users show high confusion, or artifact interactions combine with negative artifact comments. These signals de-prioritize items in routing, but scored content still requires human approval before rewrite, artifact replacement, recalibration, or retirement.
+
+## 2026-09-14: Profile-Weighted Routing And Learning Cues
+
+Implemented profile domain targets for adaptive question selection. Free routes now use audience-specific allocations, for example General emphasizes D1 Foundations, D2 Practical Tooling, D3 Critical Judgment, and D6 Human-AI Collaboration while minimizing D5 Strategy. Premium routes blend function, industry, and professional baseline targets, then route toward domains below the selected profile's expected allocation.
+
+Answer review now includes a short practice cue so every question teaches a next action after scoring. The analysis tab also shows the intended profile domain target counts so testers can check whether the adaptive route matches the user's profile.
+
+## 2026-09-12: Profile-Weighted Radar Targets
+
+Radar target profiles now use more differentiated domain expectations instead of near-even D1-D6 shapes. General users emphasize D1 Foundations, D2 Practical Tooling, and D3 Critical Judgment, with lighter D4/D6 and minimal D5. Professional, team, function, industry, and leadership contexts now show visibly different target shapes based on the researched profile focus model.
+
+Premium target blending now weights function context first, industry context second, and professional baseline third. This keeps radar targets tied to the selected profile instead of averaging every profile back toward the same shape.
+
+The research basis is documented in `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`. It references UNESCO AI competency dimensions and understand/apply/create progression; OECD/European Commission AI literacy knowledge, skills, and attitudes; EU AI Act Article 4 context-of-use and user-experience requirements; NIST AI RMF Govern/Map/Measure/Manage; DigComp 2.2; ISO/IEC 42001; and Singapore AI Verify/MGF GenAI. The documented conclusion is that domain targets and question routing should be profile-weighted, not evenly distributed across D1-D6.
+
 ## 2026-09-14: Thai Batch 1 Approved — Every Question in the Bank Now Approved in Thai
 
 The reissued round-2 spot check for batch 1 (20 items, none from round 1, read on the glossary-aligned text) came back 20 Approve with no ambiguous keys. Batch 1's 163 items — 137 table entries and the 26 inline Horizon items — move from `reviewed` to `approved`. That closes the Thai review programme started on 2026-09-10: all 660 questions (163 + 89 + 408) have Thai that passed a native review and an independent second-reviewer spot check. Nothing changes on screen (`reviewed` and `approved` render alike); the status gate for a default Thai experience is now satisfied. Detail and the remaining follow-ups (escalation term, Thai artifacts, two English-bank notes, Thai pilot) in `docs/THAI_BATCH1_SPOTCHECK_ROUND2_RESPONSE.md`.

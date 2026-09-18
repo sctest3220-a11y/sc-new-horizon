@@ -1,6 +1,8 @@
 # 3,328-question review inventory
 
-The 10 September 2026 milestone adds **3,328 English-language draft item variants** for review. It does not replace or extend the 634-item live assessment bank. All work belongs to `Lufy-branch`.
+The 10 September 2026 milestone adds **3,328 draft item variants** for review. The inventory is now tracked on `main` and is available through the Admin Question Inventory page at `/admin/question-inventory`.
+
+The draft inventory does **not** replace the 634-item live assessment bank. The live bank is exported separately for side-by-side review, and live assessment routing should continue to use reviewed production items only. Draft questions include English content plus machine-assisted Thai reviewer fields, recommended live formats, artifact-need analysis, user-facing rewrite drafts, review metadata, and translation QA output.
 
 ## Coverage
 
@@ -17,11 +19,35 @@ Every difficulty level contains 832 drafts. All 736 mapped competency/difficulty
 ## Files
 
 - [Full review workbook](../exports/review-inventory/new-horizon-3328-review.xlsx): filterable questions, answer keys, explanations, editable review decisions/checks, a formula-driven summary, and coverage rows.
-- [Question data](../exports/review-inventory/questions.json): complete item content, option-level feedback, proposed scoring, profile tags, provenance, review status, and content hashes.
+- [Question data](../exports/review-inventory/questions.json): complete item content, English and machine-assisted Thai reviewer fields, option-level feedback, proposed scoring, profile tags, provenance, review status, and content hashes.
+- [Live-bank export](../exports/review-inventory/live-questions.json): current live assessment bank exported for side-by-side review in the admin inventory page.
 - [Coverage audit](../exports/review-inventory/coverage.json): exact counts and mechanical review candidates.
 - [48 samples](../exports/review-inventory/samples.md): one applied core and one advanced specialized example for each competency.
+- [Artifact needs](../exports/review-inventory/artifact-needs.md): scanner output showing which draft questions require or benefit from artifacts, grouped into reusable artifact families.
+- [Artifact candidate CSV](../exports/review-inventory/artifact-needs.csv): item-level artifact recommendations for offline review.
+- [Artifact family backlog](../exports/review-inventory/artifact-family-backlog.csv): reusable generation backlog so reviewers do not create one-off duplicate visuals for similar items.
+- [User-facing rewrite samples](../exports/review-inventory/user-facing-rewrite-samples.md): before/after examples showing the writing and interaction standard required before draft items can become live assessment questions.
+- [Thai translation QA](../exports/review-inventory/thai-translation-qa.json): scanner output listing likely untranslated fragments for human localization review.
 
 The earlier `exports/new-horizon-question-bank-review.xlsx` still describes the existing live bank.
+
+## Admin review workflow
+
+Use `/admin/question-inventory` to review the draft and live banks in one place. The page supports:
+
+- English/Thai page-level viewing, plus question-level language toggles.
+- Server-side filters for source bank, domain, competency, difficulty, layer, role/function/industry/profile tags, artifact need, and search.
+- Local reviewer controls for review count, low rating, unresolved comments, and fewest-reviewed items.
+- Per-question reviewer feedback with rating, issue tags, comments, and saved local history.
+- Artifact-need display with draft artifact labels, briefs, and generation prompts.
+
+The current reviewer feedback store is browser-local. For external tester review, the intended deployment path is a lightweight Vercel review app backed by a central database such as Supabase or Vercel Postgres, so reviewer comments, ratings, suggested rewrites, language reviewed, question version/hash, and timestamps can later be imported into the repo through a human-approved update workflow.
+
+For collaborator clone, sparse-checkout, installation, local-server, and update instructions, see [Review the question inventory locally](QUESTION_INVENTORY_LOCAL_REVIEW.md). The guide also explains which files are required for the reduced review app and why locally saved comments do not yet sync back to the repository.
+
+## Live readiness warning
+
+The generated review inventory should not be promoted directly into the live assessment. The bank is useful as a coverage scaffold, but many draft items still read as abstract, repetitive, and overly generator-shaped. Before pilot use, selected item families need human-facing rewrites that use plain scenarios, concrete actions, realistic artifacts, and varied formats such as multi-part, matching, select-all, ranking, and artifact review. The rewrite samples linked above define the current target standard.
 
 ## What was authored
 
@@ -29,7 +55,15 @@ The bank uses **96 competency/difficulty decision families**, containing **384 b
 
 These are related item variants, not 3,328 independently authored or empirically calibrated problems. Shared `familyId` and `casePatternId` values make this relationship explicit. Reviewers should compare sibling forms and flag superficial variation, overly obvious distractors, and repeated answer clues. Unique IDs and non-identical full text do not establish psychometric independence.
 
-All drafts use a single-best-answer interaction with four options. Calculation examples have scenario-specific distractors for plausible arithmetic or interpretation errors. Each option has feedback. The proposed raw key is 100 for the best answer and 0 for the other choices; partial credit has not been inferred. These items measure scenario judgment and knowledge, not observed hands-on task performance. No new visual artifacts, live tool tasks, or Thai translations are included.
+All drafts currently preserve a single-best-answer audit key with four options so reviewers can compare coverage, keys, and distractors consistently. This is not the intended final live-test experience for every item. Each draft now includes a recommended live format such as scenario choice, select-all-safe-actions, matching, compare-and-choose, ranked decision, or multi-part scenario. Multi-part questions are especially recommended when one item asks users to diagnose the AI issue and also apply a role, industry, or executive constraint.
+
+Calculation examples have scenario-specific distractors for plausible arithmetic or interpretation errors. Each option has feedback. The proposed raw key is 100 for the best answer and 0 for the other choices; partial credit has not been inferred. These items measure scenario judgment and knowledge, not observed hands-on task performance. No new live tool tasks are included. Artifact needs are listed separately, and machine-assisted Thai reviewer fields are included for localization review before production use.
+
+After early review, the generated visible stem was shortened so users do not have to parse a long administrative paragraph before answering. Each item now uses a compact structure: scenario, source, rule, risk, evidence, and optional profile cue. The original source scenario remains available in structured metadata for audit and future rewriting. Each item also includes readability metadata for context words, prompt words, and longest option words; items exceeding the provisional target are flagged with `readability-review`.
+
+An artifact-needs scanner now reviews the draft inventory for cases where a visual/document artifact would improve answerability. The latest scan finds 3,235 artifact candidates: 2,667 require an artifact and 568 would be helped by one. These are grouped into 389 reusable artifact families across source/version comparisons, workflow traces, security/audit logs, data dashboards, communication threads, media provenance boards, and policy excerpts. Generate reusable, legible artifact templates from the family backlog before wiring these draft questions into live assessment.
+
+Thai fields are review aids, not final production localization. They use simple Thailand Thai while preserving market-recognizable technical terms such as AI, Workflow, Prompt, Model, Agent, RAG, API, retrieval, input, and fine-tuning where useful. Human reviewers should use the Thai translation QA report and question inventory page to flag awkward wording, untranslated fragments, answer-choice mismatch, or layout issues before any Thai item enters a scored assessment.
 
 Difficulty describes intended cognitive demand:
 
@@ -45,9 +79,10 @@ The labels remain provisional. A long stem, technical terminology, or an executi
 1. Filter the workbook by competency, difficulty, layer, and profile. Review a family together before inspecting all contextual variants.
 2. Check that the evidence is sufficient, exactly one option is best, and each distractor is plausible for this scenario. Use the notes column for a proposed correction.
 3. Check that the profile constraint creates a meaningful specialized decision. Reject variants that only change vocabulary or combine unrelated problems.
-4. Review difficulty, reading load, language, answer-length clues, cultural assumptions, and similarity. The audit currently flags six items for an answer-length comparison; this is a heuristic, not an item-quality verdict.
-5. Record a reviewer, check results, and a decision: Pending, Approve for pilot, Revise, or Reject. Approval in the workbook is a recorded decision only; it does not change the JSON or publish a question.
-6. Reconcile approved revisions into versioned source before a separately authorized pilot. Track item and family exposure, response accuracy, distractor selection, timing, discrimination, subgroup performance, and uncertainty. Use fresh or held-out forms to distinguish transfer from answer recall.
+4. Review the recommended live format. Convert suitable drafts into multi-part, select-all, matching, ranking, short response, or artifact-based tasks before pilot use.
+5. Review difficulty, reading load, language, answer-length clues, cultural assumptions, and similarity. The audit currently flags six items for an answer-length comparison and separately flags any item that exceeds the readability target; these are heuristics, not item-quality verdicts.
+6. Record a reviewer, check results, and a decision: Pending, Approve for pilot, Revise, or Reject. Approval in the workbook is a recorded decision only; it does not change the JSON or publish a question.
+7. Reconcile approved revisions into versioned source before a separately authorized pilot. Track item and family exposure, response accuracy, distractor selection, timing, discrimination, subgroup performance, and uncertainty. Use fresh or held-out forms to distinguish transfer from answer recall.
 
 Keep related evidence patterns out of the same scored session when possible. Later routing should match function, industry, and executive tags, respect reviewed status, and avoid treating repeated forms as independent evidence. None of those live-routing changes are part of this draft-only milestone.
 
@@ -57,10 +92,13 @@ Use Node.js 22.13 or later (Node 24 was used for validation):
 
 ```text
 node scripts/generate-review-inventory.mjs
+node scripts/export-live-question-inventory.mjs
+node scripts/scan-review-artifact-needs.mjs
+node scripts/apply-thai-review-translations.mjs
 node --test scripts/test-review-inventory.mjs
 ```
 
-Generation reads the existing platform model without rendering React. It fails if coverage no longer matches the agreed target. It writes only the review JSON, coverage audit, and samples. The eight automated tests cover mapping counts, coverage, key positions, deterministic generation, family definitions, specialized boundaries, live-bank isolation, arithmetic examples, and rejection of corrupted inventory data.
+Generation reads the existing platform model without rendering React. It fails if coverage no longer matches the agreed target. The export and scanner scripts refresh the draft review JSON, live-bank export, coverage audit, artifact-need files, samples, workbook, and Thai translation QA report. The eight automated tests cover mapping counts, coverage, key positions, deterministic generation, family definitions, specialized boundaries, live-bank isolation, arithmetic examples, and rejection of corrupted inventory data.
 
 The workbook builder uses the bundled `@oai/artifact-tool` runtime rather than changing application dependencies. Link the available bundled Node package directory to the ignored `work/review-inventory/node_modules` path, then run:
 

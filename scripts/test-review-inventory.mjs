@@ -45,7 +45,7 @@ test('every family has four different evidence patterns and decisions', () => {
 
 test('overlays require the profile boundary as well as the competency decision', () => {
   for (const question of bank.filter(q => q.layer !== 'core')) {
-    assert.match(question.context, /Additional (function|industry|leadership) evidence:/);
+    assert.match(question.context, /Extra (function|industry|leadership) cue:/);
     const key = question.options.find(option => option.id === question.correctOptionIds[0]);
     const boundaryDistractor = question.options.find(option => option.feedback.startsWith('The competency decision fits'));
     assert.equal(boundaryDistractor.score, 0);

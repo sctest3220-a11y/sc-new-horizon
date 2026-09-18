@@ -6,8 +6,14 @@
 
 Core AI concepts · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The system must inspect a record, draft a response, and request approval before a write.
 
 Which implementation fits the stated requirement for the project update?
@@ -23,8 +29,14 @@ Which implementation fits the stated requirement for the project update?
 
 Generative AI mechanics · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A stable output style fails despite tested prompts; many reviewed examples are available.
 
 Which mechanism best addresses the stated need?
@@ -40,11 +52,18 @@ Which mechanism best addresses the stated need?
 
 Generative AI mechanics · advanced · Marketing
 
-Setting: Marketing. Task: prepare a campaign content recommendation using approved campaign evidence and licensed asset records. Accountable role: campaign owner. Exercise constraint: Performance claims and asset rights must be checked before publication. Consequence to consider: A misleading claim can be repeated across a campaign.
+Recommended live format: **multi-part scenario**
 
-Evidence: Grounded answer accuracy is low; the team does not know whether search or synthesis fails. Additional function evidence: The proposed campaign asset is licensed for internal use only.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which next evaluation best addresses the identified uncertainty? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Marketing needs a campaign content recommendation.
+Use: approved campaign evidence and licensed asset records.
+Rule: Performance claims and asset rights must be checked before publication.
+Risk: A misleading claim can be repeated across a campaign.
+Evidence: Grounded answer accuracy is low; the team does not know whether search or synthesis fails.
+Extra function cue: The proposed campaign asset is licensed for internal use only.
+
+Which next evaluation best addresses the identified uncertainty? Also apply the profile cue.
 
 - **A.** Use held-out tasks and compare with the untuned baseline; publish it with creator credit as a substitute for permission.
 - **B.** Measure passage recall and answer faithfulness separately; publish it with creator credit as a substitute for permission.
@@ -57,8 +76,14 @@ Which next evaluation best addresses the identified uncertainty? Choose the comb
 
 Capability boundaries · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The source explicitly leaves a material condition undecided.
 
 What should happen next before the project update is used?
@@ -74,11 +99,18 @@ What should happen next before the project update is used?
 
 Capability boundaries · advanced · Sales
 
-Setting: Sales. Task: prepare a account proposal using approved CRM extracts and current commercial terms. Accountable role: account owner. Exercise constraint: Only the account owner may approve pricing and delivery promises. Consequence to consider: An unsupported promise can become a customer dispute.
+Recommended live format: **multi-part scenario**
 
-Evidence: Failures cluster immediately after source updates; older cases remain accurate. Additional function evidence: The account proposal offers a discount outside the approved pricing range.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which operating rule is best supported by this failure pattern? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Sales needs an account proposal.
+Use: approved CRM extracts and current commercial terms.
+Rule: Only the account owner may approve pricing and delivery promises.
+Risk: An unsupported promise can become a customer dispute.
+Evidence: Failures cluster immediately after source updates; older cases remain accurate.
+Extra function cue: The account proposal offers a discount outside the approved pricing range.
+
+Which operating rule is best supported by this failure pattern? Also apply the profile cue.
 
 - **A.** Test abstention and block decisions with missing critical inputs; seek the account owner’s authorized pricing decision.
 - **B.** Add source-version checks and update-triggered evaluations; send the proposal because the customer has requested a quick reply.
@@ -91,8 +123,14 @@ Which operating rule is best supported by this failure pattern? Choose the combi
 
 AI systems literacy · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Critical constraints disappear in long drafting sessions.
 
 Which configuration change addresses the specific requirement?
@@ -108,11 +146,18 @@ Which configuration change addresses the specific requirement?
 
 AI systems literacy · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: One user’s saved context sometimes appears in another user’s task. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which architecture decision best addresses the stated systemic risk? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: One user’s saved context sometimes appears in another user’s task.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which architecture decision best addresses the stated systemic risk? Also apply the profile cue.
 
 - **A.** Isolate memory by identity and test cross-user access denial; resolve the dependency with a named receiving owner.
 - **B.** Isolate memory by identity and test cross-user access denial; send the draft to both teams and treat delivery as acceptance.
@@ -125,8 +170,14 @@ Which architecture decision best addresses the stated systemic risk? Choose the 
 
 Prompt design · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The text uses expert vocabulary for an audience new to the topic.
 
 Which prompt repair most directly fixes the observed failure?
@@ -142,11 +193,18 @@ Which prompt repair most directly fixes the observed failure?
 
 Prompt design · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Teams edit the production prompt directly; failures cannot be traced to a version. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which prompt-management decision best fits the evidence? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Teams edit the production prompt directly; failures cannot be traced to a version.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which prompt-management decision best fits the evidence? Also apply the profile cue.
 
 - **A.** Version prompts and link each release to evaluated examples; send the draft to both teams and treat delivery as acceptance.
 - **B.** Make the exception a release-blocking regression case; resolve the dependency with a named receiving owner.
@@ -159,8 +217,14 @@ Which prompt-management decision best fits the evidence? Choose the combined dec
 
 Tool selection and integration · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The task combines record lookup, drafting, and a gated system action.
 
 Which candidate best fits the stated task?
@@ -176,11 +240,18 @@ Which candidate best fits the stated task?
 
 Tool selection and integration · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Vendor demonstrations use easy cases unlike the exception-heavy approved project and service records. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which procurement experiment best resolves the stated uncertainty? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Vendor demonstrations use easy cases unlike the exception-heavy approved project and service records.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which procurement experiment best resolves the stated uncertainty? Also apply the profile cue.
 
 - **A.** Run a representative held-out workload with predeclared criteria; resolve the dependency with a named receiving owner.
 - **B.** Run a representative held-out workload with predeclared criteria; send the draft to both teams and treat delivery as acceptance.
@@ -193,8 +264,14 @@ Which procurement experiment best resolves the stated uncertainty? Choose the co
 
 Agentic workflows · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A timeout causes the same approved action to run twice.
 
 Which change addresses the failure without changing unrelated steps?
@@ -210,11 +287,18 @@ Which change addresses the failure without changing unrelated steps?
 
 Agentic workflows · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Approvers cannot see which source version and payload they are authorizing. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which control design best addresses the documented risk? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Approvers cannot see which source version and payload they are authorizing.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which control design best addresses the documented risk? Also apply the profile cue.
 
 - **A.** Separate retrieved content from authority and enforce tool policies; send the draft to both teams and treat delivery as acceptance.
 - **B.** Present a versioned evidence-to-action diff at approval; send the draft to both teams and treat delivery as acceptance.
@@ -227,8 +311,14 @@ Which control design best addresses the documented risk? Choose the combined dec
 
 Output refinement · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The required exception is absent from an otherwise accurate project update.
 
 Which revision request is most targeted?
@@ -244,11 +334,18 @@ Which revision request is most targeted?
 
 Output refinement · advanced · People / HR
 
-Setting: People / HR. Task: prepare a employee service response using approved HR procedures and anonymized case records. Accountable role: HR service lead. Exercise constraint: Employment decisions require a named human decision maker. Consequence to consider: A mistaken claim can affect an employee opportunity.
+Recommended live format: **multi-part scenario**
 
-Evidence: Reviewers repeatedly rewrite outputs but never label recurring defect types. Additional function evidence: The employee response includes a recommendation that could affect an employment decision.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which quality process should be introduced first? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: People / HR needs an employee service response.
+Use: approved HR procedures and anonymized case records.
+Rule: Employment decisions require a named human decision maker.
+Risk: A mistaken claim can affect an employee opportunity.
+Evidence: Reviewers repeatedly rewrite outputs but never label recurring defect types.
+Extra function cue: The employee response includes a recommendation that could affect an employment decision.
+
+Which quality process should be introduced first? Also apply the profile cue.
 
 - **A.** Record defect categories and connect them to prompt or source fixes; let the assistant finalize it after checking the wording.
 - **B.** Record defect categories and connect them to prompt or source fixes; reserve that decision for the authorized HR decision maker.
@@ -261,8 +358,14 @@ Which quality process should be introduced first? Choose the combined decision a
 
 Source and claim verification · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A screenshot names a policy but omits its date and version.
 
 Which check should resolve the specific evidence gap first?
@@ -278,11 +381,18 @@ Which check should resolve the specific evidence gap first?
 
 Source and claim verification · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Approved claims become stale when upstream records are replaced. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which evidence control would best prevent the observed recurring failure? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Approved claims become stale when upstream records are replaced.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which evidence control would best prevent the observed recurring failure? Also apply the profile cue.
 
 - **A.** Trigger re-review from source changes using claim-source links; send the draft to both teams and treat delivery as acceptance.
 - **B.** Record source versions and resolve time conflicts before synthesis; resolve the dependency with a named receiving owner.
@@ -295,8 +405,14 @@ Which evidence control would best prevent the observed recurring failure? Choose
 
 Data and chart judgment · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A pilot handles only simple cases; the baseline contains simple and complex cases.
 
 Which calculation or comparison should be used?
@@ -312,11 +428,18 @@ Which calculation or comparison should be used?
 
 Data and chart judgment · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: The team repeatedly checks results and stops the experiment as soon as a favorable number appears. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which evaluation redesign addresses the principal validity problem? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: The team repeatedly checks results and stops the experiment as soon as a favorable number appears.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which evaluation redesign addresses the principal validity problem? Also apply the profile cue.
 
 - **A.** Add failure-severity and total-workflow measures to the evaluation; send the draft to both teams and treat delivery as acceptance.
 - **B.** Predefine the stopping and analysis rules before the next run; send the draft to both teams and treat delivery as acceptance.
@@ -329,8 +452,14 @@ Which evaluation redesign addresses the principal validity problem? Choose the c
 
 Media provenance · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A polished campaign image has no license or creator record.
 
 Which verification step addresses the specific uncertainty?
@@ -346,11 +475,18 @@ Which verification step addresses the specific uncertainty?
 
 Media provenance · advanced · Marketing
 
-Setting: Marketing. Task: prepare a campaign content recommendation using approved campaign evidence and licensed asset records. Accountable role: campaign owner. Exercise constraint: Performance claims and asset rights must be checked before publication. Consequence to consider: A misleading claim can be repeated across a campaign.
+Recommended live format: **multi-part scenario**
 
-Evidence: Approved assets lose source and license records during handoff. Additional function evidence: The proposed campaign asset is licensed for internal use only.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which media-review process best addresses the repeated failure? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Marketing needs a campaign content recommendation.
+Use: approved campaign evidence and licensed asset records.
+Rule: Performance claims and asset rights must be checked before publication.
+Risk: A misleading claim can be repeated across a campaign.
+Evidence: Approved assets lose source and license records during handoff.
+Extra function cue: The proposed campaign asset is licensed for internal use only.
+
+Which media-review process best addresses the repeated failure? Also apply the profile cue.
 
 - **A.** Use detector results within a documented multi-evidence review; publish it with creator credit as a substitute for permission.
 - **B.** Preserve source, edit, rights, and approval metadata with each asset; publish it with creator credit as a substitute for permission.
@@ -363,8 +499,14 @@ Which media-review process best addresses the repeated failure? Choose the combi
 
 Fraud and manipulation detection · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A payment destination changed in an email with an urgent deadline.
 
 What is the appropriate next verification action?
@@ -380,11 +522,18 @@ What is the appropriate next verification action?
 
 Fraud and manipulation detection · advanced · Finance
 
-Setting: Finance. Task: prepare a reconciliation recommendation using approved ledger extracts and reconciled invoice records. Accountable role: finance controller. Exercise constraint: No payment or journal entry may be released by the assistant. Consequence to consider: A wrong recommendation can create an incorrect financial entry.
+Recommended live format: **multi-part scenario**
 
-Evidence: Staff verify suspicious requests using phone numbers included in those requests. Additional function evidence: A reconciliation suggestion would create a journal entry, but the assistant is authorized only to advise.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which control change addresses the demonstrated failure mode? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Finance needs a reconciliation recommendation.
+Use: approved ledger extracts and reconciled invoice records.
+Rule: No payment or journal entry may be released by the assistant.
+Risk: A wrong recommendation can create an incorrect financial entry.
+Evidence: Staff verify suspicious requests using phone numbers included in those requests.
+Extra function cue: A reconciliation suggestion would create a journal entry, but the assistant is authorized only to advise.
+
+Which control change addresses the demonstrated failure mode? Also apply the profile cue.
 
 - **A.** Contain the account and investigate affected actions through incident response; post the entry automatically once the totals balance.
 - **B.** Contain the account and investigate affected actions through incident response; send the proposed entry to the authorized controller.
@@ -397,8 +546,14 @@ Which control change addresses the demonstrated failure mode? Choose the combine
 
 Data protection and privacy · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The task needs monthly totals, but the proposed upload contains individual-level records.
 
 Which change best meets the task while addressing the stated privacy gap?
@@ -414,11 +569,18 @@ Which change best meets the task while addressing the stated privacy gap?
 
 Data protection and privacy · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Privacy checks occur only at initial launch while data purposes keep changing. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which system-level control addresses the observed lifecycle weakness? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Privacy checks occur only at initial launch while data purposes keep changing.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which system-level control addresses the observed lifecycle weakness? Also apply the profile cue.
 
 - **A.** Require change-triggered privacy review with an accountable owner; send the draft to both teams and treat delivery as acceptance.
 - **B.** Evaluate utility with minimized fields before expanding collection; send the draft to both teams and treat delivery as acceptance.
@@ -431,8 +593,14 @@ Which system-level control addresses the observed lifecycle weakness? Choose the
 
 Regulatory and policy fluency · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The rule requires an approval record, but the team has only an undocumented conversation.
 
 What should the reviewer do under the supplied exercise rule?
@@ -448,11 +616,18 @@ What should the reviewer do under the supplied exercise rule?
 
 Regulatory and policy fluency · advanced · People / HR
 
-Setting: People / HR. Task: prepare a employee service response using approved HR procedures and anonymized case records. Accountable role: HR service lead. Exercise constraint: Employment decisions require a named human decision maker. Consequence to consider: A mistaken claim can affect an employee opportunity.
+Recommended live format: **multi-part scenario**
 
-Evidence: A multinational workflow assumes one regional policy covers every deployment. Additional function evidence: The employee response includes a recommendation that could affect an employment decision.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which governance change addresses the documented policy failure? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: People / HR needs an employee service response.
+Use: approved HR procedures and anonymized case records.
+Rule: Employment decisions require a named human decision maker.
+Risk: A mistaken claim can affect an employee opportunity.
+Evidence: A multinational workflow assumes one regional policy covers every deployment.
+Extra function cue: The employee response includes a recommendation that could affect an employment decision.
+
+Which governance change addresses the documented policy failure? Also apply the profile cue.
 
 - **A.** Review applicable requirements and authorized scope for each deployment; let the assistant finalize it after checking the wording.
 - **B.** Create an owned exception process with recorded rationale and expiry; reserve that decision for the authorized HR decision maker.
@@ -465,8 +640,14 @@ Which governance change addresses the documented policy failure? Choose the comb
 
 Fairness, ethics, and rights · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Users cannot correct inaccurate inputs behind an AI recommendation.
 
 Which response addresses the specific human-impact concern?
@@ -482,11 +663,18 @@ Which response addresses the specific human-impact concern?
 
 Fairness, ethics, and rights · advanced · People / HR
 
-Setting: People / HR. Task: prepare a employee service response using approved HR procedures and anonymized case records. Accountable role: HR service lead. Exercise constraint: Employment decisions require a named human decision maker. Consequence to consider: A mistaken claim can affect an employee opportunity.
+Recommended live format: **multi-part scenario**
 
-Evidence: Two interventions reduce different error types for different affected groups. Additional function evidence: The employee response includes a recommendation that could affect an employment decision.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which evaluation or control design best addresses the stated tradeoff? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: People / HR needs an employee service response.
+Use: approved HR procedures and anonymized case records.
+Rule: Employment decisions require a named human decision maker.
+Risk: A mistaken claim can affect an employee opportunity.
+Evidence: Two interventions reduce different error types for different affected groups.
+Extra function cue: The employee response includes a recommendation that could affect an employment decision.
+
+Which evaluation or control design best addresses the stated tradeoff? Also apply the profile cue.
 
 - **A.** Evaluate representative cases and access alternatives before expansion; reserve that decision for the authorized HR decision maker.
 - **B.** Compare group-specific harms with stakeholders and document the tradeoff; let the assistant finalize it after checking the wording.
@@ -499,8 +687,14 @@ Which evaluation or control design best addresses the stated tradeoff? Choose th
 
 Security and governance controls · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A retrieved record contains a request to export unrelated data.
 
 Which action addresses the immediate security issue?
@@ -516,11 +710,18 @@ Which action addresses the immediate security issue?
 
 Security and governance controls · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: The model can grant itself broader tool scopes during a task. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which control architecture best addresses this systemic weakness? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: The model can grant itself broader tool scopes during a task.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which control architecture best addresses this systemic weakness? Also apply the profile cue.
 
 - **A.** Move permission decisions outside the model into an enforced policy layer; resolve the dependency with a named receiving owner.
 - **B.** Use scoped service identities and attributable action records; resolve the dependency with a named receiving owner.
@@ -533,8 +734,14 @@ Which control architecture best addresses this systemic weakness? Choose the com
 
 Use-case evaluation · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The task is exact arithmetic under fixed rules, with no language ambiguity.
 
 Which next step best addresses the principal feasibility gap?
@@ -550,11 +757,18 @@ Which next step best addresses the principal feasibility gap?
 
 Use-case evaluation · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: A bounded pilot meets quality, cost, and review targets; its operating conditions will remain the same. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which scale decision is best justified by the evidence? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: A bounded pilot meets quality, cost, and review targets; its operating conditions will remain the same.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which scale decision is best justified by the evidence? Also apply the profile cue.
 
 - **A.** Expand gradually with monitoring and explicit stop conditions; send the draft to both teams and treat delivery as acceptance.
 - **B.** Evaluate the new conditions before extending the pilot claim; resolve the dependency with a named receiving owner.
@@ -567,8 +781,14 @@ Which scale decision is best justified by the evidence? Choose the combined deci
 
 ROI and measurement · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Completion time improves while material errors rise.
 
 Which calculation or measurement is appropriate?
@@ -584,11 +804,18 @@ Which calculation or measurement is appropriate?
 
 ROI and measurement · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Two projects have similar expected ROI but very different downside losses. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which decision rule best addresses the business-case uncertainty? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Two projects have similar expected ROI but very different downside losses.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which decision rule best addresses the business-case uncertainty? Also apply the profile cue.
 
 - **A.** Reestablish attributable benefit evidence before the next funding gate; send the draft to both teams and treat delivery as acceptance.
 - **B.** Compare risk-adjusted value and downside exposure alongside ROI; resolve the dependency with a named receiving owner.
@@ -601,8 +828,14 @@ Which decision rule best addresses the business-case uncertainty? Choose the com
 
 Portfolio prioritization · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Two proposals duplicate the same shared capability and target the same users.
 
 Which portfolio action follows from the stated constraint?
@@ -618,11 +851,18 @@ Which portfolio action follows from the stated constraint?
 
 Portfolio prioritization · advanced · Finance
 
-Setting: Finance. Task: prepare a reconciliation recommendation using approved ledger extracts and reconciled invoice records. Accountable role: finance controller. Exercise constraint: No payment or journal entry may be released by the assistant. Consequence to consider: A wrong recommendation can create an incorrect financial entry.
+Recommended live format: **multi-part scenario**
 
-Evidence: Several projects share one vendor and would fail together during an outage. Additional function evidence: A reconciliation suggestion would create a journal entry, but the assistant is authorized only to advise.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which allocation rule best addresses the stated portfolio tradeoff? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Finance needs a reconciliation recommendation.
+Use: approved ledger extracts and reconciled invoice records.
+Rule: No payment or journal entry may be released by the assistant.
+Risk: A wrong recommendation can create an incorrect financial entry.
+Evidence: Several projects share one vendor and would fail together during an outage.
+Extra function cue: A reconciliation suggestion would create a journal entry, but the assistant is authorized only to advise.
+
+Which allocation rule best addresses the stated portfolio tradeoff? Also apply the profile cue.
 
 - **A.** Evaluate correlated exposure and fund justified resilience measures; post the entry automatically once the totals balance.
 - **B.** Reserve a bounded learning allocation with explicit option-value criteria; send the proposed entry to the authorized controller.
@@ -635,8 +875,14 @@ Which allocation rule best addresses the stated portfolio tradeoff? Choose the c
 
 Strategy and transformation · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The pilot succeeds in one team, but the next team uses different records and controls.
 
 Which next action makes the strategy more executable?
@@ -652,11 +898,18 @@ Which next action makes the strategy more executable?
 
 Strategy and transformation · advanced · CEO
 
-Setting: CEO. Task: prepare a enterprise investment recommendation using portfolio results and approved operating plans. Accountable role: executive sponsor. Exercise constraint: Scaling decisions need explicit accountable owners and measurable outcomes. Consequence to consider: A weak scale decision can spread failure across the enterprise.
+Recommended live format: **multi-part scenario**
 
-Evidence: A long-term plan depends on one untested assumption about model autonomy. Additional leadership evidence: Three departments propose scaling, but each assumes another will own the shared exceptions.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which strategic response best fits the observed constraint? Choose the combined decision and leadership action that both fit the evidence.
+Scenario: CEO needs an enterprise investment recommendation.
+Use: portfolio results and approved operating plans.
+Rule: Scaling decisions need explicit accountable owners and measurable outcomes.
+Risk: A weak scale decision can spread failure across the enterprise.
+Evidence: A long-term plan depends on one untested assumption about model autonomy.
+Extra leadership cue: Three departments propose scaling, but each assumes another will own the shared exceptions.
+
+Which strategic response best fits the observed constraint? Also apply the profile cue.
 
 - **A.** Define shared principles while preserving justified local control differences; ask each department to launch and resolve ownership afterward.
 - **B.** Define shared principles while preserving justified local control differences; assign cross-functional ownership before authorizing scale.
@@ -669,8 +922,14 @@ Which strategic response best fits the observed constraint? Choose the combined 
 
 Human-AI role clarity · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: The assistant can draft accurately, but a consequential decision remains with project lead.
 
 Which assignment resolves the stated ownership gap?
@@ -686,11 +945,18 @@ Which assignment resolves the stated ownership gap?
 
 Human-AI role clarity · advanced · Cross-functional professional
 
-Setting: Cross-functional professional. Task: prepare a operating brief using approved project and service records. Accountable role: process owner. Exercise constraint: Recommendations must distinguish facts from assumptions. Consequence to consider: A false dependency can delay several teams.
+Recommended live format: **multi-part scenario**
 
-Evidence: Incidents are corrected locally but no owner can change the shared workflow. Additional function evidence: Two departments disagree about a dependency and neither has accepted the handoff.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which operating-model change best addresses the repeated failure? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Cross-functional professional needs an operating brief.
+Use: approved project and service records.
+Rule: Recommendations must distinguish facts from assumptions.
+Risk: A false dependency can delay several teams.
+Evidence: Incidents are corrected locally but no owner can change the shared workflow.
+Extra function cue: Two departments disagree about a dependency and neither has accepted the handoff.
+
+Which operating-model change best addresses the repeated failure? Also apply the profile cue.
 
 - **A.** Assign a system owner with authority for shared corrective changes; resolve the dependency with a named receiving owner.
 - **B.** Reassess decision rights for each newly automated capability; resolve the dependency with a named receiving owner.
@@ -703,8 +969,14 @@ Which operating-model change best addresses the repeated failure? Choose the com
 
 Trust and challenge culture · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Staff misunderstand which parts of the project update were generated and reviewed.
 
 Which response best supports constructive challenge?
@@ -720,11 +992,18 @@ Which response best supports constructive challenge?
 
 Trust and challenge culture · advanced · People / HR
 
-Setting: People / HR. Task: prepare a employee service response using approved HR procedures and anonymized case records. Accountable role: HR service lead. Exercise constraint: Employment decisions require a named human decision maker. Consequence to consider: A mistaken claim can affect an employee opportunity.
+Recommended live format: **multi-part scenario**
 
-Evidence: Teams share only success stories, preventing others from learning about known limits. Additional function evidence: The employee response includes a recommendation that could affect an employment decision.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which intervention best addresses the observed culture problem? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: People / HR needs an employee service response.
+Use: approved HR procedures and anonymized case records.
+Rule: Employment decisions require a named human decision maker.
+Risk: A mistaken claim can affect an employee opportunity.
+Evidence: Teams share only success stories, preventing others from learning about known limits.
+Extra function cue: The employee response includes a recommendation that could affect an employment decision.
+
+Which intervention best addresses the observed culture problem? Also apply the profile cue.
 
 - **A.** Evaluate calibrated reliance through concrete task scenarios; reserve that decision for the authorized HR decision maker.
 - **B.** Institutionalize evidence-based failure reviews with visible follow-through; reserve that decision for the authorized HR decision maker.
@@ -737,8 +1016,14 @@ Which intervention best addresses the observed culture problem? Choose the combi
 
 Change enablement · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: Users avoid the tool because they cannot tell which records may be used.
 
 Which intervention addresses the demonstrated adoption barrier?
@@ -754,11 +1039,18 @@ Which intervention addresses the demonstrated adoption barrier?
 
 Change enablement · advanced · People / HR
 
-Setting: People / HR. Task: prepare a employee service response using approved HR procedures and anonymized case records. Accountable role: HR service lead. Exercise constraint: Employment decisions require a named human decision maker. Consequence to consider: A mistaken claim can affect an employee opportunity.
+Recommended live format: **multi-part scenario**
 
-Evidence: A single training package is planned for roles with materially different decisions and risks. Additional function evidence: The employee response includes a recommendation that could affect an employment decision.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which rollout design best addresses the organizational constraint? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: People / HR needs an employee service response.
+Use: approved HR procedures and anonymized case records.
+Rule: Employment decisions require a named human decision maker.
+Risk: A mistaken claim can affect an employee opportunity.
+Evidence: A single training package is planned for roles with materially different decisions and risks.
+Extra function cue: The employee response includes a recommendation that could affect an employment decision.
+
+Which rollout design best addresses the organizational constraint? Also apply the profile cue.
 
 - **A.** Use a shared foundation plus role-specific practice and controls; reserve that decision for the authorized HR decision maker.
 - **B.** Fund support capacity and transfer knowledge beyond the initial champions; reserve that decision for the authorized HR decision maker.
@@ -771,8 +1063,14 @@ Which rollout design best addresses the organizational constraint? Choose the co
 
 Learning and improvement loops · applied · Core / general
 
-Setting: Project team. Task: prepare a project update using approved project records. Accountable role: project lead. Exercise constraint: Only the current approved version may be circulated. Consequence to consider: A wrong update can send the team to the wrong milestone.
+Recommended live format: **scenario choice**
 
+Keep the scenario short and make the answer choices concrete actions a user can picture.
+
+Scenario: Project team needs a project update.
+Use: approved project records.
+Rule: Only the current approved version may be circulated.
+Risk: A wrong update can send the team to the wrong milestone.
 Evidence: A fix passes evaluation and is released, but related guidance remains outdated.
 
 Which next step completes the missing learning action?
@@ -788,11 +1086,18 @@ Which next step completes the missing learning action?
 
 Learning and improvement loops · advanced · Marketing
 
-Setting: Marketing. Task: prepare a campaign content recommendation using approved campaign evidence and licensed asset records. Accountable role: campaign owner. Exercise constraint: Performance claims and asset rights must be checked before publication. Consequence to consider: A misleading claim can be repeated across a campaign.
+Recommended live format: **multi-part scenario**
 
-Evidence: The inventory expands rapidly with closely related variants. Additional function evidence: The proposed campaign asset is licensed for internal use only.
+Split into two short questions: first diagnose the AI issue, then choose the safest role/profile action.
 
-Which learning-system design addresses the repeated failure? Choose the combined decision and specialized action that both fit the evidence.
+Scenario: Marketing needs a campaign content recommendation.
+Use: approved campaign evidence and licensed asset records.
+Rule: Performance claims and asset rights must be checked before publication.
+Risk: A misleading claim can be repeated across a campaign.
+Evidence: The inventory expands rapidly with closely related variants.
+Extra function cue: The proposed campaign asset is licensed for internal use only.
+
+Which learning-system design addresses the repeated failure? Also apply the profile cue.
 
 - **A.** Keep proposals separate and require evidence-based approval before scored use; publish it with creator credit as a substitute for permission.
 - **B.** Track item families and control exposure and calibration at family level; publish it with creator credit as a substitute for permission.

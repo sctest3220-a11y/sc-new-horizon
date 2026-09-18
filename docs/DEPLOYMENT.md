@@ -48,7 +48,13 @@ OPENROUTER_API_KEY=
 
 Browser code should never read these secret keys. Report generation should be handled by API routes or server actions.
 
-The MVP Agent Ops screen is local and deterministic. It demonstrates orchestrator delegation, AI concept scouting, AI Watch drafting, training/course discovery, assessment-item generation, reviewer/QA gates, activity reports, and a safety cut for repeated draft loops. Production agent workflows should move behind server-side routes, scheduled jobs, durable queues, persisted run state, retry counts, draft artifacts, rejected outputs, source records, course freshness checks, cost telemetry, and admin approvals before any content is published.
+The MVP Agent Ops screen is local and deterministic. It demonstrates orchestrator delegation, assessment blueprint review, AI concept scouting, AI Watch drafting, training/course discovery, assessment-item generation, stimulus/artifact improvement, feedback analysis, psychometric monitoring, data-quality monitoring, localization QA, report UX review, framework alignment, reviewer/QA gates, activity reports, and a safety cut for repeated draft loops. Production agent workflows should move behind server-side routes, scheduled jobs, durable queues, persisted run state, retry counts, draft artifacts, rejected outputs, source records, course freshness checks, cost telemetry, promotion states, and admin approvals before any content is published.
+
+Production agent proposal states should be:
+
+```text
+draft -> reviewed -> pilot-ready -> pilot-tested -> approved -> published -> monitored
+```
 
 The local `pnpm crawl:training` command is the first real Playwright crawler prototype for the Training and Course Scout. It writes review reports to `.agent-drafts/` and should remain an operator/admin testing command until production source policies, robots/terms review, database persistence, and approval workflows are implemented.
 
@@ -70,3 +76,14 @@ The current admin dashboard reads local MVP logs and includes a preview gate. Pr
 - organization/tenant scoping
 - privacy-preserving aggregate reporting
 - audit logging for report access and exports
+
+## Production Analytics Checklist
+
+The MVP already captures useful local telemetry, but production analysis should not depend on one browser/device. Before launch, implement:
+
+- Server-side event tables for assessment starts, question views, question answers, per-question feedback, artifact opens/zooms, mandatory completion, continuation choices, report views, report-interest clicks, end-of-assessment survey responses, score logs, profile signals, and supervised agent decisions.
+- Anonymized aggregate views for item performance, distractor selection, time spent, hesitation, artifact readability, unclear/useful feedback, competency coverage, domain coverage, persona routing, score distribution, cohort benchmarks, leaderboard eligibility, abandonment, continuation conversion, and report engagement.
+- Question/rubric/artifact/scoring version IDs on every answer record so later analysis can explain which content and scoring model produced each score.
+- Data governance controls: consent copy, privacy-safe identifiers, separation of identity from response evidence, retention windows, deletion/export workflows, tenant isolation, row-level security, admin audit logs, and dashboard access review.
+- Calibration jobs that estimate difficulty, discrimination, guessing, partial-credit behavior, SEM, confidence, and score-band thresholds from pilot data before scores are used for certification, hiring, promotion, or other high-stakes decisions.
+- Human-in-the-loop approval for every agent proposal that changes scored questions, artifacts, answer keys, rubrics, scoring parameters, profile ontology, survey wording, learning recommendations, or framework mappings.

@@ -3,10 +3,10 @@
 export const foundations = {
   'D1-core-concepts': {
     awareness: ['Which description best matches the system used for this {{deliverable}}?', [
-      ['The system creates new sentences from learned patterns; it has no connection to {{source}}.', 'A generative model producing a draft.', 'Creating plausible text does not establish access to current records.'],
-      ['The system returns unchanged passages with record identifiers from {{source}}.', 'A search system retrieving existing text.', 'The observed operation retrieves records without composing new content.'],
-      ['The system follows an explicit if-then rule and copies an approved sentence.', 'A rules-based automation selecting text.', 'The output is chosen by a defined rule rather than learned generation.'],
-      ['A workspace combines a model, a search index, permissions, and a review screen.', 'An application coordinating several components.', 'The workspace includes the model and surrounding operational components.'],
+      ['The assistant writes an answer using its language model, but it does not search {{source}}.', 'Generating an answer without retrieving supporting sources.', 'The assistant is generating text, but the answer is not grounded in the approved sources.'],
+      ['The assistant returns exact passages with record identifiers from {{source}}.', 'Retrieving exact passages from the approved sources.', 'The assistant is finding existing records rather than writing new content.'],
+      ['The system follows a fixed if-then rule and copies an approved sentence.', 'Following a fixed rule to select approved text.', 'The system selects text using a defined rule rather than asking a language model to generate it.'],
+      ['The workspace combines a language model, a search index, permissions, and a review screen.', 'Coordinating a model, search, permissions, and review tools.', 'The application combines several components to complete the workflow.'],
     ]],
     applied: ['Which implementation fits the stated requirement for the {{deliverable}}?', [
       ['Every output must reproduce the same approved sentence when the same category is selected.', 'Use a lookup table with explicit category rules.', 'A deterministic requirement is met directly by controlled rules.'],

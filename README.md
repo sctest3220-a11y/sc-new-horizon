@@ -4,7 +4,11 @@ Adaptive AI readiness assessment MVP for practical AI literacy, role/function di
 
 ## Draft Question Inventory
 
-A separate 3,328-item review inventory is available on `Lufy-branch`: 768 core, 1,296 function, 320 industry, and 944 executive variants. All are English drafts with provisional difficulty and pending review. They share 96 decision families and 384 base evidence patterns; they are not calibrated independent items. The existing 634 live questions are unchanged. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md) and [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx).
+A separate **3,328-item draft review inventory** is now tracked on `main`: 768 core, 1,296 function, 320 industry, and 944 executive variants. The draft bank includes English content plus machine-assisted Thai review fields for the question inventory workflow. It also includes recommended live formats, artifact-need analysis, user-facing rewrite drafts, review metadata, and translation QA output. The items share 96 decision families and 384 base evidence patterns; they are coverage variants, not calibrated independent items.
+
+The existing **634 live questions remain separate** and are exported for side-by-side admin review. Use the admin inventory page at `/admin/question-inventory` to review draft and live questions, switch English/Thai at page and question level, filter by domain/competency/difficulty/profile, and capture reviewer ratings/comments locally. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md), [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx), [question JSON](exports/review-inventory/questions.json), [live-bank export](exports/review-inventory/live-questions.json), [artifact needs](exports/review-inventory/artifact-needs.md), and [Thai translation QA](exports/review-inventory/thai-translation-qa.json).
+
+Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
 
 ## What It Includes
 
@@ -32,7 +36,7 @@ A separate 3,328-item review inventory is available on `Lufy-branch`: 768 core, 
 - Registered user dashboard with profile, progress, recommendations, learning paths, and personalized AI Watch
 - Admin dashboard preview for cohort, function, role, domain, competency, difficulty, item-format, and trend analysis
 - Supervised quality-improvement queue driven by telemetry and survey feedback, plus realistic artifact replacement briefs
-- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, approval/rejection states, activity reports, and safety-cut handling for repeated loops
+- Admin Agent Ops with persisted supervised runs, telemetry-driven draft proposals, promotion gates, approval/rejection states, activity reports, and safety-cut handling for repeated loops
 - Personalized "Did you know?" prompts that use profile signals and weak domains to teach timely AI concepts and invite deeper learning
 - Global framework crosswalk mapping D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research
 - Learn by Doing labs for prompt repair, proof check, media check, workflow lab, trust room, task ownership, and next action
@@ -61,6 +65,23 @@ Detailed telemetry and agent documentation:
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+- [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
+
+Latest question-inventory update: the 3,328-item review inventory and the existing 634 live questions are now available from the Admin Question Inventory page. The review workflow supports English/Thai viewing, question-level language overrides, role/function/industry/profile filters, reviewer ratings, saved feedback history, review-count/status indicators, artifact-need briefs, and translation QA output. Thai fields are machine-assisted reviewer drafts and should receive human language review before production use. The inventory is on `main`; references to the older `Lufy-branch` milestone are obsolete.
+
+Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
+
+Latest framework/artifact quality update: the D1-D6 framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. Artifact and lab quality standards now require relevant, necessary, realistic, legible evidence and complete pilot-lab instructions, scoring criteria, expected outputs, and debriefs before release.
+
+Latest assessment-quality analytics update: Admin now includes 10 quality-analysis panels covering item discrimination, distractors, artifact dependency, clarity risk, difficulty calibration, competency coverage, reliability, written-rubric behavior, route/persona fit, and report recommendation engagement. These use local MVP telemetry and clearly mark insufficient data until pilot volume is large enough.
+
+Latest calibration update: Admin quality review now includes an item calibration dashboard with attempt count, average score/time, confusion rate, artifact action rate, feedback polarity, difficulty mismatch, artifact presence, and recommended human-review action. Review signals can de-prioritize weak items in routing, but item rewrites, artifact replacement, recalibration, and retirement remain human-approved.
+
+Latest routing update: adaptive question selection now uses profile domain targets before general weak-domain balancing. General free users are routed mostly toward D1/D2/D3/D6, while premium routes blend function, industry, and professional baseline targets. The analysis tab shows target counts by domain, and answer review now includes a practice cue after each question.
+
+Research documentation update: `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` now records the source-backed rationale for profile-weighted question routing and radar targets. It maps the recommendation to UNESCO, OECD/European Commission, EU AI Act Article 4, NIST AI RMF, DigComp 2.2, ISO/IEC 42001, and Singapore AI Verify/MGF GenAI.
+
+Latest radar-target update: profile targets now show distinct radar shapes. General users emphasize foundations, practical tooling, and critical judgment; work/team/function/industry/premium contexts shift targets toward the domains most relevant to the selected profile. Premium target blending now weights function first, industry second, and professional baseline third.
 
 Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
 
@@ -127,6 +148,14 @@ Open:
 http://localhost:3000/
 ```
 
+Question inventory reviewer:
+
+```text
+http://localhost:3000/admin/question-inventory
+```
+
+For collaborator setup and a smaller sparse checkout, see [`docs/QUESTION_INVENTORY_LOCAL_REVIEW.md`](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md).
+
 ## Google and Email Auth
 
 The MVP includes a browser-side Supabase auth bridge for Google OAuth and email magic links. Add these environment variables:
@@ -156,7 +185,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
 
-The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, AI concepts scout, AI newsfeed agent, training and course scout, assessment item generator, and reviewer/QA agent. Each proposal stays in pending review until an admin approves or rejects it. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
+The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, assessment blueprint agent, AI concepts scout, AI newsfeed agent, training/course scout, assessment item generator, stimulus builder, feedback analysis agent, psychometric monitor, data quality monitor, localization QA agent, report UX agent, framework alignment agent, and reviewer/QA agent. Each proposal must move through review and promotion gates before publishing. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
 
 Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
 
@@ -211,6 +240,18 @@ pnpm crawl:training
 - MVP Agent Ops persists supervised local runs, but production agents still need durable cloud jobs, source connectors, server-side AI provider adapters, retry limits, audit logs, proposal diffing, content versioning, source freshness checks, robots/terms review, and human approval gates
 - Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
 - The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
+
+## Production Analytics Readiness Checklist
+
+Before calling the platform production-ready, move the analysis loop from browser-local MVP logs to governed server-side data:
+
+- Persist assessment behavior events, question answers, question feedback, survey responses, profile signals, score logs, artifact interactions, continuation decisions, report-interest clicks, and agent-review decisions in Supabase/Postgres or an equivalent warehouse.
+- Create anonymized aggregate views for question quality, artifact quality, competency coverage, profile routing, score distribution, leaderboard cohorts, abandonment, continuation, and report engagement.
+- Separate identifiable account/profile data from assessment evidence, with clear consent, retention, deletion, and export rules.
+- Add admin role claims, tenant/organization scoping, RLS policies, audit logs, and export controls before exposing analytics dashboards.
+- Version questions, rubrics, artifacts, scoring parameters, profile ontology, surveys, and learning recommendations so historical scores remain explainable after changes.
+- Calibrate item difficulty, discrimination, guessing, partial-credit thresholds, confidence, and score bands from pilot data before using scores for high-stakes decisions.
+- Require human approval for agent-proposed edits to scored content, artifacts, rubrics, profile fields, survey wording, learning paths, and framework mappings.
 
 ## Scoring Model
 
