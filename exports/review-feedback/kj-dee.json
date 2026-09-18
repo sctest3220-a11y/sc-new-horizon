@@ -1,7 +1,407 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T04:21:17.200Z",
+  "updatedAt": "2026-09-18T04:35:34.195Z",
   "questions": {
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'One user’s saved context sometimes appears in another user’s งาน.' Explanation: 'The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น\nReason: complete Thai; remove the reviewer-facing block or convert to a real ranking task. Keyed first check (C) unchanged. The AI-SYSTEMS-ADVANCED family shares these four option strings — translate once in the option table.",
+          "id": "2026-09-18T04:34:47.170Z",
+          "savedAt": "2026-09-18T04:34:47.170Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:34:47.170Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'The same connector identity reads ข้อมูล and performs unrestricted production writes.' Explanation: 'Distinct capabilities allow enforcement of narrower การดำเนินการ สิทธิ์.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: connector ตัวเดียวกันทั้งอ่านข้อมูลและเขียนลงระบบจริงได้โดยไม่มีข้อจำกัด\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: การแยกความสามารถออกจากกันทำให้บังคับใช้สิทธิ์การดำเนินการที่แคบลงได้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:34:53.168Z",
+          "savedAt": "2026-09-18T04:34:53.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:34:53.169Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'Multiple Agents retry one another’s ล้มเหลว งานs indefinitely.' Explanation: 'Local retry ขีดจำกัดs alone do not bound a multi-Agent cycle.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:35:00.173Z",
+          "savedAt": "2026-09-18T04:35:00.173Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:00.173Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently.' Explanation: 'The control targets inconsistent construction of the Model input.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:35:07.172Z",
+          "savedAt": "2026-09-18T04:35:07.172Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:07.173Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'One user’s saved context sometimes appears in another user’s งาน.' Explanation: 'The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nStem: กา���ตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
+          "id": "2026-09-18T04:35:15.162Z",
+          "savedAt": "2026-09-18T04:35:15.162Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:15.162Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'The same connector identity reads ข้อมูล and performs unrestricted production writes.' Explanation: 'Distinct capabilities allow enforcement of narrower การดำเนินการ สิทธิ์.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: connector ตัวเดียวกันทั้งอ่านข้อมูลและเขียนลงระบบจริงได้โดยไม่มีข้อจำกัด\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: การแยกความสามารถออกจากกันทำให้บังคับใช้สิทธิ์การดำเนินการที่แคบลงได้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "id": "2026-09-18T04:35:22.159Z",
+          "savedAt": "2026-09-18T04:35:22.159Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:22.159Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'Multiple Agents retry one another’s ล้มเหลว งานs indefinitely.' Explanation: 'Local retry ขีดจำกัดs alone do not bound a multi-Agent cycle.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (A) unchanged.",
+          "id": "2026-09-18T04:35:26.171Z",
+          "savedAt": "2026-09-18T04:35:26.171Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:26.171Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "rank",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "rank",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'Different ทีมs build Prompts independently and omit critical ข้อจำกัดs inconsistently.' Explanation: 'The control targets inconsistent construction of the Model input.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: แต่ละทีมสร้าง Prompt แยกกันเอง และละเว้นข้อจำกัดสำคัญไม่สม่ำเสมอ\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: มาตรการนี้แก้ที่การประกอบ input ให้โมเดลที่ไม่สอดคล้องกัน\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (B) unchanged.",
+          "id": "2026-09-18T04:35:32.159Z",
+          "savedAt": "2026-09-18T04:35:32.159Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:35:32.159Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Critical ข้อจำกัดs disappear in long ร่างing sessions.' ('drafting' → 'ร่าง'+'ing'). Explanation: 'Task-critical instructions should not depend on unขีดจำกัดed conversation history.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั่งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged. The whole AI-SYSTEMS-APPLIED family shares these four option strings — translate once in the option table.",
+          "id": "2026-09-18T04:31:13.164Z",
+          "savedAt": "2026-09-18T04:31:13.164Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:13.164Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Users must see the same ที่อนุมัติแล้ว preferences next session.' 'Select all that apply.' is also left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. Explanation: 'Durable preferences ต้องการ managed storage and lifecycle behavior.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ผู้ใช้ต้องเห็นการตั้งค่าที่อนุมัติแล้วชุดเดิมในเซสชันถัดไป\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise single-choice)\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: การตั้งค่าที่คงอยู่ต้องมีที่เก็บและการจัดการวงจรชีวิตของข้อมูล\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:31:17.569Z",
+          "savedAt": "2026-09-18T04:31:17.569Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:17.569Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'The assistant must inspect ข้อมูล but must never change them.' Explanation: 'The ต้องการd capability is reading, so write permission is unnecessary.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:31:18.082Z",
+          "savedAt": "2026-09-18T04:31:18.082Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:18.082Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'A tool-using งาน repeats retries without reaching a decision.' 'Select all that apply.' is also left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. Explanation: 'The control loop ต้องการ explicit bounds and an unresolved-state exit.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: งานที่ใช้เครื่องมือลองใหม่ซ้ำไปเรื่อย ๆ โดยไม่ได้ข้อสรุป\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise single-choice)\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: loop ควบคุมต้องมีขอบเขตชัดเจน และมีทางออกเมื่อยังไม่ได้ข้อสรุป\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:31:18.625Z",
+          "savedAt": "2026-09-18T04:31:18.625Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:18.626Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Critical ข้อจำกัดs disappear in long ร่างing sessions.' Explanation: 'Task-critical instructions should not depend on unขีดจำกัดed conversation history.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั่งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:31:33.508Z",
+          "savedAt": "2026-09-18T04:31:33.508Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:33.508Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Users must see the same ที่อนุมัติแล้ว preferences next session.' 'Select all that apply.' is also left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. Explanation: 'Durable preferences ต้องการ managed storage and lifecycle behavior.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ผู้ใช้ต้องเห็นการตั้งค่าที่อนุมัติแล้วชุดเดิมในเซสชันถัดไป\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise single-choice)\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: การตั้งค่าที่คงอยู่ต้องมีที่เก็บและการจัดการวงจรชีวิตของข้อมูล\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:31:34.035Z",
+          "savedAt": "2026-09-18T04:31:34.035Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:34.035Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'The assistant must inspect ข้อมูล but must never change them.' Explanation: 'The ต้องการd capability is reading, so write permission is unnecessary.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:31:34.587Z",
+          "savedAt": "2026-09-18T04:31:34.587Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:34.587Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'A tool-using งาน repeats retries without reaching a decision.' 'Select all that apply.' is also left in English, yet only one option is keyed and the rewrite note admits a second correct action is missing. Explanation: 'The control loop ต้องการ explicit bounds and an unresolved-state exit.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: งานที่ใช้เครื่องมือลองใหม่ซ้ำไปเรื่อย ๆ โดยไม่ได้ข้อสรุป\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด (เลือกได้มากกว่าหนึ่งข้อ — only if a second correct option is added; otherwise single-choice)\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: loop ควบคุมต้องมีขอบเขตชัดเจน และมีทางออกเมื่อยังไม่ได้ข้อสรุป\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:31:35.104Z",
+          "savedAt": "2026-09-18T04:31:35.104Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:31:35.104Z"
+    },
     "NH-CORE-GENERAL-D1-AI-SYSTEMS-AWARENESS-01": {
       "draft": {
         "decision": "revise",
@@ -201,6 +601,206 @@
         }
       ],
       "updatedAt": "2026-09-18T04:21:15.165Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ.' Explanation left in English. Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ทุกครั้งที่เรียกใช้เครื่องมือสำเร็จ แต่ Agent กลับทำการดำเนินการเดิมที่เสร็จไปแล้วซ้ำ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: ระบบไม่ได้รับรู้ว่าการเรียกที่สำเร็จคือความคืบหน้าไปสู่การทำงานเสร็จ\nReason: complete Thai; keyed answer (A) unchanged. The AI-SYSTEMS-PROFICIENT family shares these four option strings — translate once in the option table.",
+          "id": "2026-09-18T04:32:38.165Z",
+          "savedAt": "2026-09-18T04:32:38.165Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:32:38.165Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The instruction is absentจากthe final Model input but present in the original conversation.' Explanation: 'The หลักฐาน locates the loss before Model กระบวนการing.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'กลุ่มการเรียนรู้ชุมชน' → 'กลุ่มเรียนรู้ในชุมชน'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: คำสั่งนั้นไม่มีอยู่ใน input สุดท้ายที่ส่งให้โมเดล แต่มีอยู่ในบทสนทนาต้นฉบับ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: หลักฐานชี้ว่าข้อมูลหายไปก่อนถึงขั้นตอนที่โมเดลประมวลผล\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:32:38.688Z",
+          "savedAt": "2026-09-18T04:32:38.688Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:32:38.688Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting.' Explanation left in English. Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที่ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:32:39.223Z",
+          "savedAt": "2026-09-18T04:32:39.223Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:32:39.224Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The retrieved ข้อมูล is correct, but the tool reports a denied write scope.' Explanation: 'The การดำเนินการ fails at the permission boundary.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:32:39.755Z",
+          "savedAt": "2026-09-18T04:32:39.755Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:32:39.755Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-05": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'Every tool call succeeds, yet the Agent repeats the same completed การดำเนินการ.' Explanation left in English. Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ทุกครั้งที่เรียกใช้เครื่องมือสำเร็จ แต่ Agent กลับทำการดำเนินการเดิมที่เสร็จไปแล้วซ้ำ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: ระบบไม่ได้รับรู้ว่าการเรียกที่สำเร็จคือความคืบหน้าไปสู่การทำงานเสร็จ\nReason: complete Thai; keyed answer (A) unchanged.",
+          "id": "2026-09-18T04:33:03.167Z",
+          "savedAt": "2026-09-18T04:33:03.167Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:33:03.167Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-06": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The instruction is absentจากthe final Model input but present in the original conversation.' Explanation: 'The หลักฐาน locates the loss before Model กระบวนการing.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: คำสั่งนั้นไม่มีอยู่ใน input สุดท้ายที่ส่งให้โมเดล แต่มีอยู่ในบทสนทนาต้นฉบับ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: หลักฐานชี้ว่าข้อมูลหายไปก่อนถึงขั้นตอนที่โมเดลประมวลผล\nReason: complete Thai; keyed answer (B) unchanged.",
+          "id": "2026-09-18T04:33:09.164Z",
+          "savedAt": "2026-09-18T04:33:09.164Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:33:09.164Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-07": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting.' Explanation left in English. Must not be piloted in Thai until fully translated. The English item itself is sound.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที่ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า\nReason: complete Thai; keyed answer (C) unchanged.",
+          "id": "2026-09-18T04:33:15.168Z",
+          "savedAt": "2026-09-18T04:33:15.168Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:33:15.168Z"
+    },
+    "NH-CORE-GENERAL-D1-AI-SYSTEMS-PROFICIENT-08": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The retrieved ข้อมูล is correct, but the tool reports a denied write scope.' Explanation: 'The การดำเนินการ fails at the permission boundary.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'บันทึก release' → 'release note'.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อมูลที่ค้นมาได้ถูกต้อง แต่เครื่องมือแจ้งว่าถูกปฏิเสธสิทธิ์ในการเขียน\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: การดำเนินการล้มเหลวที่ขอบเขตของสิทธิ์\nReason: complete Thai; keyed answer (D) unchanged.",
+          "id": "2026-09-18T04:33:21.834Z",
+          "savedAt": "2026-09-18T04:33:21.834Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T04:33:21.834Z"
     },
     "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01": {
       "draft": {
@@ -1295,7 +1895,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Same contradiction as the other select-all items: 'มากที่สุด' (one best answer) followed by 'เลือกได้มากกว่าหนึ่งข้อ' with only option C keyed, and the rewrite note admits a second correct action is missing. The scenario itself is clear ('ข้อกำหนดล่าสุดแบบตรงตัว พร้อมรหัสอ้างอิงข้อมูล โดยไม่เรียบเรียงใหม่' reads well). The Thai explanation ends with a bare English term — 'งานนี้ควรใช้ retrieval' — which no option uses; a Thai reader may not connect it to option C 'ดึงข้อความต้นฉบับ'.",
-          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธิบาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
+          "suggestedChange": "Current: การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด เลือกได้มากกว่าหนึ่งข้อ | คำอธิบาย: …งานนี้ควรใช้ retrieval\nRecommended: make it single-choice ('แนวทางการใช้ AI แบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด') or add a second defensible correct option and drop 'มากที่สุด' | คำอธ���บาย: …งานนี้จึงเป็นการดึงข้อความต้นฉบับ (retrieval)\nReason: resolves the one-answer vs select-all contradiction; the explanation then uses the same words as the correct option. Correct answer (C) unchanged.",
           "id": "2026-09-18T03:46:09.161Z",
           "savedAt": "2026-09-18T03:46:09.161Z"
         }
@@ -1681,7 +2281,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'The same app and แหล่งข้อมูล ข้อความต้นทาง are held fixed. Model B misses a ต้องการd distinction that Model A makes on ซ้ำ tests.' (note the broken token 'ต้องการd' from 'required'). A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ธุรกิจขนาดเล็กใช้ AI ช่วยจัดทำสรุปบริการ โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่���นเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai preserving the English meaning and the keyed answer (D).",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ธุรกิจขนาดเล็กใช้ AI ช่วยจัดทำสรุปบริการ โดยใช้แอปเดียวกันและข้อความต้นทางชุดเดียวกันตลอดการทดสอบ ผลคือโมเดล B พลาดความแตกต่างสำคัญที่โมเดล A แยกได้ทุกครั้งที่ทดสอบซ้ำ ต้องไม่นำข้อมูลระบุตัวลูกค้าใส่ในสรุปนี้\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ความแตกต่างยังคงอยู่แม้ควบคุมแอปและแหล่งข้อมูลให้เหมือนกัน จึงมาจากตัวโมเดล\nReason: complete, natural Thai preserving the English meaning and the keyed answer (D).",
           "id": "2026-09-18T03:50:43.174Z",
           "savedAt": "2026-09-18T03:50:43.174Z"
         }
