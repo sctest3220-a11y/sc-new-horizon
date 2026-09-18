@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T07:58:46.603Z",
+  "updatedAt": "2026-09-18T08:05:25.213Z",
   "questions": {
     "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
@@ -320,7 +320,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which configuration change addresses the specific ต้องการment?'), all four options are word-salad ('Grant the connector read-only การเข้าถึง to the needed ข้อมูล.', 'Store เวอร์ชันed preferences with explicit read and upวันที่ กฎs.', 'Supply the ข้อจำกัดs in the bounded context for each งาน.', 'Add retry, ต้นทุน, and stop ขีดจำกัดs with an escalation path.'), and the evidence sentence is too: 'Critical ข้อจำกัดs disappear in long ร่างing sessions.' Explanation: 'Task-critical instructions should not depend on unขีดจำกัดed conversation history.' Must not be piloted in Thai until fully translated. The English item itself is sound.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเงื่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั่งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: ข้อจำกัดสำคัญหายไปเมื่อเซสชันร่างงานยาวนาน\nStem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nOptions: ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น | เก็บการตั้งค่าของผู้ใช้แบบมีเวอร์ชัน พร้อมกฎการอ่านและการอัปเดตที่ชัดเจน | ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | กำหนดขีดจำกัดจำนวนครั้งที่ลองใหม่ ต้นทุน และเง��่อนไขหยุด พร้อมช่องทางส่งต่อให้คน\nExplanation: คำสั่งสำคัญของงานไม่ควรพึ่งพาประวัติการสนทนาที่ยาวไม่จำกัด\nReason: complete Thai; keyed answer (C) unchanged.",
           "id": "2026-09-18T04:31:33.508Z",
           "savedAt": "2026-09-18T04:31:33.508Z"
         }
@@ -1119,7 +1119,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "single",
-          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The แหล่งข้อมู��� explicitly leaves a material condition undecided.'; explanation 'A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
+          "comment": "AI review (Claude): The stem is left in English ('What should happen next before the … is used?') and the evidence sentence — the fact that decides the right action — is word-salad: 'The แหล่งข้อมูล explicitly leaves a material condition undecided.'; explanation 'A decisive answer would invent a condition the แหล่งข้อมูล ไม่ได้ establish.' The four options are clear, natural Thai and parallel, so only the evidence sentence, stem and explanation need translation. A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed.",
           "suggestedChange": "Recommended Thai:\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nStem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง\nReason: complete Thai; keyed answer (A) unchanged.",
           "id": "2026-09-18T04:14:41.465Z",
           "savedAt": "2026-09-18T04:14:41.465Z"
@@ -2231,7 +2231,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: the scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.', 'Which conclusion is justified by this การเปรียบเทียบ?', 'A. Check the การดำเนินการ permission boundary.' A Thai-speaking test taker cannot understand what is asked; this must not be piloted in Thai until fully translated. Two English-level issues as well: the stem says 'this comparison' but the scenario describes a single observation (a rule picks the wrong category), and options A–B are actions ('Check…', 'Correct…') while C–D are statements, so the choices are not parallel.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมโครงการใช้ AI ช่วยจัดทำรายงานอัปเดตโครงการ กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai with the same meaning; stem no longer claims a 'comparison' that the scenario does not contain. Consider making the English options parallel too. Correct answer (B) unchanged. Note: this whole PROFICIENT 'compare and choose' family has no Thai sentence pattern and falls back to word substitution — fix at template level.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมโครงการใช้ AI ช่วยจัดทำรายงานอัปเดตโครงการ กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อ���ูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai with the same meaning; stem no longer claims a 'comparison' that the scenario does not contain. Consider making the English options parallel too. Correct answer (B) unchanged. Note: this whole PROFICIENT 'compare and choose' family has no Thai sentence pattern and falls back to word substitution — fix at template level.",
           "id": "2026-09-18T03:49:21.172Z",
           "savedAt": "2026-09-18T03:49:21.172Z"
         }
@@ -2256,7 +2256,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: the scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'Two apps use the same Model. Only one can การเข้าถึง the ล่าสุด สื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว and only that app answers the เวอร์ชัน question correctly.' and the explanation 'A shared Model ไม่ได้ imply shared แหล่งข้อมูล การเข้าถึง.' A Thai-speaking test taker cannot read this; it must not be piloted in Thai until fully translated. The English item itself is sound and does contain a real comparison. Options A–B are actions while C–D are statements (not parallel).",
-          "suggestedChange": "Recommended Thai (full):\nScenario: กลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยจัดทำคู่มือ workshop แอปสองตัวใช้โมเดลเดียวกัน แต่มีเพียงแอปเดียวที่เข้าถึงสื่อการเรียนรู้เวอร์ชันล่าสุดที่ผ่านการตรวจทานแล้วได้ และมีเพียงแอปนั้นที่ตอบคำถามเรื่องเวอร์ชันได้ถูกต้อง คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: การใช้โมเดลเดียวกันไม่ได้หมายความว่าเข้าถึงแหล่งข้อมูลเดียวกัน\nReason: complete, natural Thai preserving the English meaning and the keyed answer (C).",
+          "suggestedChange": "Recommended Thai (full):\nScenario: กลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยจัดทำคู่มือ workshop แอปสองตัวใช้โมเดลเดียวกัน แต่มีเพียงแอปเดียวที่เข้าถึงสื่อการเรียนรู้เวอร์ชันล่าสุดที่ผ่านการตรวจทานแล้วได้ และมีเพียงแอปนั้นที่ตอบคำถามเรื่องเวอร์ชันได้ถูกต้อง คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: จากการเปรียบเทียบนี้ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการ���ำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: การใช้โมเดลเดียวกันไม่ได้หมายความว่าเข้าถึงแหล่งข้อมูลเดียวกัน\nReason: complete, natural Thai preserving the English meaning and the keyed answer (C).",
           "id": "2026-09-18T03:49:28.169Z",
           "savedAt": "2026-09-18T03:49:28.169Z"
         }
@@ -3212,6 +3212,406 @@
         }
       ],
       "updatedAt": "2026-09-18T04:10:49.183Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options (e.g. 'เส้นทาง the exception…') and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'Failures cluster immediately after แหล่งข้อมูล upวันที่s แต่older เคสs remain accurate.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ความผิดพลาดกระจุกตัวทันทีหลังการอัปเดตแหล่งข้อมูล ส่วนเคสเก่ายังถูกต้อง\nรายละเอียดเพิ่มเติม: refund ที่แนะนำเกินวงเงินอนุมัติของทีมหน้างาน\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: เพิ่มการตรวจเวอร์ชันแหล่งข้อมูล และการประเมินเมื่อมีการอัปเดต | ส่งกรณียกเว้นประเภทนี้ให้ผู้รีวิว และประเมินแยกต่างหาก\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งกรณียกเว้นนี้ให้ผู้มีอำนาจอนุมัติ refund ที่กำหนดไว้ | ทำ refund ทันทีหลัง Assistant ยืนยันคำแนะนำซ้ำ\nExplanation: รูปแบบความผิดพลาดนี้ชี้ไปที่ความเป็นปัจจุบันของข้อมูล ไม่ใช่คุณภาพภาษาโดยรวม คำแนะนำที่พูดซ้ำไม่ได้ให้อำนาจอนุมัติกรณียกเว้นที่จำเป็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: source-version checks; part 2: route to the designated refund approver).",
+          "id": "2026-09-18T08:05:22.766Z",
+          "savedAt": "2026-09-18T08:05:22.766Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:05:22.766Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options (e.g. 'เส้นทาง the exception…') and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'Performance is reliable on ordinary งานs but unคงที่ on a defined exception class.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ระบบทำงานได้น่าเชื่อถือกับงานทั่วไป แต่ไม่คงที่กับกรณียกเว้นประเภทหนึ่งที่ระบุได้ชัด\nรายละเอียดเพิ่มเติม: refund ครั้งก่อนอาจดำเนินการสำเร็จแล้ว แม้ระบบจะแจ้งหมดเวลา (timeout)\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: กำหนดให้ข้อกล่าวอ้างสำคัญต้องมีหลักฐานที่ตรวจสอบได้ก่อนเผยแพร่ | ส่งกรณียกเว้นประเภทนี้ให้ผู้รีวิว และประเมินแยกต่างหาก\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กระทบยอดบันทึกการชำระเงินก่อนทำ refund อีกครั้ง | ทำ refund ซ้ำเพราะลูกค้ายังแจ้งว่าล่าช้า\nExplanation: การกำหนดขอบเขตเฉพาะจุดช่วยรักษาความสามารถที่มีประโยชน์ไว้ พร้อมกับควบคุมส่วนที่ยังอ่อน ความล่าช้าที่ลูกค้ารับรู้ไม่ได้พิสูจน์ว่ายังไม่มีการ refund\nReason: complete Thai for both parts; keyed answers unchanged (part 1: route the exception class to a reviewer; part 2: reconcile the payment record first).",
+          "id": "2026-09-18T08:05:23.271Z",
+          "savedAt": "2026-09-18T08:05:23.271Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:05:23.271Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options (e.g. 'เส้นทาง the exception…') and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'The assistant produces confident answers even when ต้องการd fields are absent.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: กำหนดให้ข้อกล่าวอ้างสำคัญต้องมีหลักฐานที่ตรวจสอบได้ก่อนเผยแพร่ | ทดสอบการงดตอบและการบล็อกการตัดสินใจเมื่อข้อมูลสำคัญหายไป\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง | บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: test abstention/blocking; part 2: describe the pending state and real next step).",
+          "id": "2026-09-18T08:05:23.609Z",
+          "savedAt": "2026-09-18T08:05:23.609Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:05:23.609Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options (e.g. 'เส้นทาง the exception…') and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'Unsupported ข้อมูล รหัสอ้างอิง recur in a material subset of คำตอบเพื่อแก้ไขเคส ร่างs.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: รหัสอ้างอิงข้อมูลที่ไม่มีหลักฐานรองรับปรากฏซ้ำในร่างคำตอบเพื่อแก้ไขเคสจำนวนมากพอสมควร\nรายละเอียดเพิ่มเติม: ลูกค้าโต้แย้งข้อมูลระบุตัวตนในเคส\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: เพิ่มการตรวจเวอร์ชันแหล่งข้อมูล และการประเมินเมื่อมีการอัปเดต | กำหนดให้ข้อกล่าวอ้างสำคัญต้องมีหลักฐานที่ตรวจสอบได้ก่อนเผยแพร่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ข้อมูลในเคสปัจจุบันไปเลยเพราะอยู่ในระบบแล้ว | ใช้ช่องทางแก้ไขและยืนยันตัวตนที่กำหนดไว้\nExplanation: มาตรการนี้ทดสอบความผิดพลาดที่พบซ้ำ (การอ้างอิงที่ไม่มีหลักฐาน) ได้โดยตรง ข้อมูลที่บันทึกไว้อาจผิดได้ และต้องผ่านกระบวนการแก้ไขที่อนุมัติแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: require resolvable evidence before release; part 2: use the established identity-correction route).",
+          "id": "2026-09-18T08:05:24.043Z",
+          "savedAt": "2026-09-18T08:05:24.043Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:05:24.043Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI'), the part-1 stem is half English ('What should happen next before the คำตอบเพื่อแก้ไขเคส is used?'), all part-1 and part-2 options are English or word-salad (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'A material claim includes an untraceable ข้อมูล identifier.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ข้อกล่าวอ้างสำคัญข้อหนึ่งอ้างรหัสอ้างอิงข้อมูลที่ตรวจสอบย้อนกลับไม่ได้\nรายละเอียดเพิ่มเติม: refund ที่แนะนำเกินวงเงินอนุมัติของทีมหน้างาน\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: ตรวจสอบแหล่งข้อมูล และลบข้อกล่าวอ้างหากไม่มีหลักฐานรองรับ | แสดงความไม่แน่นอนและขอการตัดสินใจที่ยังขาดอยู่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งกรณียกเว้นนี้ให้ผู้มีอำนาจอนุมัติ refund ที่กำหนดไว้ | ทำ refund ทันทีหลัง Assistant ยืนยันคำแนะนำซ้ำ\nExplanation: รหัสอ้างอิงต้องเชื่อมไปถึงหลักฐานจริงได้ก่อน จึงจะใช้รองรับข้อกล่าวอ้างนั้นได้ คำแนะนำที่พูดซ้ำไม่ได้ให้อำนาจอนุมัติกรณียกเว้นที่จำเป็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: check source and remove unsupported claim; part 2: route to the designated refund approver).",
+          "id": "2026-09-18T08:01:38.366Z",
+          "savedAt": "2026-09-18T08:01:38.366Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:01:38.366Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI'), the part-1 stem is half English ('What should happen next before the คำตอบเพื่อแก้ไขเคส is used?'), all part-1 and part-2 options are English or word-salad (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The only cited procedure is marked superseded. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ขั้นตอนเดียวที่อ้างถึงถูกระบุว่ายกเลิกใช้แล้ว (superseded)\nรายละเอียดเพิ่มเติม: refund ครั้งก่อนอาจดำเนินการสำเร็จแล้ว แม้ระบบจะแจ้งหมดเวลา (timeout)\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: ตรวจสอบแหล่งข้อมูล และลบข้อกล่าวอ้างหากไม่มีหลักฐานรองรับ | นำขั้นตอนล่าสุดที่อนุมัติแล้วมาใช้ แล้วตอบใหม่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ทำ refund ซ้ำเพราะลูกค้ายังแจ้งว่าล่าช้า | กระทบยอดบันทึกการชำระเงินก่อนทำ refund อีกครั้ง\nExplanation: งานนี้ต้องการหลักฐานที่เป็นปัจจุบัน ไม่ใช่การเรียบเรียงใหม่ให้ดีขึ้น ความล่าช้าที่ลูกค้ารับรู้ไม่ได้พิสูจน์ว่ายังไม่มีการ refund\nReason: complete Thai for both parts; keyed answers unchanged (part 1: obtain current approved procedure; part 2: reconcile the payment record first).",
+          "id": "2026-09-18T08:01:40.442Z",
+          "savedAt": "2026-09-18T08:01:40.442Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:01:40.442Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI'), the part-1 stem is half English ('What should happen next before the คำตอบเพื่อแก้ไขเคส is used?'), all part-1 and part-2 options are English or word-salad (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The assistant has no การเข้าถึง to the necessary attachment.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: Assistant ไม่มีสิทธิ์เข้าถึงไฟล์แนบที่จำเป็น\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: นำขั้นตอนล่าสุดที่อนุมัติแล้วมาใช้ แล้วตอบใหม่ | ให้ข้อความตัดตอนที่อนุมัติแล้ว หรือระบุว่าตรวจสอบไม่ได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ | อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง\nExplanation: ช่องว่างของหลักฐานต้องได้รับการแก้ไข หรือไม่ก็ต้องแจ้งให้ชัด การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: approved extract or state it cannot be checked; part 2: describe the pending state and real next step).",
+          "id": "2026-09-18T08:02:33.520Z",
+          "savedAt": "2026-09-18T08:02:33.520Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:02:33.520Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI'), the part-1 stem is half English ('What should happen next before the คำตอบเพื่อแก้ไขเคส is used?'), all part-1 and part-2 options are English or word-salad (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…'), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The แหล่งข้อมูล explicitly leaves a material condition undecided.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nรายละเอียดเพิ่มเติม: ลูกค้าโต้แย้งข้อมูลระบุตัวตนในเคส\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: นำขั้นตอนล่าสุดที่อนุมัติแล้วมาใช้ แล้วตอบใหม่ | แสดงความไม่แน่นอนและขอการตัดสินใจที่ยังขาดอยู่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ช่องทางแก้ไขและยืนยันตัวตนที่กำหนดไว้ | ใช้ข้อมูลในเคสปัจจุบันไปเลยเพราะอยู่ในระบบแล้ว\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง ข้อมูลที่บันทึกไว้อาจผิดได้ และต้องผ่านกระบวนการแก้ไขที่อนุมัติแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: present the uncertainty; part 2: use the established identity-correction route).",
+          "id": "2026-09-18T08:02:54.899Z",
+          "savedAt": "2026-09-18T08:02:54.899Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:02:54.899Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI' — 'service' substituted mid-name), the part-1 stem is broken ('What ขีดจำกัดation is demonstrated by this คำตอบเพื่อแก้ไขเคส?'), all part-1 and part-2 options are English or word-salad (e.g. 'ประเด็น the refund…', 'เส้นทาง the exception…' — 'issue'/'route' substituted), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Two runs give different uncertain estimatesจากthe same incomplete หลักฐาน.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: รันสองครั้งได้ค่าประมาณที่ไม่แน่นอนและต่างกัน จากหลักฐานที่ไม่ครบชุดเดียวกัน\nรายละเอียดเพิ่มเติม: refund ที่แนะนำเกินวงเงินอนุมัติของทีมหน้างาน\nPart-1 stem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nPart-1 options: ข้อมูลอาจล้าสมัย | หลักฐานที่มีอยู่ยังไม่พอสำหรับการประเมินที่น่าเชื่อถือ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ทำ refund ทันทีหลัง Assistant ยืนยันคำแนะนำซ้ำ | ส่งกรณียกเว้นนี้ให้ผู้มีอำนาจอนุมัติ refund ที่กำหนดไว้\nExplanation: ความแปรปรวนและหลักฐานที่ขาดหายทำให้ไม่ควรสรุปผลอย่างมั่นใจ คำแนะนำที่พูดซ้ำไม่ได้ให้อำนาจอนุมัติกรณียกเว้นที่จำเป็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: evidence does not support a stable estimate; part 2: route to the designated refund approver).",
+          "id": "2026-09-18T08:00:55.048Z",
+          "savedAt": "2026-09-18T08:00:55.048Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:00:55.048Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI' — 'service' substituted mid-name), the part-1 stem is broken ('What ขีดจำกัดation is demonstrated by this คำตอบเพื่อแก้ไขเคส?'), all part-1 and part-2 options are English or word-salad (e.g. 'ประเด็น the refund…', 'เส้นทาง the exception…' — 'issue'/'route' substituted), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'A confident answer names a ข้อมูล that cannot be found in Policy บริการที่อนุมัติแล้วและประวัติเคส.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: คำตอบที่ฟังดูมั่นใจอ้างถึงข้อมูลรายการหนึ่ง ซึ่งไม่พบใน Policy บริการที่อนุมัติแล้วและประวัติเคส\nรายละเอียดเพิ่มเติม: refund ครั้งก่อนอาจดำเนินการสำเร็จแล้ว แม้ระบบจะแจ้งหมดเวลา (timeout)\nPart-1 stem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nPart-1 options: คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้ | ข้อความที่ดูน่าเชื่อถืออาจถูกแต่งขึ้น\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กระทบยอดบันทึกการชำระเงินก่อนทำ refund อีกครั้ง | ทำ refund ซ้ำเพราะลูกค้ายังแจ้งว่าล่าช้า\nExplanation: ความมั่นใจและความลื่นไหลของภาษาไม่ได้พิสูจน์ว่าข้อมูลนั้นมีอยู่จริง ความล่าช้าที่ลูกค้ารับรู้ไม่ได้พิสูจน์ว่ายังไม่มีการ refund\nReason: complete Thai for both parts; keyed answers unchanged (part 1: plausible statement may be fabricated; part 2: reconcile the payment record first).",
+          "id": "2026-09-18T08:01:00.909Z",
+          "savedAt": "2026-09-18T08:01:00.909Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:01:00.909Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI' — 'service' substituted mid-name), the part-1 stem is broken ('What ขีดจำกัดation is demonstrated by this คำตอบเพื่อแก้ไขเคส?'), all part-1 and part-2 options are English or word-salad (e.g. 'ประเด็น the refund…', 'เส้นทาง the exception…' — 'issue'/'route' substituted), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The answer quotes a procedure accurately, but that เวอร์ชัน has been replaced.' — option A reads 'out of วันที่'' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: คำตอบอ้างอิงขั้นตอนได้ถูกต้อง แต่เป็นเวอร์ชันที่ถูกแทนที่ไปแล้ว\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nPart-1 options: ข้อมูลอาจล้าสมัย | คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง | บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ\nExplanation: ความถูกต้องตามเวอร์ชันเก่าไม่ใช่ความถูกต้องในปัจจุบัน การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: out of date; part 2: describe the pending state and real next step).",
+          "id": "2026-09-18T08:01:00.995Z",
+          "savedAt": "2026-09-18T08:01:00.995Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:01:00.995Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona is broken ('Customer บริการใช้ AI' — 'service' substituted mid-name), the part-1 stem is broken ('What ขีดจำกัดation is demonstrated by this คำตอบเพื่อแก้ไขเคส?'), all part-1 and part-2 options are English or word-salad (e.g. 'ประเด็น the refund…', 'เส้นทาง the exception…' — 'issue'/'route' substituted), the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The assistant describes a file that was never attached or made การเข้าถึงible.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: Assistant บรรยายเนื้อหาของไฟล์ที่ไม่เคยแนบมาและไม่มีสิทธิ์เข้าถึง\nรายละเอียดเพิ่มเติม: ลูกค้าโต้แย้งข้อมูลระบุตัวตนในเคส\nPart-1 stem: กรณีนี้แสดงถึงข้อจำกัดใดของ AI\nPart-1 options: คำตอบอ้างถึงหลักฐานที่ AI ไม่สามารถเข้าถึงได้ | หลักฐานที่มีอยู่ยังไม่พอสำหรับการประเมินที่น่าเชื่อถือ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ข้อมูลในเคสปัจจุบันไปเลยเพราะอยู่ในระบบแล้ว | ใช้ช่องทางแก้ไขและยืนยันตัวตนที่กำหนดไว้\nExplanation: โมเดลไม่สามารถรู้เนื้อหาของเอกสารที่มันเข้าถึงไม่ได้ ข้อมูลที่บันทึกไว้อาจผิดได้ และต้องผ่านกระบวนการแก้ไขที่อนุมัติแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: lacks access to claimed evidence; part 2: use the established identity-correction route).",
+          "id": "2026-09-18T08:01:01.047Z",
+          "savedAt": "2026-09-18T08:01:01.047Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:01:01.047Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…') and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: 'A benchmark reports high average accuracy, but excludes the exception needed here. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: benchmark รายงานความแม่นยำเฉลี่ยสูง แต่ไม่ได้รวมกรณียกเว้นที่จำเป็นสำหรับงานนี้\nรายละเอียดเพิ่มเติม: refund ที่แนะนำเกินวงเงินอนุมัติของทีมหน้างาน\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: benchmark นี้ยังไม่ยืนยันประสิทธิภาพกับกรณียกเว้นนี้ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ส่งกรณียกเว้นนี้ให้ผู้มีอำนาจอนุมัติ refund ที่กำหนดไว้ | ทำ refund ทันทีหลัง Assistant ยืนยันคำแนะนำซ้ำ\nExplanation: ขอบเขตเฉพาะของงานนี้ไม่อยู่ในกลุ่มตัวอย่างที่ถูกวัด คำแนะนำที่พูดซ้ำไม่ได้ให้อำนาจอนุมัติกรณียกเว้นที่จำเป็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: benchmark does not cover this exception; part 2: route to the designated refund approver).",
+          "id": "2026-09-18T08:04:42.071Z",
+          "savedAt": "2026-09-18T08:04:42.071Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:04:42.071Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…') and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache…') but options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว\nรายละเอียดเพิ่มเติม: refund ครั้งก่อนอาจดำเนินการสำเร็จแล้ว แม้ระบบจะแจ้งหมดเวลา (timeout)\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: benchmark นี้ยังไม่ยืนยันประสิทธิภาพกับกรณียกเว้นนี้ | ความถูกต้องในอดีตไม่ได้ยืนยันว่าปัจจุบันยังถูกต้อง\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กระทบยอดบันทึกการชำระเงินก่อนทำ refund อีกครั้ง | ทำ refund ซ้ำเพราะลูกค้ายังแจ้งว่าล่าช้า\nExplanation: ข้อมูลที่ใช้สนับสนุนเปลี่ยนไปหลังจากผลลัพธ์เดิมเคยถูกต้อง ความล่าช้าที่ลูกค้ารับรู้ไม่ได้พิสูจน์ว่ายังไม่มีการ refund\nReason: complete Thai for both parts; keyed answers unchanged (part 1: past correctness ≠ present correctness; part 2: reconcile the payment record first).",
+          "id": "2026-09-18T08:04:43.042Z",
+          "savedAt": "2026-09-18T08:04:43.042Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:04:43.042Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…') and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกัน…') but options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ | ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ | อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง\nExplanation: การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: surface the unresolved conflict; part 2: describe the pending state and real next step).",
+          "id": "2026-09-18T08:04:43.425Z",
+          "savedAt": "2026-09-18T08:04:43.425Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:04:43.426Z"
+    },
+    "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options (e.g. 'เส้นทาง the exception…', 'ประเด็น the refund…') and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: 'Five identical Prompts repeat the same uncited claim แต่no original ข้อมูล supports it.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: ส่ง Prompt เดิมซ้ำห้าครั้ง ได้ข้อกล่าวอ้างเดิมที่ไม่มีการอ้างอิงทุกครั้ง และไม่มีข้อมูลต้นฉบับใดรองรับ\nรายละเอียดเพิ่มเติม: ลูกค้าโต้แย้งข้อมูลระบุตัวตนในเคส\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: benchmark นี้ยังไม่ยืนยันประสิทธิ��าพกับกรณียกเว้นนี้ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ข้อมูลในเคสปัจจุบันไปเลยเพราะอยู่ในระบบแล้ว | ใช้ช่องทางแก้ไขและยืนยันตัวตนที่กำหนดไว้\nExplanation: ระบบเดียวกันสามารถพูดข้อความที่ไม่มีหลักฐานรองรับซ้ำ ๆ ได้ ข้อมูลที่บันทึกไว้อาจผิดได้ และต้องผ่านกระบวนการแก้ไขที่อนุมัติแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: repeated agreement is not verification; part 2: use the established identity-correction route).",
+          "id": "2026-09-18T08:04:43.500Z",
+          "savedAt": "2026-09-18T08:04:43.500Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T08:04:43.500Z"
     },
     "NH-FUNCTION-FINANCE-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
@@ -4481,7 +4881,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Salesใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'The assistant produces confident answers even when ต้องการd fields are absent.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีข้อมูล account ที่อ่อนไหว\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: ทดสอบการงดตอบและการบล็อกการตัดสินใจเมื่อข้อมูลสำคัญหายไป | ส่งกรณียกเว้นประเภทนี้ให้ผู้รีวิว และประเมินแยกต่างหาก\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัด | ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู��แล้ว\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ การยืนยันต้องใช้ช่องทาง account ที่เชื่อถือได้และเป็นอิสระ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: test abstention/blocking; part 2: verify via established account channel).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีข้อมูล account ที่อ่อนไหว\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: ทดสอบการงดตอบและการบล็อกการตัดสินใจเมื่อข้อมูลสำคัญหายไป | ส่งกรณียกเว้นประเภทนี้ให้ผู้รีวิว และประเมินแยกต่างหาก\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัด | ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่แล้ว\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ การยืนยันต้องใช้ช่องทาง account ที่เชื่อถือได้และเป็นอิสระ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: test abstention/blocking; part 2: verify via established account channel).",
           "id": "2026-09-18T07:57:35.842Z",
           "savedAt": "2026-09-18T07:57:35.842Z"
         }
