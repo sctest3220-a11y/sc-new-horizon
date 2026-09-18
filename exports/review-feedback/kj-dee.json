@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-18T09:10:55.088Z",
+  "updatedAt": "2026-09-18T09:19:06.548Z",
   "questions": {
     "ADV-D1-AI-SYSTEMS-01": {
       "draft": {
@@ -201,6 +201,56 @@
         }
       ],
       "updatedAt": "2026-09-18T09:10:53.997Z"
+    },
+    "ADV-D1-AI-SYSTEMS-09": {
+      "draft": {
+        "decision": "reject",
+        "rating": "1",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "reject",
+          "rating": "1",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Critical design fault: the stem asks about the most appropriate challenge to 'the newest model removes the need for review', but the four options are the same generic 'scaling' set attached to all 10 ADV-D1 stems — the options are not challenges to the claim. A test taker cannot answer the question that was asked; they can only pick the option that sounds most responsible. Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for ai systems literacy before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้องการments'); Explanation is empty. Reject in current form and rebuild with stem-specific options (draft below).",
+          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\nเจ้าของผลิตภัณฑ์อ้างว่าโมเดลรุ่นใหม่ล่าสุดทำให้ไม่ต้องมีกระบวนการทบทวนแบบเดิมแล้ว คำโต้แย้งข้อใดเหมาะสมที่สุด\nA. ขอหลักฐานว่าโมเดลใหม่ผ่านกรณีที่เคยล้มเหลวมาก่อน และคงการทบทวนไว้จนกว่าหลักฐานจะยืนยัน\nB. เห็นด้วย เพราะโมเดลใหม่ย่อมดีกว่าเสมอ\nC. ยกเลิกการทบทวนบางส่วนก่อนเพื่อทดลองดู\nD. ปฏิเสธการใช้โมเดลใหม่ในทุกกรณี\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
+          "id": "2026-09-18T09:19:05.436Z",
+          "savedAt": "2026-09-18T09:19:05.436Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:19:05.436Z"
+    },
+    "ADV-D1-AI-SYSTEMS-10": {
+      "draft": {
+        "decision": "reject",
+        "rating": "1",
+        "clarity": "ambiguous",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "reject",
+          "rating": "1",
+          "clarity": "ambiguous",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Critical design fault: the stem asks about what the owner should do next when the first deployment shows mixed outcomes, but the four options are the same generic 'scaling' set attached to all 10 ADV-D1 stems — the options do not address edge cases or workarounds. A test taker cannot answer the question that was asked; they can only pick the option that sounds most responsible. Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for ai systems literacy before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้องการments'); Explanation is empty. Reject in current form and rebuild with stem-specific options (draft below).",
+          "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\nระบบเปิดใช้จริงรอบแรกแล้ว และทีมต่าง ๆ รายงานผลลัพธ์ที่ปะปนกัน กรณีขอบ (edge case) และวิธีเลี่ยง (workaround) เจ้าของระบบควรทำอะไรต่อไป\nA. รวบรวมกรณีขอบและวิธีเลี่ยง จัดกลุ่มสาเหตุ แก้ที่การตั้งค่าหรือกระบวนการ และวัดผลก่อนขยายต่อ\nB. ขยายต่อทันที เพราะภาพรวมยังดี\nC. เปลี่ยนเครื่องมือทันที\nD. ถอนระบบทั้งหมดโดยไม่วิเคราะห์\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
+          "id": "2026-09-18T09:19:05.476Z",
+          "savedAt": "2026-09-18T09:19:05.476Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:19:05.476Z"
     },
     "ADV-D1-CAPABILITY-LIMITS-01": {
       "draft": {
@@ -469,7 +519,7 @@
           "clarity": "wordy",
           "artifact": "irrelevant",
           "format": "single",
-          "comment": "AI review (Claude): The generic option set was clearly written for this stem, so once labels are removed the item is answerable (key: define success criteria, evidence, ownership and review controls before scaling). Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for core ai concepts before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้องการments'); Explanation is empty.",
+          "comment": "AI review (Claude): The generic option set was clearly written for this stem, so once labels are removed the item is answerable (key: define success criteria, evidence, ownership and review controls before scaling). Shared faults across the 40 ADV-D1 items: identical options ADVANCED-CONTROL / SPEED-FIRST / TOOL-ONLY / BLOCK-WITHOUT-LEARNING repeated for every stem and every competency (this copy is duplicated under the other three competencies); the labels reveal the key; the keyed option literally contains the competency name ('review controls for core ai concepts before scaling'), which is meaningless to a test taker; the rubric lines 'Focus competency… Relevant skills…' are reviewer-facing text shown to the user; the Thai view is untranslated ('ข้ามสายงาน wants to scale', 'หลักฐาน ต้��งการments'); Explanation is empty.",
           "suggestedChange": "Recommended rebuild (Thai, stem-specific options, neutral A–D labels):\nทีมข้ามสายงานต้องการขยาย workflow ที่ใช้ AI จาก pilot ที่ควบคุมได้ไปยัง 3 แผนก การตัดสินใจข้อใดแสดงวิจารณญาณที่ดีที่สุด\nA. กำหนดเกณฑ์ความสำเร็จ หลักฐานที่ต้องมี ผู้รับผิดชอบ และการควบคุมการทบทวน ก่อนขยาย\nB. ขยายทันที เพราะผู้ใช้กลุ่มแรกบอกว่าทำงานเร็วขึ้น\nC. เปลี่ยนไปใช้โมเดลหรือเครื่องมือรุ่นใหม่ แล้วถือว่าปัญหาหมดไป\nD. หยุดใช้ AI ในงานนี้ทั้งหมด โดยไม่เก็บหลักฐานหรือกำหนดทางที่ปลอดภัยกว่า\nKey: A\nReason: options must answer the stem; remove rubric lines and label leak; keep one copy per stem mapped to the competency it actually tests; add explanation.",
           "id": "2026-09-18T09:08:25.171Z",
           "savedAt": "2026-09-18T09:08:25.171Z"
@@ -952,6 +1002,256 @@
       ],
       "updatedAt": "2026-09-18T09:09:19.635Z"
     },
+    "CAL-D1-CONCEPTS-013": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Four behaviour→concept pairs (context / RAG / memory / hallucination) that are distinct and correctly keyed; a good calibration item. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs…' and the codes CONTEXT/RETRIEVAL/MEMORY/FALSE are shown in the user text — 'FALSE' in particular hints at the hallucination answer. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The 'concept matching sheet' artifact is not needed. The Thai view is untranslated English with substituted tokens ('ต้องการ to avoid', 'ผู้รีวิว inspect Prompts'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมกำลังเขียนข้อความช่วยเหลือผู้ใช้สำหรับผู้ช่วย AI และต้องไม่กล่าวอ้างเกินจริง จับคู่พฤติกรรมแต่ละอย่างกับแนวคิดที่มันขึ้นอยู่กับ\nคำตอบดีขึ้นเมื่อผู้ใช้วางข้อความนโยบายลงไป → Context\nแอปค้นคลังแหล่งข้อมูลก่อนตอบ → RAG\nผู้ช่วยจำการตั้งค่าของผู้ใช้ได้ในสัปดาห์ถัดไป → Memory\nผู้ช่วยสร้างการอ้างอิงปลอมที่ดูเหมือนจริง → Hallucination\nReason: translation; remove reviewer note and the codes (especially 'FALSE'); pairs unchanged.",
+          "id": "2026-09-18T09:18:35.058Z",
+          "savedAt": "2026-09-18T09:18:35.058Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:18:35.058Z"
+    },
+    "CAL-D1-SYSTEMS-014": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "needed",
+        "format": "multi",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "needed",
+          "format": "multi",
+          "comment": "AI review (Claude): Select-all with four correct system questions (scope, data boundary, logging, fallback) and one obvious distractor (tone). Content is exactly right for AI-systems literacy and the stem says the PM 'reviews an AI assistant trace', so the 'MCP/tool-call trace' artifact should be shown. Weaknesses: the stem does not say 'select all that apply' and 'matter most' suggests a single answer; codes SCOPE/DATA/LOG/FALLBACK/TONE are visible. The Thai view is untranslated English with substituted tokens ('ต้องการ to avoid', 'ผู้รีวิว inspect Prompts'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้จัดการผลิตภัณฑ์ตรวจดู trace การทำงานของผู้ช่วย AI ก่อนอนุมัติ workflow ที่ใช้เครื่องมือ คำถามด้านระบบข้อใดที่ต้องตอบให้ได้ก่อนเปิดใช้ (เลือกทุกข้อที่ถูกต้อง)\n☐ เครื่องมือใดสามารถดำเนินการ อ่าน เขียน หรือส่งข้อมูลได้\n☐ ข้อมูลอะไรบ้างที่ข้ามขอบเขตของแต่ละ connector\n☐ ผู้ตรวจสอบดู prompt การเรียกเครื่องมือ ผลลัพธ์ และการอนุมัติได้หรือไม่\n☐ จะเกิดอะไรขึ้นเมื่อเครื่องมือล้มเหลวหรือส่งหลักฐานที่ขัดแย้งกันกลับมา\n☐ ผู้ช่วยฟังดูกระตือรือร้นพอหรือไม่\nReason: add select-all cue; show the trace artifact; drop codes; translation; keyed set unchanged.",
+          "id": "2026-09-18T09:18:35.075Z",
+          "savedAt": "2026-09-18T09:18:35.075Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:18:35.075Z"
+    },
+    "COMP-D1-CONCEPTS-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three-part concept check (LLM / RAG / hallucination), each with one clear key (B / A / C) and readable options. Weaknesses: the parts have no question text — the taker sees 'LLM:A.' etc. and must infer 'what is an LLM?'; 'RAG:C. A larger screen for writing prompts' is a throwaway distractor. The 'AI concept workbench' artifact is not needed for definitions. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมมักสับสนระหว่าง LLM, RAG, context, memory และ hallucination ขณะวางแผนทำแชตบอต ตอบทั้ง 3 ส่วน\nส่วนที่ 1 — LLM คืออะไร\nA. ฐานข้อมูลที่เก็บเฉพาะข้อเท็จจริงที่ตรวจสอบแล้ว | B. โมเดลที่คาดเดาและสร้างภาษาจากรูปแบบที่เรียนรู้มา | C. เครื่องมือ workflow ที่ตรวจนโยบายบริษัทเสมอ\nส่วนที่ 2 — RAG คืออะไร\nA. การค้นแหล่งข้อมูลที่เกี่ยวข้องมาให้โมเดลใช้ตอนตอบ | B. การรับประกันว่าทุกคำตอบผ่านการอนุมัติทางกฎหมาย | C. การให้โมเดลตอบจากความจำโดยไม่ดูเอกสาร (replace the 'larger screen' distractor)\nส่วนที่ 3 — hallucination คืออะไร\nA. โมเดลปฏิเสธที่จะตอบเนื้อหาไม่ปลอดภัย | B. โมเดลตอบช้ากว่าที่คาด | C. โมเดลให้คำตอบที่ลื่นไหลแต่ไม่มีหลักฐานรองรับหรือผิด\nKeys: B / A / C. Reason: add a stem per part; translate; keys unchanged.",
+          "id": "2026-09-18T09:14:03.996Z",
+          "savedAt": "2026-09-18T09:14:03.996Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:03.996Z"
+    },
+    "COMP-D1-SYSTEMS-002": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "needed",
+          "format": "single",
+          "comment": "AI review (Claude): Good item: realistic quote, references a screenshot with calendar/email/CRM connectors (the 'tool connector trace' artifact is genuinely needed and should be shown), one clear key (A) and plausible distractors. Reads once → understood. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้จัดการบอกว่า “มันก็แค่แชตบอต ไม่มีปัญหาเรื่องความเป็นส่วนตัวหรอก” แต่ภาพหน้าจอแสดงว่าเปิดการเชื่อมต่อกับปฏิทิน อีเมล และ CRM ไว้ คำแก้ความเข้าใจข้อใดดีที่สุด\nA. ตัวแอปสำคัญ เพราะเครื่องมือและ memory อาจเปิดเผยหรือดำเนินการกับข้อมูลของผู้ใช้ได้\nB. ชื่อโมเดลอย่างเดียวบอกความเสี่ยงในการใช้งานได้ครบ\nC. ความเป็นส่วนตัวเกี่ยวข้องเฉพาะเมื่อแชตบอตเขียนโค้ด\nD. วิธีที่ปลอดภัยที่สุดคือปิดเครื่องมือ AI ทุกอย่างถาวร\nKey: A. Reason: translation only; keep the screenshot artifact visible.",
+          "id": "2026-09-18T09:14:04.032Z",
+          "savedAt": "2026-09-18T09:14:04.032Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.032Z"
+    },
+    "D1-A-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "needed",
+          "format": "single",
+          "comment": "AI review (Claude): Short, high-stakes and clear (allergy-sensitive dinner). Key B is unambiguous. The stem depends on 'this AI answer', so the 'Recipe Bot Reply' artifact must be displayed with the item. Distractor D ('ask the chatbot to be more confident') is weak but acceptable. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nเพื่อนจะใช้คำตอบจาก AI นี้ทำอาหารเย็นสำหรับคนที่แพ้อาหาร เขาควรทำอะไรก่อน\nA. เชื่อคำตอบได้เลยถ้าเขียนลื่นไหล\nB. ตรวจสอบว่าแหล่งข้อมูลรองรับข้อความนั้นจริงก่อนนำไปใช้\nC. ปฏิเสธคำตอบจากแชตบอตทั้งหมด เพราะเชื่อถือไม่ได้เลย\nD. ขอให้แชตบอตตอบให้มั่นใจกว่านี้\nKey: B. Reason: translation only; show the recipe-bot reply artifact.",
+          "id": "2026-09-18T09:14:04.056Z",
+          "savedAt": "2026-09-18T09:14:04.056Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.056Z"
+    },
+    "D1-AGENT-008": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three pairs (chatbot / copilot / agent) with crisp one-line differences; good awareness item. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are shown in the user text and should be removed. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nเพื่อนบอกว่าแชตบอต copilot และ agent คือสิ่งเดียวกัน จับคู่รูปแบบเครื่องมือ AI แต่ละแบบกับความแตกต่างที่สำคัญที่สุด\nแชตบอต → ตอบโต้ในรูปแบบการสนทนา\nCopilot → ช่วยงานอยู่ภายใน workflow ของคน\nAgent → วางแผนและใช้เครื่องมือเพื่อไปให้ถึงเป้าหมายได้\nReason: translation; remove reviewer note and codes; pairs unchanged.",
+          "id": "2026-09-18T09:14:04.231Z",
+          "savedAt": "2026-09-18T09:14:04.231Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.231Z"
+    },
+    "D1-H-003": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "needed",
+          "format": "single",
+          "comment": "AI review (Claude): Key A (plausible answer not grounded in retrieved evidence) is clear, but two distractors are throwaways ('the model became malicious', 'the user typed too slowly'), so the item is effectively a 2-option question. Showing the 'Refund Policy Answer' artifact next to the documents would make it a real evidence check. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full, stronger distractors):\nผู้ช่วย AI ตอบนโยบายการคืนเงินที่ไม่มีอยู่ในเอกสารที่อัปโหลด น่าจะเกิดอะไรขึ้น\nA. โมเดลสร้างคำตอบที่ดูสมเหตุสมผลโดยไม่ได้อิงหลักฐานที่ค้นมา\nB. โมเดลอ่านเอกสารครบแล้ว แต่สรุปตัวเลขคลาดเคลื่อนเล็กน้อย\nC. ผู้ใช้ตั้งค่า temperature ต่ำเกินไป\nD. คำตอบต้องซ่อนอยู่ในเอกสารแน่ ๆ แค่หาไม่เจอ\nKey: A. Reason: replace the two non-serious distractors; translation.",
+          "id": "2026-09-18T09:14:04.183Z",
+          "savedAt": "2026-09-18T09:14:04.183Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.183Z"
+    },
+    "D1-M-002": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear setup question with one defensible key (A: retrieval from the approved policy repository). Distractors are realistic (training data, premature fine-tuning, paste every time). The 'Leave Policy Chatbot' artifact is not required to answer. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมของคุณต้องการให้ AI ตอบคำถามเกี่ยวกับนโยบาย HR ฉบับล่าสุด การตั้งค่าแบบใดปลอดภัยที่สุด\nA. ใช้การค้นข้อมูล (retrieval) จากคลังนโยบายที่อนุมัติแล้ว\nB. พึ่งพาข้อมูลที่โมเดลถูกฝึกมา\nC. fine-tune ทันทีโดยไม่ประเมินการค้นข้อมูลก่อน\nD. ให้ผู้ใช้วางข้อความนโยบายเองทุกครั้ง\nKey: A. Reason: translation only.",
+          "id": "2026-09-18T09:14:04.166Z",
+          "savedAt": "2026-09-18T09:14:04.166Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.166Z"
+    },
+    "D1-N-005": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Realistic scenario (confident legal explanation without quoting the clause). Key B is right but is a long two-clause sentence while A/C/D are one line — length signals the answer. 'Which reflection best shows AI fluency?' is programme jargon; ask 'What should Mina conclude?'. The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nมีนาใช้ผู้ช่วย AI อธิบายข้อสัญญาข้อหนึ่ง คำตอบดูมั่นใจ แต่ไม่ได้ยกข้อความในสัญญา และอาจปนแนวคิดกฎหมายทั่วไปกับนโยบายของบริษัท มีนาควรสรุปอย่างไร\nA. น่าจะถูกต้อง เพราะใช้ศัพท์กฎหมาย\nB. ใช้เป็นคำอธิบายเบื้องต้นได้ แต่ต้องเทียบกับข้อสัญญาจริงและนโยบายที่อนุมัติแล้ว\nC. ไม่ควรใช้ AI ทำความเข้าใจเอกสารเลย\nD. นโยบายบริษัทสำคัญน้อยกว่าคำตอบของโมเดล\nKey: B. Reason: plain stem; shorten B; translation.",
+          "id": "2026-09-18T09:14:04.217Z",
+          "savedAt": "2026-09-18T09:14:04.217Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.217Z"
+    },
+    "D1-P-004": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three clean task→owner pairs (brainstorm / approve refund / rewrite tone); a good awareness item on human–AI division of work. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are shown in the user text and should be removed. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The Thai view is untranslated English with substituted tokens ('languageจากlearned patterns', 'ที่อนุมัติแล้ว'), so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nเพื่อนร่วมทีมอยากรู้ว่า AI ช่วยงานอะไรได้อย่างปลอดภัย จับคู่งานแต่ละอย่างกับผู้รับผิดชอบ\nระดมไอเดียร่างแรก → AI ช่วยได้ คนกำหนดทิศทาง\nอนุมัติการคืนเงินให้ลูกค้ากรณีละเอียดอ่อน → คนเป็นเจ้าของการตัดสินใจ\nเขียนโน้ตใหม่ให้น้ำเสียงเหมาะสม → AI ร่างได้ คนตรวจความหมาย\nReason: translation; remove reviewer note and codes; pairs unchanged.",
+          "id": "2026-09-18T09:14:04.202Z",
+          "savedAt": "2026-09-18T09:14:04.202Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:14:04.202Z"
+    },
     "DEPTH-D1-CONCEPTS-025": {
       "draft": {
         "decision": "revise",
@@ -1227,6 +1527,106 @@
       ],
       "updatedAt": "2026-09-18T08:59:40.484Z"
     },
+    "EXEC-D1-002": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Clear executive architecture choice with one correct key (B). B is a four-clause sentence while A/C/D are one line — length gives the answer away; D ('ban all policy questions from AI forever') is a throwaway. The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full, B shortened, D replaced):\nทีมเสนอให้ใช้ memory ของโมเดลตอบคำถามเรื่องนโยบายภายในฉบับปัจจุบัน เพราะโมเดลตอบได้ลื่นไหล ผู้บริหารผู้สนับสนุนควรเลือกสถาปัตยกรรมแบบใด\nA. ใช้ memory ของโมเดลอย่างเดียว เพราะผลลัพธ์ลื่นไหล\nB. ค้นจากแหล่งนโยบายที่อนุมัติแล้ว พร้อมการอ้างอิง สิทธิ์เข้าถึง และการทบทวนคำแนะนำที่มีผลกระทบสูง\nC. ให้พนักงานวางข้อความนโยบายลงในเครื่องมือสาธารณะ\nD. fine-tune โมเดลด้วยนโยบายฉบับปัจจุบันแล้วใช้โดยไม่ต้องอ้างอิง\nKey: B. Reason: translation; more plausible D.",
+          "id": "2026-09-18T09:15:45.526Z",
+          "savedAt": "2026-09-18T09:15:45.526Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.526Z"
+    },
+    "EXEC-D1-003": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three misconception→concept pairs for executives (benchmark ≠ safe authority; current policy needs grounding; tool-chaining agent needs permissions/logs/supervision). Accurate and distinct. The left-hand items are terse fragments ('Current policy answer') — a few more words would help. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are shown in the user text and should be removed. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nทีมผู้บริหารเชื่อว่า AI agent ต่อเครื่องมือหลายตัวทำงานเองได้อย่างปลอดภัย เพราะโมเดลผ่าน benchmark แล้ว จับคู่ความเข้าใจผิดกับแนวคิดการกำกับดูแล AI ที่ถูกต้อง\nคะแนน benchmark สูง → เป็นสัญญาณความสามารถ ไม่ใช่อำนาจที่ปลอดภัยแล้ว\nคำตอบเรื่องนโยบายฉบับปัจจุบัน → ต้องอิงแหล่งข้อมูลที่อนุมัติแล้ว\nAgent ที่ต่อเครื่องมือเป็นลูกโซ่ → ต้องมีสิทธิ์ที่กำหนดชัด บันทึกการทำงาน และการกำกับดูแล\nReason: translation; remove reviewer note and codes.",
+          "id": "2026-09-18T09:15:45.509Z",
+          "savedAt": "2026-09-18T09:15:45.509Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.509Z"
+    },
+    "EXEC-EXP-D1-CAL-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Four-term matching (chatbot / copilot / workflow automation / agent) with precise capability-boundary descriptions; well targeted at board-level vocabulary. The assigned 'workflow / agent trace' artifact is unrelated to a vocabulary item. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are shown in the user text and should be removed. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nกรรมการบริษัทใช้คำว่าแชตบอต copilot ระบบอัตโนมัติ และ agent สลับกันไปมาขณะหารือเรื่องงบ AI ใหม่ จับคู่แต่ละคำกับขอบเขตความสามารถที่ผู้นำควรเข้าใจ\nแชตบอต → ตอบโต้เป็นการสนทนา ไม่ได้เป็นเจ้าของการดำเนินการในระบบ\nCopilot → ช่วยคนภายในขั้นตอนงานที่มีอยู่\nระบบอัตโนมัติ (workflow automation) → ทำขั้นตอนที่กำหนดไว้ล่วงหน้าเมื่อเงื่อนไขครบ\nAI agent → วางแผนและใช้เครื่องมือเพื่อไปถึงเป้าหมาย ภายในขอบเขตอำนาจที่กำหนด\nReason: translation; remove reviewer note and codes; drop the trace artifact.",
+          "id": "2026-09-18T09:15:45.543Z",
+          "savedAt": "2026-09-18T09:15:45.543Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.543Z"
+    },
+    "GEN-EXP-D1-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Relatable scenario (parent summarising a school phone policy) with three behaviour→concept pairs that are distinct and correct. The 'policy summary' artifact is optional because the behaviours are described in the pairs. The reviewer-facing instruction 'Reviewer should turn these into observation-to-concept pairs instead of a single MCQ' and the internal codes are shown in the user text and should be removed. Matching is the right format (dropdown has no 'matching' option; multi-part is closest). The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nผู้ปกครองให้ผู้ช่วย AI สรุปนโยบายการใช้โทรศัพท์ของโรงเรียนก่อนส่งเข้ากลุ่มแชตห้องเรียน จับคู่พฤติกรรมของ AI กับแนวคิดที่มันสะท้อน\nบทสรุปตัดข้อยกเว้นที่ครูอนุมัติไว้ทิ้ง → ความหมายของต้นฉบับหายไป\nคำตอบฟังดูเป็นข้อสรุปสุดท้าย แม้ตรวจทานน้อย → ข้อความลื่นไหลไม่ใช่หลักฐาน\nผู้ใช้เปิดคู่มือโรงเรียนตรวจก่อนส่ง → การยึดกับหลักฐาน (grounding)\nReason: translation; remove reviewer note and codes; pairs unchanged.",
+          "id": "2026-09-18T09:15:45.446Z",
+          "savedAt": "2026-09-18T09:15:45.446Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.446Z"
+    },
     "MATCH-AI-COMPONENTS-061": {
       "draft": {
         "decision": "revise",
@@ -1276,6 +1676,81 @@
         }
       ],
       "updatedAt": "2026-09-18T08:59:40.445Z"
+    },
+    "MULTI-CONCEPT-EXEC-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Four mini-parts (architecture / tooling / governance / value) with no question text — e.g. 'TOOLING:A. They mainly improve tone and writing style' where 'They' refers to connectors that are never named in the part. Executives must guess each hidden question. Options themselves are good and keys are defensible (A / B / C / A). Intro is dense (RAG, memory, MCP-style connectors, agents in one sentence). The 'executive concept workbench' artifact is not needed. The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full, with stems):\nคณะกรรมการบริหารกำลังตัดสินใจว่าแพลตฟอร์ม AI รุ่นถัดไปควรใช้ RAG, memory, connector (แบบ MCP) และ agent สำหรับงานนโยบาย การเงิน และลูกค้าหรือไม่ ตอบทั้ง 4 ส่วน\nส่วนที่ 1 — สถาปัตยกรรม: ข้อใดถูกต้อง\nA. ความลื่นไหลของ LLM, การอิงแหล่งข้อมูลด้วย RAG และการจดจำด้วย memory แก้ปัญหาต่างกัน | B. คำตอบที่ลื่นไหลแสดงว่าระบบใช้แหล่งข้อมูลของบริษัทที่อนุมัติแล้ว | C. memory ควรมาแทนการค้นเอกสารสำหรับนโยบายฉบับปัจจุบัน\nส่วนที่ 2 — connector ทำอะไร\nA. ช่วยปรับน้ำเสียงและสำนวนเป็นหลัก | B. ทำให้ AI เข้าถึงระบบ ไฟล์ และ workflow ได้ภายใต้อำนาจที่กำหนด | C. ทำให้ไม่ต้อง map workflow ธุรกิจอีก\nส่วนที่ 3 — หลักฐานการกำกับดูแลที่ควรขอคืออะไร\nA. เดโมที่สวยและผู้สนับสนุนที่มั่นใจ | B. system prompt ที่ยาวขึ้นและบรรยายพฤติกรรมที่ดี | C. สิทธิ์ที่จำกัดขอบเขต การอนุมัติ บันทึกการทำงาน rollback และผู้รับผิดชอบที่ระบุชื่อ\nส่วนที่ 4 — ควรตัดสินใจลงทุนอย่างไร\nA. ผูกการเลือกความสามารถกับ workflow ตัวชี้วัดคุณค่า ความเสี่ยง และหลักฐานการนำไปใช้ | B. ลงทุนทุกแนวคิดเท่ากันเพื่อแสดงว่าบริษัทก้าวหน้าด้าน AI | C. รอจนกว่าตลาดจะเลือกสถาปัตยกรรมสุดท้าย\nKeys: A / B / C / A. Reason: add stems; translation.",
+          "id": "2026-09-18T09:15:45.561Z",
+          "savedAt": "2026-09-18T09:15:45.561Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.561Z"
+    },
+    "MULTI-CONCEPT-GEN-001": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three mini-parts with no question text: the taker sees 'LLM:A…', 'RAG:A. Ask the model to rely on general training knowledge…', 'MCP:A…' and has to guess what each part asks (part 2 options are actions, so the hidden question must be something like 'which setup gives a grounded HR answer?'). 'MCP' is unexplained jargon for a general audience. Intro sentence is long and abstract. Keys are defensible once stems exist (A / B / C). The 'concept cluster' artifact is not needed. The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full, with stems):\nผู้ใช้อยากเข้าใจว่าทำไมคำตอบของ AI จึงอาจลื่นไหล อิงแหล่งข้อมูล เชื่อมกับเครื่องมือ หรือปรับตามตัวบุคคลได้ ขึ้นกับการตั้งค่า ตอบทั้ง 3 ส่วน\nส่วนที่ 1 — ข้อใดอธิบาย LLM ได้ถูกต้อง\nA. LLM สร้างภาษาที่ดูสมเหตุสมผลได้โดยไม่มีหลักฐาน | B. RAG รับประกันเสมอว่าคำตอบเป็นปัจจุบัน | C. memory หมายถึงโมเดลได้ตรวจไฟล์ที่อนุมัติแล้ว\nส่วนที่ 2 — ต้องการคำตอบเรื่องนโยบาย HR ที่อิงเอกสารจริง ควรตั้งค่าอย่างไร\nA. ให้โมเดลตอบจากความรู้ทั่วไปที่ฝึกมา | B. ค้นแหล่งนโยบายที่อนุมัติแล้วและแสดงการอ้างอิง | C. บันทึกการตั้งค่าว่าคำถาม HR สำคัญ\nส่วนที่ 3 — เมื่อเชื่อมต่อ AI กับระบบอื่นผ่าน connector (แบบ MCP) สิ่งใดเปลี่ยนไป\nA. คำตอบแม่นยำขึ้นโดยอัตโนมัติ | B. prompt ไม่ต้องให้คนตรวจอีก | C. สิทธิ์ บันทึกการทำงาน และจุดอนุมัติกลายเป็นเรื่องสำคัญ\nKeys: A / B / C. Reason: add stems; explain MCP; translation.",
+          "id": "2026-09-18T09:15:45.462Z",
+          "savedAt": "2026-09-18T09:15:45.462Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.462Z"
+    },
+    "MULTI-SOURCE-GEN-003": {
+      "draft": {
+        "decision": "revise",
+        "rating": "2",
+        "clarity": "confusing",
+        "artifact": "needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "2",
+          "clarity": "confusing",
+          "artifact": "needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Three mini-parts (grounding gap / review action / privacy control) with no question text; the labels hint at the topic but the taker still has to guess the question. The stem says 'the draft may mix source facts with unsupported interpretation', so the 'raw source comparison' artifact is required — without it the grounding part cannot be judged. Keys defensible (B / C / A). Part 3 (privacy) is unrelated to the source-comparison task and could be a separate item. The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full, with stems):\nผู้ช่วย AI ในที่ทำงานตอบคำถามนโยบายโดยใช้แหล่งข้อมูลที่ค้นมา แต่ร่างคำตอบอาจปนข้อเท็จจริงจากแหล่งกับการตีความที่ไม่มีหลักฐาน ดูเอกสารต้นฉบับและคำตอบ แล้วตอบทั้ง 3 ส่วน\nส่วนที่ 1 — ปัญหาหลักของร่างคำตอบคืออะไร\nA. สั้นเกินไปจนไม่มีประโยชน์ | B. ถือว่าข้อความที่ลื่นไหลเท่ากับอิงแหล่งข้อมูลแล้ว | C. ปฏิเสธที่จะช่วยงานที่ปลอดภัย\nส่วนที่ 2 — ผู้ตรวจควรทำอย่างไร\nA. ส่งต่อได้เลย เพราะมีชื่อแหล่งข้อมูลอยู่ในเอกสาร | B. ขอให้ AI ตอบให้มั่นใจขึ้น | C. ทำเครื่องหมายแต่ละข้อความว่า รองรับ / ขัดแย้ง / ไม่มีในแหล่งข้อมูล\nส่วนที่ 3 — ข้อใดเป็นการควบคุมความเป็นส่วนตัวที่ถูกต้อง\nA. ข้อมูลงานต้องใช้ผู้ช่วยระดับองค์กรที่อนุมัติแล้ว | B. เครื่องมือสาธารณะปลอดภัยถ้าเขียน prompt สุภาพ | C. รหัสผ่านเป็นข้อมูลอ่อนไหวอย่างเดียวที่ต้องเลี่ยง\nKeys: B / C / A. Reason: add stems; show the source-comparison artifact; translation.",
+          "id": "2026-09-18T09:15:45.476Z",
+          "savedAt": "2026-09-18T09:15:45.476Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.476Z"
     },
     "NH-CORE-GENERAL-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
@@ -2020,7 +2495,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Where should the ทีม investigate first?'), all four options are English with Thai fragments ('The loop’s state upวันที่ and completion detection.', 'The memory precedence and เวอร์ชัน กฎs.', 'The connector authorization configuration.', 'The context assembly and truncation step.'), and the evidence sentence is word-salad: 'The instruction is absentจากthe final Model input but present in the original conversation.' Explanation: 'The หลักฐาน locates the loss before Model กระบวนการing.' Must not be piloted in Thai until fully translated. The English item itself is sound. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: คำสั่งนั้นไม่มีอยู่ใน input สุดท้ายที่ส่งให้โมเดล แต่มีอยู่ในบทสนทนาต้นฉบับ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: หลักฐานชี้ว่าข้อมูลหายไปก่อนถึงขั้นตอนที่โมเดลประมวลผล\nReason: complete Thai; keyed answer (B) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: คำสั่งนั้นไม่มีอยู่ใน input สุดท้ายที่ส่งให้โมเดล แต่มีอยู่ในบทสนทนาต้นฉบับ\nStem: ทีมควรตรวจสอบที่จุดใดก่อน\nOptions: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์��ันของข้อมูลที่บันทึกไว้ | การตั้งค่าสิทธิ์ของ connector | ขั้นตอนประกอบ context และการตัดข้อความเมื่อยาวเกิน\nExplanation: หลักฐานชี้ว่าข้อมูลหายไปก่อนถึงขั้นตอนที่โมเดลประมวลผล\nReason: complete Thai; keyed answer (B) unchanged.",
           "id": "2026-09-18T04:33:09.164Z",
           "savedAt": "2026-09-18T04:33:09.164Z"
         }
@@ -3506,7 +3981,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: the scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A template กฎ selects the wrong category before any Model is called.', 'Which conclusion is justified by this การเปรียบเทียบ?', 'A. Check the การดำเนินการ permission boundary.' A Thai-speaking test taker cannot understand what is asked; this must not be piloted in Thai until fully translated. Two English-level issues as well: the stem says 'this comparison' but the scenario describes a single observation (a rule picks the wrong category), and options A–B are actions ('Check…', 'Correct…') while C–D are statements, so the choices are not parallel.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมโครงการใช้ AI ช่วยจัดทำรายงานอัปเดตโครงการ กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการ��ำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai with the same meaning; stem no longer claims a 'comparison' that the scenario does not contain. Consider making the English options parallel too. Correct answer (B) unchanged. Note: this whole PROFICIENT 'compare and choose' family has no Thai sentence pattern and falls back to word substitution — fix at template level.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมโครงการใช้ AI ช่วยจัดทำรายงานอัปเดตโครงการ กฎในเทมเพลตเลือกหมวดหมู่ผิดตั้งแต่ก่อนเรียกใช้โมเดล เผยแพร่ได้เฉพาะเวอร์ชันล่าสุดที่ได้รับอนุมัติแล้วเท่านั้น\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดที่ขั้นตอนรับข้อมูลเข้า (การเลือกหมวดหมู่) ก่อนถึงขั้นตอนที่โมเดลสร้างข้อความ\nReason: complete, natural Thai with the same meaning; stem no longer claims a 'comparison' that the scenario does not contain. Consider making the English options parallel too. Correct answer (B) unchanged. Note: this whole PROFICIENT 'compare and choose' family has no Thai sentence pattern and falls back to word substitution — fix at template level.",
           "id": "2026-09-18T03:49:21.172Z",
           "savedAt": "2026-09-18T03:49:21.172Z"
         }
@@ -4855,7 +5330,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "parts",
-          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกั��ขัดแย้งกัน…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกัน…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
           "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ข้อมูลล่าสุดจากสองแหล่งที่เป็นอิสระต่อกันขัดแย้งกันในค่าที่สำคัญ\nรายละเอียดเพิ่มเติม: รายงานพอร์ตโฟลิโอละเว้นการกระจุกตัวของ vendor ที่ใช้ร่วมกันหลายโครงการ\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินแต่ละโครงการแยกกันแล้วบวกคะแนนความเสี่ยง | ขอภาพรวมความเสี่ยงจาก dependency ที่สัมพันธ์กันแบบรวมศูนย์\nExplanation: การเลือกสรุปที่อ่านลื่นกว่าอาจซ่อนหลักฐานที่ยังขัดแย้งกัน dependency ที่ใช้ร่วมกันอาจก่อความล้มเหลวพร้อมกันซึ่งคะแนนแบบแยกส่วนมองไม่เห็น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: surface the unresolved conflict; part 2: request a consolidated view of correlated risk).",
           "id": "2026-09-18T08:29:07.962Z",
           "savedAt": "2026-09-18T08:29:07.962Z"
@@ -5331,7 +5806,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Finance executiveใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'One user’s saved context sometimes appears in another user’s งาน.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate; the English part-1 options are very jargon-heavy for a finance-executive audience.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: โครงการบรรลุเป้าด้านความเร็ว แต่ไม่ผ่านจุดตรวจการควบคุมสำคัญที่ประกาศไว้ล่วงหน้า\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อนุมัติงวดถัดไปโดยดูจากผลด้านความเร็วอย่างเดียว | ระงับการขยายเงินทุนจนกว่าจะแก้จุดตรวจสำคัญได้\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น จุดตรวจสำคัญไม่สามารถถูกหักกลบด้วยความสำเร็จในเป้าหมายอื่น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: hold funding until the gate is resolved).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nรายละเอียดเพิ่มเติม: โครงการบรรลุเป้าด้านความเร็ว แต่ไม่ผ่านจุดตรวจการควบคุมสำคัญที่ประกาศไว้ล่วงหน้า\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อนุมัติงวดถัดไปโดยดูจากผลด้านความเร็วอย่างเดียว | ระงับการขยายเงินทุนจนกว่าจะแก้จุดตรวจสำคัญได้\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น จุดตรวจสำคัญไม่สามา���ถถูกหักกลบด้วยความสำเร็จในเป้าหมายอื่น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: isolate memory by identity; part 2: hold funding until the gate is resolved).",
           "id": "2026-09-18T08:34:50.456Z",
           "savedAt": "2026-09-18T08:34:50.456Z"
         }
@@ -5531,7 +6006,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Finance executiveใช้ AI'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad ('…extra ผลลัพธ์ in the funding เคส'), and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'An earlier instruction disappears after the conversation becomes too long. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอ���ยดเพิ่มเติม: โครงการบรรลุเป้าด้านความเร็ว แต่ไม่ผ่านจุดตรวจการควบคุมสำคัญที่ประกาศไว้ล่วงหน้า\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ระงับการขยายเงินทุนจนกว่าจะแก้จุดตรวจสำคัญได้ | อนุมัติงวดถัดไปโดยดูจากผลด้านความเร็วอย่างเดียว\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ จุดตรวจสำคัญไม่สามารถถูกหักกลบด้วยความสำเร็จในเป้าหมายอื่น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: hold funding until the gate is resolved).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารฝ่ายการเงินใช้ AI ช่วยจัดทำคำแนะนำการจัดสรรเงินทุน\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอียดเพิ่มเติม: โครงการบรรลุเป้าด้านความเร็ว แต่ไม่ผ่านจุดตรวจการควบคุมสำคัญที่ประกาศไว้ล่วงหน้า\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ระงับการขยายเงินทุนจนกว่าจะแก้จุดตรวจสำคัญได้ | อนุมัติงวดถัดไปโดยดูจากผลด้านความเร็วอย่างเดียว\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ จุดตรวจสำคัญไม่สามารถถูกหักกลบด้วยความสำเร็จในเป้าหมายอื่น\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: hold funding until the gate is resolved).",
           "id": "2026-09-18T08:32:36.078Z",
           "savedAt": "2026-09-18T08:32:36.078Z"
         }
@@ -5756,7 +6231,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Multiple Agents retry one another’s ล้มเหลว งานs indefinitely.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: shared run state/global stop budget; part 2: evaluate representative dependent services first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nรายละเอียดเพิ่มเติม: การเปลี่ยน Model หรือ connector ที่ใช้ร่วมกันส่งผลต่อบริการที่พึ่งพาหลายบริการ\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัด���ารความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประเมินบริการที่พึ่งพาซึ่งเป็นตัวแทนก่อน release platform | ทดสอบเฉพาะ benchmark ของ component แบบแยกส่วน\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent ประสิทธิภาพของ component ไม่ได้ยืนยันพฤติกรรมปลายน้ำทั้งหมด\nReason: complete Thai for both parts; keyed answers unchanged (part 1: shared run state/global stop budget; part 2: evaluate representative dependent services first).",
           "id": "2026-09-18T08:43:07.757Z",
           "savedAt": "2026-09-18T08:43:07.757Z"
         }
@@ -6006,7 +6481,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Where should the ทีม investigate first?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The Prompt is ล่าสุด, but a saved user preference overrides the new ที่อนุมัติแล้ว setting.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้��นเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที่ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: memory precedence/version rules; part 2: enforce authorization in an external policy boundary).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: Prompt เป็นเวอร์ชันล่าสุด แต่การตั้งค่าที่ผู้ใช้บันทึกไว้กลับมีผลเหนือการตั้งค่าใหม่ที่อนุมัติแล้ว\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: ทีมควรตรวจสอบที่จุดใดก่อน\nPart-1 options: การอัปเดตสถานะของ loop และการตรวจจับว่างานเสร็จแล้ว | กฎลำดับความสำคัญของ memory และกฎเวอร์ชันของข้อมูลที่บันทึกไว้\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: สถานะเก่าที่บันทึกไว้มีผลเหนือคำสั่งที่ใหม่กว่า Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: memory precedence/version rules; part 2: enforce authorization in an external policy boundary).",
           "id": "2026-09-18T08:42:26.785Z",
           "savedAt": "2026-09-18T08:42:26.785Z"
         }
@@ -6306,7 +6781,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is English ('Which mechanism explains the observation?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad ('…expand its own production สิทธิ์'), and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'Texts about similar ideas are placed near one another in a numerical representation. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง | ค้นหาแหล่งข้อมูลที่เกี่ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: numerical representation; part 2: enforce authorization in an external policy boundary).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: ข้อความที่มีความหมายคล้ายกันถูกจัดให้อยู่ใกล้กันในรูปแบบตัวเลข (numerical representation)\nรายละเอียดเพิ่มเติม: Agent ของ platform สามารถขยายสิทธิ์ production ของตัวเองได้\nPart-1 stem: กลไกใดอธิบายสิ่งที่พบนี้\nPart-1 options: แทนความหมายด้วยตัวเลขเพื่อค้นหาเนื้อหาที่เกี่ยวข้อง | ค้นหาแหล่งข้อมูลที่เกี���ยวข้องก่อนสร้างคำตอบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: พึ่งพาคำสั่งใน Prompt ที่บอกให้ Agent ขอเฉพาะสิทธิ์ที่จำเป็น | วางการอนุญาตไว้ในขอบเขตนโยบายภายนอกที่บังคับใช้ได้จริง\nExplanation: การแทนความหมายด้วยตัวเลขช่วยให้เปรียบเทียบความหมายได้ แต่ไม่ได้รับประกันว่าเนื้อหาถูกต้อง Prompt ไม่ใช่ขอบเขตบังคับใช้ที่เป็นอิสระสำหรับการขยายความสามารถ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: numerical representation; part 2: enforce authorization in an external policy boundary).",
           "id": "2026-09-18T08:37:16.866Z",
           "savedAt": "2026-09-18T08:37:16.866Z"
         }
@@ -6731,7 +7206,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space and is half English ('Transformation executiveใช้ AI เพื่อเตรียมคำแนะนำ operating Model'), the rule sentence is mixed ('การตัดสินใจ scale ต้องคำนึงถึง ownership ของ Workflow และหลักฐานการ adoption'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the part-2 stem and rewrite note are Thai. Evidence: 'A preference is restored in a new session from a saved profile record. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: การตั้งค่าที่ผู้ใช้เคยเลือกกลับมาใน session ใหม่ จากข้อมูลโปรไฟล์ที่บันทึกไว้\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: pilot ที่สำเร็จพึ่งพาผู้เชี่ยวชาญคนเดียว ซึ่งไม่สามารถดูแลทุกทีมที่วางแผนไว้ได้\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ทำซ้ำ pilot โดยไม่เปลี่ยนรูปแบบการสนับสนุนจากผู้เชี่ยวชาญ | สร้างและทดสอบระบบสนับสนุนที่ขยายได้ก่อนขยายผล\nExplanation: การกู้คืนข้ามเซสชันต้องใช้ข้อมูลที่บันทึกไว้ ไม่ใช่แค่บทสนทนาปัจจุบัน ปริมาณงานที่วางแผนไว้เกินกว่าที่ทรัพยากรสนับสนุนที่จำเป็นจะรองรับได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: application memory; part 2: build a scalable support capability before expansion).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านการเปลี่ยนแปลงองค์กร (Transformation) ใช้ AI ช่วยจัดทำคำแนะนำด้าน operating model\nEvidence: การตั้งค่าที่ผู้ใช้เคยเลือกกลับมาใน session ใหม่ จากข้อมูลโปรไฟล์ที่บันทึกไว้\nRule: การตัดสินใจขยายผล (scale) ต้องคำนึงถึงความเป็นเจ้าของ workflow และหลักฐานการนำไปใช้จริง\nรายละเอียดเพิ่มเติม: pilot ที่สำเร็จพึ่งพาผู้เชี่ยวชาญคนเดียว ซึ่งไม่สามารถดูแลทุกทีมที่วางแผนไว้ได้\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียด��พิ่มเติมนี้\nPart-2 options: ทำซ้ำ pilot โดยไม่เปลี่ยนรูปแบบการสนับสนุนจากผู้เชี่ยวชาญ | สร้างและทดสอบระบบสนับสนุนที่ขยายได้ก่อนขยายผล\nExplanation: การกู้คืนข้ามเซสชันต้องใช้ข้อมูลที่บันทึกไว้ ไม่ใช่แค่บทสนทนาปัจจุบัน ปริมาณงานที่วางแผนไว้เกินกว่าที่ทรัพยากรสนับสนุนที่จำเป็นจะรองรับได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: application memory; part 2: build a scalable support capability before expansion).",
           "id": "2026-09-18T08:52:56.923Z",
           "savedAt": "2026-09-18T08:52:56.923Z"
         }
@@ -6956,7 +7431,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona is broken ('Customer บริการใช้ AI'); the part-1 stem is Thai ('รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด') but the failure-pattern evidence is word-salad, the part-1 options are English/word-salad, and all part-2 options (e.g. 'เส้นทาง the exception…') and the 'Additional detail' sentence are English; the explanation is mixed. Evidence: 'The assistant produces confident answers even when ต้องการd fields are absent.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: กำหนดให้ข้อกล่าวอ้างสำคัญต้องมีหลักฐานที่ตรวจสอบได้ก่อนเผยแพร่ | ทดสอบการงดตอบและการบล็อกการตัดสินใจเมื่อข้อมูลสำคัญหายไป\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง | บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: test abstention/blocking; part 2: describe the pending state and real next step).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบริการลูกค้าใช้ AI ช่วยจัดทำคำตอบเพื่อแก้ไขเคส\nEvidence: Assistant ให้คำตอบอย่างมั่นใจแม้ข้อมูลที่จำเป็นบางช่องจะหายไป\nรายละเอียดเพิ่มเติม: คำตอบระบุว่าแก้ไขแล้ว แต่บันทึกเคสยังแสดงสถานะรอดำเนินการ\nPart-1 stem: รูปแบบความผิดพลาดนี้สนับสนุนกฎการทำงานข้อใดมากที่สุด\nPart-1 options: กำหนดให้ข้อกล่าวอ้างสำคัญต้องมีหลักฐานที่ตรวจสอบได้ก่อนเผยแพร่ | ทดสอบการงดตอบและ���ารบล็อกการตัดสินใจเมื่อข้อมูลสำคัญหายไป\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: อธิบายสถานะที่ยังรอดำเนินการ และขั้นตอนถัดไปตามจริง | บอกว่าแก้ไขเสร็จแล้วเพื่อให้ลูกค้าสบายใจ\nExplanation: ระบบต้องมีเกณฑ์ที่วัดได้ว่าเมื่อหลักฐานสำคัญขาด ต้องหยุดหรืองดตอบ การปลอบใจต้องไม่มาแทนสถานะเคสที่บันทึกไว้จริง\nReason: complete Thai for both parts; keyed answers unchanged (part 1: test abstention/blocking; part 2: describe the pending state and real next step).",
           "id": "2026-09-18T08:05:23.609Z",
           "savedAt": "2026-09-18T08:05:23.609Z"
         }
@@ -8581,7 +9056,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Operationsใช้ AI'), the rule sentence ends in a substituted word ('escalation เส้นทาง'), the part-1 stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Evidence: 'Multiple Agents retry one another’s ล้มเหลว งานs indefinitely.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate; the English part-1 options are very jargon-heavy for a general adult audience.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้อ���มีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nรายละเอียดเพิ่มเติม: ขั้นตอนอัตโนมัติอาจทิ้งงานไว้แบบทำเสร็จครึ่งเดียวเมื่อเกิดข้อผิดพลาด\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดผู้รับผิดชอบการกู้คืน และขั้นตอนจัดการสถานะกลางค้าง | เริ่มกระบวนการใหม่ทั้งหมดโดยไม่ตรวจว่าขั้นตอนใดเสร็จแล้ว\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent การกู้คืนต้องคำนึงถึงงานที่ทำไปแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: shared run state/global stop budget; part 2: define recovery owner and intermediate-state procedure).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Agent หลายตัวลองทำงานที่ล้มเหลวของกันและกันซ้ำไม่รู้จบ\nรายละเอียดเพิ่มเติม: ขั้นตอนอัตโนมัติอาจทิ้งงานไว้แบบทำเสร็จครึ่งเดียวเมื่อเกิดข้อผิดพลาด\nPart-1 stem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nPart-1 options: แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: กำหนดผู้รับผิดชอบการกู้คืน และขั้นตอนจัดการสถานะกลางค้าง | เริ่มกระบวนการใหม่ทั้งหมดโดยไม่ตรวจว่าขั้นตอนใดเสร็จแล้ว\nExplanation: ขีดจำกัดการลองใหม่ของแต่ละตัวอย่างเดียวไม่พอที่จะหยุดวงจรของหลาย Agent การกู้คืนต้องคำนึงถึงงานที่ทำไปแล้ว\nReason: complete Thai for both parts; keyed answers unchanged (part 1: shared run state/global stop budget; part 2: define recovery owner and intermediate-state procedure).",
           "id": "2026-09-18T08:20:41.509Z",
           "savedAt": "2026-09-18T08:20:41.509Z"
         }
@@ -8656,7 +9131,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Operationsใช้ AI'), the rule sentence ends in a substituted word ('escalation เส้นทาง'), the part-1 stem is half English ('Which configuration change addresses the specific ต้องการment?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Evidence: 'The assistant must inspect ข้อมูล but must never change them.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nรายละเอียดเพิ่มเติม: ตารางที่เสนอใช้ช่วงเวลาให้บริการเดิมซึ่งเปลี่ยนไปแล้ว\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ปรับแผนให้ตรงกับตารางปัจจุบันที่อนุมัติแล้ว | ใช้ช่วงเวลาเดิมต่อไปเพราะเคยใช้ใน pilot\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน ช่วงเวลาปฏิบัติงานจริงในปัจจุบันเป็นตัวกำหนดการส่งต่อครั้งนี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: read-only connector; part 2: reconcile with the current approved schedule).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nรายละเอียดเพิ่มเติม: ตารางที่เสนอใช้ช่วงเวลาให้บริการเดิมซึ่งเปลี่ยนไปแล้ว\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ปรับแผนให้ตรงกับตารางปัจจุบันที่อนุมัติแล้ว | ใช้ช่วงเวลาเดิมต่อไปเพราะเคยใช้ใน pilot\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน ช่วงเวลาปฏิบัติงานจริงในปัจจุบันเป็นตัวกำหนดการส่��ต่อครั้งนี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: read-only connector; part 2: reconcile with the current approved schedule).",
           "id": "2026-09-18T08:19:28.952Z",
           "savedAt": "2026-09-18T08:19:28.952Z"
         }
@@ -8731,7 +9206,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Operationsใช้ AI'), the rule sentence ends in a substituted word ('escalation เส้นทาง' — 'route'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Evidence: 'The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nรายละเอียดเพิ่มเติม: คำแนะนำทำให้ขั้นตอนหนึ่งสั้นลง แต่เพิ่มเวลารอที่ขั้นตอนถัดไป\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เปรียบเทียบผลรวมทั้งกระบวนการ (throughput) และพฤติกรรมของคิว | อ้างว่าเวลาที่ประหยัดได้ในขั้นตอนเดียวคือการปรับปรุงทั้งกระบวนการ\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน ผลดีเฉพาะจุดอาจสูญไปที่คอขวดปลายน้ำ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: agent loop; part 2: compare end-to-end throughput).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nรายละเอียดเพิ่มเติม: คำแนะนำทำให้ขั้นตอนหนึ่งสั้นลง แต่เพิ่มเวลารอที่ขั้นตอนถัดไป\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ใช้ connector ที่ได้รับอนุญาตเพื่อเข้าถึงระบบอื่น | ใช้ Agent loop เพื่อวางแผน ลงมือทำ ตรวจผล และหยุดตามเงื่อนไข\nPart-2 stem: ทีมควรทำอ��่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เปรียบเทียบผลรวมทั้งกระบวนการ (throughput) และพฤติกรรมของคิว | อ้างว่าเวลาที่ประหยัดได้ในขั้นตอนเดียวคือการปรับปรุงทั้งกระบวนการ\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน ผลดีเฉพาะจุดอาจสูญไปที่คอขวดปลายน้ำ\nReason: complete Thai for both parts; keyed answers unchanged (part 1: agent loop; part 2: compare end-to-end throughput).",
           "id": "2026-09-18T08:18:45.399Z",
           "savedAt": "2026-09-18T08:18:45.399Z"
         }
@@ -10088,6 +10563,31 @@
       ],
       "updatedAt": "2026-09-18T08:10:09.188Z"
     },
+    "REL-E-D1-005": {
+      "draft": {
+        "decision": "revise",
+        "rating": "3",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "single",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "3",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "single",
+          "comment": "AI review (Claude): Short executive reliance item (board asks agent vs chatbot; ME / TOGETHER / AI). Clear and quick; TOGETHER is the intended answer and 'AI presents directly to the board' is an obvious distractor. The 'Explain Agentic AI to the Board' artifact is not needed. The Thai view is untranslated English with substituted tokens, so a Thai-only test taker cannot read the item. Explanation is empty.",
+          "suggestedChange": "Recommended Thai (full):\nคณะกรรมการบริษัทถามว่า AI agent ต่างจากแชตบอตอย่างไร ใครควรเป็นคนอธิบาย\nฉันเอง — ผู้บริหารอธิบายจากความเข้าใจปัจจุบัน | ทำร่วมกัน — AI ช่วยร่าง ผู้บริหารตรวจสอบและอธิบายเอง | AI — ให้ AI นำเสนอต่อคณะกรรมการโดยตรง\nReason: translation only; keep reliance scoring.",
+          "id": "2026-09-18T09:15:45.492Z",
+          "savedAt": "2026-09-18T09:15:45.492Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T09:15:45.492Z"
+    },
     "REL-G-D1-004": {
       "draft": {
         "decision": "revise",
@@ -10731,7 +11231,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Good scenario (prompt-only chat → RAG). 'Context engineering' in the stem is jargon for a general audience; say 'preparing the context and checking retrieval quality'. Keyed option is clear and distractors are plausible misconceptions. This is the one variant of the set that genuinely belongs to this competency — keep this copy. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / CAPABILITY-LIMITS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes generative ai mechanics using practical signals such as tokens, embeddings, RAG and grounding.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is good: RAG grounding and retrieval quality are exactly this competency.",
-          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้คนตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมกำลังเปลี่ยนจากแชตแบบใช้ prompt อย่างเดียว ไปเป็นผู้ช่วยแบบ RAG ที่ค้นจากนโยบาย ticket และเอกสารสินค้า การกระทำข้อใดแสดงความเข้าใจเรื่องการเตรียมบริบทและคุณภาพการค้นข้อมูลได้ดีที่สุด\nA. ทดสอบว่าแหล่งที่ค้นมาเป็นปัจจุบัน เกี่ยวข้อง มีการอ้างอิง และเพียงพอสำหรับคำตอบ ก่อนจะเชื่อผู้ช่วย\nB. เพิ่มขนาด context window แล้วถือว่าคำตอบจะอิงข้อมูลเอง\nC. fine-tune ทันทีก่อนตรวจคุณภาพแหล่งข้อมูล\nD. เลิกให้ค���ตรวจทันทีที่ผู้ช่วยใส่การอ้างอิง\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
           "id": "2026-09-18T09:03:33.197Z",
           "savedAt": "2026-09-18T09:03:33.197Z"
         }
