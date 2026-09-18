@@ -1,0 +1,31 @@
+{
+  "reviewer": "KJ-Dee",
+  "updatedAt": "2026-09-18T02:50:49.331Z",
+  "questions": {
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "4",
+        "clarity": "clear",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "4",
+          "clarity": "clear",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "\"A supporting source\" in choice C can create confuse as the question content is talking about without retrieving \"project record\", consider 2 word in the Speech Marks (\"...\"), It different meaning.",
+          "suggestedChange": "A supporting source can replace be reference project document/ project record.  btw it can be easy to guess, so please suggest other word.",
+          "id": "2026-09-18T02:35:56.519Z",
+          "savedAt": "2026-09-18T02:35:56.519Z"
+        }
+      ],
+      "updatedAt": "2026-09-18T02:50:28.785Z"
+    }
+  }
+}
