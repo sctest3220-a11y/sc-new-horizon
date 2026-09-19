@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-19T06:43:46.495Z",
+  "updatedAt": "2026-09-19T06:45:25.537Z",
   "questions": {
     "ADV-D1-AI-SYSTEMS-01": {
       "draft": {
@@ -1770,7 +1770,7 @@
           "artifact": "not-needed",
           "format": "rank",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'One user’s saved context sometimes appears in another user’s งาน.' Explanation: 'The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น\nReason: complete Thai; remove the reviewer-facing block or convert to a real ranking task. Keyed first check (C) unchanged. The AI-SYSTEMS-ADVANCED family shares these four option strings — translate once in the option table.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ไ���้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น\nReason: complete Thai; remove the reviewer-facing block or convert to a real ranking task. Keyed first check (C) unchanged. The AI-SYSTEMS-ADVANCED family shares these four option strings — translate once in the option table.",
           "id": "2026-09-18T04:34:47.170Z",
           "savedAt": "2026-09-18T04:34:47.170Z"
         }
@@ -1869,7 +1869,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "rank",
-          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'One user’s saved context sometimes appears in another user’s งาน.' Explanation: 'The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
+          "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถ���ง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'One user’s saved context sometimes appears in another user’s งาน.' Explanation: 'The ความล้มเหลว ต้องการs a storage and การเข้าถึง boundary, not a longer Prompt.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience.",
           "suggestedChange": "Recommended Thai (full):\nEvidence: context ที่บันทึกไว้ของผู้ใช้คนหนึ่งบางครั้งไปโผล่ในงานของผู้ใช้อีกคน\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: ความผิดพลาดนี้ต้องแก้ด้วยขอบเขตของที่เก็บข้อมูลและสิทธิ์เข้าถึง ไม่ใช่ Prompt ที่ยาวขึ้น\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (C) unchanged.",
           "id": "2026-09-18T04:35:15.162Z",
           "savedAt": "2026-09-18T04:35:15.162Z"
@@ -1895,7 +1895,7 @@
           "artifact": "not-needed",
           "format": "rank",
           "comment": "AI review (Claude): Nothing in this item is readable for a Thai-only test taker: the stem is half English ('Which architecture decision best addresses the stated systemic ความเสี่ยง?'), all four options are English with Thai fragments ('Use shared run state, idempotent การส่งต่อs, and a global stop budget.', 'Separate read and การดำเนินการ identities with การอนุมัติ-bound scopes.', 'Isolate memory by identity and test cross-user การเข้าถึง denial.', 'Centralize เวอร์ชันed งาน-context assembly and test its ผลลัพธ์.'), the evidence sentence is word-salad: 'The same connector identity reads ข้อมูล and performs unrestricted production writes.' Explanation: 'Distinct capabilities allow enforcement of narrower การดำเนินการ สิทธิ์.' A reviewer-facing instruction ('รูปแบบที่ควรใช้: จัดลำดับคำตอบ…') is also shown inside the test-taker draft. Must not be piloted in Thai until fully translated. The English item is sound but very jargon-heavy for a general adult audience. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
-          "suggestedChange": "Recommended Thai (full):\nEvidence: connector ตัวเดียวกันทั้งอ่านข้อมูลและเขียนลงระบบจริงได้โดยไม่มีข้อจำกัด\nStem: การ���ัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: การแยกความสามารถออกจากกันทำให้บังคับใช้สิทธิ์การดำเนินการที่แคบลงได้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nEvidence: connector ตัวเดียวกันทั้งอ่านข้อมูลและเขียนลงระบบจริงได้โดยไม่มีข้อจำกัด\nStem: การตัดสินใจด้านสถาปัตยกรรมข้อใดจัดการความเสี่ยงเชิงระบบที่ระบุไว้ได้ดีที่สุด\nOptions: ใช้สถานะการทำงานร่วมกัน (shared run state) การส่งต่องานแบบทำซ้ำได้โดยไม่เกิดผลซ้ำ (idempotent) และงบประมาณหยุดรวมของทั้งระบบ | แยกตัวตน (identity) สำหรับการอ่านออกจากการดำเนินการ โดยผูกสิทธิ์กับการอนุมัติ | แยก memory ตามตัวตนของผู้ใช้ และทดสอบว่าผู้ใช้อื่นเข้าถึงไม่ได้ | รวมศูนย์การประกอบ context ของงานแบบมีเวอร์ชัน และทดสอบผลลัพธ์ของมัน\nExplanation: การแยกความสามารถออกจากกันทำให้บังคับใช้สิทธิ์การดำเนินการที่แคบลงได้\nReason: complete Thai; remove the reviewer-facing block or convert to ranking. Keyed first check (D) unchanged.",
           "id": "2026-09-18T04:35:22.159Z",
           "savedAt": "2026-09-18T04:35:22.159Z"
         }
@@ -2295,7 +2295,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): The stem is half English ('Which component is directly responsible for the ที่พบ behavior?') and the evidence sentence — the only clue the test taker has — is word-salad: 'The assistant plans steps, calls tools, checks ผลลัพธ์s, and repeats until a stop กฎ.'; explanation 'The loop coordinates การดำเนินการs and ผลลัพธ์ checks over multiple steps.' The four options are readable Thai and parallel (two are missing a space: 'ในinput', 'จากmemory'). A Thai-only test taker cannot answer this item as shown; must not be piloted in Thai until fixed. 'ผู้ที่ถูกระบุชื่อ ต้องยืนยัน…' → 'ผู้ที่มีชื่อในแผนต้องยืนยัน…'.",
-          "suggestedChange": "Recommended Thai:\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nStem: องค์ประกอบใดเป็นสาเหตุโดยต���งของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน\nReason: complete Thai; keyed answer (B) unchanged.",
+          "suggestedChange": "Recommended Thai:\nEvidence: Assistant วางแผนขั้นตอน เรียกใช้เครื่องมือ ตรวจผล แล้วทำซ้ำจนถึงเงื่อนไขหยุด\nStem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nOptions (spacing): ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nExplanation: Agent loop คือตัวประสานการทำงานและการตรวจผลหลายขั้นตอน\nReason: complete Thai; keyed answer (B) unchanged.",
           "id": "2026-09-18T04:21:07.170Z",
           "savedAt": "2026-09-18T04:21:07.170Z"
         }
@@ -4156,7 +4156,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): Thai version is unusable: scenario, stem, two options and the explanation are rendered as a word-by-word English/Thai mix, e.g. 'A correct ร่าง is visible, but the send การดำเนินการ fails with a permission denial.' and 'The ความล้มเหลว occurs during การดำเนินงาน rather than text generation.' A Thai-speaking test taker cannot understand what is asked; must not be piloted in Thai until fully translated. Options A–B are actions while C–D are statements (not parallel). English item itself is sound. The stem says 'this comparison' but the scenario is a single observation. 'บันทึก release' → 'release note'.",
-          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note ร่างที่ถูกต้องแสดงอยู่บนหน้าจอ แต่เมื่อกดส่ง ระบบปฏิเสธเพราะไม่มีสิทธิ์ (permission denied) ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่าง���ี่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดในขั้นตอนดำเนินการ (การส่ง) ไม่ใช่ขั้นตอนสร้างข้อความ\nReason: complete, natural Thai; stem no longer claims a comparison. Keyed answer (A) unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nScenario: ทีมผลิตภัณฑ์ใช้ AI ช่วยจัดทำ release note ร่างที่ถูกต้องแสดงอยู่บนหน้าจอ แต่เมื่อกดส่ง ระบบปฏิเสธเพราะไม่มีสิทธิ์ (permission denied) ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว\nStem: จากสิ่งที่พบ ข้อสรุปใดสมเหตุสมผลที่สุด\nOptions: A. ตรวจสอบขอบเขตสิทธิ์ในการดำเนินการ | B. แก้กฎการจัดเส้นทาง (routing) ที่กำหนดตายตัว | C. การตั้งค่าการค้นหาข้อมูล (retrieval) อธิบายความแตกต่างที่พบได้ | D. ควรเปรียบเทียบความสามารถของโมเดลอย่างมีการควบคุมก่อนเลือกโมเดล\nExplanation: ปัญหาเกิดในขั้นตอนดำเนินการ (การส่ง) ไม่ใช่ขั้นตอนสร้างข้อความ\nReason: complete, natural Thai; stem no longer claims a comparison. Keyed answer (A) unchanged.",
           "id": "2026-09-18T03:53:27.619Z",
           "savedAt": "2026-09-18T03:53:27.619Z"
         }
@@ -6131,7 +6131,7 @@
           "artifact": "not-needed",
           "format": "single",
           "comment": "AI review (Claude): D2 revision-request item. Thai view: persona and rule are Thai; the defect sentence is English/word-salad ('A ต้องการd identifier is expressed as free text…'), the stem is half English ('Which revision คำขอ is most targeted?') and all four options are word-salad ('Correct the การอนุมัติ claim and cite the supporting ข้อกำหนด'). Evidence: 'Readers misunderstand an unexplained technical term in an accurate explanation.' English content is sound: each defect maps to one targeted revision request (add exception / return schema / explain term / correct claim). The same defect/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full, single choice):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nDefect: ผู้อ่านเข้าใจคำศัพท์เทคนิคที่ไม่ได้อธิบายผิด แม้คำอธิบายจะถูกต้อง\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: คำขอแก้ไขข้อใดตรงจุดที่���ุด\nA. ขอให้คืนค่าตาม schema ฟิลด์ที่แน่นอน และตรวจสอบตัวระบุ\nB. อธิบายคำศัพท์นั้นด้วยตัวอย่างที่เป็นรูปธรรมและเกี่ยวกับผู้อ่าน\nC. เพิ่มข้อยกเว้นและอธิบายว่าใช้เมื่อใด\nD. แก้ข้อความเรื่องการอนุมัติให้ถูก และอ้างอิงข้อกำหนดที่รองรับ\nKey: B\nExplanation: การอธิบายเฉพาะจุดแก้ความเข้าใจได้โดยไม่เปลี่ยนข้อเท็จจริง\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full, single choice):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nDefect: ผู้อ่านเข้าใจคำศัพท์เทคนิคที่ไม่ได้อธิบายผิด แม้คำอธิบายจะถูกต้อง\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: คำขอแก้ไขข้อใดตรงจุดที่สุด\nA. ขอให้คืนค่าตาม schema ฟิลด์ที่แน่นอน และตรวจสอบตัวระบุ\nB. อธิบายคำศัพท์นั้นด้วยตัวอย่างที่เป็นรูปธรรมและเกี่ยวกับผู้อ่าน\nC. เพิ่มข้อยกเว้นและอธิบายว่าใช้เมื่อใด\nD. แก้ข้อความเรื่องการอนุมัติให้ถูก และอ้างอิงข้อกำหนดที่รองรับ\nKey: B\nExplanation: การอธิบายเฉพาะจุดแก้ความเข้าใจได้โดยไม่เปลี่ยนข้อเท็จจริง\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:38:21.921Z",
           "savedAt": "2026-09-18T09:38:21.921Z"
         }
@@ -6805,7 +6805,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "single",
-          "comment": "AI review (Claude): D2 prompt-design item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad, the stem is half English ('Which Prompt repair most directly fixes the ที่พบ ความล้มเหลว?'), all four options are word-salad ('Ask for a เวอร์ชัน การเปรียบเทียบ…', 'valiวันที่ every ต้องการd field') and the explanation is mixed. Evidence: 'The workshop guide contains invented details where the supplied records have blank fields.' English content is sound with one clearly keyed repair. This item is labelled 'Select all that apply' but the stem says 'most directly' and only one repair is keyed — either key several repairs or make it single-choice (recommended). The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "comment": "AI review (Claude): D2 prompt-design item. In the Thai view only the persona and rule sentence are Thai; the evidence sentence is English/word-salad, the stem is half English ('Which Prompt repair most directly fixes the ที่พบ ความล้มเหลว?'), all four options are word-salad ('Ask for a เวอร์ชัน การเปรียบเที��บ…', 'valiวันที่ every ต้องการd field') and the explanation is mixed. Evidence: 'The workshop guide contains invented details where the supplied records have blank fields.' English content is sound with one clearly keyed repair. This item is labelled 'Select all that apply' but the stem says 'most directly' and only one repair is keyed — either key several repairs or make it single-choice (recommended). The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
           "suggestedChange": "Recommended Thai (full, single choice):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nEvidence: คู่มือเวิร์กช็อปมีรายละเอียดที่แต่งขึ้นตรงที่ข้อมูลต้นทางเว้นว่างไว้\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: ควรแก้ prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด\nA. กำหนดกลุ่มผู้อ่าน และขอให้อธิบายคำศัพท์ที่ไม่คุ้นเคย\nB. ระบุ schema ที่แน่นอน และตรวจสอบทุกฟิลด์ที่จำเป็น\nC. กำหนดให้ระบุฟิลด์ที่ไม่มีข้อมูลว่า “ไม่ทราบ” และห้ามคาดเดา\nD. ขอให้เปรียบเทียบเวอร์ชันโดยตัดส่วนที่ไม่เปลี่ยนแปลงออก\nKey: C\nExplanation: การแก้นี้จัดการการแต่งข้อมูลตรงจุดที่ข้อมูลขาด\nReason: complete Thai; keyed answer unchanged; drop the select-all instruction.",
           "id": "2026-09-18T09:23:26.061Z",
           "savedAt": "2026-09-18T09:23:26.061Z"
@@ -7805,7 +7805,7 @@
           "clarity": "confusing",
           "artifact": "irrelevant",
           "format": "single",
-          "comment": "AI review (Claude): D2 tool-selection item. In the Thai view only the persona and rule sentence are Thai; the requirement sentence is English/word-salad ('The รายงานอัปเดตโครงการ must enter an existing system…'), the stem is half English ('Which tool property is most relevant to the stated ต้องการment?') and all four options are word-salad ('Valiวันที่d structured ผลลัพธ์…', 'Enforceable read-only สิทธิ์'). Evidence: 'The assistant must only read records, even if a user asks it to edit them.' English content is sound: one property clearly matches the requirement. Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts (source comparison, workflow trace, ticket thread) are unrelated to a one-sentence requirement. The same requirement/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
+          "comment": "AI review (Claude): D2 tool-selection item. In the Thai view only the persona and rule sentence are Thai; the requirement sentence is English/word-salad ('The รายงานอัปเดตโครงการ must enter an existing system…'), the stem is half English ('Which tool property is most relevant to the stated ต้องการment?') and all four options are word-salad ('Valiวันที่d structured ผลลัพ��์…', 'Enforceable read-only สิทธิ์'). Evidence: 'The assistant must only read records, even if a user asks it to edit them.' English content is sound: one property clearly matches the requirement. Single-choice is right even where the inventory labels the item 'Matching'. Assigned artifacts (source comparison, workflow trace, ticket thread) are unrelated to a one-sentence requirement. The same requirement/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
           "suggestedChange": "Recommended Thai (full):\nกลุ่มเรียนรู้ในชุมชนใช้ AI ช่วยเตรียมคู่มือเวิร์กช็อป\nRequirement: ผู้ช่วยต้องอ่านข้อมูลได้อย่างเดียว แม้ผู้ใช้จะขอให้แก้ไขก็ตาม\nRule: คู่มือต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI\nStem: คุณสมบัติใดของเครื่องมือเกี่ยวข้องกับข้อกำหนดนี้มากที่สุด\nA. บังคับสิทธิ์อ่านอย่างเดียวได้จริง\nB. รองรับการเข้าถึงข้อมูลที่ต้องใช้ และมีขอบเขต workspace ชัดเจน\nC. ให้ผลลัพธ์แบบมีโครงสร้างที่ตรวจสอบแล้ว และรองรับการเชื่อมต่อระบบ\nD. ส่งออกข้อมูลได้ และมีเส้นทางสำรองที่ทดสอบแล้ว\nKey: A\nExplanation: คำสัญญาใน prompt อ่อนกว่าขอบเขตความสามารถที่บังคับใช้ได้จริง\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:27:43.463Z",
           "savedAt": "2026-09-18T09:27:43.463Z"
@@ -8131,7 +8131,7 @@
           "artifact": "irrelevant",
           "format": "single",
           "comment": "AI review (Claude): D2 tool-selection diagnostic item. Thai view: persona and rule are Thai; the evidence sentence is English/word-salad, the stem is half English ('Which selection หลักฐาน should determine the next step?') and all four options are word-salad ('Compare total Workflow ต้นทุน…'). Evidence: 'A cheaper tool produces twice as much review work at the same output quality.' English content is sound: the evidence points to exactly one selection check, and the other three checks belong to the other evidences in this set. Stem wording 'selection evidence should determine the next step' is heavy — Thai version asks simply which check should decide the next step. Assigned artifacts are not needed to answer a one-sentence evidence item. The same evidence/option set recurs for items 01/05, 02/06, 03/07 and 04/08 with only the persona changed.",
-          "suggestedChange": "Recommended Thai (full):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nEvidence: เครื่องมือที่ถูกกว่าทำให้ต้องตรวจทานมากขึ้นสองเท่า ที่คุณภาพผลลัพธ์เท่ากัน\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nA. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้\nB. ทดสอบว่าประวัติการตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้\nC. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน\nD. ยืนยันว่าเชื่อมต่อระบบได้จริงก่อนเลือกเครื่องมือ\nKey: C\nExplanation: ราคาค่าสมาชิกอย่างเดียวละเลยต้นทุนดำเนินงานที่สำคัญ\nReason: complete Thai; keyed answer unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nทีมฝึกอบรมใช้ AI ช่วยเตรียมแบบฝึกหัด\nEvidence: เครื่องมือที่ถูกกว่าทำให้ต้องตรวจทานมากขึ้นสองเท่า ที่คุณภาพผลลัพธ์เท่ากัน\nRule: ตัวอย่างต้องเหมาะกับผู้เรียนที่มีประสบการณ์หลายระดับ\nStem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nA. กำหนดให้ connector มีขอบเขตสิทธิ์ที���แคบลงและบังคับใช้ได้\nB. ทดสอบว่าประวัติการตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้\nC. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน\nD. ยืนยันว่าเชื่อมต่อระบบได้จริงก่อนเลือกเครื่องมือ\nKey: C\nExplanation: ราคาค่าสมาชิกอย่างเดียวละเลยต้นทุนดำเนินงานที่สำคัญ\nReason: complete Thai; keyed answer unchanged.",
           "id": "2026-09-18T09:29:02.575Z",
           "savedAt": "2026-09-18T09:29:02.575Z"
         }
@@ -8480,7 +8480,7 @@
           "clarity": "confusing",
           "artifact": "not-needed",
           "format": "parts",
-          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีค���ามใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: 'A benchmark reports high average accuracy, but excludes the exception needed here. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
+          "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: 'A benchmark reports high average accuracy, but excludes the exception needed here. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
           "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: benchmark รายงานความแม่นยำเฉลี่ยสูง แต่ไม่ได้รวมกรณียกเว้นที่จำเป็นสำหรับงานนี้\nรายละเอียดเพิ่มเติม: ฝ่ายบริหารให้เอกสารนโยบาย แต่ไม่มีหลักฐานว่าการควบคุมทำงานจริง\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: benchmark นี้ยังไม่ยืนยันประสิทธิภาพกับกรณียกเว้นนี้ | ความขัดแย้งยังไม่ได้รับการแก้ไข และควรแจ้งให้ผู้ใช้ทราบ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ถือว่าการอนุมัตินโยบายคือหลักฐานว่าการควบคุมทำงานได้จริง | ขอหลักฐานประสิทธิผลของการควบคุมจากฝ่ายบริหาร\nExplanation: ขอบเขตเฉพาะของงานนี้ไม่อยู่ในกลุ่มตัวอย่างที่ถูกวัด คณะกรรมการต้องการความเชื่อมั่นเรื่องการปฏิบัติจริง ไม่ใช่แค่การมีนโยบาย\nReason: complete Thai for both parts; keyed answers unchanged (part 1: benchmark does not cover this exception; part 2: request evidence of control effectiveness).",
           "id": "2026-09-18T08:29:06.893Z",
           "savedAt": "2026-09-18T08:29:06.893Z"
@@ -8506,7 +8506,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Boardใช้ AI'), the rule sentence is word-salad ('Management executes controls แต่the คณะกรรมการ ต้องการs หลักฐาน…'); the part-1 stem is Thai ('การตีความใดไม่สรุปเกินหลักฐานที่มี') but the part-1 options are English/word-salad, all part-2 options and the 'Additional detail' sentence are English, and the explanation is mixed. Evidence: '(evidence itself is readable Thai: 'ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache…') but the options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข้อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว\nรายละเอียดเพิ่มเติม: กรรมการคนหนึ่งเสนอจะลงมือแก้ไขปัญหาปฏิบัติการในระบบ production ด้วยตนเอง\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความถูกต้องในอดีตไม่ได้ยืนยันว่าปัจจุบันยังถูกต้อง | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ให้ฝ่ายบริหารรับผิดชอบแผนแก้ไขที่ตรวจสอบได้ | ให้คณะกรรมการลงมือดำเนินการเปลี่ยนแปลงเชิงปฏิบัติการเอง\nExplanation: ข้อมูลที่ใช้สนับสนุนเปลี่ยนไปหลังจากผลลัพธ์เดิมเคยถูกต้อง โจทย์แยกบทบาทการกำกับดูแลออกจากการปฏิบัติของฝ่ายบริหาร\nReason: complete Thai for both parts; keyed answers unchanged (part 1: past correctness ≠ present correctness; part 2: hold management accountable for a verifiable plan).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: คณะกรรมการบริษัท (Board) ใช้ AI ช่วยจัดทำคำแนะนำด้านการกำกับดูแล (oversight) | Rule: ฝ่ายบริหารเป็นผู้ดำเนินการควบคุม (controls) ส่วนคณะกรรมการต้องการหลักฐานว่าการควบคุมนั้นมีประสิทธิผล\nEvidence: ผลลัพธ์เดิมเคยถูกต้องเพราะใช้ข��อมูลใน cache แต่ข้อมูลล่าสุดเปลี่ยนไปแล้ว\nรายละเอียดเพิ่มเติม: กรรมการคนหนึ่งเสนอจะลงมือแก้ไขปัญหาปฏิบัติการในระบบ production ด้วยตนเอง\nPart-1 stem: การตีความใดไม่สรุปเกินหลักฐานที่มี\nPart-1 options: ความถูกต้องในอดีตไม่ได้ยืนยันว่าปัจจุบันยังถูกต้อง | การเห็นตรงกันซ้ำ ๆ ไม่ใช่การตรวจสอบแบบอิสระ\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ให้ฝ่ายบริหารรับผิดชอบแผนแก้ไขที่ตรวจสอบได้ | ให้คณะกรรมการลงมือดำเนินการเปลี่ยนแปลงเชิงปฏิบัติการเอง\nExplanation: ข้อมูลที่ใช้สนับสนุนเปลี่ยนไปหลังจากผลลัพธ์เดิมเคยถูกต้อง โจทย์แยกบทบาทการกำกับดูแลออกจากการปฏิบัติของฝ่ายบริหาร\nReason: complete Thai for both parts; keyed answers unchanged (part 1: past correctness ≠ present correctness; part 2: hold management accountable for a verifiable plan).",
           "id": "2026-09-18T08:29:07.130Z",
           "savedAt": "2026-09-18T08:29:07.130Z"
         }
@@ -8806,7 +8806,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('CEOใช้ AI'), the part-1 stem is half English ('Which component is directly responsible for the ที่พบ behavior?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem ('ผู้นำ ควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้', stray space) are Thai. Evidence: 'An earlier instruction disappears after the conversation becomes too long. (English)' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: CEO ใช้ AI ช่วยจัดทำคำแนะนำการลงทุนระดับองค์กร\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างเรื่องการเติบโตขึ้นอยู่กับผลลัพธ์ต่อลูกค้าที่ pilot ไม่เคยวัด\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้จำนวน license ที���นำไปใช้เป็นหลักฐานเพียงพอสำหรับข้อกล่าวอ้างการเติบโต | กำหนดให้ต้องมีหลักฐานของผลลัพธ์นั้นที่จุดตัดสินใจลงทุนครั้งถัดไป\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ การใช้เครื่องมือมากขึ้นไม่ได้พิสูจน์ผลลัพธ์ต่อลูกค้าตามที่สัญญา\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: require evidence at the next investment gate).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: CEO ใช้ AI ช่วยจัดทำคำแนะนำการลงทุนระดับองค์กร\nEvidence: คำสั่งที่ให้ไว้ก่อนหน้าหายไป หลังจากการสนทนายาวเกินไป\nรายละเอียดเพิ่มเติม: ข้อกล่าวอ้างเรื่องการเติบโตขึ้นอยู่กับผลลัพธ์ต่อลูกค้าที่ pilot ไม่เคยวัด\nPart-1 stem: องค์ประกอบใดเป็นสาเหตุโดยตรงของพฤติกรรมที่พบ\nPart-1 options: ถึงขีดจำกัดข้อมูลที่ Model เก็บไว้ใน input ปัจจุบันได้ | โหลดข้อมูลที่บันทึกไว้จาก memory ของแอปพลิเคชัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ใช้จำนวน license ที่นำไปใช้เป็นหลักฐานเพียงพอสำหรับข้อกล่าวอ้างการเติบโต | กำหนดให้ต้องมีหลักฐานของผลลัพธ์นั้นที่จุดตัดสินใจลงทุนครั้งถัดไป\nExplanation: ระบบไม่สามารถเก็บทุกข้อความก่อนหน้าไว้ใน input ที่ใช้งานอยู่ได้เสมอ การใช้เครื่องมือมากขึ้นไม่ได้พิสูจน์ผลลัพธ์ต่อลูกค้าตามที่สัญญา\nReason: complete Thai for both parts; keyed answers unchanged (part 1: input limit; part 2: require evidence at the next investment gate).",
           "id": "2026-09-18T08:23:18.216Z",
           "savedAt": "2026-09-18T08:23:18.216Z"
         }
@@ -10156,7 +10156,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Technology executiveใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English/word-salad, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The answer accurately summarizes a retrieved passage whose เวอร์ชัน was retired last month.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำตอบสรุปข้อความที่ค้นมาได้อย่างถูกต้อง แต่ข้อความนั้นเป็นเวอร์ชันที่ยกเลิกไปแล้วเมื่อเดือนก่อน\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: การปรับพฤติกรรมไม่ได้ให้หลักฐานข้อเท็จจริงที่เป็นปัจจุบัน | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: แม้จะใช้แหล่งข้อมูลอย่างซื่อตรง แต่ถ้าแหล่งข้อมูลล้าสมัย คำตอบก็ล้าสมัยตาม ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: freshness failure; part 2: extend identity-scoped access to cached retrieval).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้บริหารด้านเทคโนโลยีใช้ AI ช่วยจัดทำคำแนะนำด้านสถาปัตยกรรม platform\nEvidence: คำตอบสรุปข้อความที่ค้นมาได้อย่างถูกต้อง แต่ข้อความนั้นเป็นเวอร์ชันที่ยกเลิกไปแล้วเมื่อเดือนก่อน\nรายละเอียดเพิ่มเติม: การเข้าถึงข้อมูลถูกแยกไว้ในฐานข้อมูล แต่กลับแบ่งปันผ่าน cache ของ retrieval ที่ไม่มีข้อจำกัด\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: การปรับพฤติกรรมไม่ได้ให้หลักฐานข้อเท็จจริงที่เป็นปัจจุบัน | ชุดข้อมูลที่ใช้ค้นหา (retrieval corpus) ไม่เป็นปัจจุบัน\nPart-2 stem: ผู้นำควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ประกาศว่าแยกข้อมูลสมบูรณ์แล้วเพราะการตรวจฐานข้อมูลผ่าน | ขยายการบังคับใช้สิทธิ์ตามตัวตนไปยัง cache ของ retrieval ด้วย\nExplanation: แม้จะใช้แหล่งข้อมูลอย่างซื่อตรง แต่ถ้าแหล่งข้อมูลล���าสมัย คำตอบก็ล้าสมัยตาม ช่องทางเข้าถึงที่สืบทอดมาอาจข้ามขอบเขตฐานข้อมูลที่ถูกต้องอยู่แล้วได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: freshness failure; part 2: extend identity-scoped access to cached retrieval).",
           "id": "2026-09-18T08:38:50.150Z",
           "savedAt": "2026-09-18T08:38:50.150Z"
         }
@@ -11681,7 +11681,7 @@
           "artifact": "irrelevant",
           "format": "parts",
           "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Financeใช้ AI เพื่อเตรียมคำแนะนำการกระทบยอด'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which diagnosis best fits the run history?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The external write succeeds, the acknowledgment is lost, and a retry repeats the write.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'send the proposed entry to the authorized controller'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการเงินใช้ AI ช่วยเตรียมคำแนะนำการกระทบยอด\nEvidence: การเขียนไปยังระบบภายนอกสำเร็จ แต่คำยืนยันหายไป และการลองใหม่ทำให้เขียนซ้ำ\nRule: ผู้ช่���ยห้ามปล่อยการชำระเงินหรือ journal entry เอง\nรายละเอียดเพิ่มเติม: ข้อเสนอการกระทบยอดจะสร้าง journal entry แต่ผู้ช่วยได้รับอนุญาตให้แค่ให้คำแนะนำ\nPart-1 stem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nPart-1 options: A. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent | B. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งรายการที่เสนอให้ผู้ควบคุมบัญชี (controller) ที่มีอำนาจ | B. บันทึกรายการอัตโนมัติทันทีที่ยอดรวมตรงกัน (key A)\nExplanation: คำตอบที่ไม่แน่ใจต้องกระทบยอดก่อนดำเนินการครั้งถัดไป ยอดที่ตรงกันไม่ได้ให้อำนาจผู้ช่วยบันทึกรายการ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการเงินใช้ AI ช่วยเตรียมคำแนะนำการกระทบยอด\nEvidence: การเขียนไปยังระบบภายนอกสำเร็จ แต่คำยืนยันหายไป และการลองใหม่ทำให้เขียนซ้ำ\nRule: ผู้ช่วยห้ามปล่อยการชำระเงินหรือ journal entry เอง\nรายละเอียดเพิ่มเติม: ข้อเสนอการกระทบยอดจะสร้าง journal entry แต่ผู้ช่วยได้รับอนุญาตให้แค่ให้คำแนะนำ\nPart-1 stem: การวินิจฉัยข้อใดสอดคล้องกับประวัติการทำงานมากที่สุด\nPart-1 options: A. workflow ไม่มีงบจำนวนครั้งที่ลองร่วมกันระหว่าง agent | B. workflow สับสนระหว่างการไม่ได้รับคำยืนยันกับการดำเนินการล้มเหลว (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งรายการที่เสนอให้ผู้ควบคุมบัญชี (controller) ที่มีอำนาจ | B. บันทึกรายการอัตโนมัติทันทีที่ยอดรวมตรงกัน (key A)\nExplanation: คำตอบที่ไม่แน่ใจต้องกระทบยอดก่อนดำเนินการครั้งถัดไป ยอดที่ตรงกันไม่ได้ให้อำนาจผู้ช่วยบันทึกรายการ\nReason: complete Thai for both parts; keyed answers unchanged.",
           "id": "2026-09-19T06:42:01.693Z",
           "savedAt": "2026-09-19T06:42:01.693Z"
         }
@@ -12706,7 +12706,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part D2 function item; almost nothing is readable for a Thai-only test taker: the persona is cut and has no space ('Cross-functional professionalใช้ AI เพื่อเตรียมสรุปการดำเนินงาน'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which change addresses the ความล้มเหลว without changing unrelated steps?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A low-confidence result goes directly into an irreversible action.'. Labelled 'select all' but each part has one keyed answer — make it single choice per part. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'label assumptions separately from confirmed facts'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้ปฏิบัติงานข้ามสายงานใช้ AI ช่วยเตรียมสรุปการดำเนินงาน (operating brief)\nEvidence: ผลลัพธ์ที่ความมั่นใจต่ำถูกส่งเข้าสู่การดำเนินการที่ย้อนกลับไม่ได้โดยตรง\nRule: คำแนะนำต้องแยกข้อเท็จจริงออกจากสมมติฐาน\nรายละเอียดเพิ่มเติม: สรุปปนข้อมูลที่ยืนยันแล้วกับสมมติฐานในการวางแผน\nPart-1 stem: ควรเปลี่ยนอะไรจึงจะแก้ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nPart-1 options: A. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ | B. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. รวมทั้งสองอย่างเป็นคำแนะนำเดียวโดยไม่แยกแยะ | B. ระบุสมมติฐานแยกจากข้อเท็จจริงที่ยืนยันแล้ว\nExplanation: ขอบเขตการดำเนินการต้องคำนึงถึงหลักฐานที่ยังไม่ชัดเจน ผู้ตัดสินใจต้องแยกหลักฐานออกจากสมมติฐานที่ยังไม่ได้ตรวจสอบ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ผู้ปฏิบัติงานข้ามสายงานใช้ AI ช่วยเตรียมสรุปการดำเนินงาน (operating brief)\nEvidence: ผลลัพธ์ที่ความมั่นใจต่ำถูกส่งเข้าสู่การดำเนินการที่ย้อนกลับไม่ได้โดยตรง\nRule: คำแนะนำต้องแยกข้อเท็จจริงออกจากสมมติฐาน\nรายละเอียดเพิ่มเติม: สรุปปนข้อมูลที่ยืนยันแล้วกับสมมติฐานในการวางแผน\nPart-1 stem: ควรเปลี่ยนอะไรจึงจะแก��ความล้มเหลวนี้ได้โดยไม่กระทบขั้นตอนอื่น\nPart-1 options: A. ปฏิเสธการส่งต่อที่ข้อมูลไม่ครบ และขอให้ระบุผู้รับผิดชอบ | B. ส่งผลลัพธ์ที่ไม่แน่ใจไปให้คนตรวจก่อนดำเนินการ (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. รวมทั้งสองอย่างเป็นคำแนะนำเดียวโดยไม่แยกแยะ | B. ระบุสมมติฐานแยกจากข้อเท็จจริงที่ยืนยันแล้ว\nExplanation: ขอบเขตการดำเนินการต้องคำนึงถึงหลักฐานที่ยังไม่ชัดเจน ผู้ตัดสินใจต้องแยกหลักฐานออกจากสมมติฐานที่ยังไม่ได้ตรวจสอบ\nReason: complete Thai for both parts; keyed answers unchanged.",
           "id": "2026-09-18T09:45:56.620Z",
           "savedAt": "2026-09-18T09:45:56.620Z"
         }
@@ -14081,7 +14081,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Marketingใช้ AI'), the part-1 stem is half English ('Which diagnosis is most consistent with the หลักฐาน?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. The rule sentence is Thai but awkward ('ต้องตรวจสอบ ผลลัพธ์ claim…'). Evidence: 'Semantically related เคสs appear, but exact account-code matches disappear.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ระบบค้นหาแสดงเคสที่เกี่ยวข้องเชิงความหมายได้ แต่เคสที่รหัสบัญชีตรงกันแบบตรงตัวกลับหายไป\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: คำตอบไม่ได้ใช้หลักฐานอ้างอิงที่มีอยู่ | การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต | เปลี่ยน asset หร��อขออนุญาตใช้สำหรับแคมเปญ\nExplanation: ความคล้ายเชิงความหมายอย่างเดียวไม่พอสำหรับรหัสที่ต้องตรงกันทุกตัวอักษร การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: exact-match path; part 2: replace or obtain permission).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายการตลาดใช้ AI ช่วยจัดทำคำแนะนำเนื้อหาแคมเปญ | Rule: ต้องตรวจสอบข้อกล่าวอ้างด้านผลลัพธ์ (performance claim) และสิทธิ์ใช้งาน asset ก่อนเผยแพร่\nEvidence: ระบบค้นหาแสดงเคสที่เกี่ยวข้องเชิงความหมายได้ แต่เคสที่รหัสบัญชีตรงกันแบบตรงตัวกลับหายไป\nรายละเอียดเพิ่มเติม: asset ที่เสนอสำหรับแคมเปญมีสิทธิ์ใช้งานเฉพาะภายในองค์กรเท่านั้น\nPart-1 stem: การวินิจฉัยใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: คำตอบไม่ได้ใช้หลักฐานอ้างอิงที่มีอยู่ | การค้นหาเชิงความหมาย (semantic retrieval) ต้องมีช่องทางค้นหาแบบตรงตัว (exact match) ร่วมด้วย\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: เผยแพร่พร้อมให้เครดิตผู้สร้างแทนการขออนุญาต | เปลี่ยน asset หรือขออนุญาตใช้สำหรับแคมเปญ\nExplanation: ความคล้ายเชิงความหมายอย่างเดียวไม่พอสำหรับรหัสที่ต้องตรงกันทุกตัวอักษร การให้เครดิตไม่ได้ขยายขอบเขตสิทธิ์ใช้งานตามที่ระบุไว้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: exact-match path; part 2: replace or obtain permission).",
           "id": "2026-09-18T04:51:40.528Z",
           "savedAt": "2026-09-18T04:51:40.528Z"
         }
@@ -15131,7 +15131,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Operationsใช้ AI'), the rule sentence ends in a substituted word ('escalation เส้นทาง'), the part-1 stem is half English ('Which configuration change addresses the specific ต้องการment?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Evidence: 'The assistant must inspect ข้อมูล but must never change them.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nรายละเอียดเพิ่มเติม: ตารางที่เสนอ���ช้ช��วงเวลาให้บริการเดิมซึ่งเปลี่ยนไปแล้ว\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ปรับแผนให้ตรงกับตารางปัจจุบันที่อนุมัติแล้ว | ใช้ช่วงเวลาเดิมต่อไปเพราะเคยใช้ใน pilot\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน ช่วงเวลาปฏิบัติงานจริงในปัจจุบันเป็นตัวกำหนดการส่งต่อครั้งนี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: read-only connector; part 2: reconcile with the current approved schedule).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่าย Operations ใช้ AI ช่วยจัดทำแผนส่งต่องาน | Rule: ทุกกรณียกเว้นด้าน operations ต้องมีผู้รับผิดชอบ (owner) และช่องทาง escalation\nEvidence: Assistant ต้องตรวจดูข้อมูลได้ แต่ห้ามแก้ไขข้อมูลเด็ดขาด\nรายละเอียดเพิ่มเติม: ตารางที่เสนอใช้ช��วงเวลาให้บริการเดิมซึ่งเปลี่ยนไปแล้ว\nPart-1 stem: ควรปรับการตั้งค่าใดจึงจะตอบข้อกำหนดนี้ได้ตรงจุด\nPart-1 options: ใส่ข้อจำกัดสำคัญไว้ใน context ของแต่ละงานโดยตรง | ให้ connector มีสิทธิ์อ่านอย่างเดียว (read-only) เฉพาะข้อมูลที่จำเป็น\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ปรับแผนให้ตรงกับตารางปัจจุบันที่อนุมัติแล้ว | ใช้ช่วงเวลาเดิมต่อไปเพราะเคยใช้ใน pilot\nExplanation: งานต้องการแค่การอ่าน จึงไม่จำเป็นต้องให้สิทธิ์เขียน ช่วงเวลาปฏิบัติงานจริงในปัจจุบันเป็นตัวกำหนดการส่งต่อครั้งนี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: read-only connector; part 2: reconcile with the current approved schedule).",
           "id": "2026-09-18T08:19:28.952Z",
           "savedAt": "2026-09-18T08:19:28.952Z"
         }
@@ -15381,7 +15381,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona is cut and has no space ('People / HRใช้ AI เพื่อเตรียมคำตอบบริการพนักงาน'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which quality process should be introduced first?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Reviewers repeatedly rewrite outputs but never label recurring defect types.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'reserve that decision for the authorized HR decision maker'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบุคคล (HR) ใช้ AI ช่วยเตรียมคำตอบบริการพนักงาน\nEvidence: ผู้ตรวจเขียนผลลัพธ์ใหม่ซ้ำ ๆ แต่ไม่เคยระบุประเภทข้อบกพร่องที่เกิดซ้ำ\nRule: การตัดสินใจเกี่ยวกับการจ้างงานต้องมีผู้ตัดสินใจที่เป็นคนและระบุชื่อได้\nรายละเอียดเพิ่มเติม: คำตอบถึงพนักงานมีคำแนะนำที่อาจส่งผลต่อการตัดสินใจด้านการจ้างงาน\nPart-1 stem: ควรนำกระบวนการคุณภาพข้อใดมาใช้ก่อน\nPart-1 options: A. บันทึกประเภทข้อบกพร่อง และเชื่อมกับการแก้ prompt หรือแหล่งข้อมูล | B. หยุดเมื่อผ่านเกณฑ์การยอมรับที่ชัดเจน โดยจำกัดงบการแก้ไข (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ให้ผู้ช่วยสรุปขั้นสุดท้ายหลังตรวจถ้อยคำแล้ว | B. สงวนการตัดสินใจนั้นไว้ให้ผู้มีอำนาจตัดสินใจของ HR (key B)\nExplanation: feedback ที่มีโครงสร้างช่วยป้องกัน แทนการซ่อมด้วยมือซ้ำ ๆ การตรวจถ้อยคำไม่ได้ให้อำนาจตัดสินใจเรื่องการจ้างงาน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายบุคคล (HR) ใช้ AI ช่วยเตรียมคำตอบบริการพนักงาน\nEvidence: ผู้ตรวจเขียนผลลัพธ์ใหม่ซ้ำ ๆ แต่ไม่เคยระบุประเภทข้อบกพร่องที่เกิดซ้ำ\nRule: การตัดสินใจเกี่ยวกับการจ้างงานต้องมีผู้ตัดสินใจที่เป็นคนและระบุชื่อได้\nรายละเอียดเพิ่มเติม: คำตอบถึงพนักงานมีคำแนะนำที่อาจส่งผลต่อการตัดสินใจด้านการจ้างงาน\nPart-1 stem: ควรนำกระบวนการคุณภาพข้อใดมาใช้ก่อน\nPart-1 options: A. บันทึกประเภทข้อบกพร่อง และเชื่อมกับการแก้ prompt หรือแหล่งข้อมูล | B. หยุ���เมื่อผ่านเกณฑ์การยอมรับที่ชัดเจน โดยจำกัดงบการแก้ไข (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ให้ผู้ช่วยสรุปขั้นสุดท้ายหลังตรวจถ้อยคำแล้ว | B. สงวนการตัดสินใจนั้นไว้ให้ผู้มีอำนาจตัดสินใจของ HR (key B)\nExplanation: feedback ที่มีโครงสร้างช่วยป้องกัน แทนการซ่อมด้วยมือซ้ำ ๆ การตรวจถ้อยคำไม่ได้ให้อำนาจตัดสินใจเรื่องการจ้างงาน\nReason: complete Thai for both parts; keyed answers unchanged.",
           "id": "2026-09-19T06:39:50.826Z",
           "savedAt": "2026-09-19T06:39:50.826Z"
         }
@@ -16306,7 +16306,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; almost nothing is readable for a Thai-only test taker. The persona has no space ('Salesใช้ AI'), the part-1 stem is half English ('What should happen next before the ข้อเสนอลูกค้า is used?'), all part-1 and part-2 options are English or word-salad, the 'Additional detail' sentence is English, and the explanation is mixed. Only the rule sentence and the part-2 stem are Thai. Evidence: 'The แหล่งข้อมูล explicitly leaves a material condition undecided.' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nรายละเอียดเพิ่มเติม: ร่างให้คำมั่นเรื่องความสามารถที่ไม่มีอยู่ในบันทึก release ที่อนุมัติแล้ว\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: ให้ข้อความตัดตอนที่อนุมัติแล้ว หรือระบุว่าตรวจสอบไม่ได้ | แสดงความไม่แน่นอนและขอการตัดสินใจที่ยังขาดอยู่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: คงคำมั่นไว้เพราะสิ���ค้าที่คล้ายกันมีความสามารถนั้น | ตัดคำมั่นออก หรือหาหลักฐานความสามารถปัจจุบันที่ยืนยันแล้ว\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง ฟีเจอร์ของสินค้าอื่นไม่ได้ยืนยันความสามารถของสินค้านี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: present the uncertainty; part 2: remove the promise or obtain verified evidence).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยจัดทำข้อเสนอลูกค้า\nEvidence: แหล่งข้อมูลระบุชัดว่าเงื่อนไขสำคัญข้อหนึ่งยังไม่มีการตัดสินใจ\nรายละเอียดเพิ่มเติม: ร่างให้คำมั่นเรื่องความสามารถที่ไม่มีอยู่ในบันทึก release ที่อนุมัติแล้ว\nPart-1 stem: ก่อนนำผลลัพธ์นี้ไปใช้ ควรทำอย่างไรต่อไป\nPart-1 options: ให้ข้อความตัดตอนที่อนุมัติแล้ว หรือระบุว่าตรวจสอบไม่ได้ | แสดงความไม่แน่นอนและขอการตัดสินใจที่ยังขาดอยู่\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: คงคำมั่นไว้เพราะสินค้าที่คล้ายกันมีความสามารถนั้น | ตัดคำมั่นออก หรือหาหลักฐานความสามารถปัจจุบันที่ยืนยันแล้ว\nExplanation: คำตอบที่ฟันธงจะเท่ากับแต่งเงื่อนไขที่แหล่งข้อมูลไม่ได้ระบุขึ้นมาเอง ฟีเจอร์ของสินค้าอื่นไม่ได้ยืนยันความสามารถของสินค้านี้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: present the uncertainty; part 2: remove the promise or obtain verified evidence).",
           "id": "2026-09-18T07:54:55.382Z",
           "savedAt": "2026-09-18T07:54:55.382Z"
         }
@@ -16562,6 +16562,806 @@
         }
       ],
       "updatedAt": "2026-09-18T07:58:41.469Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt-management decision best fits the evidence?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Teams edit the production prompt directly; failures cannot be traced to a version.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ทีมแก้ prompt ที่ใช้งานจริงโดยตรง ทำให้ตามรอยความล้มเหลวกลับไปยังเวอร์ชันไม่ได้\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: A. แยกขั้นตอนหลักฐาน การร่าง การตรวจสอบ และการอนุมัติออกจากกัน | B. กำหนดเวอร์ชันของ prompt และผูกแต่ละ release กับตัวอย่างที่ประเมินแล้ว (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: release ที่ตามรอยได้ทำให้ผลของ prompt ตรวจสอบและย้อนกลับได้ ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.783Z",
+          "savedAt": "2026-09-19T06:45:21.783Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.783Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt-management decision best fits the evidence?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A prompt passes frequent cases but mishandles a high-impact exception in approved CRM extracts and current commercial terms.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ผ่านกรณีที่พบบ่อย แต่จัดการกรณียกเว้นที่มีผลกระทบสูงในข้อมูลจาก CRM ที่อนุมัติแล้วและเงื่อนไขทางการค้าฉบับปัจจุบันผิด\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: A. ทดสอบคู่ prompt–โมเดลใหม่ก่อนเปลี่ยนโมเดล | B. ทำให้กรณียกเว้นนั้นเป็น regression case ที่ต้องผ่านก่อน release (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น | B. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน (key B)\nExplanation: คุณภาพเฉลี่ยชดเชยความล้มเหลวร้ายแรงที่รู้อยู่แล้วไม่ได้ ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.809Z",
+          "savedAt": "2026-09-19T06:45:21.809Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.809Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt-management decision best fits the evidence?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A prompt works on one model, but the replacement interprets its schema instructions differently.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ใช้ได้กับโมเดลหนึ่ง แต่โมเดลที่มาแทนตีความคำสั่งเรื่อง schema ต่างออกไป\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: A. ทดสอบคู่ prompt–โมเดลใหม่ก่อนเปลี่ยนโมเดล | B. แยกขั้นตอนหลักฐาน การร่าง การตรวจสอบ และการอนุมัติออกจากกัน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม | B. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น (key A)\nExplanation: พฤติกรรมของ prompt ขึ้นอยู่กับโมเดลที่ใช้รัน การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.827Z",
+          "savedAt": "2026-09-19T06:45:21.827Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.827Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt-management decision best fits the evidence?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A growing prompt attempts to perform source retrieval, decisions, formatting, and approval in one step.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ที่ยาวขึ้นเรื่อย ๆ พยายามทำทั้งค้นแหล่งข้อมูล ตัดสินใจ จัดรูปแบบ และอนุมัติในขั้นตอนเดียว\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: การตัดสินใจด้านการจัดการ prompt ข้อใดสอดคล้องกับหลักฐานมากที่สุด\nPart-1 options: A. ทดสอบคู่ prompt–โมเดลใหม่ก่อนเปลี่ยนโมเดล | B. แยกขั้นตอนหลักฐาน การร่าง การตรวจสอบ และการอนุมัติออกจากกัน (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น | B. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน (key A)\nExplanation: ขั้นตอนที่แยกกันทำให้ทดสอบความล้มเหลวและการควบคุมได้อย่างอิสระ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.840Z",
+          "savedAt": "2026-09-19T06:45:21.840Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.840Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt repair most directly fixes the observed failure?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The response summarizes the whole source although only differences between versions are needed.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: คำตอบสรุปแหล่งข้อมูลทั้งหมด ทั้งที่ต้องการแค่ส่วนที่ต่างกันระหว่างเวอร์ชัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: ควรแก้ prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด\nPart-1 options: A. ระบุ schema ที่แน่นอน และตรวจสอบทุกฟิลด์ที่จำเป็น | B. ขอให้เปรียบเทียบเวอร์ชันโดยตัดส่วนที่ไม่เปลี่ยนแปลงออก (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: งานนี้ต้องการการดำเนินการที่แคบลง ไม่ใช่ข้อมูลต้นทางเพิ่ม ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.594Z",
+          "savedAt": "2026-09-19T06:45:21.594Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.594Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt repair most directly fixes the observed failure?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The text uses expert vocabulary for an audience new to the topic.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ข้อความใช้ศัพท์เฉพาะทางกับผู้อ่านที่ยังใหม่กับเรื่องนี้\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: ควรแก้ prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด\nPart-1 options: A. กำหนดกลุ่มผู้อ่าน และขอให้อธิบายคำศัพท์ที่ไม่คุ้นเคย | B. ระบุ schema ที่แน่นอน และตรวจสอบทุกฟิลด์ที่จำเป็น (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น | B. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน (key B)\nExplanation: ข้อกำหนดเรื่องผู้อ่านเปลี่ยนวิธีสื่อสารข้อเท็จจริงชุดเดียวกัน ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.613Z",
+          "savedAt": "2026-09-19T06:45:21.613Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.613Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt repair most directly fixes the observed failure?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The account proposal contains invented details where the supplied records have blank fields.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ข้อเสนอสำหรับลูกค้ามีรายละเอียดที่แต่งขึ้นตรงที่ข้อมูลต้นทางเว้นว่างไว้\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: ควรแก้ prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด\nPart-1 options: A. กำหนดให้ระบุฟิลด์ที่ไม่มีข้อมูลว่า “ไม่ทราบ” และห้ามคาดเดา | B. กำหนดกลุ่มผู้อ่าน และขอให้อธิบายคำศัพท์ที่ไม่คุ้นเคย (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม | B. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น (key A)\nExplanation: การแก้นี้จัดการการแต่งข้อมูลตรงจุดที่ข้อมูลขาด การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.633Z",
+          "savedAt": "2026-09-19T06:45:21.633Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.633Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt repair most directly fixes the observed failure?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The content is accurate, but a downstream form rejects inconsistent field names.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เนื้อหาถูกต้อง แต่ฟอร์มปลายทางปฏิเสธเพราะชื่อฟิลด์ไม่สอดคล้องกัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: ควรแก้ prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด\nPart-1 options: A. กำหนดกลุ่มผู้อ่าน และขอให้อธิบายคำศัพท์ที่ไม่คุ้นเคย | B. ระบุ schema ที่แน่นอน และตรวจสอบทุกฟิลด์ที่จำเป็น (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น | B. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน (key A)\nExplanation: ผลลัพธ์ที่เครื่องนำไปใช้ต่อต้องมีโครงสร้างคงที่และตรวจสอบได้ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.653Z",
+          "savedAt": "2026-09-19T06:45:21.653Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.653Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which missing prompt element is most directly causing this problem?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The requested account proposal is clear, but a crucial eligibility rule is absent from the prompt.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ข้อเสนอสำหรับลูกค้าที่ขอมาชัดเจน แต่กฎเรื่องคุณสมบัติที่สำคัญข้อหนึ่งไม่ได้อยู่ใน prompt\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: องค์ประกอบใดของ prompt ที่ขาดไป และเป็นสาเหตุโดยตรงของปัญหานี้\nPart-1 options: A. งานและสิ่งที่ต้องส่งมอบที่ชัดเจน | B. ข้อจำกัดที่เกี่ยวกับการตัดสินใจ (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: โมเดลไม่ได้รับกฎที่จำเป็นสำหรับกำหนดขอบเขตคำตอบ ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.485Z",
+          "savedAt": "2026-09-19T06:45:21.485Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.485Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which missing prompt element is most directly causing this problem?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The prompt requests a fixed record format but never supplies field names or an example.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ขอรูปแบบข้อมูลตายตัว แต่ไม่ได้ให้ชื่อฟิลด์หรือตัวอย่างเลย\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: องค์ประกอบใดของ prompt ที่ขาดไป และเป็นสาเหตุโดยตรงของปัญหานี้\nPart-1 options: A. โครงสร้างผลลัพธ์ที่ระบุชัด | B. หลักฐานและบริบทที่จำเป็น (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน | B. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น (key A)\nExplanation: รูปแบบที่ต้องการต้องระบุหรือแสดงตัวอย่างให้เห็น ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.515Z",
+          "savedAt": "2026-09-19T06:45:21.515Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.516Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which missing prompt element is most directly causing this problem?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The prompt gives a task and format but no facts needed to complete the answer.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ระบุงานและรูปแบบ แต่ไม่ได้ให้ข้อเท็จจริงที่จำเป็นสำหรับตอบ\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: องค์ประกอบใดของ prompt ที่ขาดไป และเป็นสาเหตุโดยตรงของปัญหานี้\nPart-1 options: A. หลักฐานและบริบทที่จำเป็น | B. งานและสิ่งที่ต้องส่งมอบที่ชัดเจน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น | B. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม (key B)\nExplanation: คำสั่งที่ชัดเจนแทนข้อเท็จจริงที่ขาดหายไปไม่ได้ การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.549Z",
+          "savedAt": "2026-09-19T06:45:21.549Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.549Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which missing prompt element is most directly causing this problem?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The request says “help with this” and supplies approved CRM extracts and current commercial terms, but never names the expected output.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: คำขอบอกแค่ว่า “ช่วยหน่อย” และแนบข้อมูลจาก CRM ที่อนุมัติแล้วและเงื่อนไขทางการค้าฉบับปัจจุบันมาให้ แต่ไม่ได้บอกว่าต้องการผลลัพธ์อะไร\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: องค์ประกอบใดของ prompt ที่ขาดไป และเป็นสาเหตุโดยตรงของปัญหานี้\nPart-1 options: A. ข้อจำกัดที่เกี่ยวกับการตัดสินใจ | B. งานและสิ่งที่ต้องส่งมอบที่ชัดเจน (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น | B. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน (key A)\nExplanation: ผู้ช่วยมีข้อมูลต้นทางแต่ไม่มีวัตถุประสงค์ที่กำหนดไว้ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.576Z",
+          "savedAt": "2026-09-19T06:45:21.576Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.576Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt experiment best isolates the recurring defect?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The prompt performs well on ordinary records but guesses when required facts are absent.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ทำงานได้ดีกับข้อมูลทั่วไป แต่คาดเดาเมื่อข้อเท็จจริงที่จำเป็นหายไป\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: การทดลอง prompt แบบใดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nPart-1 options: A. เพิ่มกรณีที่หลักฐานขาดเข้าไปในชุดประเมิน และทดสอบว่าโมเดลงดตอบหรือไม่ | B. คงโมเดลและงานไว้เท่าเดิม แล้วทดสอบการเปลี่ยน prompt ทีละอย่าง (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: จุดอ่อนคือพฤติกรรมเมื่อข้อมูลนำเข้าหายไป ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.677Z",
+          "savedAt": "2026-09-19T06:45:21.677Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.677Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt experiment best isolates the recurring defect?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A rewrite changes task wording, examples, model, and output format together.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: การแก้ครั้งหนึ่งเปลี่ยนทั้งถ้อยคำของงาน ตัวอย่าง โมเดล และรูปแบบผลลัพธ์พร้อมกัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: การทดลอง prompt แบบใดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nPart-1 options: A. ทดสอบตัวอย่างชุดเดียวที่สอดคล้องกันกับ prompt ปัจจุบัน | B. คงโมเดลและงานไว้เท่าเดิม แล้วทดสอบการเปลี่ยน prompt ทีละอย่าง (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน | B. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น (key A)\nExplanation: การเปลี่ยนหลายอย่างพร้อมกันทำให้ระบุที่มาของผลไม่ได้ ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.699Z",
+          "savedAt": "2026-09-19T06:45:21.699Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.699Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt experiment best isolates the recurring defect?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Two examples imply conflicting output formats; other instructions are consistent.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ตัวอย่างสองชุดบอกเป็นนัยถึงรูปแบบผลลัพธ์ที่ขัดกัน ส่วนคำสั่งอื่นสอดคล้องกัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: การทดลอง prompt แบบใดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nPart-1 options: A. แทนกฎที่ขัดกันด้วยกฎลำดับความสำคัญที่ชัดเจนข้อเดียว | B. ทดสอบตัวอย่างชุดเดียวที่สอดคล้องกันกับ prompt ปัจจุบัน (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น | B. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม (key B)\nExplanation: ตัวอย่างที่ขัดกันสร้างความกำกวมเรื่องรูปแบบที่หลีกเลี่ยงได้ การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.720Z",
+          "savedAt": "2026-09-19T06:45:21.720Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.720Z"
+    },
+    "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which prompt experiment best isolates the recurring defect?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A long prompt repeats a rule in three incompatible forms.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: prompt ที่ยาวระบุกฎเดียวกันซ้ำสามแบบที่ไม่เข้ากัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: การทดลอง prompt แบบใดช่วยแยกสาเหตุของข้อบกพร่องที่เกิดซ้ำได้ดีที่สุด\nPart-1 options: A. แทนกฎที่ขัดกันด้วยกฎลำดับความสำคัญที่ชัดเจนข้อเดียว | B. ทดสอบตัวอย่างชุดเดียวที่สอดคล้องกันกับ prompt ปัจจุบัน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น | B. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน (key A)\nExplanation: ความยาวไม่ใช่ปัญหาหลัก ปัญหาคือคำสั่งขัดกัน ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:21.761Z",
+          "savedAt": "2026-09-19T06:45:21.761Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:21.761Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-ADVANCED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which procurement experiment best resolves the stated uncertainty?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Two tools have similar averages but different failures on critical records.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือสองตัวมีค่าเฉลี่ยใกล้กัน แต่ล้มเหลวต่างกันกับข้อมูลสำคัญ\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: การทดลองด้านการจัดซื้อข้อใดช่วยคลี่คลายความไม่แน่นอนที่ระบุได้ดีที่สุด\nPart-1 options: A. เปรียบเทียบความรุนแรงของความล้มเหลว และผลงานในกลุ่มข้อมูลที่แย่ที่สุด | B. ซ้อมกู้คืนเมื่อระบบล่ม และทดสอบการย้ายข้อมูลออก-เข้า (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ | B. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน (key A)\nExplanation: ค่าเฉลี่ยที่เท่ากันอาจซ่อนความเสี่ยงเชิงปฏิบัติการที่ต่างกันมาก ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.375Z",
+          "savedAt": "2026-09-19T06:45:24.375Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.375Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-ADVANCED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which procurement experiment best resolves the stated uncertainty?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Vendor demonstrations use easy cases unlike the exception-heavy approved CRM extracts and current commercial terms.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เดโมของผู้ขายใช้กรณีง่าย ๆ ต่างจากข้อมูลจาก CRM ที่อนุมัติแล้วและเงื่อนไขทางการค้าฉบับปัจจุบันซึ่งเต็มไปด้วยข้อยกเว้น\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: การทดลองด้านการจัดซื้อข้อใดช่วยคลี่คลายความไม่แน่นอนที่ระบุได้ดีที่สุด\nPart-1 options: A. ทดสอบการแยก tenant และการบังคับใช้นโยบายแยกตามทีม | B. รันชุดงานตัวแทนที่ไม่เคยใช้ทดสอบ โดยกำหนดเกณฑ์ไว้ล่วงหน้า (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน | B. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น (key A)\nExplanation: การเลือกต้องใช้หลักฐานที่ตรงกับงานจริง ไม่ใช่เดโมที่คัดมา ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.390Z",
+          "savedAt": "2026-09-19T06:45:24.390Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.390Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-ADVANCED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which procurement experiment best resolves the stated uncertainty?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The business case assumes uninterrupted vendor service and no migration cost.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: business case ตั้งสมมติฐานว่าผู้ให้บริการไม่มีวันหยุดชะงัก และไม่มีต้นทุนการย้ายระบบ\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: การทดลองด้านการจัดซื้อข้อใดช่วยคลี่คลายความไม่แน่นอนที่ระบุได้ดีที่สุด\nPart-1 options: A. ซ้อมกู้คืนเมื่อระบบล่ม และทดสอบการย้ายข้อมูลออก-เข้า | B. รันชุดงานตัวแทนที่ไม่เคยใช้ทดสอบ โดยกำหนดเกณฑ์ไว้ล่วงหน้า (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น | B. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม (key B)\nExplanation: การพึ่งพาเชิงปฏิบัติการต้องมีหลักฐานการกู้คืนและการย้ายข้อมูลโดยตรง การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.408Z",
+          "savedAt": "2026-09-19T06:45:24.408Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.408Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-ADVANCED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which procurement experiment best resolves the stated uncertainty?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A shared tool will serve teams with conflicting access and retention requirements.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือที่ใช้ร่วมกันจะให้บริการหลายทีมที่มีข้อกำหนดด้านการเข้าถึงและการเก็บรักษาข้อมูลขัดกัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: การทดลองด้านการจัดซื้อข้อใดช่วยคลี่คลายความไม่แน่นอนที่ระบุได้ดีที่สุด\nPart-1 options: A. รันชุดงานตัวแทนที่ไม่เคยใช้ทดสอบ โดยกำหนดเกณฑ์ไว้ล่วงหน้า | B. ทดสอบการแยก tenant และการบังคับใช้นโยบายแยกตามทีม (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น | B. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน (key A)\nExplanation: การใช้งานร่วมกันต้องรองรับขอบเขตที่บังคับใช้ได้ต่างกัน ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.424Z",
+          "savedAt": "2026-09-19T06:45:24.424Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.424Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-APPLIED-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which candidate best fits the stated task?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The task is to reconcile exact totals from structured records using fixed rules.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: งานคือกระทบยอดตัวเลขรวมที่แน่นอนจากข้อมูลที่มีโครงสร้าง โดยใช้กฎตายตัว\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nPart-1 options: A. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้ | B. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการตรวจทาน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: การคำนวณที่แน่นอนภายใต้กฎชัดเจนตรวจสอบได้โดยตรง ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.184Z",
+          "savedAt": "2026-09-19T06:45:24.184Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.184Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-APPLIED-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which candidate best fits the stated task?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The task combines record lookup, drafting, and a gated system action.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: งานนี้รวมทั้งการค้นข้อมูล การร่างข้อความ และการดำเนินการในระบบที่ต้องผ่านการอนุมัติ\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nPart-1 options: A. เครื่องมือ workflow ที่มี connector จำกัดขอบเขตและขั้นตอนอนุมัติ | B. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน | B. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น (key A)\nExplanation: งานทั้งชุดต้องการความสามารถที่ประสานกันและขอบเขตของการดำเนินการ ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.214Z",
+          "savedAt": "2026-09-19T06:45:24.214Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.214Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-APPLIED-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which candidate best fits the stated task?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The task is to find and quote a current approved clause; no new wording is needed.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: งานคือค้นหาและยกข้อความจากข้อกำหนดฉบับปัจจุบันที่อนุมัติแล้ว ไม่ต้องเขียนข้อความใหม่\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nPart-1 options: A. เครื่องมือค้นหาที่อนุมัติแล้ว ซึ่งคืนข้อความต้นฉบับจากแหล่งข้อมูล | B. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น | B. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม (key B)\nExplanation: การค้นคืนโดยตรงตอบโจทย์ได้โดยไม่ต้องสร้างข้อความเพิ่ม การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.245Z",
+          "savedAt": "2026-09-19T06:45:24.245Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.245Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-APPLIED-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which candidate best fits the stated task?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The task is to rewrite supplied non-sensitive notes into a reviewed account proposal.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: งานคือเขียนบันทึกที่ไม่มีข้อมูลอ่อนไหวใหม่ให้เป็นข้อเสนอสำหรับลูกค้าที่ผ่านการตรวจทาน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: เครื่องมือใดเหมาะกับงานที่ระบุมากที่สุด\nPart-1 options: A. เครื่องมือร่างข้อความที่อนุมัติแล้ว พร้อมการควบคุมข้อมูลนำเข้าและการตรวจทาน | B. เครื่องมือคำนวณแบบกำหนดผลแน่นอน พร้อมสูตรที่ตรวจสอบย้อนกลับได้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน | B. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น (key B)\nExplanation: ความต้องการหลักคือการแปลงภาษาโดยมีคนอนุมัติ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.281Z",
+          "savedAt": "2026-09-19T06:45:24.281Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.281Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-AWARENESS-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "not-needed",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "not-needed",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which tool property is most relevant to the stated requirement?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The account proposal must enter an existing system in a fixed machine-readable structure.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ข้อเสนอสำหรับลูกค้าต้องส่งเข้าระบบที่มีอยู่ในรูปแบบตายตัวที่เครื่องอ่านได้\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: คุณสมบัติใดของเครื่องมือเกี่ยวข้องกับข้อกำหนดนี้มากที่สุด\nPart-1 options: A. ส่งออกข้อมูลได้ และมีเส้นทางสำรองที่ทดสอบแล้ว | B. ให้ผลลัพธ์แบบมีโครงสร้างที่ตรวจสอบแล้ว และรองรับการเชื่อมต่อระบบ (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: ผลลัพธ์ต้องใช้ได้กับระบบที่รับข้อมูล ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.067Z",
+          "savedAt": "2026-09-19T06:45:24.067Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.067Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-AWARENESS-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which tool property is most relevant to the stated requirement?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The assistant must only read records, even if a user asks it to edit them.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: ผู้ช่วยต้องอ่านข้อมูลได้อย่างเดียว แม้ผู้ใช้จะขอให้แก้ไขก็ตาม\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: คุณสมบัติใดของเครื่องมือเกี่ยวข้องกับข้อกำหนดนี้มากที่สุด\nPart-1 options: A. รองรับการเข้าถึงข้อมูลที่ต้องใช้ และมีขอบเขต workspace ชัดเจน | B. บังคับสิทธิ์อ่านอย่างเดียวได้จริง (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น | B. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน (key B)\nExplanation: คำสัญญาใน prompt อ่อนกว่าขอบเขตความสามารถที่บังคับใช้ได้จริง ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.096Z",
+          "savedAt": "2026-09-19T06:45:24.096Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.096Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-AWARENESS-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which tool property is most relevant to the stated requirement?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The same workflow must be recoverable after a vendor outage.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: workflow เดิมต้องกู้คืนได้หลังผู้ให้บริการล่ม\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: คุณสมบัติใดของเครื่องมือเกี่ยวข้องกับข้อกำหนดนี้มากที่สุด\nPart-1 options: A. ส่งออกข้อมูลได้ และมีเส้นทางสำรองที่ทดสอบแล้ว | B. รองรับการเข้าถึงข้อมูลที่ต้องใช้ และมีขอบเขต workspace ชัดเจน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม | B. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น (key A)\nExplanation: การกู้คืนขึ้นอยู่กับสถานะที่ย้ายได้และทางเลือกที่ใช้งานได้จริง การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.122Z",
+          "savedAt": "2026-09-19T06:45:24.122Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.122Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-AWARENESS-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which tool property is most relevant to the stated requirement?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'Staff need to inspect approved CRM extracts and current commercial terms without exposing records outside the approved workspace.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed B; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: พนักงานต้องตรวจดูข้อมูลจาก CRM ที่อนุมัติแล้วและเงื่อนไขทางการค้าฉบับปัจจุบันได้ โดยไม่ให้ข้อมูลหลุดออกนอก workspace ที่อนุมัติ\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: คุณสมบัติใดของเครื่องมือเกี่ยวข้องกับข้อกำหนดนี้มากที่สุด\nPart-1 options: A. ให้ผลลัพธ์แบบมีโครงสร้างที่ตรวจสอบแล้ว และรองรับการเชื่อมต่อระบบ | B. รองรับการเข้าถึงข้อมูลที่ต้องใช้ และมีขอบเขต workspace ชัดเจน (key B)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน | B. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น (key B)\nExplanation: งานนี้ขึ้นอยู่กับสิทธิ์เข้าถึงข้อมูลที่ต้องใช้ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.150Z",
+          "savedAt": "2026-09-19T06:45:24.150Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.150Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-PROFICIENT-01": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which selection evidence should determine the next step?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'The top benchmark tool cannot connect to the approved record system.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'seek the account owner’s authorized pricing decision'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือที่ได้คะแนน benchmark สูงสุดเชื่อมต่อกับระบบข้อมูลที่อนุมัติไม่ได้\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ข้อเสนอสำหรับลูกค้าให้ส่วนลดเกินช่วงราคาที่อนุมัติไว้\nPart-1 stem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nPart-1 options: A. ยืนยันว่าเชื่อมต่อระบบได้จริงก่อนเลือกเครื่องมือ | B. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ส่งข้อเสนอเลย เพราะลูกค้าขอคำตอบด่วน | B. ขอการตัดสินใจเรื่องราคาจากเจ้าของ account ผู้มีอำนาจ (key B)\nExplanation: คะแนนทั่วไปไม่ได้ลบข้อจำกัดด้านการเข้าถึงที่จำเป็น ความเร่งด่วนของลูกค้าไม่ได้ขยายอำนาจในการกำหนดราคา\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.304Z",
+          "savedAt": "2026-09-19T06:45:24.304Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.304Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-PROFICIENT-02": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which selection evidence should determine the next step?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A tool meets quality targets but its export loses essential review history.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'remove the promise or obtain verified current capability evidence'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือผ่านเกณฑ์คุณภาพ แต่การส่งออกทำให้ประวัติการตรวจทานที่จำเป็นหายไป\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ร่างข้อเสนอสัญญาความสามารถที่ไม่มีอยู่ในข้อมูล release ที่อนุมัติแล้ว\nPart-1 stem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nPart-1 options: A. ทดสอบว่าประวัติการตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้ | B. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. คงคำสัญญาไว้ เพราะผลิตภัณฑ์ที่คล้ายกันมีความสามารถนั้น | B. ตัดคำสัญญานั้นออก หรือหาหลักฐานที่ยืนยันได้ว่ามีความสามารถนั้นจริงในปัจจุบัน (key B)\nExplanation: เครื่องมือที่เสนอไม่ผ่านคุณสมบัติด้านความต่อเนื่องที่จำเป็น ฟีเจอร์ของผลิตภัณฑ์อื่นไม่ได้ยืนยันความสามารถของผลิตภัณฑ์นี้\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.324Z",
+          "savedAt": "2026-09-19T06:45:24.324Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.324Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-PROFICIENT-03": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which selection evidence should determine the next step?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A tool has many connectors, but the required connector grants excessive write access.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'verify the buyer through the established account channel'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือมี connector จำนวนมาก แต่ connector ที่ต้องใช้ให้สิทธิ์เขียนมากเกินจำเป็น\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: ตัวตนของผู้ซื้อยังไม่แน่ชัด และคำขอมีรายละเอียด account ที่อ่อนไหว\nPart-1 stem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nPart-1 options: A. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้ | B. ทดสอบว่าประวัติการตรวจสอบย้ายออกได้ก่อนตัดสินใจใช้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ยืนยันตัวผู้ซื้อผ่านช่องทาง account ที่มีอยู่เดิม | B. ใช้ข้อมูลติดต่อที่ให้มาในคำขอที่ยังไม่แน่ชัดนั้น (key A)\nExplanation: จำนวน connector ไม่ได้บอกว่าสิทธิ์เหมาะสม การยืนยันตัวตนต้องใช้ช่องทาง account ที่เชื่อถือได้โดยอิสระ\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.343Z",
+          "savedAt": "2026-09-19T06:45:24.343Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.343Z"
+    },
+    "NH-FUNCTION-SALES-D2-TOOL-SELECTION-PROFICIENT-04": {
+      "draft": {
+        "decision": "revise",
+        "rating": "1",
+        "clarity": "confusing",
+        "artifact": "irrelevant",
+        "format": "parts",
+        "comment": "",
+        "suggestedChange": ""
+      },
+      "entries": [
+        {
+          "decision": "revise",
+          "rating": "1",
+          "clarity": "confusing",
+          "artifact": "irrelevant",
+          "format": "parts",
+          "comment": "AI review (Claude): Two-part D2 item; almost nothing is readable for a Thai-only test taker: the persona has no space ('Salesใช้ AI เพื่อเตรียมข้อเสนอลูกค้า'), the evidence sentence is English/word-salad, the 'Additional detail' sentence is English, the part-1 stem is half English ('Which selection evidence should determine the next step?') and both part-1 options are word-salad; only the rule sentence and the part-2 stem are Thai; the explanation is mixed. Evidence: 'A cheaper tool produces twice as much review work at the same output quality.'. Part-2 options start in lowercase while part-1 options are capitalised. English content is sound (part 1 keyed A; part 2 keyed 'check the applicable commercial terms before committing'). Same evidence set as the D2 core layer; only the persona and the extra detail differ. The assigned artifact is not needed for a one-sentence evidence item.",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายขายใช้ AI ช่วยเตรียมข้อเสนอสำหรับลูกค้า (account proposal)\nEvidence: เครื่องมือที่ถูกกว่าทำให้ต้องตรวจทานมากขึ้นสองเท่า ที่คุณภาพผลลัพธ์เท่ากัน\nRule: เฉพาะเจ้าของ account เท่านั้นที่อนุมัติราคาและคำมั่นเรื่องการส่งมอบได้\nรายละเอียดเพิ่มเติม: เงื่อนไขต้นฉบับครอบคลุมภูมิภาคหนึ่ง แต่คำมั่นที่เสนอระบุอีกภูมิภาคหนึ่ง\nPart-1 stem: หลักฐานในการเลือกเครื่องมือข้อใดควรเป็นตัวกำหนดขั้นตอนถัดไป\nPart-1 options: A. เปรียบเทียบต้นทุนรวมของ workflow รวมถึงแรงงานตรวจทาน | B. กำหนดให้ connector มีขอบเขตสิทธิ์ที่แคบลงและบังคับใช้ได้ (key A)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: A. ใช้เงื่อนไขต้นฉบับซ้ำ เพราะชื่อผลิตภัณฑ์ไม่เปลี่ยน | B. ตรวจสอบเงื่อนไขทางการค้าที่ใช้บังคับก่อนให้คำมั่น (key B)\nExplanation: ราคาค่าสมาชิกอย่างเดียวละเลยต้นทุนดำเนินงานที่สำคัญ ขอบเขตทางการค้าอาจต่างกันแม้เป็นผลิตภัณฑ์เดียวกัน\nReason: complete Thai for both parts; keyed answers unchanged.",
+          "id": "2026-09-19T06:45:24.359Z",
+          "savedAt": "2026-09-19T06:45:24.359Z"
+        }
+      ],
+      "updatedAt": "2026-09-19T06:45:24.359Z"
     },
     "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-ADVANCED-01": {
       "draft": {
@@ -17106,7 +17906,7 @@
           "artifact": "not-needed",
           "format": "parts",
           "comment": "AI review (Claude): Two-part item; a Thai-only test taker cannot answer it. The persona has no space ('Technical / engineeringใช้ AI'); the part-1 stem is Thai ('กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด') but all part-1 and part-2 options are English, the 'Additional detail' sentence is English, and the explanation is half English. Evidence: '(evidence itself is readable Thai: 'รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว…') but options, extra detail and half the explanation are English' Part-2 options start in lowercase while part-1 options are capitalised (inconsistent). Where marked 'select all', only one option per part is keyed. Must not be piloted in Thai until fully translated. Multi-part structure itself is appropriate.",
-          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก\nรายละเอียดเพิ่มเติม: การอัปเกรด dependency ที่เสนอยังไม่ได้ทดสอบกับขั้นตอน recovery\nPart-1 options: ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ทดสอบความเข้ากันได้และ recovery ก่อนแนะนำให้ rollout | แนะนำให้ rollout โดยดูแค่ว่าติดตั้งสำเร็จ\nExplanation: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล ติดตั้งสำเร็จไม่ได้พิสูจน์ว่าระบบกู้คืนได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: fine-tuning trial; part 2: test compatibility and recovery first).",
+          "suggestedChange": "Recommended Thai (full):\nPersona: ฝ่ายเทคนิค/วิศวกรรมใช้ AI ช่วยจัดทำคำแนะนำการเปลี่ยนแปลงระบบ (change recommendation)\nEvidence: รูปแบบผลลัพธ์ยังไม่คงที่ แม้ทดสอบ Prompt แล้ว และมีตัวอย่างที่รีวิวแล้วจำนวนมาก\nรายละเอียดเพิ่มเติม: การอัปเกรด dependency ที่เสนอยังไม่ได้ทดสอบกับขั้นตอน recovery\nPart-1 options: ตรวจจำนวน token แล้วลดหรือแบ่ง input ให้สั้นลง | ทดลอง fine-tuning เทียบกับผลของ Prompt เดิม (baseline)\nPart-2 stem: ทีมควรทำอย่างไรกับรายละเอียดเพิ่มเติมนี้\nPart-2 options: ทดสอบความเข้ากันได้และ recovery ก่อนแนะนำให้ rollout | แนะนำให้ rollout โดยดูแค่ว่าติดตั้งสำเร็จ\nExplanation: เมื่อรูปแบบที่ต้องการชัดเจนและมีตัวอย่างที่รีวิวแล้วจำนวนมาก การทดลอง fine-tuning แบบควบคุมตัวแปรจึงสมเหตุสมผล ติดตั้งสำเร็จไม่���ด้พิสูจน์ว่าระบบกู้คืนได้\nReason: complete Thai for both parts; keyed answers unchanged (part 1: fine-tuning trial; part 2: test compatibility and recovery first).",
           "id": "2026-09-18T08:08:24.391Z",
           "savedAt": "2026-09-18T08:08:24.391Z"
         }
@@ -17656,7 +18456,7 @@
           "artifact": "irrelevant",
           "format": "single",
           "comment": "AI review (Claude): Realistic multimodal-content scenario; keyed option is a long four-clause list (brief, brand/IP checks, separate image/video review, revision rate) which is hard to read once, while distractors are one clause each — length alone signals the answer. Assigned artifact (media provenance board) is not needed for this judgment item. Systemic issues shared by all 28 TREND-D1 items: (1) this exact stem and option set is repeated under CORE-CONCEPTS / GENAI-MECHANICS / AI-SYSTEMS with only the boilerplate sentence changed, so the four variants are one item counted four times; (2) the rubric sentence 'The user should show they recognizes capability boundaries using practical signals such as hallucination, staleness, uncertainty.' is reviewer-facing, ungrammatical ('they recognizes/uses/handles') and must not be shown to the test taker; (3) option labels BEST / PARTIAL / WEAK / TREND-CHASING reveal the key — options need neutral letters and shuffling; (4) the Thai view is untranslated English with substituted tokens ('A ทีมmate says', 'การอนุมัติ gates', 'ผลลัพธ์s locally'); (5) Explanation is empty. Fit is partial: over-trusting synthetic output touches capability limits, but the options are process choices.",
-          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่งข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
+          "suggestedChange": "Recommended Thai (full, neutral labels, remove rubric sentence):\nทีมคอนเทนต์ต้องการใช้ AI สร้างข้อความแคมเปญ ร่างวิดีโอสั้น และภาพสินค้าจาก brief เดียว การจัดการแบบใดทดสอบความสามารถนี้ได้ดีที่สุดโดยไม่เชื่อผลลัพธ์มากเกินไป\nA. ทำ brief ที่มีแหล่��ข้อมูลรองรับ กำหนดการตรวจแบรนด์/ทรัพย์สินทางปัญญา ตรวจภาพและวิดีโอแยกจากข้อความ และวัดอัตราการแก้ไขก่อนขยายผล\nB. สร้างหลายเวอร์ชันแล้วเลือกอันที่ดูเรียบร้อยที่สุด\nC. ใช้ checklist อนุมัติชุดเดียวกับข้อความ ภาพ และวิดีโอ เพราะมาจากโมเดลเดียวกัน\nD. ข้ามการตรวจที่มาของสื่อ เพราะสื่อสังเคราะห์เป็นเรื่องปกติในการตลาดแล้ว\nKey: A\nReason: translate; hide the competency boilerplate; replace BEST/PARTIAL/WEAK/TREND-CHASING with A–D and shuffle; keep one variant of this item and map it to a single competency instead of four copies; add a one-line explanation of the key.",
           "id": "2026-09-18T09:04:23.430Z",
           "savedAt": "2026-09-18T09:04:23.430Z"
         }
