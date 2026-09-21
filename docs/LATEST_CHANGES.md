@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-22: Living Feature Catalog Added
+
+Added an itemized feature catalog for public visitors, B2C users, Premium users, B2B members and managers, Assessment/Learning Managers, Organization Admins and Owners, Billing Managers, Organization Auditors, specialist platform administrators, and Super Admins.
+
+Every feature is marked as `MVP - Built`, `MVP - Go-live`, `Production`, or `Future`. The distinction prevents browser-local previews from being mistaken for secure multi-user production capabilities. The document includes a mandatory maintenance workflow so future feature work updates the catalog, detailed specification, latest-change log, README where relevant, and matching Obsidian notes.
+
 ## 2026-09-22: B2C, B2B, and User Administration Documented
 
 New Horizon now has an authoritative account and administration design covering personal workspaces, multi-organization membership, platform and organization roles, granular permissions, invitations, teams, seats, entitlements, assessment campaigns, result-sharing consent, cohort privacy, organization analytics, support access, SSO/SCIM roadmap, audit events, and row-level tenant isolation.

@@ -6,6 +6,8 @@ New Horizon must support individual consumers, organizations, and platform opera
 
 This document is the authoritative specification for account contexts, tenant isolation, organization administration, roles and permissions, assessment campaigns, result sharing, seats and entitlements, authentication, user lifecycle, and administration safeguards.
 
+The consolidated release-stage inventory is maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md).
+
 ## Design Principles
 
 - One person has one account and may use multiple workspaces.

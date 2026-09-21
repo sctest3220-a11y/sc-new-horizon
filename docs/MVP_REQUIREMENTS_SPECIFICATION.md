@@ -8,6 +8,8 @@ Status: developer handoff draft for proper MVP go-live
 
 New Horizon is an adaptive AI readiness assessment platform. The MVP must measure practical AI capability, not only self-reported confidence or simple AI vocabulary. Users should answer realistic scenarios, inspect artifacts when useful, receive a clear readiness report, and get recommended learning paths. Admins should be able to review assessment quality from telemetry and feedback before improving questions, artifacts, scoring, profile fields, or learning recommendations.
 
+The living feature inventory and release-stage status are maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md). A capability must not be treated as production-ready solely because it appears in the local prototype.
+
 The MVP is not a certification-grade psychometric product yet. It must be built so pilot data can later calibrate item difficulty, discrimination, guessing, score bands, confidence, and competency coverage.
 
 ## 2. Target Users

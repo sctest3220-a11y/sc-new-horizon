@@ -8,6 +8,8 @@ This document is the authoritative product and implementation specification for 
 
 Identity, tenant, organization, campaign, membership, role, and result-sharing requirements are defined in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md).
 
+The consolidated user/admin feature inventory and MVP/Production/Future status are maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md).
+
 ## Configuration Principles
 
 - Separate subscription plans, assessment templates, and user profiles.
