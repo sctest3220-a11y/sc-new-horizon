@@ -428,6 +428,8 @@ Leaderboard data must be labeled as:
 
 ## 16. Admin and Agent Ops Requirements
 
+The detailed, authoritative configuration design is maintained in [Admin Settings and Configuration Specification](ADMIN_SETTINGS_CONFIGURATION.md). It covers assessment and profile controls, report entitlements, tracker policies, agent schedules, provider/model routing, secure API credentials, usage ledgers, budgets, average-cost metrics, unit economics, configuration versioning, approvals, and rollback.
+
 Admin must support:
 
 - local MVP analytics

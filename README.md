@@ -52,6 +52,7 @@ Thai copy should be simple, natural Thailand Thai. Do not translate core technic
 
 Detailed telemetry and agent documentation:
 
+- [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
