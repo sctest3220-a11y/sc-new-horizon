@@ -67,6 +67,8 @@ Run `supabase-schema.sql` in Supabase SQL editor for the MVP tables:
 
 The schema includes basic user-owned RLS policies. Before production, add admin-role policies, tenant scoping, audit events, and anonymized analytics views.
 
+The target identity and tenant model is defined in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md). Production deployment must support personal workspaces, organizations, memberships, granular permissions, teams, invitations, campaigns, result-sharing consent, seats/entitlements, support-access grants, and append-only audit events. RLS tests must prove that personal results are not automatically exposed after organization membership and that cross-tenant identifiers fail closed.
+
 ## Admin Dashboard
 
 The current admin dashboard reads local MVP logs and includes a preview gate. Production requirements:

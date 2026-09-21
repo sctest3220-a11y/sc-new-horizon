@@ -6,6 +6,8 @@ New Horizon should use a versioned configuration system rather than hardcoded sw
 
 This document is the authoritative product and implementation specification for Admin Settings. Scoring-critical, privacy-sensitive, and published-content changes remain subject to validation, audit, and human approval.
 
+Identity, tenant, organization, campaign, membership, role, and result-sharing requirements are defined in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md).
+
 ## Configuration Principles
 
 - Separate subscription plans, assessment templates, and user profiles.

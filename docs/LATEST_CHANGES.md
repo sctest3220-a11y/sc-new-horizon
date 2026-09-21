@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-22: B2C, B2B, and User Administration Documented
+
+New Horizon now has an authoritative account and administration design covering personal workspaces, multi-organization membership, platform and organization roles, granular permissions, invitations, teams, seats, entitlements, assessment campaigns, result-sharing consent, cohort privacy, organization analytics, support access, SSO/SCIM roadmap, audit events, and row-level tenant isolation.
+
+The design keeps a user's personal assessment history private unless it is explicitly shared under a disclosed result policy. The first MVP delivery focuses on personal/organization contexts, invitations, core roles, campaigns, consent, privacy-safe aggregate dashboards, tenant-level LLM usage, audit history, and cross-tenant authorization tests.
+
 ## 2026-09-22: Premium Report Copilot Documented
 
 The requirements and Admin Settings specification now include a bounded Premium Report Copilot. It is designed to explain scoring, question evidence, confidence, competency coverage, learning paths, recommendation rationale, and follow-up assessment plans from versioned structured assessment data.

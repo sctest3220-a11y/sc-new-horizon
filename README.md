@@ -52,6 +52,7 @@ Thai copy should be simple, natural Thailand Thai. Do not translate core technic
 
 Detailed telemetry and agent documentation:
 
+- [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
@@ -79,6 +80,8 @@ Latest radar-target update: profile targets now show distinct radar shapes. Gene
 Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
 
 Premium report roadmap: Premium users should receive a bounded, evidence-grounded `Ask about your results` copilot for scoring explanations, confidence and coverage questions, competency analysis, learning paths, recommendation rationale, and follow-up planning. Basic score transparency remains available to all users. The copilot must use versioned structured assessment evidence, respect report entitlements, cite relevant results, avoid inventing evidence or describing unassessed competencies as weak, and expose configurable usage, retention, model-routing, telemetry, and cost controls in Admin.
+
+B2C/B2B administration roadmap: New Horizon uses one account model with personal workspaces and optional memberships in one or more organizations. Personal assessment history remains private unless explicitly shared. Organization capabilities include invitations, teams, role-based permissions, seats and entitlements, assessment campaigns, privacy-safe cohort analytics, tenant-level LLM budgets, user lifecycle controls, and append-only audit history. Platform roles and organization roles remain separate, with row-level security enforcing tenant boundaries.
 
 Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
 

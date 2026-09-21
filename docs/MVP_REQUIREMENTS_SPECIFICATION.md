@@ -587,6 +587,8 @@ Terms to preserve where appropriate:
 
 ## 18. Authentication and Persistence
 
+The authoritative B2C/B2B identity, workspace, organization, role, campaign, consent, seat, and user-lifecycle requirements are maintained in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md).
+
 MVP:
 
 - localStorage can support demo/pilot behavior.
@@ -603,6 +605,13 @@ Production:
 Required production tables or equivalent:
 
 - users/profiles
+- personal workspaces
+- organizations and memberships
+- roles and permissions
+- teams and invitations
+- subscriptions, seats, and entitlements
+- assessment campaigns and assignments
+- result-sharing policies and consents
 - assessment sessions
 - question responses
 - behavior events
@@ -617,6 +626,8 @@ Required production tables or equivalent:
 - review decisions
 - content versions
 - audit logs
+
+The MVP must keep personal and organization workspaces distinct, enforce tenant boundaries with row-level security, and prevent organization access to personal assessment history without an explicit result-sharing policy and consent record.
 
 ## 19. Privacy, Consent, and Governance
 
