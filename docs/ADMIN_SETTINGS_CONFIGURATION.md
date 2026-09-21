@@ -148,6 +148,97 @@ Initial configurable components:
 
 Raw telemetry must not be exposed as unexplained event data. User-facing reports should translate it into understandable observations and state why the information matters.
 
+## Premium Report Copilot
+
+New Horizon should offer a bounded, report-aware chatbot for Premium users. Its purpose is to explain assessment evidence, confidence, learning paths, analysis, and recommendations. It is not a general-purpose chatbot and must not alter scores, rubrics, answer keys, or assessment records.
+
+Basic score transparency remains available to every user through the static report. Premium access adds conversational interpretation, deeper evidence review, personalized planning, and follow-up support.
+
+Recommended entitlement model:
+
+| Capability | Free | Freemium | Premium |
+| --- | --- | --- | --- |
+| Static score explanation | Full basic explanation | Detailed | Detailed |
+| Suggested report questions | Limited | On | On |
+| General assessment FAQ | Limited | On | On |
+| Personalized report chat | Off | Limited messages | Full within configured limits |
+| Answer-by-answer explanation | Sample | Limited | Full |
+| Personalized learning plan | Off | Basic | Detailed |
+| Follow-up assessment plan | Off | Basic | Detailed |
+| Downloadable action plan | Off | Optional | On |
+
+The report should expose an `Ask about your results` action and suggested questions such as:
+
+- Why did I receive this score?
+- Which answers most affected my result?
+- What does my evidence confidence mean?
+- Why is a domain marked `Not assessed`?
+- Why should I continue the assessment?
+- What are my strongest and weakest competencies?
+- Why was this course, lab, or bootcamp recommended?
+- What should I practise first for my role?
+- How can I progress to the next readiness belt?
+- Build a four-week learning plan from my priority gaps.
+
+Responses should cite and link to relevant report evidence, question review, competency, learning resource, or continuation route. Every answer should distinguish:
+
+- measured result
+- system interpretation
+- suggested next step
+
+### Copilot Grounding
+
+The copilot must use structured, versioned assessment data:
+
+- assessment and scoring version
+- questions presented
+- user responses and awarded evidence
+- expected answers, rubrics, and partial-credit reasons
+- difficulty-adjusted readiness evidence
+- domain and competency results
+- coverage and confidence status
+- profile and assessment context
+- recommendation reasons
+- approved learning catalog
+- privacy-safe peer aggregates the user is entitled to view
+
+It must not invent scores, evidence, courses, peer comparisons, or assessed competencies. It must not describe an unassessed competency as weak, expose another user's data, provide hidden chain-of-thought, overstate confidence, or make employment or other high-impact decisions from the result.
+
+### Copilot Admin Controls
+
+Admins should configure:
+
+- enabled plans, assessment templates, profiles, and languages
+- message allowance per user, report, day, and month
+- suggested-question library
+- model route and fallback
+- prompt and policy version
+- context and response limits
+- enabled explanation and planning capabilities
+- report sections the copilot may reference
+- conversation retention and deletion period
+- diagnostic-content capture policy
+- per-message, conversation, user, and assessment budget
+- rate limits, outage behavior, and emergency disable
+
+Prompt caching and precomputed answers should be used for common score and confidence explanations. A grading model must not be invoked merely to explain an already-scored response unless the workflow explicitly requires and records a new reviewed interpretation.
+
+### Copilot Telemetry and Cost
+
+Track:
+
+- conversation and message identifiers
+- report, assessment session, and pseudonymous user identifiers
+- suggested question selected or user-authored question category
+- response viewed and follow-up asked
+- linked report section opened
+- learning recommendation, course, lab, bootcamp, or continuation action selected
+- helpful/unhelpful feedback
+- provider, model, prompt version, tokens, latency, retries, errors, fallback, and cost
+- whether the interaction led to a learning or reassessment action
+
+Admin cost analytics must include total and average cost per copilot user, conversation, message, report, resolved question, and resulting learning action. Private conversation content must not be used to change scored questions or scoring automatically. Feedback Analysis may summarize privacy-safe themes, but a human must approve platform changes.
+
 ## Telemetry and Tracker Settings
 
 Trackers should be grouped by purpose:

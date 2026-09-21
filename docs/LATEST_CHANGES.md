@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-22: Premium Report Copilot Documented
+
+The requirements and Admin Settings specification now include a bounded Premium Report Copilot. It is designed to explain scoring, question evidence, confidence, competency coverage, learning paths, recommendation rationale, and follow-up assessment plans from versioned structured assessment data.
+
+Basic score transparency remains available to every user. Admin controls cover plan access, message limits, model and prompt routing, context limits, retention, privacy-safe telemetry, budgets, fallback behavior, and emergency disable. Usage analytics include average cost per copilot user, conversation, message, report, and resolved question. The copilot may recommend actions but cannot change scores, rubrics, answer keys, or historical results.
+
 ## 2026-09-15: Agent Architecture Recommendations Adopted
 
 Agent/orchestration docs and the MVP requirements spec now adopt the full go-live agent architecture: Orchestrator, Assessment Blueprint, AI Concepts Scout, AI Newsfeed, Training/Course Scout, Assessment Item Generator, Stimulus Builder, Feedback Analysis, Psychometric Monitor, Data Quality Monitor, Localization QA, Report UX, Framework Alignment, and Reviewer/QA.

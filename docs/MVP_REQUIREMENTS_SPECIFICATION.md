@@ -234,6 +234,32 @@ The report must clearly label:
 - `Pilot confidence`
 - `Not certification-grade`
 
+### 9.1 Premium Report Copilot
+
+Premium reports should include a bounded `Ask about your results` copilot grounded in structured assessment evidence. It should explain scoring, answer evidence, confidence, coverage, strengths, gaps, learning paths, course/lab/bootcamp recommendations, and reasons to continue testing. It may create a personalized learning or reassessment plan and should link users to the relevant report section or action.
+
+Basic score meaning and score calculation must remain available to all users without the chatbot. Freemium may receive a limited message allowance; Premium receives the complete personalized experience within admin-configured usage and budget limits.
+
+The copilot must:
+
+- use versioned scores, questions, responses, rubrics, competency evidence, profile context, recommendation reasons, and approved learning resources
+- distinguish measured results, system interpretation, and suggested next steps
+- state when evidence is insufficient or a competency was not assessed
+- respect report entitlements and privacy-safe peer aggregates
+- cite or link to the supporting assessment evidence
+- record model, prompt, assessment, scoring, and configuration versions
+
+The copilot must not:
+
+- invent scores, evidence, learning resources, or peer comparisons
+- characterize an unassessed competency as weak
+- change a score, rubric, answer key, or historical result
+- reveal another user's information
+- provide hidden chain-of-thought
+- make employment or other high-impact decisions from assessment results
+
+Admin must control copilot availability, plans, models, prompts, message limits, context limits, retention, telemetry, cost budgets, fallback behavior, and emergency disable. Usage analytics must include average cost per copilot user, conversation, message, report, and resolved question. See [Admin Settings and Configuration Specification](ADMIN_SETTINGS_CONFIGURATION.md).
+
 ## 10. Learning and Bootcamp Requirements
 
 The platform must recommend:
