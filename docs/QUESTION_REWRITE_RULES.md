@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Living standard
-Current rules version: `1.2`
+Current rules version: `1.3`
 Last updated: 22 September 2026
 
 ## Purpose
@@ -29,6 +29,8 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 14. Prefer short sentences and ordinary words, but do not remove information needed to understand the situation or consequence.
 15. Connect audience details to a concrete requirement or risk. Remove persona facts that do not affect the decision.
 16. Describe the answer category clearly, but do not make the correct option a word-for-word copy of the evidence sentence.
+17. In multi-part items, point each question to specific evidence. Do not ask users to interpret labels such as "extra detail" or "profile cue."
+18. Use concrete examples, quantities, and consequences when they make the decision easier to understand without giving away the answer.
 
 ## Clarity check
 
@@ -72,6 +74,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.3 - 22 September 2026
+
+- Added specific-evidence wording for multi-part questions.
+- Added guidance for replacing abstract requirements with concrete examples and quantities.
+- Added an intermediate Marketing comparison candidate that tests semantic retrieval and responsible use of limited pilot evidence.
 
 ### Version 1.2 - 22 September 2026
 

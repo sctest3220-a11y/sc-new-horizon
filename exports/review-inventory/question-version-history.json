@@ -144,6 +144,128 @@
           ]
         }
       ]
+    },
+    {
+      "questionId": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-02",
+      "currentVersion": "2026-09-17.1",
+      "candidateVersion": "2026-09-22.2",
+      "preferredVersion": null,
+      "selectionStatus": "awaiting-comparative-review",
+      "profile": {
+        "function": "marketing",
+        "difficulty": "applied",
+        "displayLevel": "intermediate",
+        "competency": "Generative AI mechanics"
+      },
+      "versions": [
+        {
+          "version": "2026-09-10.0",
+          "recordedAt": "2026-09-10",
+          "changeType": "generated-coverage-source",
+          "reviewerConcern": "The item combines two decisions into long compound choices and uses internal phrases such as profile cue instead of a natural marketing situation.",
+          "context": "Scenario: Marketing needs a campaign content recommendation. Use: approved campaign evidence and licensed asset records. Rule: Performance claims and asset rights must be checked before publication. Risk: A misleading claim can be repeated across a campaign. Evidence: Search must find related cases even when users choose different words. Extra function cue: A performance claim uses results from a small selected pilot without that qualification.",
+          "prompt": "Which mechanism best addresses the stated need? Also apply the profile cue.",
+          "options": [
+            "Use semantic retrieval with tested embeddings; state the tested scope and avoid implying a universal result.",
+            "Use semantic retrieval with tested embeddings; present the pilot result as the expected result for all customers.",
+            "Retrieve the current procedure when answering; state the tested scope and avoid implying a universal result.",
+            "Retrieve the current procedure when answering; present the pilot result as the expected result for all customers."
+          ],
+          "correctOption": "Use semantic retrieval with tested embeddings; state the tested scope and avoid implying a universal result.",
+          "explanation": "Semantic similarity helps match differently worded requests. The evidence supports only the measured conditions.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-17.1",
+          "recordedAt": "2026-09-17",
+          "changeType": "latest-user-facing-draft",
+          "reviewerConcern": "Splitting the item reduces compound-answer decoding, but the scenario remains abstract and the generic phrase extra detail does not tell the user which evidence each part addresses.",
+          "context": "Marketing uses AI to prepare a campaign content recommendation. Search must find related cases even when users choose different words. Performance claims and asset rights must be checked before publication. Additional detail: A performance claim uses results from a small selected pilot without that qualification.",
+          "prompt": "Answer both parts.",
+          "parts": [
+            {
+              "prompt": "Which mechanism best addresses the stated need?",
+              "options": [
+                "Use semantic retrieval with tested embeddings.",
+                "Retrieve the current procedure when answering."
+              ],
+              "correctOption": "Use semantic retrieval with tested embeddings."
+            },
+            {
+              "prompt": "What should the team do about the extra detail?",
+              "options": [
+                "State the tested scope and avoid implying a universal result.",
+                "Present the pilot result as the expected result for all customers."
+              ],
+              "correctOption": "State the tested scope and avoid implying a universal result."
+            }
+          ],
+          "explanation": "Semantic similarity helps match differently worded requests. The evidence supports only the measured conditions.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-22.2",
+          "recordedAt": "2026-09-22",
+          "changeType": "candidate-concrete-marketing-scenario",
+          "reviewerConcern": "Make both decisions realistic and independently answerable while retaining the intended technical and marketing evidence.",
+          "context": "A marketing team is building an AI assistant to help staff find useful examples from past campaigns. Keyword search misses relevant examples when people describe the same idea differently, such as “student sign-ups” and “education enrolment.” The team also wants to publish the claim “Conversions increased by 40%,” but that result came from a pilot involving 50 existing customers rather than the full target market.",
+          "prompt": "Review the situation and answer both parts.",
+          "parts": [
+            {
+              "prompt": "1. What should the team use to find related campaigns even when people use different words?",
+              "options": [
+                "Semantic search using tested embeddings.",
+                "Exact keyword matching only.",
+                "Fine-tuning the LLM to use the campaign's writing style.",
+                "Increasing the maximum length of the user's request."
+              ],
+              "correctOption": "Semantic search using tested embeddings."
+            },
+            {
+              "prompt": "2. What should the team do before publishing the 40% conversion claim?",
+              "options": [
+                "Explain that the result came from a 50-customer pilot and avoid presenting it as a result for all customers.",
+                "Present 40% as the expected result because it came from a real campaign test.",
+                "Remove the sample size but keep the percentage to make the message easier to read.",
+                "Use the claim without qualification as long as a manager approves the wording."
+              ],
+              "correctOption": "Explain that the result came from a 50-customer pilot and avoid presenting it as a result for all customers."
+            }
+          ],
+          "explanation": "Semantic search can match related meaning even when wording differs. The 40% result is evidence from a limited pilot, so the campaign must state that scope and must not imply that every customer will achieve the same result.",
+          "th": {
+            "context": "ทีม Marketing กำลังสร้าง AI Assistant เพื่อช่วยพนักงานค้นหาตัวอย่างที่เป็นประโยชน์จากแคมเปญที่ผ่านมา การค้นหาด้วย keyword หาแคมเปญที่เกี่ยวข้องไม่เจอเมื่อผู้ใช้เรียกแนวคิดเดียวกันด้วยคำต่างกัน เช่น “การสมัครของนักเรียน” และ “การลงทะเบียนเรียน” นอกจากนี้ ทีมต้องการเผยแพร่ข้อความว่า “Conversion เพิ่มขึ้น 40%” แต่ผลดังกล่าวมาจากการทดลองกับลูกค้าเดิม 50 คน ไม่ใช่ตลาดเป้าหมายทั้งหมด",
+            "prompt": "อ่านสถานการณ์แล้วตอบคำถามทั้งสองส่วน",
+            "parts": [
+              {
+                "prompt": "1. ทีมควรใช้อะไรเพื่อค้นหาแคมเปญที่เกี่ยวข้อง แม้ผู้ใช้จะใช้คำต่างกัน",
+                "options": [
+                  "Semantic search โดยใช้ embeddings ที่ผ่านการทดสอบแล้ว",
+                  "ค้นหาด้วย keyword ที่ตรงกันทุกคำเท่านั้น",
+                  "Fine-tune LLM ให้ใช้รูปแบบการเขียนของแคมเปญ",
+                  "เพิ่มความยาวสูงสุดของคำขอจากผู้ใช้"
+                ]
+              },
+              {
+                "prompt": "2. ทีมควรทำอะไร ก่อนเผยแพร่ข้อความว่า Conversion เพิ่มขึ้น 40%",
+                "options": [
+                  "อธิบายว่าผลนี้มาจากการทดลองกับลูกค้า 50 คน และไม่กล่าวเหมือนเป็นผลที่เกิดกับลูกค้าทุกคน",
+                  "นำเสนอว่า 40% เป็นผลที่ลูกค้าทุกคนคาดหวังได้ เพราะตัวเลขมาจากการทดลองจริง",
+                  "ตัดจำนวนกลุ่มตัวอย่างออก แต่คงตัวเลขเปอร์เซ็นต์ไว้เพื่อให้อ่านง่าย",
+                  "ใช้ข้อความนี้โดยไม่ต้องระบุเงื่อนไข หากผู้จัดการอนุมัติถ้อยคำแล้ว"
+                ]
+              }
+            ],
+            "explanation": "Semantic search ช่วยค้นหาเนื้อหาที่มีความหมายใกล้เคียงกันได้ แม้ใช้คำต่างกัน ส่วนผล 40% เป็นหลักฐานจากการทดลองที่มีขอบเขตจำกัด ทีมจึงต้องระบุขอบเขตนั้นและไม่ทำให้ผู้อ่านเข้าใจว่าลูกค้าทุกคนจะได้ผลเหมือนกัน"
+          },
+          "artifactRecommendation": "Not required. The sample size and claim are short enough to understand in the scenario. A pilot-results artifact would add reading effort without testing an additional skill.",
+          "rulesIntroduced": [
+            "For multi-part items, make each part point to specific evidence in the scenario rather than referring to an extra detail or profile cue.",
+            "Replace abstract requirements with concrete examples, quantities, and consequences when they improve decision clarity.",
+            "Do not add an artifact when all evidence can be read clearly in a short scenario."
+          ]
+        }
+      ]
     }
   ]
 }
