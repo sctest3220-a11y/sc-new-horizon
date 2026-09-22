@@ -737,6 +737,17 @@ function buildLanguageHref(searchParams: Record<string, string | string[] | unde
   return `/admin/question-inventory?${params.toString()}`;
 }
 
+function buildPageHref(searchParams: Record<string, string | string[] | undefined> | undefined, page: number) {
+  const params = new URLSearchParams();
+  Object.entries(searchParams ?? {}).forEach(([key, value]) => {
+    if (!value || key === 'page') return;
+    params.set(key, Array.isArray(value) ? value[0] : value);
+  });
+  if (page > 1) params.set('page', String(page));
+  const query = params.toString();
+  return `/admin/question-inventory${query ? `?${query}` : ''}`;
+}
+
 function safeDomId(value: string) {
   return value.replace(/[^a-zA-Z0-9_-]/g, '-');
 }
@@ -831,7 +842,11 @@ export default function QuestionInventoryPage({
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
-  const query = (normalizeParam(searchParams?.q) || '').trim().toLowerCase();
+  const queryInput = (normalizeParam(searchParams?.q) || '').trim();
+  const query = queryInput
+    .toLowerCase()
+    .replace(/^[\s"'`]+|[\s,;:."'`]+$/g, '');
+  const requestedPage = Number.parseInt(normalizeParam(searchParams?.page) || '1', 10);
 
   const filtered = allQuestions.filter((question) => {
     const matchesDomain = domain === 'all' || question.domain === domain;
@@ -852,7 +867,11 @@ export default function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
   });
 
-  const visibleQuestions = filtered.slice(0, 80);
+  const pageSize = 20;
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const currentPage = Number.isFinite(requestedPage) ? Math.min(Math.max(requestedPage, 1), pageCount) : 1;
+  const pageStart = (currentPage - 1) * pageSize;
+  const visibleQuestions = filtered.slice(pageStart, pageStart + pageSize);
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -914,7 +933,7 @@ export default function QuestionInventoryPage({
       <section className="inventory-kpis" aria-label="Inventory totals">
         <div><span>Total questions</span><strong>{allQuestions.length.toLocaleString()}</strong></div>
         <div><span>Filtered</span><strong>{filtered.length.toLocaleString()}</strong></div>
-        <div><span>Shown</span><strong>{visibleQuestions.length.toLocaleString()}</strong><small>first 80 for page speed</small></div>
+        <div><span>Shown</span><strong>{visibleQuestions.length.toLocaleString()}</strong><small>page {currentPage} of {pageCount}</small></div>
         <div><span>Live bank</span><strong>{(liveInventory?.questions.length ?? 0).toLocaleString()}</strong></div>
         <div><span>Artifact candidates</span><strong>{artifactNeeds?.counts.artifactCandidates.toLocaleString() || 'Not scanned'}</strong></div>
       </section>
@@ -1018,7 +1037,7 @@ export default function QuestionInventoryPage({
           </label>
           <label className="inventory-search">
             <span>Search</span>
-            <input name="q" defaultValue={query} placeholder="Prompt, competency, id, scope" />
+            <input name="q" defaultValue={queryInput} placeholder="Prompt, competency, ID, or scope" />
           </label>
           <button type="submit">Apply filters</button>
         </form>
@@ -1026,7 +1045,12 @@ export default function QuestionInventoryPage({
 
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
-        <span>{visibleQuestions.length.toLocaleString()} are shown on this page for review speed.</span>
+        <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
+        <nav className="inventory-pagination" aria-label="Question inventory pages">
+          {currentPage > 1 ? <Link href={buildPageHref(searchParams, currentPage - 1)}>Previous</Link> : <span>Previous</span>}
+          <strong>{currentPage} / {pageCount}</strong>
+          {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
+        </nav>
       </section>
 
       <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
@@ -1132,6 +1156,13 @@ export default function QuestionInventoryPage({
           </article>
         ) : null}
       </section>
+      {visibleQuestions.length ? (
+        <nav className="inventory-pagination inventory-pagination-footer" aria-label="Question inventory pages">
+          {currentPage > 1 ? <Link href={buildPageHref(searchParams, currentPage - 1)}>Previous</Link> : <span>Previous</span>}
+          <strong>Page {currentPage} of {pageCount}</strong>
+          {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
+        </nav>
+      ) : null}
     </main>
   );
 }
