@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Live Support Item and New Inline Artifact
+
+Live Operations item `FUNC-OPS-D6-001` now uses a question-specific duplicate-charge support-console image rather than the previous shared ticket artifact. The rewritten response task asks users to identify what must be verified, choose the appropriate refund action, and explain the customer communication. The artifact appears inline and opens in the existing fit-to-window reader with additional zoom and open-file controls.
+
 ## Interactive Agent Workflow Map
 
 Admin Agent Ops now provides an n8n-style node workflow canvas driven by the existing agent run report. Admins can inspect branching agent handoffs, animated status paths, blocked steps, QA routing, and the human approval gate. Clicking an agent opens its schedule, guardrail, latest stages, and recorded output. The Admin view is also directly accessible with `/?view=admin` for testing and operations.

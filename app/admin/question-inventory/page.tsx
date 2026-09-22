@@ -928,7 +928,11 @@ export default async function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
   });
 
-  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(0, 80).map((question) => question.id));
+  const pageSize = 20;
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
+  const pageStart = (currentPage - 1) * pageSize;
+  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);

@@ -956,7 +956,7 @@
       "id": "FUNC-OPS-D6-001",
       "sourceInventory": "live",
       "sourceBank": "Existing live assessment bank",
-      "version": "live-bank",
+      "version": "2026-09-23.1",
       "locale": "en",
       "layer": "live",
       "scope": "live",
@@ -987,8 +987,8 @@
       "industryLabels": [],
       "executiveRoles": [],
       "executiveLabels": [],
-      "context": "A support agent receives an AI draft that denies a refund. The raw ticket includes a payment retry, duplicate capture, and refund policy exception.",
-      "prompt": "Write 2-4 sentences explaining what the support agent should do next.",
+      "context": "A customer says they were charged twice after retrying checkout. The AI assistant drafted a reply denying the refund. Review the support console before deciding what the agent should do.",
+      "prompt": "Write 3-5 sentences explaining what the support agent should verify, what action they should take, and what they should tell the customer.",
       "options": [],
       "correctOptionIds": [],
       "rationale": "The agent should not send the denial. The system log shows a duplicate payment capture, and the policy says duplicate charges should be refunded after verification. Verify the payment, apologize, give a case ID, and explain the next step to the customer.",
@@ -996,19 +996,19 @@
         "status": "live-item",
         "interaction": "text",
         "format": "written response live item",
-        "context": "A support agent receives an AI draft that denies a refund. The raw ticket includes a payment retry, duplicate capture, and refund policy exception.",
-        "prompt": "Write 2-4 sentences explaining what the support agent should do next.",
+        "context": "A customer says they were charged twice after retrying checkout. The AI assistant drafted a reply denying the refund. Review the support console before deciding what the agent should do.",
+        "prompt": "Write 3-5 sentences explaining what the support agent should verify, what action they should take, and what they should tell the customer.",
         "options": [],
         "correctOptionIds": [],
-        "explanation": "The agent should not send the denial. The system log shows a duplicate payment capture, and the policy says duplicate charges should be refunded after verification. Verify the payment, apologize, give a case ID, and explain the next step to the customer.",
-        "rewriteNotes": "Existing live item shown for reviewer inspection."
+        "explanation": "The agent should not approve the AI denial. The payment timeline shows two captures for THB 1,290, so the agent should verify both references and confirm which charge is the duplicate. If confirmed, the duplicate-charge exception requires a refund within 3-5 business days. The agent should apologize, explain the verification and refund timeline, and provide the case number for follow-up.",
+        "rewriteNotes": "Rewritten under approved standard 1.7 with a new question-specific support-console artifact."
       },
       "artifactNeed": {
         "need": "existing artifact",
         "artifactType": "existing-live-artifact",
-        "artifactLabel": "Raw support ticket",
-        "artifactBrief": "Inspect the ticket evidence and write the safer customer response.",
-        "generationPrompt": "Existing artifact path: /stimuli/raw-support-ticket-thread.svg"
+        "artifactLabel": "Duplicate-charge support console",
+        "artifactBrief": "Inspect the payment timeline, policy exception, and unsafe AI draft before writing the customer response.",
+        "generationPrompt": "New question-specific artifact: /stimuli/support-console-duplicate-charge-v2.png"
       },
       "review": {
         "status": "live-review"

@@ -457,6 +457,47 @@
           ]
         }
       ]
+    },
+    {
+      "questionId": "FUNC-OPS-D6-001",
+      "sourceInventory": "live",
+      "currentVersion": "2026-09-23.1",
+      "preferredVersion": "2026-09-23.1",
+      "selectionStatus": "implemented-live-rewrite",
+      "profile": {
+        "function": "operations",
+        "difficulty": "applied",
+        "displayLevel": "intermediate",
+        "domain": "D6"
+      },
+      "versions": [
+        {
+          "version": "live-bank",
+          "recordedAt": "2026-09-22",
+          "changeType": "previous-live-item",
+          "context": "A support agent receives an AI draft that denies a refund. The raw ticket includes a payment retry, duplicate capture, and refund policy exception.",
+          "prompt": "Write 2-4 sentences explaining what the support agent should do next.",
+          "explanation": "The agent should not send the denial. The system log shows a duplicate payment capture, and the policy says duplicate charges should be refunded after verification. Verify the payment, apologize, give a case ID, and explain the next step to the customer.",
+          "artifact": "/stimuli/raw-support-ticket-thread.svg",
+          "reviewerConcern": "The prompt did not explicitly ask the user to connect evidence, action, and customer communication. The existing generic artifact was also reused elsewhere and did not resemble the final support-console experience closely enough.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-23.1",
+          "recordedAt": "2026-09-23",
+          "changeType": "implemented-live-rewrite-with-new-artifact",
+          "context": "A customer says they were charged twice after retrying checkout. The AI assistant drafted a reply denying the refund. Review the support console before deciding what the agent should do.",
+          "prompt": "Write 3-5 sentences explaining what the support agent should verify, what action they should take, and what they should tell the customer.",
+          "explanation": "The agent should not approve the AI denial. The payment timeline shows two captures for THB 1,290, so the agent should verify both references and confirm which charge is the duplicate. If confirmed, the duplicate-charge exception requires a refund within 3-5 business days. The agent should apologize, explain the verification and refund timeline, and provide the case number for follow-up.",
+          "artifact": "/stimuli/support-console-duplicate-charge-v2.png",
+          "artifactGenerationPromptSummary": "Realistic Thai-market customer-support console showing the customer request, two THB 1,290 captures, duplicate-capture alert, refund-policy exception, and unsafe AI denial draft. Evidence is neutral and does not reveal the answer.",
+          "artifactBehavior": "Displayed inline beside the question. Clicking the image or Read full size opens the fit-to-window artifact reader with Fit, 1x, 1.5x, 2x, and Open file controls.",
+          "rulesIntroduced": [
+            "Generate a question-specific artifact when the evidence must be inspected and an existing reused artifact is not realistic enough.",
+            "A written-response prompt should name the evidence, decision, and communication dimensions expected from the user without revealing the answer."
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `1.6`
+Current rules version: `1.7`
 Last updated: 22 September 2026
 Human approval recorded: 22 September 2026
 
@@ -39,6 +39,8 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 23. Artifacts must present evidence neutrally. Remove labels, callouts, highlights, or instructions that reveal the suspicious point or teach the correct answer.
 24. Localize currencies, units, dates, and market conventions when they are not part of the competency being tested.
 25. When a technical term is useful, describe the decision in plain language first and explain the term in answer feedback rather than making vocabulary recognition the hidden task.
+26. Generate a question-specific artifact when users must inspect evidence and an existing shared artifact cannot represent the scenario realistically. Do not reuse an artifact merely because its general topic is similar.
+27. For written responses, state the dimensions the user must address, such as evidence to verify, action to take, and communication to provide. Do not reveal the expected conclusion.
 
 ## Thai cultural-context standard
 
@@ -95,6 +97,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.7 - 23 September 2026
+
+- Added a rule against reusing generic artifacts when a question requires scenario-specific evidence.
+- Added explicit evidence-action-communication guidance for written-response prompts.
+- Rewrote live Operations item `FUNC-OPS-D6-001` and generated a new realistic, expandable duplicate-charge support-console artifact.
 
 ### Version 1.6 - 22 September 2026
 
