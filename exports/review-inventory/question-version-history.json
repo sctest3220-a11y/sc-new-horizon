@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-09-22",
+  "purpose": "Append-only history of material question rewrites for comparison and human selection. Published question text must not be overwritten here.",
+  "items": [
+    {
+      "questionId": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-01",
+      "currentVersion": "2026-09-22.3",
+      "preferredVersion": null,
+      "selectionStatus": "awaiting-comparative-review",
+      "versions": [
+        {
+          "version": "2026-09-17.1",
+          "recordedAt": "2026-09-17",
+          "sourceCommit": "79abab5",
+          "changeType": "initial-plain-language-draft",
+          "reviewerConcern": "The wording was abstract, the question appeared before enough context, and the circulation rule was disconnected from the AI behavior.",
+          "context": "Project team uses AI to prepare a project update. The assistant writes an answer using its language model, but it does not search approved project records. Only the current approved version may be circulated.",
+          "prompt": "What is the AI tool doing in this project update?",
+          "options": [
+            "Following a fixed rule to select approved text.",
+            "Retrieving exact passages from the approved sources.",
+            "Generating an answer without retrieving supporting sources.",
+            "Coordinating a model, search, permissions, and review tools."
+          ],
+          "correctOption": "Generating an answer without retrieving supporting sources.",
+          "explanation": "The assistant is generating text, but the answer is not grounded in the approved sources.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-22.2",
+          "recordedAt": "2026-09-22",
+          "sourceCommit": "649cf47",
+          "changeType": "clarify-generation-versus-retrieval",
+          "reviewerConcern": "Terms such as learned patterns and new wording made users think of hallucination instead of distinguishing LLM generation from retrieval.",
+          "context": "Your project team asks an AI assistant to draft a project update. The AI generates the draft using a Large Language Model (LLM), but it does not search the approved project documents stored in the team's document library. Before the update is shared, its status and milestones must match the latest approved project record.",
+          "prompt": "Which description best matches how the AI produced this draft?",
+          "options": [
+            "Following a fixed rule to select approved text.",
+            "Searching the document library and retrieving approved project information.",
+            "Generating a draft with an LLM without retrieving the project documents.",
+            "Coordinating a model, search, permissions, and review tools."
+          ],
+          "correctOption": "Generating a draft with an LLM without retrieving the project documents.",
+          "explanation": "The AI uses its LLM to generate the draft, but it does not retrieve the approved project documents needed to verify the update.",
+          "rulesIntroduced": [
+            "Use familiar product language instead of abstract model descriptions.",
+            "Describe observable AI behavior.",
+            "Avoid wording that accidentally tests hallucination when the intended concept is generation versus retrieval."
+          ]
+        },
+        {
+          "version": "2026-09-22.3",
+          "recordedAt": "2026-09-22",
+          "sourceCommit": "0d2acc6",
+          "changeType": "connect-source-requirement-to-consequence",
+          "reviewerConcern": "The rewrite did not clearly state that the latest approved record must be used or explain that failing to use it could make the draft misleading or wrong.",
+          "context": "Your project team asks an AI assistant to draft a project update. The update must use the latest approved project record because older versions may contain outdated status or milestones. However, the AI generates its answer using a Large Language Model (LLM) without searching the approved documents in the team's library. As a result, the draft may sound convincing while containing outdated or incorrect project information.",
+          "prompt": "Which description best matches how the AI produced this draft?",
+          "options": [
+            "Following a fixed rule to select approved text.",
+            "Searching the document library and retrieving approved project information.",
+            "Generating a draft with an LLM without retrieving the project documents.",
+            "Coordinating a model, search, permissions, and review tools."
+          ],
+          "correctOption": "Generating a draft with an LLM without retrieving the project documents.",
+          "explanation": "The AI is generating text with an LLM rather than retrieving the latest approved project record. Because it did not check that authoritative source, the draft may contain outdated or incorrect information even if it sounds convincing.",
+          "rulesIntroduced": [
+            "Show the full causal chain: required source or rule, AI behavior or failure, and resulting error or harm."
+          ]
+        }
+      ]
+    }
+  ]
+}
