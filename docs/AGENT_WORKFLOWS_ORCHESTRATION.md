@@ -165,7 +165,16 @@ Recommended runtime pieces:
 
 - Supabase Auth with admin role claims.
 - RLS-protected admin and analytics views.
-- Durable job runner such as Trigger.dev, Inngest, Temporal, Cloudflare Queues/Cron, or Supabase scheduled jobs.
+- MVP go-live: a lightweight managed job runner such as Inngest where asynchronous or scheduled work is required.
+- Target production control plane: Temporal Cloud for durable, long-running, approval-gated workflows once the documented adoption triggers are met.
+- Bounded LangGraph workers only for tasks that need iterative tools, branching reasoning, or reviewer loops; deterministic jobs remain ordinary code.
+- LiteLLM for model routing, fallback, quotas, and cost attribution when multiple providers or material LLM spend are introduced.
+- Langfuse for LLM traces, prompt/model versions, datasets, and release evaluations before agent-assisted decisions affect users.
+- PostHog for consent-aware product telemetry, funnels, surveys, feature flags, and experiments.
+- ClickHouse and Kubernetes/KEDA are scale-stage components, not MVP requirements.
+- Hermes remains an optional sandboxed research workbench, not the production orchestrator or system of record.
 - Server-side AI provider adapters; no secret keys in browser code.
 - Source allow-lists, freshness windows, retry limits, cost budgets, robots/terms review, and audit logs.
 - Versioned content publishing so historical scores remain explainable.
+
+See [Agent Platform Tooling Strategy](AGENT_PLATFORM_TOOLING_STRATEGY.md) for the phased decision, component boundaries, and adoption triggers.
