@@ -842,7 +842,10 @@ export default function QuestionInventoryPage({
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
-  const query = (normalizeParam(searchParams?.q) || '').trim().toLowerCase();
+  const queryInput = (normalizeParam(searchParams?.q) || '').trim();
+  const query = queryInput
+    .toLowerCase()
+    .replace(/^[\s"'`]+|[\s,;:."'`]+$/g, '');
   const requestedPage = Number.parseInt(normalizeParam(searchParams?.page) || '1', 10);
 
   const filtered = allQuestions.filter((question) => {
@@ -1034,7 +1037,7 @@ export default function QuestionInventoryPage({
           </label>
           <label className="inventory-search">
             <span>Search</span>
-            <input name="q" defaultValue={query} placeholder="Prompt, competency, id, scope" />
+            <input name="q" defaultValue={queryInput} placeholder="Prompt, competency, ID, or scope" />
           </label>
           <button type="submit">Apply filters</button>
         </form>
