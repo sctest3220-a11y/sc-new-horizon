@@ -96,6 +96,124 @@ Premium target blending now weights function context first, industry context sec
 
 The research basis is documented in `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`. It references UNESCO AI competency dimensions and understand/apply/create progression; OECD/European Commission AI literacy knowledge, skills, and attitudes; EU AI Act Article 4 context-of-use and user-experience requirements; NIST AI RMF Govern/Map/Measure/Manage; DigComp 2.2; ISO/IEC 42001; and Singapore AI Verify/MGF GenAI. The documented conclusion is that domain targets and question routing should be profile-weighted, not evenly distributed across D1-D6.
 
+## 2026-09-14: Thai Batch 1 Approved — Every Question in the Bank Now Approved in Thai
+
+The reissued round-2 spot check for batch 1 (20 items, none from round 1, read on the glossary-aligned text) came back 20 Approve with no ambiguous keys. Batch 1's 163 items — 137 table entries and the 26 inline Horizon items — move from `reviewed` to `approved`. That closes the Thai review programme started on 2026-09-10: all 660 questions (163 + 89 + 408) have Thai that passed a native review and an independent second-reviewer spot check. Nothing changes on screen (`reviewed` and `approved` render alike); the status gate for a default Thai experience is now satisfied. Detail and the remaining follow-ups (escalation term, Thai artifacts, two English-bank notes, Thai pilot) in `docs/THAI_BATCH1_SPOTCHECK_ROUND2_RESPONSE.md`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; only status fields changed; all 660 items localise and every Thai exemplar scores fully.
+
+## 2026-09-14: Thai Batch 3 Approved (408 Items); Batches 1–2 Aligned to Glossary Decisions; Batch 1 Round-2 Sample Reissued
+
+The batch-3 second-reviewer spot check (20 rendered questions covering all 17 scenario frames) returned 20 Approve with no ambiguous keys, so both template builders now emit `translationStatus: 'approved'`: the 408 `ADV-*` / `TREND-*` items join batch 2's 89 as `approved` (497 total). Batch 1's 163 items stay `reviewed` — the file received as its round-2 review was the round-1 review again (byte-identical to the one applied on 2026-09-12), so the round-2 sample is still open.
+
+While it was open, batches 1–2 were aligned to the renderings three reviewers converged on during batches 2–3: ผู้ให้บริการ for AI/IT vendors (ผู้ขาย kept for sellers, suppliers and invoices), Human-in-the-loop alongside การตรวจทานโดยคน on first mention, การแก้ไขทับผล AI, the hallucination gloss, กติกา → ข้อกำหนด/แนวปฏิบัติ/เกณฑ์ by context, ความเป็นปัจจุบันของข้อมูล, and "…รัดกุมและเหมาะสมที่สุด / มีน้ำหนักมากที่สุด" in place of "…หนักแน่นที่สุด" prompts — 45 items, terminology only, meaning unchanged, batch 2 stays `approved`. One batch-1 exemplar (CAL-D3-MEDIA-018) lost a first-person ผม and now scores fully. The round-2 batch-1 sample was regenerated on the aligned text with the same 20 ids (`exports/New_Horizon_Thai_Batch1_SpotCheck_Round2.xlsx`, marked REISSUED). Detail in `docs/THAI_BATCH3_SPOTCHECK_RESPONSE.md`. Still open for the team: the escalation rendering.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; all 660 questions localise, English is the identity, every Thai exemplar scores fully.
+
+## 2026-09-14: Thai Batch 3 — Template-Generated Items (408) and Competency Vocabulary (Draft → Reviewed)
+
+The 408 questions still English-only are all generated from templates: 240 `ADV-*` advanced items (10 scenario frames × 24 competencies) and 168 `TREND-*` market-trend items (7 frames × 24 competencies). Instead of translating 408 questions, batch 3 translates the templates and the vocabulary they interpolate: 10 advanced frames, the 4 shared advanced options with feedback, 7 market-trend frames (scenario, prompt, 4 options), the framing sentence, difficulty verbs and names, 4 feedback templates, plus 24 competency names and 95 skill names (`competencyLabelsTh`, `skillLabelsTh` in `app/page.tsx`). The two builders now emit `contextTh` / `promptTh` / option `labelTh` / `feedbackTh` with `translationStatus: 'draft'`, so every generated question carries Thai — about 150 strings cover all 408 items, and a fix to a template fixes every question built from it.
+
+Two things changed in the app to make this safe. `localizeQuestion` now shows `draft` Thai only when the caller opts in; `Home` reads a pilot flag (`localStorage['new-horizon-thai-drafts-v1'] = '1'`) so the 408 unreviewed items stay English for ordinary Thai users while pilot testers can see them. And `translateUiText` consults the competency vocabulary, so competency and skill names in the score report switch language with the toggle (they were English-only before). Native review workbook: `exports/New_Horizon_Thai_Review_Batch3_Templates.xlsx` (seven sheets, including 12 fully rendered example questions so the reviewer can judge how the pieces read together); machine-readable drafts in `exports/thai-drafts-batch3-templates.json`.
+
+The native review came back the same day: meaning preserved and keys unambiguous on every row, 51 of about 290 strings corrected (formal register for skill names, ผู้ให้บริการ instead of ผู้ขาย for service vendors, "รัดกุมและเหมาะสมที่สุด" prompt phrasing, English glosses for ROI / triangulation / phishing), all 12 rendered examples approved as a whole. Corrections were merged into the template spec and `app/page.tsx` regenerated; both builders now emit `translationStatus: 'reviewed'`, so the 408 items show Thai to every TH user. The reviewer's vendor preference settles the open glossary question (`exports/glossary_th.json`). Detail in `docs/THAI_BATCH3_REVIEW_RESPONSE.md`; second-reviewer sample in `exports/New_Horizon_Thai_Batch3_SpotCheck.xlsx` (20 rendered questions covering all 17 frames).
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; all 408 generated items localise fully in the TH view and are the identity in English; competency names round-trip EN→TH→EN.
+
+## 2026-09-14: Thai Batch 2 Approved (89 Items) — Spot Check Round 2 Passed 20/20
+
+The second-reviewer round-2 sample for Thai batch 2 (20 fresh items, including all seven touched only by the round-1 sweep) came back 20 Approve / 0 Fix / 0 Rewrite with the key unambiguous on every item. Under the decision rule (≥18 Approve, no ambiguous key) the 89 batch-2 entries in `app/questionTranslations.th.ts` move from `reviewed` to `approved` — the first batch to reach that status. Across both rounds the second reviewer read 40 of the 89 items. Rendering is unchanged for now (`reviewed` and `approved` both localise); `approved` is the release gate for the default Thai experience described in `docs/LOCALISATION.md`, to be switched on when the toggle leaves pilot. Detail in `docs/THAI_BATCH2_SPOTCHECK_ROUND2_RESPONSE.md`. Batch 1 (163 items) remains `reviewed` pending its own round-2 sample.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; only the 89 status fields changed.
+
+## 2026-09-14: Thai Batch 2 Applied (89 Items Reviewed); Spot Check Round 1 Applied, Round 2 Issued
+
+The native review of Thai batch 2 (89 Thai-priority-Medium items) came back with 49 Approve / 40 Fix in cell / 0 Rewrite, meaning preserved and the key unambiguous on every item and every one of the 323 answer-choice rows. Applied to `app/questionTranslations.th.ts` as `reviewed`: the table now holds 226 entries (252 questions with Thai including the 26 inline Horizon items). 22 scenarios, 36 prompts and 3 key options were reworded in cell; all 83 free-text rubric keyword lists were expanded with the stems Thai users actually type. Three glossary renderings changed (hallucination gloss, Human-in-the-loop alongside the Thai, การแก้ไขทับผล AI) and were swept across batch 2; batch 1 keeps the old wording until its round-2 spot check closes. Two tooling decisions are documented in `docs/THAI_BATCH2_REVIEW_RESPONSE.md`: the reviewer's leading จง was dropped from 21 prompts to match batch 1's register, and five over-broad keyword stems (คน, รอ, PR) were lengthened so free-text scoring cannot match on noise. The reviewer also re-confirmed all 41 artifact language tags and wrote a Thai "Inspect for" cue per artifact (kept in `exports/artifact-language-tags.json`).
+
+The second-reviewer spot check (`exports/New_Horizon_Thai_Batch2_SpotCheck_Round1_Reviewed.xlsx`) returned 13 Approve / 7 Fix / 0 Rewrite with no ambiguous keys — below the 18-Approve threshold, so batch 2 stays `reviewed`. The seven Fix items were corrected in the reviewer's wording and the flagged patterns (กติกา, literal ความสดใหม่ / การกระทำที่เกี่ยวกับเงิน / สิทธิ์รอบ ๆ โมเดล, ข้ออ้าง, ผู้ใช้ฝ่ายขาย, vendor term drift) were swept across all 89 items: 19 items changed. Detail and two English-bank notes (DEPTH-EXP-D3-MEDIA-073's key mixes an action into a red-flag question; DEPTH-D3-MEDIA-042's scenario omits the image its prompt refers to) in `docs/THAI_BATCH2_SPOTCHECK_ROUND1_RESPONSE.md`. A fresh, non-overlapping round-2 sample that includes every sweep-touched item is in `exports/New_Horizon_Thai_Batch2_SpotCheck_Round2.xlsx`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged; all 89 items localise end to end and every Thai exemplar answer scores fully through `scoreTextAnswer`.
+
+## 2026-09-12: Batch 1 Register Sweep Completed; Thai Batch 2 Drafted
+
+Extended the batch-1 sweep beyond the second reviewer's list: five prompts still ending in a literal "…คืออะไร" were rephrased to exam form ("ข้อใดคือ…"), one ๆ spacing and one literal phrase fixed (7 edits). The round-2 spot-check sample was regenerated so it shows the final text. All 163 items remain `reviewed` pending the round-2 result.
+
+Batch 2 (89 Thai-priority-Medium items, Free/Premium starters first, no executive-only items) is drafted into `exports/New_Horizon_Thai_Review_Batch2.xlsx` for native review: 323 answer-choice rows, 83 rubric-criterion rows (18 free-text items), glossary, and a new reviewer column checking that Thai artifact captions read as the "Inspect for" cue the app now derives from them. Drafts were produced under the updated translation brief (formal exam register, whole-word glossary matching) and QA-scanned before issue: zero hits on every pattern from the round-1 review. Machine-readable drafts in `exports/thai-drafts-batch2.json`. Nothing from batch 2 is in the app yet.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged.
+
+## 2026-09-12: Thai Spot Check Round 1 Applied; Round 2 Sample Issued
+
+The second-reviewer spot check of Thai batch 1 returned 13 Approve / 7 Fix with no ambiguous keys, so batch 1 stays `reviewed`. The reviewer found a systematic find-and-replace defect ("copilot" rendered as "coโครงการนำร่อง (Pilot)") and several register issues (pronoun มัน opening formal options, เรียกร้อง in executive prompts, literal ลูป, สัญญาณอันตราย). All were fixed across the full 163-item batch, not only the sampled items — 22 items changed, zero remaining hits on every pattern. Per-item detail in `docs/THAI_SPOTCHECK_ROUND1_RESPONSE.md`. A fresh, non-overlapping 20-item round-2 sample is in `exports/New_Horizon_Thai_Batch1_SpotCheck_Round2.xlsx`.
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged, 163 items reviewed.
+
+## 2026-09-11: Thai Versions of Message-Type Artifacts
+
+Nine artifacts that a Thai user must read as messages to judge realistically now have Thai versions: delivery-scam SMS thread, forwarded flood chat, station flood social post, executive impersonation post, fraudulent supplier invoice, phishing re-authentication page, client scheduling email, fake marketplace listing, and vendor data-rights memo. SVGs had their text nodes replaced (Noto Sans Thai embedded as a data URI so rendering does not depend on device fonts); PNG screenshots had only their text regions repainted, leaving photos, layout and every fraud or verification cue unchanged (mismatched domain, changed bank account, missing PO, countdown pressure, unverified source, missing agenda and timezone). Amounts are in baht.
+
+`thaiStimulusSources` maps each English image to its `-th` version and `localizeQuestion` swaps it for questions that carry a translation status. Fourteen translated questions now show Thai artifacts; nine untranslated `DEPTH-*` items keep the English image until they are translated, so a question never mixes languages. English mode is unchanged. The EN→TH text for each image is recorded in `exports/artifact-thai-text-spec.json` for native review; `exports/artifact-language-tags.json` tracks production status.
+
+Also added `exports/New_Horizon_Thai_Batch1_SpotCheck.xlsx`: a stratified 20-item second-reviewer sample of batch 1 with a built-in promotion rule (18 of 20 Approve and no ambiguous key → promote batch 1 to `approved`).
+
+Verified: lint clean, production build passes, 18 pre-existing TypeScript errors unchanged, VM check that Thai image swap applies only to translated questions and never in English mode.
+
+## 2026-09-11: Merge Repair After Main Sync
+
+The merge of `main` into `kj-dee-branch` (`82d0da4`) left `page.tsx` unbuildable: `currentDisplayStimulus` was declared twice (the localisation branch's `getDisplayStimulus(shownQuestion)` beside main's `getDisplayStimulus(current)`), so `pnpm build` failed with a parse error. Fixed by keeping one declaration and driving main's new visual-card gate from the localised question (`getDisplayVisualStimulus(shownQuestion)`), so hidden-artifact rules and Thai visual cards work together. Also removed six duplicate keys in `thaiUiCopy` introduced by the merge (`Assessment`, `Improve next`, `Score interpretation`, `Open detailed analysis`, the survey-unlock sentence, `Maps to`); JavaScript kept the last value anyway, so behaviour is unchanged.
+
+Verified: lint clean, production build passes, TypeScript back to the 18 pre-existing errors, Thai localisation checks pass (163 items reviewed, Thai free-text scoring, matching), Thai toggle smoke test clean.
+
+Added with the repair, so a broken merge cannot recur unnoticed:
+
+- `.github/workflows/ci.yml` — lint, a TypeScript error budget (fails only if the count grows above the known 18), production build, and a question-bank integrity check (unique ids; every translation table entry points at a real question) on push and pull request to `kj-dee-branch` and `main`.
+- README `Language Support` now states the two Thai mechanisms and their boundary: `thaiUiCopy` for interface chrome, per-question `*Th` fields plus `app/questionTranslations.th.ts` for question content.
+- `exports/glossary_th.json` aligned with the README style guide (Domain, Competency, Assessment, Platform, telemetry, Workflow stay in English).
+- `exports/artifact-language-tags.json` — artifact language tags re-checked against the expanded relevance gate: 26 artifacts still display and need Thai versions, 15 stay English, none should be produced for gated uses.
+
+## 2026-09-11: Thai Localisation Batch 1 Applied (163 Items Reviewed)
+
+Native review of `exports/New_Horizon_Thai_Review_Batch1.xlsx` came back with all 163 Thai-priority-High items approved after in-cell edits (39 scenarios and 32 prompts reworded; meaning, naturalness, terminology, UI fit and cultural fit all confirmed; every answer key judged still unambiguous in Thai). Applied as `translationStatus: 'reviewed'`.
+
+- New generated module `app/questionTranslations.th.ts` (137 items) holds Thai for scenario, prompt, options and feedback, rank steps and rationale, matching pairs, multi-part items, rubric labels and Thai keywords, exemplar answers, and artifact/visual-card text. `localizeQuestion()` merges it over any inline `*Th` fields; the table wins.
+- The 26 Horizon items keep their inline Thai, now with the reviewer's corrected scenario and prompt.
+- Localisation now covers matching (scored against the pairs as shown; selections reset on language switch), multi-part items, rank rationale, and free-text items: `scoreTextAnswer` matches English and Thai keywords, so Thai written answers score.
+- Glossary (`exports/glossary_th.json`, 65 terms) and artifact language tags (16 Thai needed / 9 Both / 16 Keep English) confirmed as proposed.
+
+Verified: lint clean, production build passes, VM tests for every interaction type (ids/scores identical across languages; Thai free-text answer scores 98; matching key present in translated choices), headless walkthrough in Thai renders a translated item in Thai and an untranslated item in English with no runtime errors. 18 pre-existing TypeScript errors unchanged.
+
+## 2026-09-10: Per-Question Thai Localisation Model
+
+The question bank can now carry Thai text on each item instead of relying on the interface-string dictionary. New optional fields: `contextTh`, `promptTh`, `translationStatus` on `Question`; `labelTh`, `feedbackTh` on `Option`; Thai variants for artifact alt/label/caption, visual-card title/eyebrow/caption/points, and rank-item labels. `localizeQuestion()` overlays them at render time with English fallback and only for items that have a `translationStatus`, so partially translated content never mixes languages within one question. Ids, scores, keys, and telemetry are unchanged; the feedback panel re-localises the stored answer when the language toggle changes.
+
+Seeded the 26 Horizon reliance items (`REL-H-*`) as `draft`: scenario and best-answer rationale from the deck's Thai, plus drafted Thai for shared reliance option labels, partial-credit feedback, and visual-card points. See `docs/LOCALISATION.md` for the model, status workflow, style rules, and batch process.
+
+Verified: lint clean, production build passes, VM test of `localizeQuestion` (ids/scores identical across languages, untranslated items returned untouched), browser smoke test with the Thai toggle shows no runtime errors. 18 pre-existing TypeScript errors unchanged.
+
+## 2026-09-10: Question Bank Audit Round 1 Applied
+
+Reviewers completed `exports/New_Horizon_Question_Bank_Audit_Completed.xlsx` (660 questions, 2,552 choices, 41 artifacts). Outcome: 619 Keep / 41 Revise / 0 Remove; every answer key confirmed; 30 items rated "too hard" for their band because of scenario length. Changes applied from the verdicts:
+
+- Legacy reliance items (`REL-G-*`, `REL-E-*`, 11 items flagged "predictable bias towards Together"): each scenario now carries an explicit stakes edge and the keys vary. Scheduling reply and explaining a term are now AI-led; the breaking-news repost, sensitive face-to-face feedback, the data incident whose root cause is the AI workflow itself, the role-redesign announcement, and the unvalidated investor forecast are now human-owned; portfolio prioritisation, board explanation, and agent tool access stay shared but with a stronger human-owned option. Across the 12 legacy items the keys are now 6 Me / 4 Together / 2 AI.
+- Horizon awareness items (`REL-H-D6-005`, `REL-H-D2-007/010/014/021/023`): scenario text shortened to one or two sentences as requested.
+- Market-trend awareness items (24 `TREND-*-AWARENESS-01`): the appended "Focus competency … the user should show they …" sentence is removed at awareness level so the item reads as a scenario, not a rubric. Subject-verb grammar fixed for the other bands ("they use", not "they uses").
+- Drag-order items (23, flagged "enrich feedback"): new optional `rankRationale` field on `Question`, authored for every drag-order item. After submitting, the feedback now states how many steps were in the right position, the best order, and why that order.
+- Artifacts: the six hidden-by-gate artifacts reviewers marked "Improve" stay gated; they need visual redesign before ungating and are left on the artifact backlog.
+
+Verified: lint clean, production build passes, 660 unique ids, 18 pre-existing TypeScript errors unchanged. Detailed verdict-to-change mapping in `docs/AUDIT_ROUND_1_RESPONSE.md`. New helper `scripts/dump-question-bank.mjs` exports the bank to JSON for regenerating the audit workbook.
+
+## 2026-09-10: Horizon "AI or Me?" Reliance Deck Imported
+
+Added `horizonRelianceQuestions` (26 `reliance-decision` items, ids `REL-H-*`) to the general question bank, imported from the Horizon Field Lab "Appropriate reliance" swipe deck (`horizon-field-lab.pages.dev/reliance`). The full inventory, including Thai text, wildcard cards, and the deck's own scoring rules, is documented in the project workspace (`Horizon_Reliance_Deck_Question_Inventory`).
+
+Differences from the legacy reliance items:
+
+- The best answer varies by scenario (9 AI-led, 9 human-owned, 8 shared) instead of always being "Shared with AI", so the format now discriminates over-reliance from under-reliance.
+- Each option carries its own score and feedback; the best option (98) reuses the deck's evidence-based rationale, and partial-credit options explain the trade-off.
+- Items are tagged with `competencyIds` across D2 tool selection and output refinement, D3 source verification, D4 fairness, privacy, regulatory and governance controls, D5 strategy, and D6 role clarity.
+- Horizon's `scheduling-reply` card was not imported because `REL-G-D2-001` already covers that scenario with an artifact.
+
+The adaptive router still shows at most one `reliance-decision` item per sitting, so this widens the pool rather than lengthening the assessment. Verified: lint clean, production build passes, 252 unique question ids; the 16 pre-existing TypeScript errors on the branch are unchanged.
 ## 2026-09-11: Report Simplification
 
 The assessment report Summary tab is reorganized around the user’s immediate questions: score meaning, whether to continue, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary material such as Did you know, leaderboard, score calculation, telemetry, evidence-mode split, badges, profile signals, and improvement math now sits in Question review/analysis to reduce clutter.

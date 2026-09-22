@@ -1,8 +1,8 @@
-import fs from 'node:fs';
 import Link from 'next/link';
-import path from 'node:path';
+import { headers } from 'next/headers';
 import { ReviewerFeedback } from './reviewer-feedback';
 import { QuestionReviewStats, ReviewFilterControls } from './review-controls';
+import { ReviewSync } from './review-sync';
 
 type ReviewOption = {
   id: string;
@@ -79,11 +79,34 @@ type ReviewQuestion = {
   };
 };
 
-type Inventory = {
+type InventorySummary = {
   inventoryVersion: string;
   status: string;
   liveIntegration: boolean;
-  questions: ReviewQuestion[];
+  draftCount: number;
+  liveCount: number;
+  artifactCounts: ArtifactNeedsPayload['counts'] | null;
+};
+
+// Light per-question record from index.json. Carries only what filtering,
+// counting and search need; full records are fetched per visible question.
+type IndexQuestion = Pick<
+  ReviewQuestion,
+  | 'id'
+  | 'domain'
+  | 'difficulty'
+  | 'layer'
+  | 'scopeLabel'
+  | 'competencyLabel'
+  | 'prompt'
+  | 'sourceInventory'
+  | 'sourceBank'
+  | 'functionTracks'
+  | 'industryTracks'
+  | 'executiveRoles'
+> & {
+  recommendedFormat?: { format: string };
+  userFacingDraft?: { format: string };
 };
 
 type ArtifactNeed = {
@@ -136,28 +159,46 @@ const fallbackProfileLabels: Record<string, string> = {
   technical: 'Technical / IT',
 };
 
-function getInventory(): Inventory {
-  const inventoryPath = path.join(process.cwd(), 'exports/review-inventory/questions.json');
-  return JSON.parse(fs.readFileSync(inventoryPath, 'utf8')) as Inventory;
+// The exports under exports/review-inventory are ~28 MB and this page renders in
+// the Cloudflare worker runtime, which has no host filesystem. Both problems are
+// solved by scripts/build-review-inventory-assets.mjs, which emits the inventory
+// under public/review-inventory; we read it back over same-origin requests.
+async function assetOrigin() {
+  const requestHeaders = await headers();
+  const host = requestHeaders.get('host') ?? 'localhost:3000';
+  const forwardedProtocol = requestHeaders.get('x-forwarded-proto');
+  const isLocal = host.startsWith('localhost') || host.startsWith('127.0.0.1');
+  return `${forwardedProtocol ?? (isLocal ? 'http' : 'https')}://${host}`;
 }
 
-function getLiveInventory(): Inventory | null {
-  const livePath = path.join(process.cwd(), 'exports/review-inventory/live-questions.json');
-  if (!fs.existsSync(livePath)) return null;
-  return JSON.parse(fs.readFileSync(livePath, 'utf8')) as Inventory;
+async function loadAsset<T>(origin: string, assetPath: string): Promise<T | null> {
+  const response = await fetch(new URL(assetPath, origin));
+  if (!response.ok) return null;
+  return (await response.json()) as T;
 }
 
-function getArtifactNeeds() {
-  const artifactPath = path.join(process.cwd(), 'exports/review-inventory/artifact-needs.json');
-  if (!fs.existsSync(artifactPath)) return null;
-  const payload = JSON.parse(fs.readFileSync(artifactPath, 'utf8')) as ArtifactNeedsPayload;
-  return {
-    ...payload,
-    byQuestionId: new Map(payload.candidates.map((candidate) => [candidate.id, candidate])),
-  };
+// Must match safeFileName() in scripts/build-review-inventory-assets.mjs.
+function detailFileName(id: string) {
+  return id.replace(/[^A-Za-z0-9._-]/g, '_');
 }
 
-function countBy<T extends string>(items: ReviewQuestion[], getter: (item: ReviewQuestion) => T) {
+async function loadQuestionDetails(origin: string, ids: string[]) {
+  const questions: ReviewQuestion[] = [];
+  const batchSize = 12;
+  for (let start = 0; start < ids.length; start += batchSize) {
+    const batch = await Promise.all(
+      ids
+        .slice(start, start + batchSize)
+        .map((id) => loadAsset<ReviewQuestion>(origin, `/review-inventory/detail/${detailFileName(id)}.json`)),
+    );
+    for (const question of batch) {
+      if (question) questions.push(question);
+    }
+  }
+  return questions;
+}
+
+function countBy<T extends string>(items: IndexQuestion[], getter: (item: IndexQuestion) => T) {
   return items.reduce<Record<string, number>>((counts, item) => {
     const key = getter(item) || 'Unspecified';
     counts[key] = (counts[key] || 0) + 1;
@@ -821,18 +862,38 @@ function renderUserFacingDraft(question: ReviewQuestion, questionLanguage: 'en' 
   );
 }
 
-export default function QuestionInventoryPage({
+export default async function QuestionInventoryPage({
   searchParams,
 }: {
   searchParams?: Record<string, string | string[] | undefined>;
 }) {
-  const inventory = getInventory();
-  const liveInventory = getLiveInventory();
-  const artifactNeeds = getArtifactNeeds();
-  const allQuestions = [
-    ...inventory.questions.map((question) => ({ ...question, sourceInventory: question.sourceInventory ?? 'draft', sourceBank: question.sourceBank ?? 'New draft review inventory' })),
-    ...(liveInventory?.questions ?? []).map((question) => ({ ...question, sourceInventory: question.sourceInventory ?? 'live', sourceBank: question.sourceBank ?? 'Existing live bank' })),
-  ];
+  const origin = await assetOrigin();
+  const summary = await loadAsset<InventorySummary>(origin, '/review-inventory/summary.json');
+  const allQuestions = (await loadAsset<IndexQuestion[]>(origin, '/review-inventory/index.json')) ?? [];
+
+  if (!summary || !allQuestions.length) {
+    return (
+      <main className="inventory-page">
+        <section className="inventory-hero">
+          <div>
+            <div className="inventory-nav-links">
+              <Link href="/" className="inventory-back-link">Main page</Link>
+              <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+            </div>
+            <h1>Question Inventory</h1>
+            <p>
+              The review inventory assets have not been generated yet. Run{' '}
+              <code>node scripts/build-review-inventory-assets.mjs</code> (or restart{' '}
+              <code>pnpm dev</code>, which runs it for you) to build them from
+              <code>exports/review-inventory</code>.
+            </p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  const artifactCounts = summary.artifactCounts;
   const domain = normalizeParam(searchParams?.domain) || 'all';
   const difficulty = normalizeParam(searchParams?.difficulty) || 'all';
   const layer = normalizeParam(searchParams?.layer) || 'all';
@@ -867,11 +928,7 @@ export default function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
   });
 
-  const pageSize = 20;
-  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const currentPage = Number.isFinite(requestedPage) ? Math.min(Math.max(requestedPage, 1), pageCount) : 1;
-  const pageStart = (currentPage - 1) * pageSize;
-  const visibleQuestions = filtered.slice(pageStart, pageStart + pageSize);
+  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(0, 80).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -904,8 +961,8 @@ export default function QuestionInventoryPage({
         </div>
         <div className="inventory-status-card">
           <span>Inventory version</span>
-          <strong>{inventory.inventoryVersion}</strong>
-          <small>{inventory.questions.length.toLocaleString()} draft · {(liveInventory?.questions.length ?? 0).toLocaleString()} live</small>
+          <strong>{summary.inventoryVersion}</strong>
+          <small>{summary.draftCount.toLocaleString()} draft · {summary.liveCount.toLocaleString()} live</small>
         </div>
       </section>
 
@@ -933,25 +990,25 @@ export default function QuestionInventoryPage({
       <section className="inventory-kpis" aria-label="Inventory totals">
         <div><span>Total questions</span><strong>{allQuestions.length.toLocaleString()}</strong></div>
         <div><span>Filtered</span><strong>{filtered.length.toLocaleString()}</strong></div>
-        <div><span>Shown</span><strong>{visibleQuestions.length.toLocaleString()}</strong><small>page {currentPage} of {pageCount}</small></div>
-        <div><span>Live bank</span><strong>{(liveInventory?.questions.length ?? 0).toLocaleString()}</strong></div>
-        <div><span>Artifact candidates</span><strong>{artifactNeeds?.counts.artifactCandidates.toLocaleString() || 'Not scanned'}</strong></div>
+        <div><span>Shown</span><strong>{visibleQuestions.length.toLocaleString()}</strong><small>first 80 for page speed</small></div>
+        <div><span>Live bank</span><strong>{summary.liveCount.toLocaleString()}</strong></div>
+        <div><span>Artifact candidates</span><strong>{artifactCounts?.artifactCandidates.toLocaleString() || 'Not scanned'}</strong></div>
       </section>
 
-      {artifactNeeds ? (
+      {artifactCounts ? (
         <section className="inventory-panel artifact-summary-panel">
           <div>
             <span>Requires artifact</span>
-            <strong>{(artifactNeeds.counts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
+            <strong>{(artifactCounts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
           </div>
           <div>
             <span>Artifact helpful</span>
-            <strong>{(artifactNeeds.counts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
+            <strong>{(artifactCounts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
           </div>
           <div>
             <span>Top artifact types</span>
             <p>
-              {Object.entries(artifactNeeds.counts.byType)
+              {Object.entries(artifactCounts.byType)
                 .sort((left, right) => right[1] - left[1])
                 .slice(0, 4)
                 .map(([label, count]) => `${label}: ${count}`)
@@ -1053,13 +1110,14 @@ export default function QuestionInventoryPage({
         </nav>
       </section>
 
+      <ReviewSync />
       <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-grid">
         {visibleQuestions.map((question) => (
           <article className="inventory-question-card" key={question.id} data-question-id={question.id}>
             {(() => {
-              const artifactNeed = question.artifactNeed || artifactNeeds?.byQuestionId.get(question.id);
+              const artifactNeed = question.artifactNeed;
               return artifactNeed ? (
                 <div className="inventory-artifact-note">
                   <strong>{localizedText(artifactNeed.need, artifactNeed.th?.need, language)}: {localizedText(artifactNeed.artifactLabel, artifactNeed.th?.artifactLabel, language)}</strong>

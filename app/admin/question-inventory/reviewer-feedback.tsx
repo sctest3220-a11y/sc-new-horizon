@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { syncedEvent } from './review-sync';
 
 type FeedbackState = {
   decision: string;
@@ -33,32 +34,50 @@ const emptyFeedback: FeedbackState = {
   suggestedChange: '',
 };
 
+const emptyStored = { feedback: emptyFeedback, entries: [] as SavedFeedbackEntry[], savedAt: '' };
+
+function readStored(storageKey: string) {
+  const saved = window.localStorage.getItem(storageKey);
+  if (!saved) return emptyStored;
+  try {
+    const parsed = JSON.parse(saved) as Partial<StoredFeedback> & Partial<FeedbackState> & { savedAt?: string };
+    if (parsed.draft || parsed.entries) {
+      return {
+        feedback: { ...emptyFeedback, ...(parsed.draft ?? {}) },
+        entries: parsed.entries ?? [],
+        savedAt: parsed.updatedAt ?? '',
+      };
+    }
+    const migratedEntry = parsed.savedAt
+      ? [{ ...emptyFeedback, ...(parsed as FeedbackState), id: parsed.savedAt, savedAt: parsed.savedAt }]
+      : [];
+    return { feedback: { ...emptyFeedback, ...(parsed as FeedbackState), comment: '', suggestedChange: '' }, entries: migratedEntry, savedAt: parsed.savedAt ?? '' };
+  } catch {
+    return emptyStored;
+  }
+}
+
 export function ReviewerFeedback({ questionId }: { questionId: string }) {
   const storageKey = useMemo(() => `new-horizon-review:${questionId}`, [questionId]);
-  const initial = useMemo(() => {
-    if (typeof window === 'undefined') return { feedback: emptyFeedback, entries: [] as SavedFeedbackEntry[], savedAt: '' };
-    const saved = window.localStorage.getItem(storageKey);
-    if (!saved) return { feedback: emptyFeedback, entries: [] as SavedFeedbackEntry[], savedAt: '' };
-    try {
-      const parsed = JSON.parse(saved) as Partial<StoredFeedback> & Partial<FeedbackState> & { savedAt?: string };
-      if (parsed.draft || parsed.entries) {
-        return {
-          feedback: { ...emptyFeedback, ...(parsed.draft ?? {}) },
-          entries: parsed.entries ?? [],
-          savedAt: parsed.updatedAt ?? '',
-        };
-      }
-      const migratedEntry = parsed.savedAt
-        ? [{ ...emptyFeedback, ...(parsed as FeedbackState), id: parsed.savedAt, savedAt: parsed.savedAt }]
-        : [];
-      return { feedback: { ...emptyFeedback, ...(parsed as FeedbackState), comment: '', suggestedChange: '' }, entries: migratedEntry, savedAt: parsed.savedAt ?? '' };
-    } catch {
-      return { feedback: emptyFeedback, entries: [] as SavedFeedbackEntry[], savedAt: '' };
+  // Start empty on both server and client, then load from localStorage after
+  // mount: reading it during render made the hydrated HTML differ from the
+  // server's whenever this browser already held feedback for the question.
+  const [feedback, setFeedback] = useState<FeedbackState>(emptyFeedback);
+  const [entries, setEntries] = useState<SavedFeedbackEntry[]>([]);
+  const [savedAt, setSavedAt] = useState('');
+
+  useEffect(() => {
+    function load() {
+      const stored = readStored(storageKey);
+      setFeedback(stored.feedback);
+      setEntries(stored.entries);
+      setSavedAt(stored.savedAt);
     }
+    load();
+    // Fired by ReviewSync after it pulls the committed feedback file.
+    window.addEventListener(syncedEvent, load);
+    return () => window.removeEventListener(syncedEvent, load);
   }, [storageKey]);
-  const [feedback, setFeedback] = useState<FeedbackState>(initial.feedback);
-  const [entries, setEntries] = useState<SavedFeedbackEntry[]>(initial.entries);
-  const [savedAt, setSavedAt] = useState(initial.savedAt);
 
   function persist(nextDraft: FeedbackState, nextEntries = entries) {
     const timestamp = new Date().toISOString();

@@ -76,6 +76,9 @@ git sparse-checkout set \
   /app/layout.tsx \
   /app/globals.css \
   /app/admin/question-inventory/ \
+  /scripts/build-review-inventory-assets.mjs \
+  /scripts/lib/review-feedback-sync-plugin.mjs \
+  /exports/review-feedback/ \
   /exports/review-inventory/questions.json \
   /exports/review-inventory/live-questions.json \
   /exports/review-inventory/artifact-needs.json
@@ -120,17 +123,21 @@ Important files include:
 
 ## How local feedback works
 
-Ratings, decisions, comments, and suggested rewrites entered on the review page are currently stored in that browser's `localStorage`, under keys beginning with `new-horizon-review:`.
+Ratings, decisions, comments, and suggested rewrites entered on the review page are stored in that browser's `localStorage`, under keys beginning with `new-horizon-review:`.
 
-This means:
+While the page is served by `pnpm dev`, the **Reviewer feedback file** panel above the review filter also writes that feedback into the repository, at `exports/review-feedback/<git user.name>.json` (for example `exports/review-feedback/kj-dee.json`). Every rating change and saved comment is written about a second later; **Sync now** forces a write. When the page loads it first pulls that file back into the browser, so a review continues on another machine or after browser data is cleared as long as the file was committed. Saved comments are merged by id and never dropped; the current draft comes from the browser.
 
-- feedback survives a page refresh in the same browser profile;
-- feedback does not automatically sync to GitHub or another reviewer;
-- clearing browser data removes the locally saved review history;
-- changing computers or browsers does not carry the feedback across;
-- collaborators should not assume that clicking **Save comment** submits feedback to the project owner.
+The panel reads **Repo sync unavailable** under `pnpm start` or a deployed build, because there is no dev server to write the file. Feedback then stays in the browser only.
 
-Central review collection requires the planned hosted reviewer with a shared database. Until that is implemented, collaborators should return comments through the agreed review channel or the offline workbook. Do not commit generated question changes directly unless the project owner has approved the revised source and regeneration workflow.
+To share a review, commit and push the file on your own branch, for example:
+
+```bash
+git add exports/review-feedback/
+git commit -m "Review feedback: <what was covered>"
+git push origin <your-branch>
+```
+
+Clicking **Save comment** does not submit anything to GitHub or to the project owner by itself. Central review collection still requires the planned hosted reviewer with a shared database. Do not commit generated question changes directly unless the project owner has approved the revised source and regeneration workflow.
 
 ## Updating and troubleshooting
 

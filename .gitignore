@@ -37,3 +37,6 @@ next-env.d.ts
 /outputs/
 /work/
 .agent-drafts/
+
+# generated review inventory assets
+/public/review-inventory/
