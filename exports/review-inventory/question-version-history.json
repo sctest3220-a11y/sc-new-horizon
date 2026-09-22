@@ -266,6 +266,129 @@
           ]
         }
       ]
+    },
+    {
+      "questionId": "NH-FUNCTION-SALES-D1-CAPABILITY-LIMITS-APPLIED-01",
+      "currentVersion": "2026-09-17.1",
+      "candidateVersion": "2026-09-22.2",
+      "preferredVersion": null,
+      "selectionStatus": "awaiting-comparative-review",
+      "culturalContext": "culturally-neutral-with-thai-localization",
+      "profile": {
+        "function": "sales",
+        "difficulty": "applied",
+        "displayLevel": "intermediate",
+        "competency": "Capability boundaries"
+      },
+      "versions": [
+        {
+          "version": "2026-09-10.0",
+          "recordedAt": "2026-09-10",
+          "changeType": "generated-coverage-source",
+          "reviewerConcern": "The generated fields and phrases such as account owner, approved pricing range, and profile cue require users to interpret an internal sales process before they can assess the AI risk.",
+          "context": "Scenario: Sales needs an account proposal. Use: approved CRM extracts and current commercial terms. Rule: Only the account owner may approve pricing and delivery promises. Risk: An unsupported promise can become a customer dispute. Evidence: The assistant has no access to the necessary attachment. Extra function cue: The account proposal offers a discount outside the approved pricing range.",
+          "prompt": "What should happen next before the account proposal is used? Also apply the profile cue.",
+          "options": [
+            "Obtain the current approved procedure and answer again; seek the account owner's authorized pricing decision.",
+            "Provide an approved extract or state that it cannot be checked; seek the account owner's authorized pricing decision.",
+            "Obtain the current approved procedure and answer again; send the proposal because the customer has requested a quick reply.",
+            "Provide an approved extract or state that it cannot be checked; send the proposal because the customer has requested a quick reply."
+          ],
+          "correctOption": "Provide an approved extract or state that it cannot be checked; seek the account owner's authorized pricing decision.",
+          "explanation": "The evidence gap must be resolved or disclosed. Customer urgency does not expand pricing authority.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-17.1",
+          "recordedAt": "2026-09-17",
+          "changeType": "latest-user-facing-draft",
+          "reviewerConcern": "The two decisions are separated, but the evidence gap, approval role, and pricing limit remain abstract, and the Thai draft contains untranslated text.",
+          "context": "Sales uses AI to prepare an account proposal. The assistant has no access to the necessary attachment. Only the account owner may approve pricing and delivery promises. Additional detail: The account proposal offers a discount outside the approved pricing range.",
+          "prompt": "Answer both parts.",
+          "parts": [
+            {
+              "prompt": "What should happen next before the account proposal is used?",
+              "options": [
+                "Obtain the current approved procedure and answer again.",
+                "Provide an approved extract or state that it cannot be checked."
+              ],
+              "correctOption": "Provide an approved extract or state that it cannot be checked."
+            },
+            {
+              "prompt": "What should the team do about the extra detail?",
+              "options": [
+                "Seek the account owner's authorized pricing decision.",
+                "Send the proposal because the customer has requested a quick reply."
+              ],
+              "correctOption": "Seek the account owner's authorized pricing decision."
+            }
+          ],
+          "explanation": "The evidence gap must be resolved or disclosed. Customer urgency does not expand pricing authority.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-22.2",
+          "recordedAt": "2026-09-22",
+          "changeType": "candidate-culturally-accessible-sales-scenario",
+          "reviewerConcern": "Apply the Thai cultural-context standard while preserving the capability-boundary and approval-authority decisions.",
+          "context": "A salesperson uses an AI assistant to prepare a quotation for a business customer. The draft includes product details from an attachment, but the AI cannot open that attachment, so those details have not been verified. The draft also offers a 15% discount. The salesperson may approve discounts up to 10%; a larger discount requires approval from the sales manager. The customer has asked for the quotation today.",
+          "prompt": "Review the draft and answer both parts before it is sent to the customer.",
+          "parts": [
+            {
+              "prompt": "1. What should the salesperson do about the unverified product details?",
+              "options": [
+                "Give the AI access to the approved attachment and regenerate the draft, or remove the details and say they could not be verified.",
+                "Keep the details because the AI included them confidently.",
+                "Ask the AI to rewrite the details in simpler language without checking the attachment.",
+                "Send the quotation first and verify the details only if the customer asks."
+              ],
+              "correctOption": "Give the AI access to the approved attachment and regenerate the draft, or remove the details and say they could not be verified."
+            },
+            {
+              "prompt": "2. What should happen to the 15% discount?",
+              "options": [
+                "Obtain approval from the sales manager or reduce the discount to an amount the salesperson is authorized to approve.",
+                "Send it because meeting today's deadline is more important than the approval limit.",
+                "Keep it if the AI predicts that the discount will help close the sale.",
+                "Change the wording from discount to special price so approval is not needed."
+              ],
+              "correctOption": "Obtain approval from the sales manager or reduce the discount to an amount the salesperson is authorized to approve."
+            }
+          ],
+          "explanation": "The AI cannot verify information in a file it cannot access, so the missing evidence must be supplied or the unsupported details must be removed and disclosed. The AI and salesperson also cannot exceed the organization's approval limit simply because the customer is waiting.",
+          "th": {
+            "context": "พนักงานขายใช้ AI Assistant ช่วยจัดทำใบเสนอราคาให้ลูกค้าธุรกิจ ร่างใบเสนอราคามีรายละเอียดสินค้าจากไฟล์แนบ แต่ AI เปิดไฟล์นั้นไม่ได้ จึงยังตรวจสอบรายละเอียดไม่ได้ นอกจากนี้ ร่างยังเสนอส่วนลด 15% ทั้งที่พนักงานขายอนุมัติส่วนลดได้ไม่เกิน 10% หากให้ส่วนลดมากกว่านั้นต้องได้รับอนุมัติจากผู้จัดการฝ่ายขาย ลูกค้าขอให้ส่งใบเสนอราคาภายในวันนี้",
+            "prompt": "ตรวจสอบร่างแล้วตอบคำถามทั้งสองส่วนก่อนส่งให้ลูกค้า",
+            "parts": [
+              {
+                "prompt": "1. พนักงานขายควรทำอย่างไรกับรายละเอียดสินค้าที่ยังไม่ได้ตรวจสอบ",
+                "options": [
+                  "ให้ AI เข้าถึงไฟล์แนบที่อนุมัติแล้วและสร้างร่างใหม่ หรือลบรายละเอียดนั้นพร้อมแจ้งว่ายังตรวจสอบไม่ได้",
+                  "เก็บรายละเอียดไว้ เพราะ AI เขียนด้วยความมั่นใจ",
+                  "ให้ AI เขียนรายละเอียดใหม่ด้วยภาษาที่ง่ายขึ้นโดยไม่ต้องตรวจสอบไฟล์แนบ",
+                  "ส่งใบเสนอราคาไปก่อน แล้วค่อยตรวจสอบเมื่อลูกค้าถาม"
+                ]
+              },
+              {
+                "prompt": "2. ควรทำอย่างไรกับส่วนลด 15%",
+                "options": [
+                  "ขออนุมัติจากผู้จัดการฝ่ายขาย หรือลดส่วนลดให้อยู่ในระดับที่พนักงานขายมีอำนาจอนุมัติ",
+                  "ส่งไปได้ เพราะการส่งให้ทันวันนี้สำคัญกว่าขีดจำกัดการอนุมัติ",
+                  "คงส่วนลดไว้ หาก AI คาดว่าจะช่วยให้ปิดการขายได้",
+                  "เปลี่ยนคำว่าส่วนลดเป็นราคาพิเศษ เพื่อไม่ต้องขออนุมัติ"
+                ]
+              }
+            ],
+            "explanation": "AI ไม่สามารถตรวจสอบข้อมูลในไฟล์ที่เปิดไม่ได้ จึงต้องให้ข้อมูลที่ขาดไป หรือลบรายละเอียดที่ไม่มีหลักฐานรองรับและแจ้งให้ชัดเจน นอกจากนี้ AI และพนักงานขายไม่มีสิทธิ์เสนอส่วนลดเกินขีดจำกัดการอนุมัติ เพียงเพราะลูกค้ากำลังรอ"
+          },
+          "artifactRecommendation": "Not required for this version. The missing-file condition and approval limit are explicit. A realistic quotation artifact could support a later artifact-review variant, but it should then become evidence the user must inspect rather than decoration.",
+          "rulesIntroduced": [
+            "Replace organization-specific role labels with a plain description of who has authority and what limit applies.",
+            "Use familiar local business documents and approval situations without assuming Western sales titles or processes.",
+            "For localized versions, preserve the same numerical evidence, authority boundary, decisions, and difficulty."
+          ]
+        }
+      ]
     }
   ]
 }

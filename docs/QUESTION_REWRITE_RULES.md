@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Living standard
-Current rules version: `1.4`
+Current rules version: `1.5`
 Last updated: 22 September 2026
 
 ## Purpose
@@ -34,6 +34,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 19. Use culturally neutral settings or contexts familiar to the intended Thai audience. Do not require knowledge of Western institutions, holidays, school systems, job titles, consumer habits, laws, currencies, or workplace customs unless that knowledge is part of the competency being assessed.
 20. Localize the situation, not just the words. Thai versions may adapt names, organizations, services, examples, units, dates, and work practices when needed, while preserving the same evidence, decision, difficulty, and correct answer.
 21. Do not force superficial Thai references or stereotypes into every question. Prefer ordinary, credible settings such as a local business, public service, hospital, school, university, bank, online seller, manufacturing team, community organization, or regional company when the setting matters.
+22. Explain organization-specific titles and authority boundaries in ordinary language. Do not assume users understand terms such as account owner, district manager, school board, or benefits administrator when the role itself is not being tested.
 
 ## Thai cultural-context standard
 
@@ -90,6 +91,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.5 - 22 September 2026
+
+- Added guidance for explaining organization-specific titles and approval authority in ordinary language.
+- Added an intermediate Sales comparison candidate using a culturally accessible quotation and discount-approval scenario.
+- Confirmed that localization must preserve numerical evidence and authority boundaries across languages.
 
 ### Version 1.4 - 22 September 2026
 
