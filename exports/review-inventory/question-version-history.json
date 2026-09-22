@@ -389,6 +389,74 @@
           ]
         }
       ]
+    },
+    {
+      "questionId": "FUNC-MKT-D3-001",
+      "sourceInventory": "live",
+      "currentVersion": "live-bank",
+      "candidateVersion": "2026-09-22.1",
+      "preferredVersion": null,
+      "selectionStatus": "awaiting-comparative-review",
+      "culturalContext": "thai-localized",
+      "profile": {
+        "function": "marketing",
+        "difficulty": "applied",
+        "displayLevel": "intermediate",
+        "domain": "D3"
+      },
+      "versions": [
+        {
+          "version": "live-bank",
+          "recordedAt": "2026-09-22",
+          "changeType": "current-live-item",
+          "reviewerConcern": "The item does not include the dashboard evidence in its wording, the correct choice is a list of advanced terms, and the artifact itself reveals the intended answer. The artifact also uses US dollars rather than a locally natural currency.",
+          "context": "An AI campaign assistant recommends scaling Ad Set C because it has the highest conversion rate.",
+          "prompt": "What should the marketer check before scaling?",
+          "options": [
+            "Sample size, traffic quality, coupon anomaly, and incrementality.",
+            "Only the headline conversion rate because it is highest.",
+            "Whether the chart colors make Ad Set C stand out.",
+            "Whether the AI can write a better ad headline."
+          ],
+          "correctOption": "Sample size, traffic quality, coupon anomaly, and incrementality.",
+          "explanation": "A high rate on weak evidence can be misleading.",
+          "artifact": "/stimuli/raw-marketing-campaign-dashboard.svg",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-22.1",
+          "recordedAt": "2026-09-22",
+          "changeType": "candidate-thai-localized-live-item-rewrite",
+          "reviewerConcern": "Apply approved rewrite standard 1.5 to a live item while retaining the same evidence-evaluation skill and making the setting natural for Thai users.",
+          "context": "An online retailer in Thailand tested three ad sets for the same promotion. The AI recommends moving more budget to Ad Set C because its conversion rate is 8.6%, compared with 3.2% for A and 3.4% for B. However, C produced only 8 conversions from 93 clicks, and the campaign log shows that its discount code was shared outside the intended customer group.",
+          "prompt": "What should the marketer do before increasing the budget for Ad Set C?",
+          "options": [
+            "Increase the budget immediately because 8.6% is the highest conversion rate.",
+            "Treat C as promising but investigate the traffic and discount-code issue, collect a larger sample, and test whether the ads caused additional conversions.",
+            "Stop A and B because their conversion rates are lower, even though they have much larger samples.",
+            "Ask the AI to rewrite the advertisement before reviewing the campaign evidence."
+          ],
+          "correctOption": "Treat C as promising but investigate the traffic and discount-code issue, collect a larger sample, and test whether the ads caused additional conversions.",
+          "explanation": "Ad Set C's rate looks strong, but eight conversions are not enough to justify immediate scaling. The leaked discount code may also have attracted unusual traffic or conversions that would have happened without the advertisement. The marketer should verify data quality, gather more evidence, and test incrementality before committing more budget.",
+          "th": {
+            "context": "ร้านค้าออนไลน์ในประเทศไทยทดลองโฆษณา 3 ชุดสำหรับโปรโมชันเดียวกัน AI แนะนำให้เพิ่มงบให้โฆษณาชุด C เพราะมี Conversion rate 8.6% ขณะที่ชุด A อยู่ที่ 3.2% และชุด B อยู่ที่ 3.4% อย่างไรก็ตาม ชุด C มี Conversion เพียง 8 ครั้งจาก 93 คลิก และบันทึกของแคมเปญระบุว่าโค้ดส่วนลดถูกนำไปแชร์นอกกลุ่มลูกค้าเป้าหมาย",
+            "prompt": "นักการตลาดควรทำอะไรก่อนเพิ่มงบให้โฆษณาชุด C",
+            "options": [
+              "เพิ่มงบทันที เพราะ Conversion rate 8.6% สูงที่สุด",
+              "มองว่าชุด C มีแนวโน้มที่ดี แต่ควรตรวจสอบแหล่งที่มาของผู้เข้าชมและปัญหาโค้ดส่วนลด เก็บข้อมูลเพิ่ม และทดสอบว่าโฆษณาทำให้เกิด Conversion เพิ่มขึ้นจริงหรือไม่",
+              "หยุดโฆษณาชุด A และ B เพราะมี Conversion rate ต่ำกว่า แม้ว่าจะมีกลุ่มตัวอย่างใหญ่กว่ามาก",
+              "ให้ AI เขียนข้อความโฆษณาใหม่ ก่อนตรวจสอบหลักฐานของแคมเปญ"
+            ],
+            "explanation": "Conversion rate ของชุด C ดูดี แต่ Conversion เพียง 8 ครั้งยังไม่เพียงพอสำหรับการเพิ่มงบทันที โค้ดส่วนลดที่ถูกแชร์ออกไปอาจดึงผู้เข้าชมที่ผิดจากกลุ่มเป้าหมาย หรือทำให้เกิด Conversion ที่อาจเกิดขึ้นอยู่แล้ว นักการตลาดจึงควรตรวจสอบคุณภาพข้อมูล เก็บหลักฐานเพิ่ม และทดสอบ incrementality ก่อนเพิ่มงบ"
+          },
+          "artifactRecommendation": "Keep an evidence dashboard, but revise it before this candidate is piloted. Use Thai baht, remove the answer-revealing Suspicious point and Better question panels, keep the A/B/C metrics and neutral quality notes, and make all text readable when expanded.",
+          "rulesIntroduced": [
+            "An assessment artifact must present evidence without labeling the suspicious point or teaching the correct answer.",
+            "Localize currency, units, and market conventions when they are not part of the tested competency.",
+            "When a technical term such as incrementality is useful, express the decision in plain language and explain the term after the answer."
+          ]
+        }
+      ]
     }
   ]
 }

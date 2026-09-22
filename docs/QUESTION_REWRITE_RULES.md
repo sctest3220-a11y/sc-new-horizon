@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `1.5`
+Current rules version: `1.6`
 Last updated: 22 September 2026
 Human approval recorded: 22 September 2026
 
@@ -36,6 +36,9 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 20. Localize the situation, not just the words. Thai versions may adapt names, organizations, services, examples, units, dates, and work practices when needed, while preserving the same evidence, decision, difficulty, and correct answer.
 21. Do not force superficial Thai references or stereotypes into every question. Prefer ordinary, credible settings such as a local business, public service, hospital, school, university, bank, online seller, manufacturing team, community organization, or regional company when the setting matters.
 22. Explain organization-specific titles and authority boundaries in ordinary language. Do not assume users understand terms such as account owner, district manager, school board, or benefits administrator when the role itself is not being tested.
+23. Artifacts must present evidence neutrally. Remove labels, callouts, highlights, or instructions that reveal the suspicious point or teach the correct answer.
+24. Localize currencies, units, dates, and market conventions when they are not part of the competency being tested.
+25. When a technical term is useful, describe the decision in plain language first and explain the term in answer feedback rather than making vocabulary recognition the hidden task.
 
 ## Thai cultural-context standard
 
@@ -92,6 +95,13 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.6 - 22 September 2026
+
+- Added neutral-evidence requirements so artifacts do not reveal answers.
+- Added localization guidance for currency, units, dates, and market conventions.
+- Added guidance for explaining technical terminology after the decision rather than hiding a vocabulary test inside an applied item.
+- Added a Thai-localized candidate rewrite for live Marketing item `FUNC-MKT-D3-001` without replacing the live question.
 
 ### Version 1.5 - 22 September 2026
 
