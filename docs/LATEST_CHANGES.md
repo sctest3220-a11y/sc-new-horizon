@@ -1,5 +1,43 @@
 # Latest Changes
 
+## Release-Stage Definitions Expanded
+
+The living feature catalog now defines `MVP - Built`, `MVP - Go-live`, `Production`, `Scale`, and `Future` in operational terms and includes exit criteria for moving between stages. This prevents a visible prototype from being mistaken for a real-user-ready or commercially hardened capability.
+
+## Agent Platform Tooling Decision
+
+Added `docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`. The MVP remains lightweight: Supabase/PostgreSQL is the system of record, PostHog or equivalent handles consent-aware product analytics, and a managed job runner is added only where asynchronous work is necessary. Temporal, bounded LangGraph workers, LiteLLM, Langfuse, ClickHouse, Kubernetes/KEDA, and optional Hermes experimentation are phased production or scale capabilities with explicit adoption triggers. The architecture rejects one-agent-per-event processing in favor of deterministic aggregation, batching, budgets, approval gates, versioned promotion, and human-controlled release.
+
+## 2026-09-22: README and Documentation Status Reconciled
+
+The README now uses the living feature catalog as its status source and distinguishes the local prototype from MVP go-live, Production, and Future capabilities. The Supabase/data-model section, AI-provider guidance, MVP limitations, and readiness checklist now reflect the latest B2C/B2B tenancy, Admin Settings, Premium Report Copilot, LLM usage/cost, agent orchestration, psychometric, question-quality, accessibility, billing, operational, and PDPA/Terms specifications.
+
+The updated limitations make clear that documented features are not automatically implemented. Browser-local analytics and Agent Ops, preview authentication/Admin access, generated question variants, machine-assisted Thai fields, and seeded psychometrics remain prototype or pilot assets until their respective go-live gates are met.
+
+## 2026-09-22: PDPA, Terms, and Legal Controls Documented
+
+Added an authoritative drafting and engineering specification for Thailand PDPA readiness, Privacy Notices, Terms of Use, Acceptable Use, cookie controls, Assessment/AI disclaimers, B2B controller/processor role mapping and DPA, consent, data-subject rights, retention/deletion, children, security, breach response, subprocessors, international transfers, Report Copilot, leaderboards, and legal release gates.
+
+The specification is not legal advice. Final Thai and English documents, lawful bases, age policy, data-sharing roles, retention periods, transfer safeguards, liability terms, and consumer/payment terms require qualified Thai legal review before public launch. The feature catalog now marks the corresponding legal and privacy controls by release stage.
+
+## 2026-09-22: Living Feature Catalog Added
+
+Added an itemized feature catalog for public visitors, B2C users, Premium users, B2B members and managers, Assessment/Learning Managers, Organization Admins and Owners, Billing Managers, Organization Auditors, specialist platform administrators, and Super Admins.
+
+Every feature is marked as `MVP - Built`, `MVP - Go-live`, `Production`, or `Future`. The distinction prevents browser-local previews from being mistaken for secure multi-user production capabilities. The document includes a mandatory maintenance workflow so future feature work updates the catalog, detailed specification, latest-change log, README where relevant, and matching Obsidian notes.
+
+## 2026-09-22: B2C, B2B, and User Administration Documented
+
+New Horizon now has an authoritative account and administration design covering personal workspaces, multi-organization membership, platform and organization roles, granular permissions, invitations, teams, seats, entitlements, assessment campaigns, result-sharing consent, cohort privacy, organization analytics, support access, SSO/SCIM roadmap, audit events, and row-level tenant isolation.
+
+The design keeps a user's personal assessment history private unless it is explicitly shared under a disclosed result policy. The first MVP delivery focuses on personal/organization contexts, invitations, core roles, campaigns, consent, privacy-safe aggregate dashboards, tenant-level LLM usage, audit history, and cross-tenant authorization tests.
+
+## 2026-09-22: Premium Report Copilot Documented
+
+The requirements and Admin Settings specification now include a bounded Premium Report Copilot. It is designed to explain scoring, question evidence, confidence, competency coverage, learning paths, recommendation rationale, and follow-up assessment plans from versioned structured assessment data.
+
+Basic score transparency remains available to every user. Admin controls cover plan access, message limits, model and prompt routing, context limits, retention, privacy-safe telemetry, budgets, fallback behavior, and emergency disable. Usage analytics include average cost per copilot user, conversation, message, report, and resolved question. The copilot may recommend actions but cannot change scores, rubrics, answer keys, or historical results.
+
 ## 2026-09-15: Agent Architecture Recommendations Adopted
 
 Agent/orchestration docs and the MVP requirements spec now adopt the full go-live agent architecture: Orchestrator, Assessment Blueprint, AI Concepts Scout, AI Newsfeed, Training/Course Scout, Assessment Item Generator, Stimulus Builder, Feedback Analysis, Psychometric Monitor, Data Quality Monitor, Localization QA, Report UX, Framework Alignment, and Reviewer/QA.

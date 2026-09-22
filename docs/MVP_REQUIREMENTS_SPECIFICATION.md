@@ -8,6 +8,8 @@ Status: developer handoff draft for proper MVP go-live
 
 New Horizon is an adaptive AI readiness assessment platform. The MVP must measure practical AI capability, not only self-reported confidence or simple AI vocabulary. Users should answer realistic scenarios, inspect artifacts when useful, receive a clear readiness report, and get recommended learning paths. Admins should be able to review assessment quality from telemetry and feedback before improving questions, artifacts, scoring, profile fields, or learning recommendations.
 
+The living feature inventory and release-stage status are maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md). A capability must not be treated as production-ready solely because it appears in the local prototype.
+
 The MVP is not a certification-grade psychometric product yet. It must be built so pilot data can later calibrate item difficulty, discrimination, guessing, score bands, confidence, and competency coverage.
 
 ## 2. Target Users
@@ -234,6 +236,32 @@ The report must clearly label:
 - `Pilot confidence`
 - `Not certification-grade`
 
+### 9.1 Premium Report Copilot
+
+Premium reports should include a bounded `Ask about your results` copilot grounded in structured assessment evidence. It should explain scoring, answer evidence, confidence, coverage, strengths, gaps, learning paths, course/lab/bootcamp recommendations, and reasons to continue testing. It may create a personalized learning or reassessment plan and should link users to the relevant report section or action.
+
+Basic score meaning and score calculation must remain available to all users without the chatbot. Freemium may receive a limited message allowance; Premium receives the complete personalized experience within admin-configured usage and budget limits.
+
+The copilot must:
+
+- use versioned scores, questions, responses, rubrics, competency evidence, profile context, recommendation reasons, and approved learning resources
+- distinguish measured results, system interpretation, and suggested next steps
+- state when evidence is insufficient or a competency was not assessed
+- respect report entitlements and privacy-safe peer aggregates
+- cite or link to the supporting assessment evidence
+- record model, prompt, assessment, scoring, and configuration versions
+
+The copilot must not:
+
+- invent scores, evidence, learning resources, or peer comparisons
+- characterize an unassessed competency as weak
+- change a score, rubric, answer key, or historical result
+- reveal another user's information
+- provide hidden chain-of-thought
+- make employment or other high-impact decisions from assessment results
+
+Admin must control copilot availability, plans, models, prompts, message limits, context limits, retention, telemetry, cost budgets, fallback behavior, and emergency disable. Usage analytics must include average cost per copilot user, conversation, message, report, and resolved question. See [Admin Settings and Configuration Specification](ADMIN_SETTINGS_CONFIGURATION.md).
+
 ## 10. Learning and Bootcamp Requirements
 
 The platform must recommend:
@@ -428,6 +456,8 @@ Leaderboard data must be labeled as:
 
 ## 16. Admin and Agent Ops Requirements
 
+The detailed, authoritative configuration design is maintained in [Admin Settings and Configuration Specification](ADMIN_SETTINGS_CONFIGURATION.md). It covers assessment and profile controls, report entitlements, tracker policies, agent schedules, provider/model routing, secure API credentials, usage ledgers, budgets, average-cost metrics, unit economics, configuration versioning, approvals, and rollback.
+
 Admin must support:
 
 - local MVP analytics
@@ -559,6 +589,8 @@ Terms to preserve where appropriate:
 
 ## 18. Authentication and Persistence
 
+The authoritative B2C/B2B identity, workspace, organization, role, campaign, consent, seat, and user-lifecycle requirements are maintained in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md).
+
 MVP:
 
 - localStorage can support demo/pilot behavior.
@@ -575,6 +607,13 @@ Production:
 Required production tables or equivalent:
 
 - users/profiles
+- personal workspaces
+- organizations and memberships
+- roles and permissions
+- teams and invitations
+- subscriptions, seats, and entitlements
+- assessment campaigns and assignments
+- result-sharing policies and consents
 - assessment sessions
 - question responses
 - behavior events
@@ -590,7 +629,11 @@ Required production tables or equivalent:
 - content versions
 - audit logs
 
+The MVP must keep personal and organization workspaces distinct, enforce tenant boundaries with row-level security, and prevent organization access to personal assessment history without an explicit result-sharing policy and consent record.
+
 ## 19. Privacy, Consent, and Governance
+
+The authoritative legal and product-control requirements are maintained in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md). The document covers Thailand PDPA, Privacy Notices, Terms of Use, cookies, acceptable use, assessment/AI disclaimers, B2B controller/processor roles, DPA requirements, rights, consent, retention, children, subprocessors, international transfers, and breach response. It is not a substitute for qualified Thai legal review.
 
 The platform must:
 
@@ -602,6 +645,11 @@ The platform must:
 - restrict admin analytics through role claims
 - audit report access and exports
 - keep content changes versioned and reviewable
+- version and record acceptance of Terms, Privacy Notices, campaign notices, consent, and material policy changes
+- maintain purpose/lawful-basis, cookie/technology, retention, subprocessor/transfer, and breach registers
+- provide rights-request intake, identity verification, fulfillment, decision, and audit workflows
+- technically block nonessential tracking before consent where consent is required
+- show just-in-time notices for profile collection, telemetry, B2B campaigns, result sharing, leaderboards, Report Copilot, uploads, and free text
 
 ## 20. Framework and Credibility Requirements
 
