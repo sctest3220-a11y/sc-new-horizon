@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
-Status: Living standard  
-Current rules version: `1.1`  
+Status: Living standard
+Current rules version: `1.2`
 Last updated: 22 September 2026
 
 ## Purpose
@@ -27,6 +27,8 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 12. Use an artifact only when the user must inspect it to answer. The artifact must be realistic, readable, and directly relevant.
 13. Translate meaning and context, not English sentence structure. Check the scenario, prompt, choices, feedback, and explanation for complete Thai coverage.
 14. Prefer short sentences and ordinary words, but do not remove information needed to understand the situation or consequence.
+15. Connect audience details to a concrete requirement or risk. Remove persona facts that do not affect the decision.
+16. Describe the answer category clearly, but do not make the correct option a word-for-word copy of the evidence sentence.
 
 ## Clarity check
 
@@ -70,6 +72,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.2 - 22 September 2026
+
+- Added guidance for connecting audience details to a meaningful requirement or risk.
+- Added guidance against making the correct answer a verbatim copy of the scenario evidence.
+- Added the second three-version comparison candidate for `NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-02`.
 
 ### Version 1.1 - 22 September 2026
 

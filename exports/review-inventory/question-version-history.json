@@ -70,6 +70,80 @@
           ]
         }
       ]
+    },
+    {
+      "questionId": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-02",
+      "currentVersion": "2026-09-17.1",
+      "candidateVersion": "2026-09-22.2",
+      "preferredVersion": null,
+      "selectionStatus": "awaiting-comparative-review",
+      "versions": [
+        {
+          "version": "2026-09-10.0",
+          "recordedAt": "2026-09-10",
+          "changeType": "generated-coverage-source",
+          "reviewerConcern": "The field-like Scenario, Use, Rule, Risk, and Evidence structure reads as generator output rather than a natural situation.",
+          "context": "Scenario: Community learning group needs a workshop guide. Use: reviewed learning materials. Rule: The guide must work for readers with no AI background. Risk: An unsupported instruction can mislead new learners. Evidence: The assistant returns exact passages with record identifiers from reviewed learning materials.",
+          "prompt": "Which description best matches the system used for this workshop guide?",
+          "options": [
+            "Coordinating a model, search, permissions, and review tools.",
+            "Following a fixed rule to select approved text.",
+            "Generating an answer without retrieving supporting sources.",
+            "Retrieving exact passages from the approved sources."
+          ],
+          "correctOption": "Retrieving exact passages from the approved sources.",
+          "explanation": "The assistant is finding existing records rather than writing new content.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-17.1",
+          "recordedAt": "2026-09-17",
+          "changeType": "latest-user-facing-draft",
+          "reviewerConcern": "The fields were combined into sentences, but the requirement and evidence remain disconnected, and the phrasing still sounds mechanical.",
+          "context": "Community learning group uses AI to prepare a workshop guide. The assistant returns exact passages with record identifiers from reviewed learning materials. The guide must work for readers with no AI background.",
+          "prompt": "What is the AI tool doing in this workshop guide?",
+          "options": [
+            "Coordinating a model, search, permissions, and review tools.",
+            "Following a fixed rule to select approved text.",
+            "Generating an answer without retrieving supporting sources.",
+            "Retrieving exact passages from the approved sources."
+          ],
+          "correctOption": "Retrieving exact passages from the approved sources.",
+          "explanation": "The assistant is finding existing records rather than writing new content.",
+          "rulesIntroduced": []
+        },
+        {
+          "version": "2026-09-22.2",
+          "recordedAt": "2026-09-22",
+          "changeType": "candidate-natural-scenario-rewrite",
+          "reviewerConcern": "Apply the current rewrite rules while preserving the intended retrieval concept and the reason reviewed sources matter for beginners.",
+          "context": "A community learning group is creating an introductory AI workshop guide. Because the guide is for people with no AI background, its instructions must come from learning materials that educators have already reviewed. When the team asks the AI assistant for content, it searches those materials and returns relevant passages with links to the source records.",
+          "prompt": "Which description best matches how the assistant finds content for the guide?",
+          "options": [
+            "It generates new instructions from its LLM without checking the reviewed materials.",
+            "It retrieves source-linked passages from the reviewed learning materials.",
+            "It follows a fixed if-then rule to copy one preselected sentence.",
+            "It coordinates the entire workflow, including access, drafting, and human approval."
+          ],
+          "correctOption": "It retrieves source-linked passages from the reviewed learning materials.",
+          "explanation": "The assistant searches the reviewed materials and returns passages linked to their sources. This is retrieval, and it helps the team verify that guidance for beginners comes from reviewed content rather than unsupported generated instructions.",
+          "th": {
+            "context": "กลุ่มการเรียนรู้ในชุมชนกำลังจัดทำคู่มือ workshop เบื้องต้นเกี่ยวกับ AI เนื่องจากคู่มือนี้จัดทำสำหรับผู้ที่ไม่มีพื้นฐานด้าน AI คำแนะนำจึงต้องมาจากสื่อการเรียนรู้ที่ผู้สอนได้ตรวจทานแล้ว เมื่อทีมขอเนื้อหาจาก AI Assistant ระบบจะค้นหาสื่อเหล่านั้นและส่งข้อความที่เกี่ยวข้องกลับมาพร้อม link ไปยังข้อมูลต้นทาง",
+            "prompt": "ข้อใดอธิบายวิธีที่ Assistant ค้นหาเนื้อหาสำหรับคู่มือนี้ได้ตรงที่สุด",
+            "options": [
+              "สร้างคำแนะนำใหม่ด้วย LLM โดยไม่ตรวจสอบสื่อที่ผ่านการตรวจทานแล้ว",
+              "ดึงข้อความพร้อม link แหล่งที่มาจากสื่อการเรียนรู้ที่ผ่านการตรวจทานแล้ว",
+              "ทำตามกฎ if-then เพื่อคัดลอกประโยคที่เลือกไว้ล่วงหน้าหนึ่งประโยค",
+              "ประสาน Workflow ทั้งหมด รวมถึงการเข้าถึงข้อมูล การร่างเนื้อหา และการอนุมัติโดยคน"
+            ],
+            "explanation": "Assistant ค้นหาสื่อที่ผ่านการตรวจทานแล้วและส่งข้อความกลับมาพร้อมแหล่งที่มา วิธีนี้คือ retrieval และช่วยให้ทีมตรวจสอบได้ว่าคำแนะนำสำหรับผู้เริ่มต้นมาจากเนื้อหาที่ผ่านการตรวจทาน ไม่ใช่คำแนะนำที่ AI สร้างขึ้นโดยไม่มีหลักฐานรองรับ"
+          },
+          "rulesIntroduced": [
+            "Connect the intended audience to a concrete content requirement and risk instead of adding it as a detached fact.",
+            "Write answer choices as recognizable system behaviors without copying the scenario sentence word for word."
+          ]
+        }
+      ]
     }
   ]
 }
