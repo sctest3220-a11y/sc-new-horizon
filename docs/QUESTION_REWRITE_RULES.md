@@ -1,8 +1,9 @@
 # Question Rewrite Rules and Versioning
 
-Status: Living standard
+Status: Approved baseline for future rewrites; remains a living standard
 Current rules version: `1.5`
 Last updated: 22 September 2026
+Human approval recorded: 22 September 2026
 
 ## Purpose
 
