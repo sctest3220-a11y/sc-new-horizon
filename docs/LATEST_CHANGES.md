@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-22: PDPA, Terms, and Legal Controls Documented
+
+Added an authoritative drafting and engineering specification for Thailand PDPA readiness, Privacy Notices, Terms of Use, Acceptable Use, cookie controls, Assessment/AI disclaimers, B2B controller/processor role mapping and DPA, consent, data-subject rights, retention/deletion, children, security, breach response, subprocessors, international transfers, Report Copilot, leaderboards, and legal release gates.
+
+The specification is not legal advice. Final Thai and English documents, lawful bases, age policy, data-sharing roles, retention periods, transfer safeguards, liability terms, and consumer/payment terms require qualified Thai legal review before public launch. The feature catalog now marks the corresponding legal and privacy controls by release stage.
+
 ## 2026-09-22: Living Feature Catalog Added
 
 Added an itemized feature catalog for public visitors, B2C users, Premium users, B2B members and managers, Assessment/Learning Managers, Organization Admins and Owners, Billing Managers, Organization Auditors, specialist platform administrators, and Super Admins.

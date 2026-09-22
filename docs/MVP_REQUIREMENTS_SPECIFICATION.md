@@ -633,6 +633,8 @@ The MVP must keep personal and organization workspaces distinct, enforce tenant 
 
 ## 19. Privacy, Consent, and Governance
 
+The authoritative legal and product-control requirements are maintained in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md). The document covers Thailand PDPA, Privacy Notices, Terms of Use, cookies, acceptable use, assessment/AI disclaimers, B2B controller/processor roles, DPA requirements, rights, consent, retention, children, subprocessors, international transfers, and breach response. It is not a substitute for qualified Thai legal review.
+
 The platform must:
 
 - explain what telemetry is collected and why
@@ -643,6 +645,11 @@ The platform must:
 - restrict admin analytics through role claims
 - audit report access and exports
 - keep content changes versioned and reviewable
+- version and record acceptance of Terms, Privacy Notices, campaign notices, consent, and material policy changes
+- maintain purpose/lawful-basis, cookie/technology, retention, subprocessor/transfer, and breach registers
+- provide rights-request intake, identity verification, fulfillment, decision, and audit workflows
+- technically block nonessential tracking before consent where consent is required
+- show just-in-time notices for profile collection, telemetry, B2B campaigns, result sharing, leaderboards, Report Copilot, uploads, and free text
 
 ## 20. Framework and Credibility Requirements
 

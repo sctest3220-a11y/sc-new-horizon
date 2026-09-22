@@ -119,6 +119,13 @@ Where a feature has a prototype and also needs production hardening, it appears 
 | Personal result-sharing controls | B2C/B2B member | **MVP - Go-live** | Organization membership does not imply sharing. |
 | Privacy center and consent history | B2C/B2B member | **Production** | Includes policy versions and withdrawal effects. |
 | User-visible access history | B2C/B2B member | **Future** | Shows organization or support access to personal results where legally appropriate. |
+| Thai/English Privacy Notice and Terms acceptance | B2C/B2B member | **MVP - Go-live** | Versioned acceptance; final text requires Thai legal review. |
+| Cookie preference center | Public/B2C/B2B | **MVP - Go-live** | Necessary versus optional categories; reject as easy as accept. |
+| Data-subject rights request workflow | B2C/B2B member | **MVP - Go-live** | Access, correction, deletion, restriction, objection, portability, and consent withdrawal as applicable. |
+| B2B campaign privacy notice | B2B member | **MVP - Go-live** | Identifies controller, purpose, organization visibility, retention, and rights. |
+| Retention and deletion schedule | B2C/B2B member | **MVP - Go-live** | Purpose-specific; no indefinite default. |
+| Automated cross-system rights fulfillment | B2C/B2B member | **Production** | Covers providers, backups, organizations, and processors. |
+| Child/guardian account workflow | Child/guardian | **Future** | Only after age/capacity policy and Thai legal review. |
 
 ## B2B Member and Manager Features
 
@@ -272,6 +279,11 @@ Where a feature has a prototype and also needs production hardening, it appears 
 | SSO connection management | Security Admin | **Production** | SAML/OIDC and verified domains. |
 | SCIM and identity lifecycle automation | Security Admin | **Future** | Enterprise provisioning. |
 | Legal hold and regional residency controls | Security Admin | **Future** | Contract and jurisdiction specific. |
+| Legal-document version and acceptance management | Security/Super Admin | **MVP - Go-live** | Privacy, Terms, cookies, campaign notices, disclaimers, and policy versions. |
+| Consent and lawful-basis register | Privacy/Security Admin | **MVP - Go-live** | Consent is one basis, not a blanket default. |
+| Rights-request and retention administration | Privacy/Security Admin | **MVP - Go-live** | Tracks ownership, status, deadline, decision, deletion, and evidence. |
+| Subprocessor and transfer register | Security/Super Admin | **MVP - Go-live** | Includes AI providers, countries, purposes, and safeguards. |
+| Incident and breach register | Security/Super Admin | **MVP - Go-live** | Supports risk assessment, notification decisions, and remediation. |
 
 ## Super Admin Features
 
@@ -316,6 +328,7 @@ When a feature changes:
 
 ## Related Specifications
 
+- [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md)
 - [B2C, B2B, and User Administration](B2C_B2B_USER_ADMINISTRATION.md)
 - [Admin Settings and Configuration](ADMIN_SETTINGS_CONFIGURATION.md)
 - [MVP Requirements Specification](MVP_REQUIREMENTS_SPECIFICATION.md)

@@ -10,6 +10,8 @@ Identity, tenant, organization, campaign, membership, role, and result-sharing r
 
 The consolidated user/admin feature inventory and MVP/Production/Future status are maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md).
 
+Legal-document versioning, Terms acceptance, consent, cookies, lawful-basis, rights-request, retention, DPA, subprocessor, transfer, and breach controls are defined in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md).
+
 ## Configuration Principles
 
 - Separate subscription plans, assessment templates, and user profiles.

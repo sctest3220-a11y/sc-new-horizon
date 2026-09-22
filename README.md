@@ -52,6 +52,7 @@ Thai copy should be simple, natural Thailand Thai. Do not translate core technic
 
 Detailed telemetry and agent documentation:
 
+- [`docs/LEGAL_PRIVACY_PDPA_TERMS.md`](docs/LEGAL_PRIVACY_PDPA_TERMS.md)
 - [`docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md`](docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md)
 - [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
@@ -85,6 +86,8 @@ Premium report roadmap: Premium users should receive a bounded, evidence-grounde
 B2C/B2B administration roadmap: New Horizon uses one account model with personal workspaces and optional memberships in one or more organizations. Personal assessment history remains private unless explicitly shared. Organization capabilities include invitations, teams, role-based permissions, seats and entitlements, assessment campaigns, privacy-safe cohort analytics, tenant-level LLM budgets, user lifecycle controls, and append-only audit history. Platform roles and organization roles remain separate, with row-level security enforcing tenant boundaries.
 
 Living feature catalog: `docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md` itemizes B2C, B2B member/manager, B2B administrator, specialist platform-admin, and Super Admin capabilities. It distinguishes features present in the local prototype from MVP go-live requirements, production hardening, and future roadmap work. Update it whenever a feature is added, built, materially changed, deferred, or removed.
+
+Legal/privacy roadmap: `docs/LEGAL_PRIVACY_PDPA_TERMS.md` defines the required Thailand PDPA, Privacy Notice, Terms of Use, Acceptable Use, Cookie Notice, Assessment/AI Disclaimer, B2B DPA, consent, rights, retention, child-user, breach, international-transfer, subprocessor, and legal-release controls. It is a drafting and engineering specification, not legal advice; final Thai and English documents require qualified Thai legal review before public launch.
 
 Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
 

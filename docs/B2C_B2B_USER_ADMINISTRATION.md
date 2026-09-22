@@ -8,6 +8,8 @@ This document is the authoritative specification for account contexts, tenant is
 
 The consolidated release-stage inventory is maintained in [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md).
 
+Privacy Notices, Terms, cookies, controller/processor roles, DPA, consent, rights, retention, child-user, subprocessor, transfer, and breach requirements are maintained in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md).
+
 ## Design Principles
 
 - One person has one account and may use multiple workspaces.
