@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Release-Stage Definitions Expanded
+
+The living feature catalog now defines `MVP - Built`, `MVP - Go-live`, `Production`, `Scale`, and `Future` in operational terms and includes exit criteria for moving between stages. This prevents a visible prototype from being mistaken for a real-user-ready or commercially hardened capability.
+
 ## Agent Platform Tooling Decision
 
 Added `docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`. The MVP remains lightweight: Supabase/PostgreSQL is the system of record, PostHog or equivalent handles consent-aware product analytics, and a managed job runner is added only where asynchronous work is necessary. Temporal, bounded LangGraph workers, LiteLLM, Langfuse, ClickHouse, Kubernetes/KEDA, and optional Hermes experimentation are phased production or scale capabilities with explicit adoption triggers. The architecture rejects one-agent-per-event processing in favor of deterministic aggregation, batching, budgets, approval gates, versioned promotion, and human-controlled release.

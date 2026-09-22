@@ -10,12 +10,43 @@ Update this document whenever a feature is added, removed, materially changed, b
 
 | Status | Meaning |
 | --- | --- |
-| **MVP - Built** | Present in the current local prototype. It may still use local/demo data and is not automatically production-ready. |
-| **MVP - Go-live** | Required for the first usable multi-user launch but not yet complete. |
-| **Production** | Required for secure, reliable, scalable commercial operation after the core MVP flow is proven. |
-| **Future** | Valuable later roadmap capability; not required for initial production. |
+| **MVP - Built** | Present and demonstrable in the current prototype. It may still use browser-local or demonstration data, support only one user, require manual administration, or lack complete security, monitoring, accessibility verification, recovery, and automated tests. Built does not mean ready for real users. |
+| **MVP - Go-live** | Required for the first controlled launch with real users. It needs server-side persistence, authentication and authorization, tenant separation where applicable, consent and privacy controls, stable content/scoring versions, error handling, essential monitoring and tests, backups, audit records, and human approval for material agent recommendations. It may still have limited scale, integrations, automation, and advanced analytics. |
+| **Production** | Ready for sustained B2C/B2B commercial operation after the core MVP is proven. It adds operational monitoring and alerts, service objectives, reliable background processing, billing and entitlements, stronger security and compliance, retention/deletion/export operations, controlled releases and rollback, higher-volume analytics, support and incident procedures, and broader load, security, recovery, and integration testing. |
+| **Scale** | A production maturity stage introduced only when measured user, event, question-bank, crawling, report, or agent volume requires it. It may add Temporal, ClickHouse, dedicated queues and worker pools, Kubernetes/KEDA, regional infrastructure, and advanced capacity or cost optimization. Scale infrastructure is not required merely because the platform has launched. |
+| **Future** | A valuable capability intentionally deferred until demand, evidence, funding, staffing, regulation, psychometric maturity, or prerequisite infrastructure justifies it. It is not committed to the initial production release. |
 
 Where a feature has a prototype and also needs production hardening, it appears once as **MVP - Built** with the limitation stated, and related production work appears as a separate row.
+
+## Stage Exit Criteria
+
+Use these questions when moving a feature between stages:
+
+### MVP - Built to MVP - Go-live
+
+- Is the feature persisted server-side rather than depending on one browser?
+- Are authentication, authorization, ownership, and tenant boundaries enforced?
+- Are consent, privacy, retention, and audit requirements implemented?
+- Are content, configuration, scoring, model, and prompt versions recorded where relevant?
+- Are essential error handling, monitoring, tests, backup, and recovery procedures present?
+- Can an administrator operate the feature without editing code or local storage?
+
+### MVP - Go-live to Production
+
+- Has real-user evidence shown that the feature is useful and sufficiently stable?
+- Are reliability targets, alerts, support ownership, incident handling, and rollback defined?
+- Are billing, entitlements, cost controls, security hardening, and compliance operations complete where applicable?
+- Have load, security, accessibility, recovery, and integration tests covered expected commercial use?
+- Are agent and model decisions traceable, bounded, evaluated, and subject to the required human approvals?
+
+### Production to Scale
+
+- Is there measured queue backlog, database pressure, analytical latency, crawler volume, model throughput, or infrastructure cost that the current architecture cannot handle economically?
+- Will the proposed scale component solve that measured constraint?
+- Is the team prepared to operate the added infrastructure reliably?
+- Can the component be introduced without weakening tenant isolation, auditability, reproducibility, or human control?
+
+The release stage describes operational readiness, not just whether a screen or code path exists. A feature can be **MVP - Built** while still requiring separate **MVP - Go-live**, **Production**, or **Scale** work.
 
 ## User Types
 
