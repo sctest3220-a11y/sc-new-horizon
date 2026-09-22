@@ -10,7 +10,6 @@ These are examples of the writing standard the draft review inventory needs befo
 - Use multi-part questions when the decision has two different skills.
 - Avoid internal phrases such as "profile cue", "bounded scenario", "synthesis", and "evidence mode".
 - Make answer choices concrete actions, not abstract labels.
-- When a scenario includes a policy or required source, show the full causal chain: what must be used, what the AI failed to use, and what error or harm could result.
 - Keep the explanation short: why the best answer is safer or better.
 
 ## Sample 1: Basic Scenario Choice
@@ -37,21 +36,21 @@ D. A search system retrieving existing text.
 ### After
 
 ```text
-Your project team asks an AI assistant to draft a project update.
+Your team asks an AI tool to write a project update.
 
-The update must use the latest approved project record because older versions may contain outdated status or milestones. However, the AI generates its answer using a Large Language Model (LLM) without searching the approved documents in the team's library. As a result, the draft may sound convincing while containing outdated or incorrect project information.
+The tool writes fluent new sentences, but it cannot look up the latest approved project record.
 
-Which description best matches how the AI produced this draft?
+What is this tool doing?
 
 A. Following fixed rules and copying approved text
-B. Searching the document library and retrieving approved project information
-C. Generating a draft with an LLM without retrieving the project documents
+B. Searching existing project records
+C. Drafting new text from learned language patterns
 D. Coordinating search, permissions, and review steps
 ```
 
 Correct answer: `C`
 
-Why: The AI can generate fluent text, but it did not retrieve the latest approved project record. The draft may therefore sound convincing while containing outdated or incorrect information.
+Why: The tool can write plausible text, but it has no evidence that it accessed the current record.
 
 Format: `scenario choice`
 

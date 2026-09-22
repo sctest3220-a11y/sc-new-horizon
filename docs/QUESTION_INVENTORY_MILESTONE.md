@@ -27,8 +27,6 @@ Every difficulty level contains 832 drafts. All 736 mapped competency/difficulty
 - [Artifact candidate CSV](../exports/review-inventory/artifact-needs.csv): item-level artifact recommendations for offline review.
 - [Artifact family backlog](../exports/review-inventory/artifact-family-backlog.csv): reusable generation backlog so reviewers do not create one-off duplicate visuals for similar items.
 - [User-facing rewrite samples](../exports/review-inventory/user-facing-rewrite-samples.md): before/after examples showing the writing and interaction standard required before draft items can become live assessment questions.
-- [Question rewrite rules](QUESTION_REWRITE_RULES.md): living writing standard, clarity checklist, versioning workflow, comparison rubric, and rules changelog.
-- [Question version history](../exports/review-inventory/question-version-history.json): append-only, comparison-ready snapshots of materially different question drafts and the feedback that caused each revision.
 - [Thai translation QA](../exports/review-inventory/thai-translation-qa.json): scanner output listing likely untranslated fragments for human localization review.
 
 The earlier `exports/new-horizon-question-bank-review.xlsx` still describes the existing live bank.

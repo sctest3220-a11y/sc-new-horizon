@@ -778,17 +778,6 @@ function buildLanguageHref(searchParams: Record<string, string | string[] | unde
   return `/admin/question-inventory?${params.toString()}`;
 }
 
-function buildPageHref(searchParams: Record<string, string | string[] | undefined> | undefined, page: number) {
-  const params = new URLSearchParams();
-  Object.entries(searchParams ?? {}).forEach(([key, value]) => {
-    if (!value || key === 'page') return;
-    params.set(key, Array.isArray(value) ? value[0] : value);
-  });
-  if (page > 1) params.set('page', String(page));
-  const query = params.toString();
-  return `/admin/question-inventory${query ? `?${query}` : ''}`;
-}
-
 function safeDomId(value: string) {
   return value.replace(/[^a-zA-Z0-9_-]/g, '-');
 }
@@ -903,11 +892,7 @@ export default async function QuestionInventoryPage({
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
-  const queryInput = (normalizeParam(searchParams?.q) || '').trim();
-  const query = queryInput
-    .toLowerCase()
-    .replace(/^[\s"'`]+|[\s,;:."'`]+$/g, '');
-  const requestedPage = Number.parseInt(normalizeParam(searchParams?.page) || '1', 10);
+  const query = (normalizeParam(searchParams?.q) || '').trim().toLowerCase();
 
   const filtered = allQuestions.filter((question) => {
     const matchesDomain = domain === 'all' || question.domain === domain;
@@ -1094,7 +1079,7 @@ export default async function QuestionInventoryPage({
           </label>
           <label className="inventory-search">
             <span>Search</span>
-            <input name="q" defaultValue={queryInput} placeholder="Prompt, competency, ID, or scope" />
+            <input name="q" defaultValue={query} placeholder="Prompt, competency, id, scope" />
           </label>
           <button type="submit">Apply filters</button>
         </form>
@@ -1102,12 +1087,7 @@ export default async function QuestionInventoryPage({
 
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
-        <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
-        <nav className="inventory-pagination" aria-label="Question inventory pages">
-          {currentPage > 1 ? <Link href={buildPageHref(searchParams, currentPage - 1)}>Previous</Link> : <span>Previous</span>}
-          <strong>{currentPage} / {pageCount}</strong>
-          {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
-        </nav>
+        <span>{visibleQuestions.length.toLocaleString()} are shown on this page for review speed.</span>
       </section>
 
       <ReviewSync />
@@ -1214,13 +1194,6 @@ export default async function QuestionInventoryPage({
           </article>
         ) : null}
       </section>
-      {visibleQuestions.length ? (
-        <nav className="inventory-pagination inventory-pagination-footer" aria-label="Question inventory pages">
-          {currentPage > 1 ? <Link href={buildPageHref(searchParams, currentPage - 1)}>Previous</Link> : <span>Previous</span>}
-          <strong>Page {currentPage} of {pageCount}</strong>
-          {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
-        </nav>
-      ) : null}
     </main>
   );
 }

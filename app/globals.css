@@ -6383,32 +6383,6 @@ h3 {
   color: #6a746d;
 }
 
-.inventory-pagination {
-  align-items: center;
-  display: flex;
-  gap: 8px;
-}
-
-.inventory-pagination a,
-.inventory-pagination span {
-  border: 1px solid rgba(23, 33, 28, 0.18);
-  border-radius: 6px;
-  color: #246b53;
-  font-size: 0.85rem;
-  font-weight: 800;
-  padding: 8px 11px;
-  text-decoration: none;
-}
-
-.inventory-pagination span {
-  color: #929a95;
-}
-
-.inventory-pagination-footer {
-  justify-content: center;
-  margin: 20px 0 8px;
-}
-
 .inventory-review-filter-panel label {
   color: #6a746d;
   display: grid;
