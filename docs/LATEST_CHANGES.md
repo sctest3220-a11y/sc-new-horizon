@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Interactive Agent Workflow Map
+
+Admin Agent Ops now provides an n8n-style node workflow canvas driven by the existing agent run report. Admins can inspect branching agent handoffs, animated status paths, blocked steps, QA routing, and the human approval gate. Clicking an agent opens its schedule, guardrail, latest stages, and recorded output. The Admin view is also directly accessible with `/?view=admin` for testing and operations.
+
 ## Release-Stage Definitions Expanded
 
 The living feature catalog now defines `MVP - Built`, `MVP - Go-live`, `Production`, `Scale`, and `Future` in operational terms and includes exit criteria for moving between stages. This prevents a visible prototype from being mistaken for a real-user-ready or commercially hardened capability.

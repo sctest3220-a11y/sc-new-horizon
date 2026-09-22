@@ -1,5 +1,11 @@
 # Agent Workflows and Orchestration
 
+## Admin workflow visualization
+
+The MVP Admin Agent Ops view includes an interactive node-based workflow map. It visualizes the Orchestrator, concept/news/course scouts, Feedback Analysis Agent, Assessment Item Generator, Reviewer and QA Agent, and the final human approval gate. Connector and node states use the existing run record statuses: `idle`, `running`, `review`, `blocked`, and `complete`.
+
+Selecting an agent shows its purpose, cadence, guardrail, latest activity stages, and outputs. Animated connector movement indicates active or review-stage routing; blocked paths remain visible rather than disappearing. The interface respects the operating system's reduced-motion preference. In the MVP, the map represents local deterministic or supervised run records and must not be presented as a live cloud-worker trace. Production should feed the same view from durable orchestration events, retries, costs, approvals, and failure records.
+
 New Horizon uses a supervised agent model for assessment quality, AI Watch freshness, learning-resource review, artifact improvement, and profile/ontology refinement. Agents may analyze, draft, dedupe, and recommend. They do not silently publish scored content or change production scoring.
 
 ## Operating Principle

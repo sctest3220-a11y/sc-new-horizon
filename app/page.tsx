@@ -9457,6 +9457,40 @@ const agentDefinitions: AgentDefinition[] = [
   },
 ];
 
+const agentWorkflowNodes = [
+  { id: 'orchestrator', x: 34, y: 242, eyebrow: 'Control' },
+  { id: 'concept-scout', x: 254, y: 54, eyebrow: 'Discover' },
+  { id: 'newsfeed', x: 254, y: 178, eyebrow: 'Monitor' },
+  { id: 'course-scout', x: 254, y: 302, eyebrow: 'Curate' },
+  { id: 'feedback-analysis', x: 254, y: 426, eyebrow: 'Analyze' },
+  { id: 'item-generator', x: 522, y: 178, eyebrow: 'Draft' },
+  { id: 'reviewer', x: 770, y: 242, eyebrow: 'Validate' },
+] as const;
+
+const agentWorkflowEdges = [
+  { from: 'orchestrator', to: 'concept-scout' },
+  { from: 'orchestrator', to: 'newsfeed' },
+  { from: 'orchestrator', to: 'course-scout' },
+  { from: 'orchestrator', to: 'feedback-analysis' },
+  { from: 'concept-scout', to: 'item-generator' },
+  { from: 'newsfeed', to: 'item-generator' },
+  { from: 'course-scout', to: 'item-generator' },
+  { from: 'feedback-analysis', to: 'item-generator' },
+  { from: 'item-generator', to: 'reviewer' },
+] as const;
+
+function getWorkflowConnectorPath(fromId: string, toId: string) {
+  const from = agentWorkflowNodes.find((node) => node.id === fromId);
+  const to = agentWorkflowNodes.find((node) => node.id === toId);
+  if (!from || !to) return '';
+  const startX = from.x + 174;
+  const startY = from.y + 43;
+  const endX = to.x;
+  const endY = to.y + 43;
+  const middleX = startX + Math.max(34, (endX - startX) / 2);
+  return `M ${startX} ${startY} C ${middleX} ${startY}, ${middleX} ${endY}, ${endX} ${endY}`;
+}
+
 function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, signalCount: number): AgentWorkflowReport {
   const runId = `agent-run-${new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '')}`;
   const activityLog: AgentActivity[] = [
@@ -12685,7 +12719,9 @@ export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
       ? 'onboarding'
-      : 'home'
+      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'admin'
+        ? 'admin'
+        : 'home'
   ));
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
@@ -12781,6 +12817,7 @@ export default function Home() {
       0,
     )
   ));
+  const [selectedAgentId, setSelectedAgentId] = useState('orchestrator');
 
   const activeConfig = useMemo(
     () => ({ ...modeConfig[mode], totalQuestions: assessmentTargetTotal }),
@@ -14798,6 +14835,99 @@ export default function Home() {
                           <small>{agentWorkflowReport.runId} · {agentWorkflowReport.generatedAt}</small>
                         </div>
                       </div>
+                      <section className="agent-workflow-visual" aria-label="Interactive agent workflow">
+                        <div className="agent-workflow-toolbar">
+                          <div>
+                            <span>Workflow map</span>
+                            <h3>Assessment improvement orchestration</h3>
+                          </div>
+                          <p>Click an agent to inspect its stages, controls, and latest output.</p>
+                        </div>
+                        <div className="agent-workflow-scroll">
+                          <div className="agent-workflow-canvas">
+                            <svg className="agent-workflow-connectors" viewBox="0 0 1160 570" role="img" aria-label="Connections between assessment agents">
+                              <defs>
+                                <marker id="agent-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                  <path d="M0,0 L8,4 L0,8 Z" />
+                                </marker>
+                              </defs>
+                              {agentWorkflowEdges.map((edge) => {
+                                const target = agentWorkflowReport.agents.find((agent) => agent.id === edge.to);
+                                return (
+                                  <path
+                                    key={`${edge.from}-${edge.to}`}
+                                    className={`agent-workflow-edge ${target?.status ?? 'idle'}`}
+                                    d={getWorkflowConnectorPath(edge.from, edge.to)}
+                                    markerEnd="url(#agent-arrow)"
+                                  />
+                                );
+                              })}
+                              <path
+                                className={`agent-workflow-edge ${agentWorkflowReport.agents.find((agent) => agent.id === 'reviewer')?.status ?? 'idle'}`}
+                                d="M 944 285 C 978 285, 978 285, 1012 285"
+                                markerEnd="url(#agent-arrow)"
+                              />
+                            </svg>
+                            {agentWorkflowNodes.map((node) => {
+                              const agent = agentWorkflowReport.agents.find((candidate) => candidate.id === node.id);
+                              if (!agent) return null;
+                              return (
+                                <button
+                                  key={node.id}
+                                  className={`agent-workflow-node ${agent.status} ${selectedAgentId === node.id ? 'selected' : ''}`}
+                                  style={{ left: node.x, top: node.y }}
+                                  type="button"
+                                  onClick={() => setSelectedAgentId(node.id)}
+                                  aria-pressed={selectedAgentId === node.id}
+                                >
+                                  <span>{node.eyebrow}</span>
+                                  <strong>{agent.name}</strong>
+                                  <small><b aria-hidden="true" />{agent.status} · {agent.outputCount} stage{agent.outputCount === 1 ? '' : 's'}</small>
+                                </button>
+                              );
+                            })}
+                            <div className="agent-human-gate" style={{ left: 1012, top: 224 }}>
+                              <span>Human gate</span>
+                              <strong>Admin approval</strong>
+                              <small>Approve · revise · reject</small>
+                            </div>
+                            <div className="agent-workflow-legend" aria-label="Workflow status legend">
+                              {(['complete', 'running', 'review', 'blocked', 'idle'] as AgentStatus[]).map((status) => (
+                                <span key={status} className={status}><b />{status}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        {(() => {
+                          const selectedAgent = agentWorkflowReport.agents.find((agent) => agent.id === selectedAgentId) ?? agentWorkflowReport.agents[0];
+                          const selectedActivity = agentWorkflowReport.activityLog.filter((entry) => entry.agent === selectedAgent.name);
+                          return (
+                            <div className="agent-workflow-inspector">
+                              <div className="agent-inspector-summary">
+                                <span className={`agent-status ${selectedAgent.status}`}>{selectedAgent.status}</span>
+                                <h3>{selectedAgent.name}</h3>
+                                <p>{selectedAgent.role}</p>
+                                <dl>
+                                  <div><dt>Schedule</dt><dd>{selectedAgent.cadence}</dd></div>
+                                  <div><dt>Guardrail</dt><dd>{selectedAgent.guardrail}</dd></div>
+                                </dl>
+                              </div>
+                              <div className="agent-inspector-stages">
+                                <h3>Latest run stages</h3>
+                                {selectedActivity.length ? selectedActivity.map((entry) => (
+                                  <div key={`${entry.step}-${entry.activity}`} className={`agent-inspector-stage ${entry.status}`}>
+                                    <span>{entry.step}</span>
+                                    <div>
+                                      <strong>{entry.activity}</strong>
+                                      <p>{entry.output}</p>
+                                    </div>
+                                  </div>
+                                )) : <p>No stage activity has been recorded for this agent.</p>}
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </section>
                       <div className="agent-status-grid">
                         {agentWorkflowReport.agents.map((agent) => (
                           <div key={agent.id}>

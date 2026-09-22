@@ -1844,6 +1844,289 @@ h3 {
   font-weight: 800;
 }
 
+.agent-workflow-visual {
+  background: #f7f9f8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.agent-workflow-toolbar {
+  align-items: end;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 18px;
+}
+
+.agent-workflow-toolbar span {
+  color: #226c6f;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.agent-workflow-toolbar h3,
+.agent-workflow-toolbar p {
+  margin: 0;
+}
+
+.agent-workflow-toolbar h3 { margin-top: 4px; }
+
+.agent-workflow-toolbar p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.agent-workflow-scroll { overflow-x: auto; }
+
+.agent-workflow-canvas {
+  background-color: #f7f9f8;
+  background-image: radial-gradient(#cbd4d0 1px, transparent 1px);
+  background-size: 18px 18px;
+  height: 570px;
+  min-width: 1160px;
+  position: relative;
+}
+
+.agent-workflow-connectors {
+  height: 570px;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1160px;
+}
+
+.agent-workflow-connectors marker path { fill: #8b9691; }
+
+.agent-workflow-edge {
+  fill: none;
+  stroke: #a8b2ad;
+  stroke-width: 2;
+}
+
+.agent-workflow-edge.complete { stroke: #2f6f45; }
+
+.agent-workflow-edge.running,
+.agent-workflow-edge.review {
+  animation: agent-flow 1.25s linear infinite;
+  stroke: #226c6f;
+  stroke-dasharray: 8 8;
+  stroke-width: 3;
+}
+
+.agent-workflow-edge.review { stroke: #8a5a16; }
+
+.agent-workflow-edge.blocked {
+  stroke: #a13d2d;
+  stroke-dasharray: 4 6;
+}
+
+@keyframes agent-flow {
+  to { stroke-dashoffset: -32; }
+}
+
+.agent-workflow-node,
+.agent-human-gate {
+  background: #fff;
+  border: 2px solid #a8b2ad;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(20, 35, 29, 0.08);
+  display: grid;
+  gap: 5px;
+  min-height: 86px;
+  padding: 11px 13px;
+  position: absolute;
+  text-align: left;
+  width: 174px;
+}
+
+.agent-workflow-node {
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+}
+
+.agent-workflow-node:hover,
+.agent-workflow-node:focus-visible,
+.agent-workflow-node.selected {
+  border-color: #226c6f;
+  box-shadow: 0 0 0 3px rgba(34, 108, 111, 0.14), 0 8px 20px rgba(20, 35, 29, 0.12);
+  outline: none;
+}
+
+.agent-workflow-node.complete { border-left: 6px solid #2f6f45; }
+.agent-workflow-node.running { border-left: 6px solid #226c6f; }
+.agent-workflow-node.review { border-left: 6px solid #8a5a16; }
+.agent-workflow-node.blocked { border-left: 6px solid #a13d2d; }
+
+.agent-workflow-node.running,
+.agent-workflow-node.review {
+  animation: agent-node-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes agent-node-pulse {
+  50% { box-shadow: 0 0 0 5px rgba(34, 108, 111, 0.12), 0 8px 20px rgba(20, 35, 29, 0.12); }
+}
+
+.agent-workflow-node > span,
+.agent-human-gate > span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.agent-workflow-node > strong,
+.agent-human-gate > strong {
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.agent-workflow-node small,
+.agent-human-gate small {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 10px;
+  font-weight: 800;
+  gap: 5px;
+}
+
+.agent-workflow-node small b,
+.agent-workflow-legend b {
+  background: #65706b;
+  border-radius: 50%;
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+}
+
+.agent-workflow-node.complete small b,
+.agent-workflow-legend .complete b { background: #2f6f45; }
+.agent-workflow-node.running small b,
+.agent-workflow-legend .running b { background: #226c6f; }
+.agent-workflow-node.review small b,
+.agent-workflow-legend .review b { background: #8a5a16; }
+.agent-workflow-node.blocked small b,
+.agent-workflow-legend .blocked b { background: #a13d2d; }
+
+.agent-human-gate {
+  background: #fff8e9;
+  border-color: #8a5a16;
+  min-height: 122px;
+  width: 136px;
+}
+
+.agent-workflow-legend {
+  bottom: 16px;
+  display: flex;
+  gap: 14px;
+  left: 34px;
+  position: absolute;
+}
+
+.agent-workflow-legend span {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 10px;
+  font-weight: 850;
+  gap: 5px;
+  text-transform: uppercase;
+}
+
+.agent-workflow-inspector {
+  background: #fff;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  padding: 18px;
+}
+
+.agent-inspector-summary h3,
+.agent-inspector-stages h3 { margin: 8px 0; }
+
+.agent-inspector-summary > p,
+.agent-inspector-stages > p { color: var(--muted); }
+
+.agent-inspector-summary dl {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+}
+
+.agent-inspector-summary dl > div {
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+}
+
+.agent-inspector-summary dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.agent-inspector-summary dd {
+  color: var(--ink);
+  line-height: 1.45;
+  margin: 3px 0 0;
+}
+
+.agent-inspector-stages {
+  display: grid;
+  gap: 8px;
+}
+
+.agent-inspector-stage {
+  align-items: start;
+  background: var(--panel-soft);
+  border-left: 4px solid #65706b;
+  border-radius: 4px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 28px minmax(0, 1fr);
+  padding: 10px;
+}
+
+.agent-inspector-stage.complete { border-color: #2f6f45; }
+.agent-inspector-stage.running { border-color: #226c6f; }
+.agent-inspector-stage.review { border-color: #8a5a16; }
+.agent-inspector-stage.blocked { border-color: #a13d2d; }
+
+.agent-inspector-stage > span {
+  align-items: center;
+  background: var(--ink);
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 900;
+  height: 28px;
+  justify-content: center;
+}
+
+.agent-inspector-stage strong {
+  color: var(--ink);
+  display: block;
+  line-height: 1.35;
+}
+
+.agent-inspector-stage p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 4px 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-workflow-edge,
+  .agent-workflow-node { animation: none !important; }
+}
+
 .agent-status-grid,
 .agent-report-columns {
   display: grid;
@@ -6032,6 +6315,7 @@ h3 {
   .lab-workbench,
   .agent-status-grid,
   .agent-report-columns,
+  .agent-workflow-inspector,
   .agent-draft-grid,
   .telemetry-grid,
   .dashboard-stats,
