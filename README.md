@@ -63,6 +63,8 @@ Detailed telemetry and agent documentation:
 - [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
 - [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
 
+Use the feature catalog as the current status source: `MVP - Built` means visible in the local prototype, `MVP - Go-live` means required before the first governed multi-user launch, `Production` means commercial hardening after the core MVP is proven, and `Future` means deferred roadmap work. A documented feature is not automatically implemented.
+
 Latest question-inventory update: the 3,328-item review inventory and the existing 634 live questions are now available from the Admin Question Inventory page. The review workflow supports English/Thai viewing, question-level language overrides, role/function/industry/profile filters, reviewer ratings, saved feedback history, review-count/status indicators, artifact-need briefs, and translation QA output. Thai fields are machine-assisted reviewer drafts and should receive human language review before production use. The inventory is on `main`; references to the older `Lufy-branch` milestone are obsolete.
 
 Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
@@ -187,16 +189,20 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-The MVP report flow now includes a generated detailed report panel, but it is still produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code.
+The MVP report flow includes a detailed report panel, but it is produced locally from assessment scores, competency evidence, learning catalogs, and profile signals. It does not require an API key and does not call an external AI provider from browser code. The documented Premium Report Copilot is an MVP go-live requirement and is not implemented in the current prototype.
 
 The MVP Agent Ops flow is local and deterministic. It includes persisted supervised runs in browser storage, plus a legacy simulation view. The active supervised run reads local telemetry, feedback, profile snapshots, and artifact counts, then produces draft proposals owned by the orchestrator, assessment blueprint agent, AI concepts scout, AI newsfeed agent, training/course scout, assessment item generator, stimulus builder, feedback analysis agent, psychometric monitor, data quality monitor, localization QA agent, report UX agent, framework alignment agent, and reviewer/QA agent. Each proposal must move through review and promotion gates before publishing. It does not publish content, rewrite scored items, or call an external AI provider from browser code.
 
-Production AI-generated reports should run in server-side routes only. At that stage, prompt each app user or tenant to connect or enter their chosen AI provider key, and store secrets only in approved server-side infrastructure. Do not expose LLM API keys in browser code.
+Production AI-generated reports and the Premium Report Copilot must run through server-side routes. Platform or tenant administrators select approved provider/model routes from versioned Admin Settings. Provider credentials, including optional tenant-managed credentials, must be stored as encrypted server-side secret references. Never ask users to paste a raw LLM key into browser storage or expose provider keys to browser code.
 
 ## Supabase Tables
 
 See:
 
+- `docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md`
+- `docs/B2C_B2B_USER_ADMINISTRATION.md`
+- `docs/ADMIN_SETTINGS_CONFIGURATION.md`
+- `docs/LEGAL_PRIVACY_PDPA_TERMS.md`
 - `supabase-schema.sql`
 - `docs/AGENT_WORKFLOWS_ORCHESTRATION.md`
 - `docs/TELEMETRY_TRACKING_PURPOSE.md`
@@ -204,24 +210,24 @@ See:
 - `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`
 - `docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`
 
-Draft tables:
+Current schema draft:
 
 - `user_profiles`
 - `assessment_sessions`
 
-Production should add:
+MVP go-live and production persistence must expand beyond the current two-table draft. Required entities or equivalent include:
 
-- item responses
-- behavior events and per-question elapsed time
-- assessment feedback surveys
-- supervised agent runs and draft proposal review states
-- privacy-safe persona leaderboard views
-- theta estimates
-- profile signals
-- learning path events
-- admin role claims
-- tenant/organization tables
-- anonymized analytics views
+- users and personal workspaces
+- organizations, verified domains, memberships, invitations, teams, and roles/permissions
+- subscriptions, seats, plans, and entitlements
+- assessment templates, versions, campaigns, assignments, sessions, item responses, and score evidence
+- question, rubric, artifact, profile, survey, prompt, model, and configuration versions
+- behavior events, profile signals, question feedback, assessment surveys, report engagement, and learning events
+- result-sharing policies, consent/acceptance records, rights requests, retention/deletion jobs, and support-access grants
+- agent definitions, schedules, runs, steps, proposals, review decisions, and promotion states
+- AI providers, encrypted secret references, model routes, evaluations, usage events, effective-dated rates, budgets, and alerts
+- privacy-safe leaderboard/cohort views and anonymized analytics views
+- append-only admin, access, export, security, and legal-policy audit events
 
 ## Scripts
 
@@ -236,26 +242,56 @@ pnpm crawl:training
 
 ## Current MVP Limitations
 
-- Psychometric/IRT scoring is seeded and demonstrative, not yet calibrated from a large pilot sample
-- Admin auth is a preview surface until Supabase role claims and RLS policies are finalized
-- Local browser storage is still used as the primary MVP demo store when Supabase is not configured
-- AI Watch is a curated/static MVP feed until the scheduled trend-refresh agent is backed by persistent content storage
-- MVP generated reports are local score/profile summaries; production AI-generated reports should move to server routes and ask users or tenants for their provider API key
-- MVP Agent Ops persists supervised local runs, but production agents still need durable cloud jobs, source connectors, server-side AI provider adapters, retry limits, audit logs, proposal diffing, content versioning, source freshness checks, robots/terms review, and human approval gates
-- Telemetry, feedback, benchmarks, and leaderboards are device-local until production event tables and aggregate Supabase views are deployed
-- The quality engine prioritizes revision candidates automatically but does not silently publish machine-rewritten scored items; calibration and item changes require review
+- **Prototype persistence:** assessment behavior, feedback, profile signals, score logs, review comments, Agent Ops, benchmarks, and leaderboards primarily use browser-local storage. The current Supabase draft contains only `user_profiles` and `assessment_sessions`.
+- **Authentication and tenancy:** Google/email authentication and Admin access are preview flows. Personal workspaces, organizations, memberships, invitations, teams, campaigns, seats, granular permissions, support grants, and tenant RLS are specified but not implemented.
+- **B2B operations:** organization dashboards, campaign assignment, result-sharing consent, cohort suppression, subscription/seat enforcement, SSO, and SCIM are roadmap capabilities rather than current product behavior.
+- **Admin configuration:** assessment counts, profile availability, report entitlements, tracker switches, agent schedules, provider/model routing, budgets, configuration versions, approvals, and rollback are documented but do not yet have a persistent Admin Settings service or complete UI.
+- **AI and costs:** the current report and Agent Ops are local/deterministic. Premium Report Copilot, server-side generated reports, encrypted provider credentials, model evaluation/routing, usage ledger, billing reconciliation, and average-cost dashboards are not implemented.
+- **Agents:** supervised local proposals can be run and reviewed, but durable schedules, queues, retries, source connectors, server-side model adapters, proposal diffs, content versions, monitoring, and production audit trails remain to be built.
+- **Psychometrics:** difficulty/IRT-style values, confidence, score bands, and partial-credit behavior are seeded and demonstrative. They are not calibrated from a sufficiently large representative pilot and must not be treated as certification-grade or used alone for high-impact decisions.
+- **Question bank:** the 3,328 generated variants are a coverage/review inventory, not 3,328 calibrated independent live items. Many require human rewriting, format conversion, artifact review, answer-key QA, translation QA, and pilot evidence before promotion.
+- **Artifacts and localization:** artifact quality has improved but remains uneven. Thai question fields are machine-assisted review drafts; complete contextual human review and layout/accessibility testing are still required.
+- **AI Watch and learning catalog:** content is curated/static or locally crawled. Production freshness, source rights/terms review, versioning, approval, and broken-link monitoring are not yet operational.
+- **Privacy and legal:** PDPA, Privacy Notice, Terms, Cookie Notice, Acceptable Use, Assessment/AI Disclaimer, DPA, rights, retention, breach, transfer, subprocessor, and child-user requirements are documented but not implemented or approved as final legal text. Qualified Thai legal review is required before public launch.
+- **Payments and commercial operation:** production billing, subscriptions, invoices, refunds, taxes, plan enforcement, and gross-margin reconciliation are not implemented.
+- **Accessibility and operations:** complete keyboard/screen-reader verification, cross-device resume, production monitoring, backups, recovery testing, incident response, support procedures, and service-level objectives remain go-live work.
 
-## Production Analytics Readiness Checklist
+## MVP Go-Live and Production Readiness Checklist
 
-Before calling the platform production-ready, move the analysis loop from browser-local MVP logs to governed server-side data:
+Before calling the platform a governed multi-user MVP or production-ready:
 
-- Persist assessment behavior events, question answers, question feedback, survey responses, profile signals, score logs, artifact interactions, continuation decisions, report-interest clicks, and agent-review decisions in Supabase/Postgres or an equivalent warehouse.
-- Create anonymized aggregate views for question quality, artifact quality, competency coverage, profile routing, score distribution, leaderboard cohorts, abandonment, continuation, and report engagement.
-- Separate identifiable account/profile data from assessment evidence, with clear consent, retention, deletion, and export rules.
-- Add admin role claims, tenant/organization scoping, RLS policies, audit logs, and export controls before exposing analytics dashboards.
-- Version questions, rubrics, artifacts, scoring parameters, profile ontology, surveys, and learning recommendations so historical scores remain explainable after changes.
-- Calibrate item difficulty, discrimination, guessing, partial-credit thresholds, confidence, and score bands from pilot data before using scores for high-stakes decisions.
-- Require human approval for agent-proposed edits to scored content, artifacts, rubrics, profile fields, survey wording, learning paths, and framework mappings.
+### Identity, B2C, and B2B
+
+- Implement server-side authentication, personal workspaces, organizations, memberships, invitations, teams, campaigns, seats, entitlements, and granular permissions.
+- Enforce personal/organization isolation and cross-tenant denial through tested RLS policies.
+- Implement explicit campaign/result-sharing policies, consent records, minimum-cohort suppression, support-access grants, and append-only audit events.
+
+### Assessment and Content
+
+- Persist versioned sessions, responses, score evidence, reports, continuation, surveys, and question feedback across devices.
+- Version questions, rubrics, artifacts, scoring parameters, profile ontology, surveys, prompts, models, recommendations, and configuration so historical results remain explainable.
+- Complete human review, artifact relevance/legibility checks, Thai localization QA, accessibility testing, and pilot promotion for selected live items.
+- Calibrate difficulty, discrimination, guessing, partial-credit thresholds, confidence, and score bands before any certification or high-impact use.
+
+### Admin, Agents, and AI
+
+- Build the persistent Admin Settings service for assessment/profile/report/tracker controls, provider/model routes, schedules, budgets, approval, versioning, preview, and rollback.
+- Store provider credentials only in approved server-side secret infrastructure.
+- Implement durable agent jobs, queues, retries, dedupe, source policies, monitoring, proposal diffs, and human approval gates.
+- Implement the LLM usage ledger, effective-dated pricing, cost allocation, average-cost metrics, alerts, and emergency shutdown controls.
+- Implement Premium Report Copilot as a bounded, evidence-grounded server service with entitlement, privacy, retention, safety, and cost controls.
+
+### Analytics and Operations
+
+- Persist telemetry and create privacy-safe views for item quality, artifacts, competency coverage, routing, score distribution, cohorts, abandonment, continuation, report engagement, and learning outcomes.
+- Add monitoring, error reporting, backups, restore tests, incident response, support operations, rate limits, abuse controls, and service ownership.
+- Keep identifiable identity/profile data separated from assessment evidence and restrict named-user drill-downs.
+
+### PDPA, Terms, and Commercial Launch
+
+- Obtain qualified Thai legal approval for final Thai/English Privacy Notices, Terms, cookies, Acceptable Use, Assessment/AI Disclaimer, lawful-basis map, age policy, B2B DPA/controller roles, retention, transfers, subprocessors, payment/refund, liability, and dispute terms.
+- Implement versioned policy acceptance, consent/withdrawal, cookie blocking/preferences, rights requests, deletion/retention jobs, breach workflow, subprocessor register, transfer controls, and legal-document history.
+- Implement production billing, subscriptions, invoices, taxes, cancellation/refunds, and server-side entitlement enforcement before charging users.
 
 ## Scoring Model
 

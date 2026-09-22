@@ -1,5 +1,11 @@
 # Latest Changes
 
+## 2026-09-22: README and Documentation Status Reconciled
+
+The README now uses the living feature catalog as its status source and distinguishes the local prototype from MVP go-live, Production, and Future capabilities. The Supabase/data-model section, AI-provider guidance, MVP limitations, and readiness checklist now reflect the latest B2C/B2B tenancy, Admin Settings, Premium Report Copilot, LLM usage/cost, agent orchestration, psychometric, question-quality, accessibility, billing, operational, and PDPA/Terms specifications.
+
+The updated limitations make clear that documented features are not automatically implemented. Browser-local analytics and Agent Ops, preview authentication/Admin access, generated question variants, machine-assisted Thai fields, and seeded psychometrics remain prototype or pilot assets until their respective go-live gates are met.
+
 ## 2026-09-22: PDPA, Terms, and Legal Controls Documented
 
 Added an authoritative drafting and engineering specification for Thailand PDPA readiness, Privacy Notices, Terms of Use, Acceptable Use, cookie controls, Assessment/AI disclaimers, B2B controller/processor role mapping and DPA, consent, data-subject rights, retention/deletion, children, security, breach response, subprocessors, international transfers, Report Copilot, leaderboards, and legal release gates.
