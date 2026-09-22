@@ -12717,7 +12717,9 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 
 export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question')
+      ? 'assessment'
+      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
       ? 'onboarding'
       : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'admin'
         ? 'admin'
@@ -12725,7 +12727,9 @@ export default function Home() {
   ));
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
   const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
-  const [mode, setMode] = useState<AssessmentMode>('free');
+  const [mode, setMode] = useState<AssessmentMode>(() => (
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
+  ));
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(() => parseAuthProfile(readLocalStorage(authProfileStorageKey)));
@@ -12761,7 +12765,10 @@ export default function Home() {
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
+  const [current, setCurrent] = useState<Question>(() => {
+    const previewQuestionId = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('question') : null;
+    return (previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], 'free');
+  });
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
   const [rankOrder, setRankOrder] = useState<string[]>([]);
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
@@ -15874,7 +15881,7 @@ export default function Home() {
                     <textarea
                       value={textResponse}
                       onChange={(event) => updateTextResponse(event.target.value)}
-                      placeholder="Write 2-4 sentences with the evidence you would use in the real situation."
+                      placeholder="Write 3-5 sentences explaining the evidence, action, and customer response you would use."
                     />
                   </label>
                   <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>

@@ -3716,6 +3716,16 @@ h3 {
   padding: 12px 16px;
 }
 
+.stimulus-toolbar .secondary.dark {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.stimulus-toolbar .secondary.dark:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .stimulus-label {
   color: var(--teal);
   font-size: 12px;
