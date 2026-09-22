@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Living standard
-Current rules version: `1.3`
+Current rules version: `1.4`
 Last updated: 22 September 2026
 
 ## Purpose
@@ -31,6 +31,19 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 16. Describe the answer category clearly, but do not make the correct option a word-for-word copy of the evidence sentence.
 17. In multi-part items, point each question to specific evidence. Do not ask users to interpret labels such as "extra detail" or "profile cue."
 18. Use concrete examples, quantities, and consequences when they make the decision easier to understand without giving away the answer.
+19. Use culturally neutral settings or contexts familiar to the intended Thai audience. Do not require knowledge of Western institutions, holidays, school systems, job titles, consumer habits, laws, currencies, or workplace customs unless that knowledge is part of the competency being assessed.
+20. Localize the situation, not just the words. Thai versions may adapt names, organizations, services, examples, units, dates, and work practices when needed, while preserving the same evidence, decision, difficulty, and correct answer.
+21. Do not force superficial Thai references or stereotypes into every question. Prefer ordinary, credible settings such as a local business, public service, hospital, school, university, bank, online seller, manufacturing team, community organization, or regional company when the setting matters.
+
+## Thai cultural-context standard
+
+Use one of these approaches for each item:
+
+- **Culturally neutral:** The scenario works naturally in Thailand and other markets without requiring local background knowledge.
+- **Thai-localized:** The Thai version adapts the setting or example to something a typical Thai user can readily understand.
+- **International by design:** The scenario keeps an international context because cross-border knowledge is relevant to the tested role or competency. Explain any unfamiliar term needed to answer.
+
+Localization must not change the construct being measured. The English and Thai versions should require the same reasoning and provide equivalent evidence. A cultural adaptation that changes the correct answer, adds a clue, removes a risk, or makes one language easier requires a new version and human review.
 
 ## Clarity check
 
@@ -44,6 +57,8 @@ Before a version is proposed for use, a reviewer should be able to answer:
 - What single competency or concept is being tested?
 - Can the question be answered without guessing what the writer meant?
 - Are all choices plausible and written at the same level?
+- Would an average Thai user understand the setting without needing unrelated knowledge of another country or culture?
+- Does the Thai version feel locally natural while preserving the same evidence, difficulty, and answer?
 
 ## Versioning workflow
 
@@ -69,11 +84,19 @@ Rate each version from 1 to 5 on:
 - Quality and balance of answer choices
 - Explanation quality
 - English and Thai equivalence
+- Cultural familiarity and fairness for the intended audience
 - Artifact usefulness, when applicable
 
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.4 - 22 September 2026
+
+- Added a cultural-context standard for Thai users.
+- Required culturally neutral, Thai-localized, or intentionally international classification during review.
+- Added checks for Western institutional assumptions and unrelated cultural knowledge.
+- Clarified that localization may adapt settings and examples but must preserve the assessed construct, evidence, difficulty, and correct answer.
 
 ### Version 1.3 - 22 September 2026
 
