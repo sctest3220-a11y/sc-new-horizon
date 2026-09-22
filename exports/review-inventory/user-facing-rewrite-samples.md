@@ -36,21 +36,21 @@ D. A search system retrieving existing text.
 ### After
 
 ```text
-Your team asks an AI tool to write a project update.
+Your project team asks an AI assistant to draft a project update.
 
-The tool writes fluent new sentences, but it cannot look up the latest approved project record.
+The AI generates the draft using a Large Language Model (LLM), but it does not search the approved project documents stored in the team's document library. Before the update is shared, its status and milestones must match the latest approved project record.
 
-What is this tool doing?
+Which description best matches how the AI produced this draft?
 
 A. Following fixed rules and copying approved text
-B. Searching existing project records
-C. Drafting new text from learned language patterns
+B. Searching the document library and retrieving approved project information
+C. Generating a draft with an LLM without retrieving the project documents
 D. Coordinating search, permissions, and review steps
 ```
 
 Correct answer: `C`
 
-Why: The tool can write plausible text, but it has no evidence that it accessed the current record.
+Why: The AI can generate fluent text, but it did not retrieve the approved project documents needed to verify the update.
 
 Format: `scenario choice`
 
