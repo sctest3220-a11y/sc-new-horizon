@@ -57,6 +57,7 @@ Detailed telemetry and agent documentation:
 - [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
+- [`docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`](docs/AGENT_PLATFORM_TOOLING_STRATEGY.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
@@ -64,6 +65,8 @@ Detailed telemetry and agent documentation:
 - [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
 
 Use the feature catalog as the current status source: `MVP - Built` means visible in the local prototype, `MVP - Go-live` means required before the first governed multi-user launch, `Production` means commercial hardening after the core MVP is proven, and `Future` means deferred roadmap work. A documented feature is not automatically implemented.
+
+Agent-platform decision: the MVP does not require Temporal, Kubernetes/KEDA, ClickHouse, Hermes, or a large multi-agent runtime. It must preserve typed job contracts, durable IDs, audit/cost metadata, human approval, and server-side provider boundaries. The target production stack introduces Temporal, bounded LangGraph workers, LiteLLM, Langfuse, and later ClickHouse/KEDA only when the adoption triggers in `docs/AGENT_PLATFORM_TOOLING_STRATEGY.md` are met.
 
 Latest question-inventory update: the 3,328-item review inventory and the existing 634 live questions are now available from the Admin Question Inventory page. The review workflow supports English/Thai viewing, question-level language overrides, role/function/industry/profile filters, reviewer ratings, saved feedback history, review-count/status indicators, artifact-need briefs, and translation QA output. Thai fields are machine-assisted reviewer drafts and should receive human language review before production use. The inventory is on `main`; references to the older `Lufy-branch` milestone are obsolete.
 

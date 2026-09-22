@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Agent Platform Tooling Decision
+
+Added `docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`. The MVP remains lightweight: Supabase/PostgreSQL is the system of record, PostHog or equivalent handles consent-aware product analytics, and a managed job runner is added only where asynchronous work is necessary. Temporal, bounded LangGraph workers, LiteLLM, Langfuse, ClickHouse, Kubernetes/KEDA, and optional Hermes experimentation are phased production or scale capabilities with explicit adoption triggers. The architecture rejects one-agent-per-event processing in favor of deterministic aggregation, batching, budgets, approval gates, versioned promotion, and human-controlled release.
+
 ## 2026-09-22: README and Documentation Status Reconciled
 
 The README now uses the living feature catalog as its status source and distinguishes the local prototype from MVP go-live, Production, and Future capabilities. The Supabase/data-model section, AI-provider guidance, MVP limitations, and readiness checklist now reflect the latest B2C/B2B tenancy, Admin Settings, Premium Report Copilot, LLM usage/cost, agent orchestration, psychometric, question-quality, accessibility, billing, operational, and PDPA/Terms specifications.

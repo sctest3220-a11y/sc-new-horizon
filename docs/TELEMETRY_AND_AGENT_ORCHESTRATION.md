@@ -375,10 +375,14 @@ Recommended production infrastructure:
 
 - Supabase Auth with admin role claims.
 - RLS-protected analytics tables and views.
-- Durable job runner such as Trigger.dev, Inngest, Temporal, Cloudflare Queues/Cron, or Supabase scheduled jobs.
+- Lightweight managed jobs for MVP where needed; Temporal Cloud becomes the target durable production control plane only when long-running, approval-gated, failure-resumable workflow needs justify it.
+- Bounded LangGraph workers for genuinely agentic reasoning, LiteLLM for model routing/cost controls, Langfuse for LLM tracing/evaluation, and PostHog for consent-aware product analytics.
+- ClickHouse and Kubernetes/KEDA are later scale components. Hermes is an optional research worker, not the orchestrator or system of record.
 - Server-side AI provider adapters; never expose secret keys in browser code.
 - Source allow-lists, robots/terms review, freshness windows, retry limits, and cost budgets.
 - Versioned content publishing so historical scores remain explainable.
+
+The full phase boundary and adoption criteria are defined in [Agent Platform Tooling Strategy](AGENT_PLATFORM_TOOLING_STRATEGY.md).
 
 ## Privacy and Product Principles
 
