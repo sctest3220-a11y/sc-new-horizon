@@ -6722,11 +6722,10 @@ h3 {
 
 .inventory-filter-result-panel,
 .inventory-review-filter-panel {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
+  align-items: end;
+  display: grid;
   gap: 12px;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, minmax(180px, 1fr)) minmax(220px, 1.2fr);
   padding: 14px 16px;
 }
 
@@ -6780,9 +6779,15 @@ h3 {
   border: 1px solid rgba(23, 33, 28, 0.18);
   border-radius: 6px;
   color: #17211c;
-  min-width: 220px;
+  min-width: 0;
   padding: 9px 10px;
   text-transform: none;
+  width: 100%;
+}
+
+.inventory-review-filter-summary {
+  display: grid;
+  gap: 6px;
 }
 
 .inventory-review-sync-panel {
@@ -7308,6 +7313,7 @@ h3 {
   .artifact-summary-panel,
   .rewrite-warning-panel,
   .inventory-filters,
+  .inventory-review-filter-panel,
   .inventory-question-card dl {
     grid-template-columns: 1fr;
   }
