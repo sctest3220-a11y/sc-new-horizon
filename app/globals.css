@@ -6725,8 +6725,20 @@ h3 {
   align-items: end;
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(3, minmax(180px, 1fr)) minmax(220px, 1.2fr);
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
   padding: 14px 16px;
+}
+
+.inventory-review-filter-heading {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  grid-column: 1 / -1;
+  justify-content: space-between;
+}
+
+.inventory-review-filter-heading strong {
+  font-size: 1rem;
 }
 
 .inventory-filter-result-panel strong,
@@ -6788,6 +6800,7 @@ h3 {
 .inventory-review-filter-summary {
   display: grid;
   gap: 6px;
+  grid-column: 1 / -1;
 }
 
 .inventory-review-sync-panel {

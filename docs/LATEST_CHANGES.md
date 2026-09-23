@@ -4,6 +4,8 @@
 
 Question Inventory now provides independent filters for number of saved reviews, latest 1–5 star question rating, and latest decision status. Reviewers can combine filters, such as `3 or more reviews` + `1–2 stars` + `Revise`, and the visible count updates immediately when feedback is saved. The MVP applies these filters to questions loaded on the current page because review history is stored in the local browser; production should move review summaries to the database for inventory-wide server filtering.
 
+The review filters sit directly below the main inventory filters in a clearly labeled section, before pagination and feedback-sync status, so reviewers can find both filter groups in one place.
+
 ## Canonical Artifact Standard and Rewrite Rules 1.8
 
 Added `docs/ARTIFACT_DESIGN_AND_QA_STANDARD.md` as the canonical standard for artifact necessity, embedded placement, evidence alignment, realism, neutrality, readability, localization, accessibility, telemetry review, versioning, and human approval. Question rewrite rules now reference this standard instead of duplicating partial requirements.

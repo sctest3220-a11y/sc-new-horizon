@@ -120,6 +120,10 @@ export function ReviewFilterControls({ questionIds }: { questionIds: string[] })
 
   return (
     <section className="inventory-panel inventory-review-filter-panel">
+      <div className="inventory-review-filter-heading">
+        <strong>Review filters</strong>
+        <small>Filter the questions on this page by saved reviewer activity.</small>
+      </div>
       <label>
         <span>Number of reviews</span>
         <select value={reviewCountFilter} onChange={(event) => setReviewCountFilter(event.target.value)}>

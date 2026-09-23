@@ -1104,6 +1104,8 @@ export default async function QuestionInventoryPage({
         </form>
       </section>
 
+      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
+
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
         <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
@@ -1115,7 +1117,6 @@ export default async function QuestionInventoryPage({
       </section>
 
       <ReviewSync />
-      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-grid">
         {visibleQuestions.map((question) => (
