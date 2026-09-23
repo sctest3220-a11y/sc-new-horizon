@@ -25,7 +25,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 9. Make every answer choice plausible and comparable in length, specificity, and grammatical structure.
 10. Avoid clues created by one answer being more detailed, more cautious, or using exact words from the question.
 11. Explain why the correct answer fits the evidence and, where useful, why the tempting alternatives do not.
-12. Use an artifact only when the user must inspect it to answer. The artifact must be realistic, readable, and directly relevant.
+12. Use an artifact only when the user must inspect it to answer. The artifact must be realistic, readable, and directly relevant. Embed it inside the scenario after the relevant context and immediately before the question it supports; do not present it as a detached section above the task.
 13. Translate meaning and context, not English sentence structure. Check the scenario, prompt, choices, feedback, and explanation for complete Thai coverage.
 14. Prefer short sentences and ordinary words, but do not remove information needed to understand the situation or consequence.
 15. Connect audience details to a concrete requirement or risk. Remove persona facts that do not affect the decision.

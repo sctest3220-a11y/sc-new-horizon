@@ -3697,6 +3697,19 @@ h3 {
   margin-bottom: 0;
 }
 
+.scenario-artifact {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin: 18px 0;
+  padding: 16px 0;
+}
+
+.scenario-artifact .stimulus-card,
+.scenario-artifact .visual-stimulus {
+  box-shadow: none;
+  margin: 0;
+}
+
 .stimulus-card {
   background: #fff;
   border: 1px solid var(--line);

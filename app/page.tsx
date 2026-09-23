@@ -15747,9 +15747,6 @@ export default function Home() {
               )}
               {!useRelianceStage && (
                 <>
-                  {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                  {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
-                  {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>
@@ -15757,6 +15754,13 @@ export default function Home() {
                   <div className="scenario-panel">
                     <span>Scenario</span>
                     <p className="context">{shownQuestion.context}</p>
+                    {(currentDisplayStimulus || shownQuestion.visualStimulus || currentDisplayVisualStimulus) && (
+                      <div className="scenario-artifact" aria-label="Evidence embedded in the question">
+                        {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                        {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
+                        {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
+                      </div>
+                    )}
                     <h2>{shownQuestion.prompt}</h2>
                   </div>
                 </>

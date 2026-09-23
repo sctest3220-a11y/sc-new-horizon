@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Embedded Evidence Inside Questions
+
+Helpful artifacts now appear inside the scenario reading flow: scenario context, embedded evidence, then the question prompt. They no longer render as a separate artifact section above the task brief. Full-size reading, zoom controls, accessibility text, and artifact-use telemetry remain available. Questions that do not need visual evidence continue to render without an artifact.
+
 ## Live Support Item and New Inline Artifact
 
 Live Operations item `FUNC-OPS-D6-001` now uses a question-specific duplicate-charge support-console image rather than the previous shared ticket artifact. The rewritten response task asks users to identify what must be verified, choose the appropriate refund action, and explain the customer communication. The artifact appears inline and opens in the existing fit-to-window reader with additional zoom and open-file controls.
