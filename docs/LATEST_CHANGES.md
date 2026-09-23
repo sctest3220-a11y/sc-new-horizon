@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Question inventory feedback refresh
+
+- Saving question-level feedback now clears every field in the review form immediately, ready for a new review.
+- Only submitted feedback history is synchronized to the repository. Unfinished browser drafts are no longer shared or restored for another reviewer.
+- Saved history and review counts still refresh immediately after submission.
+
 ## Purposeful Partial-Credit Standard
 
 Question Rewrite Rules 2.1 clarifies that mutually exclusive answers apply to single-best-answer items, while complex questions may use multi-select, ranking, multi-part, written-response, or intentionally progressive options. Partial credit remains encouraged for proficient and advanced evidence when it measures explicit reasoning components, completeness, prioritization, diagnosis, or action quality. Every rubric must define the purpose, criteria, weights, contradiction handling, blank handling, and user-facing explanation; arbitrary points assigned to merely plausible distractors remain prohibited.
