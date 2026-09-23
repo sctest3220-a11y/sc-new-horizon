@@ -394,7 +394,7 @@
       "questionId": "FUNC-MKT-D3-001",
       "sourceInventory": "live",
       "currentVersion": "live-bank",
-      "candidateVersion": "2026-09-22.1",
+      "candidateVersion": "2026-09-23.2",
       "preferredVersion": null,
       "selectionStatus": "awaiting-comparative-review",
       "culturalContext": "thai-localized",
@@ -455,6 +455,39 @@
             "Localize currency, units, and market conventions when they are not part of the tested competency.",
             "When a technical term such as incrementality is useful, express the decision in plain language and explain the term after the answer."
           ]
+        },
+        {
+          "version": "2026-09-23.2",
+          "recordedAt": "2026-09-23",
+          "changeType": "comparison-candidate-with-regenerated-bilingual-artifact",
+          "reviewerConcern": "The live scenario is too thin, the correct option is jargon-heavy, and the old artifact explicitly labels the suspicious evidence and tells users what to check.",
+          "context": "An online shop tested three ad sets for the same weekend promotion. Its AI assistant recommends increasing the budget for Ad Set C by 60% because C has the highest conversion rate. Review the campaign dashboard before deciding.",
+          "prompt": "What should the marketer do next?",
+          "options": [
+            "Increase C's budget now because its conversion rate is the highest.",
+            "Keep C at its current budget, investigate its traffic and coupon use, and run a larger controlled test.",
+            "Move the budgets from A and B to C because their conversion rates are lower.",
+            "Rewrite C's advertisement before checking the campaign data."
+          ],
+          "correctOption": "Keep C at its current budget, investigate its traffic and coupon use, and run a larger controlled test.",
+          "explanation": "C has the highest rate, but it is based on only 93 clicks and eight conversions. The public coupon posting may have changed who used the code, and no controlled test shows that the advertisement caused additional purchases. The marketer should investigate and collect stronger evidence before increasing spend.",
+          "th": {
+            "context": "ร้านค้าออนไลน์ทดลองโฆษณา 3 ชุดสำหรับโปรโมชันสุดสัปดาห์ AI แนะนำให้เพิ่มงบโฆษณาชุด C อีก 60% เพราะมี Conversion rate สูงที่สุด ให้ตรวจสอบ Dashboard ของแคมเปญก่อนตัดสินใจ",
+            "prompt": "นักการตลาดควรทำอะไรต่อไป",
+            "options": [
+              "เพิ่มงบชุด C ทันที เพราะมี Conversion rate สูงที่สุด",
+              "คงงบชุด C ไว้ก่อน ตรวจสอบแหล่งที่มาของผู้เข้าชมและการใช้คูปอง แล้วทดสอบอีกครั้งด้วยกลุ่มตัวอย่างที่ใหญ่ขึ้นและมีกลุ่มควบคุม",
+              "ย้ายงบจากชุด A และ B มาให้ชุด C เพราะมี Conversion rate ต่ำกว่า",
+              "เขียนข้อความโฆษณาชุด C ใหม่ ก่อนตรวจสอบข้อมูลของแคมเปญ"
+            ],
+            "explanation": "ชุด C มี Conversion rate สูงที่สุด แต่ผลมาจากเพียง 93 คลิกและ 8 Conversion อีกทั้งโค้ดส่วนลดยังปรากฏบนเว็บรวมคูปอง จึงอาจทำให้กลุ่มผู้ใช้เปลี่ยนไป และยังไม่มีการทดสอบแบบมีกลุ่มควบคุมที่ยืนยันว่าโฆษณาทำให้เกิดยอดซื้อเพิ่มขึ้น นักการตลาดควรตรวจสอบและเก็บหลักฐานเพิ่มก่อนเพิ่มงบ"
+          },
+          "artifacts": {
+            "en": "/stimuli/campaign-dashboard-func-mkt-d3-001-v2-en.svg",
+            "th": "/stimuli/campaign-dashboard-func-mkt-d3-001-v2-th.svg"
+          },
+          "artifactDecision": "Required. The answer depends on comparing sample sizes, the tracking note, the AI recommendation, and the missing controlled test. The new artifact presents those facts neutrally and contains no answer-revealing callout.",
+          "rulesIntroduced": []
         }
       ]
     },

@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Bilingual Marketing Question and Artifact Candidate
+
+Added comparison candidate `2026-09-23.2` for live question `FUNC-MKT-D3-001` without replacing the scored item. The candidate uses a shorter scenario, concrete actions, complete Thai translation, and new question-specific English and Thai campaign dashboards. The dashboards use Thai baht, preserve exact evidence, remain readable when fitted to the window, and remove the old answer-revealing “Suspicious point” and “Better question” panels.
+
 ## D2 Prompt Design Thai Translation Repair
 
 Repaired the shared Thai translation patterns used by all eight core/general applied Prompt design drafts. Scenarios, question prompts, every answer choice, and explanations now translate completely while retaining only intentional technical terms such as `AI` and `Prompt`. The translation standard now explicitly rejects partially translated or corrupted Thai items as incomplete rather than treating individual translated fragments as sufficient.
