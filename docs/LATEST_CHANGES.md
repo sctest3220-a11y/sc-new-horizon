@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Question-Level Language Switch and Assessment Type Scale
+
+Each assessment question now has its own EN/TH switch beside progress, independent of the page-level language setting. The local choice applies only to the current question and the next question returns to the page preference. Thai is disabled when an approved or pilot-enabled translation is unavailable. Scenario, prompt, artifact metadata, answer choices, and rubrics remain tied to the same language-independent question and scoring ids.
+
+Assessment typography now uses a more balanced hierarchy: scenario context is readable supporting copy, the question prompt is prominent without using hero-scale type, and answer choices and written responses use consistent body sizing. The Thai copy for live item `FUNC-OPS-D6-001` was also synchronized with its latest English scenario, 3–5 sentence prompt, artifact, rubric criteria, and exemplar answer.
+
 ## Embedded Evidence Inside Questions
 
 Helpful artifacts now appear inside the scenario reading flow: scenario context, embedded evidence, then the question prompt. They no longer render as a separate artifact section above the task brief. Full-size reading, zoom controls, accessibility text, and artifact-use telemetry remain available. Questions that do not need visual evidence continue to render without an artifact.

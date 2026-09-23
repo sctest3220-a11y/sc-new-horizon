@@ -12726,6 +12726,7 @@ export default function Home() {
         : 'home'
   ));
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+  const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
   const [mode, setMode] = useState<AssessmentMode>(() => (
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
@@ -13078,11 +13079,17 @@ export default function Home() {
       .sort((left, right) => Number(right.earned) - Number(left.earned) || right.score - left.score),
     [results.domainScores],
   );
-  const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage, showDraftThai), [current, appLanguage, showDraftThai]);
+  const currentTranslationStatus = getTranslationStatus(current);
+  const currentThaiAvailable = Boolean(currentTranslationStatus && (currentTranslationStatus !== 'draft' || showDraftThai));
+  const defaultQuestionLanguage: AppLanguage = appLanguage === 'th' && !currentThaiAvailable ? 'en' : appLanguage;
+  const questionLanguage = questionLanguageOverride?.questionId === current.id
+    ? questionLanguageOverride.language
+    : defaultQuestionLanguage;
+  const shownQuestion = useMemo(() => localizeQuestion(current, questionLanguage, showDraftThai), [current, questionLanguage, showDraftThai]);
   // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
-  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(appLanguage);
-  if (matchSelectionsLanguage !== appLanguage) {
-    setMatchSelectionsLanguage(appLanguage);
+  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(questionLanguage);
+  if (matchSelectionsLanguage !== questionLanguage) {
+    setMatchSelectionsLanguage(questionLanguage);
     if (Object.keys(matchSelections).length) setMatchSelections({});
   }
   const displayedOptions = useMemo(
@@ -15644,6 +15651,29 @@ export default function Home() {
                     </HelpBubble>
                   </span>
                   <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
+                  <div className="question-language-toggle" aria-label="Question language">
+                    <small>Question language</small>
+                    <div>
+                      <button
+                        type="button"
+                        className={questionLanguage === 'en' ? 'selected' : ''}
+                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'en' })}
+                        aria-pressed={questionLanguage === 'en'}
+                      >
+                        EN
+                      </button>
+                      <button
+                        type="button"
+                        className={questionLanguage === 'th' ? 'selected' : ''}
+                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'th' })}
+                        aria-pressed={questionLanguage === 'th'}
+                        disabled={!currentThaiAvailable}
+                        aria-label={currentThaiAvailable ? 'Show question in Thai' : 'Thai translation unavailable for this question'}
+                      >
+                        TH
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="question-meta">

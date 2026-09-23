@@ -3287,6 +3287,52 @@ h3 {
   height: 100%;
 }
 
+.question-language-toggle {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.question-language-toggle small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.question-language-toggle > div {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  padding: 3px;
+}
+
+.question-language-toggle button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  min-height: 30px;
+  min-width: 38px;
+  padding: 5px 8px;
+}
+
+.question-language-toggle button.selected {
+  background: var(--ink);
+  color: #fff;
+}
+
+.question-language-toggle button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
 .question-card {
   margin-top: 28px;
   padding: clamp(24px, 4vw, 42px);
@@ -3692,8 +3738,8 @@ h3 {
 }
 
 .scenario-panel h2 {
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 1.12;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.25;
   margin-bottom: 0;
 }
 
@@ -4149,8 +4195,8 @@ h3 {
 
 .context {
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.6;
   margin: 0 0 12px;
 }
 
@@ -4282,6 +4328,8 @@ h3 {
   display: grid;
   gap: 14px;
   grid-template-columns: 34px 1fr;
+  font-size: 16px;
+  line-height: 1.45;
   min-height: 64px;
   padding: 14px 18px;
   text-align: left;
@@ -4375,6 +4423,7 @@ h3 {
 
 .part-card p {
   color: var(--ink);
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.45;
   margin: 0;
@@ -4477,6 +4526,7 @@ h3 {
   border-radius: 8px;
   color: var(--ink);
   font: inherit;
+  font-size: 16px;
   line-height: 1.5;
   min-height: 170px;
   padding: 16px;
