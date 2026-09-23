@@ -1,5 +1,35 @@
 # Latest Changes
 
+## Question Inventory Review Filters
+
+Question Inventory now provides independent filters for number of saved reviews, latest 1–5 star question rating, and latest decision status. Reviewers can combine filters, such as `3 or more reviews` + `1–2 stars` + `Revise`, and the visible count updates immediately when feedback is saved. The MVP applies these filters to questions loaded on the current page because review history is stored in the local browser; production should move review summaries to the database for inventory-wide server filtering.
+
+The review filters sit directly below the main inventory filters in a clearly labeled section, before pagination and feedback-sync status, so reviewers can find both filter groups in one place.
+
+## Canonical Artifact Standard and Rewrite Rules 1.8
+
+Added `docs/ARTIFACT_DESIGN_AND_QA_STANDARD.md` as the canonical standard for artifact necessity, embedded placement, evidence alignment, realism, neutrality, readability, localization, accessibility, telemetry review, versioning, and human approval. Question rewrite rules now reference this standard instead of duplicating partial requirements.
+
+Question rewrite rules are now version 1.8. IT/developer items should use a brief operational scenario, scannable embedded evidence such as logs or traces, and one direct decision. Detailed technical facts belong in the artifact, multi-select prompts must state the exact selection count, and answer sets should avoid the obvious pattern where every option except one is correct.
+
+## Question-Level Language Switch and Assessment Type Scale
+
+Each assessment question now has its own EN/TH switch beside progress, independent of the page-level language setting. The local choice applies only to the current question and the next question returns to the page preference. Thai is disabled when an approved or pilot-enabled translation is unavailable. Scenario, prompt, artifact metadata, answer choices, and rubrics remain tied to the same language-independent question and scoring ids.
+
+Assessment typography now uses a more balanced hierarchy: scenario context is readable supporting copy, the question prompt is prominent without using hero-scale type, and answer choices and written responses use consistent body sizing. The Thai copy for live item `FUNC-OPS-D6-001` was also synchronized with its latest English scenario, 3–5 sentence prompt, artifact, rubric criteria, and exemplar answer.
+
+## Embedded Evidence Inside Questions
+
+Helpful artifacts now appear inside the scenario reading flow: scenario context, embedded evidence, then the question prompt. They no longer render as a separate artifact section above the task brief. Full-size reading, zoom controls, accessibility text, and artifact-use telemetry remain available. Questions that do not need visual evidence continue to render without an artifact.
+
+## Live Support Item and New Inline Artifact
+
+Live Operations item `FUNC-OPS-D6-001` now uses a question-specific duplicate-charge support-console image rather than the previous shared ticket artifact. The rewritten response task asks users to identify what must be verified, choose the appropriate refund action, and explain the customer communication. The artifact appears inline and opens in the existing fit-to-window reader with additional zoom and open-file controls.
+
+## Interactive Agent Workflow Map
+
+Admin Agent Ops now provides an n8n-style node workflow canvas driven by the existing agent run report. Admins can inspect branching agent handoffs, animated status paths, blocked steps, QA routing, and the human approval gate. Clicking an agent opens its schedule, guardrail, latest stages, and recorded output. The Admin view is also directly accessible with `/?view=admin` for testing and operations.
+
 ## Release-Stage Definitions Expanded
 
 The living feature catalog now defines `MVP - Built`, `MVP - Go-live`, `Production`, `Scale`, and `Future` in operational terms and includes exit criteria for moving between stages. This prevents a visible prototype from being mistaken for a real-user-ready or commercially hardened capability.

@@ -928,11 +928,9 @@ export default async function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
   });
 
-  const pageSize = 80;
+  const pageSize = 20;
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const currentPage = Number.isFinite(requestedPage)
-    ? Math.min(Math.max(1, requestedPage), pageCount)
-    : 1;
+  const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
   const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
@@ -1106,6 +1104,8 @@ export default async function QuestionInventoryPage({
         </form>
       </section>
 
+      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
+
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
         <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
@@ -1117,7 +1117,6 @@ export default async function QuestionInventoryPage({
       </section>
 
       <ReviewSync />
-      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-grid">
         {visibleQuestions.map((question) => (

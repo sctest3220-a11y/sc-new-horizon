@@ -68,7 +68,9 @@ export function QuestionReviewStats({ questionId }: { questionId: string }) {
 }
 
 export function ReviewFilterControls({ questionIds }: { questionIds: string[] }) {
-  const [filter, setFilter] = useState('all');
+  const [reviewCountFilter, setReviewCountFilter] = useState('all');
+  const [ratingFilter, setRatingFilter] = useState('all');
+  const [decisionFilter, setDecisionFilter] = useState('all');
   const [visible, setVisible] = useState(questionIds.length);
   const ids = useMemo(() => questionIds, [questionIds]);
 
@@ -83,16 +85,24 @@ export function ReviewFilterControls({ questionIds }: { questionIds: string[] })
         const card = document.querySelector<HTMLElement>(`[data-question-id="${CSS.escape(id)}"]`);
         if (!card) continue;
         const summary = summaries.get(id) ?? emptySummary;
-        const matches =
-          filter === 'all' ||
-          (filter === 'unreviewed' && summary.count === 0) ||
-          (filter === 'reviewed' && summary.count > 0) ||
-          (filter === 'fewest-reviewed' && (summary.count === 0 || summary.count === minReviewed)) ||
-          (filter === 'problem' && summary.problemCount > 0) ||
-          (filter === 'low-rated' && summary.latestRating > 0 && summary.latestRating <= 2) ||
-          (filter === 'approved' && summary.latestDecision === 'approve') ||
-          (filter === 'revise' && summary.latestDecision === 'revise') ||
-          (filter === 'reject' && summary.latestDecision === 'reject');
+        const matchesReviewCount =
+          reviewCountFilter === 'all' ||
+          (reviewCountFilter === '0' && summary.count === 0) ||
+          (reviewCountFilter === '1' && summary.count === 1) ||
+          (reviewCountFilter === '2' && summary.count === 2) ||
+          (reviewCountFilter === '3-plus' && summary.count >= 3) ||
+          (reviewCountFilter === 'fewest' && (summary.count === 0 || summary.count === minReviewed));
+        const matchesRating =
+          ratingFilter === 'all' ||
+          (ratingFilter === 'unrated' && summary.latestRating === 0) ||
+          (ratingFilter === 'low' && summary.latestRating >= 1 && summary.latestRating <= 2) ||
+          (ratingFilter === 'high' && summary.latestRating >= 4) ||
+          Number(ratingFilter) === summary.latestRating;
+        const matchesDecision =
+          decisionFilter === 'all' ||
+          (decisionFilter === 'attention' && summary.problemCount > 0) ||
+          summary.latestDecision === decisionFilter;
+        const matches = matchesReviewCount && matchesRating && matchesDecision;
         card.hidden = !matches;
         if (matches) shown += 1;
       }
@@ -106,26 +116,54 @@ export function ReviewFilterControls({ questionIds }: { questionIds: string[] })
       window.removeEventListener('new-horizon-review-updated', applyFilter);
       window.removeEventListener('storage', applyFilter);
     };
-  }, [filter, ids]);
+  }, [decisionFilter, ids, ratingFilter, reviewCountFilter]);
 
   return (
     <section className="inventory-panel inventory-review-filter-panel">
+      <div className="inventory-review-filter-heading">
+        <strong>Review filters</strong>
+        <small>Filter the questions on this page by saved reviewer activity.</small>
+      </div>
       <label>
-        <span>Review status filter</span>
-        <select value={filter} onChange={(event) => setFilter(event.target.value)}>
-          <option value="all">All shown questions</option>
-          <option value="unreviewed">Not reviewed yet</option>
-          <option value="reviewed">Reviewed at least once</option>
-          <option value="fewest-reviewed">Fewest reviews</option>
-          <option value="problem">Most/problem flags</option>
-          <option value="low-rated">Low rating, 1-2 stars</option>
-          <option value="approved">Latest status: approved</option>
-          <option value="revise">Latest status: revise</option>
-          <option value="reject">Latest status: reject</option>
+        <span>Number of reviews</span>
+        <select value={reviewCountFilter} onChange={(event) => setReviewCountFilter(event.target.value)}>
+          <option value="all">Any review count</option>
+          <option value="0">Not reviewed</option>
+          <option value="1">Exactly 1 review</option>
+          <option value="2">Exactly 2 reviews</option>
+          <option value="3-plus">3 or more reviews</option>
+          <option value="fewest">Fewest reviews on this page</option>
         </select>
       </label>
-      <strong>{visible} visible after review filter</strong>
-      <small>Counts are based on reviewer feedback saved in this browser.</small>
+      <label>
+        <span>Question rating</span>
+        <select value={ratingFilter} onChange={(event) => setRatingFilter(event.target.value)}>
+          <option value="all">Any latest rating</option>
+          <option value="unrated">Not rated</option>
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+          <option value="low">Low rating, 1-2 stars</option>
+          <option value="high">High rating, 4-5 stars</option>
+        </select>
+      </label>
+      <label>
+        <span>Decision status</span>
+        <select value={decisionFilter} onChange={(event) => setDecisionFilter(event.target.value)}>
+          <option value="all">Any latest decision</option>
+          <option value="pending">Pending</option>
+          <option value="approve">Approve for pilot</option>
+          <option value="revise">Revise</option>
+          <option value="reject">Reject</option>
+          <option value="attention">Any problem flag</option>
+        </select>
+      </label>
+      <div className="inventory-review-filter-summary">
+        <strong>{visible} of {questionIds.length} visible</strong>
+        <small>Combined filters use the latest saved rating and decision in this browser for questions on the current page.</small>
+      </div>
     </section>
   );
 }
