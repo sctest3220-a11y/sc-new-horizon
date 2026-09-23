@@ -461,32 +461,32 @@
           "recordedAt": "2026-09-23",
           "changeType": "comparison-candidate-with-regenerated-bilingual-artifact",
           "reviewerConcern": "The live scenario is too thin, the correct option is jargon-heavy, and the old artifact explicitly labels the suspicious evidence and tells users what to check.",
-          "context": "An online shop tested three ad sets for the same weekend promotion. Its AI assistant recommends increasing the budget for Ad Set C by 60% because C has the highest conversion rate. Review the campaign dashboard before deciding.",
-          "prompt": "What should the marketer do next?",
+          "context": "An online shop uses an AI assistant to recommend campaign budget changes. The assistant recommends increasing Ad Set C's budget by 60% because C has the highest conversion rate. Its decision rule does not check cost per conversion, sample size, tracking anomalies, or controlled-test evidence.",
+          "prompt": "What should change before the AI is allowed to recommend budget increases?",
           "options": [
-            "Increase C's budget now because its conversion rate is the highest.",
-            "Keep C at its current budget, investigate its traffic and coupon use, and run a larger controlled test.",
-            "Move the budgets from A and B to C because their conversion rates are lower.",
-            "Rewrite C's advertisement before checking the campaign data."
+            "Ask the AI to provide a longer explanation of why conversion rate matters.",
+            "Require the AI to check cost per conversion, minimum sample size, tracking anomalies, and controlled-test evidence before recommending a capped test or wider scaling.",
+            "Let the AI increase C's budget automatically so it can collect a larger sample.",
+            "Replace the AI with a larger language model before reviewing the decision rule."
           ],
-          "correctOption": "Keep C at its current budget, investigate its traffic and coupon use, and run a larger controlled test.",
-          "explanation": "C has the highest rate, but it is based on only 93 clicks and eight conversions. The public coupon posting may have changed who used the code, and no controlled test shows that the advertisement caused additional purchases. The marketer should investigate and collect stronger evidence before increasing spend.",
+          "correctOption": "Require the AI to check cost per conversion, minimum sample size, tracking anomalies, and controlled-test evidence before recommending a capped test or wider scaling.",
+          "explanation": "C has the highest conversion rate, but its cost per conversion is ฿1,125 compared with ฿263 for A and ฿273 for B. It also has only 93 clicks, a leaked coupon code, and no controlled test. The AI needs explicit evidence checks and must distinguish a limited test budget from wider scaling; a longer explanation, automatic spending, or a larger model would not repair the decision rule.",
           "th": {
-            "context": "ร้านค้าออนไลน์ทดลองโฆษณา 3 ชุดสำหรับโปรโมชันสุดสัปดาห์ AI แนะนำให้เพิ่มงบโฆษณาชุด C อีก 60% เพราะมี Conversion rate สูงที่สุด ให้ตรวจสอบ Dashboard ของแคมเปญก่อนตัดสินใจ",
-            "prompt": "นักการตลาดควรทำอะไรต่อไป",
+            "context": "ร้านค้าออนไลน์ใช้ AI ช่วยแนะนำการปรับงบแคมเปญ AI แนะนำให้เพิ่มงบโฆษณาชุด C อีก 60% เพราะมี Conversion rate สูงที่สุด แต่กฎการตัดสินใจของ AI ไม่ได้ตรวจสอบต้นทุนต่อ Conversion ขนาดกลุ่มตัวอย่าง ความผิดปกติของข้อมูลติดตาม หรือหลักฐานจากการทดสอบแบบมีกลุ่มควบคุม",
+            "prompt": "ควรเปลี่ยนแปลงอะไร ก่อนอนุญาตให้ AI แนะนำการเพิ่มงบ",
             "options": [
-              "เพิ่มงบชุด C ทันที เพราะมี Conversion rate สูงที่สุด",
-              "คงงบชุด C ไว้ก่อน ตรวจสอบแหล่งที่มาของผู้เข้าชมและการใช้คูปอง แล้วทดสอบอีกครั้งด้วยกลุ่มตัวอย่างที่ใหญ่ขึ้นและมีกลุ่มควบคุม",
-              "ย้ายงบจากชุด A และ B มาให้ชุด C เพราะมี Conversion rate ต่ำกว่า",
-              "เขียนข้อความโฆษณาชุด C ใหม่ ก่อนตรวจสอบข้อมูลของแคมเปญ"
+              "ให้ AI อธิบายเพิ่มเติมว่าเหตุใด Conversion rate จึงสำคัญ",
+              "กำหนดให้ AI ตรวจสอบต้นทุนต่อ Conversion ขนาดกลุ่มตัวอย่างขั้นต่ำ ความผิดปกติของข้อมูลติดตาม และหลักฐานจากการทดสอบแบบมีกลุ่มควบคุม ก่อนแนะนำงบทดสอบแบบจำกัดหรือการเพิ่มงบในวงกว้าง",
+              "ให้ AI เพิ่มงบชุด C โดยอัตโนมัติ เพื่อเก็บกลุ่มตัวอย่างให้ใหญ่ขึ้น",
+              "เปลี่ยนไปใช้โมเดลภาษาที่ใหญ่ขึ้น ก่อนตรวจสอบกฎการตัดสินใจ"
             ],
-            "explanation": "ชุด C มี Conversion rate สูงที่สุด แต่ผลมาจากเพียง 93 คลิกและ 8 Conversion อีกทั้งโค้ดส่วนลดยังปรากฏบนเว็บรวมคูปอง จึงอาจทำให้กลุ่มผู้ใช้เปลี่ยนไป และยังไม่มีการทดสอบแบบมีกลุ่มควบคุมที่ยืนยันว่าโฆษณาทำให้เกิดยอดซื้อเพิ่มขึ้น นักการตลาดควรตรวจสอบและเก็บหลักฐานเพิ่มก่อนเพิ่มงบ"
+            "explanation": "ชุด C มี Conversion rate สูงที่สุด แต่มีต้นทุนต่อ Conversion ฿1,125 ขณะที่ชุด A อยู่ที่ ฿263 และชุด B อยู่ที่ ฿273 นอกจากนี้ ชุด C มีเพียง 93 คลิก มีโค้ดส่วนลดรั่วไหล และยังไม่มีการทดสอบแบบมีกลุ่มควบคุม AI จึงต้องมีเกณฑ์ตรวจสอบหลักฐานที่ชัดเจน และต้องแยกงบทดสอบแบบจำกัดออกจากการเพิ่มงบในวงกว้าง การอธิบายให้ยาวขึ้น การเพิ่มงบอัตโนมัติ หรือการเปลี่ยนไปใช้โมเดลที่ใหญ่ขึ้น ไม่ได้แก้กฎการตัดสินใจที่บกพร่อง"
           },
           "artifacts": {
             "en": "/stimuli/campaign-dashboard-func-mkt-d3-001-v2-en.svg",
             "th": "/stimuli/campaign-dashboard-func-mkt-d3-001-v2-th.svg"
           },
-          "artifactDecision": "Required. The answer depends on comparing sample sizes, the tracking note, the AI recommendation, and the missing controlled test. The new artifact presents those facts neutrally and contains no answer-revealing callout.",
+          "artifactDecision": "Required. The answer depends on comparing conversion rate with cost per conversion, sample size, the tracking anomaly, the AI decision rule, and missing controlled-test evidence. The new artifact presents those facts neutrally and contains no answer-revealing callout.",
           "rulesIntroduced": []
         }
       ]

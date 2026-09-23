@@ -12,15 +12,15 @@
   <rect x="94" y="200" width="1412" height="62" fill="#edf3f7"/>
   <g font-family="Arial, Tahoma, sans-serif" font-size="17" font-weight="700" fill="#344054">
     <text x="122" y="239">ชุด</text><text x="286" y="239">งบที่ใช้</text><text x="475" y="239">คลิก</text>
-    <text x="640" y="239">Conversion</text><text x="860" y="239">อัตรา</text><text x="1005" y="239">กลุ่มเป้าหมาย</text><text x="1245" y="239">บันทึกการติดตาม</text>
+    <text x="610" y="239">Conversion</text><text x="790" y="239">อัตรา</text><text x="900" y="239">ต้นทุน/ครั้ง</text><text x="1060" y="239">กลุ่มเป้าหมาย</text><text x="1270" y="239">บันทึก</text>
   </g>
   <g font-family="Arial, Tahoma, sans-serif" font-size="18" fill="#1f2937">
     <rect x="94" y="262" width="1412" height="76" fill="#ffffff" stroke="#e2e8f0"/>
-    <text x="122" y="309" font-weight="700">A</text><text x="286" y="309">฿82,000</text><text x="475" y="309">9,840</text><text x="640" y="309">312</text><text x="860" y="309">3.2%</text><text x="1005" y="309">กลุ่มลูกค้าใหม่ทั่วไป</text><text x="1245" y="309">ไม่พบข้อสังเกต</text>
+    <text x="122" y="309" font-weight="700">A</text><text x="286" y="309">฿82,000</text><text x="475" y="309">9,840</text><text x="610" y="309">312</text><text x="790" y="309">3.2%</text><text x="900" y="309">฿263</text><text x="1060" y="309">ลูกค้าใหม่ทั่วไป</text><text x="1270" y="309">ไม่พบข้อสังเกต</text>
     <rect x="94" y="338" width="1412" height="76" fill="#f9fbfc" stroke="#e2e8f0"/>
-    <text x="122" y="385" font-weight="700">B</text><text x="286" y="385">฿79,000</text><text x="475" y="385">8,510</text><text x="640" y="385">289</text><text x="860" y="385">3.4%</text><text x="1005" y="385">กลุ่มตามความสนใจ</text><text x="1245" y="385">ไม่พบข้อสังเกต</text>
+    <text x="122" y="385" font-weight="700">B</text><text x="286" y="385">฿79,000</text><text x="475" y="385">8,510</text><text x="610" y="385">289</text><text x="790" y="385">3.4%</text><text x="900" y="385">฿273</text><text x="1060" y="385">กลุ่มตามความสนใจ</text><text x="1270" y="385">ไม่พบข้อสังเกต</text>
     <rect x="94" y="414" width="1412" height="76" fill="#ffffff" stroke="#e2e8f0"/>
-    <text x="122" y="461" font-weight="700">C</text><text x="286" y="461">฿9,000</text><text x="475" y="461">93</text><text x="640" y="461">8</text><text x="860" y="461">8.6%</text><text x="1005" y="461">กลุ่มที่เคยเข้าชมร้าน</text><text x="1245" y="451">โค้ดส่วนลดปรากฏบน</text><text x="1245" y="475">เว็บรวมคูปองสาธารณะ</text>
+    <text x="122" y="461" font-weight="700">C</text><text x="286" y="461">฿9,000</text><text x="475" y="461">93</text><text x="610" y="461">8</text><text x="790" y="461">8.6%</text><text x="900" y="461">฿1,125</text><text x="1060" y="461">ผู้เคยเข้าชมร้าน</text><text x="1270" y="451">พบโค้ดบนเว็บ</text><text x="1270" y="475">รวมคูปองสาธารณะ</text>
   </g>
 
   <rect x="94" y="548" width="690" height="176" rx="7" fill="#f7fafc" stroke="#cbd5df"/>
@@ -32,7 +32,7 @@
   <rect x="816" y="548" width="690" height="176" rx="7" fill="#f7fafc" stroke="#cbd5df"/>
   <text x="846" y="590" font-family="Arial, Tahoma, sans-serif" font-size="18" font-weight="700" fill="#1f2937">คำแนะนำจาก AI</text>
   <text x="846" y="633" font-family="Arial, Tahoma, sans-serif" font-size="23" font-weight="700" fill="#173f5f">เพิ่มงบโฆษณาชุด C อีก 60%</text>
-  <text x="846" y="672" font-family="Arial, Tahoma, sans-serif" font-size="17" fill="#344054">เหตุผล: มี Conversion rate สูงที่สุดในแคมเปญ</text>
+  <text x="846" y="672" font-family="Arial, Tahoma, sans-serif" font-size="17" fill="#344054">กฎการตัดสินใจ: เลือก Conversion rate ที่สูงที่สุด</text>
   <text x="846" y="702" font-family="Arial, Tahoma, sans-serif" font-size="15" fill="#667085">สร้างโดยอัตโนมัติ · ยังไม่มีการอนุมัติจากนักวิเคราะห์</text>
 
   <rect x="94" y="772" width="1412" height="116" rx="7" fill="#fffaf0" stroke="#e6c97a"/>

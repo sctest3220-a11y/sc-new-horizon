@@ -2,7 +2,7 @@
 
 ## Bilingual Marketing Question and Artifact Candidate
 
-Added comparison candidate `2026-09-23.2` for live question `FUNC-MKT-D3-001` without replacing the scored item. The candidate uses a shorter scenario, concrete actions, complete Thai translation, and new question-specific English and Thai campaign dashboards. The dashboards use Thai baht, preserve exact evidence, remain readable when fitted to the window, and remove the old answer-revealing “Suspicious point” and “Better question” panels.
+Added comparison candidate `2026-09-23.2` for live question `FUNC-MKT-D3-001` without replacing the scored item. The candidate now tests whether a user can identify and repair an incomplete AI decision rule rather than merely exercising marketing judgment. Its English and Thai dashboards show conversion rate, cost per conversion, sample size, tracking anomalies, the AI rule, and missing controlled-test evidence. They use Thai baht, remain readable when fitted to the window, and remove the old answer-revealing “Suspicious point” and “Better question” panels.
 
 ## D2 Prompt Design Thai Translation Repair
 
