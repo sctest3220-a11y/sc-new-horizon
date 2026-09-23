@@ -1,9 +1,9 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `1.7`
-Last updated: 22 September 2026
-Human approval recorded: 22 September 2026
+Current rules version: `1.8`
+Last updated: 23 September 2026
+Human approval recorded: 23 September 2026
 
 ## Purpose
 
@@ -25,7 +25,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 9. Make every answer choice plausible and comparable in length, specificity, and grammatical structure.
 10. Avoid clues created by one answer being more detailed, more cautious, or using exact words from the question.
 11. Explain why the correct answer fits the evidence and, where useful, why the tempting alternatives do not.
-12. Use an artifact only when the user must inspect it to answer. The artifact must be realistic, readable, and directly relevant. Embed it inside the scenario after the relevant context and immediately before the question it supports; do not present it as a detached section above the task.
+12. Use an artifact only when the user must inspect it to answer. Follow the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Embed it inside the scenario after the relevant context and immediately before the question it supports; do not present it as a detached section above the task.
 13. Translate meaning and context, not English sentence structure. Check the scenario, prompt, choices, feedback, and explanation for complete Thai coverage.
 14. Prefer short sentences and ordinary words, but do not remove information needed to understand the situation or consequence.
 15. Connect audience details to a concrete requirement or risk. Remove persona facts that do not affect the decision.
@@ -41,6 +41,9 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 25. When a technical term is useful, describe the decision in plain language first and explain the term in answer feedback rather than making vocabulary recognition the hidden task.
 26. Generate a question-specific artifact when users must inspect evidence and an existing shared artifact cannot represent the scenario realistically. Do not reuse an artifact merely because its general topic is similar.
 27. For written responses, state the dimensions the user must address, such as evidence to verify, action to take, and communication to provide. Do not reveal the expected conclusion.
+28. For IT and developer roles, prefer a short operational scenario followed by scannable evidence such as logs, traces, permissions, configuration, code, or test results.
+29. Put detailed technical facts in the embedded artifact instead of repeating them in prose. Preserve every decision-relevant fact while reducing narrative reading load.
+30. For multi-select questions, state the exact number of choices required and avoid answer patterns where nearly every option is correct except one obviously unsafe choice.
 
 ## Thai cultural-context standard
 
@@ -97,6 +100,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.8 - 23 September 2026
+
+- Added the concise IT/developer question pattern: brief operational context, scannable embedded evidence, then one direct decision.
+- Required exact selection counts and more balanced multi-select answer sets.
+- Moved detailed artifact requirements into the canonical Artifact Design and QA Standard.
 
 ### Version 1.7 - 23 September 2026
 

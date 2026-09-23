@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Canonical Artifact Standard and Rewrite Rules 1.8
+
+Added `docs/ARTIFACT_DESIGN_AND_QA_STANDARD.md` as the canonical standard for artifact necessity, embedded placement, evidence alignment, realism, neutrality, readability, localization, accessibility, telemetry review, versioning, and human approval. Question rewrite rules now reference this standard instead of duplicating partial requirements.
+
+Question rewrite rules are now version 1.8. IT/developer items should use a brief operational scenario, scannable embedded evidence such as logs or traces, and one direct decision. Detailed technical facts belong in the artifact, multi-select prompts must state the exact selection count, and answer sets should avoid the obvious pattern where every option except one is correct.
+
 ## Question-Level Language Switch and Assessment Type Scale
 
 Each assessment question now has its own EN/TH switch beside progress, independent of the page-level language setting. The local choice applies only to the current question and the next question returns to the page preference. Thai is disabled when an approved or pilot-enabled translation is unavailable. Scenario, prompt, artifact metadata, answer choices, and rubrics remain tied to the same language-independent question and scoring ids.

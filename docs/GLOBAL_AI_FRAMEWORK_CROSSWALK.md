@@ -136,7 +136,7 @@ Timing, hesitation, artifact opens, zoom behavior, revisions, item `a/b/c`, info
 
 ## Artifact And Lab Quality Standard
 
-Artifacts should appear only when they help users answer the question. A release-ready artifact must be relevant to the prompt, necessary or clearly useful for the answer key, legible at default and expanded sizes, realistic for the user role/industry, internally consistent, and free of decorative mockup elements that distract from evidence review.
+Artifacts should appear only when they help users answer the question. A release-ready artifact must be relevant to the prompt, necessary or clearly useful for the answer key, legible at default and expanded sizes, realistic for the user role/industry, internally consistent, and free of decorative mockup elements that distract from evidence review. The complete release gate is maintained in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md).
 
 If an item can be answered from the prompt and options alone, hide the artifact or rewrite the item so the artifact contains meaningful evidence. If an artifact contains text, workflows, tables, emails, screenshots, invoices, or dashboards, the expanded view must fit the app window and be readable without forcing users to decode tiny labels.
 

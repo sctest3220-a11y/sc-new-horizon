@@ -58,7 +58,7 @@ Drafts questions, answer keys, rubrics, partial-credit rules, difficulty estimat
 
 ### Stimulus Builder Agent
 
-Creates or refreshes realistic artifacts after telemetry, feedback, or blueprint evidence identifies a need. It produces artifact briefs, candidate asset requirements, realism checks, legibility checks, accessibility notes, and answer-key evidence mapping. Human review confirms relevance, legibility, accessibility, and answerability before publishing or replacing official artifact paths.
+Creates or refreshes realistic artifacts after telemetry, feedback, or blueprint evidence identifies a need. It produces artifact briefs, candidate asset requirements, realism checks, legibility checks, accessibility notes, and answer-key evidence mapping under the [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Human review confirms relevance, legibility, accessibility, and answerability before publishing or replacing official artifact paths.
 
 ### Feedback Analysis Agent
 
