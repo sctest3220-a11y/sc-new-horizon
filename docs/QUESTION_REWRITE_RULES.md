@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `2.0`
+Current rules version: `2.1`
 Last updated: 23 September 2026
 Human approval recorded: 23 September 2026
 
@@ -47,12 +47,32 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 31. Never publish or present a partially translated question as Thai. The scenario, prompt, every choice, explanation, feedback, and artifact text must pass a completeness scan together. Preserve only approved technical terms such as AI, LLM, RAG, CRM, JSON, API, Workflow, and Prompt; mixed fragments or corrupted substitutions fail the item and require review.
 32. Apply the **AI necessity test**: remove AI from the scenario and ask whether substantially the same reasoning still solves the item. If it does, the question primarily tests the professional domain rather than AI competency and must be rewritten or remapped.
 33. Make the AI-specific construct observable. State the relevant AI behavior, decision rule, evidence boundary, workflow control, confidence limitation, permission, or human-review requirement that the user must evaluate or improve.
-34. For single-best-answer items, define one decision and one evidence boundary. Choices must be mutually exclusive recommendations at the same level of action. If two choices remain defensible under reasonable unstated circumstances, narrow the scenario or use a rubric-based multi-part format.
-35. Do not invent partial-credit values for ordinary distractors. Award partial credit only for predefined evidence or reasoning components with an explicit rubric. Otherwise use single-best-answer scoring and analyze distractors diagnostically.
+34. Require mutually exclusive choices only when the item is intentionally **single-best-answer**. Define one decision and one evidence boundary, and keep choices at the same level of action. If several actions can reasonably coexist, use multi-select, ranking, multi-part, or written response instead of forcing artificial exclusivity.
+35. Partial credit is appropriate when it serves a measurement purpose, especially in proficient and advanced items. Use it to distinguish incomplete from complete evidence, reward correct reasoning steps, measure prioritization, or separate a sound diagnosis from a sound action. Do not use partial credit merely because a distractor sounds plausible.
 36. Independently recompute every derived value, ratio, percentage, total, rate, and comparison used by the scenario, artifact, options, key, or explanation. A numerically correct artifact can still be invalid if the selected metric does not support the stated decision.
 37. Check operational feasibility. A proposed action must account for the time, traffic, budget, permission, data, and workflow needed to perform it. Do not recommend gathering a larger sample while also prohibiting the resources required to gather it.
 38. Distinguish **limited testing** from **wider deployment or scaling**. When more evidence is needed, define a bounded test, cap, duration, stopping rule, or approval gate rather than describing uncertainty resolution as consequence-free.
 39. Stress-test the key by writing the strongest reasonable argument for every option. Revise the item when a distractor can satisfy the prompt without contradicting explicit evidence or constraints.
+
+## Partial-credit standard
+
+Use partial credit when the item contains observable components that can be scored independently:
+
+- **Multi-select:** assign credit to each required correct selection and apply a defined penalty or cap for unsafe or contradictory selections.
+- **Multi-part:** assign declared weights to diagnosis, evidence, action, explanation, or communication components.
+- **Ranking:** award credit for correctly placing critical first/last actions or for valid pairwise ordering, not for vague closeness.
+- **Written response:** use an analytic rubric with named criteria, evidence requirements, point ranges, and examples of full, partial, and absent evidence.
+- **Progressive options:** options may represent ordered proficiency levels only when each level is intentionally authored, the rubric explains the qualitative difference, and pilot evidence supports the ordering.
+
+Every partial-credit rubric must state:
+
+1. The competency evidence each point component represents.
+2. Why partial performance deserves credit.
+3. The maximum points for each component and a total of 100 raw item points.
+4. How contradictions, unsafe actions, irrelevant additions, and blank responses are handled.
+5. What feedback the user receives about earned and missing evidence.
+
+Do not assign values such as `45` or `20` to ordinary wrong choices after the question has been written. If option-level partial credit is intended, author the options as explicit proficiency levels before pilot use and validate their ordering with reviewers and response data.
 
 ## Thai cultural-context standard
 
@@ -109,6 +129,13 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 2.1 - 23 September 2026
+
+- Clarified that mutually exclusive choices are required for single-best-answer items, not every assessment format.
+- Preserved partial credit for difficult questions when it measures explicit competency evidence, reasoning stages, prioritization, or completeness.
+- Added format-specific partial-credit guidance for multi-select, multi-part, ranking, written-response, and intentionally progressive options.
+- Required transparent criteria, weights, contradiction handling, and user feedback for every partial-credit rubric.
 
 ### Version 2.0 - 23 September 2026
 

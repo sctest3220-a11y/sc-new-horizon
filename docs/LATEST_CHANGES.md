@@ -1,5 +1,9 @@
 # Latest Changes
 
+## Purposeful Partial-Credit Standard
+
+Question Rewrite Rules 2.1 clarifies that mutually exclusive answers apply to single-best-answer items, while complex questions may use multi-select, ranking, multi-part, written-response, or intentionally progressive options. Partial credit remains encouraged for proficient and advanced evidence when it measures explicit reasoning components, completeness, prioritization, diagnosis, or action quality. Every rubric must define the purpose, criteria, weights, contradiction handling, blank handling, and user-facing explanation; arbitrary points assigned to merely plausible distractors remain prohibited.
+
 ## AI Necessity and Evidence-Consistency Rules
 
 Question Rewrite Rules 2.0 now requires an AI necessity test, observable AI-system behavior or controls, mutually exclusive single-best-answer choices, rubric-based rather than improvised partial credit, independent numerical verification, operationally feasible actions, and a clear distinction between bounded testing and wider scaling. Artifact Standard 1.1 applies the same controls to evidence design, including decision-relevant denominators and derived metrics.
