@@ -1,5 +1,11 @@
 # Latest Changes
 
+## D2 Prompt Design Thai Translation Repair
+
+Repaired the shared Thai translation patterns used by all eight core/general applied Prompt design drafts. Scenarios, question prompts, every answer choice, and explanations now translate completely while retaining only intentional technical terms such as `AI` and `Prompt`. The translation standard now explicitly rejects partially translated or corrupted Thai items as incomplete rather than treating individual translated fragments as sufficient.
+
+The full inventory QA scan still identifies incomplete machine-assisted Thai text in specialized draft families. Those drafts remain review-only and are not production-ready Thai content until they pass whole-item localization QA and human review.
+
 ## Question Inventory Review Filters
 
 Question Inventory now provides independent filters for number of saved reviews, latest 1–5 star question rating, and latest decision status. Reviewers can combine filters, such as `3 or more reviews` + `1–2 stars` + `Revise`, and the visible count updates immediately when feedback is saved. The MVP applies these filters to questions loaded on the current page because review history is stored in the local browser; production should move review summaries to the database for inventory-wide server filtering.

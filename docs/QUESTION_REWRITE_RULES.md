@@ -1,7 +1,7 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `1.8`
+Current rules version: `1.9`
 Last updated: 23 September 2026
 Human approval recorded: 23 September 2026
 
@@ -44,6 +44,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 28. For IT and developer roles, prefer a short operational scenario followed by scannable evidence such as logs, traces, permissions, configuration, code, or test results.
 29. Put detailed technical facts in the embedded artifact instead of repeating them in prose. Preserve every decision-relevant fact while reducing narrative reading load.
 30. For multi-select questions, state the exact number of choices required and avoid answer patterns where nearly every option is correct except one obviously unsafe choice.
+31. Never publish or present a partially translated question as Thai. The scenario, prompt, every choice, explanation, feedback, and artifact text must pass a completeness scan together. Preserve only approved technical terms such as AI, LLM, RAG, CRM, JSON, API, Workflow, and Prompt; mixed fragments or corrupted substitutions fail the item and require review.
 
 ## Thai cultural-context standard
 
@@ -100,6 +101,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Version 1.9 - 23 September 2026
+
+- Added a fail-closed Thai completeness rule after mixed English/Thai and corrupted substitutions were found in generated Prompt design items.
+- Required completeness QA across the whole item rather than treating individually translated fields as sufficient.
+- Repaired the shared Thai wording for all eight core/general D2 Prompt design applied drafts, including scenarios, prompts, choices, and explanations.
 
 ### Version 1.8 - 23 September 2026
 
