@@ -1,5 +1,9 @@
 # Latest Changes
 
+## AI Necessity and Evidence-Consistency Rules
+
+Question Rewrite Rules 2.0 now requires an AI necessity test, observable AI-system behavior or controls, mutually exclusive single-best-answer choices, rubric-based rather than improvised partial credit, independent numerical verification, operationally feasible actions, and a clear distinction between bounded testing and wider scaling. Artifact Standard 1.1 applies the same controls to evidence design, including decision-relevant denominators and derived metrics.
+
 ## Bilingual Marketing Question and Artifact Candidate
 
 Added comparison candidate `2026-09-23.2` for live question `FUNC-MKT-D3-001` without replacing the scored item. The candidate now tests whether a user can identify and repair an incomplete AI decision rule rather than merely exercising marketing judgment. Its English and Thai dashboards show conversion rate, cost per conversion, sample size, tracking anomalies, the AI rule, and missing controlled-test evidence. They use Thai baht, remain readable when fitted to the window, and remove the old answer-revealing “Suspicious point” and “Better question” panels.

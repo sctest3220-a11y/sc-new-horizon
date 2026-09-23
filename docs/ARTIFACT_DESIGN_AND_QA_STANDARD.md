@@ -1,7 +1,7 @@
 # Artifact Design and QA Standard
 
 Status: Approved living standard
-Current version: `1.0`
+Current version: `1.1`
 Last updated: 23 September 2026
 
 ## Purpose
@@ -49,6 +49,8 @@ Every text-heavy artifact must support:
 4. Generate a question-specific artifact when no existing asset accurately represents the required evidence.
 5. Do not make users inspect irrelevant detail or search for evidence that does not affect the answer.
 6. Keep facts internally consistent across the scenario, artifact, options, feedback, rubric, and explanation.
+7. When the item assesses AI competency, show the AI-specific evidence required by the decision, such as the model or workflow output, decision rule, omitted inputs, confidence, retrieval boundary, approval state, or tool action. A professional dashboard with an AI label is not sufficient by itself.
+8. Include every metric needed to evaluate the claim, including denominators and decision-relevant derived measures. Do not emphasize a headline rate while silently omitting cost, volume, baseline, uncertainty, or comparison evidence needed to interpret it.
 
 ## Realism
 
@@ -66,6 +68,8 @@ For IT and developer questions, prefer concise operational context plus scannabl
 4. Authentic alerts may appear when detecting or interpreting that alert is part of the competency.
 5. Realistic noise may appear only when it does not make the item ambiguous or add unrelated cultural knowledge.
 6. An artifact must not change the intended competency or make one language version easier.
+7. Independently calculate all displayed totals, percentages, rates, ratios, costs, and differences. Record the calculation check during review.
+8. Check that the artifact's evidence supports the scope of the proposed action. Evidence suitable for a bounded pilot may not justify automatic execution or full-scale deployment.
 
 ## Readability
 
@@ -85,6 +89,8 @@ For IT and developer questions, prefer concise operational context plus scannabl
 4. Keep answer choices plausible and grounded in the same evidence.
 5. Explain the correct answer by referring to specific artifact evidence.
 6. For written responses, identify the dimensions to address, such as evidence, action, and communication, without revealing the conclusion.
+7. Run the AI necessity test with the artifact hidden and with references to AI removed. If the remaining task is only ordinary domain analysis, add meaningful AI-system evidence or remap the competency.
+8. Ensure proposed actions are feasible given the displayed budget, time, traffic, permissions, and data. Clearly distinguish collecting more evidence through a capped test from scaling based on established performance.
 
 ## Thai localization
 
@@ -136,6 +142,10 @@ Store an artifact version with every answer record. A material visual or evident
 - [ ] The artifact is necessary or clearly useful.
 - [ ] The question requires or explicitly benefits from its evidence.
 - [ ] Scenario, artifact, options, answer key, rubric, and explanation agree.
+- [ ] The artifact exposes meaningful AI behavior or control evidence when the item claims to assess AI competency.
+- [ ] All calculations and derived metrics have been independently recomputed.
+- [ ] The evidence supports the scale and consequence of the keyed action.
+- [ ] Test, pilot, and scale-up actions are clearly distinguished.
 - [ ] The artifact resembles a credible real-world document or interface.
 - [ ] No annotation or styling reveals the answer.
 - [ ] Inline text is readable or expansion is immediately obvious.
@@ -144,4 +154,3 @@ Store an artifact version with every answer record. A material visual or evident
 - [ ] Thai and English evidence are equivalent when localization is required.
 - [ ] Privacy and sensitive-data checks pass.
 - [ ] A human reviewer has recorded the release decision.
-
