@@ -986,16 +986,6 @@ export default async function QuestionInventoryPage({
       </header>
 
       <div className="inventory-app-layout">
-        <aside className="inventory-side-nav" aria-label="Inventory workspace">
-          <span>Review workspace</span>
-          <a href="#inventory-overview" className="is-active">Overview</a>
-          <a href="#inventory-filters">Filters</a>
-          <a href="#inventory-questions">Questions</a>
-          <a href="#inventory-review-standard">Review standard</a>
-          <Link href="/?view=admin">Admin dashboard</Link>
-          <Link href="/?view=assessment">Open assessment</Link>
-        </aside>
-
         <div className="inventory-workspace">
       <section className="inventory-hero" id="inventory-overview">
         <div>
@@ -1016,26 +1006,31 @@ export default async function QuestionInventoryPage({
         </div>
       </section>
 
-      <section className="inventory-panel rewrite-warning-panel" id="inventory-review-standard">
-        <div>
-          <span>Live readiness warning</span>
-          <strong>These generated drafts are not user-ready yet.</strong>
-          <p>
-            This page shows the current coverage inventory. Many items still need a real human-facing rewrite
-            before they should appear in the live assessment.
-          </p>
+      <details className="inventory-panel inventory-disclosure rewrite-warning-panel" id="inventory-review-standard">
+        <summary>
+          <span>Review guidance</span>
+          <strong>Draft readiness and rewrite standard</strong>
+          <small>Open guidance</small>
+        </summary>
+        <div className="inventory-disclosure-content">
+          <div>
+            <span>Live readiness warning</span>
+            <strong>These generated drafts are not user-ready yet.</strong>
+            <p>
+              This page shows the current coverage inventory. Many items still need a real human-facing rewrite
+              before they should appear in the live assessment.
+            </p>
+          </div>
+          <div>
+            <span>Rewrite standard</span>
+            <p>
+              Use plain scenarios, concrete answer choices, realistic artifacts, and varied formats such as
+              multi-part, select-all, matching, ranking, and artifact review.
+            </p>
+            <small>See: exports/review-inventory/user-facing-rewrite-samples.md</small>
+          </div>
         </div>
-        <div>
-          <span>Rewrite standard</span>
-          <p>
-            Use plain scenarios, concrete answer choices, realistic artifacts, and varied formats such as
-            multi-part, select-all, matching, ranking, and artifact review.
-          </p>
-          <small>
-            See: exports/review-inventory/user-facing-rewrite-samples.md
-          </small>
-        </div>
-      </section>
+      </details>
 
       <section className="inventory-kpis" aria-label="Inventory totals">
         <div><span>Total questions</span><strong>{allQuestions.length.toLocaleString()}</strong></div>
@@ -1046,26 +1041,33 @@ export default async function QuestionInventoryPage({
       </section>
 
       {artifactCounts ? (
-        <section className="inventory-panel artifact-summary-panel">
-          <div>
-            <span>Requires artifact</span>
-            <strong>{(artifactCounts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
+        <details className="inventory-panel inventory-disclosure artifact-summary-panel">
+          <summary>
+            <span>Artifact coverage</span>
+            <strong>{artifactCounts.artifactCandidates.toLocaleString()} candidate questions</strong>
+            <small>View breakdown</small>
+          </summary>
+          <div className="inventory-disclosure-content">
+            <div>
+              <span>Requires artifact</span>
+              <strong>{(artifactCounts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
+            </div>
+            <div>
+              <span>Artifact helpful</span>
+              <strong>{(artifactCounts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
+            </div>
+            <div>
+              <span>Top artifact types</span>
+              <p>
+                {Object.entries(artifactCounts.byType)
+                  .sort((left, right) => right[1] - left[1])
+                  .slice(0, 4)
+                  .map(([label, count]) => `${label}: ${count}`)
+                  .join(' · ')}
+              </p>
+            </div>
           </div>
-          <div>
-            <span>Artifact helpful</span>
-            <strong>{(artifactCounts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
-          </div>
-          <div>
-            <span>Top artifact types</span>
-            <p>
-              {Object.entries(artifactCounts.byType)
-                .sort((left, right) => right[1] - left[1])
-                .slice(0, 4)
-                .map(([label, count]) => `${label}: ${count}`)
-                .join(' · ')}
-            </p>
-          </div>
-        </section>
+        </details>
       ) : null}
 
       <section className="inventory-panel" id="inventory-filters">
@@ -1146,7 +1148,10 @@ export default async function QuestionInventoryPage({
             <span>Search</span>
             <input name="q" defaultValue={queryInput} placeholder="Prompt, competency, ID, or scope" />
           </label>
-          <button type="submit">Apply filters</button>
+          <div className="inventory-filter-actions">
+            <button type="submit">Apply filters</button>
+            <a href={language === 'th' ? '/admin/question-inventory?lang=th' : '/admin/question-inventory'}>Reset</a>
+          </div>
         </form>
       </section>
 

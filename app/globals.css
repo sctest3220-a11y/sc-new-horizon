@@ -6794,45 +6794,8 @@ h3 {
 }
 
 .inventory-app-layout {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
   margin: 0 auto;
   max-width: 1540px;
-}
-
-.inventory-side-nav {
-  align-self: start;
-  background: #edf2f6;
-  border-right: 1px solid #d3d9e0;
-  display: grid;
-  gap: 4px;
-  min-height: calc(100vh - 66px);
-  padding: 24px 14px;
-  position: sticky;
-  top: 66px;
-}
-
-.inventory-side-nav > span {
-  color: #667484;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  margin: 0 10px 8px;
-  text-transform: uppercase;
-}
-
-.inventory-side-nav a {
-  border-radius: 6px;
-  color: #33465a;
-  font-size: 14px;
-  font-weight: 650;
-  padding: 10px;
-}
-
-.inventory-side-nav a:hover,
-.inventory-side-nav a.is-active {
-  background: #dfe8f1;
-  color: #173d62;
 }
 
 .inventory-workspace {
@@ -6985,6 +6948,26 @@ h3 {
   background: #25736b;
   color: #ffffff;
   font-weight: 800;
+}
+
+.inventory-filter-actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.inventory-filter-actions button {
+  flex: 1;
+}
+
+.inventory-filter-actions a {
+  border: 1px solid #b9c3ce;
+  border-radius: 6px;
+  color: #33465a;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 13px;
+  text-align: center;
 }
 
 .inventory-grid {
@@ -7145,19 +7128,70 @@ h3 {
 }
 
 .artifact-summary-panel {
-  display: grid;
-  grid-template-columns: 180px 180px minmax(0, 1fr);
-  gap: 14px;
-  padding: 16px;
+  display: block;
 }
 
 .rewrite-warning-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 18px;
-  padding: 18px;
+  display: block;
   border-color: rgba(169, 74, 22, 0.26);
   background: #fffaf0;
+}
+
+.inventory-disclosure > summary {
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1fr) auto auto;
+  list-style: none;
+  padding: 15px 18px;
+}
+
+.inventory-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.inventory-disclosure > summary::after {
+  color: #25736b;
+  content: '+';
+  font-size: 20px;
+  font-weight: 800;
+  grid-column: 4;
+}
+
+.inventory-disclosure[open] > summary::after {
+  content: '\2212';
+}
+
+.inventory-disclosure > summary > span {
+  color: #667484;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.inventory-disclosure > summary > strong {
+  color: #17202a;
+}
+
+.inventory-disclosure > summary > small {
+  color: #667484;
+}
+
+.inventory-disclosure-content {
+  border-top: 1px solid #d3d9e0;
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+}
+
+.rewrite-warning-panel .inventory-disclosure-content {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.artifact-summary-panel .inventory-disclosure-content {
+  grid-template-columns: 180px 180px minmax(0, 1fr);
 }
 
 .rewrite-warning-panel span {
@@ -7614,14 +7648,6 @@ h3 {
     display: none;
   }
 
-  .inventory-app-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .inventory-side-nav {
-    display: none;
-  }
-
   .inventory-workspace {
     padding: 22px 16px 48px;
   }
@@ -7635,6 +7661,18 @@ h3 {
   .inventory-question-card dl,
   .inventory-question-review-layout {
     grid-template-columns: 1fr;
+  }
+
+  .inventory-disclosure > summary,
+  .rewrite-warning-panel .inventory-disclosure-content,
+  .artifact-summary-panel .inventory-disclosure-content {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-disclosure > summary::after {
+    grid-column: auto;
+    grid-row: 1 / span 2;
+    justify-self: end;
   }
 
   .reviewer-feedback-heading,

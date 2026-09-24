@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Cleaner question inventory controls
+
+- Removed the redundant Question Inventory side navigation so the review workspace can use the full page width.
+- Draft readiness guidance and artifact coverage details are now collapsed by default and remain available on demand.
+- Added a visible Reset action beside Apply filters; it clears the inventory and reviewer filters while preserving the selected review language.
+
 ## Institutional Navy question inventory layout
 
 - Question Inventory now uses the Option B application layout with navy header chrome, a persistent review-workspace sidebar, compact overview hierarchy, and blue-gray operational surfaces.
