@@ -1,5 +1,12 @@
 # Latest Changes
 
+## Translation provider strategy
+
+- Added a source-backed strategy for assessment-bank and AI Watch translation using Google Cloud Translation, Qwen-MT, and ThaiLLM.
+- Assessment translations remain versioned drafts until human approval; dynamic newsfeed translation defaults to cached, source-grounded summaries rather than translating full publisher content.
+- The recommended pilot compares Qwen-MT Plus and Google Translation LLM for assessment content, uses Qwen-MT Flash as the likely routine newsfeed route, and evaluates ThaiLLM as a Thai naturalness and cultural-context QA model.
+- Documented current price assumptions, measured inventory size, cost ranges, cache keys, QA checks, admin controls, telemetry, PDPA/vendor gates, and provider-fallback policy.
+
 ## Cleaner question inventory controls
 
 - Removed the redundant Question Inventory side navigation so the review workspace can use the full page width.

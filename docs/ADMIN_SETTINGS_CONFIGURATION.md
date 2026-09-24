@@ -310,6 +310,8 @@ Scored questions, answer keys, rubrics, scoring parameters, artifacts, profiles,
 
 Admins must be able to change providers and models without editing application code.
 
+Translation is a separately configurable workload. Use the routing, glossary, cache, human-review, cost, telemetry, and provider-fallback requirements in [Translation Provider Strategy](TRANSLATION_PROVIDER_STRATEGY.md); do not treat browser page translation as a production provider.
+
 Provider configuration should support:
 
 - OpenAI, Anthropic, Google, Azure OpenAI, AWS Bedrock, local models, and custom OpenAI-compatible endpoints

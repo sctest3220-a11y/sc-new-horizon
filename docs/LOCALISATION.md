@@ -2,6 +2,8 @@
 
 Artifact translation, equivalence, readability, and release requirements are defined in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Question wording and cultural-context rules are defined in [Question Rewrite Rules and Versioning](QUESTION_REWRITE_RULES.md).
 
+Translation-provider selection, Google/Qwen/ThaiLLM responsibilities, newsfeed routing, cost assumptions, caching, telemetry, and production gates are defined in [Translation Provider Strategy](TRANSLATION_PROVIDER_STRATEGY.md).
+
 ## Model
 
 English is the source of truth for every question. Thai lives in two places, both keyed by the question's id (never by matching the English string):
