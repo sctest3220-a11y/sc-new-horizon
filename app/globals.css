@@ -7496,9 +7496,8 @@ h3 {
 
 .reviewer-feedback-heading {
   align-items: start;
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
+  display: grid;
+  gap: 6px;
 }
 
 .reviewer-feedback-heading span {
@@ -7517,23 +7516,23 @@ h3 {
 
 .reviewer-feedback-heading small {
   color: #6a746d;
-  white-space: nowrap;
+  line-height: 1.4;
 }
 
 .reviewer-feedback-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .reviewer-rating-panel {
-  align-items: center;
+  align-items: start;
   background: #f0f7f4;
   border: 1px solid rgba(36, 107, 83, 0.18);
   border-radius: 8px;
   display: grid;
   gap: 8px;
-  grid-template-columns: auto auto minmax(0, 1fr);
+  grid-template-columns: 1fr;
   padding: 12px;
 }
 
@@ -7568,6 +7567,7 @@ h3 {
 
 .reviewer-rating-panel small {
   color: #526057;
+  line-height: 1.4;
 }
 
 .reviewer-feedback label {
@@ -7584,7 +7584,9 @@ h3 {
   border-radius: 6px;
   color: #17211c;
   font: inherit;
+  min-width: 0;
   padding: 10px 12px;
+  width: 100%;
 }
 
 .reviewer-feedback textarea {
