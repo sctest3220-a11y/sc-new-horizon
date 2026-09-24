@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import Image from 'next/image';
 import { questionTranslationsTh } from './questionTranslations.th';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
@@ -25,35 +24,17 @@ type NewsFeedItem = {
   mediaType: Exclude<NewsMediaFilter, 'all'>;
   duration?: string;
   embedVideo?: boolean;
+  articleImage?: {
+    url: string;
+    alt: string;
+    credit: string;
+  };
   publisherType?: 'official' | 'standards' | 'research' | 'news';
 };
 
 const youtubeEmbedUrl = (url: string) => {
   const match = url.match(/[?&]v=([^&]+)/);
   return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : null;
-};
-
-const newsArtwork = (item: NewsFeedItem) => {
-  if (item.mediaType !== 'article') return null;
-  if (/robot|vehicle|autonomous|mobility/i.test(`${item.category} ${item.title}`)) {
-    return {
-      src: '/ai-watch/physical-ai-editorial.jpg',
-      alt: 'Autonomous mobility and humanoid robotics being evaluated in realistic test environments.',
-    };
-  }
-  if (/agent|shopping|subscription|workplace|leadership/i.test(`${item.category} ${item.title}`) && item.domain !== 'D4') {
-    return {
-      src: '/ai-watch/everyday-agent-editorial.jpg',
-      alt: 'A professional in Bangkok reviewing actions suggested by a personal AI assistant.',
-    };
-  }
-  if (/safety|security|jailbreak|benchmark|evaluation|provenance|risk|index/i.test(`${item.category} ${item.title}`)) {
-    return {
-      src: '/ai-watch/ai-evaluation-editorial.jpg',
-      alt: 'A technical team reviewing AI safety evidence and approval checkpoints.',
-    };
-  }
-  return null;
 };
 
 const newsReviewLens: Record<DomainId, string> = {
@@ -1700,6 +1681,11 @@ const trendFeed: NewsFeedItem[] = [
     domain: 'D4',
     signal: 'Jailbreaks matter more when an AI can use tools. Users should recognize suspicious instructions, limit permissions, and require confirmation before sensitive actions.',
     mediaType: 'article',
+    articleImage: {
+      url: 'https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Lock&backgroundColor=cactus',
+      alt: 'Hand with a padlock and key on a detailed security graphic.',
+      credit: 'Article image · Anthropic',
+    },
     publisherType: 'official',
   },
   {
@@ -1746,6 +1732,11 @@ const trendFeed: NewsFeedItem[] = [
     domain: 'D6',
     signal: 'Human agency, workflow redesign, manager support, and learning systems matter as much as tool access.',
     mediaType: 'article',
+    articleImage: {
+      url: 'https://assets-c4akfrf5b4d3f4b7.z01.azurefd.net/assets/2026/05/2026_WorkTrendIndex_Hero_-1920x1080_69f91cd0ef419.png',
+      alt: 'Microsoft Work Trend Index hero artwork about agents and human agency.',
+      credit: 'Article image · Microsoft WorkLab',
+    },
     publisherType: 'official',
   },
   {
@@ -1790,6 +1781,11 @@ const trendFeed: NewsFeedItem[] = [
     domain: 'D2',
     signal: 'Multimodal AI, task orchestration, and real-world handoffs point to new assessment scenarios beyond chat.',
     mediaType: 'article',
+    articleImage: {
+      url: 'https://lh3.googleusercontent.com/VZ5KwQMxv9xBcQnYipsQB2EUj3oX1yvFYLktIamY8V2a76Y6ctEEuaLF59TuPdnaVn6OAMINDilqnuhju1O-AXc7QlOVmcogjskrWxS7xVQ1mc5S7g=w1200-h630-n-nu-rw',
+      alt: 'Google DeepMind article image showing Gemini Robotics whole-body intelligence.',
+      credit: 'Article image · Google DeepMind',
+    },
     publisherType: 'official',
   },
   {
@@ -1845,6 +1841,11 @@ const trendFeed: NewsFeedItem[] = [
     domain: 'D3',
     signal: 'Autonomous vehicle claims are good assessment material: users can compare performance data, benchmark methodology, geography, risk categories, and deployment limits.',
     mediaType: 'article',
+    articleImage: {
+      url: 'https://lh3.googleusercontent.com/bnfvXFtZDG0u6Pen-d7RGFIOWMXGHG7xyeqyzvcN9NiulLwWN6HZfN5lwc2LxgLzGBweXalEZ0dB8dgQlCvPwQV5rWss9tm0Ui4',
+      alt: 'Waymo Safety Impact article image.',
+      credit: 'Article image · Waymo',
+    },
     publisherType: 'official',
   },
   {
@@ -15640,7 +15641,6 @@ export default function Home() {
               </div>
               {trendFeed.filter((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter).map((item) => {
                 const videoUrl = item.embedVideo ? youtubeEmbedUrl(item.url) : null;
-                const artwork = newsArtwork(item);
                 return (
                   <article className={`news-card ${item.mediaType === 'article' ? '' : 'news-card-video'}`} key={item.title}>
                     {videoUrl ? (
@@ -15654,10 +15654,12 @@ export default function Home() {
                           allowFullScreen
                         />
                       </div>
-                    ) : artwork ? (
+                    ) : item.articleImage ? (
                       <div className="news-card-media">
-                        <Image src={artwork.src} alt={artwork.alt} width={1672} height={941} sizes="(max-width: 900px) 100vw, 70vw" />
-                        <small>New Horizon editorial visual</small>
+                        {/* Publisher preview image supplied in the article's Open Graph metadata. */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={item.articleImage.url} alt={item.articleImage.alt} loading="lazy" referrerPolicy="no-referrer" />
+                        <small>{item.articleImage.credit}</small>
                       </div>
                     ) : item.mediaType !== 'article' ? (
                       <div className="news-card-media news-video-fallback">

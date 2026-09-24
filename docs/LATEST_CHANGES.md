@@ -10,9 +10,9 @@
 
 - AI Watch now supports a mixed feed of articles, videos, and short videos with media-type filtering and original-publisher attribution.
 - Approved YouTube items play inside the feed through YouTube's privacy-enhanced embed player, while an explicit link still opens the original publisher page.
-- Article cards may include purpose-made New Horizon editorial images. Each brief now separates why the signal matters from what the reader should notice when evaluating it.
+- Article cards prefer the original publisher preview image declared in the article's Open Graph metadata, with visible publisher credit and a link to the source. Items without approved, stable image metadata remain text-only rather than receiving a redundant generated substitute.
 - The Newsfeed Agent specification now includes YouTube and publisher-hosted video discovery, format balancing, source metadata, human review, expiry, correction, and takedown handling.
-- Rights controls prohibit copying full articles, transcripts, captions, thumbnails, video, or audio; downloading or rehosting publisher media; altering official players; and publishing unreviewed summaries. Article imagery must be original, licensed, or explicitly approved for embedding.
+- Rights controls prohibit copying full articles, transcripts, captions, video, or audio; downloading or rehosting publisher media; altering official players; and publishing unreviewed summaries. Article images must come from publisher-declared preview metadata or another explicitly approved embedding mechanism and remain attributed to the source.
 - The editorial mix now prioritizes relatable stories about personal agents, jailbreaks, scams, autonomous cars, home/service robots, and physical-AI competitions alongside model and governance updates.
 
 ## Question inventory feedback refresh
