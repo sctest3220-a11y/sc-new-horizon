@@ -50,6 +50,8 @@ Drafts short-lived AI Watch candidates from model releases, governance changes, 
 
 The source mix should include articles, official announcements, research, standards updates, YouTube videos, publisher-hosted video, and useful short-form video. Each candidate records media type (`article`, `video`, or `short`), publisher, canonical URL, publication date, duration when available, language, domain/competency relevance, freshness, and reviewer status. The agent balances formats; it does not fill quotas with weak video.
 
+Editorial mix should make AI understandable in everyday life, not read like a vendor release log. Recurring lanes include personal and workplace agents, scams and jailbreaks, privacy and consumer protection, schools and families, creative tools, autonomous cars and robotaxis, home/service robots, robotics competitions, and surprising physical-AI demonstrations. Every item must answer: what happened, why a normal user should care, what claim or limitation to inspect, and which practical AI skill it reinforces.
+
 Rights and platform rules:
 
 - Prefer first-party publishers, official channels, standards bodies, universities, reputable research organizations, and reviewed news sources.
