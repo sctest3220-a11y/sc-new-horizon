@@ -71,6 +71,8 @@ The target identity and tenant model is defined in [B2C, B2B, and User Administr
 
 The legal go-live gate is defined in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md). Deployment must not enable public multi-user processing until reviewed Thai/English notices and Terms, policy acceptance, cookie blocking/preferences, rights and deletion workflows, retention jobs, DPA/controller mapping, subprocessor and transfer controls, breach response, and legal-document versioning are operational.
 
+Translation workloads must also pass the [Translation and Routing Go-live Checklist](TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md). Production routing runs server-side through a deterministic, versioned policy service with approved providers, fallbacks, cache isolation, budgets, audit reason codes, quality evidence, and human-review gates. Browser page translation and uncontracted research APIs are not production routes.
+
 ## Admin Dashboard
 
 The current admin dashboard reads local MVP logs and includes a preview gate. Production requirements:

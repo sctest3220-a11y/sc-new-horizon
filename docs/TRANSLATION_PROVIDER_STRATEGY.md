@@ -108,6 +108,25 @@ These Qwen figures are planning ranges, not invoices. Record real input/output t
 8. Save source, candidate, provider/model, region, glossary version, prompt/template version, usage, cost, QA results, reviewer, timestamps, and decision.
 9. Publish only the approved version. Preserve rejected and superseded candidates for audit and future comparison.
 
+## Translation router
+
+New Horizon needs a translation router, but the MVP router should be a deterministic, versioned policy service rather than another LLM. A learned or agentic router would add cost, latency, nondeterminism, and a new failure mode before enough routing evidence exists.
+
+The router evaluates explicit inputs:
+
+- workload: assessment, AI Watch, artifact text, interface copy, report, or user-generated content
+- source and target language
+- content sensitivity and publication risk
+- translation status and source-content hash
+- glossary, translation-memory, and template versions
+- provider/model health, latency, quota, region, data-policy eligibility, and budget
+- automated QA confidence and provider disagreement
+- tenant or plan restrictions and human-review requirement
+
+It returns a structured decision: `provider`, `model`, `fallback_order`, `cache_key`, `qa_profile`, `requires_human_review`, `reason_codes`, and `routing_policy_version`. The decision and every fallback must be logged. A provider outage may trigger an approved fallback for newsfeed drafts, but must not silently replace the model used for scored assessment translation or bypass a required reviewer.
+
+At production scale, a bounded classifier may propose domain, sensitivity, or difficulty labels before policy evaluation. It must fail closed, expose confidence, remain independently evaluated, and never have authority to publish content or override legal, budget, regional, or human-review gates.
+
 ## Pilot and selection
 
 Run a blind, stratified 100-item assessment test and a separate 100-story AI Watch test. Include simple and advanced language, all item formats, technical and nontechnical topics, long and short content, numbers, named entities, Thai-localized contexts, and sensitive-news examples.
@@ -139,3 +158,6 @@ Track translation requests, characters, tokens, latency, retries, cache hits, pr
 - Require human approval for scored assessment content and sensitive news.
 - Demonstrate source-target equivalence, stable ids, and deterministic cache/version behavior.
 - Revalidate quality and rates whenever a provider changes its model alias, pricing, region, or terms.
+- Validate deterministic routing, reason codes, fallback behavior, cache isolation, budget enforcement, provider outage handling, and audit replay against a fixed routing test suite.
+
+The detailed release checklist is maintained in [Translation and Routing Go-live Checklist](TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md).

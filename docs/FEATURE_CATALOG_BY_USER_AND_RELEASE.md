@@ -246,6 +246,9 @@ The release stage describes operational readiness, not just whether a screen or 
 | Central review database and multi-reviewer attribution | Content Reviewer | **MVP - Go-live** | Replaces browser-local comments. |
 | Question/rubric/artifact versioning | Assessment Admin | **MVP - Go-live** | Required for historical score explanation. |
 | Publish and rollback workflow | Assessment Admin | **MVP - Go-live** | Draft, review, pilot, approve, publish, monitor. |
+| Translation provider registry and deterministic workload router | Super Admin/Localization Admin | **MVP - Go-live** | Versioned policy, reason codes, approved fallback, budget and human-review gates. |
+| Translation quality comparison and approval queue | Localization/Content Reviewer | **MVP - Go-live** | Blind provider pilot, terminology versions, equivalence QA, and human publication decision. |
+| Learned or agentic translation routing | Super Admin/AI Operations | **Production** | Only after deterministic-router evidence shows a measurable routing gap. |
 | Content conflict and duplicate detection | Content Reviewer | **Production** | Automated assistance with human decision. |
 
 ## Platform Admin: Analytics and Quality

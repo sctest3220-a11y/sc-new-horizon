@@ -6,6 +6,7 @@
 - Assessment translations remain versioned drafts until human approval; dynamic newsfeed translation defaults to cached, source-grounded summaries rather than translating full publisher content.
 - The recommended pilot compares Qwen-MT Plus and Google Translation LLM for assessment content, uses Qwen-MT Flash as the likely routine newsfeed route, and evaluates ThaiLLM as a Thai naturalness and cultural-context QA model.
 - Documented current price assumptions, measured inventory size, cost ranges, cache keys, QA checks, admin controls, telemetry, PDPA/vendor gates, and provider-fallback policy.
+- Added a translation and routing go-live checklist. The MVP uses an auditable deterministic policy router; learned or agentic model selection is deferred until production evidence shows a measurable advantage.
 
 ## Cleaner question inventory controls
 

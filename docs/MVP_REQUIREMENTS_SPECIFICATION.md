@@ -712,6 +712,9 @@ The MVP is ready for proper pilot go-live when:
 - Pilot-review CSV export works.
 - Leaderboards are anonymous and clearly labeled local/demo/pilot.
 - Thai/English toggle works across major surfaces.
+- Translation providers and exact models pass the documented assessment and AI Watch quality pilots before production use.
+- Translation routing is server-side, deterministic, versioned, auditable, budget-aware, and cannot bypass human-review or PDPA/vendor gates.
+- Translation cache keys prevent duplicate billing and isolate source, language, provider/model, glossary, template, and tenant versions.
 - Lint and build pass.
 - GitHub repo documentation is current.
 - Deployment notes include production analytics, auth, privacy, and agent-governance requirements.

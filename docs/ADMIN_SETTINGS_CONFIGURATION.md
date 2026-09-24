@@ -328,6 +328,8 @@ API keys must be encrypted server-side and never returned to the browser, writte
 
 ### Model Routing
 
+For MVP go-live, routing is deterministic and configuration-driven. A policy service evaluates workload, language, sensitivity, provider health, quota, region/data policy, budget, cache/version state, confidence, and human-review requirements, then returns a logged provider/model/fallback decision with reason codes. Do not use an LLM to choose another LLM until measured production evidence demonstrates that it improves routing quality enough to justify added nondeterminism and cost. Translation-specific routing is defined in [Translation Provider Strategy](TRANSLATION_PROVIDER_STRATEGY.md).
+
 Each workload must have an independently configurable primary model and optional approved fallback:
 
 - adaptive assessment support
