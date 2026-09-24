@@ -78,6 +78,14 @@ The labels remain provisional. A long stem, technical terminology, or an executi
 
 ## Review process
 
+### In-app review workspace
+
+The Admin Question Inventory page is designed as a focused review workspace rather than a second admin navigation shell. The redundant side menu has been removed so question content and reviewer feedback can use the available width. Draft-readiness guidance and artifact-coverage summaries are collapsed by default and can be expanded when needed.
+
+Server-backed inventory filters cover source, domain, difficulty, layer, format, role/function, industry, executive profile, and text or question-ID search. A visible **Reset** action clears both the URL-backed inventory filters and the browser-local reviewer filters while preserving the selected page language.
+
+Each desktop question card places the question beside a compact reviewer-feedback panel. The panel provides a 1-5 rating, decision, clarity, artifact, and format checks, reviewer comments, suggested changes, and saved review history. Controls use two aligned columns at the current desktop review width and stack on smaller screens; labels, help text, and dropdowns must remain inside the panel. Saving a comment appends it to history and resets the editable fields so stale comments are not carried into the next review.
+
 1. Filter the workbook by competency, difficulty, layer, and profile. Review a family together before inspecting all contextual variants.
 2. Check that the evidence is sufficient, exactly one option is best, and each distractor is plausible for this scenario. Use the notes column for a proposed correction.
 3. Check that the profile constraint creates a meaningful specialized decision. Reject variants that only change vocabulary or combine unrelated problems.

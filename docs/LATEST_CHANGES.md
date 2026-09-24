@@ -5,6 +5,7 @@
 - Removed the redundant Question Inventory side navigation so the review workspace can use the full page width.
 - Draft readiness guidance and artifact coverage details are now collapsed by default and remain available on demand.
 - Added a visible Reset action beside Apply filters; it clears the inventory and reviewer filters while preserving the selected review language.
+- Tidied each question's reviewer-feedback panel for the narrower desktop column: headings and timestamps stack cleanly, rating guidance sits below the stars, review controls use a stable two-column grid, and fields no longer overflow their panel.
 
 ## Institutional Navy question inventory layout
 
