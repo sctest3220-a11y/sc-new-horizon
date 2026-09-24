@@ -14131,7 +14131,7 @@ export default function Home() {
   const useRelianceStage = false;
 
   return (
-    <main>
+    <main className={step === 'admin' ? 'admin-theme' : undefined}>
       {surveyOpen && (
         <div className="survey-backdrop" role="presentation">
           <section className="profile-survey" role="dialog" aria-modal="true" aria-labelledby="profile-survey-title">
@@ -14215,7 +14215,7 @@ export default function Home() {
           <small>Used to route questions and recommendations in this browser.</small>
         </aside>
       )}
-      <header className="topbar">
+      <header className={step === 'admin' ? 'topbar admin-topbar' : 'topbar'}>
         <button className="brand nav-reset" onClick={() => setStep('home')} aria-label="New Horizon home">
           <span className="brand-mark">NH</span>
           <span>New Horizon</span>

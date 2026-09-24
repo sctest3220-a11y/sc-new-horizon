@@ -1,5 +1,10 @@
 # Latest Changes
 
+## Institutional Navy admin interface
+
+- The Admin page now uses the selected Option B direction: navy application chrome, teal primary actions, blue-gray working surfaces, flatter panels, and compact enterprise typography.
+- The theme is scoped to Admin, so assessment and learner-facing pages keep their existing visual treatment.
+
 ## Mixed-media AI Watch
 
 - AI Watch now supports a simple mixed feed of articles, videos, and short videos with media-type filtering and original-publisher attribution.

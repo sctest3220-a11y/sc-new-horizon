@@ -1495,6 +1495,141 @@ h3 {
   padding: 112px 24px 72px;
 }
 
+/* Institutional Navy: admin-only visual system. */
+.admin-theme {
+  --background: #f4f6f9;
+  --foreground: #17202a;
+  --muted: #667484;
+  --line: #cbd4de;
+  --panel: #ffffff;
+  --panel-soft: #edf2f6;
+  --ink: #16283c;
+  --teal: #25736b;
+  background: #f4f6f9;
+  color: #17202a;
+  font-family: var(--font-geist-sans), "Noto Sans Thai", Arial, Helvetica, sans-serif;
+}
+
+.admin-topbar {
+  background: rgba(22, 40, 60, 0.97);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px rgba(16, 31, 46, 0.16);
+}
+
+.admin-topbar .brand,
+.admin-topbar nav,
+.admin-topbar nav button {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.admin-topbar .brand,
+.admin-topbar nav button:hover {
+  color: #ffffff;
+}
+
+.admin-topbar .brand-mark,
+.admin-topbar .small-button {
+  background: #25736b;
+}
+
+.admin-topbar .language-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.admin-topbar .language-toggle button {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.admin-topbar .language-toggle button.selected {
+  background: #ffffff;
+  color: #16283c;
+}
+
+.admin-theme .admin-shell {
+  max-width: 1360px;
+  padding-top: 104px;
+}
+
+.admin-theme .admin-login,
+.admin-theme .admin-hero,
+.admin-theme .admin-card,
+.admin-theme .admin-kpi-grid > div {
+  background: #ffffff;
+  border-color: #d3d9e0;
+  box-shadow: 0 10px 28px rgba(22, 40, 60, 0.06);
+}
+
+.admin-theme .admin-hero {
+  border-left: 5px solid #25736b;
+}
+
+.admin-theme .admin-login h1,
+.admin-theme .admin-hero h1 {
+  color: #16283c;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+.admin-theme .eyebrow,
+.admin-theme .admin-login-card span,
+.admin-theme .admin-card > span,
+.admin-theme .admin-kpi-grid span,
+.admin-theme .admin-card-heading span {
+  color: #25736b;
+}
+
+.admin-theme .primary,
+.admin-theme .small-button {
+  background: #25736b;
+  color: #ffffff;
+}
+
+.admin-theme .secondary {
+  background: #ffffff;
+  border-color: #b9c6d2;
+  color: #16283c;
+}
+
+.admin-theme .admin-login-card {
+  background: #16283c;
+}
+
+.admin-theme .admin-login-card .primary {
+  background: #2d847b;
+}
+
+.admin-theme .admin-kpi-grid > div {
+  border-top: 3px solid #25736b;
+}
+
+.admin-theme .admin-kpi-grid strong,
+.admin-theme .admin-card h2,
+.admin-theme .admin-card h3,
+.admin-theme .admin-list strong,
+.admin-theme .admin-run-grid strong,
+.admin-theme .admin-domain-bars label {
+  color: #16283c;
+}
+
+.admin-theme .admin-card h2 {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.admin-theme .admin-list p,
+.admin-theme .admin-run-grid div,
+.admin-theme .supervised-run-panel {
+  background: #edf2f6;
+  border-color: #d3dce5;
+}
+
+.admin-theme .quality-review-row,
+.admin-theme .telemetry-grid > div,
+.admin-theme .readiness-grid > div {
+  box-shadow: none;
+}
+
 .admin-login,
 .admin-hero,
 .admin-card,
