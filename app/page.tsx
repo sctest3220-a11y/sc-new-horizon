@@ -12,6 +12,19 @@ type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'ret
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type NewsFrequency = 'daily' | 'weekly' | 'monthly';
+type NewsMediaFilter = 'all' | 'article' | 'video' | 'short';
+type NewsFeedItem = {
+  category: string;
+  title: string;
+  source: string;
+  date: string;
+  url: string;
+  domain: DomainId;
+  signal: string;
+  mediaType: Exclude<NewsMediaFilter, 'all'>;
+  duration?: string;
+  publisherType?: 'official' | 'standards' | 'research' | 'news';
+};
 type LandingLeaderboardPeriod = 'day' | 'week';
 type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
@@ -1627,7 +1640,7 @@ Output format:
 Review before final:
 Check that every claim is supported by the ticket, order record, or policy. Mark anything uncertain as "needs review".`;
 
-const trendFeed = [
+const trendFeed: NewsFeedItem[] = [
   {
     category: 'Agents',
     title: 'AI agents are becoming an operating-model question',
@@ -1636,6 +1649,8 @@ const trendFeed = [
     url: 'https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization',
     domain: 'D6',
     signal: 'Human agency, workflow redesign, manager support, and learning systems matter as much as tool access.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Safety',
@@ -1645,6 +1660,8 @@ const trendFeed = [
     url: 'https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/',
     domain: 'D4',
     signal: 'Defensive AI use needs identity, monitoring, approvals, and tighter defaults when agents can act in sensitive systems.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Benchmarks',
@@ -1654,6 +1671,8 @@ const trendFeed = [
     url: 'https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/',
     domain: 'D3',
     signal: 'Evaluation quality is now a literacy topic: users need to understand leakage, test integrity, and benchmark trust.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Provenance',
@@ -1663,6 +1682,8 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news/claude-text-watermark',
     domain: 'D3',
     signal: 'Provenance and disclosure are becoming practical skills for education, publishing, compliance, and workplace review.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Robotics',
@@ -1672,6 +1693,8 @@ const trendFeed = [
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
     domain: 'D2',
     signal: 'Multimodal AI, task orchestration, and real-world handoffs point to new assessment scenarios beyond chat.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'LLM',
@@ -1681,6 +1704,8 @@ const trendFeed = [
     url: 'https://deploymentsafety.openai.com/gpt-5-6-august-update',
     domain: 'D1',
     signal: 'Users need to understand model capability reports, evaluation limits, hallucination results, vision behavior, and safety constraints instead of treating every new model as simply “better.”',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'New models',
@@ -1690,6 +1715,8 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news',
     domain: 'D2',
     signal: 'More capable long-running models make prompt quality, task boundaries, monitoring, review checkpoints, and human ownership more important for everyday work.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Benchmarks',
@@ -1699,6 +1726,8 @@ const trendFeed = [
     url: 'https://epoch.ai/benchmarks',
     domain: 'D3',
     signal: 'Benchmark literacy should cover task type, contamination risk, saturation, model-specific strengths, and whether a benchmark maps to real user work.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
     category: 'AI index',
@@ -1708,6 +1737,8 @@ const trendFeed = [
     url: 'https://hai.stanford.edu/ai-index/2026-ai-index-report',
     domain: 'D5',
     signal: 'AI readiness is not just model use. Assessment content should include adoption, governance, education, workforce, public trust, technical performance, and scientific impact.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
     category: 'Autonomous vehicles',
@@ -1717,6 +1748,8 @@ const trendFeed = [
     url: 'https://waymo.com/safety/impact/',
     domain: 'D3',
     signal: 'Autonomous vehicle claims are good assessment material: users can compare performance data, benchmark methodology, geography, risk categories, and deployment limits.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
     category: 'Autonomous vehicles',
@@ -1726,6 +1759,8 @@ const trendFeed = [
     url: 'https://www.axios.com/2026/08/26/waymo-ai-shortcut-self-driving',
     domain: 'D4',
     signal: 'Autonomy stories help users separate model capability from safety case, sensor strategy, operating domain, regulation, and accountability.',
+    mediaType: 'article',
+    publisherType: 'news',
   },
   {
     category: 'Science',
@@ -1735,6 +1770,8 @@ const trendFeed = [
     url: 'https://epoch.ai/frontiermath/open-problems/about/faq',
     domain: 'D1',
     signal: 'Breakthrough claims need careful framing: what was tested, what tools were allowed, how solutions were verified, and whether humans confirmed the result.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
     category: 'Agent evaluation',
@@ -1744,6 +1781,8 @@ const trendFeed = [
     url: 'https://github.com/METR/task-standard/blob/main/README.md',
     domain: 'D3',
     signal: 'Agent benchmarks can inspire practical assessment formats where users inspect goals, tool access, task environments, scoring, and failure modes.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
     category: 'Autonomy risk',
@@ -1753,6 +1792,20 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals',
     domain: 'D4',
     signal: 'Evaluation environments, internet access, scope boundaries, and monitoring are now practical governance topics for anyone deploying agentic systems.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    category: 'AI leadership',
+    title: 'What AI still needs to learn: a conversation with Demis Hassabis and Lee Sedol',
+    source: 'Google Korea on YouTube',
+    date: 'May 20, 2026',
+    url: 'https://www.youtube.com/watch?v=XgZyIiiNtDU',
+    domain: 'D1',
+    signal: 'A long-form discussion can help users distinguish current model capability from the harder questions of reasoning, learning, and human judgment.',
+    mediaType: 'video',
+    duration: 'Long format',
+    publisherType: 'official',
   },
 ];
 
@@ -9423,7 +9476,7 @@ const agentDefinitions: AgentDefinition[] = [
   {
     id: 'newsfeed',
     name: 'AI Newsfeed Agent',
-    role: 'Builds short-lived AI Watch briefs from reputable current-news sources.',
+    role: 'Curates reviewed article, short-video, and long-video signals from reputable publishers without copying their work.',
     cadence: 'Daily or weekly based on admin setting.',
     guardrail: 'No publication without source, date, category, domain mapping, and review state.',
   },
@@ -12732,6 +12785,7 @@ export default function Home() {
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
   ));
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
+  const [newsMediaFilter, setNewsMediaFilter] = useState<NewsMediaFilter>('all');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(() => parseAuthProfile(readLocalStorage(authProfileStorageKey)));
   const [authEmail, setAuthEmail] = useState('');
@@ -15475,21 +15529,41 @@ export default function Home() {
           </div>
           <div className="news-layout">
             <section className="news-feed" aria-label="AI trends newsfeed">
-              {trendFeed.map((item) => (
-                <article className="news-card" key={item.title}>
+              <div className="news-media-filter" role="group" aria-label="Filter AI Watch by media type">
+                {(['all', 'article', 'video', 'short'] as NewsMediaFilter[]).map((mediaType) => (
+                  <button
+                    type="button"
+                    key={mediaType}
+                    className={newsMediaFilter === mediaType ? 'selected' : ''}
+                    aria-pressed={newsMediaFilter === mediaType}
+                    onClick={() => setNewsMediaFilter(mediaType)}
+                  >
+                    {mediaType === 'all' ? 'All' : mediaType === 'short' ? 'Short videos' : `${mediaType[0].toUpperCase()}${mediaType.slice(1)}s`}
+                  </button>
+                ))}
+              </div>
+              {trendFeed.filter((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter).map((item) => (
+                <article className={`news-card ${item.mediaType === 'article' ? '' : 'news-card-video'}`} key={item.title}>
                   <div>
-                    <span>{item.category} · {item.source} · {item.date}</span>
+                    <span>{item.mediaType === 'article' ? 'Article' : item.mediaType === 'short' ? 'Short video' : 'Video'}{item.duration ? ` · ${item.duration}` : ''} · {item.category}</span>
                     <strong>{item.domain} · {domains[item.domain as DomainId].name}</strong>
                   </div>
                   <h2><a href={item.url} target="_blank" rel="noreferrer">{item.title}</a></h2>
                   <p>{item.signal}</p>
+                  <small>{item.source} · {item.date} · Opens on the original publisher</small>
                 </article>
               ))}
+              {!trendFeed.some((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter) ? (
+                <div className="news-empty-state">
+                  <strong>No approved {newsMediaFilter === 'short' ? 'short videos' : `${newsMediaFilter}s`} yet.</strong>
+                  <p>The agent may discover candidates, but this feed only shows items that have passed source, relevance, and rights review.</p>
+                </div>
+              ) : null}
             </section>
             <aside className="news-sidebar">
               <div>
                 <span>Agent brief</span>
-                <p>Scan official AI labs, standards bodies, governance sources, workforce research, and reputable Thai learning/training sources.</p>
+                <p>Scan official AI labs, standards bodies, governance sources, workforce research, reputable Thai sources, YouTube, and publisher-hosted video.</p>
               </div>
               <div>
                 <span>Question-bank use</span>
@@ -15497,7 +15571,7 @@ export default function Home() {
               </div>
               <div>
                 <span>Review rule</span>
-                <p>Do not publish trend items as facts without source link, date, domain mapping, and reviewer approval.</p>
+                <p>Keep only a short original summary, source link, date, format, and domain mapping. Never download or rehost third-party video, audio, images, or transcripts.</p>
               </div>
             </aside>
           </div>

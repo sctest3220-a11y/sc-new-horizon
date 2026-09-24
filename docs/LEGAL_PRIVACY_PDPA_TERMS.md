@@ -356,6 +356,17 @@ Prohibit:
 
 Enforcement should be proportionate and auditable, with warning, content restriction, suspension, termination, and appeal paths where appropriate.
 
+## Curated News and Third-Party Media
+
+- AI Watch is a curation and linking service, not a publisher archive or video-hosting service.
+- Display the original publisher, canonical link, date, media format, and a short independently written summary.
+- Do not reproduce full articles, substantial excerpts, captions, transcripts, videos, audio, thumbnails, or images unless the platform has a documented license or the source API expressly permits that use.
+- Use official embeds only where publisher and platform terms permit. Preserve attribution, branding, controls, advertising, playback integrity, and links back to the source.
+- Do not download YouTube media, separate audio, obscure player controls, enable background playback, or reward users for viewing.
+- Review privacy implications before loading third-party players because the player may share device or usage data with its provider. Prefer click-to-load and explain the third-party destination.
+- Maintain source allow-lists, rights/terms review dates, takedown handling, broken-link checks, correction status, and human publication approval.
+- Summaries must add independent educational context and must not substitute for consuming the original work.
+
 ## Assessment and AI Disclaimer
 
 The user interface and Terms should state clearly:

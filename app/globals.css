@@ -950,6 +950,30 @@ h3 {
   gap: 16px;
 }
 
+.news-media-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.news-media-filter button {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  padding: 9px 13px;
+}
+
+.news-media-filter button.selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
 .news-card {
   display: grid;
   gap: 14px;
@@ -977,6 +1001,32 @@ h3 {
 .news-sidebar p {
   color: var(--muted);
   font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.news-card > small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.news-card-video {
+  border-left: 4px solid var(--teal);
+}
+
+.news-empty-state {
+  border-top: 1px solid var(--line);
+  padding: 24px 2px;
+}
+
+.news-empty-state strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.news-empty-state p {
+  color: var(--muted);
   line-height: 1.55;
   margin: 0;
 }

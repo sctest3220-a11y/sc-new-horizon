@@ -21,6 +21,7 @@ Collaborators can run only the question-review surface locally without configuri
 - Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
 - Artifact relevance gate that hides decorative, redundant, generic, or non-evidence artifacts during scored assessment
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
+- Rights-aware AI Watch curation for articles and relevant short/long video, with canonical source links, media filters, human review, and no third-party media rehosting
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores

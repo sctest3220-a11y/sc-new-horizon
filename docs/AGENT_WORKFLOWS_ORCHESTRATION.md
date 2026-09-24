@@ -48,6 +48,19 @@ Identifies durable AI concepts, model-capability shifts, evaluation changes, gov
 
 Drafts short-lived AI Watch candidates from model releases, governance changes, safety incidents, security issues, business adoption, education trends, and workplace AI shifts. News expires unless promoted into durable concepts.
 
+The source mix should include articles, official announcements, research, standards updates, YouTube videos, publisher-hosted video, and useful short-form video. Each candidate records media type (`article`, `video`, or `short`), publisher, canonical URL, publication date, duration when available, language, domain/competency relevance, freshness, and reviewer status. The agent balances formats; it does not fill quotas with weak video.
+
+Rights and platform rules:
+
+- Prefer first-party publishers, official channels, standards bodies, universities, reputable research organizations, and reviewed news sources.
+- Use official APIs, RSS/Atom feeds, sitemaps, or publisher-provided metadata where available. Respect robots rules, source terms, rate limits, and takedown requests.
+- Store only factual metadata, the canonical link, and a short original New Horizon summary. Do not copy full articles, substantial passages, captions, transcripts, or creator descriptions.
+- Never download, rehost, strip, crop, watermark, translate, or republish third-party video, audio, thumbnails, or images without a documented license.
+- For YouTube, use the official Data API and standard player/link behavior. Keep YouTube attribution and metadata intact, do not block ads or controls, do not enable background playback, and do not incentivize viewing.
+- Use click-to-load embedding only after privacy and consent review. Until then, open the canonical publisher page. Embeds must remain optional and must satisfy player-size, referrer, Made for Kids, and applicable privacy requirements.
+- Human review is required before publication. Reviewers confirm relevance, factual framing, source reputation, rights status, age/safety suitability, and whether the summary adds independent educational value.
+- Remove or disable items when the source is deleted, made private, materially corrected, non-embeddable, disputed, or no longer current.
+
 ### Training and Course Scout
 
 Finds courses, tutorials, certificates, tools, and practice resources. Drafts need review for recency, cost, bias, accessibility, commercial interest, and fit to observed user gaps.

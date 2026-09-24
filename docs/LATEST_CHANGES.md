@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Mixed-media AI Watch
+
+- AI Watch now supports a simple mixed feed of articles, videos, and short videos with media-type filtering and original-publisher attribution.
+- The Newsfeed Agent specification now includes YouTube and publisher-hosted video discovery, format balancing, source metadata, human review, expiry, correction, and takedown handling.
+- Rights controls prohibit copying full articles, transcripts, captions, thumbnails, video, or audio; downloading or rehosting YouTube content; altering official players; and publishing unreviewed summaries.
+
 ## Question inventory feedback refresh
 
 - Saving question-level feedback now clears every field in the review form immediately, ready for a new review.
