@@ -969,7 +969,35 @@ export default async function QuestionInventoryPage({
 
   return (
     <main className="inventory-page">
-      <section className="inventory-hero">
+      <header className="inventory-app-header">
+        <Link href="/" className="inventory-app-brand" aria-label="New Horizon main page">
+          <span>NH</span>
+          <strong>New Horizon</strong>
+        </Link>
+        <nav aria-label="Question inventory navigation">
+          <Link href="/">Assessment</Link>
+          <Link href="/?view=admin">Admin</Link>
+          <strong>Question inventory</strong>
+        </nav>
+        <div className="inventory-header-language" aria-label="Review language">
+          <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>EN</Link>
+          <Link className={language === 'th' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'th')}>TH</Link>
+        </div>
+      </header>
+
+      <div className="inventory-app-layout">
+        <aside className="inventory-side-nav" aria-label="Inventory workspace">
+          <span>Review workspace</span>
+          <a href="#inventory-overview" className="is-active">Overview</a>
+          <a href="#inventory-filters">Filters</a>
+          <a href="#inventory-questions">Questions</a>
+          <a href="#inventory-review-standard">Review standard</a>
+          <Link href="/?view=admin">Admin dashboard</Link>
+          <Link href="/?view=assessment">Open assessment</Link>
+        </aside>
+
+        <div className="inventory-workspace">
+      <section className="inventory-hero" id="inventory-overview">
         <div>
           <div className="inventory-nav-links">
             <Link href="/" className="inventory-back-link">Main page</Link>
@@ -980,10 +1008,6 @@ export default async function QuestionInventoryPage({
           <p>
             Review existing live questions and the 3,328 draft item variants before selecting candidates for pilot or rewrite.
           </p>
-          <div className="inventory-language-switch" aria-label="Review language">
-            <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>English</Link>
-            <Link className={language === 'th' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'th')}>ไทย</Link>
-          </div>
         </div>
         <div className="inventory-status-card">
           <span>Inventory version</span>
@@ -992,7 +1016,7 @@ export default async function QuestionInventoryPage({
         </div>
       </section>
 
-      <section className="inventory-panel rewrite-warning-panel">
+      <section className="inventory-panel rewrite-warning-panel" id="inventory-review-standard">
         <div>
           <span>Live readiness warning</span>
           <strong>These generated drafts are not user-ready yet.</strong>
@@ -1044,7 +1068,7 @@ export default async function QuestionInventoryPage({
         </section>
       ) : null}
 
-      <section className="inventory-panel">
+      <section className="inventory-panel" id="inventory-filters">
         <form className="inventory-filters">
           <label>
             <span>Source</span>
@@ -1140,7 +1164,7 @@ export default async function QuestionInventoryPage({
 
       <ReviewSync />
 
-      <section className="inventory-grid">
+      <section className="inventory-grid" id="inventory-questions">
         {visibleQuestions.map((question) => (
           <article className="inventory-question-card" key={question.id} data-question-id={question.id}>
             {(() => {
@@ -1167,6 +1191,8 @@ export default async function QuestionInventoryPage({
               {question.recommendedFormat ? <span>{question.recommendedFormat.format}</span> : null}
             </div>
             <QuestionReviewStats questionId={question.id} />
+            <div className="inventory-question-review-layout">
+              <div className="inventory-question-content">
             <div className="inventory-question-language">
               <input
                 type="radio"
@@ -1201,7 +1227,6 @@ export default async function QuestionInventoryPage({
               <div><dt>Industries</dt><dd>{question.industryLabels?.join(', ') || question.industryTracks?.map(labelForProfile).join(', ') || 'All/general'}</dd></div>
               <div><dt>Executive</dt><dd>{question.executiveLabels?.join(', ') || question.executiveRoles?.map(labelForProfile).join(', ') || 'Not role-specific'}</dd></div>
             </dl>
-            <ReviewerFeedback questionId={question.id} />
             {question.recommendedFormat ? (
               <div className="inventory-format-note">
                 <strong>Recommended live format: {question.recommendedFormat.format}</strong>
@@ -1232,6 +1257,9 @@ export default async function QuestionInventoryPage({
               </ol>
               <p className="inventory-rationale"><strong>{language === 'th' ? 'เหตุผล:' : 'Rationale:'}</strong> {localizedText(question.rationale, question.th?.rationale, language)}</p>
             </details>
+              </div>
+              <ReviewerFeedback questionId={question.id} />
+            </div>
           </article>
         ))}
         {!visibleQuestions.length ? (
@@ -1248,6 +1276,8 @@ export default async function QuestionInventoryPage({
           {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
         </nav>
       ) : null}
+        </div>
+      </div>
     </main>
   );
 }

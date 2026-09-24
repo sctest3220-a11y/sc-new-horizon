@@ -1,9 +1,10 @@
 # Latest Changes
 
-## Institutional Navy admin interface
+## Institutional Navy question inventory layout
 
-- The Admin page now uses the selected Option B direction: navy application chrome, teal primary actions, blue-gray working surfaces, flatter panels, and compact enterprise typography.
-- The theme is scoped to Admin, so assessment and learner-facing pages keep their existing visual treatment.
+- Question Inventory now uses the Option B application layout with navy header chrome, a persistent review-workspace sidebar, compact overview hierarchy, and blue-gray operational surfaces.
+- Each question now places the question content and reviewer feedback side by side on desktop, then stacks them on smaller screens.
+- Existing filters, translations, review history, artifact notes, and scoring-review content are preserved.
 
 ## Mixed-media AI Watch
 
