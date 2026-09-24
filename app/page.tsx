@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import { questionTranslationsTh } from './questionTranslations.th';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
@@ -23,7 +24,45 @@ type NewsFeedItem = {
   signal: string;
   mediaType: Exclude<NewsMediaFilter, 'all'>;
   duration?: string;
+  embedVideo?: boolean;
   publisherType?: 'official' | 'standards' | 'research' | 'news';
+};
+
+const youtubeEmbedUrl = (url: string) => {
+  const match = url.match(/[?&]v=([^&]+)/);
+  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : null;
+};
+
+const newsArtwork = (item: NewsFeedItem) => {
+  if (item.mediaType !== 'article') return null;
+  if (/robot|vehicle|autonomous|mobility/i.test(`${item.category} ${item.title}`)) {
+    return {
+      src: '/ai-watch/physical-ai-editorial.jpg',
+      alt: 'Autonomous mobility and humanoid robotics being evaluated in realistic test environments.',
+    };
+  }
+  if (/agent|shopping|subscription|workplace|leadership/i.test(`${item.category} ${item.title}`) && item.domain !== 'D4') {
+    return {
+      src: '/ai-watch/everyday-agent-editorial.jpg',
+      alt: 'A professional in Bangkok reviewing actions suggested by a personal AI assistant.',
+    };
+  }
+  if (/safety|security|jailbreak|benchmark|evaluation|provenance|risk|index/i.test(`${item.category} ${item.title}`)) {
+    return {
+      src: '/ai-watch/ai-evaluation-editorial.jpg',
+      alt: 'A technical team reviewing AI safety evidence and approval checkpoints.',
+    };
+  }
+  return null;
+};
+
+const newsReviewLens: Record<DomainId, string> = {
+  D1: 'Look for the exact capability being demonstrated, the model or system involved, and what the evidence does not prove.',
+  D2: 'Notice the task, tool access, human handoffs, and limits that would matter in a real workflow.',
+  D3: 'Check the comparison method, sample, source quality, and whether the evidence supports the headline.',
+  D4: 'Identify the permissions, safeguards, monitoring, and accountable human needed before this can be trusted.',
+  D5: 'Ask what outcome changes, what it costs, and what evidence would justify wider adoption.',
+  D6: 'Watch how responsibilities, review points, and human judgment change when AI joins the work.',
 };
 type LandingLeaderboardPeriod = 'day' | 'week';
 type AppLanguage = 'en' | 'th';
@@ -1684,6 +1723,7 @@ const trendFeed: NewsFeedItem[] = [
     signal: 'The spectacle is useful evidence, not just entertainment: watch for which tasks are autonomous, which are remotely operated, how often robots fall, and what that says about real-world readiness.',
     mediaType: 'video',
     duration: 'Video report',
+    embedVideo: true,
     publisherType: 'news',
   },
   {
@@ -15598,17 +15638,58 @@ export default function Home() {
                   </button>
                 ))}
               </div>
-              {trendFeed.filter((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter).map((item) => (
-                <article className={`news-card ${item.mediaType === 'article' ? '' : 'news-card-video'}`} key={item.title}>
-                  <div>
-                    <span>{item.mediaType === 'article' ? 'Article' : item.mediaType === 'short' ? 'Short video' : 'Video'}{item.duration ? ` · ${item.duration}` : ''} · {item.category}</span>
-                    <strong>{item.domain} · {domains[item.domain as DomainId].name}</strong>
-                  </div>
-                  <h2><a href={item.url} target="_blank" rel="noreferrer">{item.title}</a></h2>
-                  <p>{item.signal}</p>
-                  <small>{item.source} · {item.date} · Opens on the original publisher</small>
-                </article>
-              ))}
+              {trendFeed.filter((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter).map((item) => {
+                const videoUrl = item.embedVideo ? youtubeEmbedUrl(item.url) : null;
+                const artwork = newsArtwork(item);
+                return (
+                  <article className={`news-card ${item.mediaType === 'article' ? '' : 'news-card-video'}`} key={item.title}>
+                    {videoUrl ? (
+                      <div className="news-card-media news-card-player">
+                        <iframe
+                          src={videoUrl}
+                          title={item.title}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        />
+                      </div>
+                    ) : artwork ? (
+                      <div className="news-card-media">
+                        <Image src={artwork.src} alt={artwork.alt} width={1672} height={941} sizes="(max-width: 900px) 100vw, 70vw" />
+                        <small>New Horizon editorial visual</small>
+                      </div>
+                    ) : item.mediaType !== 'article' ? (
+                      <div className="news-card-media news-video-fallback">
+                        <span>Publisher-hosted video</span>
+                        <strong>This video cannot be played inline.</strong>
+                        <a href={item.url} target="_blank" rel="noreferrer">Watch on {item.source}</a>
+                      </div>
+                    ) : null}
+                    <div className="news-card-body">
+                      <div className="news-card-meta">
+                        <span>{item.mediaType === 'article' ? 'Article' : item.mediaType === 'short' ? 'Short video' : 'Video'}{item.duration ? ` · ${item.duration}` : ''} · {item.category}</span>
+                        <strong>{item.domain} · {domains[item.domain as DomainId].name}</strong>
+                      </div>
+                      <h2>{item.title}</h2>
+                      <div className="news-curation">
+                        <div>
+                          <strong>Why it matters</strong>
+                          <p>{item.signal}</p>
+                        </div>
+                        <div>
+                          <strong>What to notice</strong>
+                          <p>{newsReviewLens[item.domain]}</p>
+                        </div>
+                      </div>
+                      <div className="news-source-row">
+                        <small>{item.source} · {item.date}</small>
+                        <a href={item.url} target="_blank" rel="noreferrer">Open original source</a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
               {!trendFeed.some((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter) ? (
                 <div className="news-empty-state">
                   <strong>No approved {newsMediaFilter === 'short' ? 'short videos' : `${newsMediaFilter}s`} yet.</strong>

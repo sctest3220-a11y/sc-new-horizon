@@ -976,8 +976,71 @@ h3 {
 
 .news-card {
   display: grid;
-  gap: 14px;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.news-card-body {
+  display: grid;
+  gap: 16px;
   padding: clamp(20px, 3vw, 28px);
+}
+
+.news-card-media {
+  aspect-ratio: 16 / 9;
+  background: #dfe7e5;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-card-media img,
+.news-card-media iframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.news-card-media > small {
+  background: rgba(23, 32, 29, 0.84);
+  bottom: 10px;
+  color: #fff;
+  font-size: 11px;
+  left: 10px;
+  padding: 5px 7px;
+  position: absolute;
+}
+
+.news-card-player {
+  background: #111;
+}
+
+.news-video-fallback {
+  align-content: center;
+  background: #17201d;
+  color: #fff;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 28px;
+  text-align: center;
+}
+
+.news-video-fallback span {
+  color: #a5d8ce;
+  margin: 0;
+}
+
+.news-video-fallback strong {
+  color: #fff;
+  font-size: 22px;
+}
+
+.news-video-fallback a {
+  color: #fff;
+  font-size: 14px;
 }
 
 .news-card strong {
@@ -987,7 +1050,7 @@ h3 {
 }
 
 .news-card h2 {
-  font-size: clamp(24px, 3vw, 34px);
+  font-size: clamp(22px, 2.4vw, 30px);
   margin: 0;
 }
 
@@ -1005,13 +1068,47 @@ h3 {
   margin: 0;
 }
 
+.news-curation {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.news-curation > div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.news-curation strong {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.news-source-row {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.news-source-row small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.news-source-row a {
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .news-card > small {
   color: var(--muted);
   font-size: 12px;
 }
 
 .news-card-video {
-  border-left: 4px solid var(--teal);
+  border-top: 4px solid var(--teal);
 }
 
 .news-empty-state {
@@ -6427,6 +6524,15 @@ h3 {
   .feedback-workbench,
   .reliance-stage {
     grid-template-columns: 1fr;
+  }
+
+  .news-curation {
+    grid-template-columns: 1fr;
+  }
+
+  .news-source-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .admin-hero-actions {
