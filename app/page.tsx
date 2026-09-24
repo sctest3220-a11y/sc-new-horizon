@@ -3919,21 +3919,21 @@ const functionalQuestionBank: Question[] = [
     type: 'narrative',
     interaction: 'text',
     functionTracks: ['operations'],
-    context: 'A support agent receives an AI draft that denies a refund. The raw ticket includes a payment retry, duplicate capture, and refund policy exception.',
+    context: 'A customer says they were charged twice after retrying checkout. The AI assistant drafted a reply denying the refund. Review the support console before deciding what the agent should do.',
     stimulus: {
-      src: '/stimuli/raw-support-ticket-thread.svg',
-      alt: 'Raw support ticket thread showing customer complaint, system payment log, policy note, and flawed AI draft.',
-      label: 'Raw support ticket',
-      caption: 'Inspect the ticket evidence and write the safer customer response.',
+      src: '/stimuli/support-console-duplicate-charge-v2.png',
+      alt: 'Support console showing a customer duplicate-charge report, two payment captures, the refund-policy exception, and an AI draft that denies the refund.',
+      label: 'Duplicate-charge support console',
+      caption: 'Inspect the payment timeline, policy excerpt, and AI draft before writing your response.',
     },
-    prompt: 'Write 2-4 sentences explaining what the support agent should do next.',
+    prompt: 'Write 3-5 sentences explaining what the support agent should verify, what action they should take, and what they should tell the customer.',
     rubricCriteria: [
-      { id: 'log', label: 'Uses the system log as evidence', keywords: ['log', 'duplicate', 'capture', 'payment', 'retry'], points: 26 },
-      { id: 'policy', label: 'Applies the refund policy exception', keywords: ['policy', 'refund', 'exception', 'duplicate'], points: 26 },
-      { id: 'tone', label: 'Keeps customer communication clear and accountable', keywords: ['apologize', 'sorry', 'case', 'clear', 'explain'], points: 20 },
-      { id: 'verify', label: 'Requires verification before final action', keywords: ['verify', 'confirm', 'check', 'payment'], points: 26 },
+      { id: 'evidence', label: 'Identifies the possible duplicate capture', keywords: ['duplicate', 'two', 'twice', 'capture', 'p-7718', 'p-7721'], points: 25 },
+      { id: 'verify', label: 'Verifies both payment captures', keywords: ['verify', 'confirm', 'check', 'both', 'payment'], points: 25 },
+      { id: 'policy', label: 'Applies the duplicate-charge refund exception', keywords: ['policy', 'refund', 'exception', '3-5', 'duplicate'], points: 25 },
+      { id: 'customer', label: 'Rejects the denial and gives a clear customer next step', keywords: ['do not send', 'denial', 'apologize', 'sorry', 'customer', 'next step', 'case'], points: 23 },
     ],
-    exemplarAnswer: 'The agent should not send the denial. The system log shows a duplicate payment capture, and the policy says duplicate charges should be refunded after verification. Verify the payment, apologize, give a case ID, and explain the next step to the customer.',
+    exemplarAnswer: 'The agent should not approve the AI denial. The payment timeline shows two captures for THB 1,290, so the agent should verify both references and confirm which charge is the duplicate. If confirmed, the duplicate-charge exception requires a refund within 3-5 business days. The agent should apologize, explain the verification and refund timeline, and provide the case number for follow-up.',
     options: [],
   },
   {
@@ -9457,6 +9457,40 @@ const agentDefinitions: AgentDefinition[] = [
   },
 ];
 
+const agentWorkflowNodes = [
+  { id: 'orchestrator', x: 34, y: 242, eyebrow: 'Control' },
+  { id: 'concept-scout', x: 254, y: 54, eyebrow: 'Discover' },
+  { id: 'newsfeed', x: 254, y: 178, eyebrow: 'Monitor' },
+  { id: 'course-scout', x: 254, y: 302, eyebrow: 'Curate' },
+  { id: 'feedback-analysis', x: 254, y: 426, eyebrow: 'Analyze' },
+  { id: 'item-generator', x: 522, y: 178, eyebrow: 'Draft' },
+  { id: 'reviewer', x: 770, y: 242, eyebrow: 'Validate' },
+] as const;
+
+const agentWorkflowEdges = [
+  { from: 'orchestrator', to: 'concept-scout' },
+  { from: 'orchestrator', to: 'newsfeed' },
+  { from: 'orchestrator', to: 'course-scout' },
+  { from: 'orchestrator', to: 'feedback-analysis' },
+  { from: 'concept-scout', to: 'item-generator' },
+  { from: 'newsfeed', to: 'item-generator' },
+  { from: 'course-scout', to: 'item-generator' },
+  { from: 'feedback-analysis', to: 'item-generator' },
+  { from: 'item-generator', to: 'reviewer' },
+] as const;
+
+function getWorkflowConnectorPath(fromId: string, toId: string) {
+  const from = agentWorkflowNodes.find((node) => node.id === fromId);
+  const to = agentWorkflowNodes.find((node) => node.id === toId);
+  if (!from || !to) return '';
+  const startX = from.x + 174;
+  const startY = from.y + 43;
+  const endX = to.x;
+  const endY = to.y + 43;
+  const middleX = startX + Math.max(34, (endX - startX) / 2);
+  return `M ${startX} ${startY} C ${middleX} ${startY}, ${middleX} ${endY}, ${endX} ${endY}`;
+}
+
 function getAgentWorkflowReport(itemCount: number, artifactItemCount: number, signalCount: number): AgentWorkflowReport {
   const runId = `agent-run-${new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '')}`;
   const activityLog: AgentActivity[] = [
@@ -12683,13 +12717,20 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 
 export default function Home() {
   const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question')
+      ? 'assessment'
+      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
       ? 'onboarding'
-      : 'home'
+      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'admin'
+        ? 'admin'
+        : 'home'
   ));
   const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+  const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
-  const [mode, setMode] = useState<AssessmentMode>('free');
+  const [mode, setMode] = useState<AssessmentMode>(() => (
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
+  ));
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(() => parseAuthProfile(readLocalStorage(authProfileStorageKey)));
@@ -12725,7 +12766,10 @@ export default function Home() {
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [current, setCurrent] = useState<Question>(() => selectNextQuestion([], 'free'));
+  const [current, setCurrent] = useState<Question>(() => {
+    const previewQuestionId = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('question') : null;
+    return (previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], 'free');
+  });
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
   const [rankOrder, setRankOrder] = useState<string[]>([]);
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
@@ -12781,6 +12825,7 @@ export default function Home() {
       0,
     )
   ));
+  const [selectedAgentId, setSelectedAgentId] = useState('orchestrator');
 
   const activeConfig = useMemo(
     () => ({ ...modeConfig[mode], totalQuestions: assessmentTargetTotal }),
@@ -13034,11 +13079,17 @@ export default function Home() {
       .sort((left, right) => Number(right.earned) - Number(left.earned) || right.score - left.score),
     [results.domainScores],
   );
-  const shownQuestion = useMemo(() => localizeQuestion(current, appLanguage, showDraftThai), [current, appLanguage, showDraftThai]);
+  const currentTranslationStatus = getTranslationStatus(current);
+  const currentThaiAvailable = Boolean(currentTranslationStatus && (currentTranslationStatus !== 'draft' || showDraftThai));
+  const defaultQuestionLanguage: AppLanguage = appLanguage === 'th' && !currentThaiAvailable ? 'en' : appLanguage;
+  const questionLanguage = questionLanguageOverride?.questionId === current.id
+    ? questionLanguageOverride.language
+    : defaultQuestionLanguage;
+  const shownQuestion = useMemo(() => localizeQuestion(current, questionLanguage, showDraftThai), [current, questionLanguage, showDraftThai]);
   // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
-  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(appLanguage);
-  if (matchSelectionsLanguage !== appLanguage) {
-    setMatchSelectionsLanguage(appLanguage);
+  const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(questionLanguage);
+  if (matchSelectionsLanguage !== questionLanguage) {
+    setMatchSelectionsLanguage(questionLanguage);
     if (Object.keys(matchSelections).length) setMatchSelections({});
   }
   const displayedOptions = useMemo(
@@ -14798,6 +14849,99 @@ export default function Home() {
                           <small>{agentWorkflowReport.runId} · {agentWorkflowReport.generatedAt}</small>
                         </div>
                       </div>
+                      <section className="agent-workflow-visual" aria-label="Interactive agent workflow">
+                        <div className="agent-workflow-toolbar">
+                          <div>
+                            <span>Workflow map</span>
+                            <h3>Assessment improvement orchestration</h3>
+                          </div>
+                          <p>Click an agent to inspect its stages, controls, and latest output.</p>
+                        </div>
+                        <div className="agent-workflow-scroll">
+                          <div className="agent-workflow-canvas">
+                            <svg className="agent-workflow-connectors" viewBox="0 0 1160 570" role="img" aria-label="Connections between assessment agents">
+                              <defs>
+                                <marker id="agent-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                  <path d="M0,0 L8,4 L0,8 Z" />
+                                </marker>
+                              </defs>
+                              {agentWorkflowEdges.map((edge) => {
+                                const target = agentWorkflowReport.agents.find((agent) => agent.id === edge.to);
+                                return (
+                                  <path
+                                    key={`${edge.from}-${edge.to}`}
+                                    className={`agent-workflow-edge ${target?.status ?? 'idle'}`}
+                                    d={getWorkflowConnectorPath(edge.from, edge.to)}
+                                    markerEnd="url(#agent-arrow)"
+                                  />
+                                );
+                              })}
+                              <path
+                                className={`agent-workflow-edge ${agentWorkflowReport.agents.find((agent) => agent.id === 'reviewer')?.status ?? 'idle'}`}
+                                d="M 944 285 C 978 285, 978 285, 1012 285"
+                                markerEnd="url(#agent-arrow)"
+                              />
+                            </svg>
+                            {agentWorkflowNodes.map((node) => {
+                              const agent = agentWorkflowReport.agents.find((candidate) => candidate.id === node.id);
+                              if (!agent) return null;
+                              return (
+                                <button
+                                  key={node.id}
+                                  className={`agent-workflow-node ${agent.status} ${selectedAgentId === node.id ? 'selected' : ''}`}
+                                  style={{ left: node.x, top: node.y }}
+                                  type="button"
+                                  onClick={() => setSelectedAgentId(node.id)}
+                                  aria-pressed={selectedAgentId === node.id}
+                                >
+                                  <span>{node.eyebrow}</span>
+                                  <strong>{agent.name}</strong>
+                                  <small><b aria-hidden="true" />{agent.status} · {agent.outputCount} stage{agent.outputCount === 1 ? '' : 's'}</small>
+                                </button>
+                              );
+                            })}
+                            <div className="agent-human-gate" style={{ left: 1012, top: 224 }}>
+                              <span>Human gate</span>
+                              <strong>Admin approval</strong>
+                              <small>Approve · revise · reject</small>
+                            </div>
+                            <div className="agent-workflow-legend" aria-label="Workflow status legend">
+                              {(['complete', 'running', 'review', 'blocked', 'idle'] as AgentStatus[]).map((status) => (
+                                <span key={status} className={status}><b />{status}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        {(() => {
+                          const selectedAgent = agentWorkflowReport.agents.find((agent) => agent.id === selectedAgentId) ?? agentWorkflowReport.agents[0];
+                          const selectedActivity = agentWorkflowReport.activityLog.filter((entry) => entry.agent === selectedAgent.name);
+                          return (
+                            <div className="agent-workflow-inspector">
+                              <div className="agent-inspector-summary">
+                                <span className={`agent-status ${selectedAgent.status}`}>{selectedAgent.status}</span>
+                                <h3>{selectedAgent.name}</h3>
+                                <p>{selectedAgent.role}</p>
+                                <dl>
+                                  <div><dt>Schedule</dt><dd>{selectedAgent.cadence}</dd></div>
+                                  <div><dt>Guardrail</dt><dd>{selectedAgent.guardrail}</dd></div>
+                                </dl>
+                              </div>
+                              <div className="agent-inspector-stages">
+                                <h3>Latest run stages</h3>
+                                {selectedActivity.length ? selectedActivity.map((entry) => (
+                                  <div key={`${entry.step}-${entry.activity}`} className={`agent-inspector-stage ${entry.status}`}>
+                                    <span>{entry.step}</span>
+                                    <div>
+                                      <strong>{entry.activity}</strong>
+                                      <p>{entry.output}</p>
+                                    </div>
+                                  </div>
+                                )) : <p>No stage activity has been recorded for this agent.</p>}
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </section>
                       <div className="agent-status-grid">
                         {agentWorkflowReport.agents.map((agent) => (
                           <div key={agent.id}>
@@ -15507,6 +15651,29 @@ export default function Home() {
                     </HelpBubble>
                   </span>
                   <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
+                  <div className="question-language-toggle" aria-label="Question language">
+                    <small>Question language</small>
+                    <div>
+                      <button
+                        type="button"
+                        className={questionLanguage === 'en' ? 'selected' : ''}
+                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'en' })}
+                        aria-pressed={questionLanguage === 'en'}
+                      >
+                        EN
+                      </button>
+                      <button
+                        type="button"
+                        className={questionLanguage === 'th' ? 'selected' : ''}
+                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'th' })}
+                        aria-pressed={questionLanguage === 'th'}
+                        disabled={!currentThaiAvailable}
+                        aria-label={currentThaiAvailable ? 'Show question in Thai' : 'Thai translation unavailable for this question'}
+                      >
+                        TH
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="question-meta">
@@ -15610,9 +15777,6 @@ export default function Home() {
               )}
               {!useRelianceStage && (
                 <>
-                  {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                  {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
-                  {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   <div className="task-brief">
                     <span>Task brief</span>
                     <p>{getTaskInstruction(current)}</p>
@@ -15620,6 +15784,13 @@ export default function Home() {
                   <div className="scenario-panel">
                     <span>Scenario</span>
                     <p className="context">{shownQuestion.context}</p>
+                    {(currentDisplayStimulus || shownQuestion.visualStimulus || currentDisplayVisualStimulus) && (
+                      <div className="scenario-artifact" aria-label="Evidence embedded in the question">
+                        {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
+                        {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
+                        {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
+                      </div>
+                    )}
                     <h2>{shownQuestion.prompt}</h2>
                   </div>
                 </>
@@ -15744,7 +15915,7 @@ export default function Home() {
                     <textarea
                       value={textResponse}
                       onChange={(event) => updateTextResponse(event.target.value)}
-                      placeholder="Write 2-4 sentences with the evidence you would use in the real situation."
+                      placeholder="Write 3-5 sentences explaining the evidence, action, and customer response you would use."
                     />
                   </label>
                   <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>

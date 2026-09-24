@@ -246,6 +246,8 @@ const thaiSentencePatterns: Array<[RegExp, string]> = [
   [/The system creates new sentences from learned patterns; it has no connection to (.*?)\./g, 'ระบบสร้างประโยคใหม่จากรูปแบบที่เรียนรู้มา แต่ไม่ได้เชื่อมต่อกับ$1'],
   [/The system returns unchanged passages with record identifiers from (.*?)\./g, 'ระบบดึงข้อความเดิมกลับมาโดยไม่เปลี่ยนเนื้อหา พร้อมรหัสอ้างอิงข้อมูลจาก$1'],
   [/The system follows an explicit if-then rule and copies an approved sentence\./g, 'ระบบทำตามกฎ if-then ที่ชัดเจน และคัดลอกประโยคที่อนุมัติแล้ว'],
+  [/The (.*?) contains invented details where the supplied records have blank fields\./g, '$1มีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้'],
+  [/Select all that apply\./g, 'เลือกได้มากกว่าหนึ่งข้อ'],
   [/Which experiment would best isolate the disputed source of performance\? Start by choosing the best first check, then rank follow-up actions during review\./g, 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด เริ่มจากเลือกสิ่งแรกที่ควรตรวจสอบ แล้วจัดลำดับขั้นตอนถัดไป'],
   [/Which experiment would best isolate the disputed source of performance\?/g, 'การทดลองใดจะช่วยแยกสาเหตุของผลลัพธ์ที่ยังถกเถียงกันได้ดีที่สุด'],
   [/What should the team test first\? Start by choosing the best first check, then rank follow-up actions during review\./g, 'ทีมควรทดสอบอะไรก่อน เริ่มจากเลือกสิ่งแรกที่ควรตรวจสอบ แล้วจัดลำดับขั้นตอนถัดไป'],
@@ -290,6 +292,26 @@ const thaiSentencePatterns: Array<[RegExp, string]> = [
 ];
 
 const thaiExactPhrases: Record<string, string> = {
+  'Which prompt repair most directly fixes the observed failure?': 'ควรแก้ Prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด',
+  'Which prompt repair most directly fixes the observed failure? Select all that apply.': 'ควรแก้ Prompt อย่างไรจึงจะแก้ปัญหาที่พบได้ตรงจุดที่สุด เลือกได้มากกว่าหนึ่งข้อ',
+  'The text uses expert vocabulary for an audience new to the topic.': 'เนื้อหาใช้คำศัพท์เฉพาะที่ยากเกินไปสำหรับผู้อ่านที่ยังไม่คุ้นเคยกับหัวข้อนี้',
+  'The content is accurate, but a downstream form rejects inconsistent field names.': 'เนื้อหาถูกต้อง แต่แบบฟอร์มในขั้นตอนถัดไปไม่รับข้อมูล เพราะชื่อช่องข้อมูลไม่เหมือนกันทุกครั้ง',
+  'The response summarizes the whole source although only differences between versions are needed.': 'คำตอบสรุปข้อมูลต้นฉบับทั้งหมด ทั้งที่ผู้ใช้ต้องการเฉพาะส่วนที่แตกต่างกันระหว่างแต่ละเวอร์ชัน',
+  'The service briefing contains invented details where the supplied records have blank fields.': 'สรุปบริการมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The workshop guide contains invented details where the supplied records have blank fields.': 'คู่มือ workshop มีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The evidence summary contains invented details where the supplied records have blank fields.': 'สรุปหลักฐานมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The coordination plan contains invented details where the supplied records have blank fields.': 'แผนประสานงานมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The project update contains invented details where the supplied records have blank fields.': 'รายงานอัปเดตโครงการมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The practice exercise contains invented details where the supplied records have blank fields.': 'แบบฝึกหัดมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'The release note contains invented details where the supplied records have blank fields.': 'บันทึกประจำรุ่นมีรายละเอียดที่ AI แต่งขึ้นในช่องที่ข้อมูลต้นทางเว้นว่างไว้',
+  'Require missing fields to be marked unknown and never inferred.': 'กำหนดให้ระบุช่องที่ไม่มีข้อมูลว่า “ไม่ทราบ” และห้าม AI คาดเดา',
+  'Define the audience and request explanations of unfamiliar terms.': 'ระบุกลุ่มผู้อ่าน และขอให้อธิบายคำศัพท์ที่ผู้อ่านอาจไม่คุ้นเคย',
+  'Ask for a version comparison with unchanged content omitted.': 'ขอให้เปรียบเทียบแต่ละเวอร์ชัน โดยไม่ต้องแสดงเนื้อหาส่วนที่ไม่เปลี่ยนแปลง',
+  'Specify the exact schema and validate every required field.': 'กำหนดโครงสร้างข้อมูลและชื่อช่องให้ชัดเจน พร้อมตรวจสอบว่ามีช่องที่จำเป็นครบถ้วน',
+  'The repair addresses fabrication at the missing-data boundary.': 'วิธีนี้แก้ปัญหา AI แต่งข้อมูลขึ้นมาเมื่อข้อมูลต้นทางไม่มีรายละเอียด',
+  'A machine-consumed output needs a stable, checkable structure.': 'ข้อมูลที่จะส่งให้ระบบอื่นประมวลผลต้องมีโครงสร้างคงที่และตรวจสอบได้',
+  'The task needs a narrower operation rather than more source material.': 'งานนี้ต้องระบุขอบเขตให้แคบและชัดเจนขึ้น ไม่ได้ต้องการข้อมูลต้นทางเพิ่ม',
+  'The audience requirement changes how the same facts should be communicated.': 'เมื่อกลุ่มผู้อ่านต่างกัน วิธีอธิบายข้อมูลชุดเดียวกันก็ควรเปลี่ยนให้เหมาะสม',
   'Generating an answer without retrieving supporting sources.': 'สร้างคำตอบโดยไม่ค้นหาแหล่งข้อมูลสนับสนุน',
   'Retrieving exact passages from the approved sources.': 'ดึงข้อความตรงจากแหล่งข้อมูลที่อนุมัติแล้ว',
   'Following a fixed rule to select approved text.': 'ทำตามกฎที่กำหนดไว้เพื่อเลือกข้อความที่อนุมัติแล้ว',
@@ -928,7 +950,11 @@ export default async function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
   });
 
-  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(0, 80).map((question) => question.id));
+  const pageSize = 20;
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
+  const pageStart = (currentPage - 1) * pageSize;
+  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -1100,6 +1126,8 @@ export default async function QuestionInventoryPage({
         </form>
       </section>
 
+      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
+
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
         <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
@@ -1111,7 +1139,6 @@ export default async function QuestionInventoryPage({
       </section>
 
       <ReviewSync />
-      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-grid">
         {visibleQuestions.map((question) => (

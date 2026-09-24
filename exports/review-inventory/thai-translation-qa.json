@@ -1,9 +1,9 @@
 {
-  "issueCount": 22468,
+  "issueCount": 22372,
   "topFragments": [
     [
       "The",
-      1402
+      1388
     ],
     [
       "the",
@@ -91,7 +91,7 @@
     ],
     [
       "ment",
-      116
+      109
     ],
     [
       "value",
@@ -112,10 +112,6 @@
     [
       "channel",
       96
-    ],
-    [
-      "Select all that apply",
-      88
     ],
     [
       "to the",
@@ -399,6 +395,10 @@
     ],
     [
       "can authorize this",
+      44
+    ],
+    [
+      "can only suggest",
       44
     ]
   ],
@@ -2379,10 +2379,9 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used",
-        "Select all that apply"
+        "is used"
       ],
-      "text": "What should happen next before the คู่มือ workshop is used? Select all that apply."
+      "text": "What should happen next before the คู่มือ workshop is used? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
@@ -2434,10 +2433,9 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used",
-        "Select all that apply"
+        "is used"
       ],
-      "text": "What should happen next before the คำตอบสำหรับงาน support is used? Select all that apply."
+      "text": "What should happen next before the คำตอบสำหรับงาน support is used? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
@@ -2490,10 +2488,9 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used",
-        "Select all that apply"
+        "is used"
       ],
-      "text": "What should happen next before the แผนประสานงาน is used? Select all that apply."
+      "text": "What should happen next before the แผนประสานงาน is used? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
@@ -2545,10 +2542,9 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used",
-        "Select all that apply"
+        "is used"
       ],
-      "text": "What should happen next before the บันทึก release is used? Select all that apply."
+      "text": "What should happen next before the บันทึก release is used? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
@@ -3319,10 +3315,9 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment",
-        "Select all that apply"
+        "ment"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
@@ -3453,10 +3448,9 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment",
-        "Select all that apply"
+        "ment"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
@@ -3588,10 +3582,9 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment",
-        "Select all that apply"
+        "ment"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
@@ -3722,10 +3715,9 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment",
-        "Select all that apply"
+        "ment"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? Select all that apply."
+      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",

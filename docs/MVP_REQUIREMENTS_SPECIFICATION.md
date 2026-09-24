@@ -100,7 +100,7 @@ Question rules:
 
 ## 6. Artifact Requirements
 
-Artifacts must be shown only when they improve the question.
+Artifacts must be shown only when they improve the question. Design, localization, telemetry, versioning, accessibility, and release review must follow the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md).
 
 Release-ready artifacts must be:
 
