@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Jev deferred pre-production evaluation
+
+- Documented Jev as an optional fast typed-decision layer for bounded routing, triage, agent gates and review prioritization, not as an orchestrator, generator, scoring authority or publisher.
+- Jev is not an MVP dependency. Revisit it during pre-production through a 1,000-5,000-case shadow-mode comparison against deterministic rules and a low-cost structured-output model.
+- Adoption is per use case and requires labelled accuracy, calibration, high-risk false-negative, Thai/English, latency, cost, privacy, vendor, fallback, audit and kill-switch gates.
+
 ## Translation provider strategy
 
 - Added a source-backed strategy for assessment-bank and AI Watch translation using Google Cloud Translation, Qwen-MT, and ThaiLLM.

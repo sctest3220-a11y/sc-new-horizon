@@ -20,10 +20,11 @@ The target production stack is:
 | Complex browser-based or large-scale crawling | Apify | Production, only when simpler crawling is insufficient |
 | Worker autoscaling | Kubernetes and KEDA | Scale stage, after sustained queue volume justifies operations cost |
 | Exploratory autonomous research workbench | Hermes, optional | Future experiment; never the system of record or control plane |
+| Fast typed decision layer for bounded routing/classification | Jev, optional | Pre-production evaluation in shadow mode; adopt only per validated use case |
 
 ## MVP Boundary
 
-The MVP does **not** need Temporal, Kubernetes, KEDA, ClickHouse, Hermes, or a large multi-agent framework. It should implement the operating contracts that allow those tools to be introduced later without rewriting assessment logic:
+The MVP does **not** need Temporal, Kubernetes, KEDA, ClickHouse, Hermes, Jev, or a large multi-agent framework. It should implement the operating contracts that allow those tools to be introduced later without rewriting assessment logic:
 
 - typed agent inputs and structured proposal outputs
 - stable `run_id`, `workflow_id`, `agent_id`, `tenant_id`, `user_id`, `session_id`, and content-version identifiers
@@ -94,6 +95,12 @@ Publishing workers must have stricter permissions than analysis workers. Content
 
 Hermes may be evaluated as a sandboxed research worker for broad source discovery, experimental skill development, and internal research briefs. It must not directly change questions, scoring, rubrics, profile logic, surveys, reports, or production schedules. It must not hold authoritative cross-tenant memory or become the sole record of workflow state.
 
+## Jev Position
+
+Jev may be evaluated during pre-production as a fast typed decision layer for bounded choices, scores, and confidence-gated classifications. Candidate uses include feedback triage, agent completion gates, AI Watch sensitivity, translation escalation, and review prioritization. It does not generate content, replace orchestration or statistics, calculate scores, approve publication, or override deterministic permissions, legal, budget, regional, provider, or human-review controls.
+
+The evaluation starts in shadow mode on labelled historical decisions and compares Jev with deterministic rules and an inexpensive structured-output model. Adoption is approved one use case at a time after accuracy, calibration, high-risk false negatives, latency, cost, language performance, vendor terms, privacy, fallback, auditability, and kill-switch behavior pass. See [Jev Pre-production Evaluation](JEV_PREPRODUCTION_EVALUATION.md).
+
 ## Adoption Triggers
 
 Adopt tools because measured needs justify them, not merely because the product is labelled production.
@@ -133,6 +140,14 @@ Adopt tools because measured needs justify them, not merely because the product 
 - managed/serverless workers cannot meet throughput, isolation, or cost requirements
 - the team is ready to operate Kubernetes reliably
 
+### Evaluate Jev when
+
+- at least one high-volume decision has a closed, versioned option set
+- deterministic rules are measurably insufficient but generative output is unnecessary
+- 1,000-5,000 representative historical labels or equivalent reviewed fixtures are available
+- the platform can run shadow decisions and capture confidence, outcome, latency, cost, language, fallback, and human-review evidence
+- vendor security, privacy, regional, contractual, support and continuity requirements can be evaluated
+
 ## Governance Rules
 
 - Agents observe, analyze, test, and propose; humans approve material assessment changes.
@@ -149,4 +164,4 @@ Adopt tools because measured needs justify them, not merely because the product 
 - [Admin Settings and Configuration](ADMIN_SETTINGS_CONFIGURATION.md)
 - [MVP Requirements Specification](MVP_REQUIREMENTS_SPECIFICATION.md)
 - [Feature Catalog by User Type and Release Stage](FEATURE_CATALOG_BY_USER_AND_RELEASE.md)
-
+- [Jev Pre-production Evaluation](JEV_PREPRODUCTION_EVALUATION.md)
