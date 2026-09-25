@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Main-page hydration repair
+
+- Removed first-render reads of URL parameters, `localStorage`, browser-generated ids, and saved telemetry from the main page's React state initializers.
+- The server and browser now begin with the same deterministic render; browser-only routing and saved state are restored on the next animation frame.
+- This fixes the hydration error where the server rendered the main header while the browser initially rendered the optional profile pulse or another saved view.
+
 ## Pilot Operations admin workspace
 
 - Added `/admin/pilot-operations` and linked it from the main Admin dashboard.

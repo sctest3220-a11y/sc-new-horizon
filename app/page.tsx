@@ -12866,30 +12866,21 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question')
-      ? 'assessment'
-      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
-      ? 'onboarding'
-      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'admin'
-        ? 'admin'
-        : 'home'
-  ));
-  const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [browserStateReady, setBrowserStateReady] = useState(false);
+  const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
-  const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
-  const [mode, setMode] = useState<AssessmentMode>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
-  ));
+  const [showDraftThai, setShowDraftThai] = useState(false);
+  const [mode, setMode] = useState<AssessmentMode>('free');
   const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
   const [newsMediaFilter, setNewsMediaFilter] = useState<NewsMediaFilter>('all');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
-  const [authProfile, setAuthProfile] = useState<AuthProfile | null>(() => parseAuthProfile(readLocalStorage(authProfileStorageKey)));
+  const [authProfile, setAuthProfile] = useState<AuthProfile | null>(null);
   const [authEmail, setAuthEmail] = useState('');
   const [authMessage, setAuthMessage] = useState('');
   const [activeLabKind, setActiveLabKind] = useState<LabKind>('prompt');
   const [landingLeaderboardPeriod, setLandingLeaderboardPeriod] = useState<LandingLeaderboardPeriod>('week');
-  const [profilePulseOpen, setProfilePulseOpen] = useState(() => readLocalStorage(profilePulseStorageKey) !== 'dismissed');
+  const [profilePulseOpen, setProfilePulseOpen] = useState(false);
   const [profilePulseSelections, setProfilePulseSelections] = useState<string[]>([]);
   const [labDraft, setLabDraft] = useState('');
   const [labSelections, setLabSelections] = useState<string[]>([]);
@@ -12902,10 +12893,8 @@ export default function Home() {
   const [surveyOpen, setSurveyOpen] = useState(false);
   const [surveyMode, setSurveyMode] = useState<AssessmentMode>('free');
   const [surveyAnswers, setSurveyAnswers] = useState<Record<string, string[]>>({});
-  const [localProfileId] = useState(() => getOrCreateLocalProfileId());
-  const [userProfileSurvey, setUserProfileSurvey] = useState<UserProfileSurvey | null>(() => (
-    parseUserProfileSurvey(readLocalStorage(userProfileStorageKey))
-  ));
+  const [localProfileId, setLocalProfileId] = useState('profile-pending');
+  const [userProfileSurvey, setUserProfileSurvey] = useState<UserProfileSurvey | null>(null);
   const [audience, setAudience] = useState<Audience>('general');
   const [functionTrack, setFunctionTrack] = useState<FunctionTrack>('general');
   const [industryTrack, setIndustryTrack] = useState<IndustryTrack>('general');
@@ -12917,10 +12906,7 @@ export default function Home() {
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [current, setCurrent] = useState<Question>(() => {
-    const previewQuestionId = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('question') : null;
-    return (previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], 'free');
-  });
+  const [current, setCurrent] = useState<Question>(allAssessmentItems[0]);
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
   const [rankOrder, setRankOrder] = useState<string[]>([]);
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
@@ -12932,26 +12918,16 @@ export default function Home() {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [lastAnswer, setLastAnswer] = useState<Answer | null>(null);
   const [pendingQuestion, setPendingQuestion] = useState<Question | null>(null);
-  const [scoreLog, setScoreLog] = useState<ScoreLogEntry[]>(() => (
-    parseScoreLog(readLocalStorage(scoreLogStorageKey))
-  ));
-  const [profileSignalLog, setProfileSignalLog] = useState<ProfileSignalLogEntry[]>(() => (
-    parseProfileSignalLog(readLocalStorage(profileSignalLogStorageKey))
-  ));
-  const [behaviorLog, setBehaviorLog] = useState<AssessmentBehaviorEvent[]>(() => (
-    parseBehaviorLog(readLocalStorage(behaviorLogStorageKey))
-  ));
-  const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>(() => (
-    parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey))
-  ));
+  const [scoreLog, setScoreLog] = useState<ScoreLogEntry[]>([]);
+  const [profileSignalLog, setProfileSignalLog] = useState<ProfileSignalLogEntry[]>([]);
+  const [behaviorLog, setBehaviorLog] = useState<AssessmentBehaviorEvent[]>([]);
+  const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>([]);
 
-  const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>(() => (
-    parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
-  ));
+  const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>([]);
   const [feedbackDraft, setFeedbackDraft] = useState<Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'>>({
     ...defaultAssessmentFeedbackDraft(),
   });
-  const [behaviorSessionId, setBehaviorSessionId] = useState(() => `session-${createAssessmentSeed().toString(36)}`);
+  const [behaviorSessionId, setBehaviorSessionId] = useState('session-pending');
   const behaviorSessionIdRef = useRef(behaviorSessionId);
   const questionStartedAtRef = useRef(0);
   const questionStartedIsoRef = useRef('');
@@ -12969,13 +12945,15 @@ export default function Home() {
     executiveRole: 'ceo' as ExecutiveRole,
   });
   const [loggedResultId, setLoggedResultId] = useState<string | null>(null);
-  const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
-    getAgentWorkflowReport(
+  const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => ({
+    ...getAgentWorkflowReport(
       allAssessmentItems.length,
       allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length,
       0,
-    )
-  ));
+    ),
+    generatedAt: 'Not run',
+    runId: 'agent-run-preview',
+  }));
   const [selectedAgentId, setSelectedAgentId] = useState('orchestrator');
 
   const activeConfig = useMemo(
@@ -13059,6 +13037,37 @@ export default function Home() {
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
 
   useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const params = new URLSearchParams(window.location.search);
+      const previewQuestionId = params.get('question');
+      const requestedView = params.get('view');
+      const restoredMode: AssessmentMode = previewQuestionId ? 'premium' : 'free';
+      const restoredSessionId = `session-${createAssessmentSeed().toString(36)}`;
+
+      setStep(previewQuestionId ? 'assessment' : requestedView === 'assessment' ? 'onboarding' : requestedView === 'admin' ? 'admin' : 'home');
+      setAppLanguage(readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+      setShowDraftThai(readLocalStorage(thaiDraftStorageKey) === '1');
+      setMode(restoredMode);
+      setAssessmentTargetTotal(modeConfig[restoredMode].totalQuestions);
+      setAuthProfile(parseAuthProfile(readLocalStorage(authProfileStorageKey)));
+      setProfilePulseOpen(readLocalStorage(profilePulseStorageKey) !== 'dismissed');
+      setLocalProfileId(getOrCreateLocalProfileId());
+      setUserProfileSurvey(parseUserProfileSurvey(readLocalStorage(userProfileStorageKey)));
+      setCurrent((previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], restoredMode));
+      setScoreLog(parseScoreLog(readLocalStorage(scoreLogStorageKey)));
+      setProfileSignalLog(parseProfileSignalLog(readLocalStorage(profileSignalLogStorageKey)));
+      setBehaviorLog(parseBehaviorLog(readLocalStorage(behaviorLogStorageKey)));
+      setAssessmentFeedback(parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey)));
+      setSupervisedAgentRuns(parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey)));
+      setBehaviorSessionId(restoredSessionId);
+      behaviorSessionIdRef.current = restoredSessionId;
+      setBrowserStateReady(true);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!browserStateReady) return;
     writeLocalStorage(languageStorageKey, appLanguage);
     applyUiLanguage(appLanguage);
     const observer = new MutationObserver(() => {
@@ -13066,7 +13075,7 @@ export default function Home() {
     });
     observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
-  }, [appLanguage, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
+  }, [appLanguage, browserStateReady, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
   const latestSupervisedAgentRun = supervisedAgentRuns[0] ?? null;
   const pendingAgentDraftCount = supervisedAgentRuns.reduce(
     (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'pending').length,
