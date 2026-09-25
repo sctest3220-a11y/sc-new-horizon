@@ -4,6 +4,8 @@ The 10 September 2026 milestone adds **3,328 draft item variants** for review. T
 
 The draft inventory does **not** replace the 634-item live assessment bank. The live bank is exported separately for side-by-side review, and live assessment routing should continue to use reviewed production items only. Draft questions include English content plus machine-assisted Thai reviewer fields, recommended live formats, artifact-need analysis, user-facing rewrite drafts, review metadata, and translation QA output.
 
+The agreed release process is internal review and rewriting first, followed by translation and artifact/rubric QA, inventory regeneration, a frozen review release, and only then a Cloudflare-hosted reviewer with central feedback storage. See [Question Inventory: Internal Review to Hosted Feedback Pilot](QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md).
+
 ## Coverage
 
 | Layer | Mappings | Difficulty levels | Variants per cell | Draft items |

@@ -10,6 +10,8 @@ The existing **634 live questions remain separate** and are exported for side-by
 
 Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
 
+The planned external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). The team will complete bounded English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, and a frozen release manifest before deploying only the reviewer surface to Cloudflare with central feedback storage.
+
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform

@@ -1,5 +1,11 @@
 # Deployment Notes
 
+## Question Inventory Feedback Pilot
+
+The first external deployment should expose only the Question Inventory reviewer, after the team completes internal English rewriting, Thai equivalence review, rubric/artifact QA, inventory regeneration, and release freezing. The complete process and deployment gate are defined in [Question Inventory: Internal Review to Hosted Feedback Pilot](QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md).
+
+The current application uses Vinext. Cloudflare Workers is the preferred host for the inventory-only pilot. A deployed static/bundled reviewer is not sufficient by itself: external reviewer submissions must use central server-validated storage, while browser `localStorage` is limited to unsaved drafts.
+
 ## Localhost Auth Testing
 
 Google Auth can be tested on localhost through Supabase.

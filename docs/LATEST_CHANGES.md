@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Question inventory review-to-hosting process
+
+- Documented the agreed sequence: bounded internal review, English rewrite, format/rubric/artifact QA, Thai equivalence review, inventory rebuild, frozen release, central feedback storage, and then Cloudflare deployment of only the reviewer surface.
+- Added release/version requirements, role ownership, validation commands, hosted-pilot gates, minimum feedback schema, security/privacy controls, monitoring, export, local analysis, and human-approved rewrite workflow.
+- Linked the process from the README, local review guide, inventory milestone, and deployment notes.
+
 ## Main-page hydration repair
 
 - Removed first-render reads of URL parameters, `localStorage`, browser-generated ids, and saved telemetry from the main page's React state initializers.
