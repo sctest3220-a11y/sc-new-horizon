@@ -55,6 +55,25 @@ Admin Settings should contain these areas:
 9. Feature Flags and Experiments
 10. Configuration Versions and Audit Log
 
+## Pilot Operations Workspace
+
+The current MVP prototype includes a focused Pilot Operations workspace at `/admin/pilot-operations`. It is linked from the main Admin dashboard and separates day-to-day pilot control from the broader analytics console.
+
+The browser-local prototype supports:
+
+- pilot identity, owner, cohort, dates, access code, status, and default language
+- mandatory and maximum question counts
+- adaptive continuation, answer reveal, question feedback, and report-survey switches
+- tester participation, progress, score, language, persona, and last-activity preview
+- explicit content, translation, artifact, scoring, telemetry, and support readiness gates
+- a grouped feedback/telemetry issue queue with human-controlled investigation status
+- CSV exports for pilot configuration, tester status, and issue triage
+- local automatic persistence with a visible warning that it is not a shared backend
+
+The prototype deliberately prevents `Ready` and `Running` status while a required readiness gate remains open. This is a user-interface guard, not a production security control.
+
+Before MVP go-live, replace browser-local state and demonstration tester records with authenticated, tenant-scoped server records. Every launch, gate decision, configuration change, export, and content version must record actor, timestamp, reason, prior value, new value, and relevant evidence. Invitation delivery, consent records, production publishing, role permissions, audit history, and cross-user analytics are not provided by the browser-local prototype.
+
 ## Overview
 
 The overview should show:

@@ -287,6 +287,9 @@ The release stage describes operational readiness, not just whether a screen or 
 | Feature | User | Stage | Notes |
 | --- | --- | --- | --- |
 | Assessment count/profile/report/tracker configuration design | Super/Assessment Admin | **MVP - Go-live** | Specification exists; settings UI not yet built. |
+| Pilot Operations workspace | Assessment Admin | **MVP - Built** | Browser-local pilot setup, readiness gates, tester preview, issue triage, and CSV exports; not a shared or authorized backend. |
+| Pilot status blocked by required readiness gates | Assessment Admin | **MVP - Built** | UI guard prevents Ready/Running while required gates are open; server enforcement and audit are go-live work. |
+| Shared pilot records, invitations, and audited launch decisions | Assessment Admin | **MVP - Go-live** | Requires authentication, tenant-scoped persistence, consent, versioning, and audit history. |
 | Report visibility by Free/Freemium/Premium | Assessment Admin | **MVP - Go-live** | Hidden, summary, or detailed. |
 | Tracker switches and dependency warnings | Analytics/Security Admin | **MVP - Go-live** | Essential audit records cannot be disabled casually. |
 | Provider and model registry | Super/Agent Admin | **MVP - Go-live** | Models selected by workload without hardcoding. |

@@ -1,5 +1,13 @@
 # Latest Changes
 
+## Pilot Operations admin workspace
+
+- Added `/admin/pilot-operations` and linked it from the main Admin dashboard.
+- Admins can configure a pilot's owner, dates, cohort, access code, language, question limits, adaptive continuation, answer reveal, quick feedback, and report survey.
+- Added participation KPIs, pseudonymous tester monitoring, explicit content/translation/artifact/scoring/telemetry/support readiness gates, and a human-controlled quality issue queue.
+- Required gates block the `Ready` and `Running` status options. Pilot configuration, gate decisions, and issue status auto-save in the current browser and can be exported to CSV.
+- The workspace labels its MVP boundary: shared persistence, real invitations, role-based authorization, consent records, audited publishing, and server analytics remain go-live requirements.
+
 ## Jev deferred pre-production evaluation
 
 - Documented Jev as an optional fast typed-decision layer for bounded routing, triage, agent gates and review prioritization, not as an orchestrator, generator, scoring authority or publisher.

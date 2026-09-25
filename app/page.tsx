@@ -14887,6 +14887,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="admin-hero-actions">
+                  <a className="primary" href="/admin/pilot-operations">Pilot operations</a>
                   <a className="primary" href="/admin/question-inventory">Question inventory</a>
                   <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
                 </div>
