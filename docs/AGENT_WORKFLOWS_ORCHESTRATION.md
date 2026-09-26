@@ -48,6 +48,12 @@ Identifies durable AI concepts, model-capability shifts, evaluation changes, gov
 
 Drafts short-lived AI Watch candidates from model releases, governance changes, safety incidents, security issues, business adoption, education trends, and workplace AI shifts. News expires unless promoted into durable concepts.
 
+**Current implementation boundary:** the visible MVP AI Watch feed is a manually maintained array in `app/page.tsx`, and the Admin agent run is a deterministic simulation. There is not yet a scheduled discovery worker, source connector, durable candidate queue, or freshness monitor. The interface must not be described as autonomous or continuously refreshed until those services exist.
+
+For the hosted pilot, introduce a supervised discovery job with a daily scan target and an explicit stale-feed alert after 48 hours without a successful run. Scan approved official blogs and release pages, GitHub releases for watched projects, standards/regulator feeds, research feeds, reputable publishers, and YouTube channels through permitted APIs/RSS. Discovery creates candidates only; a human editor approves every visible item.
+
+Each run must record start/end time, source coverage, fetch errors, newly discovered URLs, duplicates, rejected items, candidate count, reviewer status, publication time, expiry, correction/takedown state, and next scheduled run. Admin should show the last successful scan and failed or stale sources rather than implying that a simulated run checked the web.
+
 The source mix should include articles, official announcements, research, standards updates, YouTube videos, publisher-hosted video, and useful short-form video. Each candidate records media type (`article`, `video`, or `short`), publisher, canonical URL, publication date, duration when available, language, domain/competency relevance, freshness, and reviewer status. The agent balances formats; it does not fill quotas with weak video.
 
 Editorial mix should make AI understandable in everyday life, not read like a vendor release log. Recurring lanes include personal and workplace agents, scams and jailbreaks, privacy and consumer protection, schools and families, creative tools, autonomous cars and robotaxis, home/service robots, robotics competitions, and surprising physical-AI demonstrations. Every item must answer: what happened, why a normal user should care, what claim or limitation to inspect, and which practical AI skill it reinforces.

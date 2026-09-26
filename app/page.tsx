@@ -1662,6 +1662,28 @@ Check that every claim is supported by the ticket, order record, or policy. Mark
 
 const trendFeed: NewsFeedItem[] = [
   {
+    category: 'Decision models',
+    title: 'Laya brings fast typed AI decisions to an open-weight model',
+    source: 'Convai Innovations on GitHub',
+    date: 'September 24, 2026',
+    url: 'https://github.com/NandhaKishorM/laya',
+    domain: 'D2',
+    signal: 'Laya can return a fixed choice, score, or yes/no probability without writing prose. That may help software route and classify work quickly, but typed output is not proof that the decision is correct: teams still need representative tests, calibrated thresholds, fallback rules, and human review.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    category: 'Decision models',
+    title: 'Jev proposes a new model interface: state in, typed decisions out',
+    source: 'TypeSafe AI',
+    date: 'September 15, 2026',
+    url: 'https://typesafe.ai/blog/introducing-system-one-models-and-jev',
+    domain: 'D1',
+    signal: 'Instead of generating an open-ended response, Jev returns predefined choices with probabilities for software workflows. Users should understand the trade-off: constrained output can prevent invalid formats, but the selected answer can still be wrong and must be evaluated for the real task.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
     category: 'Everyday agents',
     title: 'Personal AI agents are moving into shopping, subscriptions, and phone calls',
     source: 'Axios',
@@ -15631,11 +15653,15 @@ export default function Home() {
                 ))}
               </div>
               <p>{newsFrequencyLabels[newsFrequency].detail}</p>
-              <small>Current MVP: this controls feed preference in the UI. The Codex trend-watch agent can be scheduled to match this cadence.</small>
+              <small>Current MVP: this saves your preferred cadence only. The feed is manually curated; scheduled discovery is not connected yet.</small>
             </div>
           </div>
           <div className="news-layout">
             <section className="news-feed" aria-label="AI trends newsfeed">
+              <div className="news-freshness-note" role="status">
+                <div><span aria-hidden="true" /><strong>Editorial snapshot</strong></div>
+                <p>Reviewed 26 September 2026 · Official-source additions include Jev and Laya. Automated monitoring is not live yet.</p>
+              </div>
               <div className="news-media-filter" role="group" aria-label="Filter AI Watch by media type">
                 {(['all', 'article', 'video', 'short'] as NewsMediaFilter[]).map((mediaType) => (
                   <button

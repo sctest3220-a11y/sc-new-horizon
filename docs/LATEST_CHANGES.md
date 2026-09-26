@@ -1,5 +1,11 @@
 # Latest Changes
 
+## AI Watch freshness correction
+
+- Added official-source AI Watch briefs for Jev and Laya, emphasizing that typed output prevents invalid formats but does not guarantee a correct decision.
+- Documented the actual MVP boundary: the feed is manually maintained and the Admin Newsfeed Agent is simulated, so there is currently no autonomous crawler or scheduled freshness monitor.
+- Defined the next implementation gate: daily approved-source discovery, a 48-hour stale-run alert, durable candidate/review state, per-source failure reporting, and human editorial approval before publication.
+
 ## Laya decision-model evaluation
 
 - Added Laya as the open-weight Apache-2.0 candidate in the deferred bounded-decision shadow comparison with Jev, deterministic rules, and a structured-output model.
