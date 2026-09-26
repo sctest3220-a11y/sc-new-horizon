@@ -250,6 +250,7 @@ The release stage describes operational readiness, not just whether a screen or 
 | Translation quality comparison and approval queue | Localization/Content Reviewer | **MVP - Go-live** | Blind provider pilot, terminology versions, equivalence QA, and human publication decision. |
 | Learned or agentic translation routing | Super Admin/AI Operations | **Production** | Only after deterministic-router evidence shows a measurable routing gap. |
 | Jev bounded-decision shadow pilot | AI Operations/Quality Admin | **Production** | Pre-production evaluation only; no live authority until each use case passes labelled accuracy, calibration, risk, privacy, fallback, and audit gates. |
+| Laya open-weight bounded-decision shadow pilot | AI Operations/Quality Admin | **Production** | Compare base and task-tuned Thai/English performance with Jev and deterministic rules; self-hosting and fine-tuning are not MVP dependencies. |
 | Content conflict and duplicate detection | Content Reviewer | **Production** | Automated assistance with human decision. |
 
 ## Platform Admin: Analytics and Quality

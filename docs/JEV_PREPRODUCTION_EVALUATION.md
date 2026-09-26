@@ -62,7 +62,7 @@ Jev is a closed managed API and was newly released in early access. Pre-producti
 
 1. Select 1,000-5,000 historically labelled decisions across feedback triage, agent completion gates, AI Watch sensitivity, translation escalation, and quality-alert prioritization.
 2. Freeze explicit option sets, definitions, expected labels, confidence thresholds, and evaluation metrics before testing.
-3. Compare Jev with deterministic rules and at least one inexpensive structured-output model using the same inputs.
+3. Compare Jev with deterministic rules, Laya base/tuned checkpoints, and at least one inexpensive structured-output model using the same inputs. See [Laya Pre-production Evaluation](LAYA_PREPRODUCTION_EVALUATION.md).
 4. Run Jev in shadow mode: record recommendations but permit no live routing, user-visible decision, score change, publication, or external side effect.
 5. Measure accuracy, per-class recall, calibration, abstention/escalation quality, consistency, latency, token use, cost, provider errors, and human-review reduction.
 6. Evaluate subgroup and language performance, especially Thai versus English content and rare high-risk classes.

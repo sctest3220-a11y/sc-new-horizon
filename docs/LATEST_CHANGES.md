@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Laya decision-model evaluation
+
+- Added Laya as the open-weight Apache-2.0 candidate in the deferred bounded-decision shadow comparison with Jev, deterministic rules, and a structured-output model.
+- Documented candidate uses, exclusions, self-hosting and fine-tuning costs, Thai/English evaluation, calibration risks, option/context limits, architecture placement, and adoption gates.
+- Laya remains outside the MVP critical path and receives no authority over scores, content approval, publication, permissions, or hard policy.
+
 ## Question inventory review-to-hosting process
 
 - Documented the agreed sequence: bounded internal review, English rewrite, format/rubric/artifact QA, Thai equivalence review, inventory rebuild, frozen release, central feedback storage, and then Cloudflare deployment of only the reviewer surface.
