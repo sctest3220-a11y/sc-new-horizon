@@ -10,7 +10,7 @@ The existing **634 live questions remain separate** and are exported for side-by
 
 Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
 
-The planned external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). The team will complete bounded English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, and a frozen release manifest before deploying only the reviewer surface to Cloudflare with central feedback storage.
+The formal external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, a frozen release manifest, and central feedback storage remain requirements for that pilot. A separate public Cloudflare technical preview is already available for testing draft content; it currently uses browser-local feedback, as described below.
 
 ## What It Includes
 
@@ -60,6 +60,26 @@ Thai lives in two deliberately separate places:
 Continuous integration (`.github/workflows/ci.yml`) runs lint, a TypeScript error budget, the production build, and a question-bank integrity check (unique ids, translations point at real questions) on every push and pull request to `kj-dee-branch` and `main`, so a merge that breaks the build cannot sit unnoticed on the branch.
 
 ## Latest Change Report
+
+### Cloudflare inventory testing — September 28, 2026
+
+[Open the hosted Question Inventory](https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev/admin/question-inventory). This public test deployment serves only the question inventory and its media, with 3,328 draft items and 634 existing live-bank items. It is a draft-content preview, not an approved external feedback pilot or a deployment of the full assessment app.
+
+**Live now:** release identifiers, content fingerprints, and feedback separated by question-content version. Older saved reviews remain downloadable without appearing as reviews of rewritten questions. The [release manifest](https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev/review-release.json) identifies the deployed build. Build, release/import unit tests, and local/live browser checks passed.
+
+**Automatic refresh is not active yet.** The infrastructure is pushed to `codex/inventory-versioned-deployment` in `sctest3220-a11y/sc-new-horizon`. Merge that temporary setup branch into `main`, then configure the `inventory-testing` GitHub environment with the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable. The branch can be deleted after merging; its workflow then lives on `main`.
+
+Collaborators should open question-rewrite PRs **against `main`**, not the setup branch. Include regenerated `exports/review-inventory/questions.json`, `live-questions.json`, `artifact-needs.json`, and any changed `public/stimuli` assets; editing rewrite notes alone does not change hosted questions. Once activated, the workflow tests relevant PRs and deploys the tested artifact after relevant changes merge to `main`. It records release metadata, retains build artifacts for 90 days, serializes deployments, and skips superseded main commits. Rollback instructions are in the [Cloudflare testing guide](docs/QUESTION_INVENTORY_CLOUDFLARE_TEST.md).
+
+**Reviews do not automatically sync to the repo.** Testers select **Download feedback JSON** and send the file to the maintainer. From the repository root, import it with:
+
+```sh
+node scripts/import-inventory-feedback.mjs /path/to/inventory-feedback.json tester-alias
+```
+
+Review and commit `exports/review-feedback/cloudflare/tester-alias.json` through a feedback PR. Repeated imports deduplicate saved entries; conflicting entries are rejected, question versions remain separate, and question source files are never changed by the importer. Pre-versioning feedback is retained as `legacy-unversioned`. Feedback stays in the tester's browser until exported; shared cloud review storage is not implemented. This repository is public, so inspect review text for private information before committing it.
+
+See the [setup, release, rollback, and feedback-import guide](docs/QUESTION_INVENTORY_CLOUDFLARE_TEST.md) for complete instructions.
 
 Detailed telemetry and agent documentation:
 
