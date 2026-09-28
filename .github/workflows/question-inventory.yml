@@ -1,0 +1,107 @@
+name: Question inventory checks and deployment
+on:
+  pull_request:
+    branches: [main]
+    paths: &inventory_paths
+      - 'exports/review-inventory/**'
+      - 'public/stimuli/**'
+      - 'app/admin/question-inventory/**'
+      - 'app/globals.css'
+      - 'deploy/inventory-preview/**'
+      - 'scripts/*inventory*.mjs'
+      - 'scripts/lib/inventory-*.mjs'
+      - 'scripts/*feedback*.mjs'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'tsconfig.json'
+      - '.github/workflows/question-inventory.yml'
+  push:
+    branches: [main]
+    paths: *inventory_paths
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: inventory-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node --test scripts/test-inventory-release.mjs
+      - run: node scripts/build-inventory-cloudflare.mjs
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Test built Worker
+        shell: bash
+        run: |
+          pnpm exec wrangler dev --config work/inventory-cloudflare/dist/server/wrangler.json --port 4174 > /tmp/inventory-worker.log 2>&1 &
+          worker_pid=$!
+          trap 'kill "$worker_pid" || true' EXIT
+          for attempt in {1..60}; do
+            if curl -fsS http://localhost:4174/review-release.json >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/test-inventory-cloudflare.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inventory-${{ github.sha }}
+          path: |
+            work/inventory-cloudflare/dist
+            work/inventory-cloudflare/public/review-release.json
+          retention-days: 90
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'sctest3220-a11y/sc-new-horizon'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: inventory-testing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: inventory-${{ github.sha }}
+          path: work/inventory-cloudflare
+      - name: Deploy the tested artifact
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Set CLOUDFLARE_API_TOKEN in the inventory-testing environment'; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'Set CLOUDFLARE_ACCOUNT_ID in the inventory-testing environment'; exit 1; }
+          pnpm exec wrangler deploy --config work/inventory-cloudflare/dist/server/wrangler.json
+      - name: Verify deployed release
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const expected = JSON.parse(fs.readFileSync('work/inventory-cloudflare/public/review-release.json'));
+          const url = 'https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev';
+          let success = false;
+          for (let attempt = 0; attempt < 12; attempt++) {
+            try {
+              const response = await fetch(`${url}/review-release.json`, { cache: 'no-store' });
+              const actual = await response.json();
+              if (actual.releaseId === expected.releaseId) { success = true; break; }
+            } catch {}
+            await new Promise(resolve => setTimeout(resolve, 5000));
+          }
+          if (!success) throw new Error('Cloudflare is not serving the expected release; inspect deployment and rollback if needed.');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `Deployed [inventory](${url})\n\nRelease: ${expected.releaseId}\n\nQuestion version: ${expected.contentVersion}\n`);
+          JS
