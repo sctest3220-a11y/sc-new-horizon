@@ -298,6 +298,16 @@ nav button:hover {
   gap: 10px;
 }
 
+/* Keep the learning destinations reachable instead of hiding navigation on phones. */
+@media (max-width: 1100px) {
+  .topbar { flex-wrap: wrap; height: auto; gap: 10px; padding: 12px 16px; position: static; }
+  .topbar > nav { display: flex; flex-wrap: wrap; gap: 4px 12px; order: 3; width: 100%; font-size: 13px; }
+  .topbar > nav button { min-height: 44px; padding: 6px 3px; }
+  .topbar > .topbar-actions { align-items: center; flex-direction: row; gap: 6px; }
+  .topbar > .brand { font-size: 14px; gap: 7px; }
+  .topbar > .brand .brand-mark { height: 30px; width: 30px; }
+}
+
 .language-toggle {
   align-items: center;
   background: rgba(255, 255, 255, 0.72);

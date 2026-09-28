@@ -53,13 +53,19 @@ Thai copy should be simple, natural Thailand Thai. Do not translate core technic
 
 Thai lives in two deliberately separate places:
 
-- **Interface chrome** (navigation, buttons, report labels, survey text) is translated by the `thaiUiCopy` dictionary in `app/page.tsx`, which maps exact English strings to Thai at render time. Add UI strings there.
+- **Legacy interface chrome** (navigation, buttons, report labels, survey text) is translated by the `thaiUiCopy` dictionary in `app/page.tsx`, which maps exact English strings to Thai at render time. Add legacy UI strings there. The connected Watch/Labs surface owns its bilingual React copy in `app/watch-labs.tsx`, `app/watch-model.ts`, and `app/connected-labs.ts`; `data-no-translate` keeps the legacy DOM pass from rewriting that surface.
 - **Question content** (scenarios, prompts, answer choices, feedback, rank steps, matching pairs, rubric keywords, artifact captions) is translated per question id: optional `*Th` fields beside the English on the item, plus the generated table `app/questionTranslations.th.ts` produced from the reviewed translation workbook. `localizeQuestion()` merges them with English fallback and only for items that carry a `translationStatus`. Never add question text to `thaiUiCopy`, and never hand-edit the generated table; see `docs/LOCALISATION.md` for the review workflow and status rules (`draft` → `reviewed` → `approved`).
 - **Template-generated questions** (`ADV-*`, `TREND-*`) take their Thai from the translated frames and from the competency vocabulary (`competencyLabelsTh`, `skillLabelsTh`), which also lets competency and skill names in reports follow the language toggle. Any item still at `draft` is shown only to pilot testers who set `localStorage['new-horizon-thai-drafts-v1'] = '1'` (none at the moment).
 
 Continuous integration (`.github/workflows/ci.yml`) runs lint, a TypeScript error budget, the production build, and a question-bank integrity check (unique ids, translations point at real questions) on every push and pull request to `kj-dee-branch` and `main`, so a merge that breaks the build cannot sit unnoticed on the branch.
 
 ## Latest Change Report
+
+Manual AI Watch discovery is now available with `npm run crawl:news` (Python 3). The scout reads [awareness/trend/technology discovery instructions](config/ai-watch-discovery.json) and writes review candidates plus fetch failures to `.agent-drafts/ai-watch/latest.json`. It does not automatically publish or run on a schedule; see [the editorial workflow](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch awareness curation (September 29): the local app now connects source-backed Pip/iLands, agent bank-run simulation, and Jev stories to **Did you know** teasers. Original-source images and click-to-load videos appear inside each curated story, with visible credits and links. This remains manually curated and is not deployed to the inventory-only Cloudflare site. See [the curation requirements](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch and connected Labs: [the first local release](docs/AI_WATCH_LABS_LOCAL_RELEASE.md) adds explicit-interest ranking, saved stories, topic controls, optional video loading, and two bilingual Labs with recoverable drafts and takeaways. Use AI Watch / AI Labs in the navigation or `/?view=watch` / `/?view=labs`. Data remains browser-local. The [roadmap](docs/AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) defines later shared editorial workflows, discovery, and multimodal expansion; these services are not connected yet.
 
 Detailed telemetry and agent documentation:
 

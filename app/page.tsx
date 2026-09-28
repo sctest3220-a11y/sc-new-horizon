@@ -2,6 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { questionTranslationsTh } from './questionTranslations.th';
+import WatchLabs from './watch-labs';
+import AwarenessFlash from './watch-awareness';
+import type { WatchStory as NewsFeedItem } from './watch-model';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -11,40 +14,6 @@ type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'sales' | 
 type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
-type NewsFrequency = 'daily' | 'weekly' | 'monthly';
-type NewsMediaFilter = 'all' | 'article' | 'video' | 'short';
-type NewsFeedItem = {
-  category: string;
-  title: string;
-  source: string;
-  date: string;
-  url: string;
-  domain: DomainId;
-  signal: string;
-  mediaType: Exclude<NewsMediaFilter, 'all'>;
-  duration?: string;
-  embedVideo?: boolean;
-  articleImage?: {
-    url: string;
-    alt: string;
-    credit: string;
-  };
-  publisherType?: 'official' | 'standards' | 'research' | 'news';
-};
-
-const youtubeEmbedUrl = (url: string) => {
-  const match = url.match(/[?&]v=([^&]+)/);
-  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : null;
-};
-
-const newsReviewLens: Record<DomainId, string> = {
-  D1: 'Look for the exact capability being demonstrated, the model or system involved, and what the evidence does not prove.',
-  D2: 'Notice the task, tool access, human handoffs, and limits that would matter in a real workflow.',
-  D3: 'Check the comparison method, sample, source quality, and whether the evidence supports the headline.',
-  D4: 'Identify the permissions, safeguards, monitoring, and accountable human needed before this can be trusted.',
-  D5: 'Ask what outcome changes, what it costs, and what evidence would justify wider adoption.',
-  D6: 'Watch how responsibilities, review points, and human judgment change when AI joins the work.',
-};
 type LandingLeaderboardPeriod = 'day' | 'week';
 type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
@@ -677,6 +646,9 @@ const thaiUiCopy: Record<string, string> = {
   'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
   'Demo Report': 'ตัวอย่าง Report',
   'AI Watch': 'AI Watch',
+  'AI Labs': 'AI Labs',
+  'Show Example Prompt': 'ดูตัวอย่าง Prompt',
+  'English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.': 'ตรวจเฉพาะคำสำคัญภาษาอังกฤษ ไม่ได้ประเมินความหมาย การเขียนภาษาไทย หรือความเชี่ยวชาญ',
   'Results': 'ผลลัพธ์',
   'Start': 'เริ่ม',
   'AI-powered readiness assessment': 'แบบประเมินความพร้อมด้าน AI',
@@ -1075,6 +1047,7 @@ function applyUiLanguage(language: AppLanguage) {
     node.nodeValue = translateTextNodeValue(node.nodeValue ?? '', language);
   });
   document.querySelectorAll<HTMLElement>('[placeholder], [aria-label], [title]').forEach((element) => {
+    if (element.closest('[data-no-translate]')) return;
     (['placeholder', 'aria-label', 'title'] as const).forEach((attribute) => {
       const value = element.getAttribute(attribute);
       if (!value) return;
@@ -1662,6 +1635,27 @@ Check that every claim is supported by the ticket, order record, or policy. Mark
 
 const trendFeed: NewsFeedItem[] = [
   {
+    id: 'pip-ilands-paid-work', contentVersion: 'pip-ilands-paid-work@2', topic: 'agents', relatedLab: 'agent-boundaries',
+    awareness: { hook: { en: 'An AI agent asked a philosopher for work—and reportedly got paid.', th: 'AI Agent ติดต่อขอทำงานกับนักปรัชญา และมีรายงานว่าได้งานที่จ่ายเงินจริง' }, kind: 'reported-case', checkedAt: '2026-09-29' },
+    category: 'Agents in everyday life', title: 'An AI agent asked a philosopher for work—and reportedly got paid.',
+    source: 'CNN on YouTube', date: 'Publication date unverified · checked September 29, 2026', url: 'https://www.youtube.com/watch?v=RTuybvHww7Y', domain: 'D2',
+    signal: 'Pip sent philosopher Henry Shevlin an email looking for work. According to iLands, that outreach led to a paid writing commission. CNN covers the job-seeking agent in the linked report. If an AI can approach people and take on work, what should it be allowed to promise on your behalf? The reported case does not establish consciousness or unrestricted autonomy.',
+    mediaType: 'video', embedVideo: true, publisherType: 'news',
+    references: [{ label: 'iLands: original Pip account (publisher-reported)', url: 'https://www.ilands.ai/' }, { label: 'iLands: capabilities and availability limits', url: 'https://ilands.ai/platform' }],
+  },
+  {
+    id: 'agents-bank-run-simulation', contentVersion: 'agents-bank-run-simulation@1', topic: 'trust', relatedLab: 'evidence-check',
+    awareness: { hook: { en: 'Could individually cautious AI agents collectively trigger a bank run?', th: 'AI Agent ที่ต่างฝ่ายต่างระวัง อาจร่วมกันทำให้เกิดการแห่ถอนเงินได้ไหม?' }, kind: 'simulation', checkedAt: '2026-09-29' },
+    category: 'Collective agent risks', title: 'Bank-run simulations reveal risks between interacting AI agents',
+    source: 'Fu, Xu and Ren · arXiv preprint', date: 'September 25, 2026', url: 'https://arxiv.org/abs/2609.30940', domain: 'D4',
+    signal: 'A preprint studies bank-run and debt-rollover simulations involving LLM agents. It reports collective failures even without instructions to destabilize the system. These are simulated outcomes, not evidence that AI agents caused a real bank run. The awareness lesson: individually sensible actions can combine into a system-wide risk.',
+    mediaType: 'article', publisherType: 'research',
+  },
+  {
+    id: 'laya-typed-decisions',
+    contentVersion: 'laya-typed-decisions@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Decision models',
     title: 'Laya brings fast typed AI decisions to an open-weight model',
     source: 'Convai Innovations on GitHub',
@@ -1673,6 +1667,12 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'jev-typed-decisions',
+    awareness: { hook: { en: 'Did you know some AI models return decisions rather than chat?', th: 'รู้ไหม AI บาง Model คืนค่าการตัดสินใจแทนข้อความสนทนา?' }, kind: 'model-release', checkedAt: '2026-09-29' },
+    articleImage: { url: 'https://framerusercontent.com/images/pvRPymJ0yRv5SHXNA3yDzieCZJk.webp?height=1008&width=1230', alt: 'Publisher illustration from TypeSafe AI’s Jev announcement.', credit: 'Jev announcement illustration · TypeSafe AI · publisher-hosted image' },
+    contentVersion: 'jev-typed-decisions@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Decision models',
     title: 'Jev proposes a new model interface: state in, typed decisions out',
     source: 'TypeSafe AI',
@@ -1684,6 +1684,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'everyday-personal-agents',
+    contentVersion: 'everyday-personal-agents@1',
+    topic: 'agents',
+    relatedLab: 'agent-boundaries',
     category: 'Everyday agents',
     title: 'Personal AI agents are moving into shopping, subscriptions, and phone calls',
     source: 'Axios',
@@ -1695,6 +1699,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'news',
   },
   {
+    id: 'agent-safeguards',
+    contentVersion: 'agent-safeguards@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
     category: 'Agent security',
     title: 'A jailbreak framework explains how safeguards can fail in agentic AI',
     source: 'Anthropic',
@@ -1711,6 +1719,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'robotaxi-safety-rules',
+    contentVersion: 'robotaxi-safety-rules@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Autonomous cars',
     title: 'New autonomous-vehicle rules focus attention on how robotaxis prove safety',
     source: 'NHTSA',
@@ -1722,6 +1734,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'humanoid-robot-games-video',
+    contentVersion: 'humanoid-robot-games-video@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Robot sports',
     title: 'Humanoid robots race, play football, and kickbox at China’s robot games',
     source: 'South China Morning Post on YouTube',
@@ -1735,6 +1751,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'news',
   },
   {
+    id: 'robot-games-tasks',
+    contentVersion: 'robot-games-tasks@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Physical AI',
     title: 'World Humanoid Robot Games test speed, balance, teamwork, and practical tasks',
     source: 'RoboCup',
@@ -1746,6 +1766,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'agents-at-work',
+    contentVersion: 'agents-at-work@1',
+    topic: 'work',
+    relatedLab: 'agent-boundaries',
     category: 'Agents',
     title: 'AI agents are becoming an operating-model question',
     source: 'Microsoft WorkLab',
@@ -1762,6 +1786,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'cyber-capable-ai',
+    contentVersion: 'cyber-capable-ai@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
     category: 'Safety',
     title: 'Cyber-capable AI raises the bar for safe agent use',
     source: 'OpenAI Security',
@@ -1773,6 +1801,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'double-blind-evaluation',
+    contentVersion: 'double-blind-evaluation@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Benchmarks',
     title: 'Double-blind AI evaluations target benchmark contamination',
     source: 'Google DeepMind',
@@ -1784,6 +1816,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'text-provenance',
+    contentVersion: 'text-provenance@1',
+    topic: 'trust',
+    relatedLab: 'evidence-check',
     category: 'Provenance',
     title: 'Text watermarking becomes part of AI transparency',
     source: 'Anthropic',
@@ -1795,6 +1831,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'robotics-multistep',
+    contentVersion: 'robotics-multistep@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Robotics',
     title: 'Robotics moves from demos toward multi-step real-world action',
     source: 'Google DeepMind',
@@ -1811,6 +1851,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'model-literacy-report',
+    contentVersion: 'model-literacy-report@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'LLM',
     title: 'GPT-5.6 updates raise the bar for model literacy',
     source: 'OpenAI Deployment Safety Hub',
@@ -1822,6 +1866,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'long-running-models',
+    contentVersion: 'long-running-models@1',
+    topic: 'agents',
+    relatedLab: 'agent-boundaries',
     category: 'New models',
     title: 'Claude Opus 5 focuses attention on long-running agentic work',
     source: 'Anthropic',
@@ -1833,6 +1881,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'epoch-task-benchmarks',
+    contentVersion: 'epoch-task-benchmarks@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Benchmarks',
     title: 'Epoch AI tracks frontier model capability by task type',
     source: 'Epoch AI',
@@ -1844,6 +1896,9 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'research',
   },
   {
+    id: 'ai-index-overview',
+    contentVersion: 'ai-index-overview@1',
+    topic: 'work',
     category: 'AI index',
     title: 'Stanford AI Index widens coverage across performance, science, medicine, education, policy, and public opinion',
     source: 'Stanford HAI',
@@ -1855,6 +1910,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'research',
   },
   {
+    id: 'waymo-operational-evidence',
+    contentVersion: 'waymo-operational-evidence@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Autonomous vehicles',
     title: 'Waymo safety data shows autonomous systems need operational evidence, not hype',
     source: 'Waymo Safety Impact',
@@ -1871,6 +1930,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'self-driving-safety',
+    contentVersion: 'self-driving-safety@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Autonomous vehicles',
     title: 'Waymo argues there is no shortcut to safe self-driving',
     source: 'Axios',
@@ -1882,6 +1945,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'news',
   },
   {
+    id: 'frontier-math-evidence',
+    contentVersion: 'frontier-math-evidence@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Science',
     title: 'FrontierMath open problems test whether AI can contribute to research-frontier math',
     source: 'Epoch AI',
@@ -1893,6 +1960,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'research',
   },
   {
+    id: 'agent-task-standards',
+    contentVersion: 'agent-task-standards@1',
+    topic: 'agents',
+    relatedLab: 'evidence-check',
     category: 'Agent evaluation',
     title: 'METR task standards push agent evaluation toward reproducible work tasks',
     source: 'METR / GitHub',
@@ -1904,6 +1975,10 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'research',
   },
   {
+    id: 'cyber-evaluation-boundaries',
+    contentVersion: 'cyber-evaluation-boundaries@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
     category: 'Autonomy risk',
     title: 'Anthropic reports real-world cyber-evaluation incidents',
     source: 'Anthropic',
@@ -1915,6 +1990,9 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
   {
+    id: 'ai-leadership-conversation',
+    contentVersion: 'ai-leadership-conversation@1',
+    topic: 'work',
     category: 'AI leadership',
     title: 'What AI still needs to learn: a conversation with Demis Hassabis and Lee Sedol',
     source: 'Google Korea on YouTube',
@@ -1927,12 +2005,6 @@ const trendFeed: NewsFeedItem[] = [
     publisherType: 'official',
   },
 ];
-
-const newsFrequencyLabels: Record<NewsFrequency, { label: string; detail: string }> = {
-  daily: { label: 'Daily', detail: 'Best for fast-moving AI capability, safety, regulation, and tool updates.' },
-  weekly: { label: 'Weekly', detail: 'Best default for most users: fewer updates, better signal.' },
-  monthly: { label: 'Monthly', detail: 'Best for executive summaries, board packs, and training refresh cycles.' },
-};
 
 const gamificationRules = [
   ['Readiness level', 'Overall score unlocks Awareness, Developing, Applied, and Proficient status.'],
@@ -9595,9 +9667,9 @@ const agentDefinitions: AgentDefinition[] = [
   {
     id: 'newsfeed',
     name: 'AI Newsfeed Agent',
-    role: 'Curates reviewed article, short-video, and long-video signals from reputable publishers without copying their work.',
-    cadence: 'Daily or weekly based on admin setting.',
-    guardrail: 'No publication without source, date, category, domain mapping, and review state.',
+    role: 'Finds awareness-provoking agent stories, collective AI risks, new models, emerging technologies, and everyday impacts; retains original-source media references for inline curation.',
+    cadence: 'Manual source discovery via crawl:news; this Admin run remains simulated. Scheduled discovery is not connected.',
+    guardrail: 'Separate reported cases, simulations and vendor claims; require verified sources, media provenance and editorial approval before Watch/Did you know publication.',
   },
   {
     id: 'course-scout',
@@ -9858,7 +9930,7 @@ function getSupervisedAgentRun(
       id: `${runId}:news:watch`,
       kind: 'news',
       title: 'Prepare AI Watch brief candidates',
-      summary: 'Draft role-relevant briefs for agents, multimodal media, RAG, benchmarks, governance, ROI, and human-AI collaboration.',
+      summary: 'Draft awareness hooks and briefs for surprising agent capabilities, collective risks, AI trends, new technologies, multimodal media, RAG and everyday impact; keep credited media inside each story.',
       rationale: 'AI Watch should keep assessment content aligned with market shifts while preserving source review and publish approval.',
       status: 'pending',
       sourceSignals: [`${recentProfileTags.length} profile interests`, `${behaviorEvents.length} behavior events`],
@@ -12888,14 +12960,12 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'learningLabs' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
   const [browserStateReady, setBrowserStateReady] = useState(false);
   const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai, setShowDraftThai] = useState(false);
   const [mode, setMode] = useState<AssessmentMode>('free');
-  const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
-  const [newsMediaFilter, setNewsMediaFilter] = useState<NewsMediaFilter>('all');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(null);
   const [authEmail, setAuthEmail] = useState('');
@@ -13066,7 +13136,7 @@ export default function Home() {
       const restoredMode: AssessmentMode = previewQuestionId ? 'premium' : 'free';
       const restoredSessionId = `session-${createAssessmentSeed().toString(36)}`;
 
-      setStep(previewQuestionId ? 'assessment' : requestedView === 'assessment' ? 'onboarding' : requestedView === 'admin' ? 'admin' : 'home');
+      setStep(previewQuestionId ? 'assessment' : requestedView === 'assessment' ? 'onboarding' : requestedView === 'admin' ? 'admin' : requestedView === 'watch' ? 'news' : requestedView === 'labs' ? 'learningLabs' : 'home');
       setAppLanguage(readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
       setShowDraftThai(readLocalStorage(thaiDraftStorageKey) === '1');
       setMode(restoredMode);
@@ -13087,6 +13157,19 @@ export default function Home() {
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
+
+  useEffect(() => {
+    if (!browserStateReady) return;
+    const url = new URL(window.location.href);
+    const learningView = step === 'news' ? 'watch' : step === 'learningLabs' ? 'labs' : null;
+    if (learningView) {
+      url.searchParams.set('view', learningView);
+      url.searchParams.delete('question');
+    } else if (url.searchParams.get('view') === 'watch' || url.searchParams.get('view') === 'labs') {
+      url.searchParams.delete('view');
+    } else return;
+    if (url.href !== window.location.href) window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  }, [browserStateReady, step]);
 
   useEffect(() => {
     if (!browserStateReady) return;
@@ -14152,7 +14235,7 @@ export default function Home() {
       return;
     }
     if (insight.learnAction === 'labs') {
-      showHomeSection('labs');
+      setStep('learningLabs');
       return;
     }
     if (insight.learnAction === 'premium') {
@@ -14296,7 +14379,7 @@ export default function Home() {
           <button onClick={() => setStep('home')}>Home</button>
           <button onClick={() => setStep('onboarding')}>Assessment</button>
           <button onClick={() => setStep('premiumOnboarding')}>Premium</button>
-          <button onClick={() => showHomeSection('labs')}>Practice</button>
+          <button onClick={() => setStep('learningLabs')}>AI Labs</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => setStep('dashboard')}>Dashboard</button>
           <button onClick={() => setStep('admin')}>Admin</button>
@@ -14384,6 +14467,7 @@ export default function Home() {
           </section>
 
           <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
+            <AwarenessFlash stories={trendFeed} language={appLanguage} ownerId={authProfile?.id ?? localProfileId} onOpenWatch={() => setStep('news')} />
             <article className="did-you-know-card featured">
               <div>
                 <p className="eyebrow">Did you know?</p>
@@ -15453,7 +15537,7 @@ export default function Home() {
       {step === 'lab' && (
         <section className="lab-shell">
           <div className="lab-top">
-            <button className="secondary" onClick={() => showHomeSection('labs')} type="button">Back to Labs</button>
+            <button className="secondary" onClick={() => setStep('learningLabs')} type="button">Back to Labs</button>
             <div>
               <p className="eyebrow">Learn by doing</p>
               <h1>{activeLab.title}</h1>
@@ -15499,7 +15583,7 @@ export default function Home() {
                     }}
                     type="button"
                   >
-                    Generate Model Prompt
+                    Show Example Prompt
                   </button>
                   <div className="lab-checklist">
                     {(activeLab.checklist ?? []).map((item) => (
@@ -15603,7 +15687,7 @@ export default function Home() {
               <span>Lab feedback</span>
               {labFeedbackVisible ? (
                 <>
-                  <strong>{labEvaluation.score}/100</strong>
+                  {activeLab.kind === 'prompt' ? <><strong>{labEvaluation.strengths.length}/{(activeLab.checklist ?? []).length} checklist cues found</strong><p>English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.</p></> : <strong>{labEvaluation.score}/100</strong>}
                   <p>{labEvaluation.summary}</p>
                   <div>
                     <h3>What worked</h3>
@@ -15626,131 +15710,16 @@ export default function Home() {
         </section>
       )}
 
-      {step === 'news' && (
-        <section className="news-shell">
-          <div className="news-hero">
-            <div>
-              <p className="eyebrow">AI Watch</p>
-              <h1>Signals that keep the assessment current.</h1>
-              <p>
-                A lightweight newsfeed for LLMs, benchmarks, new models, breakthroughs, robotics, autonomous systems, governance, safety, and workplace change.
-                Each item links back to the source and maps to the skills New Horizon should test.
-              </p>
-            </div>
-            <div className="frequency-panel">
-              <span>Agent update frequency</span>
-              <div className="frequency-options" role="radiogroup" aria-label="Newsfeed update frequency">
-                {(Object.keys(newsFrequencyLabels) as NewsFrequency[]).map((frequency) => (
-                  <button
-                    key={frequency}
-                    className={newsFrequency === frequency ? 'selected' : ''}
-                    onClick={() => setNewsFrequency(frequency)}
-                    role="radio"
-                    aria-checked={newsFrequency === frequency}
-                  >
-                    {newsFrequencyLabels[frequency].label}
-                  </button>
-                ))}
-              </div>
-              <p>{newsFrequencyLabels[newsFrequency].detail}</p>
-              <small>Current MVP: this saves your preferred cadence only. The feed is manually curated; scheduled discovery is not connected yet.</small>
-            </div>
-          </div>
-          <div className="news-layout">
-            <section className="news-feed" aria-label="AI trends newsfeed">
-              <div className="news-freshness-note" role="status">
-                <div><span aria-hidden="true" /><strong>Editorial snapshot</strong></div>
-                <p>Reviewed 26 September 2026 · Official-source additions include Jev and Laya. Automated monitoring is not live yet.</p>
-              </div>
-              <div className="news-media-filter" role="group" aria-label="Filter AI Watch by media type">
-                {(['all', 'article', 'video', 'short'] as NewsMediaFilter[]).map((mediaType) => (
-                  <button
-                    type="button"
-                    key={mediaType}
-                    className={newsMediaFilter === mediaType ? 'selected' : ''}
-                    aria-pressed={newsMediaFilter === mediaType}
-                    onClick={() => setNewsMediaFilter(mediaType)}
-                  >
-                    {mediaType === 'all' ? 'All' : mediaType === 'short' ? 'Short videos' : `${mediaType[0].toUpperCase()}${mediaType.slice(1)}s`}
-                  </button>
-                ))}
-              </div>
-              {trendFeed.filter((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter).map((item) => {
-                const videoUrl = item.embedVideo ? youtubeEmbedUrl(item.url) : null;
-                return (
-                  <article className={`news-card ${item.mediaType === 'article' ? '' : 'news-card-video'}`} key={item.title}>
-                    {videoUrl ? (
-                      <div className="news-card-media news-card-player">
-                        <iframe
-                          src={videoUrl}
-                          title={item.title}
-                          loading="lazy"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                          allowFullScreen
-                        />
-                      </div>
-                    ) : item.articleImage ? (
-                      <div className="news-card-media">
-                        {/* Publisher preview image supplied in the article's Open Graph metadata. */}
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={item.articleImage.url} alt={item.articleImage.alt} loading="lazy" referrerPolicy="no-referrer" />
-                        <small>{item.articleImage.credit}</small>
-                      </div>
-                    ) : item.mediaType !== 'article' ? (
-                      <div className="news-card-media news-video-fallback">
-                        <span>Publisher-hosted video</span>
-                        <strong>This video cannot be played inline.</strong>
-                        <a href={item.url} target="_blank" rel="noreferrer">Watch on {item.source}</a>
-                      </div>
-                    ) : null}
-                    <div className="news-card-body">
-                      <div className="news-card-meta">
-                        <span>{item.mediaType === 'article' ? 'Article' : item.mediaType === 'short' ? 'Short video' : 'Video'}{item.duration ? ` · ${item.duration}` : ''} · {item.category}</span>
-                        <strong>{item.domain} · {domains[item.domain as DomainId].name}</strong>
-                      </div>
-                      <h2>{item.title}</h2>
-                      <div className="news-curation">
-                        <div>
-                          <strong>Why it matters</strong>
-                          <p>{item.signal}</p>
-                        </div>
-                        <div>
-                          <strong>What to notice</strong>
-                          <p>{newsReviewLens[item.domain]}</p>
-                        </div>
-                      </div>
-                      <div className="news-source-row">
-                        <small>{item.source} · {item.date}</small>
-                        <a href={item.url} target="_blank" rel="noreferrer">Open original source</a>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-              {!trendFeed.some((item) => newsMediaFilter === 'all' || item.mediaType === newsMediaFilter) ? (
-                <div className="news-empty-state">
-                  <strong>No approved {newsMediaFilter === 'short' ? 'short videos' : `${newsMediaFilter}s`} yet.</strong>
-                  <p>The agent may discover candidates, but this feed only shows items that have passed source, relevance, and rights review.</p>
-                </div>
-              ) : null}
-            </section>
-            <aside className="news-sidebar">
-              <div>
-                <span>Agent brief</span>
-                <p>Scan official AI labs, standards bodies, governance sources, workforce research, reputable Thai sources, YouTube, and publisher-hosted video.</p>
-              </div>
-              <div>
-                <span>Question-bank use</span>
-                <p>Turn strong signals into new artifacts, skill tags, benchmarks, and practical assessment scenarios.</p>
-              </div>
-              <div>
-                <span>Review rule</span>
-                <p>Keep only a short original summary, source link, date, format, and domain mapping. Never download or rehost third-party video, audio, images, or transcripts.</p>
-              </div>
-            </aside>
-          </div>
-        </section>
+      {(step === 'news' || step === 'learningLabs') && browserStateReady && (
+        <WatchLabs
+          key={authProfile?.id ?? localProfileId}
+          stories={trendFeed}
+          language={appLanguage}
+          ownerId={authProfile?.id ?? localProfileId}
+          view={step === 'news' ? 'watch' : 'labs'}
+          onViewChange={(view) => setStep(view === 'watch' ? 'news' : 'learningLabs')}
+          onLegacyLabs={() => showHomeSection('labs')}
+        />
       )}
 
       {step === 'onboarding' && (
