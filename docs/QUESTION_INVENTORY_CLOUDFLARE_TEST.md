@@ -51,7 +51,7 @@ GitHub environment settings: https://github.com/sctest3220-a11y/sc-new-horizon/s
 
 Actions: https://github.com/sctest3220-a11y/sc-new-horizon/actions
 
-Use **Run workflow** on `main` for an explicit redeploy. Concurrent production workflows are serialized. A failed build/test never reaches the deployment job; a failed post-deploy version check requires inspecting the active Cloudflare deployment. Feedback-only commits do not trigger deployment.
+Use **Run workflow** on `main` for an explicit redeploy. Concurrent production workflows are serialized, and a queued commit is skipped if it is no longer the current main commit. A failed build/test never reaches the deployment job; a failed post-deploy version check requires inspecting the active Cloudflare deployment. Feedback-only commits do not trigger deployment.
 
 ## Release and rollback controls
 
