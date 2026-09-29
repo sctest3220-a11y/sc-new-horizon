@@ -254,7 +254,65 @@ Scores 97, 88, and 18 are authored illustrations, not measured embeddings or cal
 
 The generated image was visually inspected against its prompt for text, scores, relevant imagery, and neutral permission fields. Application inline/expanded rendering, mobile layout, keyboard controls, and Thai equivalence remain untested because this is an English review draft outside the app. Candidate agreement does not complete those checks or approve official scored-asset replacement. Artifact and question-bank files are excluded from this publication.
 
+## Marketing pilot claim - agreed complete revision
+
+Question: `NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02`
+
+On 29 September 2026, the user agreed to the complete candidate with artifact v3 and requested local rule updates followed by a push to `kj-dee-branch`. This is a different ID from the earlier marketing AWARENESS-01. Retain this agreed wording for future review instead of creating new stylistic variants. Publication covers rule documents and this checkpoint, not implementation in localhost or replacement of a scored artifact.
+
+### Feedback and resulting rules
+
+The user found "app performance" unclear because the artifact did not explicitly connect that phrase to the task being measured. The source panel now names "Shopping-list preparation time" and shows participants, task and before/during app-use averages in a table. The scenario names the "draft's time-saving claim."
+
+The user also questioned the purpose of "AI activity record." It was first renamed "How the AI prepared this post," then removed because the scenario states the same process. The artifact retains the campaign brief, source evidence, image-use record and AI draft. The first question now refers to the process in the scenario; the second still requires comparing the pilot evidence with the draft. This is a contextual reduction of repetition, not a rule to remove all AI process records.
+
+### Agreed complete candidate
+
+> A marketing team uses AI to draft a public social-media post encouraging people to try a shopping-list app. The post needs a caption and an image showing the app in use.
+>
+> The AI searches approved campaign evidence and licensed image records. It adds matching passages to the request, then generates the draft post.
+>
+> Before publishing, the team must check whether the evidence supports the draft's time-saving claim and whether the image is permitted for campaign use.
+>
+> Review the pilot results, image-use record and AI draft below.
+
+Embed artifact v3 here. The local review copy is `outputs/artifact-drafts/NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02/campaign-review-v3.png`. The same ignored folder retains v1/v2, the exact generation/edit prompts, source-item.json and review notes. These files are not included in the rule-document push.
+
+Evidence in the agreed artifact:
+
+- Campaign objective: encourage people to try a shopping-list app. Audience: people who plan household shopping. Deliverable: one public social-media post with a caption and image.
+- Source passages added to the request: an approved pilot report and licensed asset record.
+- Shopping-list preparation time: 20 selected users; task is preparing a weekly shopping list; average time before using the app is 20 minutes; average time using the app during the pilot is 15 minutes.
+- Image record: IMG-026, planning a shopping list on a phone; permitted use is public social-media posts. The draft uses that image and permission matches the intended channel.
+- AI draft caption: "Cut your weekly shopping-list planning time by 25%. Try the app for your next shop."
+- Footer identifies the campaign, pilot results and image-use record as fictional assessment examples. No process panel or answer-revealing highlights remain.
+
+**Answer both parts.**
+
+1. Which process does the AI use to prepare the draft?
+   - A. Representing text meaning using numbers to find related content.
+   - B. Retrieving relevant sources before generating an answer.
+2. How should the team revise the AI's claim before publishing the post?
+   - A. Explain that the result came from a small pilot with selected users, without promising it for everyone.
+   - B. Present the result from the small pilot as what all customers should expect when using the app.
+
+Keys: 1B and 2A. The AI searches sources and adds matching passages to the request before generation. Numerical representations may support retrieval, but are not the step described. Average preparation time fell from 20 to 15 minutes, a 25% reduction, in a pilot with 20 selected users. The draft omits that scope. Explain who was tested and the task measured without promising the result for everyone. No per-part scoring was supplied or invented; retain the one-scenario, two-question, two-choice structure and answer order.
+
+### Additions, checks and limits
+
+The app, objective, public-post deliverable, photograph, metric, participant count, pilot averages, exact caption and image permission record are fictional additions now agreed for this review candidate. They are not facts originally specified in the audit or observations of a real deployed system. The original decisions about retrieval and an unqualified claim from a small selected pilot remain. Both performance-claim and image-permission checks are retained; no rights violation from AWARENESS-01 is imported.
+
+Independently recomputed (20-15)/20*100 = 25%. This validates the comparison of averages, not a universal effect, individual benefit or causal claim. The sample count is not the percentage denominator. A correct number can still support a misleadingly broad caption.
+
+The artifact was edited with built-in image generation and visually checked for the requested panel removal, correct labels, figures, caption, image ID, permission scope and fictional footer. Application inline/expanded/mobile rendering, keyboard access and Thai localization remain untested. User agreement to the candidate is recorded; official scored-asset integration and release checks have not been performed.
+
+Part 1 tests the AI mechanism. Part 2 retains the original professional review of an AI-generated claim and is not independent evidence of generative-AI mechanism knowledge. Preserve that limitation rather than claiming benchmark calibration or changing the user's selected format.
+
 ## Challenge checklist to test and refine
+
+- Does a broad term such as "performance" name the actual measured task outcome, with an explicit link to the draft claim?
+- Does a process panel supply unique evidence, or merely repeat the scenario? If removed, are all necessary facts and question references still present?
+- Is a correct calculation being confused with a claim that applies to everyone or proves causation?
 
 - Is the objective and intended output clear enough to understand why the evidence matters, without forcing unnecessary goal-first prose?
 - Does each artifact image directly support the task, and does each question point to concrete evidence?

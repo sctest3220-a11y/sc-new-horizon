@@ -1,7 +1,7 @@
 # Artifact Design and QA Standard
 
 Status: Approved living standard
-Current version: `1.2`
+Current version: `1.3`
 Last updated: 29 September 2026
 
 ## Purpose
@@ -72,8 +72,11 @@ Before generation, specify the task objective, intended output, audience or chan
 6. **Show intended use beside permitted use when rights affect the decision.** Include the asset reference, applicable permission, and proposed channel or use. Present these as neutral record fields; do not highlight a mismatch or supply the corrective action. Credit and permission remain distinct.
 7. **Include evidence only for claims the item actually tests.** A campaign with no measurable performance claim does not need invented sales, conversion, or reach results. If a performance claim is material, supply the relevant evidence and limitations. Do not silently remove an original decision-relevant requirement; record and review substantive omissions.
 8. **Identify newly authored details.** Record fictional objectives, captions, images, scores, metadata, and process displays in the generation brief or review log. Distinguish source facts from proposed additions, and retain the user's decision on material clarifications. Agreement to a review candidate does not substitute for implementation and release QA.
+9. **Name the outcome being measured.** Replace vague descriptions such as "app performance" with the actual outcome, such as "shopping-list preparation time." Distinguish the user's task outcome from technical app speed or reliability. Connect the task, measured result, and draft claim so the reader does not have to infer what the figures describe.
+10. **Make comparisons explicit and proportionate.** For a pilot-based claim, show the relevant participants, task, conditions, units, and comparison basis in a readable table or equivalent evidence. In the agreed example, compare average preparation time before app use with average time using the app during the pilot. Check the percentage against that baseline. Do not imply that an average applies to every participant, that a selected sample represents all customers, or that a before/during comparison alone proves causation. Do not require this specific table or invent a baseline for unrelated items.
+11. **Remove repeated process explanations without losing evidence.** If the scenario already states the AI's search, addition of source passages, and generation sequence, omit a panel that merely repeats it. Retain the source passages, relevant permissions and generated output needed for inspection. Keep a process panel when it supplies unique evidence or the task requires inspecting the record itself. If a panel is removed, update references in the question and feedback, and confirm that the scenario plus artifact still support every answer.
 
-The agreed marketing example and its limitations are recorded in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md#marketing-campaign-artifact---agreed-revision).
+The agreed marketing examples and their limitations are recorded in [campaign artifact review](QUESTION_REWRITE_RULE_REVIEW_LOG.md#marketing-campaign-artifact---agreed-revision) and [pilot claim review](QUESTION_REWRITE_RULE_REVIEW_LOG.md#marketing-pilot-claim---agreed-complete-revision).
 
 ## Neutrality and validity
 
@@ -156,6 +159,8 @@ For each generated revision, retain the exact generation prompt, source or refer
 
 Version 1.2 adds the agreed marketing review lessons: explicit task purpose and deliverable, message-aligned imagery, interpretable comparisons, score limitations, neutral process and permission evidence, and traceable generation QA. Version 1.1's AI-necessity, numerical, and operational-feasibility requirements remain in force.
 
+Version 1.3 adds explicit outcome and comparison labels, careful interpretation of pilot averages, and removal of repeated process panels when the scenario retains the necessary evidence. A process panel is optional; the evidence needed to answer is not.
+
 ## Pre-release checklist
 
 - [ ] The artifact is necessary or clearly useful.
@@ -168,6 +173,9 @@ Version 1.2 adds the agreed marketing review lessons: explicit task purpose and 
 - [ ] Each question maps to specific evidence without answer-revealing annotations.
 - [ ] Newly authored details and material omissions are recorded with the review decision.
 - [ ] The saved prompt and rendered output agree on all decision-relevant text and values.
+- [ ] The measured outcome, units, comparison basis and relevant tested group are explicit.
+- [ ] Pilot averages are not presented as universal outcomes or unsupported causal proof.
+- [ ] Repeated process explanations are removed where useful, with necessary evidence and question references preserved.
 - [ ] The artifact exposes meaningful AI behavior or control evidence when the item claims to assess AI competency.
 - [ ] All calculations and derived metrics have been independently recomputed.
 - [ ] The evidence supports the scale and consequence of the keyed action.
