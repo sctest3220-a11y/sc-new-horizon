@@ -1,8 +1,8 @@
 # Artifact Design and QA Standard
 
 Status: Approved living standard
-Current version: `1.1`
-Last updated: 23 September 2026
+Current version: `1.2`
+Last updated: 29 September 2026
 
 ## Purpose
 
@@ -59,6 +59,21 @@ Artifacts should resemble documents and interfaces the target user encounters at
 Names, dates, amounts, reference numbers, statuses, events, permissions, and timestamps must agree. Avoid generic diagrams, decorative mockups, placeholder text, implausible layouts, excessive visual polish, and repeated templates that make unrelated questions feel identical.
 
 For IT and developer questions, prefer concise operational context plus scannable logs, traces, permissions, configurations, code, or test evidence. Put detailed facts in the embedded artifact rather than a long narrative.
+
+## Generation brief and evidence clarity
+
+Before generation, specify the task objective, intended output, audience or channel when relevant, AI action, and evidence needed for each question. Keep this brief proportionate: do not add campaign fields to unrelated tasks or invent source facts to fill a template.
+
+1. **Connect the objective, output, and evidence.** The reader should understand what the team wants to achieve, what the AI is helping produce, and why the displayed information matters to the decision. For a campaign, identify the message and deliverable, such as one public social-media post with a caption and image.
+2. **Make the proposed image support the message.** Show the relevant action or use when it clarifies the objective. For a reusable-bag campaign, a shopper using the bag communicates the intended behavior more directly than an unrelated or decorative product image. Keep the caption, image, asset identifier, and use record consistent.
+3. **Use labels that readers can interpret.** Avoid unexplained X/Y axes, coded text labels, or abstract plots when a short text comparison would communicate the evidence more clearly. If a plot is necessary, explain what its points and axes represent and the limits of interpretation; projected embedding coordinates are not ordinary business measures.
+4. **Define scores and their limits.** State what is compared, the scale, and what higher or lower values mean. A meaning-match score does not establish factual accuracy, permission, model confidence, or expected campaign performance. Label authored values as illustrative; do not imply they are measured model outputs. Record how any derived values were checked. Arithmetic consistency alone does not validate semantic scores or calibrate a model.
+5. **Show the AI process needed to distinguish the choices.** Similarity rankings alone do not establish how they were produced. When numerical representation is tested, a neutral processing record can show text converted to number lists and those lists compared. Reserve the tested mechanism's name and interpretation for feedback. Do not fabricate a processing record and present it as a real system observation.
+6. **Show intended use beside permitted use when rights affect the decision.** Include the asset reference, applicable permission, and proposed channel or use. Present these as neutral record fields; do not highlight a mismatch or supply the corrective action. Credit and permission remain distinct.
+7. **Include evidence only for claims the item actually tests.** A campaign with no measurable performance claim does not need invented sales, conversion, or reach results. If a performance claim is material, supply the relevant evidence and limitations. Do not silently remove an original decision-relevant requirement; record and review substantive omissions.
+8. **Identify newly authored details.** Record fictional objectives, captions, images, scores, metadata, and process displays in the generation brief or review log. Distinguish source facts from proposed additions, and retain the user's decision on material clarifications. Agreement to a review candidate does not substitute for implementation and release QA.
+
+The agreed marketing example and its limitations are recorded in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md#marketing-campaign-artifact---agreed-revision).
 
 ## Neutrality and validity
 
@@ -137,11 +152,22 @@ Agents may analyze evidence and propose `keep`, `revise`, `replace`, or `remove`
 
 Store an artifact version with every answer record. A material visual or evidentiary change creates a new version. Preserve the previous asset, generation brief, question mapping, reviewer decision, and reason for change so historical scores remain explainable.
 
+For each generated revision, retain the exact generation prompt, source or reference asset, output version, fictional additions, numerical checks, visual inspection findings, and pending checks. Inspect the rendered output against the brief, including every decision-relevant label and value; a correct prompt does not guarantee a correct image. Report only checks actually performed. Keep review-candidate agreement separate from approval to replace an official scored asset.
+
+Version 1.2 adds the agreed marketing review lessons: explicit task purpose and deliverable, message-aligned imagery, interpretable comparisons, score limitations, neutral process and permission evidence, and traceable generation QA. Version 1.1's AI-necessity, numerical, and operational-feasibility requirements remain in force.
+
 ## Pre-release checklist
 
 - [ ] The artifact is necessary or clearly useful.
 - [ ] The question requires or explicitly benefits from its evidence.
 - [ ] Scenario, artifact, options, answer key, rubric, and explanation agree.
+- [ ] The objective and intended output are clear, with audience or channel included when relevant.
+- [ ] Images and captions directly support the task or campaign message.
+- [ ] Labels, axes, comparisons, and score meanings are understandable without unexplained codes.
+- [ ] Illustrative values are identified, and similarity is not presented as truth or predicted performance.
+- [ ] Each question maps to specific evidence without answer-revealing annotations.
+- [ ] Newly authored details and material omissions are recorded with the review decision.
+- [ ] The saved prompt and rendered output agree on all decision-relevant text and values.
 - [ ] The artifact exposes meaningful AI behavior or control evidence when the item claims to assess AI competency.
 - [ ] All calculations and derived metrics have been independently recomputed.
 - [ ] The evidence supports the scale and consequence of the keyed action.

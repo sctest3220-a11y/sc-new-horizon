@@ -206,7 +206,61 @@ When presenting the next complete candidate, use the same missing-information co
 
 The audit's generic refund-approval and duplicate-compensation details were omitted from this candidate because it contains no refund decision. Keep this omission visible in comparative review. Do not infer that all policy details can be removed from other items.
 
+## Marketing campaign artifact - agreed revision
+
+Question: `NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-01`
+
+On 29 September 2026, the user agreed to the revised item and artifact, then requested local updates to both rule documents and a push to `kj-dee-branch`. This records candidate agreement and rule-publication authorization; it does not request replacing the localhost question or its official artifact.
+
+The first artifact used unexplained X/Y coordinates and text codes, did not make the campaign objective or deliverable clear, and used an image that did not directly communicate the intended behavior. The agreed revision establishes a reusable-bag campaign, replaces the plot with readable text comparisons, and shows a shopper using a reusable bag at checkout. These lessons inform artifact standard v1.2 and the provisional rewrite refinements; they do not prove universal wording or benchmark calibration.
+
+### Agreed complete candidate
+
+> A marketing team uses AI to prepare a public social-media post encouraging customers to bring a reusable bag when shopping. The team needs a short caption and an image supporting that message.
+>
+> The AI compares wording from an approved content library and proposes a caption and image. Before publication, the team reviews the comparison and the image's permitted use.
+>
+> Review the campaign brief, AI caption comparison and image-use record below.
+
+Place the agreed v2 artifact here, before the questions. Its review copy is stored locally at `outputs/artifact-drafts/NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-01/campaign-review-v2.png`; this ignored output is not part of the rule-document push. Preserve v1 alongside it. The same folder contains `generation-prompt-v2.txt` and `review-notes-v2.md`.
+
+Artifact evidence retained for the review record:
+
+- Objective: encourage customers to bring a reusable bag when shopping. Audience: store customers. Deliverable: one public social-media post with a caption and image.
+- Message to match: "Bring a reusable bag when you shop."
+- Approved-library text and illustrative meaning-match scores: "Bring your reusable bag on your next shopping trip." (97); "Keep a reusable bag ready for your next shop." (88); "Check our store opening hours." (18).
+- The displayed scale is 0-100; higher means closer in meaning. The artifact states that this is not a forecast of campaign results.
+- Processing record: "Text converted to lists of numbers." and "Number lists compared."
+- Proposed image: a shopper using a reusable bag at checkout. Proposed caption: "Bring your reusable bag on your next shopping trip."
+- Image-use record: asset `IMG-025`, reusable bag at checkout; permitted use "Internal use only"; planned use "Public social-media post." No mismatch highlighting or corrective instruction.
+- Footer identifies fictional assessment content, scores, and image-use information.
+
+**Answer both parts.**
+
+1. Which process explains the AI's text comparison shown in the processing record?
+   - A. Retrieving relevant sources before generating an answer.
+   - B. Representing text meaning using numbers to find related content.
+2. What should the team do before using the proposed image in the campaign?
+   - A. Replace the image or obtain permission to use it in the campaign.
+   - B. Publish the image with credit to its creator instead of obtaining permission.
+
+Keys: 1B and 2A. The processing record shows numerical representation and comparison of text meaning. This does not establish truth or predict campaign success. Retrieval can use embeddings, but the question asks about the representation process shown. The asset record allows internal use, while the planned post is public; creator credit does not expand that permission. Preserve the original one-scenario, two-question, two-choice structure and answer order. No per-part scoring was supplied or invented.
+
+### Content decisions and QA limits
+
+The objective, captions, shopper image, scores, asset metadata, and processing display are newly authored fictional evidence, not facts from the audit or observations of a deployed AI system. The user agreed to this concrete candidate. The generic requirement to check performance claims was omitted because this proposed post makes no measurable performance claim; the omission is explicit and does not authorize removing relevant requirements elsewhere. The internal-use restriction and numerical-representation construct remain.
+
+Scores 97, 88, and 18 are authored illustrations, not measured embeddings or calibrated confidence. A synthetic reference vector q=(1,0,0) and unit candidate vectors v=(s,sqrt(1-s*s),0), with s=0.97, 0.88, and 0.18, reproduce the displayed values as round(100*cosine(q,v)). The arithmetic was recomputed during generation. This verifies numerical consistency only, not semantic validity, empirical measurement, or predictive performance.
+
+The generated image was visually inspected against its prompt for text, scores, relevant imagery, and neutral permission fields. Application inline/expanded rendering, mobile layout, keyboard controls, and Thai equivalence remain untested because this is an English review draft outside the app. Candidate agreement does not complete those checks or approve official scored-asset replacement. Artifact and question-bank files are excluded from this publication.
+
 ## Challenge checklist to test and refine
+
+- Is the objective and intended output clear enough to understand why the evidence matters, without forcing unnecessary goal-first prose?
+- Does each artifact image directly support the task, and does each question point to concrete evidence?
+- Are labels and score meanings explained? Is similarity kept distinct from truth, permission, confidence, and predicted results?
+- Does the evidence establish the process being tested, while feedback explains related processes without falsely treating them as mutually exclusive?
+- Are fictional additions and material omissions recorded separately from original facts, with the user's decision retained?
 
 - Has this ID already been reviewed? If so, flag it and reuse the reviewed baseline rather than silently producing another version.
 - Is the selected template, question count, choice count, interaction, and answer order unchanged?
