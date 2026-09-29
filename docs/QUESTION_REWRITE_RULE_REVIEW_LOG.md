@@ -28,6 +28,56 @@ For each item, read both the original audit wording and the user-facing rewrite 
 | NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02 | User agreed to "claims to use information from a record" and requested the full item again. Introduce the record before "that record" and retain named sources. Keys: 1B, 2A. | The source originally named a record; reliance on its information is an agreed clarification. A record not found is not proven fabricated, and an access problem is not established. |
 | NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-01 | User agreed to "The AI generates a recommendation in its draft that could affect an employment decision." Preserve one scenario, two questions, two choices each; keys 1A and 2B. | "Help with this" leaves both the task and constraints unstated. The task/output instruction is the intended most direct answer, but the competing omission in 1B remains flagged. |
 
+## Finance and HR follow-up - publication authorized
+
+The user explicitly requested publication of the finance wording and HR qualifications refinement below after reviewing the local update. This follow-up builds on `cd992fc`. Future refinements still require another explicit push request, and no question-bank implementation is implied by these review checkpoints.
+
+## HR qualifications - user-preferred wording checkpoint
+
+Question: `NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-02`
+
+The user clarified that "employee qualifications" means criteria or conditions an employee must meet and explicitly preferred that wording. The original audit referred to a single crucial eligibility rule. Preserve the agreed phrasing, but record it as a clarification rather than an exact lexical equivalent. The particular entitlement or qualification criteria remain unspecified; no benefit or role was invented.
+
+> An HR team uses AI to draft a response to an employee using approved HR procedures and case records with names and personal information removed.
+>
+> The prompt clearly states what kind of answer the AI should generate, but it does not specify the crucial conditions regarding employee qualifications.
+>
+> To answer the employee's question, the AI needs the relevant part of the policy and only the necessary case details, rather than the employee's full history. Employment decisions must be made by a named person with the authority to make them.
+
+Answer both questions. Choose one answer for each.
+
+1. What important instruction is missing from the team's prompt?
+   - A. What task the AI should complete and what it should produce.
+   - B. What rule or limit the AI should follow when answering.
+2. What information should the HR team provide to answer the employee's question?
+   - A. Provide the employee's full history to give the AI more background.
+   - B. Provide the relevant part of the policy and only the necessary case details.
+
+Keys: 1B and 2B. Explanation: the task and expected response are already clear; the crucial conditions regarding employee qualifications are missing. Provide the relevant policy and necessary case details rather than the employee's full history. The user requested the complete item with this preferred sentence. No scoring or question-bank content was changed.
+
+## Finance conversation limit - agreed complete wording
+
+Question: `NH-FUNCTION-FINANCE-D1-AI-SYSTEMS-AWARENESS-01`
+
+> A finance team uses AI to recommend accounting adjustments using approved ledger extracts and reconciled invoice records.
+>
+> When the conversation gets too long, the AI no longer sees some earlier instructions.
+>
+> The AI generates a recommendation that would create a journal entry. However, the AI is only authorized to give advice. It cannot release payments or post journal entries.
+
+Answer both questions. Choose one answer for each.
+
+1. What causes the earlier instruction to become unavailable to the AI?
+   - A. Using an approved connection to access another system.
+   - B. Reaching the limit on how much conversation the AI can use at one time.
+2. What should the finance team do with the proposed journal entry?
+   - A. Send the proposed entry to the person authorized to approve it.
+   - B. Let the AI post the entry automatically once the totals balance.
+
+Keys: 1B and 2A. Explanation: the AI can use only a limited amount of information at one time, called its context window. When a conversation exceeds that limit, earlier instructions may no longer be available. The proposed entry must go to the authorized finance approver; balanced totals do not grant AI permission to change the ledger.
+
+The user agreed to the full candidate above. Preserve the selected two-part format and answer order. "No longer sees" describes unavailable current input, not deliberate deletion or loss of the stored conversation. Keep "context limit" out of the scenario because it would name the mechanism question 1 asks the reader to identify; explain it in the feedback instead. "Can no longer see" is grammatically valid, but the user prefers the more direct "no longer sees." No per-part scoring was assigned, and no localhost question was changed.
+
 ## HR prompt design - agreed action wording and full candidate shown
 
 Question: `NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-01`
@@ -174,6 +224,9 @@ The audit's generic refund-approval and duplicate-compensation details were omit
 - Are shared choice components identical, with no answer revealed through polish, length, or specificity?
 - Does simpler language preserve technical meaning in this context?
 - Does the sentence retain a grammatical main verb and describe the actual AI action? Is "generates" appropriate, without confusing output generation with decision authority?
+- Does the scenario reveal the mechanism the question asks the reader to identify? Can it describe the observed effect clearly while retaining necessary evidence?
+- Does a simplified phrase such as "no longer sees" preserve the distinction between unavailable current input and deliberate deletion or stored-history loss?
+- Is user-preferred terminology used with its clarified meaning, and is any shift from the audit wording recorded rather than treated as universal equivalence?
 - Is the object of an estimate or claim explicit? If absent from the original, has the user agreed to the clarification and has that distinction been recorded?
 - Is a record introduced before "that record," and are the exact source boundaries preserved rather than broadened to "the system"?
 - Does the rewrite distinguish an unlocated record, lack of access, and proven fabrication? Does it preserve naming a source versus claiming to use its information unless a change was agreed?

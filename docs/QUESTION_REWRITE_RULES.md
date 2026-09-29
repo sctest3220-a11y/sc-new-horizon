@@ -35,6 +35,10 @@ The refinements below are a living draft for ongoing question review, with no re
 
 18. **Describe the AI's action directly:** When describing generated output, use a concrete subject and verb, such as "The AI generates a recommendation in its draft." Use "generates" with the singular subject "AI." Do not simply remove the main verb from a sentence, and do not replace every AI action with "generates": preserve distinctions such as searching, quoting, retrieving, and recommending when they matter. Generating a recommendation does not grant the AI authority to make the final decision.
 
+19. **Show the evidence without naming the answer:** When a question asks the reader to identify a mechanism, describe its observed effect in the scenario instead of explicitly naming that mechanism. In the finance context-window item, retain "When the conversation gets too long, the AI no longer sees some earlier instructions." Do not add "hits its context limit" before asking what causes the behavior. Explain "context window" in the feedback. This does not justify removing evidence needed to answer or banning technical terms when they are not the answer being tested.
+20. **Simplify technical effects without inventing intent:** Prefer natural, direct wording over phrases such as "are left out of the information available to the AI." In the finance example, "no longer sees" means earlier instructions are absent from the current input; it does not mean the AI deliberately deletes them or that they disappear from the stored chat. "Can no longer see" is also correct English. If the user prefers to remove "can," adjust the verb to "sees" while preserving meaning. Keep this statement specific to the described case; do not claim that every long conversation always loses instructions.
+21. **Respect clarified terminology and keep it aligned:** Explain a material ambiguity once, then retain the wording and meaning the user agrees to. In the HR qualifications item, the user defines "employee qualifications" as the criteria or conditions an employee must meet, and prefers "The prompt clearly states what kind of answer the AI should generate, but it does not specify the crucial conditions regarding employee qualifications." Keep that meaning consistent in the scenario, choices, and explanation. Record the shift from the original single eligibility rule to this agreed phrasing; do not treat the terms as universally interchangeable or invent a benefit, role, or specific criterion. Use the clear contrast between what the prompt specifies and omits when the evidence supports it.
+
 During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Save accumulated rule refinements locally and do not report review totals or progress counts. Publish them to `kj-dee-branch` only when the user explicitly says "push" or otherwise directly requests publication. A push request authorizes the current accumulated updates, not automatic publication of future refinements. There is no fixed review-count gate. Final rule approval remains distinct from publishing this draft.
 
 These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
@@ -159,6 +163,13 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Provisional 2.2-draft local finance and HR refinements - 29 September 2026
+
+- Saved the agreed finance sentence "When the conversation gets too long, the AI no longer sees some earlier instructions."
+- Added safeguards against naming the tested mechanism in the scenario, implying deliberate deletion, or treating a case-specific effect as universal AI behavior.
+- Recorded natural grammar choices without claiming that "can no longer see" is incorrect.
+- Saved the HR qualifications terminology clarification and both item checkpoints. The user authorized publishing this follow-up; future refinements remain local until another explicit push request.
 
 ### Provisional 2.2-draft action wording and publication workflow - 29 September 2026
 
