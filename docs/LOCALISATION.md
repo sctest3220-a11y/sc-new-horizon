@@ -37,6 +37,8 @@ The older `thaiUiCopy` dictionary remains for interface chrome only. Do not add 
 
 ## Style rules
 
+For question rewrites, also apply the locally updated [Thai wording refinements](QUESTION_REWRITE_RULES.md#thai-wording-refinements---local-review-update): name the actor, action and measured outcome; distinguish the draft's claim from evidence of actual results; and state which evidence the team must check. Preserve the agreed meaning, uncertainty, format and answer key while using natural Thai sentence structure. The accepted marketing wording is recorded in the [review log](QUESTION_REWRITE_RULE_REVIEW_LOG.md#thai-marketing-wording---user-passed-candidate).
+
 - Formal but conversational: address the user as คุณ; avoid bureaucratic register.
 - Keep established technical terms in English: AI, prompt, RAG, agent, PDPA, API, CRM, OCR, model. Thai transliteration only where the term is already common in Thai workplaces (เอเจนต์ is acceptable alongside agent).
 - Currency in Thai scenarios is baht; keep numbers as digits.

@@ -51,6 +51,23 @@ During review, show the revised question, all choices, correct answer, explanati
 
 These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
 
+## Thai wording refinements - local review update
+
+These refinements apply alongside the provisional rules above and [Question Bank Localisation](LOCALISATION.md). They reflect the user's accepted Thai wording for `NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02`. After the local update, the user explicitly authorized publication to `kj-dee-branch` on 29 September 2026. Future refinements still require a new push request. The approved English meaning remains the reference, while Thai sentence structure should be natural rather than literal.
+
+1. **ระบุให้ชัดว่าใครทำอะไรและเกิดผลกับสิ่งใด:** เมื่อกล่าวถึงผลลัพธ์ ให้ระบุผู้ใช้ การใช้เครื่องมือ และงานที่วัดตามข้อมูลต้นฉบับ เช่น "หลังใช้แอป ผู้ใช้ประหยัดเวลาเตรียมรายการซื้อของได้ตามที่ร่างโพสต์กล่าวอ้างหรือไม่" ไม่ย่อจนเหลือ "การประหยัดเวลาในร่างโพสต์" ซึ่งทำให้ความสัมพันธ์ระหว่างการใช้แอปกับผลลัพธ์ไม่ชัดเจน
+2. **แยกคำกล่าวอ้างออกจากผลที่เกิดขึ้นจริง:** ร่างโพสต์เป็นสิ่งที่ต้องตรวจสอบ ไม่ใช่หลักฐานยืนยันผลลัพธ์ ใช้ "ตามที่ร่างโพสต์กล่าวอ้างหรือไม่" เมื่อต้องตรวจว่าข้อมูลรองรับคำกล่าวนั้นหรือไม่ อย่าเขียนเป็นข้อสรุปว่าแอปทำให้ประหยัดเวลาได้แน่นอน และอย่าตีความคำว่า "หลังใช้" ว่าเป็นหลักฐานยืนยันเหตุและผล
+3. **บอกว่าต้องตรวจอะไรและตรวจจากข้อมูลใด:** เชื่อมการกระทำของทีมกับหลักฐานโดยตรง เช่น "ทีมต้องตรวจสอบจากข้อมูลในภาพประกอบว่า..." เมื่อหลักฐานอยู่ใน artifact ใช้ "ภาพประกอบ" ในข้อความสำหรับผู้ทำแบบประเมินเมื่อเหมาะกับชนิดหลักฐาน หากเป็นเอกสาร ตาราง หรือบันทึก ให้เรียกตามชนิดจริง ไม่เปลี่ยนทุกแหล่งข้อมูลให้เป็นภาพ
+4. **แปลความหมายเป็นภาษาไทยที่อ่านเข้าใจได้ในครั้งเดียว:** จัดลำดับผู้กระทำ การกระทำ ผลลัพธ์ และสิ่งที่ต้องตรวจตามบริบท เชื่อมย่อหน้าให้ต่อเนื่อง และใช้คำเรียกงาน แอป ผลลัพธ์ และหลักฐานให้สม่ำเสมอ หากประโยคยาวให้แยกโดยไม่ตัดเงื่อนไขสำคัญ ไม่บังคับใช้โครงสร้างประโยคเดียวกับทุกคำถาม
+5. **คงขอบเขตและเงื่อนไขของผลการทดลอง:** ระบุว่าเป็นค่าเฉลี่ยของผู้ใช้ที่คัดเลือกมาและเป็นงานใดเมื่อข้อมูลนี้มีผลต่อคำตอบ อย่าแปลผลเฉลี่ยเป็นผลของทุกคน เปลี่ยนกลุ่มทดลองเป็นลูกค้าทั้งหมด หรือเพิ่มความแน่นอนที่ต้นฉบับไม่ได้ระบุ
+6. **ตรวจภาษาไทยทั้งชุดและเก็บฉบับที่ผู้ใช้ยอมรับ:** ตรวจสถานการณ์ คำถาม ตัวเลือก ข้อความในภาพ เฉลย และคำอธิบายให้หมายถึงสิ่งเดียวกัน คงรูปแบบ จำนวนข้อ ลำดับตัวเลือก เฉลย และตัวเลขเดิม เมื่อแก้ประโยคเกี่ยวกับผลลัพธ์ ให้ตรวจคำถามที่อ้างถึงผลนั้นด้วย บันทึกฉบับที่ผู้ใช้ระบุว่า "pass" และนำกลับมาใช้ ไม่เปลี่ยนถ้อยคำที่ตกลงแล้วโดยไม่มีเหตุผล
+
+Accepted example:
+
+> ก่อนเผยแพร่ ทีมต้องตรวจสอบจากข้อมูลในภาพประกอบว่า หลังใช้แอป ผู้ใช้ประหยัดเวลาเตรียมรายการซื้อของได้ตามที่ร่างโพสต์กล่าวอ้างหรือไม่ และภาพได้รับอนุญาตให้ใช้ในแคมเปญหรือไม่
+
+This example clarifies the object of verification; it does not add evidence, prove causation, or change the answer key. User acceptance of the wording is recorded separately from application implementation and release validation.
+
 ## Core rewrite rules
 
 1. Start with a realistic situation the user can picture.
