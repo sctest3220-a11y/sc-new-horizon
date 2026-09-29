@@ -3,8 +3,9 @@
 Status: Living working draft; publication authorized 29 September 2026
 Started: 24 September 2026
 Last updated: 29 September 2026
-Approved comparison baseline: Question Rewrite Rules v1.8
-Working refinements: 1.9-draft
+Original review baseline: Question Rewrite Rules v1.8
+Current approved baseline retained at publication: v2.1
+Working refinements: 2.2-draft (previously local 1.9-draft; historical references retain that label)
 Target GitHub branch: `kj-dee-branch`
 
 ## Review agreement

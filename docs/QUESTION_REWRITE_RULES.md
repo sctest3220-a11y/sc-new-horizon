@@ -1,10 +1,10 @@
 # Question Rewrite Rules and Versioning
 
-Status: Approved v1.8 baseline with provisional local refinements under review
-Current rules version: `1.8`
+Status: Approved v2.1 baseline with provisional wording refinements under review
+Current rules version: `2.1`
 Last updated: 29 September 2026
 Baseline human approval recorded: 23 September 2026
-Provisional revision: `1.9-draft`; not yet the final approved standard
+Provisional revision: `2.2-draft`; previously local `1.9-draft`, not yet the final approved standard
 
 ## Purpose
 
@@ -12,7 +12,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 
 ## Provisional local refinements - updated 29 September 2026
 
-The refinements below are a living draft for ongoing question review, with no required number of questions before updating or publishing the rules. On 29 September 2026, the user authorized pushing the current rules and review log to `kj-dee-branch`. The v1.8 core rules below are retained as the comparison baseline. These refinements guide review proposals; publishing the rules does not approve changes to scored items or question-bank files. Track evidence and unresolved challenges in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md).
+The refinements below are a living draft for ongoing question review, with no required number of questions before updating or publishing the rules. On 29 September 2026, the user authorized pushing the current rules and review log to `kj-dee-branch`. The current approved v2.1 core rules below are retained intact. The review began against v1.8; its local refinements were previously labeled v1.9-draft and are now labeled v2.2-draft to avoid colliding with the published v1.9 release. These refinements guide review proposals; publishing the rules does not approve changes to scored items or question-bank files. Track evidence and unresolved challenges in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md).
 
 1. **Check for duplicates first:** Compare the requested ID with the review log and conversation history. Flag a repeated ID before rewriting it. Count unique questions only; repeat a rewrite only when requested.
 2. **Preserve the selected format:** Read both the original audit wording and user-facing rewrite draft. Preserve the user-selected template, number of questions, number of choices, answer order, and interaction. In this exercise, retain the user-facing draft's one-scenario, two-question, two-choice structure when present; do not collapse it into the audit's four combined choices or adopt an automated format recommendation. Do not force this structure onto items with a different selected template.
@@ -30,6 +30,8 @@ The refinements below are a living draft for ongoing question review, with no re
 14. **Avoid guarantees and unsupported scoring changes:** A prompt instruction can reduce unsupported output; it does not guarantee compliance. Preserve the scoring defined for the selected format. Do not transfer the audit's single-choice 100/0 scoring to two-part questions or invent partial credit when no scoring rule is supplied. Report the known answer key and flag missing scoring definitions. Separately identify and version any substantive change to a choice, format, key, or scoring.
 
 During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation. Six unique questions have been discussed as of 29 September 2026; this is a historical count, not a target or an approval of all items. Update the rules and challenge checklist as evidence accumulates, and publish authorized updates to `kj-dee-branch` without waiting for a fixed review count. Final rule approval remains distinct from publishing this draft.
+
+These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
 
 ## Core rewrite rules
 
@@ -66,6 +68,35 @@ During review, show the revised question, all choices, correct answer, explanati
 28. For IT and developer roles, prefer a short operational scenario followed by scannable evidence such as logs, traces, permissions, configuration, code, or test results.
 29. Put detailed technical facts in the embedded artifact instead of repeating them in prose. Preserve every decision-relevant fact while reducing narrative reading load.
 30. For multi-select questions, state the exact number of choices required and avoid answer patterns where nearly every option is correct except one obviously unsafe choice.
+31. Never publish or present a partially translated question as Thai. The scenario, prompt, every choice, explanation, feedback, and artifact text must pass a completeness scan together. Preserve only approved technical terms such as AI, LLM, RAG, CRM, JSON, API, Workflow, and Prompt; mixed fragments or corrupted substitutions fail the item and require review.
+32. Apply the **AI necessity test**: remove AI from the scenario and ask whether substantially the same reasoning still solves the item. If it does, the question primarily tests the professional domain rather than AI competency and must be rewritten or remapped.
+33. Make the AI-specific construct observable. State the relevant AI behavior, decision rule, evidence boundary, workflow control, confidence limitation, permission, or human-review requirement that the user must evaluate or improve.
+34. Require mutually exclusive choices only when the item is intentionally **single-best-answer**. Define one decision and one evidence boundary, and keep choices at the same level of action. If several actions can reasonably coexist, use multi-select, ranking, multi-part, or written response instead of forcing artificial exclusivity.
+35. Partial credit is appropriate when it serves a measurement purpose, especially in proficient and advanced items. Use it to distinguish incomplete from complete evidence, reward correct reasoning steps, measure prioritization, or separate a sound diagnosis from a sound action. Do not use partial credit merely because a distractor sounds plausible.
+36. Independently recompute every derived value, ratio, percentage, total, rate, and comparison used by the scenario, artifact, options, key, or explanation. A numerically correct artifact can still be invalid if the selected metric does not support the stated decision.
+37. Check operational feasibility. A proposed action must account for the time, traffic, budget, permission, data, and workflow needed to perform it. Do not recommend gathering a larger sample while also prohibiting the resources required to gather it.
+38. Distinguish **limited testing** from **wider deployment or scaling**. When more evidence is needed, define a bounded test, cap, duration, stopping rule, or approval gate rather than describing uncertainty resolution as consequence-free.
+39. Stress-test the key by writing the strongest reasonable argument for every option. Revise the item when a distractor can satisfy the prompt without contradicting explicit evidence or constraints.
+
+## Partial-credit standard
+
+Use partial credit when the item contains observable components that can be scored independently:
+
+- **Multi-select:** assign credit to each required correct selection and apply a defined penalty or cap for unsafe or contradictory selections.
+- **Multi-part:** assign declared weights to diagnosis, evidence, action, explanation, or communication components.
+- **Ranking:** award credit for correctly placing critical first/last actions or for valid pairwise ordering, not for vague closeness.
+- **Written response:** use an analytic rubric with named criteria, evidence requirements, point ranges, and examples of full, partial, and absent evidence.
+- **Progressive options:** options may represent ordered proficiency levels only when each level is intentionally authored, the rubric explains the qualitative difference, and pilot evidence supports the ordering.
+
+Every partial-credit rubric must state:
+
+1. The competency evidence each point component represents.
+2. Why partial performance deserves credit.
+3. The maximum points for each component and a total of 100 raw item points.
+4. How contradictions, unsafe actions, irrelevant additions, and blank responses are handled.
+5. What feedback the user receives about earned and missing evidence.
+
+Do not assign values such as `45` or `20` to ordinary wrong choices after the question has been written. If option-level partial credit is intended, author the options as explicit proficiency levels before pilot use and validate their ordering with reviewers and response data.
 
 ## Thai cultural-context standard
 
@@ -123,6 +154,12 @@ Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
 
+### Provisional 2.2-draft integration - 29 September 2026
+
+- Preserved all approved v2.1 rules and the partial-credit standard while adding the local wording refinements and challenge log.
+- Renamed the local v1.9-draft refinements to v2.2-draft to avoid collision with the published v1.9 release; historical local entries below retain their original labels.
+- Removed the fixed review-count gate and authorized publishing the living draft without promoting scored questions.
+
 ### Provisional 1.9-draft update - 29 September 2026
 
 - Consolidated lessons from six unique questions, including preservation of the user-facing template, duplicate checks, and retention of agreed wording.
@@ -138,6 +175,29 @@ Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 - Added task/context ordering, whole-item relevance checks, consistent terminology, plain action wording, shared-choice consistency, meaning preservation, and non-guaranteed AI behavior guidance.
 - Started a challenge log for an initially bounded review exercise. Its count requirement and deferred-publication condition were superseded by the user's 29 September instruction to publish the living draft without a fixed review count.
 - Kept the approved v1.8 core rules intact for comparison; no question-bank promotion is implied.
+
+
+### Version 2.1 - 23 September 2026
+
+- Clarified that mutually exclusive choices are required for single-best-answer items, not every assessment format.
+- Preserved partial credit for difficult questions when it measures explicit competency evidence, reasoning stages, prioritization, or completeness.
+- Added format-specific partial-credit guidance for multi-select, multi-part, ranking, written-response, and intentionally progressive options.
+- Required transparent criteria, weights, contradiction handling, and user feedback for every partial-credit rubric.
+
+### Version 2.0 - 23 September 2026
+
+- Added the AI necessity test so domain judgment with decorative AI framing is not misclassified as AI competency evidence.
+- Required an observable AI behavior, rule, evidence boundary, or control in every AI-specific item.
+- Added mutual-exclusivity and evidence-boundary requirements for single-best-answer questions.
+- Prohibited subjective partial-credit values for ordinary distractors; partial credit now requires explicit reasoning components and a rubric.
+- Added independent numerical verification, operational-feasibility checks, and a required distinction between bounded testing and wider scaling.
+- Added an adversarial answer-key check: reviewers must make the strongest reasonable case for every option before approving the key.
+
+### Version 1.9 - 23 September 2026
+
+- Added a fail-closed Thai completeness rule after mixed English/Thai and corrupted substitutions were found in generated Prompt design items.
+- Required completeness QA across the whole item rather than treating individually translated fields as sufficient.
+- Repaired the shared Thai wording for all eight core/general D2 Prompt design applied drafts, including scenarios, prompts, choices, and explanations.
 
 ### Version 1.8 - 23 September 2026
 
