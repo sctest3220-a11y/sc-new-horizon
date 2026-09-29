@@ -10,7 +10,7 @@ Target GitHub branch: `kj-dee-branch`
 
 ## Review agreement
 
-Continue reviewing questions with the user without a fixed question-count requirement. On 29 September 2026, the user authorized publishing the current rewrite rules and challenge log to `kj-dee-branch`, superseding the earlier count target and publication delay. Six unique questions have been discussed so far; this is a historical count, not final item approval or a completion threshold. Check the IDs below and conversation history for duplicates before rewriting; repeated IDs do not increase the count. Continue reviewing the questions the user selects rather than automatically generating further items.
+Continue reviewing the questions selected by the user without a fixed review target or progress tally. On 29 September 2026, the user authorized publishing the living rewrite rules and challenge log to `kj-dee-branch`; the earlier update was pushed as `83100d8`, and the latest follow-up is also authorized for publication. Check the IDs below and conversation history for duplicates before rewriting, and reuse the reviewed baseline. Retain question-specific evidence and unresolved issues without treating review as final item approval.
 
 For each item, read both the original audit wording and the user-facing rewrite draft, from localhost when requested and available. Preserve the selected user-facing template, question count, choices, and answer order. Show the complete proposed item with the answer key, explanation, and remaining concerns. Include scoring only if defined for that format; do not carry combined-choice scoring into a two-part template. Preserve original meaning and distinguish wording cleanup from substantive changes. Reuse agreed wording; identify proposed changes explicitly. Update local rule notes as feedback emerges. Do not update question-bank data or localhost question content unless separately requested.
 
@@ -21,12 +21,55 @@ For each item, read both the original audit wording and the user-facing rewrite 
 | NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-APPLIED-01 | A broader goal need not come first. The version-comparison task and refund approval boundary directly support the choices. Avoid treating possible duplicate compensation or denied support as an established recurring problem. Original scoring: A = 100; B/C/D = 0. | Missing-information distractors do not address the observed summarization failure. Improving them substantively needs a separate revision. |
 | NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-APPLIED-02 | Place the duplicate-refund consequence beside the uncertain payment status. Preserve both audience-aware prompt repair and payment verification. Original scoring: B = 100; A/C/D = 0. | Version-comparison distractors are weak. Audit single-choice scoring, a suggested multi-select format, and the two-part user-facing draft are not interchangeable without a scoring decision. |
 | NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-APPLIED-03 | Use "case history" consistently. User prefers "The draft response includes made-up details where information was left blank"; clarify the location as "in the case history." Use "assumed" and direct status/action wording consistently across shared answer components. Original scoring: C = 100; A/B/D = 0. | "Validate every required field" may imply factual validation, making the distractor ambiguous. Reporting completion "to reassure" is easy to reject. Prompt instructions reduce fabrication risk but cannot guarantee compliance. |
-
-| NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-APPLIED-01 | Preserve the two-part user-facing format. Use "policy exception," "over" for the refund limit, and "the person authorized to approve" without inventing a manager role. User-facing keys: 1B, 2B. Repeated requests for this ID count once. | Choice 1A has undefined interpretations and overlaps source checking. Earlier combined-choice rewrites were a format mistake, not the current template. |
+| NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-APPLIED-01 | Preserve the two-part user-facing format. Use "policy exception," "over" for the refund limit, and "the person authorized to approve" without inventing a manager role. User-facing keys: 1B, 2B. Repeated requests for this ID are flagged as duplicates. | Choice 1A has undefined interpretations and overlaps source checking. Earlier combined-choice rewrites were a format mistake, not the current template. |
 | NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-APPLIED-02 | Connect refund details to the AI task. User agreed: "The AI is drafting a response about a delayed refund. An earlier refund attempt timed out, but the refund may already be complete." Retain "conflicting information" and the reviewed questions/choices. User-facing keys: 1B, 2A. | Choice 1A assumes a missing exception not established in the scenario. "Still processing" would change the original completed-payment uncertainty. |
 | NH-FUNCTION-PEOPLE-D3-SOURCE-VERIFICATION-APPLIED-01 | Simplify anonymized records as "names and personal information removed." Connect the omitted exception to its consequence in the same sentence where clear. Preserve the requirement for a named authorized human. User-facing keys: 1B, 2B. | Choice 1A again has undefined interpretations and overlaps the intended source check. Avoid "whole meaning" without evidence. Latest HR wording is an assistant refinement of user feedback, not separately confirmed final wording. |
+| NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-01 | User agreed to specify "estimate the refund amount" and retained the complete candidate. Use "the team is unsure which amount to use." Keys: 1B, 2B. | The original did not specify the estimate's object. Record refund amount as a user-agreed clarification, not an original fact. Do not infer which suggested amount is correct or how many exceed the approval limit. |
+| NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02 | User agreed to "claims to use information from a record" and requested the full item again. Introduce the record before "that record" and retain named sources. Keys: 1B, 2A. | The source originally named a record; reliance on its information is an agreed clarification. A record not found is not proven fabricated, and an access problem is not established. |
 
-## Fourth item - source verification review history
+## Refund estimates - agreed complete wording
+
+Question: `NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-01`
+
+> A customer service team uses AI to draft a response using approved service policies and the customer's case history.
+>
+> The team asks the AI twice to estimate the refund amount using the same incomplete information. The AI suggests a different amount each time, so the team is unsure which amount to use.
+>
+> The AI also recommends a refund amount over the frontline team's approval limit. Refunds and exceptions need approval from the person authorized to approve them.
+
+Answer both questions. Choose one answer for each.
+
+1. What limitation do the AI's two refund estimates show?
+   - A. The information may be out of date.
+   - B. There is not enough information to support a consistent refund estimate.
+2. What should the team do about the refund amount being over its approval limit?
+   - A. Issue the refund if the AI recommends it again.
+   - B. Send the refund request to the person authorized to approve that amount.
+
+Keys: 1B and 2B. Explanation: different estimates from incomplete information do not support confidently choosing an amount; the scenario does not establish outdated information. The refund requires the authorized person's approval, which a repeated AI recommendation cannot supply. The user agreed to this complete candidate. No per-part score was assigned and no localhost item was changed.
+
+## Missing source record - agreed wording and full candidate shown
+
+Question: `NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02`
+
+> A customer service team uses AI to draft a response using approved service policies and the customer's case history.
+>
+> The AI's draft sounds confident and claims to use information from a record, but the team cannot find that record in the approved service policies or the customer's case history.
+>
+> The AI is drafting a response about a delayed refund. An earlier refund attempt timed out, but the refund may already be complete. Refunds and exceptions need approval from the person authorized to approve them.
+
+Answer both questions. Choose one answer for each.
+
+1. What limitation does the AI's reference to the missing record show?
+   - A. The AI cannot access the record it refers to.
+   - B. The AI may give made-up information that sounds convincing.
+2. What should the team do before issuing another refund?
+   - A. Check the payment record to confirm whether the earlier refund is complete.
+   - B. Issue another refund because the customer still reports a delay.
+
+Keys: 1B and 2A. Explanation: confidence does not prove that a record exists; the reference may be made up and needs verification. An access problem is not established. A timeout or customer-reported delay does not prove that the earlier refund failed, so check the payment record before issuing another refund. The user explicitly agreed to the revised source sentence and requested this full candidate. No per-part score was assigned and no localhost item was changed.
+
+## Customer service source exception - review history
 
 Question: `NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-APPLIED-01`
 
@@ -40,7 +83,7 @@ Challenge-check refinement now recorded in provisional v1.9-draft: confirm that 
 
 The user challenged an unnecessary repeat rewrite. Retain the earlier reviewed wording: "leaves out the policy exception in the next sentence," "This changes the meaning of the policy," and "put the missing exception back into the response." Do not introduce stylistic variations without explaining the proposed change.
 
-## Fifth item - agreed wording checkpoint
+## Conflicting summaries - agreed wording checkpoint
 
 Question: `NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-APPLIED-02`
 
@@ -61,7 +104,7 @@ The user explicitly agreed to the simpler refund sentences and confirmed retaini
 
 Keys: 1B and 2A. Choice 1A remains flagged because a missing exception is not established. The wording agreement does not remove that challenge or constitute approval to publish the item.
 
-## Sixth item - HR language feedback
+## HR source exception - language feedback
 
 Question: `NH-FUNCTION-PEOPLE-D3-SOURCE-VERIFICATION-APPLIED-01`
 
@@ -108,6 +151,9 @@ The audit's generic refund-approval and duplicate-compensation details were omit
 - Are references such as "both interpretations" and "the missing exception" actually established by the scenario?
 - Are shared choice components identical, with no answer revealed through polish, length, or specificity?
 - Does simpler language preserve technical meaning in this context?
+- Is the object of an estimate or claim explicit? If absent from the original, has the user agreed to the clarification and has that distinction been recorded?
+- Is a record introduced before "that record," and are the exact source boundaries preserved rather than broadened to "the system"?
+- Does the rewrite distinguish an unlocated record, lack of access, and proven fabrication? Does it preserve naming a source versus claiming to use its information unless a change was agreed?
 - Does the question or explanation overstate what a prompt instruction can guarantee?
 - Is scoring defined for the selected format, rather than borrowed from the audit's combined-choice key? Keep format changes outside a wording-only rewrite unless separately requested.
 - What counterexample would make a proposed rule unhelpful or misleading?

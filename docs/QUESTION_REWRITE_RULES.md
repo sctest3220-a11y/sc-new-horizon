@@ -14,7 +14,7 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 
 The refinements below are a living draft for ongoing question review, with no required number of questions before updating or publishing the rules. On 29 September 2026, the user authorized pushing the current rules and review log to `kj-dee-branch`. The current approved v2.1 core rules below are retained intact. The review began against v1.8; its local refinements were previously labeled v1.9-draft and are now labeled v2.2-draft to avoid colliding with the published v1.9 release. These refinements guide review proposals; publishing the rules does not approve changes to scored items or question-bank files. Track evidence and unresolved challenges in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md).
 
-1. **Check for duplicates first:** Compare the requested ID with the review log and conversation history. Flag a repeated ID before rewriting it. Count unique questions only; repeat a rewrite only when requested.
+1. **Check for duplicates first:** Compare the requested ID with the review log and conversation history. Flag a repeated ID before rewriting it. Reuse the reviewed baseline; repeat a rewrite only when requested.
 2. **Preserve the selected format:** Read both the original audit wording and user-facing rewrite draft. Preserve the user-selected template, number of questions, number of choices, answer order, and interaction. In this exercise, retain the user-facing draft's one-scenario, two-question, two-choice structure when present; do not collapse it into the audit's four combined choices or adopt an automated format recommendation. Do not force this structure onto items with a different selected template.
 3. **Preserve meaning:** Preserve the tested competency, decision-relevant facts, uncertainty, authority boundaries, and answer key during a wording-only rewrite. Do not turn a possible risk into a past or recurring incident. "The refund may already be complete" must not become "the refund is still processing." Identify substantive changes separately rather than hiding them in simpler wording.
 4. **Use familiar, correct language:** Prefer plain words and explicit actions when they preserve meaning: "assumed," "over the approval limit," and "names and personal information removed." Use "policy exception," not "policy exceptional," and "personal information," not "personal informations." These are contextual examples, not mandatory substitutions when a technical distinction matters. In particular, do not substitute "assumed" for "inferred" when inference is itself the tested concept.
@@ -29,7 +29,11 @@ The refinements below are a living draft for ongoing question review, with no re
 13. **Preserve reviewed wording:** Reuse the latest wording the user agreed to. Do not treat an already-reviewed item as a fresh draft. Identify any further proposed change with the exact wording and reason. Distinguish user-agreed wording from assistant suggestions and unresolved original content problems.
 14. **Avoid guarantees and unsupported scoring changes:** A prompt instruction can reduce unsupported output; it does not guarantee compliance. Preserve the scoring defined for the selected format. Do not transfer the audit's single-choice 100/0 scoring to two-part questions or invent partial credit when no scoring rule is supplied. Report the known answer key and flag missing scoring definitions. Separately identify and version any substantive change to a choice, format, key, or scoring.
 
-During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation. Six unique questions have been discussed as of 29 September 2026; this is a historical count, not a target or an approval of all items. Update the rules and challenge checklist as evidence accumulates, and publish authorized updates to `kj-dee-branch` without waiting for a fixed review count. Final rule approval remains distinct from publishing this draft.
+15. **Name what is being estimated or claimed:** Do not leave a key term such as "estimate" without its object. If the source does not specify whether it means an amount, time, or another result, flag the gap and propose a clarification separately. Record the user's agreement before treating added specificity as part of the candidate. The user agreed to interpret the undefined estimate in Capability limits AWARENESS-01 as the refund amount; this was a content clarification, not a fact explicitly present in the original audit.
+16. **Introduce references and preserve source scope:** Introduce "a record" before referring to "that record." Name the relevant sources instead of broadening them to "the system." Distinguish naming a record from claiming to use information from it. Identify and agree a change between those meanings rather than presenting it as an equivalent wording substitution. Use natural grammar such as "claims to use information from a record," not "mentions from a record."
+17. **Express uncertainty naturally:** Prefer "the team is unsure which amount to use" to "neither estimate is certain." Preserve the difference between a record that cannot be found, a record the AI cannot access, and a record proven not to exist. "May be made up" is not "is made up," and confidence does not establish source support. Inconsistent outputs do not alone prove which output is incorrect or that outdated information caused the problem.
+
+During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Update the rules and challenge checklist as evidence accumulates, and publish authorized updates to `kj-dee-branch` without waiting for a fixed review count. Final rule approval remains distinct from publishing this draft.
 
 These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
 
@@ -154,6 +158,13 @@ Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
 
+### Provisional 2.2-draft follow-up - 29 September 2026
+
+- Recorded further lessons from Capability limits reviews without using a review-count target or progress tally.
+- Added explicit objects for estimates, introduced references, precise source scope, and natural uncertainty wording.
+- Recorded user-agreed clarifications separately from original audit facts: refund-amount estimation and a claim to use information from a record.
+- The user authorized publishing this follow-up, removing review-count wording while retaining question-specific evidence. Question-bank content is unchanged.
+
 ### Provisional 2.2-draft integration - 29 September 2026
 
 - Preserved all approved v2.1 rules and the partial-credit standard while adding the local wording refinements and challenge log.
@@ -162,11 +173,11 @@ Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ### Provisional 1.9-draft update - 29 September 2026
 
-- Consolidated lessons from six unique questions, including preservation of the user-facing template, duplicate checks, and retention of agreed wording.
+- Consolidated lessons from question reviews, including preservation of the user-facing template, duplicate checks, and retention of agreed wording.
 - Added connected scenario paragraphs, familiar grammar and terminology, natural consequences, and authority wording that does not invent a job role.
 - Preserved uncertainty such as a potentially completed refund; distinguished it from a refund still processing.
 - Added explicit checks for undefined references and overlapping choices, and prohibited assumed scoring transfers between formats.
-- Updated the review log with all six IDs, wording checkpoints, user feedback, and unresolved challenges.
+- Updated the review log with question IDs, wording checkpoints, user feedback, and unresolved challenges.
 - Removed the fixed question-review target and publication delay at the user's request. Publishing the living draft is authorized; final rule approval and scored-item promotion remain separate decisions.
 
 ### Provisional 1.9-draft - 24 September 2026
