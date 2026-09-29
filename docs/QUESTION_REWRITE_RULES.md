@@ -1,13 +1,55 @@
 # Question Rewrite Rules and Versioning
 
-Status: Approved baseline for future rewrites; remains a living standard
+Status: Approved v2.1 baseline with provisional wording refinements under review
 Current rules version: `2.1`
-Last updated: 23 September 2026
-Human approval recorded: 23 September 2026
+Last updated: 29 September 2026
+Baseline human approval recorded: 23 September 2026
+Provisional revision: `2.2-draft`; previously local `1.9-draft`, not yet the final approved standard
 
 ## Purpose
 
 This standard guides human and agent-assisted rewrites of assessment questions. It also prevents useful variants from being lost. Rewrites remain proposals until a human reviewer selects and approves a version.
+
+## Provisional local refinements - updated 29 September 2026
+
+The refinements below are a living draft for ongoing question review, with no required number of questions before updating or publishing the rules. On 29 September 2026, the user authorized pushing the current rules and review log to `kj-dee-branch`. The current approved v2.1 core rules below are retained intact. The review began against v1.8; its local refinements were previously labeled v1.9-draft and are now labeled v2.2-draft to avoid colliding with the published v1.9 release. These refinements guide review proposals; publishing the rules does not approve changes to scored items or question-bank files. Track evidence and unresolved challenges in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md).
+
+1. **Check for duplicates first:** Compare the requested ID with the review log and conversation history. Flag a repeated ID before rewriting it. Reuse the reviewed baseline; repeat a rewrite only when requested.
+2. **Preserve the selected format:** Read both the original audit wording and user-facing rewrite draft. Preserve the user-selected template, number of questions, number of choices, answer order, and interaction. In this exercise, retain the user-facing draft's one-scenario, two-question, two-choice structure when present; do not collapse it into the audit's four combined choices or adopt an automated format recommendation. Do not force this structure onto items with a different selected template.
+3. **Preserve meaning:** Preserve the tested competency, decision-relevant facts, uncertainty, authority boundaries, and answer key during a wording-only rewrite. Do not turn a possible risk into a past or recurring incident. "The refund may already be complete" must not become "the refund is still processing." Identify substantive changes separately rather than hiding them in simpler wording.
+4. **Use familiar, correct language:** Prefer plain words and explicit actions when they preserve meaning: "assumed," "over the approval limit," and "names and personal information removed." Use "policy exception," not "policy exceptional," and "personal information," not "personal informations." These are contextual examples, not mandatory substitutions when a technical distinction matters. In particular, do not substitute "assumed" for "inferred" when inference is itself the tested concept.
+5. **Use consistent terms:** Use one term for the same source or concept unless a real distinction matters. For example, use "case history" consistently instead of alternating between "supplied records," "case record," and "case history." Do not merge distinct policy, case-history, and payment sources into one label merely for consistency.
+6. **Keep the scenario connected:** Make every paragraph clearly relate to the AI's task. Introduce customer or operational details through that task rather than abruptly switching subjects. Example: "The AI is drafting a response about a delayed refund." Do not invent what the AI concluded just to connect the paragraphs.
+7. **Make sentences understandable in one reading:** Prefer concrete wording, short sentences, and explicit references. Example: "The draft response includes made-up details where information was left blank in the case history." Avoid unnecessary technical terms, vague pronouns, and unexplained phrases such as "both interpretations." "Contain conflicting information" is clearer here than "give different accounts."
+8. **Connect consequences naturally:** Put a consequence beside the behavior or requirement it explains. Where the connection is clear, join them naturally: "...leaves out the rule's exception stated right after it, which changes the meaning of the procedure." Avoid intensifiers such as "the whole meaning" unless supported. Ensure that "it" or "which" has an unambiguous referent; shorter connected sentences are also valid.
+9. **Use flexible information order (proposed replacement for core rule 2):** Start with the context needed to understand the task. Present the relevant AI behavior or evidence, connect requirements and consequences to the decisions they affect, then ask the question. Introduce a broader problem or goal first only when it improves understanding. Do not mandate a problem-first structure or emphasize risks the choices do not address.
+10. **Simplify authority wording without inventing roles:** Prefer "the person authorized to approve the refund" to "the designated approver" for this audience. Do not substitute "the manager" or assume a higher job rank unless the source establishes it. Preserve the required authority, approval limit, and named-human requirement when present.
+11. **Review the whole item together:** Show the scenario, every question and choice, answer key, explanation, and any remaining challenge together. Retain evidence and constraints needed for the tested decisions; record material omissions. Keep repeated answer components identical and improve them wherever they occur. Do not polish only the correct answer or create clues through length, grammar, or specificity.
+12. **Separate language fixes from content fixes:** Flag undefined references, overlapping choices, and irrelevant or implausible distractors. Check that every reference in a choice has a basis in the scenario or evidence, and that a broad alternative does not also satisfy the keyed action. Do not invent evidence or silently narrow an option's meaning to protect the key. Distinguish clearer prose from readiness for exam or benchmark use.
+13. **Preserve reviewed wording:** Reuse the latest wording the user agreed to. Do not treat an already-reviewed item as a fresh draft. Identify any further proposed change with the exact wording and reason. Distinguish user-agreed wording from assistant suggestions and unresolved original content problems.
+14. **Avoid guarantees and unsupported scoring changes:** A prompt instruction can reduce unsupported output; it does not guarantee compliance. Preserve the scoring defined for the selected format. Do not transfer the audit's single-choice 100/0 scoring to two-part questions or invent partial credit when no scoring rule is supplied. Report the known answer key and flag missing scoring definitions. Separately identify and version any substantive change to a choice, format, key, or scoring.
+
+15. **Name what is being estimated or claimed:** Do not leave a key term such as "estimate" without its object. If the source does not specify whether it means an amount, time, or another result, flag the gap and propose a clarification separately. Record the user's agreement before treating added specificity as part of the candidate. The user agreed to interpret the undefined estimate in Capability limits AWARENESS-01 as the refund amount; this was a content clarification, not a fact explicitly present in the original audit.
+16. **Introduce references and preserve source scope:** Introduce "a record" before referring to "that record." Name the relevant sources instead of broadening them to "the system." Distinguish naming a record from claiming to use information from it. Identify and agree a change between those meanings rather than presenting it as an equivalent wording substitution. Use natural grammar such as "claims to use information from a record," not "mentions from a record."
+17. **Express uncertainty naturally:** Prefer "the team is unsure which amount to use" to "neither estimate is certain." Preserve the difference between a record that cannot be found, a record the AI cannot access, and a record proven not to exist. "May be made up" is not "is made up," and confidence does not establish source support. Inconsistent outputs do not alone prove which output is incorrect or that outdated information caused the problem.
+
+18. **Describe the AI's action directly:** When describing generated output, use a concrete subject and verb, such as "The AI generates a recommendation in its draft." Use "generates" with the singular subject "AI." Do not simply remove the main verb from a sentence, and do not replace every AI action with "generates": preserve distinctions such as searching, quoting, retrieving, and recommending when they matter. Generating a recommendation does not grant the AI authority to make the final decision.
+
+19. **Show the evidence without naming the answer:** When a question asks the reader to identify a mechanism, describe its observed effect in the scenario instead of explicitly naming that mechanism. In the finance context-window item, retain "When the conversation gets too long, the AI no longer sees some earlier instructions." Do not add "hits its context limit" before asking what causes the behavior. Explain "context window" in the feedback. This does not justify removing evidence needed to answer or banning technical terms when they are not the answer being tested.
+20. **Simplify technical effects without inventing intent:** Prefer natural, direct wording over phrases such as "are left out of the information available to the AI." In the finance example, "no longer sees" means earlier instructions are absent from the current input; it does not mean the AI deliberately deletes them or that they disappear from the stored chat. "Can no longer see" is also correct English. If the user prefers to remove "can," adjust the verb to "sees" while preserving meaning. Keep this statement specific to the described case; do not claim that every long conversation always loses instructions.
+21. **Respect clarified terminology and keep it aligned:** Explain a material ambiguity once, then retain the wording and meaning the user agrees to. In the HR qualifications item, the user defines "employee qualifications" as the criteria or conditions an employee must meet, and prefers "The prompt clearly states what kind of answer the AI should generate, but it does not specify the crucial conditions regarding employee qualifications." Keep that meaning consistent in the scenario, choices, and explanation. Record the shift from the original single eligibility rule to this agreed phrasing; do not treat the terms as universally interchangeable or invent a benefit, role, or specific criterion. Use the clear contrast between what the prompt specifies and omits when the evidence supports it.
+
+22. **Make the task purpose and output concrete when needed:** If an artifact or scenario is hard to understand without the goal, state what the team wants to achieve and what the AI is helping produce. In the agreed marketing example, encourage reusable-bag use through a public social-media post with a caption and image. Include audience or channel only when it affects interpretation or a choice. This refines flexible information order; it does not impose a goal-first opening on every question.
+23. **Connect each question to its evidence:** Use the sequence scenario, artifact, then questions, preserving the selected template and answer order. Make the supporting evidence clear, whether it is an AI action described in the scenario or a record the reader must inspect in the artifact. Keep detailed evidence in the artifact rather than duplicating it all in prose. Unexplained X/Y labels or similarity scores alone do not show the numerical-representation process; include the necessary observable process without naming the mechanism being tested. Do not require an artifact panel for every part when the scenario already supplies that part's evidence.
+24. **Keep evidence meanings distinct:** Explain what a comparison or score represents in plain language. Meaning similarity is not factual verification, permission, confidence, or a forecast of campaign results. In feedback, distinguish the representation step from retrieval even though retrieval can use numerical representations. Avoid claiming that related processes are mutually exclusive merely because they are competing choices.
+25. **Record artifact additions and omissions as content decisions:** A clearer artifact may require fictional examples, metadata, or a concrete objective absent from the audit. Identify these separately and retain the user's agreement before treating them as the reviewed baseline. Keep relevant permission boundaries and AI evidence. Do not invent performance claims to justify generic source wording, and record why an unused requirement was omitted. Agreement to the candidate does not itself authorize question-bank implementation or establish release readiness. Follow the canonical artifact standard for generation and QA.
+26. **Name the specific claim or outcome:** Use "the draft's time-saving claim" instead of "the app's performance" when the evidence measures time spent completing a task. Name the task so the reader can connect the source result to the claim. Do not confuse user outcomes with technical app speed, and do not invent a metric absent from the source without identifying it as a proposed clarification.
+27. **Avoid repeating the same AI process in prose and the artifact:** Keep a short process description in the scenario when that is sufficient, and let the artifact show the source evidence and generated output for comparison. Remove a repeated panel only if it adds no necessary evidence. Update prompts and feedback to match the resulting item: for the agreed marketing example, use "Which process does the AI use to prepare the draft?" rather than referring to the removed activity record. Preserve the selected format, choice order and key.
+28. **Separate a correct calculation from a supported claim:** A draft can repeat a numerically correct pilot result while omitting who was tested and under what conditions. Explain that distinction directly. A change in average task time for selected users does not establish the same outcome for all customers, a benefit for every participant, or causation. Preserve the original evidence-scope decision without turning the question into a calculation exercise or inventing statistical certainty.
+
+During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Save accumulated rule refinements locally and do not report review totals or progress counts. Publish them to `kj-dee-branch` only when the user explicitly says "push" or otherwise directly requests publication. A push request authorizes the current accumulated updates, not automatic publication of future refinements. There is no fixed review-count gate. Final rule approval remains distinct from publishing this draft.
+
+These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
 
 ## Core rewrite rules
 
@@ -129,6 +171,49 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Provisional 2.2-draft local finance and HR refinements - 29 September 2026
+
+- Saved the agreed finance sentence "When the conversation gets too long, the AI no longer sees some earlier instructions."
+- Added safeguards against naming the tested mechanism in the scenario, implying deliberate deletion, or treating a case-specific effect as universal AI behavior.
+- Recorded natural grammar choices without claiming that "can no longer see" is incorrect.
+- Saved the HR qualifications terminology clarification and both item checkpoints. The user authorized publishing this follow-up; future refinements remain local until another explicit push request.
+
+### Provisional 2.2-draft action wording and publication workflow - 29 September 2026
+
+- Added direct AI-action wording from the HR Prompt design review: "The AI generates a recommendation in its draft."
+- Recorded the agreed scenario and unchanged user-facing template, choices, and keys in the review log; retained the original distractor concern.
+- Clarified that future refinements stay local until the user explicitly requests a push. Omit review-count reporting and preserve question-specific evidence.
+
+### Provisional 2.2-draft follow-up - 29 September 2026
+
+- Recorded further lessons from Capability limits reviews without using a review-count target or progress tally.
+- Added explicit objects for estimates, introduced references, precise source scope, and natural uncertainty wording.
+- Recorded user-agreed clarifications separately from original audit facts: refund-amount estimation and a claim to use information from a record.
+- The user authorized publishing this follow-up, removing review-count wording while retaining question-specific evidence. Question-bank content is unchanged.
+
+### Provisional 2.2-draft integration - 29 September 2026
+
+- Preserved all approved v2.1 rules and the partial-credit standard while adding the local wording refinements and challenge log.
+- Renamed the local v1.9-draft refinements to v2.2-draft to avoid collision with the published v1.9 release; historical local entries below retain their original labels.
+- Removed the fixed review-count gate and authorized publishing the living draft without promoting scored questions.
+
+### Provisional 1.9-draft update - 29 September 2026
+
+- Consolidated lessons from question reviews, including preservation of the user-facing template, duplicate checks, and retention of agreed wording.
+- Added connected scenario paragraphs, familiar grammar and terminology, natural consequences, and authority wording that does not invent a job role.
+- Preserved uncertainty such as a potentially completed refund; distinguished it from a refund still processing.
+- Added explicit checks for undefined references and overlapping choices, and prohibited assumed scoring transfers between formats.
+- Updated the review log with question IDs, wording checkpoints, user feedback, and unresolved challenges.
+- Removed the fixed question-review target and publication delay at the user's request. Publishing the living draft is authorized; final rule approval and scored-item promotion remain separate decisions.
+
+### Provisional 1.9-draft - 24 September 2026
+
+- Recorded local refinements from reviews of customer service Prompt design APPLIED-01, APPLIED-02, and APPLIED-03.
+- Added task/context ordering, whole-item relevance checks, consistent terminology, plain action wording, shared-choice consistency, meaning preservation, and non-guaranteed AI behavior guidance.
+- Started a challenge log for an initially bounded review exercise. Its count requirement and deferred-publication condition were superseded by the user's 29 September instruction to publish the living draft without a fixed review count.
+- Kept the approved v1.8 core rules intact for comparison; no question-bank promotion is implied.
+
 
 ### Version 2.1 - 23 September 2026
 
