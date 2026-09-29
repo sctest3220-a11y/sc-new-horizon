@@ -10,7 +10,7 @@ Target GitHub branch: `kj-dee-branch`
 
 ## Review agreement
 
-Continue reviewing the questions selected by the user without a fixed review target or progress tally. On 29 September 2026, the user authorized publishing the living rewrite rules and challenge log to `kj-dee-branch`; the earlier update was pushed as `83100d8`, and the latest follow-up is also authorized for publication. Check the IDs below and conversation history for duplicates before rewriting, and reuse the reviewed baseline. Retain question-specific evidence and unresolved issues without treating review as final item approval.
+Continue reviewing the questions selected by the user without a fixed review target or progress tally. Earlier rule updates were pushed as `83100d8` and `66d7013`. The user has clarified the ongoing workflow: save accumulated refinements locally and publish to `kj-dee-branch` only when they explicitly say "push" or otherwise directly request publication. Their current push request authorizes the accumulated updates, not automatic publication of future refinements. Check the IDs below and conversation history for duplicates before rewriting, and reuse the reviewed baseline. Retain question-specific evidence and unresolved issues without treating review as final item approval.
 
 For each item, read both the original audit wording and the user-facing rewrite draft, from localhost when requested and available. Preserve the selected user-facing template, question count, choices, and answer order. Show the complete proposed item with the answer key, explanation, and remaining concerns. Include scoring only if defined for that format; do not carry combined-choice scoring into a two-part template. Preserve original meaning and distinguish wording cleanup from substantive changes. Reuse agreed wording; identify proposed changes explicitly. Update local rule notes as feedback emerges. Do not update question-bank data or localhost question content unless separately requested.
 
@@ -26,6 +26,28 @@ For each item, read both the original audit wording and the user-facing rewrite 
 | NH-FUNCTION-PEOPLE-D3-SOURCE-VERIFICATION-APPLIED-01 | Simplify anonymized records as "names and personal information removed." Connect the omitted exception to its consequence in the same sentence where clear. Preserve the requirement for a named authorized human. User-facing keys: 1B, 2B. | Choice 1A again has undefined interpretations and overlaps the intended source check. Avoid "whole meaning" without evidence. Latest HR wording is an assistant refinement of user feedback, not separately confirmed final wording. |
 | NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-01 | User agreed to specify "estimate the refund amount" and retained the complete candidate. Use "the team is unsure which amount to use." Keys: 1B, 2B. | The original did not specify the estimate's object. Record refund amount as a user-agreed clarification, not an original fact. Do not infer which suggested amount is correct or how many exceed the approval limit. |
 | NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02 | User agreed to "claims to use information from a record" and requested the full item again. Introduce the record before "that record" and retain named sources. Keys: 1B, 2A. | The source originally named a record; reliance on its information is an agreed clarification. A record not found is not proven fabricated, and an access problem is not established. |
+| NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-01 | User agreed to "The AI generates a recommendation in its draft that could affect an employment decision." Preserve one scenario, two questions, two choices each; keys 1A and 2B. | "Help with this" leaves both the task and constraints unstated. The task/output instruction is the intended most direct answer, but the competing omission in 1B remains flagged. |
+
+## HR prompt design - agreed action wording and full candidate shown
+
+Question: `NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-01`
+
+> An HR team wants to use AI to draft a response to an employee. The team provides approved HR procedures and case records with names and personal information removed.
+>
+> However, the team's prompt only says "help with this." It does not tell the AI what to do with the information or what response to produce.
+>
+> The AI generates a recommendation in its draft that could affect an employment decision. Such decisions must be made by a named person with the authority to make them.
+
+Answer both questions. Choose one answer for each.
+
+1. What is the main missing instruction in the team's prompt?
+   - A. What task the AI should complete and what it should produce.
+   - B. What rule or limit the AI should follow when making a decision.
+2. What should the HR team do about the recommendation that could affect an employment decision?
+   - A. Let the AI make the final decision after checking the wording.
+   - B. Leave the final decision to the person authorized to make it for HR.
+
+Original keys: 1A and 2B. Explanation: providing source information does not define the task or expected output. An employment decision must remain with the authorized person; checking wording does not authorize AI to make that decision. The user agreed to "AI generates" and requested the complete item with that wording. The original ambiguity in question 1 remains open: rules and limits are also absent from "help with this." No per-part scoring was invented, and the candidate has not been applied to the question bank.
 
 ## Refund estimates - agreed complete wording
 
@@ -151,6 +173,7 @@ The audit's generic refund-approval and duplicate-compensation details were omit
 - Are references such as "both interpretations" and "the missing exception" actually established by the scenario?
 - Are shared choice components identical, with no answer revealed through polish, length, or specificity?
 - Does simpler language preserve technical meaning in this context?
+- Does the sentence retain a grammatical main verb and describe the actual AI action? Is "generates" appropriate, without confusing output generation with decision authority?
 - Is the object of an estimate or claim explicit? If absent from the original, has the user agreed to the clarification and has that distinction been recorded?
 - Is a record introduced before "that record," and are the exact source boundaries preserved rather than broadened to "the system"?
 - Does the rewrite distinguish an unlocated record, lack of access, and proven fabrication? Does it preserve naming a source versus claiming to use its information unless a change was agreed?
@@ -160,4 +183,4 @@ The audit's generic refund-approval and duplicate-compensation details were omit
 
 ## Ongoing publication and finalization
 
-Publish the authorized current rule documents to `kj-dee-branch` without a question-count gate. Continue consolidating supported refinements, retaining the original baseline through version history and recording rationale and challenge findings. Resolve or explicitly document unresolved issues; do not claim that a set of examples proves perfection or calibration. Record the user's final review decision when the draft is promoted to an approved rules version; publication of the draft does not itself grant that approval or promote scored items. If GitHub authentication is unavailable, report the actual push failure instead of implying publication.
+Keep refinements local until the user explicitly requests a push. Publish the accumulated authorized rule documents to `kj-dee-branch` without a question-count gate or progress tally. Continue consolidating supported refinements, retaining the original baseline through version history and recording rationale and challenge findings. Resolve or explicitly document unresolved issues; do not claim that a set of examples proves perfection or calibration. Record the user's final review decision when the draft is promoted to an approved rules version; publication of the draft does not itself grant that approval or promote scored items. If GitHub authentication is unavailable, report the actual push failure instead of implying publication.

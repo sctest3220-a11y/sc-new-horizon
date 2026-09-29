@@ -33,7 +33,9 @@ The refinements below are a living draft for ongoing question review, with no re
 16. **Introduce references and preserve source scope:** Introduce "a record" before referring to "that record." Name the relevant sources instead of broadening them to "the system." Distinguish naming a record from claiming to use information from it. Identify and agree a change between those meanings rather than presenting it as an equivalent wording substitution. Use natural grammar such as "claims to use information from a record," not "mentions from a record."
 17. **Express uncertainty naturally:** Prefer "the team is unsure which amount to use" to "neither estimate is certain." Preserve the difference between a record that cannot be found, a record the AI cannot access, and a record proven not to exist. "May be made up" is not "is made up," and confidence does not establish source support. Inconsistent outputs do not alone prove which output is incorrect or that outdated information caused the problem.
 
-During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Update the rules and challenge checklist as evidence accumulates, and publish authorized updates to `kj-dee-branch` without waiting for a fixed review count. Final rule approval remains distinct from publishing this draft.
+18. **Describe the AI's action directly:** When describing generated output, use a concrete subject and verb, such as "The AI generates a recommendation in its draft." Use "generates" with the singular subject "AI." Do not simply remove the main verb from a sentence, and do not replace every AI action with "generates": preserve distinctions such as searching, quoting, retrieving, and recommending when they matter. Generating a recommendation does not grant the AI authority to make the final decision.
+
+During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Save accumulated rule refinements locally and do not report review totals or progress counts. Publish them to `kj-dee-branch` only when the user explicitly says "push" or otherwise directly requests publication. A push request authorizes the current accumulated updates, not automatic publication of future refinements. There is no fixed review-count gate. Final rule approval remains distinct from publishing this draft.
 
 These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
 
@@ -157,6 +159,12 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Provisional 2.2-draft action wording and publication workflow - 29 September 2026
+
+- Added direct AI-action wording from the HR Prompt design review: "The AI generates a recommendation in its draft."
+- Recorded the agreed scenario and unchanged user-facing template, choices, and keys in the review log; retained the original distractor concern.
+- Clarified that future refinements stay local until the user explicitly requests a push. Omit review-count reporting and preserve question-specific evidence.
 
 ### Provisional 2.2-draft follow-up - 29 September 2026
 
