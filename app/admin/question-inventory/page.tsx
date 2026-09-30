@@ -983,6 +983,7 @@ export default async function QuestionInventoryPage({
           <Link href="/">Assessment</Link>
           <Link href="/?view=admin">Admin</Link>
           <strong>Question inventory</strong>
+          <Link href="/admin/question-inventory/results">Testing results</Link>
         </nav>
         <div className="inventory-header-language" aria-label="Review language">
           <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>EN</Link>
@@ -997,6 +998,7 @@ export default async function QuestionInventoryPage({
           <div className="inventory-nav-links">
             <Link href="/" className="inventory-back-link">Main page</Link>
             <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+            <Link href="/admin/question-inventory/results" className="inventory-back-link">Testing results</Link>
           </div>
           <p className="eyebrow">Draft question review inventory</p>
           <h1>Question Inventory</h1>

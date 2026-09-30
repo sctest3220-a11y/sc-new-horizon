@@ -12,11 +12,13 @@ await rm(path.join(root, 'public/review-inventory'), { recursive: true, force: t
 execFileSync(process.execPath, ['scripts/build-review-inventory-assets.mjs'], { cwd: root, stdio: 'inherit' });
 await rm(output, { recursive: true, force: true });
 await mkdir(path.join(output, 'app/admin/question-inventory'), { recursive: true });
+await mkdir(path.join(output, 'app/api/results'), { recursive: true });
 await mkdir(path.join(output, 'public'), { recursive: true });
 for (const name of ['app/admin/question-inventory', 'app/globals.css', 'tsconfig.json', 'public/review-inventory', 'public/stimuli']) {
   await cp(path.join(root, name), path.join(output, name), { recursive: true });
 }
 await cp(path.join(root, 'deploy/inventory-preview/review-sync.tsx'), path.join(output, 'app/admin/question-inventory/review-sync.tsx'));
+await cp(path.join(root, 'app/api/results/route.ts'), path.join(output, 'app/api/results/route.ts'));
 const pagePath = path.join(output, 'app/admin/question-inventory/page.tsx');
 let page = await readFile(pagePath, 'utf8');
 if (!page.includes('await fetch(new URL(assetPath, origin))')) throw new Error('Inventory asset loader changed; review deployment adapter.');
@@ -34,7 +36,7 @@ export default function Layout({children}: {children: React.ReactNode}) { return
 await writeFile(path.join(output, 'app/page.tsx'), `import { redirect } from 'next/navigation';\nexport default function Home() { redirect('/admin/question-inventory'); }\n`);
 await writeFile(path.join(output, 'package.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', private: true, type: 'module' }));
 await symlink(path.join(root, 'node_modules'), path.join(output, 'node_modules'), 'dir');
-await writeFile(path.join(output, 'wrangler.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', main: 'vinext/server/app-router-entry', compatibility_date: '2026-05-15', compatibility_flags: ['nodejs_compat'], workers_dev: true, assets: { binding: 'ASSETS' } }, null, 2));
+await writeFile(path.join(output, 'wrangler.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', main: 'vinext/server/app-router-entry', compatibility_date: '2026-05-15', compatibility_flags: ['nodejs_compat'], workers_dev: true, assets: { binding: 'ASSETS' }, d1_databases: [{ binding: 'RESULTS_DB', database_name: 'new-horizon-inventory-results', database_id: '17983c70-a2ec-40f6-afbc-50722fb2b9a3' }] }, null, 2));
 await writeFile(path.join(output, 'vite.config.ts'), `import { defineConfig } from 'vite';
 import vinext from 'vinext';
 import tailwindcss from '@tailwindcss/postcss';
