@@ -1,5 +1,9 @@
 # Agent Workflows and Orchestration
 
+See [awareness curation and embedded source media](AI_WATCH_AWARENESS_CURATION.md) for the September 29 requirement and local implementation: shared Watch/Did you know stories, evidence labels, and media embedded within each story.
+
+The [AI Watch, AI Labs, and Agent Workflows roadmap](AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) separates story publication, Lab validation, deterministic personalization, and freshness monitoring. Its [first local release](AI_WATCH_LABS_LOCAL_RELEASE.md) adds stable story/version IDs, explicit-interest ranking, and connected practice. Shared discovery and publication remain unimplemented; approval requirements below still apply.
+
 ## Admin workflow visualization
 
 The MVP Admin Agent Ops view includes an interactive node-based workflow map. It visualizes the Orchestrator, concept/news/course scouts, Feedback Analysis Agent, Assessment Item Generator, Reviewer and QA Agent, and the final human approval gate. Connector and node states use the existing run record statuses: `idle`, `running`, `review`, `blocked`, and `complete`.
@@ -46,7 +50,30 @@ Identifies durable AI concepts, model-capability shifts, evaluation changes, gov
 
 ### AI Newsfeed Agent
 
-Drafts short-lived AI Watch candidates from model releases, governance changes, safety incidents, security issues, business adoption, education trends, and workplace AI shifts. News expires unless promoted into durable concepts.
+Discovers awareness-provoking agent capabilities and reported real-world cases, collective/systemic risks, AI trends, new models and technologies, and everyday impacts. Pip/iLands, agent bank-run simulations, and Jev illustrate categories rather than a fixed story list. Produce a source-backed brief and a Did you know hook from the same approved story. Keep original-source images/videos inline with the curation, with credits and source links. News expires unless promoted into durable concepts.
+
+The executable manual scout reads `config/ai-watch-discovery.json`: editorial lanes, search signals, evidence/media rules and allowed sources. Run `npm run crawl:news` (Python 3 required). It reads source indexes/feeds and bounded article metadata, honors robots restrictions, deduplicates URLs and metadata fingerprints, and writes candidates and source failures to `.agent-drafts/ai-watch/latest.json`. Output is not published automatically.
+
+**Current implementation boundary:** the visible MVP AI Watch feed is a manually maintained array in `app/page.tsx`, and the Admin agent run is a deterministic simulation. The manual source collector is available, but there is not yet a scheduled discovery worker, shared editorial queue, automated summary writer, publishing connector, or freshness monitor. Its JSON output is separate from the simulated Admin run. The interface must not be described as autonomous or continuously refreshed until those services exist.
+
+For the hosted pilot, introduce a supervised discovery job with a daily scan target and an explicit stale-feed alert after 48 hours without a successful run. Scan approved official blogs and release pages, GitHub releases for watched projects, standards/regulator feeds, research feeds, reputable publishers, and YouTube channels through permitted APIs/RSS. Discovery creates candidates only; a human editor approves every visible item.
+
+Each run must record start/end time, source coverage, fetch errors, newly discovered URLs, duplicates, rejected items, candidate count, reviewer status, publication time, expiry, correction/takedown state, and next scheduled run. Admin should show the last successful scan and failed or stale sources rather than implying that a simulated run checked the web.
+
+The source mix should include articles, official announcements, research, standards updates, YouTube videos, publisher-hosted video, and useful short-form video. Each candidate records media type (`article`, `video`, or `short`), publisher, canonical URL, publication date, duration when available, language, domain/competency relevance, freshness, and reviewer status. The agent balances formats; it does not fill quotas with weak video.
+
+Editorial mix should make AI understandable in everyday life, not read like a vendor release log. Recurring lanes include personal and workplace agents, scams and jailbreaks, privacy and consumer protection, schools and families, creative tools, autonomous cars and robotaxis, home/service robots, robotics competitions, and surprising physical-AI demonstrations. Every item must answer: what happened, why a normal user should care, what claim or limitation to inspect, and which practical AI skill it reinforces.
+
+Rights and platform rules:
+
+- Prefer first-party publishers, official channels, standards bodies, universities, reputable research organizations, and reviewed news sources.
+- Use official APIs, RSS/Atom feeds, sitemaps, or publisher-provided metadata where available. Respect robots rules, source terms, rate limits, and takedown requests.
+- Store only factual metadata, the canonical link, and a short original New Horizon summary. Do not copy full articles, substantial passages, captions, transcripts, or creator descriptions.
+- Never download, rehost, strip, crop, watermark, translate, or republish third-party video, audio, thumbnails, or images without a documented license.
+- For YouTube, use the official Data API and standard player/link behavior. Keep YouTube attribution and metadata intact, do not block ads or controls, do not enable background playback, and do not incentivize viewing.
+- Use click-to-load embedding only after privacy and consent review. Until then, open the canonical publisher page. Embeds must remain optional and must satisfy player-size, referrer, Made for Kids, and applicable privacy requirements.
+- Human review is required before publication. Reviewers confirm relevance, factual framing, source reputation, rights status, age/safety suitability, and whether the summary adds independent educational value.
+- Remove or disable items when the source is deleted, made private, materially corrected, non-embeddable, disputed, or no longer current.
 
 ### Training and Course Scout
 

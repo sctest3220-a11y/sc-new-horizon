@@ -1,5 +1,105 @@
 # Latest Changes
 
+## Manual awareness-news scout — 29 September 2026
+
+- Added executable, bounded source discovery for awareness-provoking stories, AI trends and new technologies, driven by shared JSON editorial instructions.
+- Records candidates, original-source media leads, source dates/check dates, URL deduplication and metadata-change fingerprints, plus fetch/robots failures.
+- Updated the Admin Newsfeed Agent role and proposed briefs to match these lanes. Admin runs remain simulations; discovery is a separate manual command.
+- No automatic publication, generated summaries, scheduled worker or shared review queue is connected.
+
+## Awareness stories and inline source media — 29 September 2026
+
+- Added source-backed Pip/iLands and agent bank-run simulation stories, and an awareness hook/image for Jev.
+- Added shared-story Did you know cards with explicit-interest ranking, hidden-topic exclusions, bilingual hooks, and user-controlled story switching.
+- Moved Watch video players into each visible story and kept source links/credits visible; shared media rendering supports broken-image fallbacks and click-to-load video without autoplay.
+- Recorded source evidence labels and check dates; simulated risks are not presented as observed incidents.
+- See [the curation contract](AI_WATCH_AWARENESS_CURATION.md). Local implementation only; automatic discovery and the hosted editorial service are not connected.
+
+## AI Watch and connected Labs — watch-labs-local-v1 — 28 September 2026
+
+- Added explicit interests, time/goal preferences, For you/Explore/Saved views, topic mute/restore, recommendation reasons, and browser-profile persistence. Saved stories stay accessible when preferences change; invalid/unavailable storage is handled visibly.
+- Added stable IDs, content versions, topics, and practice links to existing Watch stories. Replaced the non-persisted cadence control with useful user preferences and honest editorial-snapshot labeling.
+- Added primary AI Labs navigation and two English/Thai starter Labs for agent approval boundaries and evidence checking, with criterion-specific feedback, revision, saved notes/drafts/takeaways, and return-to-story navigation.
+- Supported videos now load on request, keep official controls and source fallback links, and do not autoplay. Existing English story copy is labeled rather than silently translated.
+- Changed older prompt-Lab feedback to describe English keyword checklist cues instead of presenting a writing-quality score.
+- Added focused model tests and a detailed [local release note](AI_WATCH_LABS_LOCAL_RELEASE.md). Shared source discovery, editorial publishing, notifications, and cross-device data remain later phases; no assessment question or scoring changes are included.
+- Restored mobile primary navigation and synchronized Watch/Labs deep links with the active screen. Validation: 12 focused tests, browser flows at 1280/768/390/320px, full lint, and production build passed; the 28 pre-existing TypeScript diagnostics are unchanged. The combined 660-question export matches the prior commit.
+
+## AI Watch, Labs, and agent workflow design proposal — 28 September 2026
+
+- Added a proposed roadmap connecting personalized Watch editions, linked Labs, saved takeaways, and meaningful return visits while question rewriting proceeds separately.
+- Defined multimodal priorities, user-controlled ranking, Lab evaluation improvements, separate story/Lab state machines, an editorial review desk, durable workflow contracts, delivery gates, and measurement definitions.
+- Checked the proposal against current code: the Watch feed remains static, cadence is page state despite save wording, Lab prompt feedback uses English keyword matching, and agent runs remain simulated.
+- This is documentation and interaction design only. No live application behavior, question content, scheduled jobs, or feature implementation status changed.
+
+## AI Watch freshness correction
+
+- Added official-source AI Watch briefs for Jev and Laya, emphasizing that typed output prevents invalid formats but does not guarantee a correct decision.
+- Documented the actual MVP boundary: the feed is manually maintained and the Admin Newsfeed Agent is simulated, so there is currently no autonomous crawler or scheduled freshness monitor.
+- Defined the next implementation gate: daily approved-source discovery, a 48-hour stale-run alert, durable candidate/review state, per-source failure reporting, and human editorial approval before publication.
+
+## Laya decision-model evaluation
+
+- Added Laya as the open-weight Apache-2.0 candidate in the deferred bounded-decision shadow comparison with Jev, deterministic rules, and a structured-output model.
+- Documented candidate uses, exclusions, self-hosting and fine-tuning costs, Thai/English evaluation, calibration risks, option/context limits, architecture placement, and adoption gates.
+- Laya remains outside the MVP critical path and receives no authority over scores, content approval, publication, permissions, or hard policy.
+
+## Question inventory review-to-hosting process
+
+- Documented the agreed sequence: bounded internal review, English rewrite, format/rubric/artifact QA, Thai equivalence review, inventory rebuild, frozen release, central feedback storage, and then Cloudflare deployment of only the reviewer surface.
+- Added release/version requirements, role ownership, validation commands, hosted-pilot gates, minimum feedback schema, security/privacy controls, monitoring, export, local analysis, and human-approved rewrite workflow.
+- Linked the process from the README, local review guide, inventory milestone, and deployment notes.
+
+## Main-page hydration repair
+
+- Removed first-render reads of URL parameters, `localStorage`, browser-generated ids, and saved telemetry from the main page's React state initializers.
+- The server and browser now begin with the same deterministic render; browser-only routing and saved state are restored on the next animation frame.
+- This fixes the hydration error where the server rendered the main header while the browser initially rendered the optional profile pulse or another saved view.
+
+## Pilot Operations admin workspace
+
+- Added `/admin/pilot-operations` and linked it from the main Admin dashboard.
+- Admins can configure a pilot's owner, dates, cohort, access code, language, question limits, adaptive continuation, answer reveal, quick feedback, and report survey.
+- Added participation KPIs, pseudonymous tester monitoring, explicit content/translation/artifact/scoring/telemetry/support readiness gates, and a human-controlled quality issue queue.
+- Required gates block the `Ready` and `Running` status options. Pilot configuration, gate decisions, and issue status auto-save in the current browser and can be exported to CSV.
+- The workspace labels its MVP boundary: shared persistence, real invitations, role-based authorization, consent records, audited publishing, and server analytics remain go-live requirements.
+
+## Jev deferred pre-production evaluation
+
+- Documented Jev as an optional fast typed-decision layer for bounded routing, triage, agent gates and review prioritization, not as an orchestrator, generator, scoring authority or publisher.
+- Jev is not an MVP dependency. Revisit it during pre-production through a 1,000-5,000-case shadow-mode comparison against deterministic rules and a low-cost structured-output model.
+- Adoption is per use case and requires labelled accuracy, calibration, high-risk false-negative, Thai/English, latency, cost, privacy, vendor, fallback, audit and kill-switch gates.
+
+## Translation provider strategy
+
+- Added a source-backed strategy for assessment-bank and AI Watch translation using Google Cloud Translation, Qwen-MT, and ThaiLLM.
+- Assessment translations remain versioned drafts until human approval; dynamic newsfeed translation defaults to cached, source-grounded summaries rather than translating full publisher content.
+- The recommended pilot compares Qwen-MT Plus and Google Translation LLM for assessment content, uses Qwen-MT Flash as the likely routine newsfeed route, and evaluates ThaiLLM as a Thai naturalness and cultural-context QA model.
+- Documented current price assumptions, measured inventory size, cost ranges, cache keys, QA checks, admin controls, telemetry, PDPA/vendor gates, and provider-fallback policy.
+- Added a translation and routing go-live checklist. The MVP uses an auditable deterministic policy router; learned or agentic model selection is deferred until production evidence shows a measurable advantage.
+
+## Cleaner question inventory controls
+
+- Removed the redundant Question Inventory side navigation so the review workspace can use the full page width.
+- Draft readiness guidance and artifact coverage details are now collapsed by default and remain available on demand.
+- Added a visible Reset action beside Apply filters; it clears the inventory and reviewer filters while preserving the selected review language.
+- Tidied each question's reviewer-feedback panel for the narrower desktop column: headings and timestamps stack cleanly, rating guidance sits below the stars, review controls use a stable two-column grid, and fields no longer overflow their panel.
+
+## Institutional Navy question inventory layout
+
+- Question Inventory now uses the Option B application layout with navy header chrome, a persistent review-workspace sidebar, compact overview hierarchy, and blue-gray operational surfaces.
+- Each question now places the question content and reviewer feedback side by side on desktop, then stacks them on smaller screens.
+- Existing filters, translations, review history, artifact notes, and scoring-review content are preserved.
+
+## Mixed-media AI Watch
+
+- AI Watch now supports a mixed feed of articles, videos, and short videos with media-type filtering and original-publisher attribution.
+- Approved YouTube items play inside the feed through YouTube's privacy-enhanced embed player, while an explicit link still opens the original publisher page.
+- Article cards prefer the original publisher preview image declared in the article's Open Graph metadata, with visible publisher credit and a link to the source. Items without approved, stable image metadata remain text-only rather than receiving a redundant generated substitute.
+- The Newsfeed Agent specification now includes YouTube and publisher-hosted video discovery, format balancing, source metadata, human review, expiry, correction, and takedown handling.
+- Rights controls prohibit copying full articles, transcripts, captions, video, or audio; downloading or rehosting publisher media; altering official players; and publishing unreviewed summaries. Article images must come from publisher-declared preview metadata or another explicitly approved embedding mechanism and remain attributed to the source.
+- The editorial mix now prioritizes relatable stories about personal agents, jailbreaks, scams, autonomous cars, home/service robots, and physical-AI competitions alongside model and governance updates.
+
 ## Question inventory feedback refresh
 
 - Saving question-level feedback now clears every field in the review form immediately, ready for a new review.

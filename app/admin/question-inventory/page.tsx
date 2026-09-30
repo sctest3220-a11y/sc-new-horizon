@@ -13,6 +13,7 @@ type ReviewOption = {
 
 type ReviewQuestion = {
   id: string;
+  version?: string;
   sourceInventory?: string;
   sourceBank?: string;
   layer: string;
@@ -93,6 +94,7 @@ type InventorySummary = {
 type IndexQuestion = Pick<
   ReviewQuestion,
   | 'id'
+  | 'version'
   | 'domain'
   | 'difficulty'
   | 'layer'
@@ -924,6 +926,7 @@ export default async function QuestionInventoryPage({
   const industry = normalizeParam(searchParams?.industry) || 'all';
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
+  const version = normalizeParam(searchParams?.version) || summary.inventoryVersion;
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
   const queryInput = (normalizeParam(searchParams?.q) || '').trim();
   const query = queryInput
@@ -940,6 +943,7 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
+    const matchesVersion = version === 'all' || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
     const matchesQuery =
       !query ||
       question.id.toLowerCase().includes(query) ||
@@ -947,7 +951,7 @@ export default async function QuestionInventoryPage({
       question.competencyLabel.toLowerCase().includes(query) ||
       question.scopeLabel.toLowerCase().includes(query) ||
       question.sourceBank?.toLowerCase().includes(query);
-    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
+    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesVersion && matchesQuery;
   });
 
   const pageSize = 20;
@@ -966,24 +970,41 @@ export default async function QuestionInventoryPage({
   const industryOptions = uniqueValues(allQuestions.flatMap((question) => question.industryTracks ?? []), (item) => item);
   const executiveOptions = uniqueValues(allQuestions.flatMap((question) => question.executiveRoles ?? []), (item) => item);
   const formatOptions = uniqueValues(allQuestions, (question) => question.recommendedFormat?.format ?? question.userFacingDraft?.format ?? 'unmapped');
+  const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)).filter((item): item is string => Boolean(item));
 
   return (
     <main className="inventory-page">
-      <section className="inventory-hero">
+      <header className="inventory-app-header">
+        <Link href="/" className="inventory-app-brand" aria-label="New Horizon main page">
+          <span>NH</span>
+          <strong>New Horizon</strong>
+        </Link>
+        <nav aria-label="Question inventory navigation">
+          <Link href="/">Assessment</Link>
+          <Link href="/?view=admin">Admin</Link>
+          <strong>Question inventory</strong>
+          <Link href="/admin/question-inventory/results">Testing results</Link>
+        </nav>
+        <div className="inventory-header-language" aria-label="Review language">
+          <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>EN</Link>
+          <Link className={language === 'th' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'th')}>TH</Link>
+        </div>
+      </header>
+
+      <div className="inventory-app-layout">
+        <div className="inventory-workspace">
+      <section className="inventory-hero" id="inventory-overview">
         <div>
           <div className="inventory-nav-links">
             <Link href="/" className="inventory-back-link">Main page</Link>
             <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+            <Link href="/admin/question-inventory/results" className="inventory-back-link">Testing results</Link>
           </div>
           <p className="eyebrow">Draft question review inventory</p>
           <h1>Question Inventory</h1>
           <p>
             Review existing live questions and the 3,328 draft item variants before selecting candidates for pilot or rewrite.
           </p>
-          <div className="inventory-language-switch" aria-label="Review language">
-            <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>English</Link>
-            <Link className={language === 'th' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'th')}>ไทย</Link>
-          </div>
         </div>
         <div className="inventory-status-card">
           <span>Inventory version</span>
@@ -992,26 +1013,31 @@ export default async function QuestionInventoryPage({
         </div>
       </section>
 
-      <section className="inventory-panel rewrite-warning-panel">
-        <div>
-          <span>Live readiness warning</span>
-          <strong>These generated drafts are not user-ready yet.</strong>
-          <p>
-            This page shows the current coverage inventory. Many items still need a real human-facing rewrite
-            before they should appear in the live assessment.
-          </p>
+      <details className="inventory-panel inventory-disclosure rewrite-warning-panel" id="inventory-review-standard">
+        <summary>
+          <span>Review guidance</span>
+          <strong>Draft readiness and rewrite standard</strong>
+          <small>Open guidance</small>
+        </summary>
+        <div className="inventory-disclosure-content">
+          <div>
+            <span>Live readiness warning</span>
+            <strong>These generated drafts are not user-ready yet.</strong>
+            <p>
+              This page shows the current coverage inventory. Many items still need a real human-facing rewrite
+              before they should appear in the live assessment.
+            </p>
+          </div>
+          <div>
+            <span>Rewrite standard</span>
+            <p>
+              Use plain scenarios, concrete answer choices, realistic artifacts, and varied formats such as
+              multi-part, select-all, matching, ranking, and artifact review.
+            </p>
+            <small>See: exports/review-inventory/user-facing-rewrite-samples.md</small>
+          </div>
         </div>
-        <div>
-          <span>Rewrite standard</span>
-          <p>
-            Use plain scenarios, concrete answer choices, realistic artifacts, and varied formats such as
-            multi-part, select-all, matching, ranking, and artifact review.
-          </p>
-          <small>
-            See: exports/review-inventory/user-facing-rewrite-samples.md
-          </small>
-        </div>
-      </section>
+      </details>
 
       <section className="inventory-kpis" aria-label="Inventory totals">
         <div><span>Total questions</span><strong>{allQuestions.length.toLocaleString()}</strong></div>
@@ -1022,30 +1048,46 @@ export default async function QuestionInventoryPage({
       </section>
 
       {artifactCounts ? (
-        <section className="inventory-panel artifact-summary-panel">
-          <div>
-            <span>Requires artifact</span>
-            <strong>{(artifactCounts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
+        <details className="inventory-panel inventory-disclosure artifact-summary-panel">
+          <summary>
+            <span>Artifact coverage</span>
+            <strong>{artifactCounts.artifactCandidates.toLocaleString()} candidate questions</strong>
+            <small>View breakdown</small>
+          </summary>
+          <div className="inventory-disclosure-content">
+            <div>
+              <span>Requires artifact</span>
+              <strong>{(artifactCounts.byNeed['requires artifact'] || 0).toLocaleString()}</strong>
+            </div>
+            <div>
+              <span>Artifact helpful</span>
+              <strong>{(artifactCounts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
+            </div>
+            <div>
+              <span>Top artifact types</span>
+              <p>
+                {Object.entries(artifactCounts.byType)
+                  .sort((left, right) => right[1] - left[1])
+                  .slice(0, 4)
+                  .map(([label, count]) => `${label}: ${count}`)
+                  .join(' · ')}
+              </p>
+            </div>
           </div>
-          <div>
-            <span>Artifact helpful</span>
-            <strong>{(artifactCounts.byNeed['artifact helpful'] || 0).toLocaleString()}</strong>
-          </div>
-          <div>
-            <span>Top artifact types</span>
-            <p>
-              {Object.entries(artifactCounts.byType)
-                .sort((left, right) => right[1] - left[1])
-                .slice(0, 4)
-                .map(([label, count]) => `${label}: ${count}`)
-                .join(' · ')}
-            </p>
-          </div>
-        </section>
+        </details>
       ) : null}
 
-      <section className="inventory-panel">
+      <section className="inventory-panel" id="inventory-filters">
         <form className="inventory-filters">
+          <label>
+            <span>Version</span>
+            <select name="version" defaultValue={version}>
+              <option value="all">All versions</option>
+              {versionOptions.sort((a, b) => a === summary.inventoryVersion ? -1 : b === summary.inventoryVersion ? 1 : b.localeCompare(a)).map((item) => (
+                <option key={item} value={item}>{item}{item === summary.inventoryVersion ? ' (latest)' : ''}</option>
+              ))}
+            </select>
+          </label>
           <label>
             <span>Source</span>
             <select name="source" defaultValue={source}>
@@ -1122,7 +1164,10 @@ export default async function QuestionInventoryPage({
             <span>Search</span>
             <input name="q" defaultValue={queryInput} placeholder="Prompt, competency, ID, or scope" />
           </label>
-          <button type="submit">Apply filters</button>
+          <div className="inventory-filter-actions">
+            <button type="submit">Apply filters</button>
+            <a href={language === 'th' ? '/admin/question-inventory?lang=th' : '/admin/question-inventory'}>Reset</a>
+          </div>
         </form>
       </section>
 
@@ -1140,7 +1185,7 @@ export default async function QuestionInventoryPage({
 
       <ReviewSync />
 
-      <section className="inventory-grid">
+      <section className="inventory-grid" id="inventory-questions">
         {visibleQuestions.map((question) => (
           <article className="inventory-question-card" key={question.id} data-question-id={question.id}>
             {(() => {
@@ -1167,6 +1212,12 @@ export default async function QuestionInventoryPage({
               {question.recommendedFormat ? <span>{question.recommendedFormat.format}</span> : null}
             </div>
             <QuestionReviewStats questionId={question.id} />
+            <div className="inventory-question-review-layout">
+              <div className="inventory-question-content">
+            <details className="inventory-question-id">
+              <summary>Question ID and version</summary>
+              <dl><div><dt>ID</dt><dd>{question.id}</dd></div><div><dt>Version</dt><dd>{question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}{(question.version ?? summary.inventoryVersion) === summary.inventoryVersion ? ' · latest' : ''}</dd></div></dl>
+            </details>
             <div className="inventory-question-language">
               <input
                 type="radio"
@@ -1191,8 +1242,9 @@ export default async function QuestionInventoryPage({
                 {renderUserFacingDraft(question, 'th')}
               </div>
             </div>
+            <details className="inventory-question-details">
+              <summary>Question details</summary>
             <dl>
-              <div><dt>ID</dt><dd>{question.id}</dd></div>
               <div><dt>Source</dt><dd>{question.sourceBank}</dd></div>
               <div><dt>Competency</dt><dd>{question.competencyLabel}</dd></div>
               <div><dt>Task</dt><dd>{question.cognitiveTask}</dd></div>
@@ -1201,7 +1253,7 @@ export default async function QuestionInventoryPage({
               <div><dt>Industries</dt><dd>{question.industryLabels?.join(', ') || question.industryTracks?.map(labelForProfile).join(', ') || 'All/general'}</dd></div>
               <div><dt>Executive</dt><dd>{question.executiveLabels?.join(', ') || question.executiveRoles?.map(labelForProfile).join(', ') || 'Not role-specific'}</dd></div>
             </dl>
-            <ReviewerFeedback questionId={question.id} />
+            </details>
             {question.recommendedFormat ? (
               <div className="inventory-format-note">
                 <strong>Recommended live format: {question.recommendedFormat.format}</strong>
@@ -1232,6 +1284,9 @@ export default async function QuestionInventoryPage({
               </ol>
               <p className="inventory-rationale"><strong>{language === 'th' ? 'เหตุผล:' : 'Rationale:'}</strong> {localizedText(question.rationale, question.th?.rationale, language)}</p>
             </details>
+              </div>
+              <ReviewerFeedback questionId={question.id} />
+            </div>
           </article>
         ))}
         {!visibleQuestions.length ? (
@@ -1248,6 +1303,8 @@ export default async function QuestionInventoryPage({
           {currentPage < pageCount ? <Link href={buildPageHref(searchParams, currentPage + 1)}>Next</Link> : <span>Next</span>}
         </nav>
       ) : null}
+        </div>
+      </div>
     </main>
   );
 }

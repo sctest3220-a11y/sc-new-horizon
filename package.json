@@ -11,7 +11,10 @@
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "crawl:training": "node scripts/crawl-ai-training.mjs",
-    "inventory:assets": "node scripts/build-review-inventory-assets.mjs"
+    "inventory:assets": "node scripts/build-review-inventory-assets.mjs",
+    "test:watch-labs": "node --test scripts/test-watch-labs.mjs",
+    "crawl:news": "python3 scripts/crawl-ai-watch.py",
+    "test:news-scout": "python3 scripts/test-crawl-ai-watch.py"
   },
   "dependencies": {
     "next": "16.2.6",

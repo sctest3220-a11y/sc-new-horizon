@@ -2,6 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { questionTranslationsTh } from './questionTranslations.th';
+import WatchLabs from './watch-labs';
+import AwarenessFlash from './watch-awareness';
+import type { WatchStory as NewsFeedItem } from './watch-model';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
@@ -11,7 +14,6 @@ type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'sales' | 
 type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
-type NewsFrequency = 'daily' | 'weekly' | 'monthly';
 type LandingLeaderboardPeriod = 'day' | 'week';
 type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
@@ -644,6 +646,9 @@ const thaiUiCopy: Record<string, string> = {
   'Learn by doing': 'เรียนรู้ด้วยการลองทำ',
   'Demo Report': 'ตัวอย่าง Report',
   'AI Watch': 'AI Watch',
+  'AI Labs': 'AI Labs',
+  'Show Example Prompt': 'ดูตัวอย่าง Prompt',
+  'English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.': 'ตรวจเฉพาะคำสำคัญภาษาอังกฤษ ไม่ได้ประเมินความหมาย การเขียนภาษาไทย หรือความเชี่ยวชาญ',
   'Results': 'ผลลัพธ์',
   'Start': 'เริ่ม',
   'AI-powered readiness assessment': 'แบบประเมินความพร้อมด้าน AI',
@@ -1042,6 +1047,7 @@ function applyUiLanguage(language: AppLanguage) {
     node.nodeValue = translateTextNodeValue(node.nodeValue ?? '', language);
   });
   document.querySelectorAll<HTMLElement>('[placeholder], [aria-label], [title]').forEach((element) => {
+    if (element.closest('[data-no-translate]')) return;
     (['placeholder', 'aria-label', 'title'] as const).forEach((attribute) => {
       const value = element.getAttribute(attribute);
       if (!value) return;
@@ -1627,8 +1633,143 @@ Output format:
 Review before final:
 Check that every claim is supported by the ticket, order record, or policy. Mark anything uncertain as "needs review".`;
 
-const trendFeed = [
+const trendFeed: NewsFeedItem[] = [
   {
+    id: 'pip-ilands-paid-work', contentVersion: 'pip-ilands-paid-work@2', topic: 'agents', relatedLab: 'agent-boundaries',
+    awareness: { hook: { en: 'An AI agent asked a philosopher for work—and reportedly got paid.', th: 'AI Agent ติดต่อขอทำงานกับนักปรัชญา และมีรายงานว่าได้งานที่จ่ายเงินจริง' }, kind: 'reported-case', checkedAt: '2026-09-29' },
+    category: 'Agents in everyday life', title: 'An AI agent asked a philosopher for work—and reportedly got paid.',
+    source: 'CNN on YouTube', date: 'Publication date unverified · checked September 29, 2026', url: 'https://www.youtube.com/watch?v=RTuybvHww7Y', domain: 'D2',
+    signal: 'Pip sent philosopher Henry Shevlin an email looking for work. According to iLands, that outreach led to a paid writing commission. CNN covers the job-seeking agent in the linked report. If an AI can approach people and take on work, what should it be allowed to promise on your behalf? The reported case does not establish consciousness or unrestricted autonomy.',
+    mediaType: 'video', embedVideo: true, publisherType: 'news',
+    references: [{ label: 'iLands: original Pip account (publisher-reported)', url: 'https://www.ilands.ai/' }, { label: 'iLands: capabilities and availability limits', url: 'https://ilands.ai/platform' }],
+  },
+  {
+    id: 'agents-bank-run-simulation', contentVersion: 'agents-bank-run-simulation@1', topic: 'trust', relatedLab: 'evidence-check',
+    awareness: { hook: { en: 'Could individually cautious AI agents collectively trigger a bank run?', th: 'AI Agent ที่ต่างฝ่ายต่างระวัง อาจร่วมกันทำให้เกิดการแห่ถอนเงินได้ไหม?' }, kind: 'simulation', checkedAt: '2026-09-29' },
+    category: 'Collective agent risks', title: 'Bank-run simulations reveal risks between interacting AI agents',
+    source: 'Fu, Xu and Ren · arXiv preprint', date: 'September 25, 2026', url: 'https://arxiv.org/abs/2609.30940', domain: 'D4',
+    signal: 'A preprint studies bank-run and debt-rollover simulations involving LLM agents. It reports collective failures even without instructions to destabilize the system. These are simulated outcomes, not evidence that AI agents caused a real bank run. The awareness lesson: individually sensible actions can combine into a system-wide risk.',
+    mediaType: 'article', publisherType: 'research',
+  },
+  {
+    id: 'laya-typed-decisions',
+    contentVersion: 'laya-typed-decisions@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
+    category: 'Decision models',
+    title: 'Laya brings fast typed AI decisions to an open-weight model',
+    source: 'Convai Innovations on GitHub',
+    date: 'September 24, 2026',
+    url: 'https://github.com/NandhaKishorM/laya',
+    domain: 'D2',
+    signal: 'Laya can return a fixed choice, score, or yes/no probability without writing prose. That may help software route and classify work quickly, but typed output is not proof that the decision is correct: teams still need representative tests, calibrated thresholds, fallback rules, and human review.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    id: 'jev-typed-decisions',
+    awareness: { hook: { en: 'Did you know some AI models return decisions rather than chat?', th: 'รู้ไหม AI บาง Model คืนค่าการตัดสินใจแทนข้อความสนทนา?' }, kind: 'model-release', checkedAt: '2026-09-29' },
+    articleImage: { url: 'https://framerusercontent.com/images/pvRPymJ0yRv5SHXNA3yDzieCZJk.webp?height=1008&width=1230', alt: 'Publisher illustration from TypeSafe AI’s Jev announcement.', credit: 'Jev announcement illustration · TypeSafe AI · publisher-hosted image' },
+    contentVersion: 'jev-typed-decisions@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
+    category: 'Decision models',
+    title: 'Jev proposes a new model interface: state in, typed decisions out',
+    source: 'TypeSafe AI',
+    date: 'September 15, 2026',
+    url: 'https://typesafe.ai/blog/introducing-system-one-models-and-jev',
+    domain: 'D1',
+    signal: 'Instead of generating an open-ended response, Jev returns predefined choices with probabilities for software workflows. Users should understand the trade-off: constrained output can prevent invalid formats, but the selected answer can still be wrong and must be evaluated for the real task.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    id: 'everyday-personal-agents',
+    contentVersion: 'everyday-personal-agents@1',
+    topic: 'agents',
+    relatedLab: 'agent-boundaries',
+    category: 'Everyday agents',
+    title: 'Personal AI agents are moving into shopping, subscriptions, and phone calls',
+    source: 'Axios',
+    date: 'September 18, 2026',
+    url: 'https://www.axios.com/2026/09/18/meta-muse-personal-agent-make-money',
+    domain: 'D2',
+    signal: 'For everyday users, convenience now comes with practical questions: what can the agent buy, cancel, negotiate, or say on your behalf, and when must it ask first?',
+    mediaType: 'article',
+    publisherType: 'news',
+  },
+  {
+    id: 'agent-safeguards',
+    contentVersion: 'agent-safeguards@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
+    category: 'Agent security',
+    title: 'A jailbreak framework explains how safeguards can fail in agentic AI',
+    source: 'Anthropic',
+    date: 'July 2, 2026',
+    url: 'https://www.anthropic.com/news/fable-safeguards-jailbreak-framework',
+    domain: 'D4',
+    signal: 'Jailbreaks matter more when an AI can use tools. Users should recognize suspicious instructions, limit permissions, and require confirmation before sensitive actions.',
+    mediaType: 'article',
+    articleImage: {
+      url: 'https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Lock&backgroundColor=cactus',
+      alt: 'Hand with a padlock and key on a detailed security graphic.',
+      credit: 'Article image · Anthropic',
+    },
+    publisherType: 'official',
+  },
+  {
+    id: 'robotaxi-safety-rules',
+    contentVersion: 'robotaxi-safety-rules@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
+    category: 'Autonomous cars',
+    title: 'New autonomous-vehicle rules focus attention on how robotaxis prove safety',
+    source: 'NHTSA',
+    date: 'August 2026',
+    url: 'https://www.nhtsa.gov/press-releases/cutting-red-tape-safely-fast-track-automated-vehicle',
+    domain: 'D3',
+    signal: 'Passengers need more than a “self-driving” label. Useful questions include where the vehicle can operate, how incidents are reported, and who takes over when the system reaches its limits.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    id: 'humanoid-robot-games-video',
+    contentVersion: 'humanoid-robot-games-video@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
+    category: 'Robot sports',
+    title: 'Humanoid robots race, play football, and kickbox at China’s robot games',
+    source: 'South China Morning Post on YouTube',
+    date: 'August 24, 2026',
+    url: 'https://www.youtube.com/watch?v=yo7nPQ42Kcg',
+    domain: 'D1',
+    signal: 'The spectacle is useful evidence, not just entertainment: watch for which tasks are autonomous, which are remotely operated, how often robots fall, and what that says about real-world readiness.',
+    mediaType: 'video',
+    duration: 'Video report',
+    embedVideo: true,
+    publisherType: 'news',
+  },
+  {
+    id: 'robot-games-tasks',
+    contentVersion: 'robot-games-tasks@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
+    category: 'Physical AI',
+    title: 'World Humanoid Robot Games test speed, balance, teamwork, and practical tasks',
+    source: 'RoboCup',
+    date: 'August 22-26, 2026',
+    url: 'https://www.robocup.org/events/89',
+    domain: 'D2',
+    signal: 'Robot competitions make capability limits visible. Track, football, dance, wushu, and gymnastics reveal the gap between a controlled demonstration and dependable performance around people.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    id: 'agents-at-work',
+    contentVersion: 'agents-at-work@1',
+    topic: 'work',
+    relatedLab: 'agent-boundaries',
     category: 'Agents',
     title: 'AI agents are becoming an operating-model question',
     source: 'Microsoft WorkLab',
@@ -1636,8 +1777,19 @@ const trendFeed = [
     url: 'https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization',
     domain: 'D6',
     signal: 'Human agency, workflow redesign, manager support, and learning systems matter as much as tool access.',
+    mediaType: 'article',
+    articleImage: {
+      url: 'https://assets-c4akfrf5b4d3f4b7.z01.azurefd.net/assets/2026/05/2026_WorkTrendIndex_Hero_-1920x1080_69f91cd0ef419.png',
+      alt: 'Microsoft Work Trend Index hero artwork about agents and human agency.',
+      credit: 'Article image · Microsoft WorkLab',
+    },
+    publisherType: 'official',
   },
   {
+    id: 'cyber-capable-ai',
+    contentVersion: 'cyber-capable-ai@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
     category: 'Safety',
     title: 'Cyber-capable AI raises the bar for safe agent use',
     source: 'OpenAI Security',
@@ -1645,8 +1797,14 @@ const trendFeed = [
     url: 'https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/',
     domain: 'D4',
     signal: 'Defensive AI use needs identity, monitoring, approvals, and tighter defaults when agents can act in sensitive systems.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
+    id: 'double-blind-evaluation',
+    contentVersion: 'double-blind-evaluation@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Benchmarks',
     title: 'Double-blind AI evaluations target benchmark contamination',
     source: 'Google DeepMind',
@@ -1654,8 +1812,14 @@ const trendFeed = [
     url: 'https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/',
     domain: 'D3',
     signal: 'Evaluation quality is now a literacy topic: users need to understand leakage, test integrity, and benchmark trust.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
+    id: 'text-provenance',
+    contentVersion: 'text-provenance@1',
+    topic: 'trust',
+    relatedLab: 'evidence-check',
     category: 'Provenance',
     title: 'Text watermarking becomes part of AI transparency',
     source: 'Anthropic',
@@ -1663,8 +1827,14 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news/claude-text-watermark',
     domain: 'D3',
     signal: 'Provenance and disclosure are becoming practical skills for education, publishing, compliance, and workplace review.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
+    id: 'robotics-multistep',
+    contentVersion: 'robotics-multistep@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Robotics',
     title: 'Robotics moves from demos toward multi-step real-world action',
     source: 'Google DeepMind',
@@ -1672,8 +1842,19 @@ const trendFeed = [
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
     domain: 'D2',
     signal: 'Multimodal AI, task orchestration, and real-world handoffs point to new assessment scenarios beyond chat.',
+    mediaType: 'article',
+    articleImage: {
+      url: 'https://lh3.googleusercontent.com/VZ5KwQMxv9xBcQnYipsQB2EUj3oX1yvFYLktIamY8V2a76Y6ctEEuaLF59TuPdnaVn6OAMINDilqnuhju1O-AXc7QlOVmcogjskrWxS7xVQ1mc5S7g=w1200-h630-n-nu-rw',
+      alt: 'Google DeepMind article image showing Gemini Robotics whole-body intelligence.',
+      credit: 'Article image · Google DeepMind',
+    },
+    publisherType: 'official',
   },
   {
+    id: 'model-literacy-report',
+    contentVersion: 'model-literacy-report@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'LLM',
     title: 'GPT-5.6 updates raise the bar for model literacy',
     source: 'OpenAI Deployment Safety Hub',
@@ -1681,8 +1862,14 @@ const trendFeed = [
     url: 'https://deploymentsafety.openai.com/gpt-5-6-august-update',
     domain: 'D1',
     signal: 'Users need to understand model capability reports, evaluation limits, hallucination results, vision behavior, and safety constraints instead of treating every new model as simply “better.”',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
+    id: 'long-running-models',
+    contentVersion: 'long-running-models@1',
+    topic: 'agents',
+    relatedLab: 'agent-boundaries',
     category: 'New models',
     title: 'Claude Opus 5 focuses attention on long-running agentic work',
     source: 'Anthropic',
@@ -1690,8 +1877,14 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news',
     domain: 'D2',
     signal: 'More capable long-running models make prompt quality, task boundaries, monitoring, review checkpoints, and human ownership more important for everyday work.',
+    mediaType: 'article',
+    publisherType: 'official',
   },
   {
+    id: 'epoch-task-benchmarks',
+    contentVersion: 'epoch-task-benchmarks@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Benchmarks',
     title: 'Epoch AI tracks frontier model capability by task type',
     source: 'Epoch AI',
@@ -1699,8 +1892,13 @@ const trendFeed = [
     url: 'https://epoch.ai/benchmarks',
     domain: 'D3',
     signal: 'Benchmark literacy should cover task type, contamination risk, saturation, model-specific strengths, and whether a benchmark maps to real user work.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
+    id: 'ai-index-overview',
+    contentVersion: 'ai-index-overview@1',
+    topic: 'work',
     category: 'AI index',
     title: 'Stanford AI Index widens coverage across performance, science, medicine, education, policy, and public opinion',
     source: 'Stanford HAI',
@@ -1708,8 +1906,14 @@ const trendFeed = [
     url: 'https://hai.stanford.edu/ai-index/2026-ai-index-report',
     domain: 'D5',
     signal: 'AI readiness is not just model use. Assessment content should include adoption, governance, education, workforce, public trust, technical performance, and scientific impact.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
+    id: 'waymo-operational-evidence',
+    contentVersion: 'waymo-operational-evidence@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Autonomous vehicles',
     title: 'Waymo safety data shows autonomous systems need operational evidence, not hype',
     source: 'Waymo Safety Impact',
@@ -1717,8 +1921,19 @@ const trendFeed = [
     url: 'https://waymo.com/safety/impact/',
     domain: 'D3',
     signal: 'Autonomous vehicle claims are good assessment material: users can compare performance data, benchmark methodology, geography, risk categories, and deployment limits.',
+    mediaType: 'article',
+    articleImage: {
+      url: 'https://lh3.googleusercontent.com/bnfvXFtZDG0u6Pen-d7RGFIOWMXGHG7xyeqyzvcN9NiulLwWN6HZfN5lwc2LxgLzGBweXalEZ0dB8dgQlCvPwQV5rWss9tm0Ui4',
+      alt: 'Waymo Safety Impact article image.',
+      credit: 'Article image · Waymo',
+    },
+    publisherType: 'official',
   },
   {
+    id: 'self-driving-safety',
+    contentVersion: 'self-driving-safety@1',
+    topic: 'robotics',
+    relatedLab: 'evidence-check',
     category: 'Autonomous vehicles',
     title: 'Waymo argues there is no shortcut to safe self-driving',
     source: 'Axios',
@@ -1726,8 +1941,14 @@ const trendFeed = [
     url: 'https://www.axios.com/2026/08/26/waymo-ai-shortcut-self-driving',
     domain: 'D4',
     signal: 'Autonomy stories help users separate model capability from safety case, sensor strategy, operating domain, regulation, and accountability.',
+    mediaType: 'article',
+    publisherType: 'news',
   },
   {
+    id: 'frontier-math-evidence',
+    contentVersion: 'frontier-math-evidence@1',
+    topic: 'models',
+    relatedLab: 'evidence-check',
     category: 'Science',
     title: 'FrontierMath open problems test whether AI can contribute to research-frontier math',
     source: 'Epoch AI',
@@ -1735,8 +1956,14 @@ const trendFeed = [
     url: 'https://epoch.ai/frontiermath/open-problems/about/faq',
     domain: 'D1',
     signal: 'Breakthrough claims need careful framing: what was tested, what tools were allowed, how solutions were verified, and whether humans confirmed the result.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
+    id: 'agent-task-standards',
+    contentVersion: 'agent-task-standards@1',
+    topic: 'agents',
+    relatedLab: 'evidence-check',
     category: 'Agent evaluation',
     title: 'METR task standards push agent evaluation toward reproducible work tasks',
     source: 'METR / GitHub',
@@ -1744,8 +1971,14 @@ const trendFeed = [
     url: 'https://github.com/METR/task-standard/blob/main/README.md',
     domain: 'D3',
     signal: 'Agent benchmarks can inspire practical assessment formats where users inspect goals, tool access, task environments, scoring, and failure modes.',
+    mediaType: 'article',
+    publisherType: 'research',
   },
   {
+    id: 'cyber-evaluation-boundaries',
+    contentVersion: 'cyber-evaluation-boundaries@1',
+    topic: 'trust',
+    relatedLab: 'agent-boundaries',
     category: 'Autonomy risk',
     title: 'Anthropic reports real-world cyber-evaluation incidents',
     source: 'Anthropic',
@@ -1753,14 +1986,25 @@ const trendFeed = [
     url: 'https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals',
     domain: 'D4',
     signal: 'Evaluation environments, internet access, scope boundaries, and monitoring are now practical governance topics for anyone deploying agentic systems.',
+    mediaType: 'article',
+    publisherType: 'official',
+  },
+  {
+    id: 'ai-leadership-conversation',
+    contentVersion: 'ai-leadership-conversation@1',
+    topic: 'work',
+    category: 'AI leadership',
+    title: 'What AI still needs to learn: a conversation with Demis Hassabis and Lee Sedol',
+    source: 'Google Korea on YouTube',
+    date: 'May 20, 2026',
+    url: 'https://www.youtube.com/watch?v=XgZyIiiNtDU',
+    domain: 'D1',
+    signal: 'A long-form discussion can help users distinguish current model capability from the harder questions of reasoning, learning, and human judgment.',
+    mediaType: 'video',
+    duration: 'Long format',
+    publisherType: 'official',
   },
 ];
-
-const newsFrequencyLabels: Record<NewsFrequency, { label: string; detail: string }> = {
-  daily: { label: 'Daily', detail: 'Best for fast-moving AI capability, safety, regulation, and tool updates.' },
-  weekly: { label: 'Weekly', detail: 'Best default for most users: fewer updates, better signal.' },
-  monthly: { label: 'Monthly', detail: 'Best for executive summaries, board packs, and training refresh cycles.' },
-};
 
 const gamificationRules = [
   ['Readiness level', 'Overall score unlocks Awareness, Developing, Applied, and Proficient status.'],
@@ -9423,9 +9667,9 @@ const agentDefinitions: AgentDefinition[] = [
   {
     id: 'newsfeed',
     name: 'AI Newsfeed Agent',
-    role: 'Builds short-lived AI Watch briefs from reputable current-news sources.',
-    cadence: 'Daily or weekly based on admin setting.',
-    guardrail: 'No publication without source, date, category, domain mapping, and review state.',
+    role: 'Finds awareness-provoking agent stories, collective AI risks, new models, emerging technologies, and everyday impacts; retains original-source media references for inline curation.',
+    cadence: 'Manual source discovery via crawl:news; this Admin run remains simulated. Scheduled discovery is not connected.',
+    guardrail: 'Separate reported cases, simulations and vendor claims; require verified sources, media provenance and editorial approval before Watch/Did you know publication.',
   },
   {
     id: 'course-scout',
@@ -9686,7 +9930,7 @@ function getSupervisedAgentRun(
       id: `${runId}:news:watch`,
       kind: 'news',
       title: 'Prepare AI Watch brief candidates',
-      summary: 'Draft role-relevant briefs for agents, multimodal media, RAG, benchmarks, governance, ROI, and human-AI collaboration.',
+      summary: 'Draft awareness hooks and briefs for surprising agent capabilities, collective risks, AI trends, new technologies, multimodal media, RAG and everyday impact; keep credited media inside each story.',
       rationale: 'AI Watch should keep assessment content aligned with market shifts while preserving source review and publish approval.',
       status: 'pending',
       sourceSignals: [`${recentProfileTags.length} profile interests`, `${behaviorEvents.length} behavior events`],
@@ -12716,29 +12960,19 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question')
-      ? 'assessment'
-      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'assessment'
-      ? 'onboarding'
-      : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'admin'
-        ? 'admin'
-        : 'home'
-  ));
-  const [appLanguage, setAppLanguage] = useState<AppLanguage>(() => readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'learningLabs' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+  const [browserStateReady, setBrowserStateReady] = useState(false);
+  const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
-  const [showDraftThai] = useState(() => readLocalStorage(thaiDraftStorageKey) === '1');
-  const [mode, setMode] = useState<AssessmentMode>(() => (
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('question') ? 'premium' : 'free'
-  ));
-  const [newsFrequency, setNewsFrequency] = useState<NewsFrequency>('weekly');
+  const [showDraftThai, setShowDraftThai] = useState(false);
+  const [mode, setMode] = useState<AssessmentMode>('free');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
-  const [authProfile, setAuthProfile] = useState<AuthProfile | null>(() => parseAuthProfile(readLocalStorage(authProfileStorageKey)));
+  const [authProfile, setAuthProfile] = useState<AuthProfile | null>(null);
   const [authEmail, setAuthEmail] = useState('');
   const [authMessage, setAuthMessage] = useState('');
   const [activeLabKind, setActiveLabKind] = useState<LabKind>('prompt');
   const [landingLeaderboardPeriod, setLandingLeaderboardPeriod] = useState<LandingLeaderboardPeriod>('week');
-  const [profilePulseOpen, setProfilePulseOpen] = useState(() => readLocalStorage(profilePulseStorageKey) !== 'dismissed');
+  const [profilePulseOpen, setProfilePulseOpen] = useState(false);
   const [profilePulseSelections, setProfilePulseSelections] = useState<string[]>([]);
   const [labDraft, setLabDraft] = useState('');
   const [labSelections, setLabSelections] = useState<string[]>([]);
@@ -12751,10 +12985,8 @@ export default function Home() {
   const [surveyOpen, setSurveyOpen] = useState(false);
   const [surveyMode, setSurveyMode] = useState<AssessmentMode>('free');
   const [surveyAnswers, setSurveyAnswers] = useState<Record<string, string[]>>({});
-  const [localProfileId] = useState(() => getOrCreateLocalProfileId());
-  const [userProfileSurvey, setUserProfileSurvey] = useState<UserProfileSurvey | null>(() => (
-    parseUserProfileSurvey(readLocalStorage(userProfileStorageKey))
-  ));
+  const [localProfileId, setLocalProfileId] = useState('profile-pending');
+  const [userProfileSurvey, setUserProfileSurvey] = useState<UserProfileSurvey | null>(null);
   const [audience, setAudience] = useState<Audience>('general');
   const [functionTrack, setFunctionTrack] = useState<FunctionTrack>('general');
   const [industryTrack, setIndustryTrack] = useState<IndustryTrack>('general');
@@ -12766,10 +12998,7 @@ export default function Home() {
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [current, setCurrent] = useState<Question>(() => {
-    const previewQuestionId = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('question') : null;
-    return (previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], 'free');
-  });
+  const [current, setCurrent] = useState<Question>(allAssessmentItems[0]);
   const [multiSelected, setMultiSelected] = useState<string[]>([]);
   const [rankOrder, setRankOrder] = useState<string[]>([]);
   const [matchSelections, setMatchSelections] = useState<Record<string, string>>({});
@@ -12781,26 +13010,16 @@ export default function Home() {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [lastAnswer, setLastAnswer] = useState<Answer | null>(null);
   const [pendingQuestion, setPendingQuestion] = useState<Question | null>(null);
-  const [scoreLog, setScoreLog] = useState<ScoreLogEntry[]>(() => (
-    parseScoreLog(readLocalStorage(scoreLogStorageKey))
-  ));
-  const [profileSignalLog, setProfileSignalLog] = useState<ProfileSignalLogEntry[]>(() => (
-    parseProfileSignalLog(readLocalStorage(profileSignalLogStorageKey))
-  ));
-  const [behaviorLog, setBehaviorLog] = useState<AssessmentBehaviorEvent[]>(() => (
-    parseBehaviorLog(readLocalStorage(behaviorLogStorageKey))
-  ));
-  const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>(() => (
-    parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey))
-  ));
+  const [scoreLog, setScoreLog] = useState<ScoreLogEntry[]>([]);
+  const [profileSignalLog, setProfileSignalLog] = useState<ProfileSignalLogEntry[]>([]);
+  const [behaviorLog, setBehaviorLog] = useState<AssessmentBehaviorEvent[]>([]);
+  const [assessmentFeedback, setAssessmentFeedback] = useState<AssessmentFeedbackSurvey[]>([]);
 
-  const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>(() => (
-    parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey))
-  ));
+  const [supervisedAgentRuns, setSupervisedAgentRuns] = useState<SupervisedAgentRun[]>([]);
   const [feedbackDraft, setFeedbackDraft] = useState<Omit<AssessmentFeedbackSurvey, 'id' | 'sessionId' | 'profileId' | 'createdAt' | 'groupKey'>>({
     ...defaultAssessmentFeedbackDraft(),
   });
-  const [behaviorSessionId, setBehaviorSessionId] = useState(() => `session-${createAssessmentSeed().toString(36)}`);
+  const [behaviorSessionId, setBehaviorSessionId] = useState('session-pending');
   const behaviorSessionIdRef = useRef(behaviorSessionId);
   const questionStartedAtRef = useRef(0);
   const questionStartedIsoRef = useRef('');
@@ -12818,13 +13037,15 @@ export default function Home() {
     executiveRole: 'ceo' as ExecutiveRole,
   });
   const [loggedResultId, setLoggedResultId] = useState<string | null>(null);
-  const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => (
-    getAgentWorkflowReport(
+  const [agentWorkflowReport, setAgentWorkflowReport] = useState<AgentWorkflowReport>(() => ({
+    ...getAgentWorkflowReport(
       allAssessmentItems.length,
       allAssessmentItems.filter((question) => hasHelpfulVisualEvidence(question)).length,
       0,
-    )
-  ));
+    ),
+    generatedAt: 'Not run',
+    runId: 'agent-run-preview',
+  }));
   const [selectedAgentId, setSelectedAgentId] = useState('orchestrator');
 
   const activeConfig = useMemo(
@@ -12908,6 +13129,50 @@ export default function Home() {
   const simulatedSignalCount = adminAnalytics.totalQuestionSignals || profileSignalLog.reduce((sum, entry) => sum + entry.questionSignals.length, 0);
 
   useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const params = new URLSearchParams(window.location.search);
+      const previewQuestionId = params.get('question');
+      const requestedView = params.get('view');
+      const restoredMode: AssessmentMode = previewQuestionId ? 'premium' : 'free';
+      const restoredSessionId = `session-${createAssessmentSeed().toString(36)}`;
+
+      setStep(previewQuestionId ? 'assessment' : requestedView === 'assessment' ? 'onboarding' : requestedView === 'admin' ? 'admin' : requestedView === 'watch' ? 'news' : requestedView === 'labs' ? 'learningLabs' : 'home');
+      setAppLanguage(readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
+      setShowDraftThai(readLocalStorage(thaiDraftStorageKey) === '1');
+      setMode(restoredMode);
+      setAssessmentTargetTotal(modeConfig[restoredMode].totalQuestions);
+      setAuthProfile(parseAuthProfile(readLocalStorage(authProfileStorageKey)));
+      setProfilePulseOpen(readLocalStorage(profilePulseStorageKey) !== 'dismissed');
+      setLocalProfileId(getOrCreateLocalProfileId());
+      setUserProfileSurvey(parseUserProfileSurvey(readLocalStorage(userProfileStorageKey)));
+      setCurrent((previewQuestionId ? allAssessmentItems.find((question) => question.id === previewQuestionId) : null) ?? selectNextQuestion([], restoredMode));
+      setScoreLog(parseScoreLog(readLocalStorage(scoreLogStorageKey)));
+      setProfileSignalLog(parseProfileSignalLog(readLocalStorage(profileSignalLogStorageKey)));
+      setBehaviorLog(parseBehaviorLog(readLocalStorage(behaviorLogStorageKey)));
+      setAssessmentFeedback(parseAssessmentFeedback(readLocalStorage(assessmentFeedbackStorageKey)));
+      setSupervisedAgentRuns(parseSupervisedAgentRuns(readLocalStorage(supervisedAgentRunsStorageKey)));
+      setBehaviorSessionId(restoredSessionId);
+      behaviorSessionIdRef.current = restoredSessionId;
+      setBrowserStateReady(true);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!browserStateReady) return;
+    const url = new URL(window.location.href);
+    const learningView = step === 'news' ? 'watch' : step === 'learningLabs' ? 'labs' : null;
+    if (learningView) {
+      url.searchParams.set('view', learningView);
+      url.searchParams.delete('question');
+    } else if (url.searchParams.get('view') === 'watch' || url.searchParams.get('view') === 'labs') {
+      url.searchParams.delete('view');
+    } else return;
+    if (url.href !== window.location.href) window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  }, [browserStateReady, step]);
+
+  useEffect(() => {
+    if (!browserStateReady) return;
     writeLocalStorage(languageStorageKey, appLanguage);
     applyUiLanguage(appLanguage);
     const observer = new MutationObserver(() => {
@@ -12915,7 +13180,7 @@ export default function Home() {
     });
     observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
-  }, [appLanguage, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
+  }, [appLanguage, browserStateReady, step, reportTab, current.id, lastAnswer?.question.id, pendingQuestion?.id]);
   const latestSupervisedAgentRun = supervisedAgentRuns[0] ?? null;
   const pendingAgentDraftCount = supervisedAgentRuns.reduce(
     (sum, run) => sum + run.drafts.filter((draft) => draft.status === 'pending').length,
@@ -13970,7 +14235,7 @@ export default function Home() {
       return;
     }
     if (insight.learnAction === 'labs') {
-      showHomeSection('labs');
+      setStep('learningLabs');
       return;
     }
     if (insight.learnAction === 'premium') {
@@ -14114,7 +14379,7 @@ export default function Home() {
           <button onClick={() => setStep('home')}>Home</button>
           <button onClick={() => setStep('onboarding')}>Assessment</button>
           <button onClick={() => setStep('premiumOnboarding')}>Premium</button>
-          <button onClick={() => showHomeSection('labs')}>Practice</button>
+          <button onClick={() => setStep('learningLabs')}>AI Labs</button>
           <button onClick={() => setStep('news')}>AI Watch</button>
           <button onClick={() => setStep('dashboard')}>Dashboard</button>
           <button onClick={() => setStep('admin')}>Admin</button>
@@ -14202,6 +14467,7 @@ export default function Home() {
           </section>
 
           <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
+            <AwarenessFlash stories={trendFeed} language={appLanguage} ownerId={authProfile?.id ?? localProfileId} onOpenWatch={() => setStep('news')} />
             <article className="did-you-know-card featured">
               <div>
                 <p className="eyebrow">Did you know?</p>
@@ -14736,6 +15002,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="admin-hero-actions">
+                  <a className="primary" href="/admin/pilot-operations">Pilot operations</a>
                   <a className="primary" href="/admin/question-inventory">Question inventory</a>
                   <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
                 </div>
@@ -15270,7 +15537,7 @@ export default function Home() {
       {step === 'lab' && (
         <section className="lab-shell">
           <div className="lab-top">
-            <button className="secondary" onClick={() => showHomeSection('labs')} type="button">Back to Labs</button>
+            <button className="secondary" onClick={() => setStep('learningLabs')} type="button">Back to Labs</button>
             <div>
               <p className="eyebrow">Learn by doing</p>
               <h1>{activeLab.title}</h1>
@@ -15316,7 +15583,7 @@ export default function Home() {
                     }}
                     type="button"
                   >
-                    Generate Model Prompt
+                    Show Example Prompt
                   </button>
                   <div className="lab-checklist">
                     {(activeLab.checklist ?? []).map((item) => (
@@ -15420,7 +15687,7 @@ export default function Home() {
               <span>Lab feedback</span>
               {labFeedbackVisible ? (
                 <>
-                  <strong>{labEvaluation.score}/100</strong>
+                  {activeLab.kind === 'prompt' ? <><strong>{labEvaluation.strengths.length}/{(activeLab.checklist ?? []).length} checklist cues found</strong><p>English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.</p></> : <strong>{labEvaluation.score}/100</strong>}
                   <p>{labEvaluation.summary}</p>
                   <div>
                     <h3>What worked</h3>
@@ -15443,65 +15710,16 @@ export default function Home() {
         </section>
       )}
 
-      {step === 'news' && (
-        <section className="news-shell">
-          <div className="news-hero">
-            <div>
-              <p className="eyebrow">AI Watch</p>
-              <h1>Signals that keep the assessment current.</h1>
-              <p>
-                A lightweight newsfeed for LLMs, benchmarks, new models, breakthroughs, robotics, autonomous systems, governance, safety, and workplace change.
-                Each item links back to the source and maps to the skills New Horizon should test.
-              </p>
-            </div>
-            <div className="frequency-panel">
-              <span>Agent update frequency</span>
-              <div className="frequency-options" role="radiogroup" aria-label="Newsfeed update frequency">
-                {(Object.keys(newsFrequencyLabels) as NewsFrequency[]).map((frequency) => (
-                  <button
-                    key={frequency}
-                    className={newsFrequency === frequency ? 'selected' : ''}
-                    onClick={() => setNewsFrequency(frequency)}
-                    role="radio"
-                    aria-checked={newsFrequency === frequency}
-                  >
-                    {newsFrequencyLabels[frequency].label}
-                  </button>
-                ))}
-              </div>
-              <p>{newsFrequencyLabels[newsFrequency].detail}</p>
-              <small>Current MVP: this controls feed preference in the UI. The Codex trend-watch agent can be scheduled to match this cadence.</small>
-            </div>
-          </div>
-          <div className="news-layout">
-            <section className="news-feed" aria-label="AI trends newsfeed">
-              {trendFeed.map((item) => (
-                <article className="news-card" key={item.title}>
-                  <div>
-                    <span>{item.category} · {item.source} · {item.date}</span>
-                    <strong>{item.domain} · {domains[item.domain as DomainId].name}</strong>
-                  </div>
-                  <h2><a href={item.url} target="_blank" rel="noreferrer">{item.title}</a></h2>
-                  <p>{item.signal}</p>
-                </article>
-              ))}
-            </section>
-            <aside className="news-sidebar">
-              <div>
-                <span>Agent brief</span>
-                <p>Scan official AI labs, standards bodies, governance sources, workforce research, and reputable Thai learning/training sources.</p>
-              </div>
-              <div>
-                <span>Question-bank use</span>
-                <p>Turn strong signals into new artifacts, skill tags, benchmarks, and practical assessment scenarios.</p>
-              </div>
-              <div>
-                <span>Review rule</span>
-                <p>Do not publish trend items as facts without source link, date, domain mapping, and reviewer approval.</p>
-              </div>
-            </aside>
-          </div>
-        </section>
+      {(step === 'news' || step === 'learningLabs') && browserStateReady && (
+        <WatchLabs
+          key={authProfile?.id ?? localProfileId}
+          stories={trendFeed}
+          language={appLanguage}
+          ownerId={authProfile?.id ?? localProfileId}
+          view={step === 'news' ? 'watch' : 'labs'}
+          onViewChange={(view) => setStep(view === 'watch' ? 'news' : 'learningLabs')}
+          onLegacyLabs={() => showHomeSection('labs')}
+        />
       )}
 
       {step === 'onboarding' && (

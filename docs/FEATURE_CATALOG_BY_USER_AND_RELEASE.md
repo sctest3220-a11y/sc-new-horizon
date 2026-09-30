@@ -1,5 +1,7 @@
 # Feature Catalog by User Type and Release Stage
 
+See [awareness curation and embedded source media](AI_WATCH_AWARENESS_CURATION.md) for the September 29 requirement and local implementation: shared Watch/Did you know stories, evidence labels, and media embedded within each story.
+
 ## Purpose
 
 This is the living, user-facing feature inventory for New Horizon. It itemizes capabilities for B2C users, B2B members and managers, B2B administrators, specialist platform administrators, and Super Admins. Every feature is assigned a delivery stage so readers can distinguish the current prototype from the go-live MVP, production hardening, and longer-term roadmap.
@@ -85,6 +87,21 @@ The release stage describes operational readiness, not just whether a screen or 
 | Account recovery and verified email changes | B2C | **Production** | Includes security notifications and session revocation. |
 | MFA and passkey support | B2C | **Production** | Risk-based rollout after core authentication. |
 | Portable personal achievement/profile record | B2C | **Future** | User-controlled credential or portfolio export. |
+
+## AI Watch and Connected Labs
+
+| Feature | User | Stage | Notes |
+| --- | --- | --- | --- |
+| Explicit-interest Watch ranking and recommendation reasons | Public/B2C | **MVP - Built** | Local deterministic ranking; interests, time, goal, and discovery variety. No inferred assessment weakness. |
+| For you, Explore, Saved, and topic controls | Public/B2C | **MVP - Built** | Browser-profile persistence; mutes are enforced and unavailable bookmarks are visible. |
+| Publisher media and click-to-load video | Public/B2C | **MVP - Built** | Existing editorial snapshot; optional supported YouTube embeds, attribution, fallback links, and no autoplay. |
+| Stable story IDs, content versions, and Lab links | Content/Admin | **MVP - Built** | Local metadata prepares for shared editorial records; no new approval or freshness claim. |
+| Two bilingual connected starter Labs | Public/B2C | **MVP - Built** | Agent boundaries and evidence checking; criterion feedback, revision, local drafts, and saved takeaways. Hosted use still requires pilot review. |
+| Shared Watch preferences and Lab history | B2C | **MVP - Go-live** | Account ownership, server persistence, privacy controls, and cross-device recovery remain to build. |
+| Live discovery and editorial publishing workflow | Content/Admin | **MVP - Go-live** | Approved sources, durable runs, exact-version human approval, correction propagation, and freshness monitoring remain to build. |
+| Original audio briefs and recurring skill series | Public/B2C | **Future** | Proposed after demand, accessibility, localization, and editorial capacity are demonstrated. |
+
+Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md).
 
 ## Assessment Experience
 
@@ -246,6 +263,11 @@ The release stage describes operational readiness, not just whether a screen or 
 | Central review database and multi-reviewer attribution | Content Reviewer | **MVP - Go-live** | Replaces browser-local comments. |
 | Question/rubric/artifact versioning | Assessment Admin | **MVP - Go-live** | Required for historical score explanation. |
 | Publish and rollback workflow | Assessment Admin | **MVP - Go-live** | Draft, review, pilot, approve, publish, monitor. |
+| Translation provider registry and deterministic workload router | Super Admin/Localization Admin | **MVP - Go-live** | Versioned policy, reason codes, approved fallback, budget and human-review gates. |
+| Translation quality comparison and approval queue | Localization/Content Reviewer | **MVP - Go-live** | Blind provider pilot, terminology versions, equivalence QA, and human publication decision. |
+| Learned or agentic translation routing | Super Admin/AI Operations | **Production** | Only after deterministic-router evidence shows a measurable routing gap. |
+| Jev bounded-decision shadow pilot | AI Operations/Quality Admin | **Production** | Pre-production evaluation only; no live authority until each use case passes labelled accuracy, calibration, risk, privacy, fallback, and audit gates. |
+| Laya open-weight bounded-decision shadow pilot | AI Operations/Quality Admin | **Production** | Compare base and task-tuned Thai/English performance with Jev and deterministic rules; self-hosting and fine-tuning are not MVP dependencies. |
 | Content conflict and duplicate detection | Content Reviewer | **Production** | Automated assistance with human decision. |
 
 ## Platform Admin: Analytics and Quality
@@ -283,6 +305,9 @@ The release stage describes operational readiness, not just whether a screen or 
 | Feature | User | Stage | Notes |
 | --- | --- | --- | --- |
 | Assessment count/profile/report/tracker configuration design | Super/Assessment Admin | **MVP - Go-live** | Specification exists; settings UI not yet built. |
+| Pilot Operations workspace | Assessment Admin | **MVP - Built** | Browser-local pilot setup, readiness gates, tester preview, issue triage, and CSV exports; not a shared or authorized backend. |
+| Pilot status blocked by required readiness gates | Assessment Admin | **MVP - Built** | UI guard prevents Ready/Running while required gates are open; server enforcement and audit are go-live work. |
+| Shared pilot records, invitations, and audited launch decisions | Assessment Admin | **MVP - Go-live** | Requires authentication, tenant-scoped persistence, consent, versioning, and audit history. |
 | Report visibility by Free/Freemium/Premium | Assessment Admin | **MVP - Go-live** | Hidden, summary, or detailed. |
 | Tracker switches and dependency warnings | Analytics/Security Admin | **MVP - Go-live** | Essential audit records cannot be disabled casually. |
 | Provider and model registry | Super/Agent Admin | **MVP - Go-live** | Models selected by workload without hardcoding. |
@@ -358,6 +383,9 @@ When a feature changes:
 8. Do not mark a feature **Production** until server persistence, authorization, privacy, monitoring, failure handling, and audit requirements are satisfied.
 
 ## Related Specifications
+
+- [AI Watch, AI Labs, and Agent Workflow Roadmap](AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) — first local slice implemented; later phases remain proposed.
+- [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md)
 
 - [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md)
 - [B2C, B2B, and User Administration](B2C_B2B_USER_ADMINISTRATION.md)

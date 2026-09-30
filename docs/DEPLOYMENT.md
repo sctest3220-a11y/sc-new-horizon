@@ -1,5 +1,11 @@
 # Deployment Notes
 
+## Question Inventory Feedback Pilot
+
+The first external deployment should expose only the Question Inventory reviewer, after the team completes internal English rewriting, Thai equivalence review, rubric/artifact QA, inventory regeneration, and release freezing. The complete process and deployment gate are defined in [Question Inventory: Internal Review to Hosted Feedback Pilot](QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md).
+
+The current application uses Vinext. Cloudflare Workers is the preferred host for the inventory-only pilot. A deployed static/bundled reviewer is not sufficient by itself: external reviewer submissions must use central server-validated storage, while browser `localStorage` is limited to unsaved drafts.
+
 ## Localhost Auth Testing
 
 Google Auth can be tested on localhost through Supabase.
@@ -70,6 +76,8 @@ The schema includes basic user-owned RLS policies. Before production, add admin-
 The target identity and tenant model is defined in [B2C, B2B, and User Administration Specification](B2C_B2B_USER_ADMINISTRATION.md). Production deployment must support personal workspaces, organizations, memberships, granular permissions, teams, invitations, campaigns, result-sharing consent, seats/entitlements, support-access grants, and append-only audit events. RLS tests must prove that personal results are not automatically exposed after organization membership and that cross-tenant identifiers fail closed.
 
 The legal go-live gate is defined in [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md). Deployment must not enable public multi-user processing until reviewed Thai/English notices and Terms, policy acceptance, cookie blocking/preferences, rights and deletion workflows, retention jobs, DPA/controller mapping, subprocessor and transfer controls, breach response, and legal-document versioning are operational.
+
+Translation workloads must also pass the [Translation and Routing Go-live Checklist](TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md). Production routing runs server-side through a deterministic, versioned policy service with approved providers, fallbacks, cache isolation, budgets, audit reason codes, quality evidence, and human-review gates. Browser page translation and uncontracted research APIs are not production routes.
 
 ## Admin Dashboard
 

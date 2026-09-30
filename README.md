@@ -10,6 +10,8 @@ The existing **634 live questions remain separate** and are exported for side-by
 
 Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
 
+The planned external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). The team will complete bounded English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, and a frozen release manifest before deploying only the reviewer surface to Cloudflare with central feedback storage.
+
 ## What It Includes
 
 - Public landing page for the New Horizon assessment platform
@@ -21,6 +23,7 @@ Collaborators can run only the question-review surface locally without configuri
 - Full-size artifact reader with zoom controls for text-heavy screenshots, workflows, dashboards, and documents
 - Artifact relevance gate that hides decorative, redundant, generic, or non-evidence artifacts during scored assessment
 - Market-trend question bank covering agents, multimodal/video AI, RAG/context engineering, domain models, responsible AI benchmarking, governance, and workforce change
+- Rights-aware AI Watch curation for articles and relevant short/long video, with canonical source links, media filters, human review, and no third-party media rehosting
 - Domain and competency scoring across D1-D6
 - Radar graph with user, group average, and target profile comparison
 - Domain drilldown into competency scores
@@ -50,7 +53,7 @@ Thai copy should be simple, natural Thailand Thai. Do not translate core technic
 
 Thai lives in two deliberately separate places:
 
-- **Interface chrome** (navigation, buttons, report labels, survey text) is translated by the `thaiUiCopy` dictionary in `app/page.tsx`, which maps exact English strings to Thai at render time. Add UI strings there.
+- **Legacy interface chrome** (navigation, buttons, report labels, survey text) is translated by the `thaiUiCopy` dictionary in `app/page.tsx`, which maps exact English strings to Thai at render time. Add legacy UI strings there. The connected Watch/Labs surface owns its bilingual React copy in `app/watch-labs.tsx`, `app/watch-model.ts`, and `app/connected-labs.ts`; `data-no-translate` keeps the legacy DOM pass from rewriting that surface.
 - **Question content** (scenarios, prompts, answer choices, feedback, rank steps, matching pairs, rubric keywords, artifact captions) is translated per question id: optional `*Th` fields beside the English on the item, plus the generated table `app/questionTranslations.th.ts` produced from the reviewed translation workbook. `localizeQuestion()` merges them with English fallback and only for items that carry a `translationStatus`. Never add question text to `thaiUiCopy`, and never hand-edit the generated table; see `docs/LOCALISATION.md` for the review workflow and status rules (`draft` → `reviewed` → `approved`).
 - **Template-generated questions** (`ADV-*`, `TREND-*`) take their Thai from the translated frames and from the competency vocabulary (`competencyLabelsTh`, `skillLabelsTh`), which also lets competency and skill names in reports follow the language toggle. Any item still at `draft` is shown only to pilot testers who set `localStorage['new-horizon-thai-drafts-v1'] = '1'` (none at the moment).
 
@@ -58,14 +61,24 @@ Continuous integration (`.github/workflows/ci.yml`) runs lint, a TypeScript erro
 
 ## Latest Change Report
 
+Manual AI Watch discovery is now available with `npm run crawl:news` (Python 3). The scout reads [awareness/trend/technology discovery instructions](config/ai-watch-discovery.json) and writes review candidates plus fetch failures to `.agent-drafts/ai-watch/latest.json`. It does not automatically publish or run on a schedule; see [the editorial workflow](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch awareness curation (September 29): the local app now connects source-backed Pip/iLands, agent bank-run simulation, and Jev stories to **Did you know** teasers. Original-source images and click-to-load videos appear inside each curated story, with visible credits and links. This remains manually curated and is not deployed to the inventory-only Cloudflare site. See [the curation requirements](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch and connected Labs: [the first local release](docs/AI_WATCH_LABS_LOCAL_RELEASE.md) adds explicit-interest ranking, saved stories, topic controls, optional video loading, and two bilingual Labs with recoverable drafts and takeaways. Use AI Watch / AI Labs in the navigation or `/?view=watch` / `/?view=labs`. Data remains browser-local. The [roadmap](docs/AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) defines later shared editorial workflows, discovery, and multimodal expansion; these services are not connected yet.
+
 Detailed telemetry and agent documentation:
 
 - [`docs/LEGAL_PRIVACY_PDPA_TERMS.md`](docs/LEGAL_PRIVACY_PDPA_TERMS.md)
 - [`docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md`](docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md)
 - [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
+- [`docs/TRANSLATION_PROVIDER_STRATEGY.md`](docs/TRANSLATION_PROVIDER_STRATEGY.md)
+- [`docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md`](docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`](docs/AGENT_PLATFORM_TOOLING_STRATEGY.md)
+- [`docs/JEV_PREPRODUCTION_EVALUATION.md`](docs/JEV_PREPRODUCTION_EVALUATION.md)
+- [`docs/LAYA_PREPRODUCTION_EVALUATION.md`](docs/LAYA_PREPRODUCTION_EVALUATION.md)
 - [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
 - [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
 - [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
