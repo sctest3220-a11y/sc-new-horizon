@@ -13,6 +13,7 @@ type ReviewOption = {
 
 type ReviewQuestion = {
   id: string;
+  version?: string;
   sourceInventory?: string;
   sourceBank?: string;
   layer: string;
@@ -969,7 +970,7 @@ export default async function QuestionInventoryPage({
   const industryOptions = uniqueValues(allQuestions.flatMap((question) => question.industryTracks ?? []), (item) => item);
   const executiveOptions = uniqueValues(allQuestions.flatMap((question) => question.executiveRoles ?? []), (item) => item);
   const formatOptions = uniqueValues(allQuestions, (question) => question.recommendedFormat?.format ?? question.userFacingDraft?.format ?? 'unmapped');
-  const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion));
+  const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)).filter((item): item is string => Boolean(item));
 
   return (
     <main className="inventory-page">
@@ -1239,6 +1240,8 @@ export default async function QuestionInventoryPage({
                 {renderUserFacingDraft(question, 'th')}
               </div>
             </div>
+            <details className="inventory-question-details">
+              <summary>Question details</summary>
             <dl>
               <div><dt>Source</dt><dd>{question.sourceBank}</dd></div>
               <div><dt>Competency</dt><dd>{question.competencyLabel}</dd></div>
@@ -1248,6 +1251,7 @@ export default async function QuestionInventoryPage({
               <div><dt>Industries</dt><dd>{question.industryLabels?.join(', ') || question.industryTracks?.map(labelForProfile).join(', ') || 'All/general'}</dd></div>
               <div><dt>Executive</dt><dd>{question.executiveLabels?.join(', ') || question.executiveRoles?.map(labelForProfile).join(', ') || 'Not role-specific'}</dd></div>
             </dl>
+            </details>
             {question.recommendedFormat ? (
               <div className="inventory-format-note">
                 <strong>Recommended live format: {question.recommendedFormat.format}</strong>
