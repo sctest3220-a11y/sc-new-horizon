@@ -93,6 +93,7 @@ type InventorySummary = {
 type IndexQuestion = Pick<
   ReviewQuestion,
   | 'id'
+  | 'version'
   | 'domain'
   | 'difficulty'
   | 'layer'
@@ -924,6 +925,7 @@ export default async function QuestionInventoryPage({
   const industry = normalizeParam(searchParams?.industry) || 'all';
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
+  const version = normalizeParam(searchParams?.version) || summary.inventoryVersion;
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
   const queryInput = (normalizeParam(searchParams?.q) || '').trim();
   const query = queryInput
@@ -940,6 +942,7 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
+    const matchesVersion = version === 'all' || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
     const matchesQuery =
       !query ||
       question.id.toLowerCase().includes(query) ||
@@ -947,7 +950,7 @@ export default async function QuestionInventoryPage({
       question.competencyLabel.toLowerCase().includes(query) ||
       question.scopeLabel.toLowerCase().includes(query) ||
       question.sourceBank?.toLowerCase().includes(query);
-    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesQuery;
+    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesVersion && matchesQuery;
   });
 
   const pageSize = 20;
@@ -966,6 +969,7 @@ export default async function QuestionInventoryPage({
   const industryOptions = uniqueValues(allQuestions.flatMap((question) => question.industryTracks ?? []), (item) => item);
   const executiveOptions = uniqueValues(allQuestions.flatMap((question) => question.executiveRoles ?? []), (item) => item);
   const formatOptions = uniqueValues(allQuestions, (question) => question.recommendedFormat?.format ?? question.userFacingDraft?.format ?? 'unmapped');
+  const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion));
 
   return (
     <main className="inventory-page">
@@ -1072,6 +1076,15 @@ export default async function QuestionInventoryPage({
 
       <section className="inventory-panel" id="inventory-filters">
         <form className="inventory-filters">
+          <label>
+            <span>Version</span>
+            <select name="version" defaultValue={version}>
+              <option value="all">All versions</option>
+              {versionOptions.sort((a, b) => a === summary.inventoryVersion ? -1 : b === summary.inventoryVersion ? 1 : b.localeCompare(a)).map((item) => (
+                <option key={item} value={item}>{item}{item === summary.inventoryVersion ? ' (latest)' : ''}</option>
+              ))}
+            </select>
+          </label>
           <label>
             <span>Source</span>
             <select name="source" defaultValue={source}>
@@ -1198,6 +1211,10 @@ export default async function QuestionInventoryPage({
             <QuestionReviewStats questionId={question.id} />
             <div className="inventory-question-review-layout">
               <div className="inventory-question-content">
+            <details className="inventory-question-id">
+              <summary>Question ID and version</summary>
+              <dl><div><dt>ID</dt><dd>{question.id}</dd></div><div><dt>Version</dt><dd>{question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}{(question.version ?? summary.inventoryVersion) === summary.inventoryVersion ? ' · latest' : ''}</dd></div></dl>
+            </details>
             <div className="inventory-question-language">
               <input
                 type="radio"
@@ -1223,7 +1240,6 @@ export default async function QuestionInventoryPage({
               </div>
             </div>
             <dl>
-              <div><dt>ID</dt><dd>{question.id}</dd></div>
               <div><dt>Source</dt><dd>{question.sourceBank}</dd></div>
               <div><dt>Competency</dt><dd>{question.competencyLabel}</dd></div>
               <div><dt>Task</dt><dd>{question.cognitiveTask}</dd></div>
