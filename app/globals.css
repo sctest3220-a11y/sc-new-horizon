@@ -7926,3 +7926,7 @@ h3 {
 .inventory-question-id dl { display: grid; grid-template-columns: minmax(5rem, auto) 1fr; gap: .35rem 1rem; margin: .75rem 0 0; }
 .inventory-question-id dt { font-weight: 700; }
 .inventory-question-id dd { margin: 0; overflow-wrap: anywhere; }
+
+.inventory-question-details { margin: 1rem 0; border-top: 1px solid var(--inventory-line, #d8d4ca); padding-top: .75rem; }
+.inventory-question-details summary { cursor: pointer; font-weight: 700; }
+.inventory-question-details dl { margin-top: .75rem; }
