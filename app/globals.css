@@ -7920,3 +7920,9 @@ h3 {
     display: grid;
   }
 }
+
+.inventory-question-id { margin: 0 0 1rem; border: 1px solid var(--inventory-line, #d8d4ca); border-radius: 10px; padding: .65rem .85rem; background: color-mix(in srgb, white 70%, transparent); }
+.inventory-question-id summary { cursor: pointer; font-weight: 700; }
+.inventory-question-id dl { display: grid; grid-template-columns: minmax(5rem, auto) 1fr; gap: .35rem 1rem; margin: .75rem 0 0; }
+.inventory-question-id dt { font-weight: 700; }
+.inventory-question-id dd { margin: 0; overflow-wrap: anywhere; }

@@ -31,6 +31,7 @@ const artifactNeedsPath = path.join(exportsDir, 'artifact-needs.json');
 // readability, contentHash, sourceScenario, ...) keeps the detail files small.
 const detailFields = [
   'id',
+  'version',
   'sourceInventory',
   'sourceBank',
   'layer',
@@ -103,6 +104,7 @@ function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
 function buildIndexRecord(detail) {
   const record = {
     id: detail.id,
+    version: detail.version ?? (sourceInventory === 'live' ? 'live-bank' : null),
     domain: detail.domain,
     difficulty: detail.difficulty,
     layer: detail.layer,
