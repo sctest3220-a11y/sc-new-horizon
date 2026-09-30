@@ -34,7 +34,11 @@ const emptyFeedback: FeedbackState = {
   suggestedChange: '',
 };
 
-const emptyStored = { feedback: emptyFeedback, entries: [] as SavedFeedbackEntry[], savedAt: '' };
+function blankFeedback(): FeedbackState {
+  return { ...emptyFeedback };
+}
+
+const emptyStored = { feedback: blankFeedback(), entries: [] as SavedFeedbackEntry[], savedAt: '' };
 
 function readStored(storageKey: string) {
   const saved = window.localStorage.getItem(storageKey);
@@ -43,7 +47,7 @@ function readStored(storageKey: string) {
     const parsed = JSON.parse(saved) as Partial<StoredFeedback> & Partial<FeedbackState> & { savedAt?: string };
     if (parsed.draft || parsed.entries) {
       return {
-        feedback: { ...emptyFeedback, ...(parsed.draft ?? {}) },
+        feedback: { ...blankFeedback(), ...(parsed.draft ?? {}) },
         entries: parsed.entries ?? [],
         savedAt: parsed.updatedAt ?? '',
       };
@@ -51,7 +55,7 @@ function readStored(storageKey: string) {
     const migratedEntry = parsed.savedAt
       ? [{ ...emptyFeedback, ...(parsed as FeedbackState), id: parsed.savedAt, savedAt: parsed.savedAt }]
       : [];
-    return { feedback: { ...emptyFeedback, ...(parsed as FeedbackState), comment: '', suggestedChange: '' }, entries: migratedEntry, savedAt: parsed.savedAt ?? '' };
+    return { feedback: { ...blankFeedback(), ...(parsed as FeedbackState), comment: '', suggestedChange: '' }, entries: migratedEntry, savedAt: parsed.savedAt ?? '' };
   } catch {
     return emptyStored;
   }
@@ -62,7 +66,7 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
   // Start empty on both server and client, then load from localStorage after
   // mount: reading it during render made the hydrated HTML differ from the
   // server's whenever this browser already held feedback for the question.
-  const [feedback, setFeedback] = useState<FeedbackState>(emptyFeedback);
+  const [feedback, setFeedback] = useState<FeedbackState>(blankFeedback);
   const [entries, setEntries] = useState<SavedFeedbackEntry[]>([]);
   const [savedAt, setSavedAt] = useState('');
 
@@ -96,8 +100,8 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
     const hasNote = feedback.comment.trim() || feedback.suggestedChange.trim() || feedback.decision !== 'pending' || feedback.clarity || feedback.artifact || feedback.format;
     if (!hasNote) return;
     const timestamp = new Date().toISOString();
-      const nextEntries = [{ ...feedback, id: timestamp, savedAt: timestamp }, ...entries];
-    const nextDraft = { ...feedback, comment: '', suggestedChange: '' };
+    const nextEntries = [{ ...feedback, id: timestamp, savedAt: timestamp }, ...entries];
+    const nextDraft = blankFeedback();
     setEntries(nextEntries);
     setFeedback(nextDraft);
     persist(nextDraft, nextEntries);

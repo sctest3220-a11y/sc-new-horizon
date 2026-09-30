@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">Campaign performance dashboard for Ad Sets A, B, and C</title>
+  <desc id="desc">Ad Set C has an 8.6 percent conversion rate from 93 clicks and eight conversions. A campaign note says its discount code appeared on a public coupon page. The AI recommends increasing its budget by 60 percent.</desc>
+  <rect width="1600" height="1000" fill="#eef2f6"/>
+  <rect x="54" y="42" width="1492" height="916" rx="10" fill="#ffffff" stroke="#c7d0da" stroke-width="2"/>
+  <rect x="54" y="42" width="1492" height="86" rx="10" fill="#173f5f"/>
+  <text x="94" y="94" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Campaign Performance</text>
+  <text x="94" y="119" font-family="Arial, sans-serif" font-size="16" fill="#dce8f1">Online shop · Weekend promotion · 1-14 September 2026</text>
+  <text x="1430" y="94" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#dce8f1">THB · Last updated 09:15</text>
+
+  <text x="94" y="176" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2937">Performance by ad set</text>
+  <rect x="94" y="200" width="1412" height="62" fill="#edf3f7"/>
+  <g font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#344054">
+    <text x="122" y="239">Ad set</text><text x="286" y="239">Spend</text><text x="475" y="239">Clicks</text>
+    <text x="610" y="239">Conversions</text><text x="790" y="239">Rate</text><text x="900" y="239">Cost / conv.</text><text x="1060" y="239">Audience</text><text x="1270" y="239">Tracking note</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#1f2937">
+    <rect x="94" y="262" width="1412" height="76" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="122" y="309" font-weight="700">A</text><text x="286" y="309">฿82,000</text><text x="475" y="309">9,840</text><text x="610" y="309">312</text><text x="790" y="309">3.2%</text><text x="900" y="309">฿263</text><text x="1060" y="309">Broad prospecting</text><text x="1270" y="309">No alert</text>
+    <rect x="94" y="338" width="1412" height="76" fill="#f9fbfc" stroke="#e2e8f0"/>
+    <text x="122" y="385" font-weight="700">B</text><text x="286" y="385">฿79,000</text><text x="475" y="385">8,510</text><text x="610" y="385">289</text><text x="790" y="385">3.4%</text><text x="900" y="385">฿273</text><text x="1060" y="385">Interest audience</text><text x="1270" y="385">No alert</text>
+    <rect x="94" y="414" width="1412" height="76" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="122" y="461" font-weight="700">C</text><text x="286" y="461">฿9,000</text><text x="475" y="461">93</text><text x="610" y="461">8</text><text x="790" y="461">8.6%</text><text x="900" y="461">฿1,125</text><text x="1060" y="461">Retargeting</text><text x="1270" y="451">Code found on public</text><text x="1270" y="475">coupon page</text>
+  </g>
+
+  <rect x="94" y="548" width="690" height="176" rx="7" fill="#f7fafc" stroke="#cbd5df"/>
+  <text x="124" y="590" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2937">Campaign log</text>
+  <text x="124" y="629" font-family="Arial, sans-serif" font-size="17" fill="#344054">12 Sep · SAVE20 code found on a public coupon page.</text>
+  <text x="124" y="663" font-family="Arial, sans-serif" font-size="17" fill="#344054">13 Sep · Traffic-source review for Ad Set C not completed.</text>
+  <text x="124" y="697" font-family="Arial, sans-serif" font-size="17" fill="#344054">Incrementality test: not run.</text>
+
+  <rect x="816" y="548" width="690" height="176" rx="7" fill="#f7fafc" stroke="#cbd5df"/>
+  <text x="846" y="590" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2937">AI recommendation</text>
+  <text x="846" y="633" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#173f5f">Increase Ad Set C budget by 60%</text>
+  <text x="846" y="672" font-family="Arial, sans-serif" font-size="17" fill="#344054">Decision rule: choose the highest conversion rate.</text>
+  <text x="846" y="702" font-family="Arial, sans-serif" font-size="15" fill="#667085">Generated automatically · No analyst approval recorded</text>
+
+  <rect x="94" y="772" width="1412" height="116" rx="7" fill="#fffaf0" stroke="#e6c97a"/>
+  <text x="124" y="812" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#5f4b18">Experiment status</text>
+  <text x="124" y="850" font-family="Arial, sans-serif" font-size="17" fill="#4b5563">No holdout group or lift test is attached to this campaign. Conversion rate shows association, not whether the ads caused additional purchases.</text>
+  <text x="94" y="925" font-family="Arial, sans-serif" font-size="14" fill="#667085">Internal analytics export · Campaign ID TH-WKND-0926</text>
+</svg>

@@ -1,5 +1,29 @@
 # Latest Changes
 
+## Question inventory feedback refresh
+
+- Saving question-level feedback now clears every field in the review form immediately, ready for a new review.
+- Only submitted feedback history is synchronized to the repository. Unfinished browser drafts are no longer shared or restored for another reviewer.
+- Saved history and review counts still refresh immediately after submission.
+
+## Purposeful Partial-Credit Standard
+
+Question Rewrite Rules 2.1 clarifies that mutually exclusive answers apply to single-best-answer items, while complex questions may use multi-select, ranking, multi-part, written-response, or intentionally progressive options. Partial credit remains encouraged for proficient and advanced evidence when it measures explicit reasoning components, completeness, prioritization, diagnosis, or action quality. Every rubric must define the purpose, criteria, weights, contradiction handling, blank handling, and user-facing explanation; arbitrary points assigned to merely plausible distractors remain prohibited.
+
+## AI Necessity and Evidence-Consistency Rules
+
+Question Rewrite Rules 2.0 now requires an AI necessity test, observable AI-system behavior or controls, mutually exclusive single-best-answer choices, rubric-based rather than improvised partial credit, independent numerical verification, operationally feasible actions, and a clear distinction between bounded testing and wider scaling. Artifact Standard 1.1 applies the same controls to evidence design, including decision-relevant denominators and derived metrics.
+
+## Bilingual Marketing Question and Artifact Candidate
+
+Added comparison candidate `2026-09-23.2` for live question `FUNC-MKT-D3-001` without replacing the scored item. The candidate now tests whether a user can identify and repair an incomplete AI decision rule rather than merely exercising marketing judgment. Its English and Thai dashboards show conversion rate, cost per conversion, sample size, tracking anomalies, the AI rule, and missing controlled-test evidence. They use Thai baht, remain readable when fitted to the window, and remove the old answer-revealing “Suspicious point” and “Better question” panels.
+
+## D2 Prompt Design Thai Translation Repair
+
+Repaired the shared Thai translation patterns used by all eight core/general applied Prompt design drafts. Scenarios, question prompts, every answer choice, and explanations now translate completely while retaining only intentional technical terms such as `AI` and `Prompt`. The translation standard now explicitly rejects partially translated or corrupted Thai items as incomplete rather than treating individual translated fragments as sufficient.
+
+The full inventory QA scan still identifies incomplete machine-assisted Thai text in specialized draft families. Those drafts remain review-only and are not production-ready Thai content until they pass whole-item localization QA and human review.
+
 ## Question Inventory Review Filters
 
 Question Inventory now provides independent filters for number of saved reviews, latest 1–5 star question rating, and latest decision status. Reviewers can combine filters, such as `3 or more reviews` + `1–2 stars` + `Revise`, and the visible count updates immediately when feedback is saved. The MVP applies these filters to questions loaded on the current page because review history is stored in the local browser; production should move review summaries to the database for inventory-wide server filtering.

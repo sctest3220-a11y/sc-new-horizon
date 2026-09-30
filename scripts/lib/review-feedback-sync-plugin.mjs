@@ -50,8 +50,8 @@ function newestFirst(left, right) {
   return String(right.savedAt ?? right.id ?? '').localeCompare(String(left.savedAt ?? left.id ?? ''));
 }
 
-// Union of saved entries by id; the browser's current draft wins. Nothing that
-// was already committed is ever dropped, even if the browser storage was cleared.
+// Union submitted entries by id. Draft form values are browser-local and are
+// never written to the shared reviewer export.
 function mergeQuestion(existing, incoming) {
   const byId = new Map();
   for (const entry of [...(incoming?.entries ?? []), ...(existing?.entries ?? [])]) {
@@ -59,7 +59,6 @@ function mergeQuestion(existing, incoming) {
   }
   const updatedAt = [incoming?.updatedAt, existing?.updatedAt].filter(Boolean).sort().pop() ?? null;
   return {
-    draft: incoming?.draft ?? existing?.draft ?? null,
     entries: [...byId.values()].sort(newestFirst),
     updatedAt,
   };

@@ -31,7 +31,15 @@ function readLocal() {
     const key = window.localStorage.key(index);
     if (!key?.startsWith(storagePrefix)) continue;
     const parsed = safeParse(window.localStorage.getItem(key));
-    if (parsed) questions[key.slice(storagePrefix.length)] = parsed;
+    if (parsed) {
+      // Drafts belong to the current browser session. Only submitted entries
+      // are shared through the repository, otherwise one reviewer can see
+      // another reviewer's unfinished or already-submitted form values.
+      questions[key.slice(storagePrefix.length)] = {
+        entries: parsed.entries ?? [],
+        updatedAt: parsed.updatedAt,
+      };
+    }
   }
   return questions;
 }
@@ -40,8 +48,8 @@ function newestFirst(left: SavedEntry, right: SavedEntry) {
   return String(right.savedAt ?? right.id ?? '').localeCompare(String(left.savedAt ?? left.id ?? ''));
 }
 
-// Union of entries by id. The local draft is kept if there is one, because the
-// reviewer may be mid-edit; otherwise the committed draft is restored.
+// Union saved entries by id. A remote draft is deliberately never restored:
+// drafts are local working state, while saved entries are shared review data.
 function mergeIntoLocal(remoteQuestions: Record<string, StoredQuestion>) {
   let changed = false;
   for (const [id, remote] of Object.entries(remoteQuestions)) {
@@ -53,7 +61,7 @@ function mergeIntoLocal(remoteQuestions: Record<string, StoredQuestion>) {
       if (entry?.id && !byId.has(entry.id)) byId.set(entry.id, entry);
     }
     const next: StoredQuestion = {
-      draft: local?.draft ?? remote.draft ?? undefined,
+      draft: local?.draft,
       entries: [...byId.values()].sort(newestFirst),
       updatedAt: [local?.updatedAt, remote.updatedAt].filter(Boolean).sort().pop() ?? undefined,
     };
