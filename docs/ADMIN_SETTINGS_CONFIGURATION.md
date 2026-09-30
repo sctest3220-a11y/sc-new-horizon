@@ -55,6 +55,25 @@ Admin Settings should contain these areas:
 9. Feature Flags and Experiments
 10. Configuration Versions and Audit Log
 
+## Pilot Operations Workspace
+
+The current MVP prototype includes a focused Pilot Operations workspace at `/admin/pilot-operations`. It is linked from the main Admin dashboard and separates day-to-day pilot control from the broader analytics console.
+
+The browser-local prototype supports:
+
+- pilot identity, owner, cohort, dates, access code, status, and default language
+- mandatory and maximum question counts
+- adaptive continuation, answer reveal, question feedback, and report-survey switches
+- tester participation, progress, score, language, persona, and last-activity preview
+- explicit content, translation, artifact, scoring, telemetry, and support readiness gates
+- a grouped feedback/telemetry issue queue with human-controlled investigation status
+- CSV exports for pilot configuration, tester status, and issue triage
+- local automatic persistence with a visible warning that it is not a shared backend
+
+The prototype deliberately prevents `Ready` and `Running` status while a required readiness gate remains open. This is a user-interface guard, not a production security control.
+
+Before MVP go-live, replace browser-local state and demonstration tester records with authenticated, tenant-scoped server records. Every launch, gate decision, configuration change, export, and content version must record actor, timestamp, reason, prior value, new value, and relevant evidence. Invitation delivery, consent records, production publishing, role permissions, audit history, and cross-user analytics are not provided by the browser-local prototype.
+
 ## Overview
 
 The overview should show:
@@ -310,6 +329,8 @@ Scored questions, answer keys, rubrics, scoring parameters, artifacts, profiles,
 
 Admins must be able to change providers and models without editing application code.
 
+Translation is a separately configurable workload. Use the routing, glossary, cache, human-review, cost, telemetry, and provider-fallback requirements in [Translation Provider Strategy](TRANSLATION_PROVIDER_STRATEGY.md); do not treat browser page translation as a production provider.
+
 Provider configuration should support:
 
 - OpenAI, Anthropic, Google, Azure OpenAI, AWS Bedrock, local models, and custom OpenAI-compatible endpoints
@@ -325,6 +346,8 @@ Provider configuration should support:
 API keys must be encrypted server-side and never returned to the browser, written to logs, stored in localStorage, or committed to Git. Admin screens may show only masked secret identifiers.
 
 ### Model Routing
+
+For MVP go-live, routing is deterministic and configuration-driven. A policy service evaluates workload, language, sensitivity, provider health, quota, region/data policy, budget, cache/version state, confidence, and human-review requirements, then returns a logged provider/model/fallback decision with reason codes. Do not use an LLM to choose another LLM until measured production evidence demonstrates that it improves routing quality enough to justify added nondeterminism and cost. Translation-specific routing is defined in [Translation Provider Strategy](TRANSLATION_PROVIDER_STRATEGY.md).
 
 Each workload must have an independently configurable primary model and optional approved fallback:
 

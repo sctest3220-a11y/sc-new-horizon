@@ -2,6 +2,8 @@
 
 This guide is for collaborators who want to review the New Horizon question inventory on their own computer. The inventory reviewer is part of the main repository; it is not a separate repository or package.
 
+For the full operating sequence from internal rewriting through central feedback collection and Cloudflare hosting, see [Question Inventory: Internal Review to Hosted Feedback Pilot](QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md).
+
 The review page shows both banks:
 
 - 3,328 draft review questions from `exports/review-inventory/questions.json`

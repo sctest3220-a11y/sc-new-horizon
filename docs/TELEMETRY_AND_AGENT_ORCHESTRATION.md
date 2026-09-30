@@ -242,6 +242,8 @@ Finds durable concepts, capability shifts, model-evaluation changes, policy chan
 
 Creates short-lived AI Watch candidates from current news, model releases, governance changes, security incidents, and workplace AI trends. News decays unless promoted into durable concepts.
 
+The current MVP feed is manually curated in application code; the Admin agent workflow is simulated and does not crawl the web. Until a server-side discovery worker and durable review queue are deployed, AI Watch freshness depends on a human source scan. The production worker should target daily approved-source discovery, alert after 48 hours without a successful scan, record per-source failures, and route every candidate through human editorial review.
+
 ### Training and Course Scout
 
 Finds courses, tutorials, tools, certificates, and practice resources. Recommendations require review for recency, cost, bias, accessibility, and fit to observed gaps.
