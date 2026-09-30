@@ -308,7 +308,52 @@ The artifact was edited with built-in image generation and visually checked for 
 
 Part 1 tests the AI mechanism. Part 2 retains the original professional review of an AI-generated claim and is not independent evidence of generative-AI mechanism knowledge. Preserve that limitation rather than claiming benchmark calibration or changing the user's selected format.
 
+## Thai marketing wording - user-passed candidate
+
+Question: `NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02`
+
+The user marked the complete revised Thai item "pass" and requested an update to the Thai rewrite rules. That initial request authorized a local rule update. The user subsequently said "push" on 29 September 2026, authorizing publication of the accumulated Thai rule updates and this checkpoint to `kj-dee-branch`. Preserve this wording as the agreed Thai review baseline. It does not change the application translation status or authorize question-bank implementation.
+
+The initial wording referred to "การประหยัดเวลาในร่างโพสต์". The user clarified that the team must check whether users save time after using the shopping-list app, based on supporting artifact evidence. The correction makes the user outcome, draft claim and evidence source explicit. It does not turn the before/during pilot comparison into proof of causation or a result for all customers.
+
+### Accepted complete Thai wording
+
+> ทีมการตลาดใช้ AI ร่างโพสต์สาธารณะบนโซเชียลมีเดีย เพื่อชวนให้คนลองใช้แอปทำรายการซื้อของ โพสต์ต้องมีข้อความและภาพที่แสดงการใช้แอป
+>
+> AI ค้นข้อมูลแคมเปญที่ผ่านการอนุมัติและข้อมูลสิทธิ์ใช้ภาพ จากนั้นเพิ่มข้อความที่เกี่ยวข้องลงในคำขอ แล้วสร้างร่างโพสต์
+>
+> ก่อนเผยแพร่ ทีมต้องตรวจสอบจากข้อมูลในภาพประกอบว่า หลังใช้แอป ผู้ใช้ประหยัดเวลาเตรียมรายการซื้อของได้ตามที่ร่างโพสต์กล่าวอ้างหรือไม่ และภาพได้รับอนุญาตให้ใช้ในแคมเปญหรือไม่
+>
+> พิจารณาผลการทดลอง ข้อมูลสิทธิ์ใช้ภาพ และร่างโพสต์จาก AI ด้านล่าง
+
+Artifact: local `outputs/artifact-drafts/NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02/campaign-review-th-v1.png`, the Thai equivalent of agreed English v3. It retains the 20 selected users, average preparation times of 20/15 minutes, the unqualified 25% draft caption, public-use permission for IMG-026 and fictional-data footer. The repeated process panel remains absent.
+
+**ตอบทั้งสองข้อ**
+
+**1. AI ใช้กระบวนการใดในการเตรียมร่างโพสต์นี้?**
+
+A. แทนความหมายของข้อความด้วยตัวเลข เพื่อค้นหาเนื้อหาที่เกี่ยวข้อง
+
+B. ดึงข้อมูลจากแหล่งที่เกี่ยวข้องมาใช้ก่อนสร้างคำตอบ
+
+**2. ทีมควรปรับข้อความที่กล่าวอ้างว่าแอปช่วยประหยัดเวลาอย่างไรก่อนเผยแพร่โพสต์?**
+
+A. ระบุว่าผลนี้มาจากการทดลองกับผู้ใช้กลุ่มเล็กที่คัดเลือกมา โดยไม่รับรองว่าทุกคนจะได้ผลเหมือนกัน
+
+B. นำเสนอผลจากการทดลองกับผู้ใช้กลุ่มเล็กว่าเป็นผลที่ลูกค้าทุกคนคาดหวังได้เมื่อใช้แอป
+
+**เฉลยและคำอธิบาย**
+
+- **ข้อ 1: B** — AI ค้นข้อมูลจากแหล่งที่เกี่ยวข้อง แล้วเพิ่มข้อความที่พบลงในคำขอก่อนสร้างร่างโพสต์ จึงเป็นการดึงข้อมูลมาใช้ประกอบการสร้างคำตอบ
+- **ข้อ 2: A** — ผลการทดลองกับผู้ใช้ที่คัดเลือกมา **20 คน** แสดงว่าเวลาเฉลี่ยในการเตรียมรายการซื้อของลดจาก **20 นาที ก่อนใช้แอป เป็น 15 นาที เมื่อใช้แอปในการทดลอง** คิดเป็นการลดลง **25%** แต่ข้อมูลนี้ยังไม่รองรับว่าลูกค้าทุกคนจะได้ผลเหมือนกัน ทีมจึงควรระบุกลุ่มผู้ใช้และงานที่ทดลองให้ชัดเจนในโพสต์
+
+*ข้อมูลแคมเปญและผลการทดลองเป็นตัวอย่างสมมติสำหรับแบบประเมิน โดยคงรูปแบบ ตัวเลือก และเฉลยเดิม*
+
+The user accepted this complete wording, including the revised second-question prompt. The original multipart template, choice order and keys 1B/2A are retained. No per-part scoring was invented. App integration, mobile/expanded presentation, keyboard accessibility and independent release validation remain unperformed. Do not reinterpret the user's wording approval as a completed application release check.
+
 ## Challenge checklist to test and refine
+
+- In Thai, is the measured outcome attached to the user action rather than ambiguously to the draft text? Is the claim still something to verify, with its evidence source named?
 
 - Does a broad term such as "performance" name the actual measured task outcome, with an explicit link to the draft claim?
 - Does a process panel supply unique evidence, or merely repeat the scenario? If removed, are all necessary facts and question references still present?
