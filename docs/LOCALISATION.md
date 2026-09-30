@@ -1,10 +1,25 @@
 # Question Bank Localisation (Thai)
 
-Last status review: **30 September 2026**, using the local `kj-dee-branch` checkout. GitHub could not be reached during this review, so these counts describe the checked-in exports available locally, not a verified latest remote state.
+Last status review: **30 September 2026**, using the local `kj-dee-branch` checkout. The remote branch was fetched before publishing the English inventory wording update.
 
 Artifact translation, equivalence, readability, and release requirements are defined in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Question wording and cultural-context rules are defined in [Question Rewrite Rules and Versioning](QUESTION_REWRITE_RULES.md).
 
 ## Latest Thai translation status
+
+The English user-facing drafts now record wording pass `2026-09-30.1`, applying approved rules v2.1 plus provisional v2.2-draft. Operational evidence appears beside its action question instead of a generic “extra detail” reference. Multipart instructions specify one answer per question; existing multi-select drafts state their current selection count without inventing another correct answer. Six complete text checkpoints from the review log are applied, with matching Thai. The original audit wording, answer keys, formats and scoring remain preserved.
+
+This is a draft wording update for the localisation audit, not certification that all content problems are resolved. [English QA](../exports/review-inventory/english-rewrite-qa.json) lists ambiguous choices and missing scoring definitions. The two agreed marketing image candidates still require bilingual artifact integration; their existing inventory evidence is retained. [English rewrite history](../exports/review-inventory/english-rewrite-history.json) preserves every previous bilingual draft and leaves preferred versions unselected.
+
+To reapply this version to the existing translated inventory and rebuild localhost assets:
+
+```sh
+node scripts/rewrite-english-review-inventory.mjs
+node scripts/apply-thai-review-translations.mjs
+node scripts/build-review-inventory-assets.mjs
+node --test scripts/test-english-inventory.mjs scripts/test-thai-inventory.mjs scripts/test-review-inventory.mjs
+```
+
+The wording updater is idempotent. Do not regenerate the base inventory as a shortcut: generation replaces review data. New English text requires a complete Thai translation; unknown text still fails the translation command.
 
 | Scope | Count | Translation status and evidence |
 |---|---:|---|

@@ -3,6 +3,8 @@ import {contextTerms,segments,unitKey} from './thai-inventory-text.mjs';
 const dictionary=JSON.parse(fs.readFileSync(new URL('../../inventory/th/sentences.json',import.meta.url),'utf8'));
 const terms=JSON.parse(fs.readFileSync(new URL('../../inventory/th/context-terms.json',import.meta.url),'utf8'));
 const lower=new Map(Object.entries(dictionary).map(([en,th])=>[en.toLowerCase(),th]));
+const reviewedPath=new URL('../../inventory/th/reviewed-rewrites.json',import.meta.url);
+const reviewed=fs.existsSync(reviewedPath)?JSON.parse(fs.readFileSync(reviewedPath,'utf8')):{};
 export function translateUnit(s) {
   if(lower.has(s.toLowerCase()))return lower.get(s.toLowerCase());
   for(const [prefix,th] of [['Here, ','ในกรณีนี้ '],['This choice fits a different evidence pattern: ','ตัวเลือกนี้เหมาะกับหลักฐานคนละรูปแบบ: ']]) {
@@ -20,6 +22,7 @@ const prefixes={
 };
 export function translate(text) {
   if(!text)return '';
+  if(Object.hasOwn(reviewed,text))return reviewed[text];
   return text.split(/\r?\n/).map(line=>segments(line).map(s=>{
     const {key,prefix,slots}=unitKey(s);
     const th=translateUnit(key).replace(/\{\{(\d+)\}\}/g,(_,n)=>{

@@ -9,9 +9,17 @@ const root=new URL('../',import.meta.url);
 for(const [file,count] of [['questions.json',3328],['live-questions.json',634]]) {
   const relative=`exports/review-inventory/${file}`;
   const current=JSON.parse(fs.readFileSync(new URL(relative,root),'utf8'));
-  test(`${file}: English, keys, scores, order and review history unchanged`,()=>{
-    const original=JSON.parse(execFileSync('git',['show',`HEAD:${relative}`],{cwd:fileURLToPath(root),maxBuffer:128*1024*1024,encoding:'utf8'}));
-    assert.deepEqual(englishProjection(current),englishProjection(original));
+  test(`${file}: audit source, keys, scores, order and review history unchanged`,()=>{
+    const original=JSON.parse(execFileSync('git',['show',`0f844b6:${relative}`],{cwd:fileURLToPath(root),maxBuffer:128*1024*1024,encoding:'utf8'}));
+    const auditProjection=bank=>englishProjection({...bank,questions:bank.questions.map(({userFacingDraft,...q})=>q)});
+    assert.deepEqual(auditProjection(current),auditProjection(original));
+    if(file==='questions.json'){
+      const history=JSON.parse(fs.readFileSync(new URL('exports/review-inventory/english-rewrite-history.json',root),'utf8'));
+      const byId=new Map(history.items.map(x=>[x.questionId,x.previousDraft]));
+      for(const q of original.questions)assert.deepEqual(byId.get(q.id),q.userFacingDraft,`${q.id}: original draft archived exactly`);
+      const shape=d=>({interaction:d.interaction,format:d.format,keys:d.correctOptionIds,options:d.options?.map(o=>o.id),parts:d.parts?.map(p=>({id:p.id,keys:p.correctOptionIds,options:p.options.map(o=>o.id)}))});
+      for(const q of current.questions)assert.deepEqual(shape(q.userFacingDraft),shape(byId.get(q.id)),`${q.id}: format, order and keys preserved`);
+    }else assert.deepEqual(englishProjection(current),englishProjection(original));
   });
   test(`${file}: every inventory text field has Thai`,()=>{
     assert.equal(current.questions.length,count);
