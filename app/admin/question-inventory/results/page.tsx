@@ -1,0 +1,12 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+type Dashboard = { configured: boolean; message?: string; summary?: { total: number; completed: number; averageOverall: number | null; latestAt: string | null }; versions?: Array<{ version: string; total: number; completed: number; averageOverall: number | null }> };
+
+export default function ResultsDashboard() {
+  const [data, setData] = useState<Dashboard | null>(null);
+  useEffect(() => { let active = true; const load = () => fetch('/api/results', { cache: 'no-store' }).then((response) => response.json() as Promise<Dashboard>).then((value) => { if (active) setData(value); }).catch(() => { if (active) setData({ configured: false, message: 'Dashboard could not reach results storage.' }); }); load(); const timer = window.setInterval(load, 15000); return () => { active = false; window.clearInterval(timer); }; }, []);
+  return <main className="inventory-page"><header className="inventory-app-header"><Link href="/admin/question-inventory" className="inventory-app-brand"><span>NH</span><strong>Question inventory</strong></Link><nav><Link href="/admin/question-inventory">Inventory</Link><strong>Testing results</strong></nav></header><section className="inventory-hero"><div><p className="eyebrow">Anonymous testing results</p><h1>Testing dashboard</h1><p>Aggregate result events only. No tester names, emails, or profiles are stored. Refreshes every 15 seconds.</p></div></section>{!data || !data.configured ? <section className="inventory-panel"><h2>Results storage is not configured</h2><p>{data?.message ?? 'Loading results…'}</p><p>Configure the Cloudflare D1 <code>RESULTS_DB</code> binding and run <code>app/api/results/schema.sql</code> before collecting results.</p></section> : <><section className="inventory-kpis"><div><span>Result events</span><strong>{data.summary?.total ?? 0}</strong></div><div><span>Completed</span><strong>{data.summary?.completed ?? 0}</strong></div><div><span>Average score</span><strong>{data.summary?.averageOverall ?? '--'}</strong></div><div><span>Latest event</span><strong>{data.summary?.latestAt ?? '--'}</strong></div></section><section className="inventory-panel"><h2>Results by question version</h2><table><thead><tr><th>Version</th><th>Events</th><th>Completed</th><th>Average score</th></tr></thead><tbody>{(data.versions ?? []).map((row) => <tr key={row.version}><td>{row.version}</td><td>{row.total}</td><td>{row.completed}</td><td>{row.averageOverall ?? '--'}</td></tr>)}</tbody></table></section></>}</main>;
+}
