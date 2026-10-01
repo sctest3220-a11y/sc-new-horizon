@@ -1,18 +1,287 @@
 # Rewrite Rule Review Log
 
-Status: Living working draft; publication authorized 29 September 2026
+Status: Living working draft; publication of accumulated updates authorized on 1 October 2026
 Started: 24 September 2026
-Last updated: 29 September 2026
+Last updated: 1 October 2026
 Original review baseline: Question Rewrite Rules v1.8
 Current approved baseline retained at publication: v2.1
 Working refinements: 2.2-draft (previously local 1.9-draft; historical references retain that label)
 Target GitHub branch: `kj-dee-branch`
+
+Latest publication decision: The user explicitly requested summarizing and pushing the accumulated rewrite-rule and English-inventory updates to this branch. This includes the accepted Customer Service wording, earlier inventory refinements, supporting generation files, history and QA reports. Earlier statements that a push was pending are historical. Pending Thai synchronization and unresolved content/scoring issues remain open; publication does not imply scored-release approval. Future changes require a new push request.
 
 ## Review agreement
 
 Continue reviewing the questions selected by the user without a fixed review target or progress tally. Earlier rule updates were pushed as `83100d8` and `66d7013`. The user has clarified the ongoing workflow: save accumulated refinements locally and publish to `kj-dee-branch` only when they explicitly say "push" or otherwise directly request publication. Their current push request authorizes the accumulated updates, not automatic publication of future refinements. Check the IDs below and conversation history for duplicates before rewriting, and reuse the reviewed baseline. Retain question-specific evidence and unresolved issues without treating review as final item approval.
 
 For each item, read both the original audit wording and the user-facing rewrite draft, from localhost when requested and available. Preserve the selected user-facing template, question count, choices, and answer order. Show the complete proposed item with the answer key, explanation, and remaining concerns. Include scoring only if defined for that format; do not carry combined-choice scoring into a two-part template. Preserve original meaning and distinguish wording cleanup from substantive changes. Reuse agreed wording; identify proposed changes explicitly. Update local rule notes as feedback emerges. Do not update question-bank data or localhost question content unless separately requested.
+
+## Inventory-wide local application - 1 October 2026
+
+The user explicitly requested applying the rules across the entire English/Thai review inventory, replacing the initial assumption that only the recent Core Concepts items would be updated. This authorizes local inventory changes, not publication or promotion to the scored assessment bank.
+
+The local pass applies the reviewed Core Concepts wording and conservative bilingual wording changes wherever the source supports them. It updates actor names, distinguishes fixed-rule automation from established AI, preserves conditional triggers and privacy scope, and keeps service-report terminology consistent. Existing selected wording is retained. The original audit records, selected interactions, option order, answer keys and scores remain the comparison baseline.
+
+Artifact briefs now request neutral evidence instead of highlighted errors or invented risks. The self-contained Core Concepts awareness scenarios do not need separate artifacts. Other automatically assigned artifact types remain candidates requiring question-specific review; this pass does not claim to have generated or approved images.
+
+`exports/review-inventory/wording-refinement-history.json` preserves the previous drafts and artifact plans. `wording-refinement-qa.json` records per-item changes and unresolved issues, including format-label conflicts, undefined choice references and incomplete scoring specifications. Existing live-bank review copies are assessed without replacing production wording or assets. Thai remains a draft pending linguistic review. Earlier checkpoint notes below describe their status at the time; the local inventory changes are now authorized by this later request. No GitHub push has been requested for this pass.
+
+## Customer service Prompt Design AWARENESS-01 - accepted English
+
+ID: `NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-01`. The user accepted the complete revised item and then explicitly requested updating the local rewrite rule and English inventory. The selected two-part template, two choices per part, option order and B/B key remain unchanged. The general compensation risk is omitted; the tested refund-approval requirement is retained. No artifact is needed because the text supplies all necessary evidence. Per-part scoring remains undefined; wording acceptance does not approve a scoring model.
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> The prompt asks the AI to follow a specific record format, but it does not provide the field names or an example.
+>
+> Refunds and exceptions require approval from the person authorized to approve them.
+
+Answer both questions. Choose one answer for each.
+
+1. Which missing prompt element does this example show?
+   - A. A clear description of the task and expected result.
+   - B. A clear structure for the AI’s response.
+2. The AI recommends a refund over the frontline team’s approval limit. What should the team do next?
+   - A. Issue the refund after the AI repeats its recommendation.
+   - B. Send the exception to the person authorized to approve the refund.
+
+Explanation: Asking for a specific format does not tell the AI what that format looks like. The prompt should provide the field names or an example. The refund also requires approval from someone with the necessary authority; repeating an AI recommendation does not give the frontline team permission to issue it.
+
+English wording is stored in `inventory/english-wording-checkpoints.mjs` for reproducible application. Original audit wording and prior revisions are preserved. Thai remains at its previous revision pending synchronization. These changes are local; no push was requested. Prompt Design AWARENESS-02 is the next chat proposal and is not approved for inventory replacement by this request.
+
+Recent conversation evidence also supports the action-first, old-version wording for `NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-03`. The user accepted the full rewrite of `NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-04`, with its unspecified estimate distractor still an open content issue. These are prior individual reviews and must be flagged as duplicates if requested again.
+
+## Customer service Prompt Design AWARENESS-02 - accepted conversation wording
+
+ID: `NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-02`. The user marked the complete revised item "pass." Retain the two-part, two-choice format and A/B key. The accepted second paragraph is:
+
+> The prompt provides the task instructions and response format, but it does not include the background information needed to generate an answer.
+
+The first paragraph states that the team uses AI to draft a case resolution response that must follow approved service policies and reflect the customer's case history. The first question contrasts the evidence and case details needed for the response (A) with the rule or limit applying to the decision (B). The second question states that the system timed out during an earlier refund attempt, but the refund may already be complete. Its choices are issuing another refund because the customer still reports a delay (A), or checking the payment record to confirm the earlier refund's status before another refund (B).
+
+Accepted explanation: Task instructions and a response format do not replace the background information the AI needs to answer. A timeout does not prove that a refund failed. The team should confirm the earlier refund's status before issuing another, rather than treating the customer's reported delay as proof that no refund occurred. No artifact is needed. The generic refund-approval sentence is omitted because these parts test missing facts and payment-status verification. This is an accepted conversation checkpoint, not an implemented inventory update. The earlier note calling it the next proposal records its status before this acceptance.
+
+## Customer service Prompt Design AWARENESS-03 - accepted conversation wording
+
+ID: `NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-03`. The user marked the complete proposed rewrite "pass" and requested updating the rewrite rule locally. Preserve this wording on future requests and flag the ID as previously reviewed. The selected template remains one scenario, two questions and two choices each, with the original B/B part keys.
+
+> The customer service team wants to use AI to draft a case resolution response.
+>
+> The team provides approved service policies and the customer's case history, but the prompt only says, "Help with this." It does not specify what the AI should generate.
+
+Answer both questions. Choose one answer for each.
+
+1. Which missing prompt element is most directly shown here?
+   - A. The rule or limit that applies to the decision.
+   - B. A clear description of the task and expected result.
+2. The AI's draft says the case is resolved, but the case history shows it is still pending. What should the team do next?
+   - A. State that the case is resolved to reassure the customer.
+   - B. State that the case is still pending and explain the actual next step.
+
+Explanation: Providing policies and case history gives the AI source information, but "Help with this" does not explain what to do with it or what to generate. The team should specify the task and expected result. The customer response should also reflect the recorded case status and actual next step.
+
+No artifact is needed because the prompt quote and case-status information provide the required evidence. The unrelated refund-approval sentence and general compensation risk are omitted. Choice 1A remains broad: the quoted prompt does not explicitly state constraints either. B is the intended best answer because the described gap concerns the task and expected output. Preserve this challenge despite acceptance; do not invent additional prompt instructions to make A impossible. Per-part scoring remains undefined.
+
+This request updates the local rules and review log only. The accepted AWARENESS-02 and AWARENESS-03 text is not applied to the English or Thai inventory, localhost content, or production bank. No GitHub push is authorized by this request.
+
+## Customer service review recap and local implementation - 1 October 2026
+
+The user requested a recap grouped by the D1–D6 code, lessons from the feedback, and local updates to the rewrite rules and English inventory. This authorizes applying the latest reviewed Customer Service wording below, including the accepted Source Verification AWARENESS-03 revision. It supersedes earlier notes that these particular chat candidates were not yet applied. Publishing remains pending an explicit “push.” Original audit records, selected formats, option order, keys and scores are preserved. Thai drafts retain their previous revisions and are marked pending synchronization. No artifact is needed for these items; their text supplies the required evidence.
+
+| Domain and competency | Reviewed Customer Service IDs (suffix after NH-FUNCTION-CUSTOMERSERVICE-) | Focus |
+| --- | --- | --- |
+| D1 — Capability limits | D1-CAPABILITY-LIMITS-AWARENESS-03; D1-CAPABILITY-LIMITS-AWARENESS-04 | Quoting an outdated procedure accurately; describing a file unavailable to the AI; truthful case status and identity verification. |
+| D2 — Prompt design | D2-PROMPT-DESIGN-AWARENESS-01; D2-PROMPT-DESIGN-AWARENESS-02; D2-PROMPT-DESIGN-AWARENESS-03 | Missing response structure; missing background information; missing task and expected output. |
+| D3 — Source verification | D3-SOURCE-VERIFICATION-AWARENESS-01; D3-SOURCE-VERIFICATION-AWARENESS-02; D3-SOURCE-VERIFICATION-AWARENESS-03 | Missing source/author; a working link whose text does not support the statement; articles repeating one original source. |
+| D4 | No new individual review in this Customer Service sequence. | — |
+| D5 | No new individual review in this Customer Service sequence. | — |
+| D6 | No new individual review in this Customer Service sequence. | — |
+
+Earlier same-day D1 Core Concepts AWARENESS-02, -03 and -04 wording refinements are recorded in their existing section below and were already applied by the earlier inventory update. Their individual approval distinctions remain as recorded there; this recap does not relabel every earlier proposal as a passed item.
+
+Lessons: make the AI action explicit; use natural ordinary words; distinguish the team's goal from actual prompt instructions; show what the prompt provides and omits; use one term for the same statement; preserve uncertainty and evidence boundaries; align all choices after scenario edits without creating clues; retain reviewed phrasing and unresolved content issues. Do not report question-count milestones or interpret publication as assessment validation.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-03
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> The AI uses an old version of the procedure to draft the customer response. It quotes that version correctly, even though a new version is already in effect.
+
+Answer both questions. Choose one answer for each.
+
+1. What limitation does the AI’s use of this procedure show?
+   - A. The AI may use information that is out of date.
+   - B. The AI cannot access the evidence it refers to.
+2. The AI’s draft says the case is resolved, but the case history shows it is still pending. What should the team do next?
+   - A. State that the case is still pending and explain the actual next step.
+   - B. State that the case is resolved to reassure the customer.
+
+Keys: 1A, 2A.
+
+Explanation: The AI quotes the old procedure correctly, but that version is no longer current. This shows the risk of using outdated information, rather than an inability to access evidence. The customer response should state the recorded case status and explain the actual next step.
+
+Artifact: not required.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-04
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> In its draft, the AI describes the contents of a file that was never attached or made available to it.
+
+Answer both questions. Choose one answer for each.
+
+1. What limitation does the AI’s response show?
+   - A. The AI cannot access the evidence it refers to.
+   - B. The available information does not support a consistent estimate.
+2. The customer says the identity details in the case history are incorrect. What should the team do next?
+   - A. Use the existing identity details because they are already in the system.
+   - B. Follow the established process for verifying and correcting identity details.
+
+Keys: 1A, 2B.
+
+Explanation: The AI cannot verify a file’s contents without access to it. Describing those contents does not establish that the AI has seen the file. The team should also follow the established verification and correction process when the customer disputes their identity details; information is not necessarily correct simply because it is stored in the system.
+
+Artifact: not required.
+
+Remaining review issues: Part 1B does not specify what is estimated, and the scenario contains no estimate. Preserve the accepted wording pending a separate distractor revision.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-01
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> The prompt asks the AI to follow a specific record format, but it does not provide the field names or an example.
+>
+> Refunds and exceptions require approval from the person authorized to approve them.
+
+Answer both questions. Choose one answer for each.
+
+1. Which missing prompt element does this example show?
+   - A. A clear description of the task and expected result.
+   - B. A clear structure for the AI’s response.
+2. The AI recommends a refund over the frontline team’s approval limit. What should the team do next?
+   - A. Issue the refund after the AI repeats its recommendation.
+   - B. Send the exception to the person authorized to approve the refund.
+
+Keys: 1B, 2B.
+
+Explanation: Asking for a specific format does not tell the AI what that format looks like. The prompt should provide the field names or an example. The refund also requires approval from someone with the necessary authority; repeating an AI recommendation does not give the frontline team permission to issue it.
+
+Artifact: not required.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-02
+
+> The customer service team uses AI to draft a case resolution response. The response must follow approved service policies and reflect the customer’s case history.
+>
+> The prompt provides the task instructions and response format, but it does not include the background information needed to generate an answer.
+
+Answer both questions. Choose one answer for each.
+
+1. Which missing prompt element does this example show?
+   - A. The evidence and case details needed for the response.
+   - B. The rule or limit that applies to the decision.
+2. The system timed out during an earlier refund attempt, but the refund may already be complete. What should the team do next?
+   - A. Issue another refund because the customer still reports a delay.
+   - B. Check the payment record to confirm the earlier refund’s status before issuing another refund.
+
+Keys: 1A, 2B.
+
+Explanation: Task instructions and a response format do not replace the background information the AI needs to answer. A timeout does not prove that a refund failed. The team should confirm the earlier refund’s status before issuing another, rather than treating the customer’s reported delay as proof that no refund occurred.
+
+Artifact: not required.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-03
+
+> The customer service team wants to use AI to draft a case resolution response.
+>
+> The team provides approved service policies and the customer’s case history, but the prompt only says, “Help with this.” It does not specify what the AI should generate.
+
+Answer both questions. Choose one answer for each.
+
+1. Which missing prompt element is most directly shown here?
+   - A. The rule or limit that applies to the decision.
+   - B. A clear description of the task and expected result.
+2. The AI’s draft says the case is resolved, but the case history shows it is still pending. What should the team do next?
+   - A. State that the case is resolved to reassure the customer.
+   - B. State that the case is still pending and explain the actual next step.
+
+Keys: 1B, 2B.
+
+Explanation: Providing policies and case history gives the AI source information, but “Help with this” does not explain what to do with it or what to generate. The team should specify the task and expected result. The customer response should also reflect the recorded case status and actual next step.
+
+Artifact: not required.
+
+Remaining review issues: Part 1A is broad: the quoted prompt also does not explicitly state constraints. B is the intended most direct answer; wording acceptance does not resolve this overlap.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-01
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> The AI’s draft response includes an important statement, but it does not specify the source or identify the author.
+>
+> Refunds and exceptions require approval from the person authorized to approve them.
+
+Answer both questions. Choose one answer for each.
+
+1. What evidence issue does the AI’s draft show?
+   - A. The cited source does not support the statement.
+   - B. The statement has no supporting evidence that can be traced to a source.
+2. The AI recommends a refund over the frontline team’s approval limit. What should the team do next?
+   - A. Send the exception to the person authorized to approve the refund.
+   - B. Issue the refund after the AI repeats its recommendation.
+
+Keys: 1B, 2A.
+
+Explanation: The draft provides no source or author that the team can check. This differs from citing a source that does not support the statement, and it does not prove the statement is false. The refund requires approval from someone with the necessary authority; repeating an AI recommendation does not give the frontline team permission to issue it.
+
+Artifact: not required.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-02
+
+> The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.
+>
+> The AI’s draft provides a source link for a statement. The link opens successfully, but the text on the linked page is about something else.
+
+Answer both questions. Choose one answer for each.
+
+1. What evidence issue does the AI’s draft show?
+   - A. The source does not provide evidence that supports the statement.
+   - B. The sources do not provide independent evidence that confirms the statement.
+2. The system timed out during an earlier refund attempt, but the refund may already be complete. What should the team do next?
+   - A. Check the payment record to confirm the earlier refund’s status before issuing another refund.
+   - B. Issue another refund because the customer still reports a delay.
+
+Keys: 1A, 2A.
+
+Explanation: A working link only shows that the source can be opened. The team must also check whether its content supports the statement in the AI’s draft. A timeout does not prove that a refund failed, so the team should confirm the earlier refund’s status before issuing another.
+
+Artifact: not required.
+
+Remaining review issues: Part 1B refers to multiple sources, while the scenario describes one citation. Its original meaning is retained, but it remains a weak distractor.
+
+### NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-03
+
+> The customer service team uses AI to draft a case resolution response. The response must follow approved service policies and reflect the customer’s case history.
+>
+> The AI’s draft uses three articles that repeat information from the same press release, with no other supporting evidence.
+
+Answer both questions. Choose one answer for each.
+
+1. What evidence issue does the AI’s draft show?
+   - A. The sources do not provide evidence that supports the statement.
+   - B. The sources do not provide independent evidence that confirms the statement.
+2. The AI’s draft says the case is resolved, but the case history shows it is still pending. What should the team do next?
+   - A. State that the case is resolved to reassure the customer.
+   - B. State that the case is still pending and explain the actual next step.
+
+Keys: 1B, 2B.
+
+Explanation: The three articles rely on one original source. Repeating the same press release does not provide separate confirmation of the statement. This does not necessarily mean the statement is false or unsupported by the cited material. The customer response should also reflect the recorded case status and actual next step.
+
+Artifact: not required.
+
+Remaining review issues: The accepted scenario does not specify the statement referenced by the choices. Preserve the accepted text; adding a concrete statement would need separate content review.
+
+General approval requirements are retained where refund authority is tested and omitted from unrelated items. Generic compensation risks are omitted where they do not help distinguish the choices. Per-part scoring remains undefined in these drafts. Wording acceptance is not a claim of benchmark readiness.
 
 ## Evidence from reviewed questions
 
@@ -351,7 +620,81 @@ B. นำเสนอผลจากการทดลองกับผู้�
 
 The user accepted this complete wording, including the revised second-question prompt. The original multipart template, choice order and keys 1B/2A are retained. No per-part scoring was invented. App integration, mobile/expanded presentation, keyboard accessibility and independent release validation remain unperformed. Do not reinterpret the user's wording approval as a completed application release check.
 
+## Core concepts wording checkpoints - 1 October 2026
+
+The latest source check used GitHub kj-dee-branch at a318bca and both original audit and userFacingDraft JSON from localhost. These checkpoints record the review conversation; they do not update question-bank data. The user requested a local summary of rule updates, not publication. Distinguish user-directed wording changes from assistant proposals that have not received a complete-item pass.
+
+### AWARENESS-02 - explicit AI reference
+
+Question: `NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-02`
+
+Latest scenario after the user's request for a clearer subject:
+
+> A community learning group uses an AI tool to prepare a workshop guide for people with no AI background.
+>
+> The AI tool returns passages copied word for word from reviewed learning materials. Each passage includes an ID identifying the source it came from.
+
+Which description best matches what the tool is doing?
+
+A. Coordinating a language model, search, access permissions and review tools.
+
+B. Following a fixed rule to select approved text.
+
+C. Generating an answer without retrieving supporting sources.
+
+D. Retrieving exact passages from reviewed sources.
+
+Key D. Existing passages with source IDs support retrieval as the observed behavior. The user proposed "The AI tool" or "The AI"; the assistant recommended "The AI tool" for consistency. No separate full-item pass was recorded. Do not apply the later LLM substitution in AWARENESS-04 retroactively without identifying it as a new change.
+
+No artifact is needed because the prose supplies the evidence. The source's matching format label conflicts with its single A-D interaction; the latter was preserved. The evidence does not prove that rules or other components are absent, so this identifies observed behavior rather than a unique architecture. The generic risk of misleading learners was not repeated because it does not distinguish the choices.
+
+### AWARENESS-03 - concise rule-based action
+
+Question: `NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-03`
+
+Latest combined scenario proposed after the user's comparison, not separately confirmed as a complete-item pass:
+
+> A small business uses an automated tool to prepare a service report from approved service records. The report must leave out details that identify customers.
+>
+> When preset conditions are met, the tool automatically inserts pre-approved text into the report.
+
+Retain the question about how the tool selects text for the report. Existing option meanings and order remain: A fixed-rule selection; B generation without retrieving supporting sources; C coordination of model/search/permissions/review; D exact-passage retrieval. Original key A. The preset condition is the decision-relevant evidence; copying or insertion alone would not distinguish A from D. No artifact needed.
+
+The original audit describes a system following a fixed rule; the draft calls it AI. "Automated tool" avoids asserting AI involvement from rule-based behavior alone. This does not prove no AI exists elsewhere in the workflow. The privacy requirement is not established as a prompt instruction. Use report consistently, and do not broaden customer identifiers into all personal customer details. User suggested the shorter insertion wording; the assistant retained the trigger and proposed the combined scenario above. The audit's generic risk of creating a service commitment is omitted from the candidate, not converted into an established incident.
+
+### AWARENESS-04 - requested LLM terminology
+
+Question: `NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-04`
+
+The user explicitly requested replacing "language model" with "large language model (LLM)" and keeping the rest unchanged. Latest complete version:
+
+> An internal support team uses an AI tool to prepare support responses.
+>
+> The AI tool searches up-to-date support articles and uses a large language model (LLM) to draft a response. It also manages access permissions and provides a screen for staff to review the draft. Staff must approve the response before it is sent.
+
+Which description best matches how the AI tool works as a whole?
+
+A. Following a fixed rule to select approved text.
+
+B. Coordinating a large language model (LLM), search, access permissions and review tools.
+
+C. Generating an answer without retrieving supporting sources.
+
+D. Retrieving exact passages from approved sources.
+
+Key B. The full application combines search, drafting, access management and staff review; retrieval alone describes only part. Record LLM as user-directed terminology, not a fact about model size explicitly specified in the audit. Staff approval remains a requirement; no automatic enforcement or expanded authority is invented. The generic risk of repeated support work is not needed to distinguish the choices and was omitted from the candidate.
+
+No artifact needed. The inventory's proposed risky support thread would add an unrelated ambiguity. Its "requires artifact" tag was reassessed against artifact standard v1.3, without editing inventory metadata. As with AWARENESS-02, preserve the actual single A-D choice despite the matching label. No scored-release approval or template change is implied by the terminology request.
+
 ## Challenge checklist to test and refine
+
+- Does the actor label clarify established AI behavior without assuming that all automation is AI?
+- Is an output requirement being incorrectly presented as an instruction already supplied in a prompt?
+- Did a shorter sentence retain the condition or trigger needed to identify the mechanism?
+- Are document names consistent without broadening the privacy restriction or changing the output's purpose?
+- Is LLM terminology appropriate or explicitly requested, and was a narrow wording request kept narrow?
+- Does the prompt ask about one observed step or the full application? Does the explanation allow mechanisms to coexist?
+- Does an artifact or format label conflict with the actual evidence need or selected interaction? Has the discrepancy been flagged without a silent format change?
 
 - In Thai, is the measured outcome attached to the user action rather than ambiguously to the draft text? Is the claim still something to verify, with its evidence source named?
 

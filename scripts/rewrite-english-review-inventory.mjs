@@ -19,7 +19,7 @@ const reports=[];
 const structure=d=>JSON.stringify({interaction:d.interaction,format:d.format,options:d.options?.map(o=>o.id),keys:d.correctOptionIds,parts:d.parts?.map(p=>({id:p.id,options:p.options.map(o=>o.id),keys:p.correctOptionIds}))});
 
 for(const q of bank.questions){
-  if(q.userFacingDraft?.rewriteVersion===version)continue;
+  if(q.userFacingDraft?.rewriteVersion>=version)continue;
   const d=q.userFacingDraft;
   if(!d)continue;
   const before=structuredClone(d), signature=structure(d);

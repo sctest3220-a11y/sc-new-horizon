@@ -138,6 +138,18 @@ The following records preserve the original batch approvals and artifact backlog
 - Thai artifact images: the nine message-type artifacts have `-th` versions (`public/stimuli/*-th.svg|png`), produced 2026-09-11 by repainting only the text (SVG text nodes replaced with Noto Sans Thai embedded; PNG text regions repainted over the original screenshots). `thaiStimulusSources` in `page.tsx` maps English src → Thai src and `localizeQuestion` swaps it for questions that have a translation status, so an untranslated question never shows a Thai image under English text. The EN→TH text for every artifact is in `exports/artifact-thai-text-spec.json` for reviewer sign-off; treat the images as `draft` until a native reviewer confirms them.
 - Glossary aligned with the README style guide: Domain, Competency, Assessment, Platform, telemetry and Workflow stay in English in Thai copy.
 
+## Review-inventory wording refinements - 1 October 2026
+
+The English/Thai review inventory is separate from the scored production bank. The user's inventory-wide request authorizes local updates to `exports/review-inventory/questions.json`, `live-questions.json`, their translation mappings, artifact plans and generated admin assets. These drafts are not promoted to production or marked as human-approved.
+
+Run `npm run inventory:refine` after generating or changing the review inventory. It applies the source-aware bilingual refinements in `inventory/wording-refinements.mjs`, refreshes strict Thai translations and artifact reports, and rebuilds the localhost assets. Run this after the older English rewrite pass; that pass must not overwrite a newer revision. Shared translations selected in the current checkpoints take precedence over older copies of the same sentence.
+
+The accepted Customer Service English wording is maintained in `inventory/english-wording-checkpoints.mjs`. These English-only checkpoints retain their previous Thai drafts and carry `previous-revision-pending-sync`; the pipeline must not register old Thai text as a translation of the new English. The user authorized publishing these accumulated updates on 1 October 2026, without approving new Thai wording or production assessment use.
+
+Original English audit wording and all selected question formats, choice order, keys and scores are checked against saved baselines. Earlier drafts and artifact metadata are retained in `wording-refinement-history.json`. The current per-item report is `wording-refinement-qa.json`; `english-rewrite-qa.json` remains the historical report for the previous English pass. `thai-translation-qa.json` checks translation coverage and text corruption, not human approval. The audit-source workbook remains an original-source export; current user-facing drafts are in the bilingual JSON and localhost inventory.
+
+Validation: `node --test scripts/test-english-inventory.mjs scripts/test-review-inventory.mjs scripts/test-thai-inventory.mjs scripts/test-wording-refinements.mjs`. Missing evidence, ambiguous choices, incomplete scoring and artifact necessity require individual review rather than invented facts or silent template changes.
+
 ## Template-generated items
 
 `ADV-*` and `TREND-*` questions are built at module load from `advancedQuestionFrames` / `marketTrendFrames` and `competencyDefinitions`. Their Thai lives on the frames (`contextTh`, `promptTh`, `bestTh`…), in the builders' option templates, and in `competencyLabelsTh` / `skillLabelsTh`. Translate and review those, never the generated ids. Placeholders `{label}`, `{lead}`, `{skills}`, `{difficulty}` in the review workbook map to template literals in the builders; keep a space on both sides of an inserted name so a gloss in parentheses never touches Thai text.

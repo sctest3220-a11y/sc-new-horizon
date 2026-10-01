@@ -11,7 +11,9 @@ for(const [file,count] of [['questions.json',3328],['live-questions.json',634]])
   const current=JSON.parse(fs.readFileSync(new URL(relative,root),'utf8'));
   test(`${file}: audit source, keys, scores, order and review history unchanged`,()=>{
     const original=JSON.parse(execFileSync('git',['show',`0f844b6:${relative}`],{cwd:fileURLToPath(root),maxBuffer:128*1024*1024,encoding:'utf8'}));
-    const auditProjection=bank=>englishProjection({...bank,questions:bank.questions.map(({userFacingDraft,...q})=>q)});
+    // Artifact planning metadata is independently versioned; source audit text,
+    // answer keys, scores and provenance must remain exactly as archived.
+    const auditProjection=bank=>englishProjection({...bank,questions:bank.questions.map(({userFacingDraft,artifactNeed,...q})=>q)});
     assert.deepEqual(auditProjection(current),auditProjection(original));
     if(file==='questions.json'){
       const history=JSON.parse(fs.readFileSync(new URL('exports/review-inventory/english-rewrite-history.json',root),'utf8'));
@@ -19,7 +21,13 @@ for(const [file,count] of [['questions.json',3328],['live-questions.json',634]])
       for(const q of original.questions)assert.deepEqual(byId.get(q.id),q.userFacingDraft,`${q.id}: original draft archived exactly`);
       const shape=d=>({interaction:d.interaction,format:d.format,keys:d.correctOptionIds,options:d.options?.map(o=>o.id),parts:d.parts?.map(p=>({id:p.id,keys:p.correctOptionIds,options:p.options.map(o=>o.id)}))});
       for(const q of current.questions)assert.deepEqual(shape(q.userFacingDraft),shape(byId.get(q.id)),`${q.id}: format, order and keys preserved`);
-    }else assert.deepEqual(englishProjection(current),englishProjection(original));
+    }else {
+      const sourceById=new Map(original.questions.map(q=>[q.id,q]));
+      for(const q of current.questions){
+        const {rewriteVersion,rewriteRulesVersion,rewriteReviewStatus,ruleApplication,...draft}=q.userFacingDraft;
+        assert.deepEqual(englishProjection(draft),englishProjection(sourceById.get(q.id).userFacingDraft),`${q.id}: live review wording preserved`);
+      }
+    }
   });
   test(`${file}: every inventory text field has Thai`,()=>{
     assert.equal(current.questions.length,count);
