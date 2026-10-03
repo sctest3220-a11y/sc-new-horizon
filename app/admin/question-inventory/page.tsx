@@ -3,6 +3,7 @@ import { headers } from 'next/headers';
 import { ReviewerFeedback } from './reviewer-feedback';
 import { QuestionReviewStats, ReviewFilterControls } from './review-controls';
 import { ReviewSync } from './review-sync';
+import { ThemeToggle } from './theme-toggle';
 
 type ReviewOption = {
   id: string;
@@ -41,6 +42,8 @@ type ReviewQuestion = {
   };
   userFacingDraft?: {
     status: string;
+    rewriteVersion?: string;
+    rewriteReviewStatus?: string;
     interaction: string;
     format: string;
     context: string;
@@ -109,6 +112,9 @@ type IndexQuestion = Pick<
 > & {
   recommendedFormat?: { format: string };
   userFacingDraft?: { format: string };
+  rewriteVersion?: string;
+  rewriteReviewStatus?: string;
+  translationStatus?: string;
 };
 
 type ArtifactNeed = {
@@ -926,6 +932,9 @@ export default async function QuestionInventoryPage({
   const industry = normalizeParam(searchParams?.industry) || 'all';
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
+  const rewriteVersion = normalizeParam(searchParams?.rewriteVersion) || 'all';
+  const rewriteStatus = normalizeParam(searchParams?.rewriteStatus) || 'all';
+  const translation = normalizeParam(searchParams?.translation) || 'all';
   const version = normalizeParam(searchParams?.version) || summary.inventoryVersion;
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
   const queryInput = (normalizeParam(searchParams?.q) || '').trim();
@@ -943,7 +952,17 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
-    const matchesVersion = version === 'all' || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
+    const matchesRewriteVersion = rewriteVersion === 'all' || question.userFacingDraft?.rewriteVersion === rewriteVersion;
+    const matchesRewriteStatus = rewriteStatus === 'all' ||
+      (rewriteStatus === 'missing' ? !question.rewriteReviewStatus : question.rewriteReviewStatus === rewriteStatus);
+    const matchesTranslation = translation === 'all' || question.translationStatus === translation;
+    // Live questions use the stable `live-bank` version. Keep them visible when
+    // the source filter is explicitly set to live, even though the page defaults
+    // the draft inventory to the latest dated version.
+    const questionVersion = question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion);
+    const matchesVersion = version === 'all' ||
+      ((version === summary.inventoryVersion || source === 'live') && question.sourceInventory === 'live') ||
+      questionVersion === version;
     const matchesQuery =
       !query ||
       question.id.toLowerCase().includes(query) ||
@@ -951,14 +970,42 @@ export default async function QuestionInventoryPage({
       question.competencyLabel.toLowerCase().includes(query) ||
       question.scopeLabel.toLowerCase().includes(query) ||
       question.sourceBank?.toLowerCase().includes(query);
-    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesVersion && matchesQuery;
+    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesRewriteVersion && matchesRewriteStatus && matchesTranslation && matchesVersion && matchesQuery;
   });
 
+  const hasSpecificContentFilter = domain !== 'all' || difficulty !== 'all' || layer !== 'all' || source !== 'all' || role !== 'all' || industry !== 'all' || executive !== 'all' || format !== 'all' || rewriteVersion !== 'all' || rewriteStatus !== 'all' || translation !== 'all' || Boolean(query);
+  let queue = filtered;
+  if (!hasSpecificContentFilter) {
+    try {
+      const feedbackResponse = await fetch(`${origin}/api/results?feedback=all`, { cache: 'no-store', headers: { referer: origin } });
+      if (feedbackResponse.ok) {
+        const feedbackData = await feedbackResponse.json() as { entries?: Array<{ questionId?: string }> };
+        const reviewed = new Set((feedbackData.entries ?? []).map((entry) => entry.questionId).filter(Boolean));
+        const unreviewed = filtered.filter((question) => !reviewed.has(question.id));
+        const buckets = new Map<string, Array<(typeof allQuestions)[number]>>();
+        for (const question of unreviewed) {
+          const key = `${question.domain}:${question.difficulty}`;
+          (buckets.get(key) ?? (buckets.set(key, []), buckets.get(key)!)).push(question);
+        }
+        const balanced: Array<(typeof allQuestions)[number]> = [];
+        while (buckets.size) {
+          for (const [key, items] of buckets) {
+            const next = items.shift();
+            if (next) balanced.push(next);
+            if (!items.length) buckets.delete(key);
+          }
+        }
+        queue = [...balanced, ...filtered.filter((question) => reviewed.has(question.id))];
+      }
+    } catch {
+      // Keep the normal bank order if hosted feedback is temporarily unavailable.
+    }
+  }
   const pageSize = 20;
-  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const pageCount = Math.max(1, Math.ceil(queue.length / pageSize));
   const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
-  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id));
+  const visibleQuestions = await loadQuestionDetails(origin, queue.slice(pageStart, pageStart + pageSize).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -971,6 +1018,9 @@ export default async function QuestionInventoryPage({
   const executiveOptions = uniqueValues(allQuestions.flatMap((question) => question.executiveRoles ?? []), (item) => item);
   const formatOptions = uniqueValues(allQuestions, (question) => question.recommendedFormat?.format ?? question.userFacingDraft?.format ?? 'unmapped');
   const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)).filter((item): item is string => Boolean(item));
+  const rewriteVersionOptions = uniqueValues(allQuestions, (question) => question.rewriteVersion);
+  const rewriteStatusOptions = uniqueValues(allQuestions, (question) => question.rewriteReviewStatus);
+  const translationOptions = uniqueValues(allQuestions, (question) => question.translationStatus);
 
   return (
     <main className="inventory-page">
@@ -983,11 +1033,12 @@ export default async function QuestionInventoryPage({
           <Link href="/">Assessment</Link>
           <Link href="/?view=admin">Admin</Link>
           <strong>Question inventory</strong>
-          <Link href="/admin/question-inventory/results">Testing results</Link>
+          <Link href="/admin/question-inventory/results">Test progress</Link>
         </nav>
         <div className="inventory-header-language" aria-label="Review language">
           <Link className={language === 'en' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'en')}>EN</Link>
           <Link className={language === 'th' ? 'is-active' : undefined} href={buildLanguageHref(searchParams, 'th')}>TH</Link>
+          <ThemeToggle />
         </div>
       </header>
 
@@ -998,7 +1049,7 @@ export default async function QuestionInventoryPage({
           <div className="inventory-nav-links">
             <Link href="/" className="inventory-back-link">Main page</Link>
             <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
-            <Link href="/admin/question-inventory/results" className="inventory-back-link">Testing results</Link>
+            <Link href="/admin/question-inventory/results" className="inventory-back-link">Test progress</Link>
           </div>
           <p className="eyebrow">Draft question review inventory</p>
           <h1>Question Inventory</h1>
@@ -1134,6 +1185,30 @@ export default async function QuestionInventoryPage({
             </select>
           </label>
           <label>
+            <span>Rewrite version</span>
+            <select name="rewriteVersion" defaultValue={rewriteVersion}>
+              <option value="all">All rewrite versions</option>
+              {rewriteVersionOptions.map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Rewrite review</span>
+            <select name="rewriteStatus" defaultValue={rewriteStatus}>
+              <option value="all">All rewrite statuses</option>
+              {rewriteStatusOptions.map((item) => <option key={item} value={item}>{item}</option>)}
+              <option value="missing">No rewrite review status</option>
+            </select>
+          </label>
+          <label>
+            <span>Translation</span>
+            <select name="translation" defaultValue={translation}>
+              <option value="all">All translation states</option>
+              <option value="available">Thai translation available</option>
+              <option value="missing">Thai translation missing</option>
+              {translationOptions.filter((item) => item !== 'available' && item !== 'missing').map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
             <span>Role / function</span>
             <select name="role" defaultValue={role}>
               <option value="all">All roles</option>
@@ -1174,8 +1249,8 @@ export default async function QuestionInventoryPage({
       <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-panel inventory-filter-result-panel">
-        <strong>{filtered.length.toLocaleString()} questions match the server filters.</strong>
-        <span>Showing {filtered.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, filtered.length)} on page {currentPage} of {pageCount}.</span>
+        <strong>{queue.length.toLocaleString()} questions match the active review queue.</strong>
+        <span>Showing {queue.length ? pageStart + 1 : 0}-{Math.min(pageStart + pageSize, queue.length)} on page {currentPage} of {pageCount}.</span>
         <nav className="inventory-pagination" aria-label="Question inventory pages">
           {currentPage > 1 ? <Link href={buildPageHref(searchParams, currentPage - 1)}>Previous</Link> : <span>Previous</span>}
           <strong>{currentPage} / {pageCount}</strong>
@@ -1217,6 +1292,16 @@ export default async function QuestionInventoryPage({
             <details className="inventory-question-id">
               <summary>Question ID and version</summary>
               <dl><div><dt>ID</dt><dd>{question.id}</dd></div><div><dt>Version</dt><dd>{question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}{(question.version ?? summary.inventoryVersion) === summary.inventoryVersion ? ' · latest' : ''}</dd></div></dl>
+              <form method="get" className="inventory-question-version-picker">
+                <input type="hidden" name="q" value={question.id} />
+                <label>
+                  <span>View this question version</span>
+                  <select name="version" defaultValue={question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}>
+                    {versionOptions.map((item) => <option key={item} value={item}>{item}{item === summary.inventoryVersion ? ' (latest)' : ''}</option>)}
+                  </select>
+                </label>
+                <button type="submit">Open version</button>
+              </form>
             </details>
             <div className="inventory-question-language">
               <input
