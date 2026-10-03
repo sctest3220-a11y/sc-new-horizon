@@ -1,5 +1,7 @@
 # Feature Catalog by User Type and Release Stage
 
+See [awareness curation and embedded source media](AI_WATCH_AWARENESS_CURATION.md) for the September 29 requirement and local implementation: shared Watch/Did you know stories, evidence labels, and media embedded within each story.
+
 ## Purpose
 
 This is the living, user-facing feature inventory for New Horizon. It itemizes capabilities for B2C users, B2B members and managers, B2B administrators, specialist platform administrators, and Super Admins. Every feature is assigned a delivery stage so readers can distinguish the current prototype from the go-live MVP, production hardening, and longer-term roadmap.
@@ -85,6 +87,23 @@ The release stage describes operational readiness, not just whether a screen or 
 | Account recovery and verified email changes | B2C | **Production** | Includes security notifications and session revocation. |
 | MFA and passkey support | B2C | **Production** | Risk-based rollout after core authentication. |
 | Portable personal achievement/profile record | B2C | **Future** | User-controlled credential or portfolio export. |
+
+## AI Watch and Connected Labs
+
+| Feature | User | Stage | Notes |
+| --- | --- | --- | --- |
+| Explicit-interest Watch ranking and recommendation reasons | Public/B2C | **MVP - Built** | Local deterministic ranking; interests, time, goal, and discovery variety. No inferred assessment weakness. |
+| For you, Explore, Saved, and topic controls | Public/B2C | **MVP - Built** | Browser-profile persistence; mutes are enforced and unavailable bookmarks are visible. |
+| Publisher media and click-to-load video | Public/B2C | **MVP - Built** | Existing editorial snapshot; optional supported YouTube embeds, attribution, fallback links, and no autoplay. |
+| Stable story IDs, content versions, and Lab links | Content/Admin | **MVP - Built** | Local metadata prepares for shared editorial records; no new approval or freshness claim. |
+| Two bilingual connected starter Labs | Public/B2C | **MVP - Built** | Agent boundaries and evidence checking; criterion feedback, revision, local drafts, and saved takeaways. Hosted use still requires pilot review. |
+| RSI awareness and discovery coverage audits | Public/Content/Admin | **MVP - Built** | Local RSI story, explicit discovery lane, unfamiliar-headline sampling and per-run gap reports; daily workflow definition awaits activation. |
+| Bounded recursive self-improvement across agents | Platform/Admin | **Production** | Requirement recorded; real workers, durable experiment memory, independent evaluation, approved promotion and rollback remain to build. AI Watch is the first application. |
+| Shared Watch preferences and Lab history | B2C | **MVP - Go-live** | Account ownership, server persistence, privacy controls, and cross-device recovery remain to build. |
+| Live discovery and editorial publishing workflow | Content/Admin | **MVP - Go-live** | Approved sources, durable runs, exact-version human approval, correction propagation, and freshness monitoring remain to build. |
+| Original audio briefs and recurring skill series | Public/B2C | **Future** | Proposed after demand, accessibility, localization, and editorial capacity are demonstrated. |
+
+Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md) and [platform RSI requirements](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
 
 ## Assessment Experience
 
@@ -366,6 +385,9 @@ When a feature changes:
 8. Do not mark a feature **Production** until server persistence, authorization, privacy, monitoring, failure handling, and audit requirements are satisfied.
 
 ## Related Specifications
+
+- [AI Watch, AI Labs, and Agent Workflow Roadmap](AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) — first local slice implemented; later phases remain proposed.
+- [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md)
 
 - [Legal, Privacy, PDPA, and Terms Requirements](LEGAL_PRIVACY_PDPA_TERMS.md)
 - [B2C, B2B, and User Administration](B2C_B2B_USER_ADMINISTRATION.md)

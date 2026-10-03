@@ -13,7 +13,7 @@ import { getArtifactNeedFromText } from './artifact-needs.mjs';
 export const difficulties = ['awareness', 'applied', 'proficient', 'advanced'];
 export const blueprints = { ...foundations, ...application, ...evaluation, ...governance, ...strategy, ...collaboration };
 export const layerTargets = { core: 768, function: 1296, industry: 320, executive: 944 };
-export const inventoryVersion = '2026-09-17.1';
+export const inventoryVersion = '2026-09-30.1';
 const digest = (value) => createHash('sha256').update(value).digest('hex');
 const numberHash = (value) => Number.parseInt(digest(value).slice(0, 8), 16);
 const cognitiveTasks = {

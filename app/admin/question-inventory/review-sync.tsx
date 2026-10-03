@@ -80,6 +80,18 @@ async function fetchSync(init?: RequestInit): Promise<SyncResponse | null> {
   return (await response.json()) as SyncResponse;
 }
 
+async function migrateLocalFeedback() {
+  for (let index = 0; index < window.localStorage.length; index += 1) {
+    const key = window.localStorage.key(index);
+    if (!key?.includes('new-horizon-review')) continue;
+    const parsed = safeParse(window.localStorage.getItem(key));
+    const questionId = key.split(':').pop() ?? '';
+    for (const entry of parsed?.entries ?? []) {
+      await fetch('/api/results', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'question_feedback', questionId, id: entry.id, ...entry }) }).catch(() => undefined);
+    }
+  }
+}
+
 export function ReviewSync() {
   const [status, setStatus] = useState<Status>('checking');
   const [file, setFile] = useState('');
@@ -122,6 +134,7 @@ export function ReviewSync() {
 
     async function start() {
       try {
+        await migrateLocalFeedback();
         const result = await fetchSync();
         if (cancelled) return;
         if (!result) {

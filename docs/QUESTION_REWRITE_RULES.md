@@ -1,8 +1,8 @@
 # Question Rewrite Rules and Versioning
 
 Status: Approved baseline for future rewrites; remains a living standard
-Current rules version: `2.1`
-Last updated: 23 September 2026
+Current rules version: `2.2`
+Last updated: 6 October 2026
 Human approval recorded: 23 September 2026
 
 ## Purpose
@@ -53,6 +53,27 @@ This standard guides human and agent-assisted rewrites of assessment questions. 
 37. Check operational feasibility. A proposed action must account for the time, traffic, budget, permission, data, and workflow needed to perform it. Do not recommend gathering a larger sample while also prohibiting the resources required to gather it.
 38. Distinguish **limited testing** from **wider deployment or scaling**. When more evidence is needed, define a bounded test, cap, duration, stopping rule, or approval gate rather than describing uncertainty resolution as consequence-free.
 39. Stress-test the key by writing the strongest reasonable argument for every option. Revise the item when a distractor can satisfy the prompt without contradicting explicit evidence or constraints.
+40. Keep assessment wording short enough for timed reading. Remove duplicated instructions, repeated approval rules, and explanations that do not affect the decision.
+41. Use plain, locally understandable workplace language for Thai reviewers. Replace unexplained jargon such as “cross-functional professional,” “frontline team,” or “exception class” with ordinary terms such as “staff member working with several departments,” “customer-facing team,” or a concrete description of the exception.
+42. Treat reviewer suggestions as evidence, not automatically as replacement copy. A suggested-change field written in Thai belongs in the feedback record or Thai review column; it must never be inserted into the English question.
+43. For a proposed rewrite, apply the reviewer’s substantive recommendation: clarify unclear connections, remove unnecessary context, improve role and authority descriptions, and preserve the intended answer and competency. A cosmetic cleanup alone is not a rewrite.
+44. When a marketing framework or questionnaire is supplied, use its competency mapping, D1–D6 outcomes, role bands, AI-use conditions, scoring rules, and item-writing guidance as explicit inputs. Preserve question IDs, competency mappings, answer keys, and difficulty unless a documented review decision changes them.
+45. Keep the comparison readable. In a before/after document, place English in a dedicated aligned row across both columns and Thai in a separate aligned row. Preserve line breaks between context, prompt, instructions, questions, and answer choices.
+46. Highlight only actual changes: removed or replaced wording in the left/source column and added or replacement wording in the right/proposed column. Do not highlight an entire proposed paragraph, unchanged text, labels, or reviewer notes.
+47. For bilingual comparisons, calculate English and Thai differences independently. Do not use English tokens to highlight Thai, and do not treat missing Thai font rendering in a QA tool as proof that Thai text is absent; verify the document XML and a native Word view when needed.
+48. Every comparison document must identify question ID, role, domain, competency, difficulty, source feedback, and review-only status. Sort consistently by the requested role, domain, difficulty, and question ID unless the reviewer selects another order.
+49. A source workbook containing English only does not constitute a Thai translation. Mark Thai as pending review and do not invent a Thai version while claiming workbook alignment.
+50. Write the scenario and question in a smooth, conversational style that sounds natural when read aloud. Avoid stiff, instructional, or template-like wording such as “the user must,” “which action should be selected,” or “apply this requirement” unless the instruction itself is the competency being tested. Keep necessary directions brief and separate from the conversational scenario.
+51. Read the English rewrite and Thai retranslation as a complete exchange, not as isolated sentences. Both versions should feel natural, easy to understand, and appropriate for an assessment setting while preserving the same evidence, decision, difficulty, and answer.
+52. Do not add an observer or reporting phrase unless it changes the evidence, such as “the team noticed,” “the user observed,” or “it was found that.” State the relevant AI behavior directly when that is shorter and equally clear.
+
+### Conversational rewrite example
+
+**Before:** “Failures cluster immediately after source updates; older cases remain accurate.”
+
+**After:** “The AI makes mistakes more often after source data is updated, while remaining accurate on older cases.”
+
+**Why:** Use familiar words, clearly identify what the AI does, connect related ideas with “while,” and remove unnecessary observer wording so the sentence stays concise without changing the original meaning.
 
 ## Partial-credit standard
 
@@ -128,7 +149,28 @@ Rate each version from 1 to 5 on:
 
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
+## Comparison-document quality gate
+
+Before distributing a rewrite/translation review document:
+
+- Confirm that every proposed English item is English-only and that Thai reviewer comments have not entered the English column.
+- Confirm that every proposed rewrite contains a substantive change when feedback requires one; if the source is retained, label it as retained rather than calling it rewritten.
+- Confirm that source and proposed columns fit within the page width. Use landscape orientation for two-column question comparisons when portrait would clip text.
+- Confirm that question stems, subquestions, and answer choices remain on separate lines and are aligned across the two columns.
+- Confirm that changed text is highlighted on both sides using an ordered diff, with deletions on the source side and insertions/replacements on the proposed side.
+- Confirm that the source workbook or feedback file is named in the document, the recommendation-to-item mapping is traceable, and the document states whether Thai translation was supplied, drafted, or pending.
+- Open the generated DOCX in a native Word view after rendering; a successful text extraction or a renderer screenshot alone is not sufficient for clipping, Thai glyph, or highlight QA.
+
 ## Rules changelog
+
+### Version 2.2 - 6 October 2026
+
+- Added assessment-length and local-language rules after reviewer feedback found long wording and unfamiliar terms for Thai testers.
+- Required substantive application of reviewer comments and supplied marketing-framework recommendations; cosmetic scaffolding removal is not sufficient.
+- Added strict separation of English and Thai reviewer suggestions so Thai comments cannot enter the English rewrite.
+- Added aligned bilingual comparison layout, preserved question/answer line breaks, and ordered-diff highlighting requirements.
+- Added a DOCX quality gate covering page fit, clipping, native Word inspection, source traceability, and explicit Thai translation status.
+- Added a conversational-style rule so rewrites do not sound stiff, mechanical, or overly instructional.
 
 ### Version 2.1 - 23 September 2026
 

@@ -1,13 +1,29 @@
 {
-  "issueCount": 22372,
+  "issueCount": 27520,
   "topFragments": [
     [
+      "Answer both questions",
+      2560
+    ],
+    [
+      "Choose one answer for each",
+      2560
+    ],
+    [
+      "What should the",
+      2560
+    ],
+    [
+      "do next",
+      2554
+    ],
+    [
       "The",
-      1388
+      1389
     ],
     [
       "the",
-      740
+      742
     ],
     [
       "Which",
@@ -15,7 +31,7 @@
     ],
     [
       "Finance",
-      304
+      303
     ],
     [
       "Cross-functional professional",
@@ -27,7 +43,7 @@
     ],
     [
       "ed",
-      166
+      165
     ],
     [
       "Marketing",
@@ -35,10 +51,6 @@
     ],
     [
       "Sales",
-      160
-    ],
-    [
-      "Customer",
       160
     ],
     [
@@ -56,6 +68,10 @@
     [
       "Technology",
       160
+    ],
+    [
+      "Customer",
+      157
     ],
     [
       "boundary",
@@ -78,12 +94,12 @@
       129
     ],
     [
-      "ments",
+      "and",
       119
     ],
     [
-      "and",
-      118
+      "ments",
+      119
     ],
     [
       "ing",
@@ -94,12 +110,20 @@
       109
     ],
     [
+      "answer",
+      108
+    ],
+    [
       "value",
       105
     ],
     [
       "trans",
       98
+    ],
+    [
+      "Select",
+      96
     ],
     [
       "Compare",
@@ -130,12 +154,12 @@
       80
     ],
     [
-      "management",
-      72
+      "An",
+      73
     ],
     [
-      "An",
-      70
+      "management",
+      72
     ],
     [
       "with",
@@ -182,6 +206,10 @@
       63
     ],
     [
+      "but the",
+      60
+    ],
+    [
       "results",
       60
     ],
@@ -196,10 +224,6 @@
     [
       "treat the",
       60
-    ],
-    [
-      "but the",
-      59
     ],
     [
       "is",
@@ -322,19 +346,19 @@
       44
     ],
     [
-      "Two departments disagree about a dependency",
-      44
-    ],
-    [
-      "and neither has accepted the",
-      44
-    ],
-    [
       "Distributing a document",
       44
     ],
     [
       "resolve responsibility for the",
+      44
+    ],
+    [
+      "Two departments disagree about a dependency",
+      44
+    ],
+    [
+      "and neither has accepted the",
       44
     ],
     [
@@ -358,14 +382,6 @@
       44
     ],
     [
-      "The briefing mixes confirmed",
-      44
-    ],
-    [
-      "with planning",
-      44
-    ],
-    [
       "Decision makers need to distinguish",
       44
     ],
@@ -374,31 +390,15 @@
       44
     ],
     [
+      "The briefing mixes confirmed",
+      44
+    ],
+    [
+      "with planning",
+      44
+    ],
+    [
       "combine both into one recommendation without",
-      44
-    ],
-    [
-      "distinction",
-      44
-    ],
-    [
-      "label",
-      44
-    ],
-    [
-      "s separately",
-      44
-    ],
-    [
-      "confirmed facts",
-      44
-    ],
-    [
-      "can authorize this",
-      44
-    ],
-    [
-      "can only suggest",
       44
     ]
   ],
@@ -431,6 +431,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "การตั้งค่าแบบใดเหมาะกับคู่มือ workshop มากที่สุด Select 1 answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-02",
       "field": "option:a",
       "fragments": [
         "lookup"
@@ -444,6 +453,15 @@
         "lookup"
       ],
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "การตั้งค่าแบบใดเหมาะกับคำตอบสำหรับงาน support มากที่สุด Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-04",
@@ -463,6 +481,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "การตั้งค่าแบบใดเหมาะกับแผนประสานงาน มากที่สุด Select 1 answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-06",
       "field": "option:a",
       "fragments": [
         "lookup"
@@ -476,6 +503,15 @@
         "lookup"
       ],
       "text": "ใช้ตาราง lookup พร้อมกฎหมวดหมู่ที่ชัดเจน"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "การตั้งค่าแบบใดเหมาะกับบันทึก release มากที่สุด Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-APPLIED-08",
@@ -1136,6 +1172,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด Select 1 answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-02",
       "field": "option:a",
       "fragments": [
         "Test fine-tuning against the"
@@ -1199,6 +1244,15 @@
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด Select 1 answer."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-04",
       "field": "explanation",
       "fragments": [
         "Semantic similarity helps match differently worded"
@@ -1246,6 +1300,15 @@
         "the"
       ],
       "text": "Check tokens and reduce or split the input."
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-06",
@@ -1309,6 +1372,15 @@
         "words"
       ],
       "text": "ทีมผลิตภัณฑ์ใช้ AI เพื่อเตรียมบันทึก release Search must find related เคสs even when users choose different words. ห้ามอธิบายความสามารถที่ยังไม่ release ว่าพร้อมใช้งานแล้ว"
+    },
+    {
+      "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
+      "field": "prompt",
+      "fragments": [
+        "Select",
+        "answer"
+      ],
+      "text": "กลไกใดตอบความต้องการที่ระบุไว้ได้ดีที่สุด Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-GENAI-MECHANICS-APPLIED-08",
@@ -2379,9 +2451,11 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used"
+        "is used",
+        "Select",
+        "answer"
       ],
-      "text": "What should happen next before the คู่มือ workshop is used? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "What should happen next before the คู่มือ workshop is used? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-02",
@@ -2433,9 +2507,11 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used"
+        "is used",
+        "Select",
+        "answer"
       ],
-      "text": "What should happen next before the คำตอบสำหรับงาน support is used? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "What should happen next before the คำตอบสำหรับงาน support is used? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-04",
@@ -2488,9 +2564,11 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used"
+        "is used",
+        "Select",
+        "answer"
       ],
-      "text": "What should happen next before the แผนประสานงาน is used? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "What should happen next before the แผนประสานงาน is used? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-06",
@@ -2542,9 +2620,11 @@
       "field": "prompt",
       "fragments": [
         "What should happen next before the",
-        "is used"
+        "is used",
+        "Select",
+        "answer"
       ],
-      "text": "What should happen next before the บันทึก release is used? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "What should happen next before the บันทึก release is used? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-APPLIED-08",
@@ -3315,9 +3395,11 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment"
+        "ment",
+        "Select",
+        "answer"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "Which configuration change addresses the specific ต้องการment? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-02",
@@ -3448,9 +3530,11 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment"
+        "ment",
+        "Select",
+        "answer"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "Which configuration change addresses the specific ต้องการment? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-04",
@@ -3582,9 +3666,11 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment"
+        "ment",
+        "Select",
+        "answer"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "Which configuration change addresses the specific ต้องการment? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-06",
@@ -3715,9 +3801,11 @@
       "field": "prompt",
       "fragments": [
         "Which configuration change addresses the specific",
-        "ment"
+        "ment",
+        "Select",
+        "answer"
       ],
-      "text": "Which configuration change addresses the specific ต้องการment? เลือกได้มากกว่าหนึ่งข้อ"
+      "text": "Which configuration change addresses the specific ต้องการment? Select 1 answer."
     },
     {
       "id": "NH-CORE-GENERAL-D1-AI-SYSTEMS-APPLIED-08",
@@ -4913,81 +5001,6 @@
         "causing this problem"
       ],
       "text": "Which missing Prompt element is most directly causing this problem?"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
-      "field": "explanation",
-      "fragments": [
-        "The assistant has",
-        "material without a defined objective"
-      ],
-      "text": "The assistant has แหล่งข้อมูล material without a defined objective."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
-      "field": "option:a",
-      "fragments": [
-        "A specific",
-        "and deliverable"
-      ],
-      "text": "A specific งาน and deliverable."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
-      "field": "option:b",
-      "fragments": [
-        "An explicit",
-        "structure"
-      ],
-      "text": "An explicit ผลลัพธ์ structure."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
-      "field": "option:c",
-      "fragments": [
-        "The necessary",
-        "and context"
-      ],
-      "text": "The necessary หลักฐาน and context."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
-      "field": "option:d",
-      "fragments": [
-        "The decision-relevant"
-      ],
-      "text": "The decision-relevant ข้อจำกัด."
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
-      "field": "context",
-      "fragments": [
-        "The",
-        "ed",
-        "is clear",
-        "but a crucial eligibility",
-        "is absent",
-        "the"
-      ],
-      "text": "กลุ่มการเรียนรู้ชุมชนใช้ AI เพื่อเตรียมคู่มือ workshop The คำขอed คู่มือ workshop is clear, but a crucial eligibility กฎ is absentจากthe Prompt. คู่มือนี้ต้องใช้ได้กับผู้อ่านที่ไม่มีพื้นฐานด้าน AI"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
-      "field": "prompt",
-      "fragments": [
-        "Which missing  element is most directly",
-        "causing this problem"
-      ],
-      "text": "Which missing Prompt element is most directly causing this problem?"
-    },
-    {
-      "id": "NH-CORE-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
-      "field": "explanation",
-      "fragments": [
-        "The  was not given the",
-        "needed to bound its answer"
-      ],
-      "text": "The Model was not given the กฎ needed to bound its answer."
     }
   ]
 }

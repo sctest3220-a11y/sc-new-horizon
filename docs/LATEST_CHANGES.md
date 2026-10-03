@@ -1,5 +1,56 @@
 # Latest Changes
 
+## Append-only assessment release 2026-10-07.1
+
+- Added 229 bilingual rewritten/retranslated questions to the assessment source.
+- Preserved all 634 existing live questions; no live record is overwritten.
+- Versioned runtime IDs prevent collisions when a new record shares a source question ID with an existing live item.
+- The combined assessment pool is 863 questions.
+- Verified role, domain, and difficulty metadata, then passed ESLint and the production build.
+- Release manifest and append-only import package: `exports/production/releases/2026-10-07.1/`.
+- External production import is still a separate deployment/integration step.
+
+## Platform RSI and proactive AI Watch — 29 September 2026
+
+- Recorded bounded recursive self-improvement as a platform-agent requirement: observe, diagnose, propose, evaluate against a baseline, approve/promote, monitor and reuse outcomes in the next cycle.
+- Documented the cause of reactive discovery: a manual feed, on-demand collector, simulated Admin agents, fixed keyword coverage and no persistent improvement loop.
+- Added a source-backed RSI story and bilingual hook, a self-improving-agents discovery lane, Sakana source coverage, unfamiliar-headline sampling and current-run coverage investigations.
+- Prepared a daily GitHub Actions discovery workflow that retains review artifacts. It is not active until available on the default branch with Actions enabled, and does not publish content.
+- Real agent workers, persistent experiment history, independent evaluations, promotion/rollback and a missed-run watchdog remain to build. See [the RSI decision and acceptance criteria](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
+- Validation of the local implementation: eight collector tests and thirteen Watch/Labs tests passed. Documentation is mirrored in the New Horizon Obsidian project.
+
+## Manual awareness-news scout — 29 September 2026
+
+- Added executable, bounded source discovery for awareness-provoking stories, AI trends and new technologies, driven by shared JSON editorial instructions.
+- Records candidates, original-source media leads, source dates/check dates, URL deduplication and metadata-change fingerprints, plus fetch/robots failures.
+- Updated the Admin Newsfeed Agent role and proposed briefs to match these lanes. Admin runs remain simulations; discovery is a separate manual command.
+- No automatic publication, generated summaries, scheduled worker or shared review queue is connected.
+
+## Awareness stories and inline source media — 29 September 2026
+
+- Added source-backed Pip/iLands and agent bank-run simulation stories, and an awareness hook/image for Jev.
+- Added shared-story Did you know cards with explicit-interest ranking, hidden-topic exclusions, bilingual hooks, and user-controlled story switching.
+- Moved Watch video players into each visible story and kept source links/credits visible; shared media rendering supports broken-image fallbacks and click-to-load video without autoplay.
+- Recorded source evidence labels and check dates; simulated risks are not presented as observed incidents.
+- See [the curation contract](AI_WATCH_AWARENESS_CURATION.md). Local implementation only; automatic discovery and the hosted editorial service are not connected.
+
+## AI Watch and connected Labs — watch-labs-local-v1 — 28 September 2026
+
+- Added explicit interests, time/goal preferences, For you/Explore/Saved views, topic mute/restore, recommendation reasons, and browser-profile persistence. Saved stories stay accessible when preferences change; invalid/unavailable storage is handled visibly.
+- Added stable IDs, content versions, topics, and practice links to existing Watch stories. Replaced the non-persisted cadence control with useful user preferences and honest editorial-snapshot labeling.
+- Added primary AI Labs navigation and two English/Thai starter Labs for agent approval boundaries and evidence checking, with criterion-specific feedback, revision, saved notes/drafts/takeaways, and return-to-story navigation.
+- Supported videos now load on request, keep official controls and source fallback links, and do not autoplay. Existing English story copy is labeled rather than silently translated.
+- Changed older prompt-Lab feedback to describe English keyword checklist cues instead of presenting a writing-quality score.
+- Added focused model tests and a detailed [local release note](AI_WATCH_LABS_LOCAL_RELEASE.md). Shared source discovery, editorial publishing, notifications, and cross-device data remain later phases; no assessment question or scoring changes are included.
+- Restored mobile primary navigation and synchronized Watch/Labs deep links with the active screen. Validation: 12 focused tests, browser flows at 1280/768/390/320px, full lint, and production build passed; the 28 pre-existing TypeScript diagnostics are unchanged. The combined 660-question export matches the prior commit.
+
+## AI Watch, Labs, and agent workflow design proposal — 28 September 2026
+
+- Added a proposed roadmap connecting personalized Watch editions, linked Labs, saved takeaways, and meaningful return visits while question rewriting proceeds separately.
+- Defined multimodal priorities, user-controlled ranking, Lab evaluation improvements, separate story/Lab state machines, an editorial review desk, durable workflow contracts, delivery gates, and measurement definitions.
+- Checked the proposal against current code: the Watch feed remains static, cadence is page state despite save wording, Lab prompt feedback uses English keyword matching, and agent runs remain simulated.
+- This is documentation and interaction design only. No live application behavior, question content, scheduled jobs, or feature implementation status changed.
+
 ## AI Watch freshness correction
 
 - Added official-source AI Watch briefs for Jev and Laya, emphasizing that typed output prevents invalid formats but does not guarantee a correct decision.

@@ -22,6 +22,8 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const exportsDir = path.join(projectRoot, 'exports/review-inventory');
 const outputDir = path.join(projectRoot, 'public/review-inventory');
 const detailDir = path.join(outputDir, 'detail');
+const previousVersion = '2026-09-30.1';
+const previousPath = path.join(exportsDir, 'versions', '2026-10-07.1', 'questions-previous.json');
 
 const draftPath = path.join(exportsDir, 'questions.json');
 const livePath = path.join(exportsDir, 'live-questions.json');
@@ -91,7 +93,7 @@ function isUpToDate() {
 function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
   const detail = pick(question, detailFields);
   detail.sourceInventory = question.sourceInventory ?? sourceInventory;
-  if (sourceInventory === 'live' && inventoryVersionForView) detail.version = inventoryVersionForView;
+  if (sourceInventory === 'live') detail.version = 'live-bank';
   if (sourceInventory === 'live' && detail.th && detail.userFacingDraft) {
     detail.userFacingDraft.th = { context: detail.th.context, prompt: detail.th.prompt };
     const translatedOptions = detail.th.options ?? {};
@@ -151,6 +153,7 @@ function main() {
   }
 
   const draft = readJson(draftPath);
+  const previous = fs.existsSync(previousPath) ? readJson(previousPath) : null;
   inventoryVersionForView = draft.inventoryVersion;
   const live = fs.existsSync(livePath) ? readJson(livePath) : null;
   const artifactNeeds = fs.existsSync(artifactNeedsPath) ? readJson(artifactNeedsPath) : null;
@@ -170,6 +173,19 @@ function main() {
 
   writeAll(draft.questions, 'draft', 'New draft review inventory');
   writeAll(live?.questions ?? [], 'live', 'Existing live bank');
+
+  if (previous) {
+    const versionDir = path.join(outputDir, 'versions', previousVersion);
+    const versionDetailDir = path.join(versionDir, 'detail');
+    fs.mkdirSync(versionDetailDir, { recursive: true });
+    const previousIndex = [];
+    for (const question of previous.questions) {
+      const detail = buildDetail(question, 'draft', 'Previous draft review inventory', artifactNeedsById);
+      fs.writeFileSync(path.join(versionDetailDir, `${safeFileName(detail.id)}.json`), JSON.stringify(detail));
+      previousIndex.push(buildIndexRecord(detail));
+    }
+    fs.writeFileSync(path.join(versionDir, 'index.json'), JSON.stringify(previousIndex));
+  }
 
   const summary = {
     inventoryVersion: draft.inventoryVersion,

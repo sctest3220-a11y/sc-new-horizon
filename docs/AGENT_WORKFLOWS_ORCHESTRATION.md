@@ -1,5 +1,11 @@
 # Agent Workflows and Orchestration
 
+Platform RSI requirement and implementation boundaries: [Recursive self-improvement](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
+
+See [awareness curation and embedded source media](AI_WATCH_AWARENESS_CURATION.md) for the September 29 requirement and local implementation: shared Watch/Did you know stories, evidence labels, and media embedded within each story.
+
+The [AI Watch, AI Labs, and Agent Workflows roadmap](AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) separates story publication, Lab validation, deterministic personalization, and freshness monitoring. Its [first local release](AI_WATCH_LABS_LOCAL_RELEASE.md) adds stable story/version IDs, explicit-interest ranking, and connected practice. Shared discovery and publication remain unimplemented; approval requirements below still apply.
+
 ## Admin workflow visualization
 
 The MVP Admin Agent Ops view includes an interactive node-based workflow map. It visualizes the Orchestrator, concept/news/course scouts, Feedback Analysis Agent, Assessment Item Generator, Reviewer and QA Agent, and the final human approval gate. Connector and node states use the existing run record statuses: `idle`, `running`, `review`, `blocked`, and `complete`.
@@ -46,9 +52,11 @@ Identifies durable AI concepts, model-capability shifts, evaluation changes, gov
 
 ### AI Newsfeed Agent
 
-Drafts short-lived AI Watch candidates from model releases, governance changes, safety incidents, security issues, business adoption, education trends, and workplace AI shifts. News expires unless promoted into durable concepts.
+Discovers awareness-provoking agent capabilities and reported real-world cases, collective/systemic risks, AI trends, new models and technologies, and everyday impacts. Pip/iLands, agent bank-run simulations, and Jev illustrate categories rather than a fixed story list. Produce a source-backed brief and a Did you know hook from the same approved story. Keep original-source images/videos inline with the curation, with credits and source links. News expires unless promoted into durable concepts.
 
-**Current implementation boundary:** the visible MVP AI Watch feed is a manually maintained array in `app/page.tsx`, and the Admin agent run is a deterministic simulation. There is not yet a scheduled discovery worker, source connector, durable candidate queue, or freshness monitor. The interface must not be described as autonomous or continuously refreshed until those services exist.
+The executable scout reads `config/ai-watch-discovery.json`: editorial lanes, search signals, evidence/media rules and allowed sources. Run `npm run crawl:news` (Python 3 required). It reads source indexes/feeds and bounded article metadata, honors robots restrictions, deduplicates URLs and metadata fingerprints, and writes candidates and source failures to `.agent-drafts/ai-watch/latest.json`. Output is not published automatically.
+
+**Current implementation boundary:** the visible MVP AI Watch feed is a manually maintained array in `app/page.tsx`, and the Admin agent run is a deterministic simulation. The source collector and a daily GitHub Actions workflow definition are available; the schedule requires activation on the default branch. There is not yet a shared editorial queue, automated summary writer, publishing connector, or missed-run freshness monitor. Its JSON output is separate from the simulated Admin run. The interface must not be described as autonomous or continuously refreshed until those services exist.
 
 For the hosted pilot, introduce a supervised discovery job with a daily scan target and an explicit stale-feed alert after 48 hours without a successful run. Scan approved official blogs and release pages, GitHub releases for watched projects, standards/regulator feeds, research feeds, reputable publishers, and YouTube channels through permitted APIs/RSS. Discovery creates candidates only; a human editor approves every visible item.
 

@@ -190,14 +190,14 @@ function detailFileName(id: string) {
   return id.replace(/[^A-Za-z0-9._-]/g, '_');
 }
 
-async function loadQuestionDetails(origin: string, ids: string[]) {
+async function loadQuestionDetails(origin: string, ids: string[], assetPrefix = '') {
   const questions: ReviewQuestion[] = [];
   const batchSize = 12;
   for (let start = 0; start < ids.length; start += batchSize) {
     const batch = await Promise.all(
       ids
         .slice(start, start + batchSize)
-        .map((id) => loadAsset<ReviewQuestion>(origin, `/review-inventory/detail/${detailFileName(id)}.json`)),
+        .map((id) => loadAsset<ReviewQuestion>(origin, `/review-inventory${assetPrefix}/detail/${detailFileName(id)}.json`)),
     );
     for (const question of batch) {
       if (question) questions.push(question);
@@ -892,6 +892,24 @@ function renderUserFacingDraft(question: ReviewQuestion, questionLanguage: 'en' 
   );
 }
 
+function renderOriginalWording(question: ReviewQuestion, questionLanguage: 'en' | 'th') {
+  return (
+    <details className="inventory-original">
+      <summary>{questionLanguage === 'th' ? 'ถ้อยคำจากการตรวจประเมินเดิม' : 'Original audit wording'}</summary>
+      <h3>{localizedText(question.prompt, question.th?.prompt, questionLanguage)}</h3>
+      <p>{localizedText(question.context, question.th?.context, questionLanguage)}</p>
+      <ol className="inventory-options">
+        {question.options.map((option) => (
+          <li key={option.id} className={question.correctOptionIds.includes(option.id) ? 'is-correct' : undefined}>
+            <strong>{option.id.toUpperCase()}.</strong> {localizedOption(option, questionLanguage)}
+          </li>
+        ))}
+      </ol>
+      <p className="inventory-rationale"><strong>{questionLanguage === 'th' ? 'เหตุผล:' : 'Rationale:'}</strong> {localizedText(question.rationale, question.th?.rationale, questionLanguage)}</p>
+    </details>
+  );
+}
+
 export default async function QuestionInventoryPage({
   searchParams,
 }: {
@@ -899,7 +917,9 @@ export default async function QuestionInventoryPage({
 }) {
   const origin = await assetOrigin();
   const summary = await loadAsset<InventorySummary>(origin, '/review-inventory/summary.json');
-  const allQuestions = (await loadAsset<IndexQuestion[]>(origin, '/review-inventory/index.json')) ?? [];
+  const requestedVersion = normalizeParam(searchParams?.version) || summary?.inventoryVersion;
+  const versionAssetPrefix = requestedVersion === '2026-09-30.1' ? '/versions/2026-09-30.1' : '';
+  const allQuestions = (await loadAsset<IndexQuestion[]>(origin, `/review-inventory${versionAssetPrefix}/index.json`)) ?? [];
 
   if (!summary || !allQuestions.length) {
     return (
@@ -932,7 +952,6 @@ export default async function QuestionInventoryPage({
   const industry = normalizeParam(searchParams?.industry) || 'all';
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
-  const rewriteVersion = normalizeParam(searchParams?.rewriteVersion) || 'all';
   const rewriteStatus = normalizeParam(searchParams?.rewriteStatus) || 'all';
   const translation = normalizeParam(searchParams?.translation) || 'all';
   const version = normalizeParam(searchParams?.version) || summary.inventoryVersion;
@@ -952,7 +971,9 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
-    const matchesRewriteVersion = rewriteVersion === 'all' || question.userFacingDraft?.rewriteVersion === rewriteVersion;
+    // The lightweight index stores rewriteVersion at the record root. Detail
+    // records keep it under userFacingDraft, but filtering must use the index
+    // field or version-specific queues return zero results.
     const matchesRewriteStatus = rewriteStatus === 'all' ||
       (rewriteStatus === 'missing' ? !question.rewriteReviewStatus : question.rewriteReviewStatus === rewriteStatus);
     const matchesTranslation = translation === 'all' || question.translationStatus === translation;
@@ -960,9 +981,14 @@ export default async function QuestionInventoryPage({
     // the source filter is explicitly set to live, even though the page defaults
     // the draft inventory to the latest dated version.
     const questionVersion = question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion);
+    const matchesIdQuery = Boolean(query) && question.id.toLowerCase().includes(query);
     const matchesVersion = version === 'all' ||
-      ((version === summary.inventoryVersion || source === 'live') && question.sourceInventory === 'live') ||
-      questionVersion === version;
+      (source === 'live' && question.sourceInventory === 'live') ||
+      questionVersion === version ||
+      question.rewriteVersion === version ||
+      // An ID search should locate the requested question even when it belongs
+      // to an older inventory version than the page's default version.
+      matchesIdQuery;
     const matchesQuery =
       !query ||
       question.id.toLowerCase().includes(query) ||
@@ -970,10 +996,10 @@ export default async function QuestionInventoryPage({
       question.competencyLabel.toLowerCase().includes(query) ||
       question.scopeLabel.toLowerCase().includes(query) ||
       question.sourceBank?.toLowerCase().includes(query);
-    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesRewriteVersion && matchesRewriteStatus && matchesTranslation && matchesVersion && matchesQuery;
+    return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesRewriteStatus && matchesTranslation && matchesVersion && matchesQuery;
   });
 
-  const hasSpecificContentFilter = domain !== 'all' || difficulty !== 'all' || layer !== 'all' || source !== 'all' || role !== 'all' || industry !== 'all' || executive !== 'all' || format !== 'all' || rewriteVersion !== 'all' || rewriteStatus !== 'all' || translation !== 'all' || Boolean(query);
+  const hasSpecificContentFilter = domain !== 'all' || difficulty !== 'all' || layer !== 'all' || source !== 'all' || role !== 'all' || industry !== 'all' || executive !== 'all' || format !== 'all' || rewriteStatus !== 'all' || translation !== 'all' || version !== summary.inventoryVersion || Boolean(query);
   let queue = filtered;
   if (!hasSpecificContentFilter) {
     try {
@@ -1005,7 +1031,11 @@ export default async function QuestionInventoryPage({
   const pageCount = Math.max(1, Math.ceil(queue.length / pageSize));
   const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
-  const visibleQuestions = await loadQuestionDetails(origin, queue.slice(pageStart, pageStart + pageSize).map((question) => question.id));
+  const visibleQuestions = await loadQuestionDetails(origin, queue.slice(pageStart, pageStart + pageSize).map((question) => question.id), versionAssetPrefix);
+  const previousVersionQuestions = version !== '2026-09-30.1'
+    ? await loadQuestionDetails(origin, visibleQuestions.map((question) => question.id), '/versions/2026-09-30.1')
+    : [];
+  const previousVersionById = new Map(previousVersionQuestions.map((question) => [question.id, question]));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -1017,8 +1047,12 @@ export default async function QuestionInventoryPage({
   const industryOptions = uniqueValues(allQuestions.flatMap((question) => question.industryTracks ?? []), (item) => item);
   const executiveOptions = uniqueValues(allQuestions.flatMap((question) => question.executiveRoles ?? []), (item) => item);
   const formatOptions = uniqueValues(allQuestions, (question) => question.recommendedFormat?.format ?? question.userFacingDraft?.format ?? 'unmapped');
-  const versionOptions = uniqueValues(allQuestions, (question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)).filter((item): item is string => Boolean(item));
-  const rewriteVersionOptions = uniqueValues(allQuestions, (question) => question.rewriteVersion);
+  const versionOptions = Array.from(new Set([
+    '2026-09-30.1',
+    '2026-10-07.1',
+    ...allQuestions.map((question) => question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)),
+    ...allQuestions.map((question) => question.rewriteVersion),
+  ].filter(Boolean))).sort((a, b) => String(b).localeCompare(String(a)));
   const rewriteStatusOptions = uniqueValues(allQuestions, (question) => question.rewriteReviewStatus);
   const translationOptions = uniqueValues(allQuestions, (question) => question.translationStatus);
 
@@ -1185,13 +1219,6 @@ export default async function QuestionInventoryPage({
             </select>
           </label>
           <label>
-            <span>Rewrite version</span>
-            <select name="rewriteVersion" defaultValue={rewriteVersion}>
-              <option value="all">All rewrite versions</option>
-              {rewriteVersionOptions.map((item) => <option key={item} value={item}>{item}</option>)}
-            </select>
-          </label>
-          <label>
             <span>Rewrite review</span>
             <select name="rewriteStatus" defaultValue={rewriteStatus}>
               <option value="all">All rewrite statuses</option>
@@ -1244,9 +1271,8 @@ export default async function QuestionInventoryPage({
             <a href={language === 'th' ? '/admin/question-inventory?lang=th' : '/admin/question-inventory'}>Reset</a>
           </div>
         </form>
+        <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
       </section>
-
-      <ReviewFilterControls questionIds={visibleQuestions.map((question) => question.id)} />
 
       <section className="inventory-panel inventory-filter-result-panel">
         <strong>{queue.length.toLocaleString()} questions match the active review queue.</strong>
@@ -1322,9 +1348,23 @@ export default async function QuestionInventoryPage({
               </div>
               <div className="inventory-language-pane inventory-language-pane-en">
                 {renderUserFacingDraft(question, 'en')}
+                {renderOriginalWording(question, 'en')}
+                {version !== '2026-09-30.1' && previousVersionById.has(question.id) ? (
+                  <details className="inventory-original inventory-previous-version">
+                    <summary>Previous version · 2026-09-30.1</summary>
+                    {renderUserFacingDraft(previousVersionById.get(question.id)!, 'en')}
+                  </details>
+                ) : null}
               </div>
               <div className="inventory-language-pane inventory-language-pane-th">
                 {renderUserFacingDraft(question, 'th')}
+                {renderOriginalWording(question, 'th')}
+                {version !== '2026-09-30.1' && previousVersionById.has(question.id) ? (
+                  <details className="inventory-original inventory-previous-version">
+                    <summary>ฉบับก่อนหน้า · 2026-09-30.1</summary>
+                    {renderUserFacingDraft(previousVersionById.get(question.id)!, 'th')}
+                  </details>
+                ) : null}
               </div>
             </div>
             <details className="inventory-question-details">
@@ -1356,19 +1396,6 @@ export default async function QuestionInventoryPage({
                 ) : null}
               </div>
             ) : null}
-            <details className="inventory-original">
-              <summary>Original audit wording</summary>
-              <h3>{localizedText(question.prompt, question.th?.prompt, language)}</h3>
-              <p>{localizedText(question.context, question.th?.context, language)}</p>
-              <ol className="inventory-options">
-                {question.options.map((option) => (
-                  <li key={option.id} className={question.correctOptionIds.includes(option.id) ? 'is-correct' : undefined}>
-                    <strong>{option.id.toUpperCase()}.</strong> {localizedOption(option, language)}
-                  </li>
-                ))}
-              </ol>
-              <p className="inventory-rationale"><strong>{language === 'th' ? 'เหตุผล:' : 'Rationale:'}</strong> {localizedText(question.rationale, question.th?.rationale, language)}</p>
-            </details>
               </div>
               <ReviewerFeedback questionId={question.id} />
             </div>

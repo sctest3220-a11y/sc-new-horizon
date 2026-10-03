@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { syncedEvent } from './review-sync';
+import { useEffect, useState } from 'react';
 
 type FeedbackState = {
   decision: string;
@@ -18,12 +17,6 @@ type SavedFeedbackEntry = FeedbackState & {
   savedAt: string;
 };
 
-type StoredFeedback = {
-  draft: FeedbackState;
-  entries: SavedFeedbackEntry[];
-  updatedAt?: string;
-};
-
 const emptyFeedback: FeedbackState = {
   decision: 'pending',
   rating: '',
@@ -38,73 +31,38 @@ function blankFeedback(): FeedbackState {
   return { ...emptyFeedback };
 }
 
-const emptyStored = { feedback: blankFeedback(), entries: [] as SavedFeedbackEntry[], savedAt: '' };
-
-function readStored(storageKey: string) {
-  const saved = window.localStorage.getItem(storageKey);
-  if (!saved) return emptyStored;
-  try {
-    const parsed = JSON.parse(saved) as Partial<StoredFeedback> & Partial<FeedbackState> & { savedAt?: string };
-    if (parsed.draft || parsed.entries) {
-      return {
-        feedback: { ...blankFeedback(), ...(parsed.draft ?? {}) },
-        entries: parsed.entries ?? [],
-        savedAt: parsed.updatedAt ?? '',
-      };
-    }
-    const migratedEntry = parsed.savedAt
-      ? [{ ...emptyFeedback, ...(parsed as FeedbackState), id: parsed.savedAt, savedAt: parsed.savedAt }]
-      : [];
-    return { feedback: { ...blankFeedback(), ...(parsed as FeedbackState), comment: '', suggestedChange: '' }, entries: migratedEntry, savedAt: parsed.savedAt ?? '' };
-  } catch {
-    return emptyStored;
-  }
-}
-
 export function ReviewerFeedback({ questionId }: { questionId: string }) {
-  const storageKey = useMemo(() => `new-horizon-review:${questionId}`, [questionId]);
   // Start empty on both server and client, then load from localStorage after
   // mount: reading it during render made the hydrated HTML differ from the
   // server's whenever this browser already held feedback for the question.
   const [feedback, setFeedback] = useState<FeedbackState>(blankFeedback);
   const [entries, setEntries] = useState<SavedFeedbackEntry[]>([]);
   const [savedAt, setSavedAt] = useState('');
+  const [historyOrder, setHistoryOrder] = useState<'newest' | 'oldest'>('newest');
 
   useEffect(() => {
-    function load() {
-      const stored = readStored(storageKey);
-      setFeedback(stored.feedback);
-      setEntries(stored.entries);
-      setSavedAt(stored.savedAt);
-    }
-    load();
-    // Fired by ReviewSync after it pulls the committed feedback file.
-    window.addEventListener(syncedEvent, load);
-    return () => window.removeEventListener(syncedEvent, load);
-  }, [storageKey]);
-
-  function persist(nextDraft: FeedbackState, nextEntries = entries) {
-    const timestamp = new Date().toISOString();
-    setSavedAt(timestamp);
-    window.localStorage.setItem(storageKey, JSON.stringify({ draft: nextDraft, entries: nextEntries, updatedAt: timestamp }));
-    window.dispatchEvent(new CustomEvent('new-horizon-review-updated', { detail: { questionId, entries: nextEntries, draft: nextDraft } }));
-  }
+    fetch(`/api/results?questionId=${encodeURIComponent(questionId)}`).then((response) => response.ok ? response.json() : null).then((data) => {
+      if (!data) return;
+      const next = ((data as { entries?: SavedFeedbackEntry[] }).entries ?? []);
+      setEntries(next); setSavedAt(next[0]?.savedAt ?? '');
+    }).catch(() => undefined);
+  }, [questionId]);
 
   function update(patch: Partial<FeedbackState>) {
     const next = { ...feedback, ...patch };
     setFeedback(next);
-    persist(next);
   }
 
   function saveEntry() {
-    const hasNote = feedback.comment.trim() || feedback.suggestedChange.trim() || feedback.decision !== 'pending' || feedback.clarity || feedback.artifact || feedback.format;
-    if (!hasNote) return;
     const timestamp = new Date().toISOString();
     const nextEntries = [{ ...feedback, id: timestamp, savedAt: timestamp }, ...entries];
     const nextDraft = blankFeedback();
     setEntries(nextEntries);
     setFeedback(nextDraft);
-    persist(nextDraft, nextEntries);
+    setSavedAt(timestamp);
+    fetch('/api/results', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'question_feedback', questionId, ...feedback }) })
+      .then(() => window.dispatchEvent(new CustomEvent('new-horizon-review-updated', { detail: { questionId } })))
+      .catch(() => undefined);
   }
 
   return (
@@ -112,7 +70,7 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
       <div className="reviewer-feedback-heading">
         <div>
           <span>Reviewer feedback</span>
-          <strong>Local notes for this question</strong>
+          <strong>Hosted feedback for this question</strong>
         </div>
         <small>{savedAt ? `Draft autosaved ${new Date(savedAt).toLocaleString()}` : 'No draft yet'}</small>
       </div>
@@ -184,21 +142,29 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
         <textarea value={feedback.suggestedChange} onChange={(event) => update({ suggestedChange: event.target.value })} placeholder="Rewrite idea, artifact request, scoring note, or reason to reject." />
       </label>
       <div className="reviewer-feedback-actions">
-        <button type="button" onClick={saveEntry}>Save comment</button>
-        <span>Saving adds this note to history and clears the comment boxes. Drafts autosave while you type.</span>
+        <button type="button" onClick={saveEntry}>Save review</button>
+        <span>Saving records this review in the hosted database and clears the editable fields.</span>
       </div>
       {entries.length ? (
-        <div className="reviewer-feedback-history">
-          <strong>Saved feedback history · {entries.length} review{entries.length === 1 ? '' : 's'}</strong>
-          {entries.slice(0, 5).map((entry) => (
-            <article key={entry.id}>
-              <small>{new Date(entry.savedAt).toLocaleString()}</small>
-              <p>{[entry.decision, entry.rating ? `${entry.rating} stars` : '', entry.clarity, entry.artifact, entry.format].filter(Boolean).join(' · ')}</p>
-              {entry.comment ? <p>{entry.comment}</p> : null}
-              {entry.suggestedChange ? <p><b>Suggested:</b> {entry.suggestedChange}</p> : null}
-            </article>
-          ))}
-        </div>
+        <details className="reviewer-feedback-history-disclosure">
+          <summary>Saved feedback history · {entries.length} review{entries.length === 1 ? '' : 's'} · hosted</summary>
+          <div className="reviewer-feedback-history">
+            <label className="reviewer-feedback-history-sort">Order
+              <select value={historyOrder} onChange={(event) => setHistoryOrder(event.target.value as 'newest' | 'oldest')}>
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+              </select>
+            </label>
+            {[...entries].sort((a, b) => historyOrder === 'newest' ? b.savedAt.localeCompare(a.savedAt) : a.savedAt.localeCompare(b.savedAt)).slice(0, 5).map((entry) => (
+              <article key={entry.id}>
+                <small>{new Date(entry.savedAt).toLocaleString()}</small>
+                <p>{[entry.decision, entry.rating ? `${entry.rating} stars` : '', entry.clarity, entry.artifact, entry.format].filter(Boolean).join(' · ')}</p>
+                {entry.comment ? <p>{entry.comment}</p> : null}
+                {entry.suggestedChange ? <p><b>Suggested:</b> {entry.suggestedChange}</p> : null}
+              </article>
+            ))}
+          </div>
+        </details>
       ) : null}
     </section>
   );

@@ -55,15 +55,9 @@ const contentVersion = sha256(JSON.stringify({ inventory: await hashTree(path.jo
 const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const sourceDirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim());
 const viewHash = await hashTree(path.join(output, 'app'));
-const release = { schemaVersion: 2, releaseId: `${sourceCommit.slice(0, 12)}-${contentVersion.slice(0, 12)}-${viewHash.slice(0, 12)}${sourceDirty ? '-dirty' : ''}`, contentVersion, sourceCommit, sourceDirty, createdAt: new Date().toISOString(), status: 'draft-technical-test', feedback: 'browser-local', inventoryVersion: summary.inventoryVersion, draftCount: summary.draftCount, liveCount: summary.liveCount, sha256: hashes };
+const release = { schemaVersion: 2, releaseId: `${sourceCommit.slice(0, 12)}-${contentVersion.slice(0, 12)}-${viewHash.slice(0, 12)}${sourceDirty ? '-dirty' : ''}`, contentVersion, sourceCommit, sourceDirty, createdAt: new Date().toISOString(), status: 'draft-technical-test', feedback: 'cloudflare-d1', inventoryVersion: summary.inventoryVersion, draftCount: summary.draftCount, liveCount: summary.liveCount, sha256: hashes };
 await writeFile(path.join(output, 'public/review-release.json'), JSON.stringify(release, null, 2));
 await writeFile(path.join(output, 'app/admin/question-inventory/release.json'), JSON.stringify(release));
-for (const component of ['reviewer-feedback.tsx', 'review-controls.tsx']) {
-  const target = path.join(output, 'app/admin/question-inventory', component);
-  const source = await readFile(target, 'utf8');
-  if (!source.includes('new-horizon-review:')) throw new Error(`Feedback storage adapter changed: ${component}`);
-  await writeFile(target, source.replaceAll('new-horizon-review:', `new-horizon-review-v2:${contentVersion}:`));
-}
 // Avoid a cached manifest or document obscuring a newly deployed release.
 await writeFile(path.join(output, 'public/_headers'), '/review-release.json\n  Cache-Control: no-store\n/admin/question-inventory\n  Cache-Control: no-store\n');
 console.log(`Inventory-only Cloudflare source prepared at ${output}`);

@@ -1,0 +1,38 @@
+{
+  "reviewer": "local",
+  "updatedAt": "2026-09-24T11:25:29.367Z",
+  "questions": {
+    "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-01": {
+      "entries": [
+        {
+          "decision": "pending",
+          "rating": "",
+          "clarity": "",
+          "artifact": "",
+          "format": "",
+          "comment": "Project team uses AI to prepare a project update. The assistant writes an answer using its language model, but it does not search approved project records. Only the current approved version may be circulated.   the last sentence does not comnicate what the question is asking.   is it saying that only approved documents stored in the library (RAG) should be used?",
+          "suggestedChange": "",
+          "id": "2026-09-22T04:43:12.399Z",
+          "savedAt": "2026-09-22T04:43:12.399Z"
+        }
+      ],
+      "updatedAt": "2026-09-23T03:45:20.216Z"
+    },
+    "NH-CORE-GENERAL-D2-PROMPT-DESIGN-APPLIED-01": {
+      "entries": [
+        {
+          "decision": "pending",
+          "rating": "",
+          "clarity": "",
+          "artifact": "",
+          "format": "",
+          "comment": "",
+          "suggestedChange": "translation is partial and incomplete",
+          "id": "2026-09-23T04:49:30.022Z",
+          "savedAt": "2026-09-23T04:49:30.022Z"
+        }
+      ],
+      "updatedAt": "2026-09-23T04:49:30.022Z"
+    }
+  }
+}
