@@ -92,4 +92,17 @@ write(dictionaryPath, dictionary);
 write(historyPath, history);
 for (const [file, data] of staged) write(file, data);
 write('exports/review-inventory/wording-refinement-qa.json', report);
+// Refresh English-only synchronization status without translating or changing Thai.
+const thaiQaPath = 'exports/review-inventory/thai-translation-qa.json';
+const thaiQa = read(thaiQaPath);
+thaiQa.contentReviewIssues = (thaiQa.contentReviewIssues ?? []).filter(i => i.type !== 'thai-wording-sync-pending');
+for (const [source, bank] of staged) for (const q of bank.questions) {
+  const d = q.userFacingDraft;
+  if (d.englishWordingReview?.thaiStatus !== 'previous-revision-pending-sync') continue;
+  const missingDraftFields = fields({ id: q.id, userFacingDraft: structuredClone(d) }).filter(f => !f.thaiObj[f.thaiKey]).map(f => f.key);
+  thaiQa.contentReviewIssues.push({ id: q.id, source, type: 'thai-wording-sync-pending', revision: d.englishWordingReview.revision, missingDraftFields, note: 'Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check.' });
+}
+thaiQa.contentReviewIssueCount = thaiQa.contentReviewIssues.length;
+thaiQa.englishSyncStatusUpdatedAt = new Date().toISOString();
+write(thaiQaPath, thaiQa);
 console.log(JSON.stringify({ status: report.status, processed: report.items.length, changedWording: report.items.filter(x => x.changes.length).length, withReviewIssues: report.items.filter(x => x.issues.length).length }));

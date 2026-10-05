@@ -82,6 +82,8 @@ type ReviewQuestion = {
 
 type InventorySummary = {
   inventoryVersion: string;
+  latestReviewVersion?: string;
+  reviewVersions?: { id: string; version: string; draftCount: number; liveCount: number; artifactCounts: ArtifactNeedsPayload['counts'] | null }[];
   status: string;
   liveIntegration: boolean;
   draftCount: number;
@@ -184,14 +186,14 @@ function detailFileName(id: string) {
   return id.replace(/[^A-Za-z0-9._-]/g, '_');
 }
 
-async function loadQuestionDetails(origin: string, ids: string[]) {
+async function loadQuestionDetails(origin: string, ids: string[], detailBase = '/review-inventory/detail') {
   const questions: ReviewQuestion[] = [];
   const batchSize = 12;
   for (let start = 0; start < ids.length; start += batchSize) {
     const batch = await Promise.all(
       ids
         .slice(start, start + batchSize)
-        .map((id) => loadAsset<ReviewQuestion>(origin, `/review-inventory/detail/${detailFileName(id)}.json`)),
+        .map((id) => loadAsset<ReviewQuestion>(origin, `${detailBase}/${detailFileName(id)}.json`)),
     );
     for (const question of batch) {
       if (question) questions.push(question);
@@ -893,7 +895,10 @@ export default async function QuestionInventoryPage({
 }) {
   const origin = await assetOrigin();
   const summary = await loadAsset<InventorySummary>(origin, '/review-inventory/summary.json');
-  const allQuestions = (await loadAsset<IndexQuestion[]>(origin, '/review-inventory/index.json')) ?? [];
+  const version = normalizeParam(searchParams?.version) || 'all';
+  const selectedReviewVersion = summary?.reviewVersions?.find(item => item.version === version);
+  const assetBase = selectedReviewVersion ? `/review-inventory/versions/${selectedReviewVersion.id}` : '/review-inventory';
+  const allQuestions = (await loadAsset<IndexQuestion[]>(origin, `${assetBase}/index.json`)) ?? [];
 
   if (!summary || !allQuestions.length) {
     return (
@@ -917,7 +922,9 @@ export default async function QuestionInventoryPage({
     );
   }
 
-  const artifactCounts = summary.artifactCounts;
+  const artifactCounts = selectedReviewVersion?.artifactCounts ?? summary.artifactCounts;
+  const draftCount = selectedReviewVersion?.draftCount ?? summary.draftCount;
+  const liveCount = selectedReviewVersion?.liveCount ?? summary.liveCount;
   const domain = normalizeParam(searchParams?.domain) || 'all';
   const difficulty = normalizeParam(searchParams?.difficulty) || 'all';
   const layer = normalizeParam(searchParams?.layer) || 'all';
@@ -926,7 +933,6 @@ export default async function QuestionInventoryPage({
   const industry = normalizeParam(searchParams?.industry) || 'all';
   const executive = normalizeParam(searchParams?.executive) || 'all';
   const format = normalizeParam(searchParams?.format) || 'all';
-  const version = normalizeParam(searchParams?.version) || summary.inventoryVersion;
   const language = normalizeParam(searchParams?.lang) === 'th' ? 'th' : 'en';
   const queryInput = (normalizeParam(searchParams?.q) || '').trim();
   const query = queryInput
@@ -943,7 +949,7 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
-    const matchesVersion = version === 'all' || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
+    const matchesVersion = version === 'all' || Boolean(selectedReviewVersion) || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
     const matchesQuery =
       !query ||
       question.id.toLowerCase().includes(query) ||
@@ -954,11 +960,18 @@ export default async function QuestionInventoryPage({
     return matchesDomain && matchesDifficulty && matchesLayer && matchesSource && matchesRole && matchesIndustry && matchesExecutive && matchesFormat && matchesVersion && matchesQuery;
   });
 
+  const hiddenExactMatch = filtered.length === 0 && query
+    ? allQuestions.find((question) => question.id.toLowerCase() === query)
+    : undefined;
+  const exactMatchHref = hiddenExactMatch
+    ? `/admin/question-inventory?${new URLSearchParams({ lang: language, version: 'all', q: hiddenExactMatch.id }).toString()}`
+    : undefined;
+
   const pageSize = 20;
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
   const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
-  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id));
+  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id), `${assetBase}/detail`);
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
   const layerCounts = countBy(allQuestions, (question) => question.layer);
@@ -1008,8 +1021,9 @@ export default async function QuestionInventoryPage({
         </div>
         <div className="inventory-status-card">
           <span>Inventory version</span>
-          <strong>{summary.inventoryVersion}</strong>
-          <small>{summary.draftCount.toLocaleString()} draft · {summary.liveCount.toLocaleString()} live</small>
+          <strong>{selectedReviewVersion?.version ?? (version === 'all' ? summary.latestReviewVersion ?? summary.inventoryVersion : version)}</strong>
+          <small>{selectedReviewVersion ? 'Saved review version' : version === 'all' ? 'Current inventory · all sources' : 'Original audit version filter'}</small>
+          <small>{draftCount.toLocaleString()} draft · {liveCount.toLocaleString()} live</small>
         </div>
       </section>
 
@@ -1043,7 +1057,7 @@ export default async function QuestionInventoryPage({
         <div><span>Total questions</span><strong>{allQuestions.length.toLocaleString()}</strong></div>
         <div><span>Filtered</span><strong>{filtered.length.toLocaleString()}</strong></div>
         <div><span>Shown</span><strong>{visibleQuestions.length.toLocaleString()}</strong><small>first 80 for page speed</small></div>
-        <div><span>Live bank</span><strong>{summary.liveCount.toLocaleString()}</strong></div>
+        <div><span>Live bank</span><strong>{liveCount.toLocaleString()}</strong></div>
         <div><span>Artifact candidates</span><strong>{artifactCounts?.artifactCandidates.toLocaleString() || 'Not scanned'}</strong></div>
       </section>
 
@@ -1083,8 +1097,11 @@ export default async function QuestionInventoryPage({
             <span>Version</span>
             <select name="version" defaultValue={version}>
               <option value="all">All versions</option>
+              {(summary.reviewVersions ?? []).slice().reverse().map(item => (
+                <option key={item.version} value={item.version}>{item.version}{item.version === summary.latestReviewVersion ? ' (latest review)' : ''}</option>
+              ))}
               {versionOptions.sort((a, b) => a === summary.inventoryVersion ? -1 : b === summary.inventoryVersion ? 1 : b.localeCompare(a)).map((item) => (
-                <option key={item} value={item}>{item}{item === summary.inventoryVersion ? ' (latest)' : ''}</option>
+                <option key={item} value={item}>{item} (original audit)</option>
               ))}
             </select>
           </label>
@@ -1216,7 +1233,7 @@ export default async function QuestionInventoryPage({
               <div className="inventory-question-content">
             <details className="inventory-question-id">
               <summary>Question ID and version</summary>
-              <dl><div><dt>ID</dt><dd>{question.id}</dd></div><div><dt>Version</dt><dd>{question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}{(question.version ?? summary.inventoryVersion) === summary.inventoryVersion ? ' · latest' : ''}</dd></div></dl>
+              <dl><div><dt>ID</dt><dd>{question.id}</dd></div>{selectedReviewVersion ? <div><dt>Review version</dt><dd>{selectedReviewVersion.version}</dd></div> : null}<div><dt>Original audit version</dt><dd>{question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)}</dd></div></dl>
             </details>
             <div className="inventory-question-language">
               <input
@@ -1292,7 +1309,18 @@ export default async function QuestionInventoryPage({
         {!visibleQuestions.length ? (
           <article className="inventory-question-card inventory-empty-state">
             <h2>No questions match these filters yet.</h2>
-            <p>Try broadening the source, role, industry, difficulty, or search filters.</p>
+            {hiddenExactMatch && exactMatchHref ? (
+              <>
+                <p>{language === 'th'
+                  ? `พบคำถาม ${hiddenExactMatch.id} แต่ตัวกรองที่เลือกซ่อนคำถามนี้อยู่`
+                  : `Question ${hiddenExactMatch.id} exists, but the selected filters hide it.`}</p>
+                <Link href={exactMatchHref}>{language === 'th'
+                  ? 'แสดงคำถามนี้โดยล้างตัวกรองอื่น'
+                  : 'Show this question and clear other filters'}</Link>
+              </>
+            ) : (
+              <p>Try broadening the version, source, role, industry, difficulty, or search filters.</p>
+            )}
           </article>
         ) : null}
       </section>

@@ -17,6 +17,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const exportsDir = path.join(projectRoot, 'exports/review-inventory');
@@ -26,6 +27,7 @@ const detailDir = path.join(outputDir, 'detail');
 const draftPath = path.join(exportsDir, 'questions.json');
 const livePath = path.join(exportsDir, 'live-questions.json');
 const artifactNeedsPath = path.join(exportsDir, 'artifact-needs.json');
+const versionsPath = path.join(exportsDir, 'versions.json');
 
 // Only the fields the admin page actually reads. Dropping the rest (provenance,
 // readability, contentHash, sourceScenario, ...) keeps the detail files small.
@@ -81,7 +83,8 @@ function isUpToDate() {
   const summaryPath = path.join(outputDir, 'summary.json');
   if (!fs.existsSync(summaryPath)) return false;
   const builtAt = fs.statSync(summaryPath).mtimeMs;
-  return [draftPath, livePath, artifactNeedsPath]
+  const versions = fs.existsSync(versionsPath) ? readJson(versionsPath).versions : [];
+  return [draftPath, livePath, artifactNeedsPath, versionsPath, fileURLToPath(import.meta.url), ...versions.map(v => path.join(exportsDir, v.snapshot))]
     .filter((input) => fs.existsSync(input))
     .every((input) => fs.statSync(input).mtimeMs <= builtAt);
 }
@@ -104,7 +107,7 @@ function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
 function buildIndexRecord(detail) {
   const record = {
     id: detail.id,
-    version: detail.version ?? (sourceInventory === 'live' ? 'live-bank' : null),
+    version: detail.version ?? (detail.sourceInventory === 'live' ? 'live-bank' : null),
     domain: detail.domain,
     difficulty: detail.difficulty,
     layer: detail.layer,
@@ -135,6 +138,14 @@ function main() {
   const live = fs.existsSync(livePath) ? readJson(livePath) : null;
   const artifactNeeds = fs.existsSync(artifactNeedsPath) ? readJson(artifactNeedsPath) : null;
   const artifactNeedsById = new Map((artifactNeeds?.candidates ?? []).map((candidate) => [candidate.id, candidate]));
+  const versions = fs.existsSync(versionsPath) ? readJson(versionsPath) : { latest: null, versions: [] };
+  // Validate snapshots before replacing any generated output.
+  const snapshots = versions.versions.map(entry => {
+    if (!/^\d{4}\.\d{2}\.\d{2}-V\.\d+$/.test(entry.id) || entry.snapshot !== `versions/${entry.id}.json`) throw new Error('Invalid review version path');
+    const contents = fs.readFileSync(path.join(exportsDir, entry.snapshot), 'utf8');
+    if (createHash('sha256').update(contents).digest('hex') !== entry.sha256) throw new Error(`Saved review version changed: ${entry.version}`);
+    return { entry, snapshot: JSON.parse(contents) };
+  });
 
   fs.rmSync(outputDir, { recursive: true, force: true });
   fs.mkdirSync(detailDir, { recursive: true });
@@ -151,8 +162,21 @@ function main() {
   writeAll(draft.questions, 'draft', 'New draft review inventory');
   writeAll(live?.questions ?? [], 'live', 'Existing live bank');
 
+  for (const { entry, snapshot } of snapshots) {
+    const versionDirectory = path.join(outputDir, 'versions', entry.id);
+    fs.mkdirSync(path.join(versionDirectory, 'detail'), { recursive: true });
+    const versionIndex = snapshot.questions.map(question => {
+      const detail = buildDetail(question, question.sourceInventory, question.sourceBank, new Map());
+      fs.writeFileSync(path.join(versionDirectory, 'detail', `${safeFileName(detail.id)}.json`), JSON.stringify(detail));
+      return buildIndexRecord(detail);
+    });
+    fs.writeFileSync(path.join(versionDirectory, 'index.json'), JSON.stringify(versionIndex));
+  }
+
   const summary = {
     inventoryVersion: draft.inventoryVersion,
+    latestReviewVersion: versions.latest,
+    reviewVersions: versions.versions.map(({ id, version, draftCount, liveCount, artifactCounts }) => ({ id, version, draftCount, liveCount, artifactCounts })),
     status: draft.status,
     liveIntegration: draft.liveIntegration ?? false,
     draftCount: draft.questions.length,

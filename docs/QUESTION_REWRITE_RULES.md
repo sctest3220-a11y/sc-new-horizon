@@ -2,7 +2,7 @@
 
 Status: Approved v2.1 baseline with provisional wording refinements under review
 Current rules version: `2.1`
-Last updated: 1 October 2026
+Last updated: 5 October 2026
 Baseline human approval recorded: 23 September 2026
 Provisional revision: `2.2-draft`; previously local `1.9-draft`, not yet the final approved standard
 
@@ -10,9 +10,30 @@ Publication authorization: On 1 October 2026, the user explicitly requested push
 
 ## Purpose
 
+Publication authorization — 5 October 2026: The user requested publication of the accumulated local rule and English-inventory updates, dated snapshot **2026.10.05 V.0**, related records and search fixes to `kj-dee-branch`. This supersedes their earlier local-only status. It does not authorize automatic future pushes or promote pending translations and review drafts to scored-release approval.
+
 This standard guides human and agent-assisted rewrites of assessment questions. It also prevents useful variants from being lost. Rewrites remain proposals until a human reviewer selects and approves a version.
 
-## Provisional local refinements - updated 1 October 2026
+Inventory packaging uses dated immutable snapshots, beginning with **2026.10.05 V.0**. This combines the saved reviewed revisions with the remaining inventory while preserving each item's review and translation status. A dated inventory version does not replace original audit versions, promote the provisional rewrite rules, or grant scored-release approval. See [dated inventory versions](QUESTION_INVENTORY_VERSIONS.md).
+
+## Provisional local refinements - updated 5 October 2026
+
+### Controls, evidence and natural wording - 5 October 2026
+
+These refinements and the associated English review-inventory checkpoints are authorized for local implementation. Keep the approved v2.1 baseline and provisional v2.2-draft status. Push only on a new explicit user request.
+
+- **Prefer familiar words without changing the action:** Use "access permission has been removed" instead of "withdrawn" in the reviewed security item. Apply the chosen wording consistently to the scenario, choices and explanation. Removing permission is not deleting data, removing an account, or proving every cached copy is inaccessible. Prefer "valid purpose" to "legitimate purpose" for this audience, but do not change it to "approved purpose."
+- **Make technical failures concrete:** Describe when permissions are checked, who later requests information and what remains accessible. Indexing-time permission checks, requesting-user authorization, permission removal, deletion from derived stores, incomplete logs, logging that defeats input minimization and a proposed new purpose are different failures. Preserve each rather than describing every case as a generic data leak.
+- **Keep evidence checks distinct:** Opening a source link is different from reading whether its text supports a statement. Sources repeating one press release are not independent confirmation. Effective dates concern when information applies. Explain the exact missing check without asserting that every unverified statement is false or every repeated source is unrelated.
+- **Identify human actions and independent verification:** Staff are the reviewers when the source establishes human review. A phone number supplied in a suspicious request is not independent verification of that request. Retain the independently maintained contact-record requirement. A suspicious request is not a proven fraud; confirmed account compromise must not be weakened to mere suspicion.
+- **Separate containment from investigation:** A compromised account remaining active calls for access containment and investigation of potentially completed actions. Do not invent completed transactions, AI causation or a causal link to disputed identity details. Preserve investigation and prevention as distinct actions.
+- **Retain operational uncertainty and authority:** A timeout does not prove refund failure. The prior refund may already be complete; never change that to still processing. A customer dispute requires the established verification and correction process, not an assertion that the stored details have already been proven wrong. Review and approval authority remain separate.
+- **Make the response task explicit:** For written answers, integrate "Write" into the prompt when helpful, such as "Write the key questions about risk you would ask before approving this use of company data." Preserve written, ranked, single-choice and multi-select interactions; do not add multiple-choice answers to a written question. Keep original ranking dependencies and score definitions, without inventing a universally mandatory sequence.
+- **Remove authoring instructions carefully:** "Focus competency" and "the user should show" are reviewer instructions, not scenario events. Preserve decision-relevant scope in natural user-facing prose where needed. Record any omission or reframing. Do not invent fraud incidents to make a general governance item appear to test fraud detection, or assert a year-based market trend without verification.
+- **Keep the whole item aligned and record validity issues:** Retain original key and scores, flag overly long correct options, obvious distractors, undefined references and competency mismatches. Existing per-option feedback may still reflect an unresolved source mapping; flag it rather than silently recalibrating the item. Wording acceptance is not benchmark validation.
+- **Generate evidence only when the decision needs it:** A generic "requires artifact" tag does not override the artifact standard. Control-selection questions often contain enough evidence in prose. Do not fabricate logs, source packs, dashboard numbers or security incidents to fill a recommended template. Record no-artifact decisions and preserve any existing scored asset until separately authorized.
+
+Challenge each simplification: Does it preserve actor, scope, timing, certainty and authority? Does it make the correct answer uniquely polished? Does it accidentally turn a reporting or permissions issue into deletion, fraud or proven harm? Does the question actually test its assigned competency? Keep unresolved answers in the review record.
 
 The refinements below are a living draft for ongoing question review, with no required number of questions before updating or publishing the rules. On 29 September 2026, the user authorized pushing the current rules and review log to `kj-dee-branch`. The current approved v2.1 core rules below are retained intact. The review began against v1.8; its local refinements were previously labeled v1.9-draft and are now labeled v2.2-draft to avoid colliding with the published v1.9 release. These refinements guide review proposals; publishing the rules does not approve changes to scored items or question-bank files. Track evidence and unresolved challenges in [Rewrite Rule Review Log](QUESTION_REWRITE_RULE_REVIEW_LOG.md).
 
@@ -62,6 +83,69 @@ The 1 October 2026 additions above are saved locally for ongoing review; earlier
 During review, show the revised question, all choices, correct answer, explanation, and any remaining challenge together. Include scoring only when it is defined for that format. Keep question rewrites in the conversation unless the user separately requests implementation; review-log checkpoints are not question-bank updates. Reviewing an item does not itself approve it. Save accumulated rule refinements locally and do not report review totals or progress counts. Publish them to `kj-dee-branch` only when the user explicitly says "push" or otherwise directly requests publication. A push request authorizes the current accumulated updates, not automatic publication of future refinements. There is no fixed review-count gate. Final rule approval remains distinct from publishing this draft.
 
 These wording-only refinements do not override the v2.1 AI-necessity, answer-key, translation, numerical, or partial-credit standards. If those standards identify a need to change the selected format, key, or construct, flag it as a substantive revision for separate review rather than silently changing the wording-only candidate.
+
+### Advanced prompt, output and source controls - 5 October 2026
+
+The user passed Source verification ADVANCED-01 and included the preceding reviews in that acceptance. The complete checkpoints and remaining challenges are recorded in the review log. This instruction updates local rules and documentation only.
+
+- **Explain technical controls as concrete actions without losing their parts:** "Production prompt" can be "the prompt used in the live system"; requalifying a prompt-model pair means testing and confirming that the prompt works with the replacement model before switching. Preserve both prompt and model, the validation requirement and its timing. Do not imply that a model change has already been deployed when the source does not say so.
+- **Preserve structure, history and evaluation distinctions:** Schema instructions concern the required data structure, not merely style or tone. Keep prompt versions distinct from model versions and source-document versions. Linking a prompt release to evaluated examples does not mean every example passed or prove which change caused a failure.
+- **Retain both testing and enforcement:** A release-blocking regression case checks that existing behavior still works after changes and prevents release if the test fails. Do not reduce it to an optional review. Preserve an undefined exception as a flagged source issue rather than inventing one.
+- **Keep aggregate ratings separate from serious defects:** "Average ratings rise" can be "average ratings are improving"; it does not mean every response improves. Critical-defect release rules remain separate from average ratings. Keep the scenario's factual errors specific while preserving the original control's broader critical defects. Do not invent a rating scale, threshold or defect example.
+- **Preserve the feedback loop:** Recording recurring problems by type must remain linked to fixes in the prompt or source information. Rewriting individual responses, categorizing defects and preventing release are different actions. Do not claim categorization guarantees prevention or establishes the cause of every defect.
+- **Keep stopping criteria and revision limits together:** Preserve both explicit acceptance criteria and a bounded revision budget. The reviewed wording is "Stop revising once clear acceptance criteria are met, and set a limit on revision effort." Do not narrow an unspecified budget to a particular number of rounds, amount of money or time limit. Meeting a limit does not authorize releasing an output that fails requirements.
+- **Preserve effective dates and applicability:** Effective dates are not automatically publication dates, retrieval dates or version numbers. Combining information from sources with different effective dates without recording them is the observed issue; do not invent particular dates or declare every source obsolete. Record source versions and resolve when information applies before combining it. The newest source is not automatically the applicable one for every case.
+- **Separate statement support from time consistency:** Checking that a passage supports an important statement does not by itself establish which version applies to the relevant period. Preserve both controls as meaningful options, explaining the best fit to the stated problem without claiming that complementary safeguards cannot work together.
+- **Preserve reviewed shared wording and known limitations:** Reuse the accepted refund, pending-case and identity-correction choices in their original order. Retain missing referents such as "both rubric versions" as review issues; do not add facts solely to make a distractor plausible. A question about choosing a control does not need a fabricated artifact when the prose supplies the evidence. Actual comparison tasks still need their source evidence.
+
+### Preserve exact meaning and natural flow - 5 October 2026
+
+The user requested local rule, English-inventory and related-document updates. Keep them local until a new push request.
+
+- **Meaning is a hard boundary:** Simplify expression without changing context, evidence, uncertainty, causal relationships or scope. Compare each scenario sentence and option against its own original audit wording, not merely another sentence in the rewrite.
+- **Keep specific evidence and broader controls distinct:** In Capability limits ADVANCED-03, retain "required data fields are missing" in the scenario and "critical inputs are missing" in choice 1B. The audit scenario says required fields are absent; its control covers missing critical inputs. Missing information broadens the scenario, while limiting the control to fields narrows it. Missing fields and blank fields are different. Consistent terminology must not erase a meaningful distinction.
+- **Name human actors and recipients:** Where human review is established, prefer "a staff member checks the AI’s draft" to an ambiguous reviewer. Make clear when a response is sent to the customer. Do not invent a manager, job title or approval authority.
+- **Separate responsibilities:** Drafting, factual review, action approval, and correcting errors and notifying customers are distinct responsibilities. Checking a draft does not grant approval authority. Different responsibilities do not necessarily require different people.
+- **Distinguish an error from its consequence:** A response containing a mistake differs from a response causing an error. D6 AWARENESS-01 uses the user's explicit clarification that the sent response contains a mistake; this is not a general substitution rule.
+- **Preserve natural connected sentences:** Short sentences are useful, not mandatory. Retain "The team noticed that the AI makes mistakes more often right after the source data is updated, while remaining accurate on older cases." Do not split a grammatical sentence solely to repeat an already clear subject.
+- **Separate optimism, accuracy and evaluation stages:** A higher forecast establishes neither accuracy nor inaccuracy. Identify whose forecast is considered. Distinguish evidence for funding a bounded pilot from results collected during it and criteria for expansion. The sales item's unchecked-accuracy statement is a user-approved clarification absent from the audit.
+- **Challenge without silently repairing:** Flag undefined exception types, overlapping safeguards and weak distractors until a content revision is authorized. Do not invent examples or claim complementary safeguards are mutually exclusive to defend the key. A pattern after source updates does not prove an exact cause.
+- **Implement the selected whole item:** Save the latest scenario, prompts, choices and explanation with original-source history, unchanged format/keys/scores, artifact decision and unresolved issues. Distinguish an explicit full-item pass from selection for local implementation. Keep Thai pending synchronization; do not fill new English explanation fields with unrelated Thai or present missing translations as completed.
+
+### Use familiar language for each role - 2 October 2026
+
+Apply this rule across all role-based assessment rewrites, in English and Thai. The lesson from Customer Service is to use the words the intended audience normally uses for its work, while preserving the competency and evidence being tested. Familiar professional terms can be clearer than longer generic descriptions. Do not assume one role's vocabulary fits every role.
+
+- **Identify the audience and task first:** Use the question's role, scenario and source wording to select terminology. For general/core items or mixed-role audiences, prefer broadly understood language. Do not import Customer Service metrics into unrelated roles or invent workplace practices to make an item sound authentic.
+- **Use reviewed role vocabulary:** Prefer terms confirmed through the user's feedback or an established role glossary. Record the term, intended meaning, role, language and source of the decision in the review log. If a term's meaning or suitability is uncertain, check the relevant source or ask for clarification rather than claiming it is universally used. Avoid automatic word replacement across the inventory.
+- **Keep familiar terms and readable sentences together:** Retain recognizable metric names and use direct verbs around them. Explain an unfamiliar abbreviation on first use, without adding a definition that reveals the answer. Apply the same vocabulary consistently in the scenario, prompt, every choice, explanation and any artifact. Preserve smooth connections and balanced choice wording.
+- **Preserve the measurement:** A rate is not a count; an agreement is not a performance measure; a complaint is not necessarily a dispute. Keep the measured outcome, population, time period and units when supplied. Any proposed change to these is a content decision to record and review separately, not a wording-only improvement.
+- **Preserve meaning across languages:** Use natural professional vocabulary for each language, with equivalent meaning and difficulty. Do not translate a role term word for word when that creates an unfamiliar expression, or leave unexplained English jargon in Thai. Retain the existing Thai completeness requirements.
+- **Preserve the assessment:** Keep the selected format, option order, key and scoring. Familiar terminology must not make only the correct choices more polished or introduce clues. This rule update does not itself implement changes across the inventory.
+
+Customer Service examples from `FUNC-CS-D5-003`:
+
+| Reviewed wording | Meaning and boundary |
+| --- | --- |
+| First-contact resolution rate | Prefer the recognizable metric name to an unnecessary descriptive paraphrase. Retain reopened-ticket rate as a separate measure. |
+| Service Level Agreement (SLA) breach rate | Expand SLA on first use and name the measure. SLA alone names the agreement, not the measured result. |
+| Number of escalated cases; number of customer complaints | User-requested wording for this candidate. Counts differ from the original escalation rate, and complaints are broader than the original disputes. Record these as content changes; do not silently substitute them in other items. |
+| How often staff edit AI drafts and complete the evidence check | Use the natural action phrase while retaining how often it happens; "complete the evidence check" alone is an instruction, not a metric. |
+| Evaluate whether AI-assisted replies improve the team's work | Use "evaluate" for judging results. Do not replace "access" when it actually means permission to retrieve or use information. |
+
+Before presenting a rewrite, check whether someone in the intended role would recognize the terms, understand the sentence in one reading, and make the same decision from the same evidence. If making the language familiar changes what is measured, flag that change explicitly.
+
+### Improve readability and enhance text flow - 2 October 2026
+
+These provisional refinements and the reviewed D4 English inventory updates are authorized locally. The previous push does not authorize publishing these new changes.
+
+- **Improve readability:** Use familiar words, clear subjects and direct verbs. Replace unnecessarily nested clauses with a short phrase where it preserves the meaning. Retain "A temporary copy of these documents is still available after its approved deletion date." Do not remove the approved date, temporary-copy scope or continued availability while shortening it.
+- **Enhance the flow of the text:** Arrange facts so each sentence follows naturally from the previous one: what was done, what remains, then why those remaining details matter. Keep every paragraph connected to the AI's task. Split overloaded sentences instead of joining independent sentences with only a comma. Use connections such as "but" and "Together" when their relationship is supported; do not add a causal link or AI action that the source does not establish.
+- **Preserve details that affect the answer:** Keep "uncommon job title" as the accepted plain-language alternative to the original "rare job title." Reducing it to "job title" removes the distinctive detail that helps explain identification. Retain the exact event date and the combined effect of the details. Do not generalize that every job title and date can identify someone.
+- **Retain the agreed sentence structure:** "Names have been removed from the case history, but an uncommon job title and the exact event date remain. Together, these details can identify the person." Removing names is not equivalent to removing all personal information. The reference "these details" must clearly point to the title and date.
+- **Check readability across the complete item:** Read the scenario, prompts, all choices and explanation together for natural grammar, consistent terms, clear references and unnecessary repetition. Improve every choice fairly; do not make only the correct answer clearer or give it a unique phrase from the scenario. Preserve the selected template, option order, keys and scoring.
+- **Keep privacy issues distinct:** Explain retention as keeping a copy longer than allowed, access as retrieving records outside the user's permissions, and identification as recognizing a person from remaining details. Do not infer unnecessary data collection from identification alone. The explicit permission statement in D4 AWARENESS-02 is a reviewed clarification based on the original key and explanation, not a general assumption about all records belonging to another team.
+- **Separate clearer wording from content validation:** Preserve AI-specific relevance concerns in D4 AWARENESS-01 and -03. Do not invent an AI-specific storage mechanism or data-processing step to resolve them. These items need no artifact because the text already supplies the necessary evidence.
 
 ### Further English refinements - 1 October 2026
 
@@ -219,6 +303,26 @@ Rate each version from 1 to 5 on:
 Also record a final decision: `prefer`, `revise`, `hold`, or `reject`.
 
 ## Rules changelog
+
+### Provisional 2.2-draft advanced control wording - 5 October 2026
+
+- Recorded the user's pass for the latest D3 review and preceding D2 reviews in the local review log.
+- Added plain-language rules for prompt-model validation, regression tests, critical-defect release rules, defect categorization, bounded revision effort and effective-date conflicts.
+- Preserved original meanings, shared choices, answer order, uncertainty and unresolved content issues. No new inventory write or push is authorized by this documentation update.
+
+### Provisional 2.2-draft meaning-preservation follow-up - 5 October 2026
+
+- Preserved required data fields versus broader critical inputs and absent versus blank fields.
+- Added explicit human roles, recipients and approval responsibilities; retained natural connected sentences and recorded user-approved content clarifications separately.
+- Distinguished forecast optimism from accuracy and initial pilot evidence from expansion evidence.
+- Applied the latest selected English review checkpoints locally with original audit/history, formats, keys, scores and previous Thai preserved. No push or scored-release promotion.
+
+### Provisional 2.2-draft role vocabulary refinement - 2 October 2026
+
+- Added a cross-role rule to prefer familiar professional vocabulary while improving readability and flow throughout each item.
+- Recorded Customer Service terminology from `FUNC-CS-D5-003`, including first-contact resolution rate, SLA breach rate and completing the evidence check.
+- Distinguished rates from counts, agreements from measures, and disputes from complaints; terminology preferences do not authorize silent changes to the construct or metrics.
+- Required role- and language-specific terminology decisions, consistent whole-item use and preservation of format, keys and scoring. Saved locally; publication awaits an explicit push request.
 
 ### Provisional 2.2-draft local finance and HR refinements - 29 September 2026
 

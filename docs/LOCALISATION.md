@@ -1,5 +1,13 @@
 # Question Bank Localisation (Thai)
 
+## Latest local English review update - 5 October 2026
+
+The controls review updates English user-facing drafts in both admin review exports using `inventory/english-wording-review-october-controls.mjs`. This includes the accepted "access permission has been removed" wording. Original audit text, selected formats, option order, keys, scoring and existing Thai text remain preserved. Thai wording and any previously absent live-item explanations await synchronization; previous Thai text is not an approved translation of the new English. The item-level QA report records that pending status.
+
+Full English checkpoints and unresolved issues are recorded under "Controls review local implementation - 5 October 2026" in the rewrite review log. This status supersedes the earlier local-only implementation boundary for the accepted advanced prompt/output/source checkpoints. Existing historical status entries below remain audit history. Production scored questions and their artifacts are not replaced by these review-export changes. No push is authorized until the user requests it.
+
+For this English-only update, run the wording refinement script, artifact-needs scanner and admin asset builder in order. Do not run the Thai translator as a shortcut for synchronization. Verify the generated output directory stays inside this checkout before rebuilding. Use the inventory tests and a before/after comparison to check original audit text, Thai text, item structure and unrelated records.
+
 Last status review: **30 September 2026**, using the local `kj-dee-branch` checkout. The remote branch was fetched before publishing the English inventory wording update.
 
 Artifact translation, equivalence, readability, and release requirements are defined in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Question wording and cultural-context rules are defined in [Question Rewrite Rules and Versioning](QUESTION_REWRITE_RULES.md).
@@ -149,6 +157,14 @@ The accepted Customer Service English wording is maintained in `inventory/englis
 Original English audit wording and all selected question formats, choice order, keys and scores are checked against saved baselines. Earlier drafts and artifact metadata are retained in `wording-refinement-history.json`. The current per-item report is `wording-refinement-qa.json`; `english-rewrite-qa.json` remains the historical report for the previous English pass. `thai-translation-qa.json` checks translation coverage and text corruption, not human approval. The audit-source workbook remains an original-source export; current user-facing drafts are in the bilingual JSON and localhost inventory.
 
 Validation: `node --test scripts/test-english-inventory.mjs scripts/test-review-inventory.mjs scripts/test-thai-inventory.mjs scripts/test-wording-refinements.mjs`. Missing evidence, ambiguous choices, incomplete scoring and artifact necessity require individual review rather than invented facts or silent template changes.
+
+## English review follow-up - 5 October 2026
+
+October English checkpoints include multipart, multi-select, ranking and written-response review copies. `inventory/english-wording-review-october.mjs` records the selected text, exact keys and option IDs, and content-review issues. The checkpoint helper rejects a different interaction, option order or key. Production questions and scoring are unchanged.
+
+Keep existing Thai fields unchanged and mark them `previous-revision-pending-sync`. New English explanations in live review items may have no prior Thai counterpart; these remain pending, not completed or approved. The local QA report records pending synchronization for both inventories. Do not register old Thai against new English or use fragment substitutions.
+
+For the next Thai synchronization, preserve missing required data fields versus broader missing critical inputs, human staff roles, approval boundaries, pending case/refund uncertainty, and pilot-funding versus expansion evidence. No new Thai translation or GitHub push was requested.
 
 ## Template-generated items
 

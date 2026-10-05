@@ -1,14 +1,14 @@
 {
   "counts": {
     "totalQuestions": 3328,
-    "artifactCandidates": 2966,
+    "artifactCandidates": 2941,
     "byNeed": {
-      "requires artifact": 2138,
-      "artifact helpful": 828
+      "requires artifact": 2124,
+      "artifact helpful": 817
     },
     "byType": {
       "workflow-trace": 613,
-      "source-comparison-pack": 1114,
+      "source-comparison-pack": 1089,
       "communication-thread": 201,
       "policy-excerpt": 7,
       "data-chart-dashboard": 539,
@@ -18,7 +18,7 @@
     "byDomain": {
       "D1": {
         "workflow-trace": 119,
-        "source-comparison-pack": 117,
+        "source-comparison-pack": 114,
         "communication-thread": 13,
         "policy-excerpt": 5,
         "data-chart-dashboard": 27,
@@ -26,7 +26,7 @@
         "media-asset-review": 16
       },
       "D2": {
-        "source-comparison-pack": 199,
+        "source-comparison-pack": 194,
         "communication-thread": 28,
         "workflow-trace": 122,
         "security-audit-log": 15,
@@ -35,14 +35,14 @@
       },
       "D3": {
         "media-asset-review": 68,
-        "source-comparison-pack": 204,
+        "source-comparison-pack": 199,
         "workflow-trace": 72,
         "communication-thread": 21,
         "data-chart-dashboard": 75,
         "security-audit-log": 28
       },
       "D4": {
-        "source-comparison-pack": 212,
+        "source-comparison-pack": 203,
         "communication-thread": 81,
         "workflow-trace": 119,
         "security-audit-log": 122,
@@ -59,7 +59,7 @@
         "media-asset-review": 75
       },
       "D6": {
-        "source-comparison-pack": 199,
+        "source-comparison-pack": 196,
         "communication-thread": 43,
         "workflow-trace": 90,
         "data-chart-dashboard": 143,
@@ -112,27 +112,6 @@
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D3",
-      "competencyLabel": "Source and claim verification",
-      "difficulty": "advanced",
-      "priority": "high",
-      "candidateCount": 29,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-02",
-        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-04",
-        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-05",
-        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-06",
-        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-08",
-        "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-01",
-        "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-03",
-        "NH-FUNCTION-PEOPLE-D3-SOURCE-VERIFICATION-ADVANCED-01"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
       "artifactType": "workflow-trace",
       "artifactLabel": "Workflow / agent trace",
       "domain": "D4",
@@ -152,6 +131,27 @@
       ],
       "artifactBrief": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis.",
       "generationPrompt": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D3",
+      "competencyLabel": "Source and claim verification",
+      "difficulty": "advanced",
+      "priority": "high",
+      "candidateCount": 26,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-02",
+        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-04",
+        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-05",
+        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-06",
+        "NH-CORE-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-08",
+        "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-01",
+        "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-ADVANCED-03",
+        "NH-FUNCTION-PEOPLE-D3-SOURCE-VERIFICATION-ADVANCED-01"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
       "artifactType": "workflow-trace",
@@ -212,27 +212,6 @@
         "NH-FUNCTION-FINANCE-D5-ROI-METRICS-PROFICIENT-02",
         "NH-FUNCTION-MARKETING-D5-ROI-METRICS-PROFICIENT-04",
         "NH-FUNCTION-SALES-D5-ROI-METRICS-PROFICIENT-01"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D6",
-      "competencyLabel": "Human-AI role clarity",
-      "difficulty": "awareness",
-      "priority": "high",
-      "candidateCount": 23,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-02",
-        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
-        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-05",
-        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-07",
-        "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
-        "NH-FUNCTION-PEOPLE-D6-ROLE-CLARITY-AWARENESS-02",
-        "NH-FUNCTION-PEOPLE-D6-ROLE-CLARITY-AWARENESS-03",
-        "NH-FUNCTION-FINANCE-D6-ROLE-CLARITY-AWARENESS-01"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -469,6 +448,27 @@
       "generationPrompt": "A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D6",
+      "competencyLabel": "Human-AI role clarity",
+      "difficulty": "awareness",
+      "priority": "high",
+      "candidateCount": 20,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-02",
+        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
+        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-05",
+        "NH-CORE-GENERAL-D6-ROLE-CLARITY-AWARENESS-07",
+        "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
+        "NH-FUNCTION-PEOPLE-D6-ROLE-CLARITY-AWARENESS-02",
+        "NH-FUNCTION-PEOPLE-D6-ROLE-CLARITY-AWARENESS-03",
+        "NH-FUNCTION-FINANCE-D6-ROLE-CLARITY-AWARENESS-01"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
       "artifactType": "data-chart-dashboard",
       "artifactLabel": "Dashboard / chart / calculation evidence",
       "domain": "D6",
@@ -569,27 +569,6 @@
         "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-APPLIED-04",
         "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-APPLIED-01",
         "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-APPLIED-02"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D4",
-      "competencyLabel": "Security and governance controls",
-      "difficulty": "proficient",
-      "priority": "high",
-      "candidateCount": 19,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
-        "NH-CORE-GENERAL-D4-SECURITY-GOVERNANCE-PROFICIENT-05",
-        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
-        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
-        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-03",
-        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-04",
-        "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
-        "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-02"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -807,27 +786,6 @@
     {
       "artifactType": "source-comparison-pack",
       "artifactLabel": "Source comparison / version evidence",
-      "domain": "D1",
-      "competencyLabel": "Capability boundaries",
-      "difficulty": "advanced",
-      "priority": "high",
-      "candidateCount": 17,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01",
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02",
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03",
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05",
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06",
-        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07",
-        "NH-FUNCTION-SALES-D1-CAPABILITY-LIMITS-ADVANCED-01",
-        "NH-FUNCTION-SALES-D1-CAPABILITY-LIMITS-ADVANCED-02"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
       "domain": "D2",
       "competencyLabel": "Output refinement",
       "difficulty": "applied",
@@ -905,6 +863,27 @@
         "NH-FUNCTION-PEOPLE-D4-REGULATORY-POLICY-PROFICIENT-03",
         "NH-FUNCTION-FINANCE-D4-REGULATORY-POLICY-PROFICIENT-01",
         "NH-FUNCTION-MARKETING-D4-REGULATORY-POLICY-PROFICIENT-01"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D4",
+      "competencyLabel": "Security and governance controls",
+      "difficulty": "proficient",
+      "priority": "high",
+      "candidateCount": 17,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
+        "NH-CORE-GENERAL-D4-SECURITY-GOVERNANCE-PROFICIENT-05",
+        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
+        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
+        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-03",
+        "NH-FUNCTION-SALES-D4-SECURITY-GOVERNANCE-PROFICIENT-04",
+        "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-03",
+        "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-04"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -992,27 +971,6 @@
       ],
       "artifactBrief": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis.",
       "generationPrompt": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D2",
-      "competencyLabel": "Prompt design",
-      "difficulty": "advanced",
-      "priority": "high",
-      "candidateCount": 15,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-02",
-        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-05",
-        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-06",
-        "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-ADVANCED-02",
-        "NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-ADVANCED-03",
-        "NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-ADVANCED-04",
-        "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-ADVANCED-04",
-        "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-01"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
       "artifactType": "source-comparison-pack",
@@ -1185,6 +1143,27 @@
     {
       "artifactType": "source-comparison-pack",
       "artifactLabel": "Source comparison / version evidence",
+      "domain": "D1",
+      "competencyLabel": "Capability boundaries",
+      "difficulty": "advanced",
+      "priority": "high",
+      "candidateCount": 14,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-01",
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-02",
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-03",
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-05",
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-06",
+        "NH-CORE-GENERAL-D1-CAPABILITY-LIMITS-ADVANCED-07",
+        "NH-FUNCTION-SALES-D1-CAPABILITY-LIMITS-ADVANCED-01",
+        "NH-FUNCTION-SALES-D1-CAPABILITY-LIMITS-ADVANCED-02"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
       "domain": "D6",
       "competencyLabel": "Change enablement",
       "difficulty": "awareness",
@@ -1349,6 +1328,27 @@
       ],
       "artifactBrief": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision.",
       "generationPrompt": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D2",
+      "competencyLabel": "Prompt design",
+      "difficulty": "advanced",
+      "priority": "high",
+      "candidateCount": 13,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-02",
+        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-05",
+        "NH-CORE-GENERAL-D2-PROMPT-DESIGN-ADVANCED-06",
+        "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-ADVANCED-02",
+        "NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-ADVANCED-03",
+        "NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-ADVANCED-04",
+        "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-ADVANCED-04",
+        "NH-FUNCTION-SALES-D2-PROMPT-DESIGN-ADVANCED-01"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
       "artifactType": "source-comparison-pack",
@@ -1666,27 +1666,6 @@
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D3",
-      "competencyLabel": "Fraud and manipulation detection",
-      "difficulty": "advanced",
-      "priority": "high",
-      "candidateCount": 12,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D3-FRAUD-DETECTION-ADVANCED-02",
-        "NH-CORE-GENERAL-D3-FRAUD-DETECTION-ADVANCED-05",
-        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-01",
-        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-02",
-        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-03",
-        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-04",
-        "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-01",
-        "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-02"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
       "artifactType": "workflow-trace",
       "artifactLabel": "Workflow / agent trace",
       "domain": "D3",
@@ -1880,27 +1859,6 @@
       "artifactLabel": "Source comparison / version evidence",
       "domain": "D4",
       "competencyLabel": "Data protection and privacy",
-      "difficulty": "awareness",
-      "priority": "high",
-      "candidateCount": 11,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D4-DATA-PRIVACY-AWARENESS-02",
-        "NH-CORE-GENERAL-D4-DATA-PRIVACY-AWARENESS-05",
-        "NH-FUNCTION-PEOPLE-D4-DATA-PRIVACY-AWARENESS-03",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-01",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-02",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-03",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-04",
-        "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-01"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D4",
-      "competencyLabel": "Data protection and privacy",
       "difficulty": "applied",
       "priority": "high",
       "candidateCount": 11,
@@ -1913,27 +1871,6 @@
         "NH-FUNCTION-SALES-D4-DATA-PRIVACY-APPLIED-03",
         "NH-FUNCTION-SALES-D4-DATA-PRIVACY-APPLIED-04",
         "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-APPLIED-01"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "domain": "D4",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "proficient",
-      "priority": "high",
-      "candidateCount": 11,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D4-DATA-PRIVACY-PROFICIENT-02",
-        "NH-CORE-GENERAL-D4-DATA-PRIVACY-PROFICIENT-05",
-        "NH-FUNCTION-PEOPLE-D4-DATA-PRIVACY-PROFICIENT-03",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-01",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-02",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-03",
-        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-04",
-        "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-01"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -2333,6 +2270,27 @@
         "NH-FUNCTION-CUSTOMERSERVICE-D2-AGENTIC-WORKFLOWS-ADVANCED-04",
         "NH-FUNCTION-OPERATIONS-D2-AGENTIC-WORKFLOWS-ADVANCED-01",
         "NH-FUNCTION-OPERATIONS-D2-AGENTIC-WORKFLOWS-ADVANCED-02"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D3",
+      "competencyLabel": "Fraud and manipulation detection",
+      "difficulty": "advanced",
+      "priority": "high",
+      "candidateCount": 10,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D3-FRAUD-DETECTION-ADVANCED-02",
+        "NH-CORE-GENERAL-D3-FRAUD-DETECTION-ADVANCED-05",
+        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-01",
+        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-02",
+        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-03",
+        "NH-FUNCTION-SALES-D3-FRAUD-DETECTION-ADVANCED-04",
+        "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-01",
+        "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-03"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -3369,6 +3327,27 @@
     {
       "artifactType": "source-comparison-pack",
       "artifactLabel": "Source comparison / version evidence",
+      "domain": "D4",
+      "competencyLabel": "Data protection and privacy",
+      "difficulty": "proficient",
+      "priority": "high",
+      "candidateCount": 8,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D4-DATA-PRIVACY-PROFICIENT-02",
+        "NH-CORE-GENERAL-D4-DATA-PRIVACY-PROFICIENT-05",
+        "NH-FUNCTION-PEOPLE-D4-DATA-PRIVACY-PROFICIENT-03",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-01",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-02",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-03",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-PROFICIENT-04",
+        "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-04"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
       "domain": "D6",
       "competencyLabel": "Change enablement",
       "difficulty": "advanced",
@@ -3753,26 +3732,6 @@
     {
       "artifactType": "source-comparison-pack",
       "artifactLabel": "Source comparison / version evidence",
-      "domain": "D2",
-      "competencyLabel": "Output refinement",
-      "difficulty": "advanced",
-      "priority": "high",
-      "candidateCount": 7,
-      "sampleQuestionIds": [
-        "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-ADVANCED-02",
-        "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-ADVANCED-05",
-        "NH-FUNCTION-PEOPLE-D2-OUTPUT-REFINEMENT-ADVANCED-03",
-        "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-01",
-        "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-02",
-        "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-03",
-        "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-04"
-      ],
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
-    },
-    {
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
       "domain": "D3",
       "competencyLabel": "Media provenance",
       "difficulty": "proficient",
@@ -3786,6 +3745,26 @@
         "NH-FUNCTION-MARKETING-D3-MEDIA-PROVENANCE-PROFICIENT-03",
         "NH-INDUSTRY-RETAIL-D3-MEDIA-PROVENANCE-PROFICIENT-01",
         "NH-INDUSTRY-RETAIL-D3-MEDIA-PROVENANCE-PROFICIENT-04"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D4",
+      "competencyLabel": "Data protection and privacy",
+      "difficulty": "awareness",
+      "priority": "high",
+      "candidateCount": 7,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D4-DATA-PRIVACY-AWARENESS-02",
+        "NH-CORE-GENERAL-D4-DATA-PRIVACY-AWARENESS-05",
+        "NH-FUNCTION-PEOPLE-D4-DATA-PRIVACY-AWARENESS-03",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-01",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-02",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-03",
+        "NH-FUNCTION-SALES-D4-DATA-PRIVACY-AWARENESS-04"
       ],
       "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
       "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
@@ -5298,6 +5277,23 @@
       ],
       "artifactBrief": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision.",
       "generationPrompt": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
+    },
+    {
+      "artifactType": "source-comparison-pack",
+      "artifactLabel": "Source comparison / version evidence",
+      "domain": "D2",
+      "competencyLabel": "Output refinement",
+      "difficulty": "advanced",
+      "priority": "high",
+      "candidateCount": 4,
+      "sampleQuestionIds": [
+        "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-ADVANCED-02",
+        "NH-CORE-GENERAL-D2-OUTPUT-REFINEMENT-ADVANCED-05",
+        "NH-FUNCTION-PEOPLE-D2-OUTPUT-REFINEMENT-ADVANCED-03",
+        "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-03"
+      ],
+      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
+      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks."
     },
     {
       "artifactType": "workflow-trace",
@@ -44531,90 +44527,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-01",
-      "domain": "D1",
-      "competencyIds": "D1-capability-limits",
-      "competencyLabel": "Capability boundaries",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D1-capability-limits-advanced",
-      "casePatternId": "D1-capability-limits-advanced-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Failures cluster immediately after source updates; older cases remain accurate. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Failures cluster immediately after source updates; older cases remain accurate.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ความล้มเหลวกระจุกทันทีหลังอัปเดตต้นทาง กรณีเก่ายังถูกต้อง การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-02",
-      "domain": "D1",
-      "competencyIds": "D1-capability-limits",
-      "competencyLabel": "Capability boundaries",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D1-capability-limits-advanced",
-      "casePatternId": "D1-capability-limits-advanced-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Performance is reliable on ordinary tasks but unstable on a defined exception class. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Performance is reliable on ordinary tasks but unstable on a defined exception class.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-02",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี งานปกติเชื่อถือได้แต่ข้อยกเว้นประเภทที่กำหนดไม่คงที่ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-03",
-      "domain": "D1",
-      "competencyIds": "D1-capability-limits",
-      "competencyLabel": "Capability boundaries",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D1-capability-limits-advanced",
-      "casePatternId": "D1-capability-limits-advanced-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. The AI tool produces confident answers even when required fields are absent. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: The assistant produces confident answers even when required fields are absent.\nExtra function cue: The response states a resolution that the case record marks as still pending.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-03",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี เครื่องมือ AI ตอบมั่นใจแม้ขาดช่องข้อมูลจำเป็น การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-04",
       "domain": "D1",
       "competencyIds": "D1-capability-limits",
@@ -44895,34 +44807,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-01",
-      "domain": "D2",
-      "competencyIds": "D2-prompt-design",
-      "competencyLabel": "Prompt design",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D2-prompt-design-advanced",
-      "casePatternId": "D2-prompt-design-advanced-1",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Teams edit the production prompt directly; failures cannot be traced to a version. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Teams edit the production prompt directly; failures cannot be traced to a version.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ทีมแก้ Prompt ระบบใช้งานจริงโดยตรง ตรวจย้อนความล้มเหลวไปหารุ่นไม่ได้ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-02",
       "domain": "D2",
       "competencyIds": "D2-prompt-design",
@@ -44945,34 +44829,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี Prompt ผ่านกรณีบ่อยแต่จัดการข้อยกเว้นผลกระทบสูงในนโยบายบริการที่อนุมัติและประวัติกรณีผิด การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-03",
-      "domain": "D2",
-      "competencyIds": "D2-prompt-design",
-      "competencyLabel": "Prompt design",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D2-prompt-design-advanced",
-      "casePatternId": "D2-prompt-design-advanced-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A prompt works on one model, but the replacement interprets its schema instructions differently. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A prompt works on one model, but the replacement interprets its schema instructions differently.\nExtra function cue: The response states a resolution that the case record marks as still pending.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-03",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี Prompt ใช้ได้กับ Model หนึ่งแต่ตัวแทนตีความคำสั่งโครงสร้างต่าง การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",
@@ -45343,62 +45199,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-01",
-      "domain": "D2",
-      "competencyIds": "D2-output-refinement",
-      "competencyLabel": "Output refinement",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D2-output-refinement-advanced",
-      "casePatternId": "D2-output-refinement-advanced-1",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Average ratings rise while critical factual defects continue to pass. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Average ratings rise while critical factual defects continue to pass.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-01",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี คะแนนเฉลี่ยเพิ่มแต่ข้อผิดพลาดข้อเท็จจริงร้ายแรงยังผ่าน การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-02",
-      "domain": "D2",
-      "competencyIds": "D2-output-refinement",
-      "competencyLabel": "Output refinement",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D2-output-refinement-advanced",
-      "casePatternId": "D2-output-refinement-advanced-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Reviewers repeatedly rewrite outputs but never label recurring defect types. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Reviewers repeatedly rewrite outputs but never label recurring defect types.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-02",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผู้ตรวจเขียนผลใหม่ซ้ำแต่ไม่จัดประเภทข้อบกพร่องที่เกิดซ้ำ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-03",
       "domain": "D2",
       "competencyIds": "D2-output-refinement",
@@ -45421,34 +45221,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี เกณฑ์ใหม่เปลี่ยนแนวโน้มที่เห็นโดยไม่มีการประเมินชุดตัวอย่างร่วม การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-04",
-      "domain": "D2",
-      "competencyIds": "D2-output-refinement",
-      "competencyLabel": "Output refinement",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D2-output-refinement-advanced",
-      "casePatternId": "D2-output-refinement-advanced-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A refinement loop keeps rewriting after all requirements already pass. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A refinement loop keeps rewriting after all requirements already pass.\nExtra function cue: The customer disputes the identity details on the case.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-04",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี วงจรแก้ยังเขียนใหม่หลังผ่านทุกข้อกำหนดแล้ว การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",
@@ -46155,62 +45927,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-01",
-      "domain": "D3",
-      "competencyIds": "D3-source-verification",
-      "competencyLabel": "Source and claim verification",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D3-source-verification-advanced",
-      "casePatternId": "D3-source-verification-advanced-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A synthesis combines different effective dates without recording them. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A synthesis combines different effective dates without recording them.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี การสังเคราะห์รวมข้อมูลวันที่มีผลต่างกันโดยไม่บันทึกวันที่ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-02",
-      "domain": "D3",
-      "competencyIds": "D3-source-verification",
-      "competencyLabel": "Source and claim verification",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D3-source-verification-advanced",
-      "casePatternId": "D3-source-verification-advanced-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. One press release spreads through many sources and is counted repeatedly. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: One press release spreads through many sources and is counted repeatedly.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-02",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ข่าวประชาสัมพันธ์เดียวแพร่หลายผ่านหลายแหล่งและถูกนับซ้ำ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-03",
       "domain": "D3",
       "competencyIds": "D3-source-verification",
@@ -46233,34 +45949,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี คำกล่าวอ้างที่อนุมัติล้าสมัยเมื่อบันทึกต้นทางถูกแทนที่ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-04",
-      "domain": "D3",
-      "competencyIds": "D3-source-verification",
-      "competencyLabel": "Source and claim verification",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D3-source-verification-advanced",
-      "casePatternId": "D3-source-verification-advanced-1",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Reviewers accept citations after checking that links open, without reading support. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Reviewers accept citations after checking that links open, without reading support.\nExtra function cue: The customer disputes the identity details on the case.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-04",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผู้ตรวจยอมรับการอ้างอิงแค่ตรวจว่าลิงก์เปิดได้ โดยไม่อ่านว่ารองรับหรือไม่ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",
@@ -46631,34 +46319,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-02",
-      "domain": "D3",
-      "competencyIds": "D3-fraud-detection",
-      "competencyLabel": "Fraud and manipulation detection",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D3-fraud-detection-advanced",
-      "casePatternId": "D3-fraud-detection-advanced-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Staff verify suspicious requests using phone numbers included in those requests. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Staff verify suspicious requests using phone numbers included in those requests.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-02",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี พนักงานตรวจคำขอน่าสงสัยด้วยหมายเลขโทรศัพท์ในคำขอนั้น การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-03",
       "domain": "D3",
       "competencyIds": "D3-fraud-detection",
@@ -46681,146 +46341,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี การกระทำซ้ำเกิดบ่อยหลังเครื่องมือตอบไม่แน่นอน การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-04",
-      "domain": "D3",
-      "competencyIds": "D3-fraud-detection",
-      "competencyLabel": "Fraud and manipulation detection",
-      "difficulty": "advanced",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D3-fraud-detection-advanced",
-      "casePatternId": "D3-fraud-detection-advanced-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A compromised account remains active after several suspicious requests are reported. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A compromised account remains active after several suspicious requests are reported.\nExtra function cue: The customer disputes the identity details on the case.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-04",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี บัญชีที่ถูกยึดยังใช้งานหลังรายงานคำขอน่าสงสัยหลายครั้ง การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-01",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-awareness",
-      "casePatternId": "D4-data-privacy-awareness-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A temporary copy of approved service policies and case history remains accessible after its approved deletion date. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A temporary copy of approved service policies and case history remains accessible after its approved deletion date.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี สำเนาชั่วคราวของนโยบายบริการที่อนุมัติและประวัติกรณียังเข้าถึงได้หลังวันที่อนุมัติให้ลบ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-02",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-awareness",
-      "casePatternId": "D4-data-privacy-awareness-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. An assistant retrieves another team’s restricted records for the case resolution response. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: An assistant retrieves another team’s restricted records for the case resolution response.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-02",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผู้ช่วยดึงบันทึกจำกัดสิทธิ์ของอีกทีมเพื่อทำคำตอบการแก้ไขกรณี การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-03",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-awareness",
-      "casePatternId": "D4-data-privacy-awareness-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Names are removed, but a rare job title and exact event date identify the person. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Names are removed, but a rare job title and exact event date identify the person.\nExtra function cue: The response states a resolution that the case record marks as still pending.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-03",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ลบชื่อแล้วแต่ตำแหน่งงานหายากกับวันเหตุการณ์ที่แน่นอนระบุตัวบุคคลได้ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-04",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-awareness",
-      "casePatternId": "D4-data-privacy-awareness-1",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Only an aggregate is needed, but the prompt contains names and full individual records. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Only an aggregate is needed, but the prompt contains names and full individual records.\nExtra function cue: The customer disputes the identity details on the case.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-04",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ต้องการเพียงยอดรวม แต่ Prompt มีชื่อและบันทึกรายบุคคลครบ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",
@@ -46933,90 +46453,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี งานต้องการยอดรายเดือน แต่ไฟล์ที่จะอัปโหลดมีบันทึกรายบุคคล การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-01",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "proficient",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-proficient",
-      "casePatternId": "D4-data-privacy-proficient-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. The main database deletes a record, but the search index still returns it. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: The main database deletes a record, but the search index still returns it.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ฐานข้อมูลหลักลบบันทึก แต่ดัชนีค้นยังคืนบันทึกนั้น การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-02",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "proficient",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-proficient",
-      "casePatternId": "D4-data-privacy-proficient-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Access is checked when indexing, but different users share unrestricted retrieval results. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Access is checked when indexing, but different users share unrestricted retrieval results.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-02",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ตรวจสิทธิ์ตอนทำดัชนี แต่ผู้ใช้ต่างคนใช้ผลค้นร่วมโดยไม่จำกัด การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-03",
-      "domain": "D4",
-      "competencyIds": "D4-data-privacy",
-      "competencyLabel": "Data protection and privacy",
-      "difficulty": "proficient",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-data-privacy-proficient",
-      "casePatternId": "D4-data-privacy-proficient-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. The task has a legitimate purpose, but a secondary use is proposed without an approved basis. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: The task has a legitimate purpose, but a secondary use is proposed without an approved basis.\nExtra function cue: The response states a resolution that the case record marks as still pending.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-03",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี งานมีวัตถุประสงค์ชอบธรรม แต่เสนอใช้ต่อโดยไม่มีฐานที่อนุมัติ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",
@@ -47387,62 +46823,6 @@
       "necessityReview": "pending-question-specific-review"
     },
     {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
-      "domain": "D4",
-      "competencyIds": "D4-security-governance",
-      "competencyLabel": "Security and governance controls",
-      "difficulty": "proficient",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-security-governance-proficient",
-      "casePatternId": "D4-security-governance-proficient-3",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. Logs exist, but they omit the action payload and approval version. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: Logs exist, but they omit the action payload and approval version.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี มีบันทึกแต่ไม่มีข้อมูลการกระทำและรุ่นที่อนุมัติ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
-      "domain": "D4",
-      "competencyIds": "D4-security-governance",
-      "competencyLabel": "Security and governance controls",
-      "difficulty": "proficient",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D4-security-governance-proficient",
-      "casePatternId": "D4-security-governance-proficient-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. One team’s access is revoked, but its cached results remain readable. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: One team’s access is revoked, but its cached results remain readable.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "requires artifact",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
-      "th": {
-        "need": "ต้องมีหลักฐานประกอบ",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ทีมหนึ่งถูกเพิกถอนสิทธิ์ แต่ยังอ่านผลที่ค้างในแคชได้ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-03",
       "domain": "D4",
       "competencyIds": "D4-security-governance",
@@ -47605,90 +46985,6 @@
         "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
         "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
         "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี Model เพิ่มขอบเขตสิทธิ์เครื่องมือให้ตัวเองระหว่างทำงานได้ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-01",
-      "domain": "D6",
-      "competencyIds": "D6-role-clarity",
-      "competencyLabel": "Human-AI role clarity",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D6-role-clarity-awareness",
-      "casePatternId": "D6-role-clarity-awareness-4",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A released output causes an error, but nobody owns correction or user notification. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A released output causes an error, but nobody owns correction or user notification.\nExtra function cue: The recommended refund exceeds the frontline team’s approval limit.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-01",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผลที่ปล่อยทำให้เกิดข้อผิดพลาด แต่ไม่มีผู้รับผิดชอบแก้หรือแจ้งผู้ใช้ การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-02",
-      "domain": "D6",
-      "competencyIds": "D6-role-clarity",
-      "competencyLabel": "Human-AI role clarity",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D6-role-clarity-awareness",
-      "casePatternId": "D6-role-clarity-awareness-1",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. An assistant drafts a case resolution response, but nobody is named to verify its factual content. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: An assistant drafts a case resolution response, but nobody is named to verify its factual content.\nExtra function cue: A prior refund may already have completed despite a timeout.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-02",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผู้ช่วย AI ร่างคำตอบการแก้ไขกรณีแต่ไม่ระบุผู้ตรวจข้อเท็จจริง การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
-        "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-      },
-      "rulesVersion": "1.3",
-      "necessityReview": "pending-question-specific-review"
-    },
-    {
-      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-03",
-      "domain": "D6",
-      "competencyIds": "D6-role-clarity",
-      "competencyLabel": "Human-AI role clarity",
-      "difficulty": "awareness",
-      "layer": "function",
-      "scope": "Customer service",
-      "familyId": "D6-role-clarity-awareness",
-      "casePatternId": "D6-role-clarity-awareness-2",
-      "prompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.\nQuestion context: Customer service uses AI to prepare a case resolution response. A reviewer checks the draft but has no authority to release the resulting action. Refunds and exceptions need the designated approver.\nQuestion: Answer both questions. Choose one answer for each.",
-      "context": "Scenario: Customer service needs a case resolution response.\nUse: approved service policies and case history.\nRule: Refunds and exceptions need the designated approver.\nRisk: An incorrect resolution can duplicate compensation or deny support.\nEvidence: A reviewer checks the draft but has no authority to release the resulting action.\nExtra function cue: The response states a resolution that the case record marks as still pending.",
-      "need": "artifact helpful",
-      "artifactType": "source-comparison-pack",
-      "artifactLabel": "Source comparison / version evidence",
-      "artifactBrief": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally.",
-      "generationPrompt": "Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-      "questionId": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-03",
-      "th": {
-        "need": "หลักฐานประกอบจะช่วยให้ตอบได้ชัดเจนขึ้น",
-        "artifactLabel": "หลักฐานเปรียบเทียบแหล่งข้อมูลและรุ่นเอกสาร",
-        "artifactBrief": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง",
-        "prompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ\nบริบทคำถาม: ฝ่ายบริการลูกค้าใช้ AI เพื่อจัดทำคำตอบการแก้ไขกรณี ผู้ตรวจตรวจร่างแต่ไม่มีอำนาจปล่อยการกระทำที่ตามมา การคืนเงินและข้อยกเว้นต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\nคำถาม: ตอบทั้งสองข้อ โดยเลือกคำตอบข้อละหนึ่งตัวเลือก",
         "generationPrompt": "ข้อความจากแหล่งข้อมูลพร้อมรหัสเอกสาร รุ่น วันที่ และขอบเขตที่จำเป็นต่อคำถาม แสดงทุกข้อความอย่างเป็นกลาง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
       },
       "rulesVersion": "1.3",

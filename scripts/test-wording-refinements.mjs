@@ -6,6 +6,7 @@ import { refineQuestion, checkpoints, refinementVersion } from '../inventory/wor
 import { artifactRules } from '../inventory/artifact-needs.mjs';
 import { englishProjection, translate } from './lib/translate-thai-inventory.mjs';
 import { fields } from './lib/thai-inventory-text.mjs';
+import { englishWordingCheckpoints, applyEnglishWordingCheckpoint } from '../inventory/english-wording-checkpoints.mjs';
 const read = file => JSON.parse(fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8'));
 const bank = ['questions.json', 'live-questions.json'].flatMap(f => read('exports/review-inventory/' + f).questions);
 const byId = new Map(bank.map(q => [q.id, q]));
@@ -60,6 +61,7 @@ test('artifact generation uses neutral instructions and complete Thai evidence',
   }
   for (const q of bank) {
     for (const f of fields(q)) {
+      if (q.sourceInventory === 'live' && englishWordingCheckpoints[q.id] && q.userFacingDraft.englishWordingReview?.thaiStatus === 'previous-revision-pending-sync' && f.obj === q.userFacingDraft && f.key === 'explanation' && f.thaiObj[f.thaiKey] === undefined) continue;
       assert.ok(/[\u0e00-\u0e7f]/.test(f.thaiObj[f.thaiKey]), `${q.id}:${f.key}`);
       assert.doesNotMatch(f.thaiObj[f.thaiKey], /\uFFFD|\{\{/);
     }
@@ -68,4 +70,20 @@ test('artifact generation uses neutral instructions and complete Thai evidence',
       assert.match(q.artifactNeed.th.generationPrompt, /ห้ามเน้นจุดผิด/);
     }
   }
+});
+
+test('review checkpoint rejects key or format drift and retains fields versus inputs', () => {
+  const id = 'NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-03';
+  const d = byId.get(id).userFacingDraft;
+  assert.match(d.context, /required data fields are missing/);
+  assert.doesNotMatch(d.context, /fields.*blank|required information is missing/);
+  assert.match(d.parts[0].options[1].label, /critical inputs are missing/);
+  for (const itemId of ['FUNC-CS-D5-003', 'FUNC-GEN-D5-001', 'DEPTH-EXP-D5-VALUE-079', id]) {
+    const q = structuredClone(byId.get(itemId));
+    q.userFacingDraft.interaction = 'unexpected';
+    assert.throws(() => applyEnglishWordingCheckpoint(q), /unexpected selected template/);
+  }
+  const q = structuredClone(byId.get('FUNC-CS-D5-003'));
+  q.userFacingDraft.correctOptionIds = ['e'];
+  assert.throws(() => applyEnglishWordingCheckpoint(q), /key or option order/);
 });

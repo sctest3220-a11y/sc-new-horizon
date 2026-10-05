@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {fields} from './lib/thai-inventory-text.mjs';
 import {translate,englishProjection} from './lib/translate-thai-inventory.mjs';
+import {englishWordingCheckpoints} from '../inventory/english-wording-checkpoints.mjs';
 const root=new URL('../',import.meta.url);
 for(const [file,count] of [['questions.json',3328],['live-questions.json',634]]) {
   const relative=`exports/review-inventory/${file}`;
@@ -24,6 +25,21 @@ for(const [file,count] of [['questions.json',3328],['live-questions.json',634]])
     }else {
       const sourceById=new Map(original.questions.map(q=>[q.id,q]));
       for(const q of current.questions){
+        const checkpoint = englishWordingCheckpoints[q.id];
+        if (checkpoint) {
+          const d = q.userFacingDraft, old = sourceById.get(q.id).userFacingDraft;
+          assert.equal(d.context, checkpoint.context);
+          assert.equal(d.prompt, checkpoint.prompt);
+          assert.equal(d.explanation, checkpoint.explanation);
+          assert.deepEqual(d.options.map(o=>o.label), checkpoint.labels);
+          assert.deepEqual(d.options.map(o=>[o.id,o.score,o.thLabel,o.thFeedback]), old.options.map(o=>[o.id,o.score,o.thLabel,o.thFeedback]));
+          assert.deepEqual(d.correctOptionIds, old.correctOptionIds);
+          assert.equal(d.interaction, old.interaction);
+          assert.equal(d.format, old.format);
+          assert.deepEqual(d.th, old.th);
+          assert.equal(d.englishWordingReview.thaiStatus, 'previous-revision-pending-sync');
+          continue;
+        }
         const {rewriteVersion,rewriteRulesVersion,rewriteReviewStatus,ruleApplication,...draft}=q.userFacingDraft;
         assert.deepEqual(englishProjection(draft),englishProjection(sourceById.get(q.id).userFacingDraft),`${q.id}: live review wording preserved`);
       }
@@ -33,6 +49,7 @@ for(const [file,count] of [['questions.json',3328],['live-questions.json',634]])
     assert.equal(current.questions.length,count);
     for(const q of current.questions)for(const f of fields(q)) {
       const th=f.thaiObj[f.thaiKey];
+      if (file === 'live-questions.json' && englishWordingCheckpoints[q.id] && q.userFacingDraft.englishWordingReview?.thaiStatus === 'previous-revision-pending-sync' && f.obj === q.userFacingDraft && f.key === 'explanation' && th === undefined) continue;
       assert.ok(typeof th==='string'&&/[\u0e00-\u0e7f]/.test(th),`${q.id}:${f.key}`);
       assert.doesNotMatch(th,/\{\{|\uFFFD/,`${q.id}:${f.key}`);
     }

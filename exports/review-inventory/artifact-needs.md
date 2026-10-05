@@ -2,16 +2,16 @@
 
 Scanned 3,328 draft review questions.
 
-- Artifact candidates: 2,966
-- Requires artifact: 2,138
-- Artifact helpful: 828
+- Artifact candidates: 2,941
+- Requires artifact: 2,124
+- Artifact helpful: 817
 - Reusable artifact families: 443
 
 ## Counts By Artifact Type
 
 | Artifact type | Questions |
 | --- | ---: |
-| source-comparison-pack | 1,114 |
+| source-comparison-pack | 1,089 |
 | workflow-trace | 613 |
 | data-chart-dashboard | 539 |
 | media-asset-review | 265 |
@@ -25,12 +25,11 @@ Scanned 3,328 draft review questions.
 | --- | --- | --- | --- | --- | ---: | --- |
 | high | Workflow / agent trace | D6 | Learning and improvement loops | awareness | 33 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
 | high | Source comparison / version evidence | D3 | Source and claim verification | applied | 30 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
-| high | Source comparison / version evidence | D3 | Source and claim verification | advanced | 29 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Workflow / agent trace | D4 | Security and governance controls | applied | 27 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
+| high | Source comparison / version evidence | D3 | Source and claim verification | advanced | 26 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Workflow / agent trace | D4 | Security and governance controls | awareness | 25 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
 | high | Source comparison / version evidence | D4 | Regulatory and policy fluency | applied | 24 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D5 | ROI and measurement | proficient | 24 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
-| high | Source comparison / version evidence | D6 | Human-AI role clarity | awareness | 23 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D6 | Human-AI role clarity | proficient | 23 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Workflow / agent trace | D1 | AI systems literacy | applied | 23 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
 | high | Workflow / agent trace | D1 | AI systems literacy | proficient | 23 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
@@ -42,12 +41,12 @@ Scanned 3,328 draft review questions.
 | high | Dashboard / chart / calculation evidence | D5 | Portfolio prioritization | awareness | 20 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
 | high | Dashboard / chart / calculation evidence | D5 | Portfolio prioritization | applied | 20 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
 | high | Dashboard / chart / calculation evidence | D5 | Portfolio prioritization | proficient | 20 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
+| high | Source comparison / version evidence | D6 | Human-AI role clarity | awareness | 20 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Dashboard / chart / calculation evidence | D6 | Change enablement | advanced | 19 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
 | high | Source comparison / version evidence | D2 | Prompt design | proficient | 19 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D2 | Output refinement | awareness | 19 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D3 | Source and claim verification | awareness | 19 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D4 | Security and governance controls | applied | 19 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
-| high | Source comparison / version evidence | D4 | Security and governance controls | proficient | 19 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Workflow / agent trace | D2 | Agentic workflows | awareness | 19 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
 | high | Dashboard / chart / calculation evidence | D6 | Change enablement | applied | 18 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
 | high | Security / access / audit evidence | D4 | Regulatory and policy fluency | applied | 18 | A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision. |
@@ -58,11 +57,12 @@ Scanned 3,328 draft review questions.
 | high | Workflow / agent trace | D2 | Agentic workflows | proficient | 18 | A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. |
 | high | Security / access / audit evidence | D4 | Security and governance controls | awareness | 17 | A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision. |
 | high | Source comparison / version evidence | D1 | Capability boundaries | applied | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
-| high | Source comparison / version evidence | D1 | Capability boundaries | advanced | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D2 | Output refinement | applied | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D3 | Fraud and manipulation detection | applied | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D4 | Regulatory and policy fluency | awareness | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
 | high | Source comparison / version evidence | D4 | Regulatory and policy fluency | proficient | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
+| high | Source comparison / version evidence | D4 | Security and governance controls | proficient | 17 | Source excerpts with document IDs, versions, dates and scope needed for the question. Present all excerpts neutrally. |
+| high | Dashboard / chart / calculation evidence | D5 | ROI and measurement | awareness | 16 | A clearly labeled table or chart with the task outcome, units, comparison basis and relevant sample or scope. Check all calculations. |
 
 ## Generation Notes
 

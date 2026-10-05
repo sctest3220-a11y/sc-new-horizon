@@ -6,48 +6,369 @@
   "scope": "Audit context, prompt, rationale, option labels and feedback; user-facing context, prompt, explanation, rewrite notes, options and parts; artifact brief and generation prompt.",
   "topFragments": [],
   "issues": [],
-  "contentReviewIssueCount": 8,
+  "contentReviewIssueCount": 43,
   "contentReviewIssues": [
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-03",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-04",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-ADVANCED-03",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-01",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-02",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-AWARENESS-03",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-ADVANCED-03",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D2-OUTPUT-REFINEMENT-ADVANCED-04",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-01",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-02",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-AWARENESS-03",
+      "source": "exports/review-inventory/questions.json",
       "type": "thai-wording-sync-pending",
-      "note": "Accepted English wording updated locally; Thai retains its previous revision pending synchronization."
+      "revision": "2026-10-01.customer-service-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-SOURCE-VERIFICATION-ADVANCED-04",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D3-FRAUD-DETECTION-ADVANCED-04",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-02.data-privacy-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-02.data-privacy-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-03",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-02.data-privacy-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-04",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-PROFICIENT-03",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-01",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-02",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "NH-FUNCTION-CUSTOMERSERVICE-D6-ROLE-CLARITY-AWARENESS-03",
+      "source": "exports/review-inventory/questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "FUNC-GEN-D5-001",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "FUNC-CS-D5-003",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "FUNC-EXP-GEN-D5-001",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "DEPTH-D4-RISK-045",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "DEPTH-EXP-D4-GOV-077",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "DEPTH-EXP-D5-VALUE-079",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.review-follow-up",
+      "missingDraftFields": [],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "DEPTH-EXP-D5-D6-081",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "TREND-D3-FRAUD-DETECTION-ADVANCED-01",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "TREND-D3-FRAUD-DETECTION-ADVANCED-02",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
+    },
+    {
+      "id": "TREND-D4-SECURITY-GOVERNANCE-PROFICIENT-01",
+      "source": "exports/review-inventory/live-questions.json",
+      "type": "thai-wording-sync-pending",
+      "revision": "2026-10-05.controls-review",
+      "missingDraftFields": [
+        "explanation"
+      ],
+      "note": "Prior Thai retained; new English wording and any missing Thai explanations await synchronization. This is not a completed translation check."
     }
   ],
-  "note": "Zero scanner findings is not human approval. Artifact images are not altered by this text translation."
+  "note": "Zero scanner findings is not human approval. Artifact images are not altered by this text translation.",
+  "englishSyncStatusUpdatedAt": "2026-10-05T09:12:50.797Z"
 }

@@ -1673,30 +1673,30 @@
         "status": "live-item",
         "interaction": "rank",
         "format": "ranked live item",
-        "context": "A function lead wants to choose one AI workflow pilot from several ideas with different value, risk, and readiness levels.",
-        "prompt": "Order the pilot decision steps.",
+        "context": "A team leader wants to choose one AI workflow for a pilot. The proposed ideas differ in expected benefits, risks and readiness.",
+        "prompt": "Arrange the pilot steps from first to last.",
         "options": [
           {
             "id": "workflow",
-            "label": "1. Define the workflow problem and users affected",
+            "label": "Define the workflow problem and identify the users affected.",
             "score": 100,
             "thLabel": "1. นิยามปัญหาของขั้นตอนงานและกลุ่มผู้ใช้ที่ได้รับผลกระทบ"
           },
           {
             "id": "baseline",
-            "label": "2. Capture baseline time, quality, risk, and volume",
+            "label": "Record the current time spent, quality, risks and work volume.",
             "score": 100,
             "thLabel": "2. เก็บค่าฐานด้านเวลา คุณภาพ ความเสี่ยง และปริมาณงาน"
           },
           {
             "id": "controls",
-            "label": "3. Set review gates, data boundaries, and owner",
+            "label": "Decide who is responsible, when reviews are required and what data can be used.",
             "score": 100,
             "thLabel": "3. กำหนดจุดตรวจทาน ขอบเขตข้อมูล และผู้รับผิดชอบ"
           },
           {
             "id": "pilot",
-            "label": "4. Run a time-boxed pilot with success and stop criteria",
+            "label": "Run the pilot for a fixed period, with clear criteria for success and when to stop.",
             "score": 100,
             "thLabel": "4. ทดลองทำ pilot แบบจำกัดกรอบเวลา พร้อมเกณฑ์สำเร็จและเกณฑ์หยุด"
           }
@@ -1707,7 +1707,7 @@
           "controls",
           "pilot"
         ],
-        "explanation": "",
+        "explanation": "Define the problem and who is affected, then record current performance so improvement can be measured. Set responsibilities, reviews and data boundaries before running a limited pilot with clear success and stop criteria.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "หัวหน้าสายงานต้องการเลือกโครงการนำร่อง (pilot) ด้าน AI มาทำหนึ่งเรื่อง จากหลายไอเดียที่มีคุณค่า ความเสี่ยง และความพร้อมต่างกัน",
@@ -1720,24 +1720,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
             "Check that the complete ranking key and scoring are defined before release.",
+            "The original context concerns choosing between pilot ideas, while the steps concern preparing and running a pilot. Production ranking interaction and scoring are unchanged.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.review-follow-up",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#english-review-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Pilot workflow artifact",
-        "artifactBrief": "Use the workflow evidence to sequence a practical pilot decision.",
-        "generationPrompt": "Existing artifact path: /stimuli/ai-pilot-workflow.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "เอกสารขั้นตอนงานของโครงการนำร่อง",
-          "artifactBrief": "ใช้หลักฐานจากขั้นตอนงานมาเรียงลำดับการตัดสินใจทำ pilot ที่ใช้ได้จริง",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/ai-pilot-workflow.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -3126,12 +3138,12 @@
         "status": "live-item",
         "interaction": "multi",
         "format": "select all live item",
-        "context": "A customer-service manager wants to prove whether AI-assisted replies improve the support workflow.",
-        "prompt": "Which metrics should be tracked before expanding AI reply assistance?",
+        "context": "A customer service manager wants to evaluate whether AI-assisted replies improve the team’s work before expanding their use.",
+        "prompt": "Which measures should the manager track? Select four answers.",
         "options": [
           {
             "id": "a",
-            "label": "First-contact resolution and reopened-ticket rate.",
+            "label": "First-contact resolution rate and reopened-ticket rate.",
             "score": 25,
             "feedback": "Correct. Resolution quality matters more than reply volume.",
             "thLabel": "อัตราการแก้ปัญหาจบในครั้งเดียว และอัตราการเปิด ticket (เคสลูกค้า) ซ้ำ",
@@ -3139,7 +3151,7 @@
           },
           {
             "id": "b",
-            "label": "SLA breach, escalation, and dispute rates.",
+            "label": "Service Level Agreement (SLA) breach rate, the number of escalated cases, and the number of customer complaints.",
             "score": 25,
             "feedback": "Correct. These reveal operational and customer harm.",
             "thLabel": "อัตราการผิด SLA อัตราการส่งต่อเคสให้หัวหน้างาน (escalation) และอัตราข้อพิพาท",
@@ -3147,7 +3159,7 @@
           },
           {
             "id": "c",
-            "label": "Human edit rate and evidence-check completion.",
+            "label": "How often staff edit AI drafts and complete the evidence check.",
             "score": 25,
             "feedback": "Correct. Review behavior shows whether AI is used responsibly.",
             "thLabel": "อัตราที่คนต้องแก้ไขคำตอบ และความครบถ้วนของการตรวจสอบหลักฐาน",
@@ -3155,7 +3167,7 @@
           },
           {
             "id": "d",
-            "label": "Customer satisfaction after AI-assisted replies.",
+            "label": "Customer satisfaction after receiving AI-assisted replies.",
             "score": 25,
             "feedback": "Correct. Customers should experience better outcomes, not just faster text.",
             "thLabel": "ความพึงพอใจของลูกค้าหลังได้รับคำตอบที่ AI ช่วยร่าง",
@@ -3163,7 +3175,7 @@
           },
           {
             "id": "e",
-            "label": "Number of AI replies sent per hour only.",
+            "label": "Only the number of AI-assisted replies sent per hour.",
             "score": 0,
             "feedback": "Speed alone can hide repeat contacts, wrong answers, and customer harm.",
             "thLabel": "จำนวนคำตอบที่ AI ส่งออกต่อชั่วโมงเพียงอย่างเดียว",
@@ -3176,7 +3188,7 @@
           "c",
           "d"
         ],
-        "explanation": "",
+        "explanation": "These measures cover resolution quality, service problems, staff review and customer experience. Reply volume alone cannot show whether answers are accurate, cases stay resolved or customers receive better support. When comparing escalation and complaint counts, account for differences in total case volume.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ผู้จัดการฝ่ายบริการลูกค้าต้องการพิสูจน์ว่าการตอบลูกค้าโดยมี AI ช่วยนั้นทำให้ขั้นตอนงานบริการดีขึ้นจริงหรือไม่",
@@ -3189,23 +3201,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
+            "User-requested choice B changes escalation/dispute rates to counts and broader customer complaints. This is a recorded content change, not synonym substitution.",
+            "The original four-correct, one-distractor structure and the guessing clue in only remain unchanged.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.review-follow-up",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#english-review-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Support workflow metrics",
-        "artifactBrief": "Select measures that show whether AI is improving service without hiding harm.",
-        "generationPrompt": "Existing artifact path: /stimuli/raw-customer-service-escalation.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "ตัวชี้วัดขั้นตอนงานบริการลูกค้า",
-          "artifactBrief": "เลือกตัววัดที่แสดงว่า AI ทำให้บริการดีขึ้นจริงโดยไม่ซ่อนความเสียหาย",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/raw-customer-service-escalation.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -4036,12 +4061,12 @@
         "status": "live-item",
         "interaction": "multi",
         "format": "select all live item",
-        "context": "A cross-functional leadership group is choosing between AI pilots in HR policy support, close commentary, campaign optimization, and support refunds.",
-        "prompt": "Which criteria should function leads use to prioritize a premium AI pilot?",
+        "context": "Leaders from several departments are choosing between AI pilots in HR policy support, summaries for month-end financial reports, campaign optimization and customer refunds.",
+        "prompt": "Which criteria should the leaders use to prioritize an AI pilot? Select four answers.",
         "options": [
           {
             "id": "a",
-            "label": "Clear workflow pain with measurable baseline.",
+            "label": "A clear problem in the workflow, with measures of current performance to compare against.",
             "score": 25,
             "feedback": "Correct. Pilot value needs a measurable before state.",
             "thLabel": "ปัญหาของขั้นตอนงานที่ชัดเจน พร้อมค่าฐาน (baseline) ที่วัดได้",
@@ -4049,7 +4074,7 @@
           },
           {
             "id": "b",
-            "label": "Approved, current, and specific data sources.",
+            "label": "Approved, up-to-date data sources that are specific to the task.",
             "score": 25,
             "feedback": "Correct. Grounding quality determines whether outputs can be trusted.",
             "thLabel": "แหล่งข้อมูลที่ได้รับอนุมัติ เป็นปัจจุบัน และเฉพาะเจาะจง",
@@ -4057,7 +4082,7 @@
           },
           {
             "id": "c",
-            "label": "Human review before money, policy, hiring, or customer actions.",
+            "label": "Human review before taking financial, policy, hiring or customer-related actions.",
             "score": 25,
             "feedback": "Correct. High-impact actions need clear gates.",
             "thLabel": "การตรวจทานโดยคน (Human-in-the-loop) ก่อนการดำเนินการทางการเงิน นโยบาย การจ้างงาน หรือลูกค้า",
@@ -4065,7 +4090,7 @@
           },
           {
             "id": "d",
-            "label": "Success, stop, and expansion criteria before launch.",
+            "label": "Clear criteria for success, stopping the pilot and expanding its use, agreed before launch.",
             "score": 25,
             "feedback": "Correct. Pilots need learning discipline, not vague enthusiasm.",
             "thLabel": "เกณฑ์ความสำเร็จ เกณฑ์หยุด และเกณฑ์ขยายผล ที่กำหนดไว้ก่อนเริ่มใช้งาน",
@@ -4073,7 +4098,7 @@
           },
           {
             "id": "e",
-            "label": "A demo that feels impressive despite unclear ownership.",
+            "label": "An impressive demo, even though responsibility for the pilot is unclear.",
             "score": 0,
             "feedback": "Demo appeal is not a reliable prioritization criterion.",
             "thLabel": "การสาธิตที่ดูน่าประทับใจ ทั้งที่ยังไม่ชัดว่าใครเป็นผู้รับผิดชอบ",
@@ -4086,7 +4111,7 @@
           "c",
           "d"
         ],
-        "explanation": "",
+        "explanation": "A clear problem and current performance measures help the team evaluate improvement. Suitable data sources support the AI’s responses, while human review provides oversight before consequential actions. Criteria agreed before launch help the team decide whether to continue, stop or expand the pilot. An impressive demo does not compensate for unclear responsibility.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "กลุ่มผู้บริหารจากหลายสายงานกำลังเลือกระหว่างโครงการนำร่อง (pilot) ด้าน AI ในงานสนับสนุนนโยบาย HR คำอธิบายประกอบการปิดงบ การเพิ่มประสิทธิภาพแคมเปญ และการคืนเงินของฝ่ายสนับสนุน",
@@ -4099,23 +4124,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
+            "The user specified summaries for month-end financial reports; original close commentary could include explanations beyond monthly summaries.",
+            "Undefined premium was removed in the reviewed candidate. Original option E remains an obvious distractor.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.review-follow-up",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#english-review-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Workflow evidence example",
-        "artifactBrief": "Select portfolio criteria that work across functions.",
-        "generationPrompt": "Existing artifact path: /stimuli/func-exp-ops-data-workflow-log.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "ตัวอย่างหลักฐานของขั้นตอนงาน",
-          "artifactBrief": "เลือกเกณฑ์พอร์ตโฟลิโอที่ใช้ได้กับทุกสายงาน",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/func-exp-ops-data-workflow-log.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -7753,11 +7791,11 @@
         "status": "live-item",
         "interaction": "text",
         "format": "written response live item",
-        "context": "Procurement asks whether an AI vendor can use company data to improve its service.",
-        "prompt": "Write the key risk questions you would ask before approval.",
+        "context": "The procurement team asks whether an AI vendor can use company data to improve its service.",
+        "prompt": "Write the key questions about risk you would ask before approving this use of company data.",
         "options": [],
         "correctOptionIds": [],
-        "explanation": "I would ask what data is used, whether it trains or improves vendor models, retention/deletion terms, subprocessors, access controls, encryption, audit rights, breach notification, and whether we can opt out of model training before any customer data is shared.",
+        "explanation": "What company data would the vendor use, and for what purposes?\nWould the data be used to train or improve the vendor’s AI models? Can the company opt out of model training?\nHow long would the vendor keep the data, and what are the terms for deleting it?\nWhich subcontractors would process the data on the vendor’s behalf?\nHow would access to the data be controlled, would it be encrypted, and what rights would the company have to audit the vendor?\nHow and when would the vendor notify the company of a data breach?\n\nThese questions should be addressed before any customer data is shared.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ฝ่ายจัดซื้อสอบถามว่า ผู้ให้บริการ AI สามารถนำข้อมูลของบริษัทไปใช้พัฒนาโมเดลหรือปรับปรุงบริการของตนได้หรือไม่",
@@ -7771,23 +7809,34 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation"
+          ],
           "issues": [
+            "Written response and original rubric retained; service improvement is not automatically model training. No jurisdiction-specific legal requirements added.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Vendor risk questionnaire",
-        "artifactBrief": "The vendor wants access to customer data for model improvement.",
-        "generationPrompt": "Existing artifact path: /stimuli/raw-vendor-security-questionnaire.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "แบบประเมินความเสี่ยงของผู้ให้บริการ",
-          "artifactBrief": "ผู้ให้บริการต้องการเข้าถึงข้อมูลลูกค้าเพื่อนำไปพัฒนาโมเดล",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/raw-vendor-security-questionnaire.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -13799,36 +13848,36 @@
         "status": "live-item",
         "interaction": "rank",
         "format": "ranked live item",
-        "context": "An AI support workflow sent incorrect refund guidance to customers.",
-        "prompt": "Order the response actions.",
+        "context": "An AI customer support workflow has sent incorrect refund guidance to customers.",
+        "prompt": "Arrange the response actions from first to last.",
         "options": [
           {
             "id": "contain",
-            "label": "1. Contain the workflow and stop repeat harm.",
+            "label": "Restrict the affected workflow to prevent further harm.",
             "score": 100,
             "thLabel": "1. จำกัดขอบเขตขั้นตอนงานและหยุดความเสียหายไม่ให้เกิดซ้ำ"
           },
           {
             "id": "scope",
-            "label": "2. Scope affected customers, outputs, and data.",
+            "label": "Identify which customers, outputs and data are affected.",
             "score": 100,
             "thLabel": "2. ประเมินขอบเขตว่าลูกค้า ผลลัพธ์ และข้อมูลใดได้รับผลกระทบ"
           },
           {
             "id": "notify",
-            "label": "3. Notify stakeholders through approved legal/comms path.",
+            "label": "Notify the relevant people through the approved legal and communications process.",
             "score": 100,
             "thLabel": "3. แจ้งผู้มีส่วนได้ส่วนเสียผ่านช่องทางกฎหมายและสื่อสารที่ได้รับอนุมัติ"
           },
           {
             "id": "fix",
-            "label": "4. Fix controls, prompts, evidence checks, and rollback path.",
+            "label": "Fix the controls, prompts, evidence checks and process for reversing changes.",
             "score": 100,
             "thLabel": "4. แก้ไขมาตรการควบคุม prompt การตรวจสอบหลักฐาน และเส้นทางการย้อนกลับระบบ (rollback)"
           },
           {
             "id": "learn",
-            "label": "5. Run a post-incident review with owner and prevention metrics.",
+            "label": "Review the incident, identify who is responsible for follow-up and set measures for preventing similar incidents.",
             "score": 100,
             "thLabel": "5. ทบทวนหลังเหตุการณ์ พร้อมกำหนดผู้รับผิดชอบและตัวชี้วัดการป้องกัน"
           }
@@ -13840,7 +13889,7 @@
           "fix",
           "learn"
         ],
-        "explanation": "",
+        "explanation": "First restrict the affected workflow to prevent further harm. Identify the scope of the incident, notify the relevant people through the approved process, fix the controls and then review the incident with responsibility and prevention measures defined.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ขั้นตอนงานบริการลูกค้าที่ใช้ AI ส่งคำแนะนำเรื่องการคืนเงินที่ไม่ถูกต้องไปถึงลูกค้า",
@@ -13853,24 +13902,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
             "Check that the complete ranking key and scoring are defined before release.",
+            "The source does not establish detailed dependencies between the middle response actions. Preserve the ranking key without claiming this is a universal strictly sequential incident-response process.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "AI incident timeline",
-        "artifactBrief": "Incident response needs ordered actions, not a vague promise to improve.",
-        "generationPrompt": "Existing artifact path: /stimuli/executive/exec-exp-incident-timeline-support-ai.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "ไทม์ไลน์เหตุการณ์ผิดปกติจาก AI",
-          "artifactBrief": "การรับมือเหตุการณ์ต้องมีลำดับขั้นตอนที่ชัดเจน ไม่ใช่คำสัญญาลอย ๆ ว่าจะปรับปรุง",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/executive/exec-exp-incident-timeline-support-ai.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -14264,11 +14325,11 @@
         "status": "live-item",
         "interaction": "text",
         "format": "written response live item",
-        "context": "A sales team wants to buy an AI forecasting assistant because one forecast predicts a larger quarter.",
-        "prompt": "Write 2-4 sentences explaining what evidence would make this a fundable pilot.",
+        "context": "A sales team is considering buying an AI forecasting assistant. The team is impressed because the assistant predicts higher quarterly sales, but it has not checked the forecast’s accuracy.",
+        "prompt": "Write 2–4 sentences explaining what evidence would justify funding a pilot of this AI forecasting assistant.",
         "options": [],
         "correctOptionIds": [],
-        "explanation": "A fundable pilot needs a baseline forecast accuracy comparison on similar deals, segmented by stage and stale activity. It should show that seller actions improve, not just that predictions look optimistic, and it needs a scale gate based on accuracy, customer impact, override reasons, and workflow adoption.",
+        "explanation": "Compare the AI’s forecast accuracy with the team’s current forecasting method on similar deals, checking results by sales stage and time since the last customer contact. Look for evidence that the AI helps sales staff make better follow-up decisions, rather than simply predicting higher sales. During the pilot, track customer impact, whether staff use the assistant in their daily work, and why they change its forecasts. Agree on criteria for success, stopping the pilot and expanding its use before the pilot starts.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ทีมขายต้องการซื้อผู้ช่วย AI สำหรับการคาดการณ์ยอดขาย เพราะผลคาดการณ์ครั้งหนึ่งชี้ว่ายอดขายในไตรมาสนี้จะเติบโตขึ้น",
@@ -14282,23 +14343,35 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation"
+          ],
           "issues": [
+            "User passed the explicit clarification that forecast accuracy has not been checked; this was not stated in the audit.",
+            "Initial funding evidence and results needed before expansion are distinct. Written-response rubric and production scoring remain unchanged.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.review-follow-up",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#english-review-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Sales forecast value review",
-        "artifactBrief": "The written response should connect workflow evidence to value measurement.",
-        "generationPrompt": "Existing artifact path: /stimuli/raw-sales-crm-pipeline.svg",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "การทบทวนคุณค่าของการคาดการณ์ยอดขาย",
-          "artifactBrief": "คำตอบที่เขียนควรเชื่อมโยงหลักฐานจากขั้นตอนงานเข้ากับการวัดคุณค่า",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/raw-sales-crm-pipeline.svg"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -14637,12 +14710,12 @@
         "status": "live-item",
         "interaction": "multi",
         "format": "select all live item",
-        "context": "A COO wants a dashboard to decide whether AI drafting should expand beyond one department.",
-        "prompt": "Which measures belong in the expansion dashboard?",
+        "context": "A Chief Operating Officer (COO) wants a dashboard to help decide whether to expand AI-assisted drafting from one department to others.",
+        "prompt": "Which measures should the dashboard include to support this decision? Select four answers.",
         "options": [
           {
             "id": "outcome",
-            "label": "Workflow outcome vs baseline, such as cycle time or resolved tickets.",
+            "label": "Workflow results compared with the baseline, such as time to complete work or the number of resolved tickets.",
             "score": 25,
             "feedback": "Correct. Value needs a baseline outcome.",
             "thLabel": "ผลลัพธ์ของขั้นตอนงานเทียบกับค่าฐาน (baseline) เช่น รอบเวลาทำงานหรือจำนวน ticket (เคสลูกค้า) ที่ปิดได้",
@@ -14650,7 +14723,7 @@
           },
           {
             "id": "quality",
-            "label": "Quality defects, rework, exceptions, and customer-impact incidents.",
+            "label": "Quality problems, work that needs to be redone, exceptions and incidents affecting customers.",
             "score": 25,
             "feedback": "Correct. Speed without quality is incomplete.",
             "thLabel": "ข้อบกพร่องด้านคุณภาพ งานที่ต้องแก้ซ้ำ รายการยกเว้น และเหตุการณ์ผิดปกติที่กระทบลูกค้า",
@@ -14658,7 +14731,7 @@
           },
           {
             "id": "adoption",
-            "label": "Sustained use by role and manager coaching coverage.",
+            "label": "Continued AI use by role and which staff receive coaching from managers.",
             "score": 25,
             "feedback": "Correct. Change evidence matters for scale.",
             "thLabel": "การใช้งานอย่างต่อเนื่องแยกตามบทบาท และความครอบคลุมของการโค้ชโดยผู้จัดการ",
@@ -14666,7 +14739,7 @@
           },
           {
             "id": "learning",
-            "label": "Override reasons, user feedback, and prompt/workflow updates.",
+            "label": "Reasons staff override AI outputs, user feedback and updates to prompts or workflows.",
             "score": 25,
             "feedback": "Correct. Learning loops show whether the system improves.",
             "thLabel": "เหตุผลของการแก้ไขทับผล AI (override) เสียงสะท้อนจากผู้ใช้ และการปรับปรุง prompt กับขั้นตอนงาน",
@@ -14674,7 +14747,7 @@
           },
           {
             "id": "volume",
-            "label": "Total prompts sent as the single success metric.",
+            "label": "The total number of prompts sent as the only measure of success.",
             "score": 0,
             "feedback": "Activity volume alone does not prove value.",
             "thLabel": "จำนวน prompt ที่ส่งทั้งหมด โดยใช้เป็นตัวชี้วัดความสำเร็จเพียงตัวเดียว",
@@ -14687,7 +14760,7 @@
           "adoption",
           "learning"
         ],
-        "explanation": "",
+        "explanation": "The dashboard should show whether results improve, whether quality problems occur, whether staff continue using AI and receive coaching, and whether feedback leads to changes. Prompt volume alone shows activity, not whether expanding AI use is worthwhile.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "COO ต้องการแดชบอร์ดเพื่อตัดสินใจว่าควรขยายการใช้ AI ช่วยร่างงานออกไปนอกแผนกเดียวหรือไม่",
@@ -14700,23 +14773,35 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
+            "Four correct choices and a single distractor containing only make the answer easier to guess. The existing productivity chart is unnecessary for selecting measures.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "existing artifact",
-        "artifactType": "existing-live-artifact",
-        "artifactLabel": "Value adoption dashboard",
-        "artifactBrief": "The best dashboard combines value, quality, adoption, and learning evidence.",
-        "generationPrompt": "Existing artifact path: /stimuli/productivity-chart-forensics.png",
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
         "th": {
-          "need": "หลักฐานประกอบที่มีอยู่",
-          "artifactLabel": "แดชบอร์ดคุณค่าและการใช้งานจริง",
-          "artifactBrief": "แดชบอร์ดที่ดีที่สุดรวมหลักฐานทั้งด้านคุณค่า คุณภาพ การใช้งานจริง และการเรียนรู้",
-          "generationPrompt": "ตำแหน่งหลักฐานประกอบที่มีอยู่: /stimuli/productivity-chart-forensics.png"
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
         }
       },
       "review": {
@@ -31475,12 +31560,12 @@
         "status": "live-item",
         "interaction": "single",
         "format": "scenario choice live item",
-        "context": "Leadership wants to scale generative AI, agents, and multimodal workflows across functions while governance capacity is limited. Focus competency: Fraud and manipulation detection. The user should show they designs scalable controls for fraud and manipulation detection using practical signals such as phishing checks, suspicious artifacts, invoice fraud.",
-        "prompt": "Which advanced decision best reflects the 2026 AI market shift from experimentation to operating model?",
+        "context": "Leadership wants to expand generative AI, AI agents and workflows that use different types of content across departments. However, the organization has limited capacity to oversee their use.\n\nThe organization needs fraud and manipulation controls that can support this expansion, including checks for phishing, suspicious materials and invoice fraud.",
+        "prompt": "Which approach best supports the move from AI experiments to routine operations across the organization? Choose one answer.",
         "options": [
           {
             "id": "best",
-            "label": "Create a tiered AI operating model with use-case intake, risk-based controls, eval evidence, incident review, role training, and measurable value gates.",
+            "label": "Establish a tiered approach to running AI: review proposed uses, apply controls based on risk, use evaluation results, review incidents, train staff for their roles and use measurable business value to decide whether to proceed.",
             "score": 96,
             "feedback": "Strong advanced evidence for fraud and manipulation detection: it connects the trend to task fit, evidence, controls, and outcomes.",
             "thLabel": "สร้างรูปแบบการดำเนินงาน AI แบบแบ่งระดับ ที่มีช่องทางรับกรณีใช้งาน มาตรการควบคุมตามความเสี่ยง หลักฐานจากการประเมิน การทบทวนเหตุการณ์ผิดปกติ การอบรมตามบทบาท และด่านตัดสินใจด้านคุณค่าที่วัดได้",
@@ -31488,7 +31573,7 @@
           },
           {
             "id": "partial",
-            "label": "Create one central approval committee for every AI request.",
+            "label": "Create one central committee to approve every AI request.",
             "score": 62,
             "feedback": "Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.",
             "thLabel": "ตั้งคณะกรรมการอนุมัติกลางชุดเดียวสำหรับทุกคำขอด้าน AI",
@@ -31496,7 +31581,7 @@
           },
           {
             "id": "weak",
-            "label": "Let each team pick tools independently to move faster.",
+            "label": "Let each team choose its own tools independently to move faster.",
             "score": 28,
             "feedback": "Weak evidence. This over-trusts the technology or misses the practical control problem.",
             "thLabel": "ให้แต่ละทีมเลือกเครื่องมือกันเองเพื่อความรวดเร็ว",
@@ -31504,7 +31589,7 @@
           },
           {
             "id": "trend-chasing",
-            "label": "Delay all adoption until regulation is fully settled.",
+            "label": "Delay all AI adoption until regulations are fully settled.",
             "score": 18,
             "feedback": "Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.",
             "thLabel": "ชะลอการนำไปใช้ทั้งหมดจนกว่ากฎระเบียบจะนิ่งสมบูรณ์",
@@ -31514,7 +31599,7 @@
         "correctOptionIds": [
           "best"
         ],
-        "explanation": "",
+        "explanation": "A combines oversight, evaluation, incident review, staff training and measurable value. Applying controls according to risk helps the organization manage different uses of AI as adoption expands. A central committee alone does not provide this complete approach. Independent tool selection does not establish shared controls, while delaying all adoption does not provide a way to manage current opportunities and risks.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ผู้บริหารต้องการขยาย generative AI เอเจนต์ และขั้นตอนงานแบบหลายสื่อ (multimodal) ไปทั่วทุกสายงาน ขณะที่กำลังคนด้านการกำกับดูแลมีจำกัด Competency ที่วัด: การตรวจจับการฉ้อโกงและการล่อลวง ผู้ใช้ควรแสดงให้เห็นว่าออกแบบมาตรการที่รองรับการขยายสำหรับการตรวจจับการฉ้อโกงและการล่อลวง โดยมีแนวทางปฏิบัติที่ชัดเจน เช่น การตรวจจับฟิชชิง (Phishing), เอกสารหรือหลักฐานที่น่าสงสัย, การฉ้อโกงใบแจ้งหนี้",
@@ -31527,13 +31612,37 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
+            "The choices primarily assess general AI governance rather than fraud detection. Choice A is much longer and more comprehensive. Authoring guidance was reframed as task scope and year-based market framing removed in the accepted candidate; no current market claim was verified. Original per-option feedback still reflects the original competency mapping and awaits content revision.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
-      "artifactNeed": null,
+      "artifactNeed": {
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
+        "rulesVersion": "1.3",
+        "th": {
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
+        }
+      },
       "review": {
         "status": "live-review"
       },
@@ -31647,12 +31756,12 @@
         "status": "live-item",
         "interaction": "single",
         "format": "scenario choice live item",
-        "context": "A regional business wants AI systems that respect local language, sector rules, data residency, and vendor dependence concerns. Focus competency: Fraud and manipulation detection. The user should show they designs scalable controls for fraud and manipulation detection using practical signals such as phishing checks, suspicious artifacts, invoice fraud.",
-        "prompt": "What is the strongest advanced response?",
+        "context": "A regional business wants AI systems that work well in the local language and meet industry rules and requirements for where data is stored. It also wants to address the risks of depending on a vendor.",
+        "prompt": "Which approach best addresses these requirements before the business introduces the AI systems? Choose one answer.",
         "options": [
           {
             "id": "best",
-            "label": "Compare model capability with data residency, language performance, auditability, vendor exit paths, and local regulatory obligations before designing the rollout.",
+            "label": "Assess model capabilities, local-language performance, data storage locations, auditability, options for leaving the vendor and local regulatory requirements before planning the rollout.",
             "score": 96,
             "feedback": "Strong advanced evidence for fraud and manipulation detection: it connects the trend to task fit, evidence, controls, and outcomes.",
             "thLabel": "เปรียบเทียบความสามารถของโมเดลกับถิ่นที่เก็บข้อมูล ประสิทธิภาพด้านภาษา ความสามารถในการตรวจสอบ แผนการเปลี่ยนผ่านออกจากผู้ให้บริการ (vendor exit path) และภาระผูกพันตามกฎระเบียบท้องถิ่น ก่อนออกแบบการนำไปใช้",
@@ -31660,7 +31769,7 @@
           },
           {
             "id": "partial",
-            "label": "Choose the strongest global model and translate outputs locally.",
+            "label": "Choose the strongest global model and translate its outputs into the local language.",
             "score": 62,
             "feedback": "Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.",
             "thLabel": "เลือกโมเดลระดับโลกที่มีประสิทธิภาพสูงสุด แล้วแปลผลลัพธ์เป็นภาษาท้องถิ่น",
@@ -31668,7 +31777,7 @@
           },
           {
             "id": "weak",
-            "label": "Use only local models even if they fail critical tasks.",
+            "label": "Use only local models, even if they cannot perform critical tasks.",
             "score": 28,
             "feedback": "Weak evidence. This over-trusts the technology or misses the practical control problem.",
             "thLabel": "ใช้เฉพาะโมเดลท้องถิ่น แม้จะทำงานสำคัญไม่ผ่าน",
@@ -31676,7 +31785,7 @@
           },
           {
             "id": "trend-chasing",
-            "label": "Treat sovereignty as a hosting choice rather than an operating and governance requirement.",
+            "label": "Treat local control over AI systems and data as only a hosting decision, without considering operations and governance.",
             "score": 18,
             "feedback": "Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.",
             "thLabel": "มองอธิปไตยข้อมูลเป็นเพียงเรื่องที่ตั้งเซิร์ฟเวอร์ ไม่ใช่ข้อกำหนดด้านการดำเนินงานและการกำกับดูแล",
@@ -31686,7 +31795,7 @@
         "correctOptionIds": [
           "best"
         ],
-        "explanation": "",
+        "explanation": "A considers whether the AI can perform the required work alongside language, data location, audit, vendor dependence and regulatory needs. Translating outputs addresses only part of the requirements. Choosing local models does not establish that they can perform critical tasks, and hosting alone does not address how the systems are operated and governed.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ธุรกิจระดับภูมิภาคต้องการระบบ AI ที่รองรับภาษาท้องถิ่น กฎเฉพาะภาคธุรกิจ ข้อกำหนดถิ่นที่เก็บข้อมูล (data residency) และความกังวลเรื่องการพึ่งพาผู้ให้บริการภายนอก Competency ที่วัด: การตรวจจับการฉ้อโกงและการล่อลวง ผู้ใช้ควรแสดงให้เห็นว่าออกแบบมาตรการที่รองรับการขยายสำหรับการตรวจจับการฉ้อโกงและการล่อลวง โดยมีแนวทางปฏิบัติที่ชัดเจน เช่น การตรวจจับฟิชชิง (Phishing), เอกสารหรือหลักฐานที่น่าสงสัย, การฉ้อโกงใบแจ้งหนี้",
@@ -31699,27 +31808,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
-            "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
+            "The original scenario and choices assess AI selection and governance more directly than fraud detection. Authoring instructions were removed without inventing a fraud incident. Choice A remains substantially more comprehensive. Original per-option feedback still reflects the original competency mapping and awaits content revision.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "requires artifact",
-        "artifactType": "security-audit-log",
-        "artifactLabel": "Security / access / audit evidence",
-        "artifactBrief": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision.",
-        "generationPrompt": "A realistic access or audit record containing only the identities, scopes, actions and authorization evidence needed for the decision. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-        "th": {
-          "need": "ต้องมีหลักฐานประกอบ",
-          "artifactLabel": "หลักฐานด้านความปลอดภัย การเข้าถึง และการตรวจสอบ",
-          "artifactBrief": "บันทึกการเข้าถึงหรือการตรวจสอบที่สมจริง มีเฉพาะตัวตน ขอบเขต การกระทำ และหลักฐานการอนุญาตที่จำเป็นต่อการตัดสินใจ",
-          "generationPrompt": "บันทึกการเข้าถึงหรือการตรวจสอบที่สมจริง มีเฉพาะตัวตน ขอบเขต การกระทำ และหลักฐานการอนุญาตที่จำเป็นต่อการตัดสินใจ ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-        },
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
         "rulesVersion": "1.3",
-        "necessityReview": "pending-question-specific-review"
+        "th": {
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
+        }
       },
       "review": {
         "status": "live-review"
@@ -36386,12 +36504,12 @@
         "status": "live-item",
         "interaction": "single",
         "format": "scenario choice live item",
-        "context": "An operations group wants an AI agent to triage requests, update records, and trigger follow-up emails. Focus competency: Security and governance controls. The user should show they handles tradeoffs in security and governance controls using practical signals such as least privilege, audit logs, vendor controls.",
-        "prompt": "Which response best handles the tradeoffs in current agent deployment?",
+        "context": "An operations team wants an AI agent to assess and prioritize requests, update records and trigger follow-up emails. The team needs to decide what permissions and oversight the agent should have.",
+        "prompt": "Which approach best balances useful automation with control over the agent’s access and actions? Choose one answer.",
         "options": [
           {
             "id": "best",
-            "label": "Start read-only, log every proposed action, require approval for customer-impacting writes, monitor failures, and expand authority only after evidence improves.",
+            "label": "Start with read-only access and log every proposed action. Require approval for data changes that affect customers, monitor failures and expand permissions only as the evidence improves.",
             "score": 96,
             "feedback": "Strong proficient evidence for security and governance controls: it connects the trend to task fit, evidence, controls, and outcomes.",
             "thLabel": "เริ่มจากสิทธิ์อ่านอย่างเดียว บันทึกทุกการกระทำที่เอเจนต์เสนอ กำหนดให้ต้องอนุมัติก่อนเขียนข้อมูลที่กระทบลูกค้า ติดตามความล้มเหลว และขยายขอบเขตสิทธิ์การทำงานเมื่อมีหลักฐานความพร้อมที่ชัดเจนขึ้นเท่านั้น",
@@ -36399,7 +36517,7 @@
           },
           {
             "id": "partial",
-            "label": "Let the agent handle low-value tasks and review a weekly sample.",
+            "label": "Let the agent handle low-value tasks and review a sample of its work each week.",
             "score": 62,
             "feedback": "Partial evidence. This notices part of the trend but does not fully test fit, risk, evidence, and operational use.",
             "thLabel": "ให้เอเจนต์จัดการงานที่มูลค่าต่ำ แล้วสุ่มตรวจตัวอย่างทุกสัปดาห์",
@@ -36415,7 +36533,7 @@
           },
           {
             "id": "trend-chasing",
-            "label": "Measure success only by tickets closed per hour.",
+            "label": "Measure success only by the number of tickets closed per hour.",
             "score": 18,
             "feedback": "Trend-chasing is not readiness. Strong AI users connect new capabilities to evidence, workflow design, and accountable use.",
             "thLabel": "วัดความสำเร็จจากจำนวน ticket ที่ปิดได้ต่อชั่วโมงเพียงอย่างเดียว",
@@ -36425,7 +36543,7 @@
         "correctOptionIds": [
           "best"
         ],
-        "explanation": "",
+        "explanation": "The first approach connects access limits, approval for changes affecting customers, logs, failure monitoring and evidence before expanding permissions. Low-value tasks are not necessarily low risk. Broad permissions do not establish readiness, and ticket volume alone does not show whether actions are safe or correct.",
         "rewriteNotes": "Existing live item shown for reviewer inspection.",
         "th": {
           "context": "ฝ่ายปฏิบัติการต้องการให้ AI agent คัดกรองคำขอ อัปเดตข้อมูลในระบบ และส่งอีเมลติดตามผลโดยอัตโนมัติ Competency ที่วัด: มาตรการความปลอดภัยและการกำกับดูแล ผู้ใช้ควรแสดงให้เห็นว่าพิจารณาข้อแลกเปลี่ยนเกี่ยวกับมาตรการความปลอดภัยและการกำกับดูแล โดยมีแนวทางปฏิบัติที่ชัดเจน เช่น สิทธิ์เท่าที่จำเป็น (least privilege), บันทึกตรวจสอบ (audit log), มาตรการควบคุมผู้ให้บริการภายนอก",
@@ -36438,27 +36556,36 @@
         "ruleApplication": {
           "version": "2026-10-01.1",
           "status": "applied-safe-wording-and-assessed",
-          "changes": [],
+          "changes": [
+            "context",
+            "prompt",
+            "explanation",
+            "label"
+          ],
           "issues": [
-            "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
+            "Decision scope was clarified after user feedback without inventing an incident. Evidence improves remains undefined, and the keyed choice is much longer and more comprehensive.",
+            "English wording accepted; Thai retains its previous revision pending synchronization.",
             "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
           ]
+        },
+        "englishWordingReview": {
+          "status": "user-accepted",
+          "revision": "2026-10-05.controls-review",
+          "source": "docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#controls-review-local-implementation---5-october-2026",
+          "thaiStatus": "previous-revision-pending-sync"
         }
       },
       "artifactNeed": {
-        "need": "requires artifact",
-        "artifactType": "workflow-trace",
-        "artifactLabel": "Workflow / agent trace",
-        "artifactBrief": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis.",
-        "generationPrompt": "A workflow record showing the relevant actions, permissions, approvals and outcomes without marking the correct diagnosis. Use only facts supported by the scenario. Label any proposed fictional additions for review. Do not add highlighted errors, warning verdicts, invented risks or corrective answers. Define labels and scores. Avoid repeating the scenario. Preserve equivalent English and Thai evidence and record unverified release checks.",
-        "th": {
-          "need": "ต้องมีหลักฐานประกอบ",
-          "artifactLabel": "บันทึกลำดับการทำงานของ Workflow หรือ Agent",
-          "artifactBrief": "บันทึกขั้นตอนงานที่แสดงการกระทำ สิทธิ์ การอนุมัติ และผลลัพธ์ที่เกี่ยวข้อง โดยไม่ระบุคำวินิจฉัยที่ถูกต้อง",
-          "generationPrompt": "บันทึกขั้นตอนงานที่แสดงการกระทำ สิทธิ์ การอนุมัติ และผลลัพธ์ที่เกี่ยวข้อง โดยไม่ระบุคำวินิจฉัยที่ถูกต้อง ใช้เฉพาะข้อเท็จจริงที่สถานการณ์รองรับ ระบุข้อมูลสมมติที่เสนอเพิ่มเพื่อให้ตรวจทาน ห้ามเน้นจุดผิด ใส่คำตัดสินเตือน แต่งความเสี่ยง หรือบอกวิธีแก้ที่เป็นคำตอบ อธิบายป้ายกำกับและคะแนน หลีกเลี่ยงข้อมูลซ้ำกับสถานการณ์ รักษาหลักฐานภาษาอังกฤษและไทยให้เทียบเท่ากัน และบันทึกการตรวจความพร้อมเผยแพร่ที่ยังไม่ได้ทำ"
-        },
+        "need": "not required",
+        "artifactType": "none",
+        "artifactLabel": "No artifact needed",
+        "artifactBrief": "The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.",
         "rulesVersion": "1.3",
-        "necessityReview": "pending-question-specific-review"
+        "th": {
+          "need": "ไม่จำเป็นต้องมีภาพประกอบ",
+          "artifactLabel": "ไม่ต้องสร้างภาพประกอบ",
+          "artifactBrief": "สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ"
+        }
       },
       "review": {
         "status": "live-review"

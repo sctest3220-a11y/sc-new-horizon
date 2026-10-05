@@ -1,5 +1,9 @@
+import { octoberReviewCheckpoints } from './english-wording-review-october.mjs';
+import { octoberControlsCheckpoints } from './english-wording-review-october-controls.mjs';
 // User-selected English wording. Thai stays at its prior revision until synced.
 export const englishWordingCheckpoints = {
+  ...octoberReviewCheckpoints,
+  ...octoberControlsCheckpoints,
   'NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-03': {
     context: 'The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.\n\nThe AI uses an old version of the procedure to draft the customer response. It quotes that version correctly, even though a new version is already in effect.',
     prompt: 'Answer both questions. Choose one answer for each.',
@@ -84,6 +88,45 @@ export const englishWordingCheckpoints = {
     keys: ['b', 'b'], artifactRequired: false,
     issues: ['The accepted scenario does not specify the statement referenced by the choices. Preserve the accepted text; adding a concrete statement would need separate content review.'],
   },
+  'NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-01': {
+    context: 'The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.\n\nA temporary copy of these documents is still available after its approved deletion date.\n\nRefunds and exceptions require approval from the person authorized to approve them.',
+    prompt: 'Answer both questions. Choose one answer for each.',
+    parts: [
+      { prompt: 'What privacy issue does this situation show?', labels: ['More personal information was provided than the task needed.', 'The temporary copy was kept longer than allowed.'] },
+      { prompt: 'The AI recommends a refund over the frontline team’s approval limit.\nWhat should the team do next?', labels: ['Send the exception to the person authorized to approve the refund.', 'Issue the refund after the AI repeats its recommendation.'] },
+    ],
+    explanation: 'The temporary copy remains available after its approved deletion date. The issue is how long the information was kept, not whether too much information was provided. The refund requires approval from someone with the necessary authority; repeating an AI recommendation does not give the frontline team permission to issue it.',
+    keys: ['b', 'a'], artifactRequired: false,
+    revision: '2026-10-02.data-privacy-review',
+    reviewSource: 'docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#data-privacy-readability-and-flow---2-october-2026',
+    issues: ['The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue.'],
+  },
+  'NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-02': {
+    context: 'The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.\n\nWhile preparing the response, the AI retrieves another team’s restricted records that the customer service team does not have permission to access.',
+    prompt: 'Answer both questions. Choose one answer for each.',
+    parts: [
+      { prompt: 'What privacy issue does this situation show?', labels: ['A copy of the records was kept longer than allowed.', 'The AI retrieved records outside the team’s access permissions.'] },
+      { prompt: 'The system timed out during an earlier refund attempt, but the refund may already be complete.\nWhat should the team do next?', labels: ['Issue another refund because the customer still reports a delay.', 'Check the payment record to confirm the earlier refund’s status before issuing another refund.'] },
+    ],
+    explanation: 'The AI’s ability to retrieve records does not mean the customer service team has permission to access them. The issue concerns access permissions, not how long records were kept. A timeout also does not prove that a refund failed, so the team should confirm the earlier refund’s status before issuing another.',
+    keys: ['b', 'b'], artifactRequired: false,
+    revision: '2026-10-02.data-privacy-review',
+    reviewSource: 'docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#data-privacy-readability-and-flow---2-october-2026',
+    issues: ['The explicit lack of customer-service access permission clarifies the original key and explanation; the original scenario only described another team’s restricted records.'],
+  },
+  'NH-FUNCTION-CUSTOMERSERVICE-D4-DATA-PRIVACY-AWARENESS-03': {
+    context: 'The customer service team uses AI to draft a case resolution response based on approved service policies and the customer’s case history.\n\nNames have been removed from the case history, but an uncommon job title and the exact event date remain. Together, these details can identify the person.',
+    prompt: 'Answer both questions. Choose one answer for each.',
+    parts: [
+      { prompt: 'What privacy issue does this situation show?', labels: ['The remaining details can still identify the person.', 'More personal information was provided than the task needed.'] },
+      { prompt: 'The AI’s draft says the case is resolved, but the case history shows it is still pending.\nWhat should the team do next?', labels: ['State that the case is still pending and explain the actual next step.', 'State that the case is resolved to reassure the customer.'] },
+    ],
+    explanation: 'Removing names does not necessarily prevent identification. An uncommon job title combined with an exact event date can still identify the person. The scenario does not establish whether more information was provided than the task needed. The customer response should also reflect the recorded case status and actual next step.',
+    keys: ['a', 'a'], artifactRequired: false,
+    revision: '2026-10-02.data-privacy-review',
+    reviewSource: 'docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#data-privacy-readability-and-flow---2-october-2026',
+    issues: ['The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue.'],
+  },
 };
 
 export function applyEnglishWordingCheckpoint(q) {
@@ -91,13 +134,19 @@ export function applyEnglishWordingCheckpoint(q) {
   if (!c) return [];
   const d = q.userFacingDraft, changes = [];
   const set = (obj, key, value) => { if (obj[key] !== value) changes.push(key); obj[key] = value; };
-  if (d.interaction !== 'parts' || d.parts.length !== c.parts.length || d.parts.some(p => p.options.length !== 2)) throw new Error(`${q.id}: unexpected selected template`);
-  if (d.parts.some((p, i) => p.correctOptionIds.length !== 1 || p.correctOptionIds[0] !== c.keys[i] || p.options.map(o => o.id).join(',') !== 'a,b')) throw new Error(`${q.id}: selected key or option order differs from reviewed wording`);
+  if (c.parts) {
+    if (d.interaction !== 'parts' || d.parts.length !== c.parts.length || d.parts.some(p => p.options.length !== 2)) throw new Error(`${q.id}: unexpected selected template`);
+    if (d.parts.some((p, i) => p.correctOptionIds.length !== 1 || p.correctOptionIds[0] !== c.keys[i] || p.options.map(o => o.id).join(',') !== 'a,b')) throw new Error(`${q.id}: selected key or option order differs from reviewed wording`);
+  } else {
+    if (d.interaction !== c.interaction || d.options.length !== c.labels.length) throw new Error(`${q.id}: unexpected selected template`);
+    if (JSON.stringify(d.options.map(o => o.id)) !== JSON.stringify(c.optionIds) || JSON.stringify(d.correctOptionIds) !== JSON.stringify(c.keys)) throw new Error(`${q.id}: selected key or option order differs from reviewed wording`);
+  }
   for (const key of ['context', 'prompt', 'explanation']) set(d, key, c[key]);
-  d.parts.forEach((p, i) => {
+  (d.parts ?? []).forEach((p, i) => {
     set(p, 'prompt', c.parts[i].prompt);
     p.options.forEach((o, j) => set(o, 'label', c.parts[i].labels[j]));
   });
-  d.englishWordingReview = { status: 'user-accepted', revision: '2026-10-01.customer-service-review', source: 'docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#customer-service-review-recap-and-local-implementation---1-october-2026', thaiStatus: 'previous-revision-pending-sync' };
+  if (!c.parts) d.options.forEach((o, i) => set(o, 'label', c.labels[i]));
+  d.englishWordingReview = { status: 'user-accepted', revision: c.revision ?? '2026-10-01.customer-service-review', source: c.reviewSource ?? 'docs/QUESTION_REWRITE_RULE_REVIEW_LOG.md#customer-service-review-recap-and-local-implementation---1-october-2026', thaiStatus: 'previous-revision-pending-sync' };
   return changes;
 }
