@@ -16,6 +16,8 @@ const banks = ['questions.json', 'live-questions.json'].map(name => JSON.parse(f
 const questions = banks.flatMap((bank, i) => bank.questions.map(q => ({ ...q, sourceInventory: q.sourceInventory ?? (i ? 'live' : 'draft'), sourceBank: q.sourceBank ?? (i ? 'Existing live bank' : 'New draft review inventory') })));
 if (new Set(questions.map(q => q.id)).size !== questions.length) throw new Error('Duplicate question ID in version.');
 const reviewed = questions.filter(q => q.userFacingDraft?.englishWordingReview || q.userFacingDraft?.reviewedWordingSource || checkpoints[q.id]);
+const feedbackQuestions = questions.filter(q => q.userFacingDraft?.feedbackReview);
+const synchronizedThaiIds = feedbackQuestions.filter(q => q.userFacingDraft.feedbackReview.thaiStatus === 'synchronized-needs-native-review').map(q => q.id).sort();
 const payload = JSON.stringify({ version, questions }) + '\n';
 const entry = {
   id, version, createdAt: new Date().toISOString(), status: 'local-review-snapshot',
@@ -26,6 +28,15 @@ const entry = {
   artifactCounts: JSON.parse(fs.readFileSync(path.join(directory, 'artifact-needs.json'), 'utf8')).counts,
   reviewedQuestionIds: reviewed.map(q => q.id).sort(),
   thaiPendingQuestionIds: questions.filter(q => q.userFacingDraft?.englishWordingReview?.thaiStatus === 'previous-revision-pending-sync').map(q => q.id).sort(),
+  localization: {
+    languages: ['en', 'th'],
+    status: 'machine-assisted-needs-review',
+    feedbackRevisions: [...new Set(feedbackQuestions.map(q => q.userFacingDraft.feedbackReview.revision))].sort(),
+    feedbackQuestionIds: feedbackQuestions.map(q => q.id).sort(),
+    synchronizedThaiQuestionIds: synchronizedThaiIds,
+    synchronizedThaiNativeReviewPendingIds: synchronizedThaiIds,
+    note: 'Synchronization records inclusion of the saved English/Thai feedback drafts, not native-language approval. Other questions retain their existing translation status inside the snapshot.',
+  },
 };
 fs.mkdirSync(path.join(directory, 'versions'), { recursive: true });
 fs.writeFileSync(path.join(directory, entry.snapshot), payload, { flag: 'wx' });

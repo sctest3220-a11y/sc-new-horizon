@@ -174,6 +174,8 @@ The new status is `synchronized-needs-native-review`, not native approval. Trans
 
 `inventory/feedback-checkpoints.mjs` takes precedence over earlier wording checkpoints, so rerunning the refinement command cannot restore an older English draft or its stale Thai. Original audit records, production assessment content and dated snapshots are unchanged. Push only when the user explicitly requests it.
 
+The feedback localization is captured in the bilingual inventory snapshot **2026.10.06 V.0**. The version registry records revision `2026-10-06.feedback`, affected question IDs, synchronized Thai IDs and pending native review. This preserves the selected English and Thai drafts together; it does not retranslate content or mark it as approved. GitHub commit `85c7fb4` contains the underlying changes. The user explicitly authorized publishing the saved snapshot and supporting updates on 6 October 2026, with a duplicate-version check before pushing.
+
 ## Template-generated items
 
 `ADV-*` and `TREND-*` questions are built at module load from `advancedQuestionFrames` / `marketTrendFrames` and `competencyDefinitions`. Their Thai lives on the frames (`contextTh`, `promptTh`, `bestTh`…), in the builders' option templates, and in `competencyLabelsTh` / `skillLabelsTh`. Translate and review those, never the generated ids. Placeholders `{label}`, `{lead}`, `{skills}`, `{difficulty}` in the review workbook map to template literals in the builders; keep a space on both sides of an inserted name so a gloss in parentheses never touches Thai text.

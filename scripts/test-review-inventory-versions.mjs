@@ -23,6 +23,16 @@ test('saved inventory versions have complete membership, review status and stabl
     assert.equal(snapshot.questions.filter(q => q.sourceInventory === 'live').length, entry.liveCount);
     const ids = new Set(snapshot.questions.map(q => q.id));
     for (const id of [...entry.reviewedQuestionIds, ...entry.thaiPendingQuestionIds]) assert.ok(ids.has(id), id);
+    if (entry.localization) {
+      const feedback = snapshot.questions.filter(q => q.userFacingDraft?.feedbackReview);
+      assert.deepEqual(entry.localization.feedbackQuestionIds, feedback.map(q => q.id).sort());
+      assert.deepEqual(entry.localization.feedbackRevisions, [...new Set(feedback.map(q => q.userFacingDraft.feedbackReview.revision))].sort());
+      const synchronized = feedback.filter(q => q.userFacingDraft.feedbackReview.thaiStatus === 'synchronized-needs-native-review').map(q => q.id).sort();
+      assert.deepEqual(entry.localization.synchronizedThaiQuestionIds, synchronized);
+      assert.deepEqual(entry.localization.synchronizedThaiNativeReviewPendingIds, synchronized);
+      assert.equal(entry.localization.status, 'machine-assisted-needs-review');
+      assert.deepEqual(entry.localization.languages, ['en', 'th']);
+    }
     for (const q of snapshot.questions) {
       assert.ok(q.version, `${q.id}: original audit version missing`);
       assert.ok(q.userFacingDraft, `${q.id}: rewrite missing`);
