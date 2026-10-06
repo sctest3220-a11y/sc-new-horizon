@@ -28,6 +28,7 @@ const draftPath = path.join(exportsDir, 'questions.json');
 const livePath = path.join(exportsDir, 'live-questions.json');
 const artifactNeedsPath = path.join(exportsDir, 'artifact-needs.json');
 const versionsPath = path.join(exportsDir, 'versions.json');
+let inventoryVersionForView = null;
 
 // Only the fields the admin page actually reads. Dropping the rest (provenance,
 // readability, contentHash, sourceScenario, ...) keeps the detail files small.
@@ -86,12 +87,23 @@ function isUpToDate() {
   const versions = fs.existsSync(versionsPath) ? readJson(versionsPath).versions : [];
   return [draftPath, livePath, artifactNeedsPath, versionsPath, fileURLToPath(import.meta.url), ...versions.map(v => path.join(exportsDir, v.snapshot))]
     .filter((input) => fs.existsSync(input))
-    .every((input) => fs.statSync(input).mtimeMs <= builtAt);
+    .every((input) => fs.statSync(input).mtimeMs <= builtAt) &&
+    fs.statSync(fileURLToPath(import.meta.url)).mtimeMs <= builtAt;
 }
 
 function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
   const detail = pick(question, detailFields);
   detail.sourceInventory = question.sourceInventory ?? sourceInventory;
+  if (sourceInventory === 'live' && inventoryVersionForView) detail.version = inventoryVersionForView;
+  if (sourceInventory === 'live' && detail.th && detail.userFacingDraft) {
+    detail.userFacingDraft.th = { context: detail.th.context, prompt: detail.th.prompt };
+    const translatedOptions = detail.th.options ?? {};
+    for (const option of detail.userFacingDraft.options ?? []) {
+      const translated = translatedOptions[option.id];
+      if (translated?.label) option.thLabel = translated.label;
+      if (translated?.feedback) option.thFeedback = translated.feedback;
+    }
+  }
   detail.sourceBank = question.sourceBank ?? sourceBank;
   // The page falls back to the standalone artifact-needs export when a question
   // carries no embedded need; merge it once here so the page needs one lookup.
@@ -128,6 +140,7 @@ function buildIndexRecord(detail) {
   const record = {
     id: detail.id,
     version: detail.version ?? (detail.sourceInventory === 'live' ? 'live-bank' : null),
+    version: detail.version ?? inventoryVersionForView,
     domain: detail.domain,
     difficulty: detail.difficulty,
     layer: detail.layer,
@@ -141,7 +154,14 @@ function buildIndexRecord(detail) {
   if (detail.industryTracks?.length) record.industryTracks = detail.industryTracks;
   if (detail.executiveRoles?.length) record.executiveRoles = detail.executiveRoles;
   if (detail.recommendedFormat?.format) record.recommendedFormat = { format: detail.recommendedFormat.format };
-  if (detail.userFacingDraft?.format) record.userFacingDraft = { format: detail.userFacingDraft.format };
+  if (detail.userFacingDraft?.format) {
+    record.userFacingDraft = { format: detail.userFacingDraft.format };
+    record.rewriteVersion = detail.userFacingDraft.rewriteVersion;
+    record.rewriteReviewStatus = detail.userFacingDraft.rewriteReviewStatus;
+  }
+  // Translation is reviewable at the question level. Keep the index small while
+  // exposing a stable filter value for the sandbox queue.
+  record.translationStatus = detail.userFacingDraft?.th?.prompt || detail.th?.prompt ? 'available' : 'missing';
   return record;
 }
 
@@ -155,6 +175,7 @@ function main() {
   }
 
   const draft = readJson(draftPath);
+  inventoryVersionForView = draft.inventoryVersion;
   const live = fs.existsSync(livePath) ? readJson(livePath) : null;
   const artifactNeeds = fs.existsSync(artifactNeedsPath) ? readJson(artifactNeedsPath) : null;
   const artifactNeedsById = new Map((artifactNeeds?.candidates ?? []).map((candidate) => [candidate.id, candidate]));
