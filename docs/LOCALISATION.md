@@ -1,5 +1,13 @@
 # Question Bank Localisation (Thai)
 
+## Latest local English review update - 5 October 2026
+
+The controls review updates English user-facing drafts in both admin review exports using `inventory/english-wording-review-october-controls.mjs`. This includes the accepted "access permission has been removed" wording. Original audit text, selected formats, option order, keys, scoring and existing Thai text remain preserved. Thai wording and any previously absent live-item explanations await synchronization; previous Thai text is not an approved translation of the new English. The item-level QA report records that pending status.
+
+Full English checkpoints and unresolved issues are recorded under "Controls review local implementation - 5 October 2026" in the rewrite review log. This status supersedes the earlier local-only implementation boundary for the accepted advanced prompt/output/source checkpoints. Existing historical status entries below remain audit history. Production scored questions and their artifacts are not replaced by these review-export changes. No push is authorized until the user requests it.
+
+For this English-only update, run the wording refinement script, artifact-needs scanner and admin asset builder in order. Do not run the Thai translator as a shortcut for synchronization. Verify the generated output directory stays inside this checkout before rebuilding. Use the inventory tests and a before/after comparison to check original audit text, Thai text, item structure and unrelated records.
+
 Last status review: **30 September 2026**, using the local `kj-dee-branch` checkout. The remote branch was fetched before publishing the English inventory wording update.
 
 Artifact translation, equivalence, readability, and release requirements are defined in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Question wording and cultural-context rules are defined in [Question Rewrite Rules and Versioning](QUESTION_REWRITE_RULES.md).
@@ -137,6 +145,36 @@ The following records preserve the original batch approvals and artifact backlog
 - Artifacts: language tags re-checked against the expanded relevance gate (22 hidden question ids) in `exports/artifact-language-tags.json`. 26 artifacts still display and need a Thai version (16 "Thai needed", 10 "Both"); 15 stay English. Produce message-type artifacts first (scam SMS, forwarded chat, social posts, invoice, login alert, scheduling email, vendor memo, product listing) because a Thai user cannot judge them realistically in English. Do not produce Thai images for artifacts hidden by the gate.
 - Thai artifact images: the nine message-type artifacts have `-th` versions (`public/stimuli/*-th.svg|png`), produced 2026-09-11 by repainting only the text (SVG text nodes replaced with Noto Sans Thai embedded; PNG text regions repainted over the original screenshots). `thaiStimulusSources` in `page.tsx` maps English src → Thai src and `localizeQuestion` swaps it for questions that have a translation status, so an untranslated question never shows a Thai image under English text. The EN→TH text for every artifact is in `exports/artifact-thai-text-spec.json` for reviewer sign-off; treat the images as `draft` until a native reviewer confirms them.
 - Glossary aligned with the README style guide: Domain, Competency, Assessment, Platform, telemetry and Workflow stay in English in Thai copy.
+
+## Review-inventory wording refinements - 1 October 2026
+
+The English/Thai review inventory is separate from the scored production bank. The user's inventory-wide request authorizes local updates to `exports/review-inventory/questions.json`, `live-questions.json`, their translation mappings, artifact plans and generated admin assets. These drafts are not promoted to production or marked as human-approved.
+
+Run `npm run inventory:refine` after generating or changing the review inventory. It applies the source-aware bilingual refinements in `inventory/wording-refinements.mjs`, refreshes strict Thai translations and artifact reports, and rebuilds the localhost assets. Run this after the older English rewrite pass; that pass must not overwrite a newer revision. Shared translations selected in the current checkpoints take precedence over older copies of the same sentence.
+
+The accepted Customer Service English wording is maintained in `inventory/english-wording-checkpoints.mjs`. These English-only checkpoints retain their previous Thai drafts and carry `previous-revision-pending-sync`; the pipeline must not register old Thai text as a translation of the new English. The user authorized publishing these accumulated updates on 1 October 2026, without approving new Thai wording or production assessment use.
+
+Original English audit wording and all selected question formats, choice order, keys and scores are checked against saved baselines. Earlier drafts and artifact metadata are retained in `wording-refinement-history.json`. The current per-item report is `wording-refinement-qa.json`; `english-rewrite-qa.json` remains the historical report for the previous English pass. `thai-translation-qa.json` checks translation coverage and text corruption, not human approval. The audit-source workbook remains an original-source export; current user-facing drafts are in the bilingual JSON and localhost inventory.
+
+Validation: `node --test scripts/test-english-inventory.mjs scripts/test-review-inventory.mjs scripts/test-thai-inventory.mjs scripts/test-wording-refinements.mjs`. Missing evidence, ambiguous choices, incomplete scoring and artifact necessity require individual review rather than invented facts or silent template changes.
+
+## English review follow-up - 5 October 2026
+
+October English checkpoints include multipart, multi-select, ranking and written-response review copies. `inventory/english-wording-review-october.mjs` records the selected text, exact keys and option IDs, and content-review issues. The checkpoint helper rejects a different interaction, option order or key. Production questions and scoring are unchanged.
+
+Keep existing Thai fields unchanged and mark them `previous-revision-pending-sync`. New English explanations in live review items may have no prior Thai counterpart; these remain pending, not completed or approved. The local QA report records pending synchronization for both inventories. Do not register old Thai against new English or use fragment substitutions.
+
+For the next Thai synchronization, preserve missing required data fields versus broader missing critical inputs, human staff roles, approval boundaries, pending case/refund uncertainty, and pilot-funding versus expansion evidence. No new Thai translation or GitHub push was requested.
+
+## Local feedback synchronization — 6 October 2026
+
+The user explicitly authorized English and Thai inventory updates, including substantive corrections in the attached feedback. This supersedes the earlier instruction to retain old Thai for the questions covered by this batch. The 229 question IDs and all 238 feedback records are retained in `inventory/feedback/`; `applied-2026-10-06.json` contains the selected bilingual text, source/structure guards, dispositions and remaining issues. `thai-2026-10-06.json` provides complete translation pairs. Unaffected pending translations remain pending.
+
+The new status is `synchronized-needs-native-review`, not native approval. Translate context, task prompts, choices and explanations as a unit. Preserve refund uncertainty, permission boundaries, numerical evidence, fields versus inputs and the distinction between fixed rules, retrieval, embedding and model updating. An English/Thai completeness check does not validate psychometric quality or scores for revised distractors.
+
+`inventory/feedback-checkpoints.mjs` takes precedence over earlier wording checkpoints, so rerunning the refinement command cannot restore an older English draft or its stale Thai. Original audit records, production assessment content and dated snapshots are unchanged. Push only when the user explicitly requests it.
+
+The feedback localization is captured in the bilingual inventory snapshot **2026.10.06 V.0**. The version registry records revision `2026-10-06.feedback`, affected question IDs, synchronized Thai IDs and pending native review. This preserves the selected English and Thai drafts together; it does not retranslate content or mark it as approved. GitHub commit `85c7fb4` contains the underlying changes. The user explicitly authorized publishing the saved snapshot and supporting updates on 6 October 2026, with a duplicate-version check before pushing.
 
 ## Template-generated items
 

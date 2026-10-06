@@ -7,7 +7,7 @@ test('every draft records the current English wording pass and retains evidence'
   for(const q of bank.questions){
     const d=q.userFacingDraft;
     assert.equal(d.rewriteRulesVersion,'2.1 + provisional 2.2-draft');
-    if(d.reviewedWordingSource)continue;
+    if(d.reviewedWordingSource || d.englishWordingReview?.status === 'user-accepted')continue;
     for(const p of d.parts??[])assert.doesNotMatch(p.prompt,/extra detail|profile cue/i);
     const cue=q.sourceScenario?.overlayEvidence;
     if(cue)assert.ok([d.context,...d.parts.map(p=>p.prompt)].join('\n').includes(cue),q.id);
