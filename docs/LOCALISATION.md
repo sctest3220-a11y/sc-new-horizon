@@ -1,6 +1,14 @@
 # Question Bank Localisation (Thai)
 
-## Latest local English review update - 5 October 2026
+## Current English/Thai localization update - 6 October 2026
+
+Last updated: **6 October 2026**. The English/Thai feedback update is saved in **2026.10.06 V.0** and was merged into `main` through PR #18 (`1740cf8`). The content update was committed as `85c7fb4`; the dated snapshot was committed as `1b378a4`.
+
+The feedback batch covers 229 question IDs. Its Thai drafts are synchronized with the selected English drafts and marked **`synchronized-needs-native-review`**. Synchronization is complete for this batch; native Thai approval and unresolved content/scoring issues remain pending. Earlier instructions to retain the previous Thai wording no longer apply to these synchronized items. Unaffected items retain their existing status.
+
+See [Local feedback synchronization — 6 October 2026](#local-feedback-synchronization--6-october-2026) for the implementation and [dated inventory versions](QUESTION_INVENTORY_VERSIONS.md) for the snapshot. Earlier dated sections below are historical records, not the current localization status.
+
+## Historical English-only review update - 5 October 2026
 
 The controls review updates English user-facing drafts in both admin review exports using `inventory/english-wording-review-october-controls.mjs`. This includes the accepted "access permission has been removed" wording. Original audit text, selected formats, option order, keys, scoring and existing Thai text remain preserved. Thai wording and any previously absent live-item explanations await synchronization; previous Thai text is not an approved translation of the new English. The item-level QA report records that pending status.
 
@@ -8,11 +16,11 @@ Full English checkpoints and unresolved issues are recorded under "Controls revi
 
 For this English-only update, run the wording refinement script, artifact-needs scanner and admin asset builder in order. Do not run the Thai translator as a shortcut for synchronization. Verify the generated output directory stays inside this checkout before rebuilding. Use the inventory tests and a before/after comparison to check original audit text, Thai text, item structure and unrelated records.
 
-Last status review: **30 September 2026**, using the local `kj-dee-branch` checkout. The remote branch was fetched before publishing the English inventory wording update.
+Historical status review: **30 September 2026**, using the local `kj-dee-branch` checkout. The remote branch was fetched before publishing the English inventory wording update.
 
 Artifact translation, equivalence, readability, and release requirements are defined in the canonical [Artifact Design and QA Standard](ARTIFACT_DESIGN_AND_QA_STANDARD.md). Question wording and cultural-context rules are defined in [Question Rewrite Rules and Versioning](QUESTION_REWRITE_RULES.md).
 
-## Latest Thai translation status
+## Historical Thai translation status - 30 September 2026
 
 The English user-facing drafts now record wording pass `2026-09-30.1`, applying approved rules v2.1 plus provisional v2.2-draft. Operational evidence appears beside its action question instead of a generic “extra detail” reference. Multipart instructions specify one answer per question; existing multi-select drafts state their current selection count without inventing another correct answer. Six complete text checkpoints from the review log are applied, with matching Thai. The original audit wording, answer keys, formats and scoring remain preserved.
 
