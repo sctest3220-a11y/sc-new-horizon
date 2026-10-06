@@ -2,7 +2,7 @@
 
 Status: Approved v2.1 baseline with provisional wording refinements under review
 Current rules version: `2.1`
-Last updated: 5 October 2026
+Last updated: 6 October 2026
 Baseline human approval recorded: 23 September 2026
 Provisional revision: `2.2-draft`; previously local `1.9-draft`, not yet the final approved standard
 
@@ -10,13 +10,35 @@ Publication authorization: On 1 October 2026, the user explicitly requested push
 
 ## Purpose
 
+Publication authorization — 6 October 2026: The user requested pushing the attached-feedback updates to `kj-dee-branch`, including the rewrite rules, English/Thai review inventories, related reports, documentation and supporting generators. Earlier local-only notes describe the status before this request. Publication preserves pending native Thai review and calibration issues; it does not promote these drafts to scored production or authorize future automatic pushes.
+
 Publication authorization — 5 October 2026: The user requested publication of the accumulated local rule and English-inventory updates, dated snapshot **2026.10.05 V.0**, related records and search fixes to `kj-dee-branch`. This supersedes their earlier local-only status. It does not authorize automatic future pushes or promote pending translations and review drafts to scored-release approval.
 
 This standard guides human and agent-assisted rewrites of assessment questions. It also prevents useful variants from being lost. Rewrites remain proposals until a human reviewer selects and approves a version.
 
 Inventory packaging uses dated immutable snapshots, beginning with **2026.10.05 V.0**. This combines the saved reviewed revisions with the remaining inventory while preserving each item's review and translation status. A dated inventory version does not replace original audit versions, promote the provisional rewrite rules, or grant scored-release approval. See [dated inventory versions](QUESTION_INVENTORY_VERSIONS.md).
 
-## Provisional local refinements - updated 5 October 2026
+## Provisional local refinements - updated 6 October 2026
+
+### Attached feedback, bilingual flow and content alignment — 6 October 2026
+
+The user authorized applying `question-feedback-2026-10-06.json` to local English/Thai review drafts, including substantive answer and competency corrections. This is local implementation, not a GitHub push or scored-production release. Preserve the approved v2.1 baseline and provisional v2.2-draft status.
+
+- **Read for flow, not only brevity.** Identify the actor, task and observed problem in a natural sequence. Connect supported contrasts with “but”, “while” or “even though”. Example: “Failures cluster immediately after source updates; older cases remain accurate” becomes “The team noticed that the AI makes mistakes more often right after the source data is updated, while remaining accurate on older cases.” Do not add causation to an observed pattern.
+- **Make the assessed decision explicit.** Replace vague prompts such as “Which challenge is most appropriate?” with the actual decision, such as what to verify before changing a review process. A measurement question needs a measurement answer; a source-conflict question needs an answer about sources, authority, versions or scope.
+- **Match competency to content.** Classify the evidence and decision actually tested, not a competency name inserted into generic text. Map corrections to the existing catalogue; retain original classification and IDs for traceability. Do not silently introduce a new taxonomy category or regenerate IDs.
+- **Keep internal review language out of the scenario.** “Focus competency”, skills lists, reviewer objectives and BEST/PARTIAL/WEAK labels belong in review metadata, not learner-facing evidence or answers. Remove unnecessary calendar-year framing when no date-specific fact is assessed.
+- **Check role fit across the whole item.** The task, AI behavior, evidence and requested action must fit the stated role and authority. A customer-service introduction does not make supplier-payment administration or software deployment a frontline task. Record misclassification or missing actor context rather than inventing responsibilities.
+- **Remove only irrelevant boilerplate.** Check both parts before removing refund-approval or fact-versus-assumption rules. Retain a constraint needed to answer either part. Do not manufacture a causal connection between independent subquestions.
+- **Preserve the actual interaction.** Correct a misleading format label to match the saved interaction. A two-part A/B item stays multipart; it does not become matching, multi-select or written response because a feedback dropdown names that format. Keep option IDs, order, keys and numeric scores. Substantively revised alternatives require score calibration before scored release; retaining a number does not validate it.
+- **Resolve feedback against the specific ID and evidence.** Preserve all imported entries and timestamps. A newer entry describing another scenario must not overwrite the correct item. Apply source-matched corrections and record the conflict. Correct typos and copied formatting without copying review commentary into question text.
+- **Improve Thai as complete sentences.** Use natural role language such as “พนักงานที่ทำงานร่วมกับหลายฝ่าย” and “ทีมโปรเจกต์” where supported. Use AI explicitly when the actor is AI; keep a fixed-rule automated tool distinct from generative AI. Translate the whole scenario, questions, choices and explanations together.
+- **Retain the concept when simplifying terminology.** Explain embedding or fine-tuning briefly when needed; do not replace embedding with generic retrieval or combine fine-tuning with examples in a prompt. Preserve missing fields versus blank fields, inconsistent field names versus absent names, and valid purpose versus approved purpose.
+- **Preserve accountability precisely.** A named human can own final approval without being the person who technically sends the message. Human review does not itself grant authority to approve an action.
+- **Use measurable role terms.** Keep first-contact resolution, reopened cases, SLA breach rate, escalations and complaints meaningful as measures. “SLA” alone does not identify what is measured; compare counts in light of case volume.
+- **Record what has and has not been verified.** Importing an “approve” entry does not approve newly generated Thai or recalibrate changed distractors. Maintain bilingual completion, source/structure checks, remaining content issues and native-language review status separately.
+
+Implementation and per-ID dispositions: `inventory/feedback/applied-2026-10-06.json`. Original feedback: `inventory/feedback/question-feedback-2026-10-06.json`. The immutable `2026.10.05 V.0` snapshot remains unchanged; current local changes appear under All versions.
 
 ### Controls, evidence and natural wording - 5 October 2026
 

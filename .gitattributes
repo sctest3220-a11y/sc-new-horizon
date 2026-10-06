@@ -1,2 +1,4 @@
 # Saved inventory hashes must remain identical after Windows/Linux checkouts.
 exports/review-inventory/versions/*.json text eol=lf
+# Imported feedback is archived byte-for-byte and verified by SHA-256.
+inventory/feedback/question-feedback-*.json -text

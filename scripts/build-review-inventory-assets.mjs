@@ -99,6 +99,26 @@ function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
     detail.artifactNeed = artifactNeedsById.get(question.id);
   }
   if (question.review?.status) detail.review = { status: question.review.status };
+  const classification = question.userFacingDraft?.reviewedClassification;
+  if (classification) {
+    detail.auditClassification = classification.original;
+    detail.domain = classification.domain;
+    detail.competencyIds = classification.competencyIds;
+    detail.competencyLabel = classification.competencyLabel;
+  }
+  const format = question.userFacingDraft?.reviewedFormat;
+  if (format) {
+    detail.auditRecommendedFormat = detail.recommendedFormat;
+    detail.recommendedFormat = {
+      format: format.format, interaction: format.interaction,
+      reason: 'The saved question asks for two separate decisions within one scenario.',
+      rewritePrompt: detail.userFacingDraft.prompt,
+      sampleParts: detail.userFacingDraft.parts.map(part => ({
+        prompt: part.prompt,
+        expectedEvidence: part.options.filter(option => part.correctOptionIds.includes(option.id)).map(option => option.label).join(' '),
+      })),
+    };
+  }
   return detail;
 }
 

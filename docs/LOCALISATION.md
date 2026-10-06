@@ -166,6 +166,14 @@ Keep existing Thai fields unchanged and mark them `previous-revision-pending-syn
 
 For the next Thai synchronization, preserve missing required data fields versus broader missing critical inputs, human staff roles, approval boundaries, pending case/refund uncertainty, and pilot-funding versus expansion evidence. No new Thai translation or GitHub push was requested.
 
+## Local feedback synchronization — 6 October 2026
+
+The user explicitly authorized English and Thai inventory updates, including substantive corrections in the attached feedback. This supersedes the earlier instruction to retain old Thai for the questions covered by this batch. The 229 question IDs and all 238 feedback records are retained in `inventory/feedback/`; `applied-2026-10-06.json` contains the selected bilingual text, source/structure guards, dispositions and remaining issues. `thai-2026-10-06.json` provides complete translation pairs. Unaffected pending translations remain pending.
+
+The new status is `synchronized-needs-native-review`, not native approval. Translate context, task prompts, choices and explanations as a unit. Preserve refund uncertainty, permission boundaries, numerical evidence, fields versus inputs and the distinction between fixed rules, retrieval, embedding and model updating. An English/Thai completeness check does not validate psychometric quality or scores for revised distractors.
+
+`inventory/feedback-checkpoints.mjs` takes precedence over earlier wording checkpoints, so rerunning the refinement command cannot restore an older English draft or its stale Thai. Original audit records, production assessment content and dated snapshots are unchanged. Push only when the user explicitly requests it.
+
 ## Template-generated items
 
 `ADV-*` and `TREND-*` questions are built at module load from `advancedQuestionFrames` / `marketTrendFrames` and `competencyDefinitions`. Their Thai lives on the frames (`contextTh`, `promptTh`, `bestTh`…), in the builders' option templates, and in `competencyLabelsTh` / `skillLabelsTh`. Translate and review those, never the generated ids. Placeholders `{label}`, `{lead}`, `{skills}`, `{difficulty}` in the review workbook map to template literals in the builders; keep a space on both sides of an inserted name so a gloss in parentheses never touches Thai text.

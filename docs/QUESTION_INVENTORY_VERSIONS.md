@@ -16,6 +16,8 @@ Use `YYYY.MM.DD V.N`, with `V.0` for the first snapshot on a date and `V.1`, `V.
 
 ## Local review
 
+The 6 October feedback update is applied to the **working inventory**. Select **All versions** to see it. The saved **2026.10.05 V.0** remains frozen and therefore does not include this later feedback. The per-question application report is `exports/review-inventory/feedback-application-2026-10-06.json`; unresolved source conflicts and pending Thai review are recorded there. This local update creates no new dated snapshot and authorizes no push.
+
 Select **2026.10.05 V.0 (latest review)** in the Version filter to load its saved snapshot across both draft and live sources. The source, domain, role and other filters still apply. All versions shows the current working inventory. Original audit version filters remain separately labeled; they are not historical snapshots of the user-facing wording.
 
 Later edits affect the working inventory only until another dated snapshot is explicitly generated. Saved version pages load version-specific index and detail files, so future working-copy wording changes do not silently change a saved version. Existing browser reviewer activity remains linked to question IDs; it is not a separate version-specific sign-off.

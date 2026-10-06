@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {fields} from './lib/thai-inventory-text.mjs';
 import {translate,englishProjection} from './lib/translate-thai-inventory.mjs';
 import {englishWordingCheckpoints} from '../inventory/english-wording-checkpoints.mjs';
+import {feedbackBatch, feedbackSignature} from '../inventory/feedback-checkpoints.mjs';
 const root=new URL('../',import.meta.url);
 for(const [file,count] of [['questions.json',3328],['live-questions.json',634]]) {
   const relative=`exports/review-inventory/${file}`;
@@ -25,6 +26,12 @@ for(const [file,count] of [['questions.json',3328],['live-questions.json',634]])
     }else {
       const sourceById=new Map(original.questions.map(q=>[q.id,q]));
       for(const q of current.questions){
+        const feedback = feedbackBatch.items[q.id];
+        if (feedback) {
+          assert.deepEqual(feedbackSignature(q.userFacingDraft), feedbackSignature(sourceById.get(q.id).userFacingDraft), q.id);
+          for (const [key,value] of Object.entries(feedback.patch)) assert.deepEqual(q.userFacingDraft[key], value, `${q.id}:${key}`);
+          continue;
+        }
         const checkpoint = englishWordingCheckpoints[q.id];
         if (checkpoint) {
           const d = q.userFacingDraft, old = sourceById.get(q.id).userFacingDraft;

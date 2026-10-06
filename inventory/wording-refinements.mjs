@@ -1,5 +1,6 @@
 // Wording-only changes for bilingual review drafts. Audit records are immutable.
 import { englishWordingCheckpoints, applyEnglishWordingCheckpoint } from './english-wording-checkpoints.mjs';
+import { applyFeedbackCheckpoint } from './feedback-checkpoints.mjs';
 export const refinementVersion = '2026-10-01.1';
 export const rulesVersion = '2.1 + provisional 2.2-draft';
 export const artifactVersion = '1.3';
@@ -46,6 +47,8 @@ export const checkpoints = {
 export function refineQuestion(question, register) {
   const d = question.userFacingDraft;
   if (!d) return [];
+  const feedbackChanges = applyFeedbackCheckpoint(question, register);
+  if (feedbackChanges !== null) return feedbackChanges;
   if (englishWordingCheckpoints[question.id]) return applyEnglishWordingCheckpoint(question);
   const changes = [];
   const checkpoint = checkpoints[question.id];

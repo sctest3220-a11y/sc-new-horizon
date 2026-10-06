@@ -5,6 +5,8 @@ import { refinementVersion, rulesVersion, artifactVersion, checkpoints, refineQu
 import { fields } from './lib/thai-inventory-text.mjs';
 import { englishProjection } from './lib/translate-thai-inventory.mjs';
 import { englishWordingCheckpoints } from '../inventory/english-wording-checkpoints.mjs';
+import { feedbackBatch, feedbackThai } from '../inventory/feedback-checkpoints.mjs';
+import { feedbackApplicationReport } from './lib/feedback-application-report.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = p => JSON.parse(fs.readFileSync(new URL(p, root), 'utf8'));
@@ -31,12 +33,16 @@ for (const filename of ['questions.json', 'live-questions.json']) {
     d.th ??= {};
     const changes = [...new Set([...(d.ruleApplication?.version === refinementVersion ? d.ruleApplication.changes : []), ...refineQuestion(q, register)])];
     const saved = history.items.find(h => h.questionId === q.id);
+    if (saved && d.feedbackReview?.revision && before.feedbackReview?.revision !== d.feedbackReview.revision) {
+      saved.revisions ??= [];
+      if (!saved.revisions.some(r => r.revision === d.feedbackReview.revision)) saved.revisions.push({ revision: d.feedbackReview.revision, previousDraft: before, previousArtifactNeed: artifactBefore });
+    }
     if (saved && d.englishWordingReview?.revision && before.englishWordingReview?.revision !== d.englishWordingReview.revision) {
       saved.revisions ??= [];
       if (!saved.revisions.some(r => r.revision === d.englishWordingReview.revision)) saved.revisions.push({ revision: d.englishWordingReview.revision, previousDraft: before, previousArtifactNeed: artifactBefore });
     }
     const simpleCore = q.layer === 'core' && q.casePatternId?.startsWith('D1-core-concepts-awareness-');
-    if (simpleCore || englishWordingCheckpoints[q.id]?.artifactRequired === false) {
+    if (simpleCore || englishWordingCheckpoints[q.id]?.artifactRequired === false || feedbackBatch.items[q.id]?.artifactRequired === false) {
       const brief = ['The scenario provides the evidence needed to identify the described behavior. A separate image would repeat it.', 'สถานการณ์ให้หลักฐานที่จำเป็นต่อการระบุพฤติกรรมแล้ว ภาพแยกจะเป็นการแสดงข้อมูลซ้ำ'];
       q.artifactNeed = { need: 'not required', artifactType: 'none', artifactLabel: 'No artifact needed', artifactBrief: brief[0], rulesVersion: artifactVersion,
         th: { need: 'ไม่จำเป็นต้องมีภาพประกอบ', artifactLabel: 'ไม่ต้องสร้างภาพประกอบ', artifactBrief: brief[1] } };
@@ -56,9 +62,10 @@ for (const filename of ['questions.json', 'live-questions.json']) {
     }
     d.rewriteVersion = refinementVersion; d.rewriteRulesVersion = rulesVersion;
     d.rewriteReviewStatus = 'pending-human-audit';
-    d.ruleApplication = { version: refinementVersion, status: 'applied-safe-wording-and-assessed', changes: [...new Set(changes)] };
+    d.ruleApplication = { version: refinementVersion, status: feedbackBatch.items[q.id] ? 'applied-local-feedback-corrections' : 'applied-safe-wording-and-assessed', changes: [...new Set(changes)] };
     const issues = inspectQuestion(q);
     issues.push(...(englishWordingCheckpoints[q.id]?.issues ?? []));
+    issues.push(...(feedbackBatch.items[q.id]?.issues ?? []));
     if (d.englishWordingReview?.thaiStatus === 'previous-revision-pending-sync') issues.push('English wording accepted; Thai retains its previous revision pending synchronization.');
     if (q.artifactNeed?.necessityReview) issues.push('Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.');
     if (q.sourceInventory === 'live') issues.push('Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review.');
@@ -74,7 +81,7 @@ for (const filename of ['questions.json', 'live-questions.json']) {
       history.items.push({ questionId: q.id, source: filename, auditHash, structure: signature, previousDraft: before, previousArtifactNeed: artifactBefore });
       archived.add(q.id);
     }
-    report.items.push({ id: q.id, source: filename, changes: [...new Set(changes)], reviewedCheckpoint: Boolean(checkpoints[q.id] || englishWordingCheckpoints[q.id]), artifactNeed: q.artifactNeed?.need ?? 'none', issues });
+    report.items.push({ id: q.id, source: filename, changes: [...new Set(changes)], reviewedCheckpoint: Boolean(checkpoints[q.id] || englishWordingCheckpoints[q.id] || feedbackBatch.items[q.id]), artifactNeed: q.artifactNeed?.need ?? 'none', issues });
   }
   bank.translation ??= {};
   bank.translation.rulesVersion = `${rulesVersion}; English/Thai refinements ${refinementVersion}`;
@@ -88,10 +95,13 @@ for (const checkpoint of Object.values(checkpoints)) {
   for (const key of ['context', 'prompt', 'explanation']) register(...checkpoint[key]);
   for (const pair of checkpoint.labels) register(...pair);
 }
+// Current bilingual feedback pairs take precedence over historical translations.
+for (const [en, th] of Object.entries(feedbackThai)) register(en, th);
 write(dictionaryPath, dictionary);
 write(historyPath, history);
 for (const [file, data] of staged) write(file, data);
 write('exports/review-inventory/wording-refinement-qa.json', report);
+write('exports/review-inventory/feedback-application-2026-10-06.json', feedbackApplicationReport(staged.flatMap(([, bank]) => bank.questions), history));
 // Refresh English-only synchronization status without translating or changing Thai.
 const thaiQaPath = 'exports/review-inventory/thai-translation-qa.json';
 const thaiQa = read(thaiQaPath);

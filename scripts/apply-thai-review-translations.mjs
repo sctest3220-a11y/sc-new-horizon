@@ -9,10 +9,14 @@ const before=englishProjection(payload);
 const missing=[];let translatedFields=0;
 const contentIssues=[];
 for(const q of payload.questions) {
+  // Audit translations are source records. A new draft translation must not
+  // overwrite an existing audit sentence through the shared dictionary.
+  const auditObjects = new Set([q, ...(q.options ?? [])]);
   const pendingEnglishSync = q.userFacingDraft?.englishWordingReview?.thaiStatus === 'previous-revision-pending-sync';
   const draftObjects = pendingEnglishSync ? new Set([q.userFacingDraft, ...(q.userFacingDraft.options??[]), ...(q.userFacingDraft.parts??[]).flatMap(p=>[p,...p.options])]) : new Set();
   if(pendingEnglishSync)contentIssues.push({id:q.id,type:'thai-wording-sync-pending',note:'English wording was accepted separately. Preserve the prior Thai draft until its translation is explicitly synchronized.'});
   for(const f of fields(q)) {
+    if(auditObjects.has(f.obj) && f.thaiObj[f.thaiKey])continue;
     if(draftObjects.has(f.obj))continue;
     try {
       const thai=translate(f.text);

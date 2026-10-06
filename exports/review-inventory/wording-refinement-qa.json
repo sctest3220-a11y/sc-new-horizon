@@ -9,9 +9,11 @@
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-AWARENESS-01",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "th",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
+      "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": []
     },
@@ -22,7 +24,8 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
@@ -37,7 +40,8 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
@@ -50,7 +54,8 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
@@ -262,11 +267,14 @@
     {
       "id": "NH-CORE-GENERAL-D1-CORE-CONCEPTS-ADVANCED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Check that the complete ranking key and scoring are defined before release.",
+        "Suggested unapproved-data scenario conflicts with the audit evidence of stable draft quality and role-dependent completed actions; preserve the assessed distinction.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
@@ -8025,45 +8033,59 @@
       "id": "NH-FUNCTION-GENERAL-D1-AI-SYSTEMS-AWARENESS-01",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "parts",
+        "th",
+        "reviewedFormat",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D1-AI-SYSTEMS-AWARENESS-02",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D1-AI-SYSTEMS-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D1-AI-SYSTEMS-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -8071,12 +8093,16 @@
     {
       "id": "NH-FUNCTION-GENERAL-D1-AI-SYSTEMS-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -8202,20 +8228,29 @@
     {
       "id": "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -8223,20 +8258,29 @@
     {
       "id": "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -8244,12 +8288,16 @@
     {
       "id": "NH-FUNCTION-GENERAL-D2-PROMPT-DESIGN-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -8717,8 +8765,13 @@
     {
       "id": "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -8728,9 +8781,14 @@
     {
       "id": "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -8738,35 +8796,47 @@
     {
       "id": "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D3-SOURCE-VERIFICATION-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "An option may refer to interpretations or an exception not established in the scenario.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "An option may refer to interpretations or an exception not established in the scenario."
       ]
     },
     {
@@ -9066,20 +9136,28 @@
     {
       "id": "NH-FUNCTION-GENERAL-D4-DATA-PRIVACY-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D4-DATA-PRIVACY-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -9087,20 +9165,27 @@
     {
       "id": "NH-FUNCTION-GENERAL-D4-DATA-PRIVACY-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D4-DATA-PRIVACY-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -9108,12 +9193,15 @@
     {
       "id": "NH-FUNCTION-GENERAL-D4-DATA-PRIVACY-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -9410,42 +9498,55 @@
     {
       "id": "NH-FUNCTION-GENERAL-D5-USECASE-FIT-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D5-USECASE-FIT-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D5-USECASE-FIT-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D5-USECASE-FIT-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -9453,12 +9554,15 @@
     {
       "id": "NH-FUNCTION-GENERAL-D5-USECASE-FIT-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -9754,42 +9858,59 @@
     {
       "id": "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "none",
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
@@ -9797,12 +9918,15 @@
     {
       "id": "NH-FUNCTION-GENERAL-D6-ROLE-CLARITY-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -9929,12 +10053,13 @@
     {
       "id": "NH-FUNCTION-PEOPLE-D2-PROMPT-DESIGN-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -13742,11 +13867,16 @@
     {
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "The proposed rights-approval rewrite would replace the embeddings construct. Retained embeddings and clarified its Thai explanation.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
@@ -13754,9 +13884,11 @@
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-02",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "th",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13766,8 +13898,12 @@
     {
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13777,8 +13913,12 @@
     {
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13788,8 +13928,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13799,8 +13944,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D1-GENAI-MECHANICS-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13920,8 +14070,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13931,8 +14086,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13942,8 +14102,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13953,8 +14118,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13964,8 +14134,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13975,19 +14150,30 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "Inconsistent field names are not absent field names. Preserved inconsistent names and form rejection.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-APPLIED-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -13997,8 +14183,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D2-PROMPT-DESIGN-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -14272,8 +14463,13 @@
     {
       "id": "NH-FUNCTION-MARKETING-D3-SOURCE-VERIFICATION-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -14283,8 +14479,12 @@
     {
       "id": "NH-FUNCTION-MARKETING-D3-SOURCE-VERIFICATION-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -17283,23 +17483,25 @@
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D1-CAPABILITY-LIMITS-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "artifact helpful",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -17309,13 +17511,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -17325,15 +17531,19 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
         "The object of an estimate may be unspecified; do not invent an amount or time.",
-        "Part 1B does not specify what is estimated, and the scenario contains no estimate. Preserve the accepted wording pending a separate distractor revision.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Part 1B does not specify what is estimated, and the scenario contains no estimate. Preserve the accepted wording pending a separate distractor revision."
       ]
     },
     {
@@ -17433,14 +17643,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Part 1B refers to an exception type that the scenario does not define. Preserve the original meaning pending a separate content revision.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Part 1B refers to an exception type that the scenario does not define. Preserve the original meaning pending a separate content revision."
       ]
     },
     {
@@ -17450,14 +17663,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The original does not identify the specific exception type; no example has been invented. Evidence checks and targeted review can work together.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The original does not identify the specific exception type; no example has been invented. Evidence checks and targeted review can work together."
       ]
     },
     {
@@ -17467,14 +17683,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Preserve required data fields in the scenario and the broader critical inputs in Part 1B. Missing fields are not the same as blank fields. Part 1A is also a useful safeguard; B directly addresses missing critical inputs.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Preserve required data fields in the scenario and the broader critical inputs in Part 1B. Missing fields are not the same as blank fields. Part 1A is also a useful safeguard; B directly addresses missing critical inputs."
       ]
     },
     {
@@ -17495,13 +17715,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -17511,13 +17735,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -17527,14 +17755,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Part 1A is broad: the quoted prompt also does not explicitly state constraints. B is the intended most direct answer; wording acceptance does not resolve this overlap.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Part 1A is broad: the quoted prompt also does not explicitly state constraints. B is the intended most direct answer; wording acceptance does not resolve this overlap."
       ]
     },
     {
@@ -17643,13 +17874,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -17670,14 +17904,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The exception in choice A is undefined. A regression test could be part of the broader evaluation in B; wording acceptance does not resolve this overlap.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The exception in choice A is undefined. A regression test could be part of the broader evaluation in B; wording acceptance does not resolve this overlap."
       ]
     },
     {
@@ -17830,14 +18067,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Two versions of the scoring criteria are not established in the scenario. Preserve factual errors in the scenario and broader serious errors in the control.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Two versions of the scoring criteria are not established in the scenario. Preserve factual errors in the scenario and broader serious errors in the control."
       ]
     },
     {
@@ -17847,13 +18087,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Pasted suggestion duplicates ADVANCED-01. Retained ADVANCED-02’s recurring-defect classification scenario and choices."
       ]
     },
     {
@@ -17874,14 +18118,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The revision limit has no specified units. Reaching a limit does not authorize release of an unacceptable response.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The revision limit has no specified units. Reaching a limit does not authorize release of an unacceptable response."
       ]
     },
     {
@@ -18069,13 +18316,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18085,14 +18335,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Part 1B refers to multiple sources, while the scenario describes one citation. Its original meaning is retained, but it remains a weak distractor.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Part 1B refers to multiple sources, while the scenario describes one citation. Its original meaning is retained, but it remains a weak distractor."
       ]
     },
     {
@@ -18102,14 +18355,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The accepted scenario does not specify the statement referenced by the choices. Preserve the accepted text; adding a concrete statement would need separate content review.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The accepted scenario does not specify the statement referenced by the choices. Preserve the accepted text; adding a concrete statement would need separate content review."
       ]
     },
     {
@@ -18218,13 +18475,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18234,13 +18495,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18261,13 +18526,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18420,14 +18688,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The original tests general fraud-prevention controls within an AI-assisted workflow; it does not describe an AI-specific failure. Master data is not defined in the scenario.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The original tests general fraud-prevention controls within an AI-assisted workflow; it does not describe an AI-specific failure. Master data is not defined in the scenario."
       ]
     },
     {
@@ -18448,14 +18719,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The source does not establish that AI caused the unauthorized access or that the compromise caused the disputed identity details. Master data remains undefined.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The source does not establish that AI caused the unauthorized access or that the compromise caused the disputed identity details. Master data remains undefined."
       ]
     },
     {
@@ -18465,14 +18739,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue."
       ]
     },
     {
@@ -18482,14 +18760,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The explicit lack of customer-service access permission clarifies the original key and explanation; the original scenario only described another team’s restricted records.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The explicit lack of customer-service access permission clarifies the original key and explanation; the original scenario only described another team’s restricted records."
       ]
     },
     {
@@ -18499,14 +18780,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The privacy decision is answerable without AI; AI-specific relevance remains a content-review issue."
       ]
     },
     {
@@ -18516,14 +18801,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "The original does not specify the group summary or explain why the case needs it. AI-specific relevance remains a content-review issue.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "The original does not specify the group summary or explain why the case needs it. AI-specific relevance remains a content-review issue."
       ]
     },
     {
@@ -18577,13 +18866,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18593,13 +18885,17 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18609,13 +18905,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18770,14 +19069,18 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Approval version is not defined in the original. Do not silently redefine it as a policy version. Earlier accepted withdrawn wording is retained for this item; the newer removed decision is applied to the reviewed PROFICIENT-02 candidate.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Approval version is not defined in the original. Do not silently redefine it as a policy version. Earlier accepted withdrawn wording is retained for this item; the newer removed decision is applied to the reviewed PROFICIENT-02 candidate."
       ]
     },
     {
@@ -18787,25 +19090,30 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "User explicitly selected removed in place of withdrawn. This describes removing access permission, not deleting the data or the cache. The original prompt mentions test results without supplying a test report; the reviewed prompt refers to the described situation.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "User explicitly selected removed in place of withdrawn. This describes removing access permission, not deleting the data or the cache. The original prompt mentions test results without supplying a test report; the reviewed prompt refers to the described situation."
       ]
     },
     {
       "id": "NH-FUNCTION-CUSTOMERSERVICE-D4-SECURITY-GOVERNANCE-PROFICIENT-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "requires artifact",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18870,14 +19178,17 @@
         "context",
         "explanation",
         "label",
-        "prompt"
+        "prompt",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "User explicitly clarified that the sent response contains a mistake. The audit says the released output causes an error; retain this distinction in review history.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "User explicitly clarified that the sent response contains a mistake. The audit says the released output causes an error; retain this distinction in review history."
       ]
     },
     {
@@ -18887,13 +19198,17 @@
         "context",
         "explanation",
         "label",
-        "prompt"
+        "prompt",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "reviewedFormat",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -18903,13 +19218,16 @@
         "context",
         "explanation",
         "prompt",
-        "label"
+        "label",
+        "parts",
+        "th",
+        "englishWordingReview",
+        "feedbackReview"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
-        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
-        "English wording accepted; Thai retains its previous revision pending synchronization."
+        "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores."
       ]
     },
     {
@@ -19238,8 +19556,10 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19249,8 +19569,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19260,8 +19583,10 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19272,9 +19597,11 @@
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-AWARENESS-04",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "reviewedFormat",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19295,8 +19622,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19317,8 +19647,14 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19372,8 +19708,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-GENAI-MECHANICS-ADVANCED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19416,8 +19757,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19427,8 +19773,14 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19452,20 +19804,29 @@
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-AWARENESS-04",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "parts",
+        "reviewedFormat",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "Some attached commentary describes a different source scenario or option set. Applied only changes supported by this ID’s stored source and current template.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19475,8 +19836,12 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "parts",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19498,9 +19863,13 @@
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-APPLIED-04",
       "source": "questions.json",
       "changes": [
-        "context"
+        "context",
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
       ],
-      "reviewedCheckpoint": false,
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19554,8 +19923,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D1-AI-SYSTEMS-ADVANCED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19598,8 +19972,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D2-TOOL-SELECTION-AWARENESS-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19822,8 +20201,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D2-AGENTIC-WORKFLOWS-APPLIED-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -19866,11 +20250,17 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D2-AGENTIC-WORKFLOWS-PROFICIENT-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "Attachment proposes two still-compatible diagnoses and changes the key to B. Kept the original keyed diagnosis at A and made B inconsistent with the observed repeated write.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
@@ -20165,8 +20555,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D3-DATA-CHART-JUDGMENT-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20209,8 +20604,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D3-DATA-CHART-JUDGMENT-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20320,8 +20718,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-SECURITY-GOVERNANCE-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20344,8 +20745,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-SECURITY-GOVERNANCE-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20366,8 +20770,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-SECURITY-GOVERNANCE-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20388,8 +20795,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-SECURITY-GOVERNANCE-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20509,11 +20921,16 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-DATA-PRIVACY-AWARENESS-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "parts",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "Some attached commentary describes a different source scenario or option set. Applied only changes supported by this ID’s stored source and current template.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
@@ -20542,8 +20959,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-DATA-PRIVACY-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20553,19 +20975,26 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-DATA-PRIVACY-APPLIED-03",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
+        "Some attached commentary describes a different source scenario or option set. Applied only changes supported by this ID’s stored source and current template.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image."
       ]
     },
     {
       "id": "NH-FUNCTION-TECHNICAL-D4-DATA-PRIVACY-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20674,8 +21103,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D5-USECASE-FIT-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20696,8 +21128,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D5-USECASE-FIT-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20718,8 +21153,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D5-USECASE-FIT-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20740,8 +21178,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D5-USECASE-FIT-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20850,8 +21291,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-AWARENESS-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20872,8 +21316,11 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-AWARENESS-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20894,8 +21341,14 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-APPLIED-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20916,8 +21369,14 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-APPLIED-04",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "reviewedFormat",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20927,8 +21386,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-PROFICIENT-01",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -20938,8 +21402,13 @@
     {
       "id": "NH-FUNCTION-TECHNICAL-D6-LEARNING-LOOPS-PROFICIENT-02",
       "source": "questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "explanation",
+        "parts",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -36953,14 +37422,18 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Check that the complete ranking key and scoring are defined before release.",
         "The original context concerns choosing between pilot ideas, while the steps concern preparing and running a pilot. Production ranking interaction and scoring are unchanged.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
+        "Admin inventory is a review display; feedback about dragging/ranking concerns interaction testing rather than wording. Ranking template and scoring retained.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37062,14 +37535,17 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "User-requested choice B changes escalation/dispute rates to counts and broader customer complaints. This is a recorded content change, not synonym substitution.",
         "The original four-correct, one-distractor structure and the guessing clue in only remain unchanged.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37131,14 +37607,17 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "The user specified summaries for month-end financial reports; original close commentary could include explanations beyond monthly summaries.",
         "Undefined premium was removed in the reviewed candidate. Original option E remains an obvious distractor.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37155,8 +37634,11 @@
     {
       "id": "DEPTH-D1-CONCEPTS-026",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "options",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -37185,9 +37667,11 @@
     {
       "id": "DEPTH-D1-SYSTEMS-029",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "existing artifact",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -37349,13 +37833,15 @@
       "changes": [
         "context",
         "prompt",
-        "explanation"
+        "explanation",
+        "englishWordingReview",
+        "feedbackReview",
+        "th"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Written response and original rubric retained; service improvement is not automatically model training. No jurisdiction-specific legal requirements added.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37382,9 +37868,11 @@
     {
       "id": "DEPTH-D4-GOV-048",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "existing artifact",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -37452,8 +37940,14 @@
     {
       "id": "DEPTH-D6-COLLAB-055",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -37513,8 +38007,10 @@
     {
       "id": "MATCH-AI-COMPONENTS-061",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -37523,8 +38019,10 @@
     {
       "id": "MATCH-AI-PRODUCTS-062",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -37573,8 +38071,13 @@
     {
       "id": "DEPTH-EXP-D1-D2-067",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
         "Per-part scoring is not defined in this draft; do not transfer audit combined-choice scores.",
@@ -37594,9 +38097,11 @@
     {
       "id": "DEPTH-EXP-D1-D3-069",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "existing artifact",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -37679,14 +38184,17 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Check that the complete ranking key and scoring are defined before release.",
         "The source does not establish detailed dependencies between the middle response actions. Preserve the ranking key without claiming this is a universal strictly sequential incident-response process.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37707,14 +38215,16 @@
       "changes": [
         "context",
         "prompt",
-        "explanation"
+        "explanation",
+        "englishWordingReview",
+        "feedbackReview",
+        "th"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "User passed the explicit clarification that forecast accuracy has not been checked; this was not stated in the audit.",
         "Initial funding evidence and results needed before expansion are distinct. Written-response rubric and production scoring remain unchanged.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37735,13 +38245,16 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Four correct choices and a single distractor containing only make the answer easier to guess. The existing productivity chart is unnecessary for selecting measures.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37789,10 +38302,13 @@
     {
       "id": "DEPTH-EXP-D1-D2-086",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "existing artifact",
       "issues": [
+        "Feedback describes a TREND agent-adoption question, but this ID is concept matching about memory, sources and prompts. No transplant applied.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -37925,8 +38441,14 @@
     {
       "id": "TREND-D1-GENAI-MECHANICS-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -37935,8 +38457,12 @@
     {
       "id": "TREND-D1-GENAI-MECHANICS-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -37946,10 +38472,15 @@
     {
       "id": "TREND-D1-GENAI-MECHANICS-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Newest feedback describes a different agent-deployment scenario; retained this ID’s RAG scenario and applied the matching earlier feedback.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -38257,10 +38788,18 @@
     {
       "id": "TREND-D2-TOOL-SELECTION-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Partial-credit scores retained; revised alternatives need calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -38279,8 +38818,13 @@
     {
       "id": "TREND-D2-TOOL-SELECTION-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -38300,8 +38844,14 @@
     {
       "id": "TREND-D2-AGENTIC-WORKFLOWS-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38355,8 +38905,13 @@
     {
       "id": "TREND-D2-AGENTIC-WORKFLOWS-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38452,8 +39007,12 @@
     {
       "id": "TREND-D3-SOURCE-VERIFICATION-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -38484,8 +39043,13 @@
     {
       "id": "TREND-D3-SOURCE-VERIFICATION-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38506,8 +39070,13 @@
     {
       "id": "TREND-D3-SOURCE-VERIFICATION-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -38527,8 +39096,14 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38538,8 +39113,13 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38549,8 +39129,13 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38560,8 +39145,13 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38571,8 +39161,13 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-PROFICIENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38582,8 +39177,14 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38593,8 +39194,13 @@
     {
       "id": "TREND-D3-DATA-CHART-JUDGMENT-ADVANCED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38739,13 +39345,16 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "The choices primarily assess general AI governance rather than fraud detection. Choice A is much longer and more comprehensive. Authoring guidance was reframed as task scope and year-based market framing removed in the accepted candidate; no current market claim was verified. Original per-option feedback still reflects the original competency mapping and awaits content revision.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
@@ -38756,21 +39365,30 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "The original scenario and choices assess AI selection and governance more directly than fraud detection. Authoring instructions were removed without inventing a fraud incident. Choice A remains substantially more comprehensive. Original per-option feedback still reflects the original competency mapping and awaits content revision.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
     {
       "id": "TREND-D4-DATA-PRIVACY-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -38779,8 +39397,13 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38790,8 +39413,13 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38801,8 +39429,12 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38812,8 +39444,13 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-PROFICIENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38823,8 +39460,14 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -38833,8 +39476,13 @@
     {
       "id": "TREND-D4-DATA-PRIVACY-ADVANCED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -38994,8 +39642,14 @@
     {
       "id": "TREND-D4-SECURITY-GOVERNANCE-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39005,8 +39659,13 @@
     {
       "id": "TREND-D4-SECURITY-GOVERNANCE-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39016,8 +39675,13 @@
     {
       "id": "TREND-D4-SECURITY-GOVERNANCE-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39031,21 +39695,29 @@
         "context",
         "prompt",
         "explanation",
-        "label"
+        "label",
+        "th",
+        "englishWordingReview",
+        "feedbackReview",
+        "options"
       ],
       "reviewedCheckpoint": true,
       "artifactNeed": "not required",
       "issues": [
         "Decision scope was clarified after user feedback without inventing an incident. Evidence improves remains undefined, and the keyed choice is much longer and more comprehensive.",
-        "English wording accepted; Thai retains its previous revision pending synchronization.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
     },
     {
       "id": "TREND-D4-SECURITY-GOVERNANCE-PROFICIENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39055,8 +39727,13 @@
     {
       "id": "TREND-D4-SECURITY-GOVERNANCE-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39077,8 +39754,14 @@
     {
       "id": "TREND-D5-USECASE-FIT-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -39087,8 +39770,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39098,8 +39786,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39109,8 +39802,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39120,8 +39818,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-PROFICIENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39131,8 +39834,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "none",
       "issues": [
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
@@ -39141,8 +39849,13 @@
     {
       "id": "TREND-D5-USECASE-FIT-ADVANCED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39610,8 +40323,14 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-AWARENESS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39621,8 +40340,13 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-APPLIED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39632,8 +40356,13 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-APPLIED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39643,8 +40372,13 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-PROFICIENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39654,8 +40388,13 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-PROFICIENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39665,8 +40404,14 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-ADVANCED-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39676,8 +40421,13 @@
     {
       "id": "TREND-D6-LEARNING-LOOPS-ADVANCED-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -39797,10 +40547,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39808,10 +40566,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39819,10 +40585,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-03",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39830,10 +40604,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-04",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39841,10 +40623,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-05",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39852,10 +40642,19 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-06",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39863,10 +40662,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39874,10 +40681,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-08",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39885,10 +40700,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -39896,10 +40719,18 @@
     {
       "id": "ADV-D1-GENAI-MECHANICS-10",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40017,10 +40848,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40028,10 +40867,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40039,10 +40886,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-03",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40050,10 +40905,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-04",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40061,10 +40924,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-05",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40072,10 +40943,19 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-06",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40083,10 +40963,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40094,10 +40982,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-08",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40105,10 +41001,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40116,10 +41020,18 @@
     {
       "id": "ADV-D1-AI-SYSTEMS-10",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40237,10 +41149,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40248,10 +41168,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40259,10 +41187,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-03",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40270,10 +41206,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-04",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40281,10 +41225,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-05",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40303,10 +41255,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40325,10 +41285,18 @@
     {
       "id": "ADV-D2-TOOL-SELECTION-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40402,10 +41370,18 @@
     {
       "id": "ADV-D2-AGENTIC-WORKFLOWS-06",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40413,10 +41389,18 @@
     {
       "id": "ADV-D2-AGENTIC-WORKFLOWS-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Partial-credit scores preserved; review revised distractors before scored use.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40435,10 +41419,18 @@
     {
       "id": "ADV-D2-AGENTIC-WORKFLOWS-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Partial-credit scores preserved; review revised distractors before scored use.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40622,10 +41614,18 @@
     {
       "id": "ADV-D3-SOURCE-VERIFICATION-06",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40633,10 +41633,18 @@
     {
       "id": "ADV-D3-SOURCE-VERIFICATION-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40655,10 +41663,18 @@
     {
       "id": "ADV-D3-SOURCE-VERIFICATION-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "artifact helpful",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40677,8 +41693,14 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-01",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -40688,8 +41710,14 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-02",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -40699,8 +41727,14 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-03",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -40710,8 +41744,14 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-04",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -40721,8 +41761,14 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-05",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
@@ -40732,10 +41778,18 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-06",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40743,10 +41797,19 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-07",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -40765,10 +41828,19 @@
     {
       "id": "ADV-D3-DATA-CHART-JUDGMENT-09",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
+      "changes": [
+        "context",
+        "prompt",
+        "explanation",
+        "options",
+        "th",
+        "reviewedClassification",
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
       "artifactNeed": "requires artifact",
       "issues": [
+        "Existing partial-credit scores are preserved; revised distractors need score calibration before scored release.",
         "Artifact type is a candidate, not proof of necessity. Inspect the specific item before generating an image.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
       ]
@@ -42520,9 +43592,11 @@
     {
       "id": "CAL-D4-GOV-020",
       "source": "live-questions.json",
-      "changes": [],
-      "reviewedCheckpoint": false,
-      "artifactNeed": "existing artifact",
+      "changes": [
+        "feedbackReview"
+      ],
+      "reviewedCheckpoint": true,
+      "artifactNeed": "not required",
       "issues": [
         "Check that the complete ranking key and scoring are defined before release.",
         "Existing live-bank review copy assessed; substantive production wording and assets require separate item-level review."
