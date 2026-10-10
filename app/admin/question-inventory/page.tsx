@@ -182,9 +182,13 @@ async function assetOrigin() {
 }
 
 async function loadAsset<T>(origin: string, assetPath: string): Promise<T | null> {
-  const response = await fetch(new URL(assetPath, origin));
-  if (!response.ok) return null;
-  return (await response.json()) as T;
+  try {
+    const response = await fetch(new URL(assetPath, origin));
+    if (!response.ok) return null;
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
 }
 
 // Must match safeFileName() in scripts/build-review-inventory-assets.mjs.
@@ -194,7 +198,7 @@ function detailFileName(id: string) {
 
 async function loadQuestionDetails(origin: string, ids: string[], detailBase = '/review-inventory/detail') {
   const questions: ReviewQuestion[] = [];
-  const batchSize = 12;
+  const batchSize = 1;
   for (let start = 0; start < ids.length; start += batchSize) {
     const batch = await Promise.all(
       ids
