@@ -58,7 +58,10 @@ const viewHash = await hashTree(path.join(output, 'app'));
 const release = { schemaVersion: 2, releaseId: `${sourceCommit.slice(0, 12)}-${contentVersion.slice(0, 12)}-${viewHash.slice(0, 12)}${sourceDirty ? '-dirty' : ''}`, contentVersion, sourceCommit, sourceDirty, createdAt: new Date().toISOString(), status: 'draft-technical-test', feedback: 'browser-local', inventoryVersion: summary.inventoryVersion, draftCount: summary.draftCount, liveCount: summary.liveCount, sha256: hashes };
 await writeFile(path.join(output, 'public/review-release.json'), JSON.stringify(release, null, 2));
 await writeFile(path.join(output, 'app/admin/question-inventory/release.json'), JSON.stringify(release));
-for (const component of ['reviewer-feedback.tsx', 'review-controls.tsx']) {
+// Only review-sync.tsx owns browser feedback storage. The feedback form and
+// controls now persist through the results API, so they intentionally do not
+// contain the legacy localStorage marker this preview adapter rewrites.
+for (const component of ['review-sync.tsx']) {
   const target = path.join(output, 'app/admin/question-inventory', component);
   const source = await readFile(target, 'utf8');
   if (!source.includes('new-horizon-review:')) throw new Error(`Feedback storage adapter changed: ${component}`);

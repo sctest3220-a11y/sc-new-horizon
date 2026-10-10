@@ -919,8 +919,8 @@ export default async function QuestionInventoryPage({
 }) {
   const origin = await assetOrigin();
   const summary = await loadAsset<InventorySummary>(origin, '/review-inventory/summary.json');
-  const version = normalizeParam(searchParams?.version) || 'all';
-  const selectedReviewVersion = summary?.reviewVersions?.find(item => item.version === version);
+  const requestedVersion = normalizeParam(searchParams?.version) || 'all';
+  const selectedReviewVersion = summary?.reviewVersions?.find(item => item.version === requestedVersion);
   const assetBase = selectedReviewVersion ? `/review-inventory/versions/${selectedReviewVersion.id}` : '/review-inventory';
   const allQuestions = (await loadAsset<IndexQuestion[]>(origin, `${assetBase}/index.json`)) ?? [];
 
@@ -977,7 +977,6 @@ export default async function QuestionInventoryPage({
     const matchesIndustry = industry === 'all' || question.industryTracks?.includes(industry);
     const matchesExecutive = executive === 'all' || question.executiveRoles?.includes(executive);
     const matchesFormat = format === 'all' || question.recommendedFormat?.format === format || question.userFacingDraft?.format === format;
-    const matchesVersion = version === 'all' || Boolean(selectedReviewVersion) || (question.version ?? (question.sourceInventory === 'live' ? 'live-bank' : summary.inventoryVersion)) === version;
     const matchesRewriteVersion = rewriteVersion === 'all' || question.userFacingDraft?.rewriteVersion === rewriteVersion;
     const matchesRewriteStatus = rewriteStatus === 'all' ||
       (rewriteStatus === 'missing' ? !question.rewriteReviewStatus : question.rewriteReviewStatus === rewriteStatus);
@@ -1038,7 +1037,6 @@ export default async function QuestionInventoryPage({
   const pageCount = Math.max(1, Math.ceil(queue.length / pageSize));
   const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
-  const visibleQuestions = await loadQuestionDetails(origin, filtered.slice(pageStart, pageStart + pageSize).map((question) => question.id), `${assetBase}/detail`);
   const visibleQuestions = await loadQuestionDetails(origin, queue.slice(pageStart, pageStart + pageSize).map((question) => question.id));
   const domainCounts = countBy(allQuestions, (question) => question.domain);
   const difficultyCounts = countBy(allQuestions, (question) => question.difficulty);
