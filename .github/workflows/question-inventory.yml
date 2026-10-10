@@ -59,7 +59,10 @@ jobs:
             cat /tmp/inventory-worker.log
             exit 1
           fi
-          node scripts/test-inventory-cloudflare.mjs
+          TEST_URL=http://localhost:4174/admin/question-inventory node scripts/test-inventory-cloudflare.mjs || {
+            cat /tmp/inventory-worker.log
+            exit 1
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: inventory-${{ github.sha }}
