@@ -6,7 +6,7 @@ import fs from 'node:fs/promises';
  page.on('pageerror',e=>{errors.push(e.message);console.error('PAGEERROR',e.message)});
  const base=process.env.TEST_URL || 'http://localhost:4174';
  const response=await page.goto(base,{waitUntil:'networkidle'});
- if(response.status()!==200) throw Error('HTTP '+response.status());
+ if(response.status()!==200) throw Error(`HTTP ${response.status()} ${((await response?.text()) ?? '').slice(0, 2000)}`);
  await page.getByRole('heading',{name:'Question Inventory',exact:true}).waitFor();
  const cards=page.locator('.inventory-question-card[data-question-id]');
  if(await cards.count()===0) throw Error('No questions');
