@@ -1037,7 +1037,11 @@ export default async function QuestionInventoryPage({
       // Keep the normal bank order if hosted feedback is temporarily unavailable.
     }
   }
-  const pageSize = 20;
+  // Keep the server-rendered preview bounded to one detail record. The index
+  // remains the complete inventory; rendering a large batch of generated
+  // detail objects in the Worker can otherwise fail the whole route when one
+  // legacy record has an unexpected shape.
+  const pageSize = 1;
   const pageCount = Math.max(1, Math.ceil(queue.length / pageSize));
   const currentPage = Number.isFinite(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1;
   const pageStart = (currentPage - 1) * pageSize;
