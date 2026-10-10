@@ -56,21 +56,21 @@ jobs:
             if curl -fsS http://localhost:4174/review-release.json >/dev/null; then break; fi
             sleep 1
           done
-    if ! kill -0 "$worker_pid" 2>/dev/null; then
-      cat /tmp/inventory-worker.log
-      exit 1
-    fi
-    curl -sS -L -D /tmp/inventory-route-headers.log http://localhost:4174/admin/question-inventory -o /tmp/inventory-route-body.html || true
-    route_status=$(awk 'toupper($1) ~ /^HTTP\// { code=$2 } END { print code }' /tmp/inventory-route-headers.log)
-    if [ "$route_status" != "200" ]; then
-      echo "Inventory route status: $route_status"
-      cat /tmp/inventory-route-headers.log
-      head -c 4000 /tmp/inventory-route-body.html || true
-      echo
-    fi
-    TEST_URL=http://localhost:4174/admin/question-inventory node scripts/test-inventory-cloudflare.mjs || {
-      cat /tmp/inventory-worker.log
-      exit 1
+          if ! kill -0 "$worker_pid" 2>/dev/null; then
+            cat /tmp/inventory-worker.log
+            exit 1
+          fi
+          curl -sS -L -D /tmp/inventory-route-headers.log http://localhost:4174/admin/question-inventory -o /tmp/inventory-route-body.html || true
+          route_status=$(awk 'toupper($1) ~ /^HTTP\// { code=$2 } END { print code }' /tmp/inventory-route-headers.log)
+          if [ "$route_status" != "200" ]; then
+            echo "Inventory route status: $route_status"
+            cat /tmp/inventory-route-headers.log
+            head -c 4000 /tmp/inventory-route-body.html || true
+            echo
+          fi
+          TEST_URL=http://localhost:4174/admin/question-inventory node scripts/test-inventory-cloudflare.mjs || {
+            cat /tmp/inventory-worker.log
+            exit 1
           }
       - uses: actions/upload-artifact@v4
         with:
