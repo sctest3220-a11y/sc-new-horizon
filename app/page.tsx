@@ -16409,8 +16409,10 @@ export default function Home() {
           <div className="feedback-workbench">
             <article className="feedback-card">
               <p className="eyebrow">Answer review</p>
-              <h1>{lastAnswer.option.score}/100</h1>
-              <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
+              {assessmentDisplaySettings.showAnswerReveal ? <>
+                <h1>{lastAnswer.option.score}/100</h1>
+                <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
+              </> : <p className="result-level">Answer recorded. Continue when you are ready.</p>}
               {assessmentDisplaySettings.showAnswerReveal && <div className="score-explanation-panel" aria-label="Score explanation">
                 <span>Score explanation</span>
                 <p>{getRawScoreMethod(lastAnswer)}</p>
@@ -16508,7 +16510,7 @@ export default function Home() {
                 </div>
               )}
             </article>
-            <aside className="adaptive-panel" aria-label="Next adaptive step">
+            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Next adaptive step">
               <div className={`movement-card ${difficultyMovement.tone}`}>
                 <span>{difficultyMovement.label}</span>
                 <p>{difficultyMovement.detail}</p>
@@ -16597,7 +16599,7 @@ export default function Home() {
               <button className="primary submit-answer" onClick={continueAfterFeedback}>
                 {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
               </button>
-            </aside>
+            </aside>}
           </div>
         </section>
       )}
