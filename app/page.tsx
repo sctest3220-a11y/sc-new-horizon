@@ -16432,7 +16432,7 @@ export default function Home() {
                 <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
                 <p>{localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).feedback}</p>
               </div>}
-              {assessmentDisplaySettings.showAnswerReveal && <div className="rubric-panel">
+              {assessmentDisplaySettings.showAnswerReveal && assessmentDisplaySettings.showScoredEvidence && <div className="rubric-panel">
                 <span>Measured competencies</span>
                 <div className="measure-grid compact">
                   {getQuestionMeasures(lastAnswer.question).map((measure) => (
