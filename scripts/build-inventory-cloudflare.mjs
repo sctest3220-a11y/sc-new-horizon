@@ -23,8 +23,7 @@ const pagePath = path.join(output, 'app/admin/question-inventory/page.tsx');
 let page = await readFile(pagePath, 'utf8');
 if (!page.includes('await fetch(new URL(assetPath, origin))')) throw new Error('Inventory asset loader changed; review deployment adapter.');
 page = page.replace("import Link from 'next/link';", "function Link(props: React.ComponentProps<'a'>) { return <a {...props} />; }")
-  .replace("import { headers } from 'next/headers';", "import { headers } from 'next/headers';\nimport { env } from 'cloudflare:workers';")
-  .replace('await fetch(new URL(assetPath, origin))', 'await env.ASSETS.fetch(new URL(assetPath, origin))')
+  .replace("import { headers } from 'next/headers';", "import { headers } from 'next/headers';")
   .replace(/\s*<Link href="\/">Assessment<\/Link>/g, '')
   .replace(/\s*<Link href="\/\?view=admin">Admin<\/Link>/g, '')
   .replace(/<div className="inventory-nav-links">[\s\S]*?<\/div>/g, '<p className="eyebrow">Cloudflare test preview · Draft content · Inventory only</p>');
