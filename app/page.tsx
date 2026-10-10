@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { questionTranslationsTh } from './questionTranslations.th';
+import { productionQuestionRelease } from './productionQuestionRelease';
 import WatchLabs from './watch-labs';
 import AwarenessFlash from './watch-awareness';
 import type { WatchStory as NewsFeedItem } from './watch-model';
