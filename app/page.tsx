@@ -13131,6 +13131,12 @@ export default function Home() {
   const [homeMoreOpen, setHomeMoreOpen] = useState(false);
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
   const paidReport = mode !== 'free';
+  const skipHiddenFeedback = !assessmentDisplaySettings.showQuestionMeta
+    && !assessmentDisplaySettings.showTelemetry
+    && !assessmentDisplaySettings.showFocus
+    && !assessmentDisplaySettings.showScoredEvidence
+    && !assessmentDisplaySettings.showPsychometrics
+    && !assessmentDisplaySettings.showAnswerReveal;
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(allAssessmentItems[0]);
@@ -14206,7 +14212,7 @@ export default function Home() {
         appendBehaviorEvent({ type: 'mandatory_completed', answeredCount: nextAnswers.length, requiredCount: modeConfig[mode].totalQuestions, targetCount: activeConfig.totalQuestions });
       }
       setPendingQuestion(null);
-      setStep('feedback');
+      setStep(skipHiddenFeedback ? 'results' : 'feedback');
       return;
     }
     const nextQuestion = selectNextQuestion(nextAnswers, mode, assessmentSeed, {
@@ -14220,6 +14226,13 @@ export default function Home() {
       flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setPendingQuestion(nextQuestion);
+    if (skipHiddenFeedback) {
+      setCurrent(nextQuestion);
+      setPendingQuestion(null);
+      resetInteractionState(nextQuestion, assessmentSeed, nextAnswers.length);
+      setStep('assessment');
+      return;
+    }
     setStep('feedback');
   }
 
