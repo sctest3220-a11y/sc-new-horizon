@@ -97,13 +97,11 @@ The release stage describes operational readiness, not just whether a screen or 
 | Publisher media and click-to-load video | Public/B2C | **MVP - Built** | Existing editorial snapshot; optional supported YouTube embeds, attribution, fallback links, and no autoplay. |
 | Stable story IDs, content versions, and Lab links | Content/Admin | **MVP - Built** | Local metadata prepares for shared editorial records; no new approval or freshness claim. |
 | Two bilingual connected starter Labs | Public/B2C | **MVP - Built** | Agent boundaries and evidence checking; criterion feedback, revision, local drafts, and saved takeaways. Hosted use still requires pilot review. |
-| RSI awareness and discovery coverage audits | Public/Content/Admin | **MVP - Built** | Local RSI story, explicit discovery lane, unfamiliar-headline sampling and per-run gap reports; daily workflow definition awaits activation. |
-| Bounded recursive self-improvement across agents | Platform/Admin | **Production** | Requirement recorded; real workers, durable experiment memory, independent evaluation, approved promotion and rollback remain to build. AI Watch is the first application. |
 | Shared Watch preferences and Lab history | B2C | **MVP - Go-live** | Account ownership, server persistence, privacy controls, and cross-device recovery remain to build. |
 | Live discovery and editorial publishing workflow | Content/Admin | **MVP - Go-live** | Approved sources, durable runs, exact-version human approval, correction propagation, and freshness monitoring remain to build. |
 | Original audio briefs and recurring skill series | Public/B2C | **Future** | Proposed after demand, accessibility, localization, and editorial capacity are demonstrated. |
 
-Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md) and [platform RSI requirements](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
+Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LABS_LOCAL_RELEASE.md).
 
 ## Assessment Experience
 

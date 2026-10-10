@@ -66,7 +66,7 @@ export default function WatchLabs({ stories, language, ownerId, view, onViewChan
   }, [view, ready, state.activeLab]);
 
   const recommendations = useMemo(() => selectWatchStories(stories, state, labTimes), [stories, state]);
-  const visible = state.feed === 'for-you' ? recommendations.slice(0, 5) : recommendations;
+  const visible = state.feed === 'for-you' ? recommendations.slice(0, 3) : recommendations;
   const missingSaved = state.savedIds.filter(id => !stories.some(story => story.id === id));
   const activeLab = state.activeLab ? connectedLabs[state.activeLab] : null;
   const draft = activeLab ? currentLabDraft(activeLab, state.drafts[activeLab.id]) : null;
@@ -108,10 +108,9 @@ export default function WatchLabs({ stories, language, ownerId, view, onViewChan
           <div><p className="wl-eyebrow">AI Watch</p><h1 ref={headingRef} tabIndex={-1}>{t('What’s worth knowing. What you can try.', 'เรื่องน่ารู้ พร้อมสิ่งที่ลองทำได้')}</h1><p>{t('Choose useful AI ideas, inspect the evidence, and take one practical next step.', 'เลือกเรื่อง AI ที่มีประโยชน์ ตรวจหลักฐาน แล้วลองทำสิ่งเล็ก ๆ ที่นำไปใช้ได้')}</p></div>
           <button type="button" onClick={() => { patch({ activeLab: null }); onViewChange('labs'); }}>{t('Open AI Labs', 'เปิด AI Labs')} →</button>
         </header>
-        <details className="wl-preferences">
-          <summary>{t('Your preferences', 'ความสนใจของคุณ')} · {state.interests.length ? state.interests.map(topic => watchTopics[topic][language]).join(', ') : t('All interests', 'ทุกความสนใจ')}</summary>
-          <fieldset><legend>{t('Your interests · choose any that interest you', 'ความสนใจ · เลือกได้ตามต้องการ')}</legend><div className="wl-chips">
-            {(Object.keys(watchTopics) as WatchTopic[]).map(topic => <button key={topic} type="button" aria-pressed={state.interests.includes(topic)} onClick={() => setState(current => ({ ...current, interests: current.interests.includes(topic) ? current.interests.filter(id => id !== topic) : [...current.interests, topic], mutedTopics: current.mutedTopics.filter(id => id !== topic) }))}>{watchTopics[topic][language]}</button>)}
+        <div className="wl-preferences">
+          <fieldset><legend>{t('Your interests · choose up to 3', 'ความสนใจ · เลือกได้ไม่เกิน 3 เรื่อง')}</legend><div className="wl-chips">
+            {(Object.keys(watchTopics) as WatchTopic[]).map(topic => <button key={topic} type="button" aria-pressed={state.interests.includes(topic)} disabled={!state.interests.includes(topic) && state.interests.length >= 3} onClick={() => setState(current => ({ ...current, interests: current.interests.includes(topic) ? current.interests.filter(id => id !== topic) : [...current.interests, topic], mutedTopics: current.mutedTopics.filter(id => id !== topic) }))}>{watchTopics[topic][language]}</button>)}
           </div></fieldset>
           <div className="wl-controls">
             <div className="wl-select-field"><label htmlFor="wl-time">{t('I have', 'เวลาที่มี')}</label><select id="wl-time" value={state.minutes} onChange={event => patch({ minutes: Number(event.target.value) as WatchState['minutes'] })}>{[2, 5, 10].map(minutes => <option key={minutes} value={minutes}>{minutes} {t('minutes', 'นาที')}</option>)}</select></div>
@@ -120,21 +119,21 @@ export default function WatchLabs({ stories, language, ownerId, view, onViewChan
           </div>
           <p className="wl-small">{t('Time helps prioritize brief + Lab combinations. Publisher articles and videos may take longer. No assessment needed.', 'เวลาช่วยจัดลำดับสรุปพร้อม Lab บทความและวิดีโอต้นทางอาจใช้เวลานานกว่า ไม่ต้องทำ Assessment ก่อน')}</p>
           {state.mutedTopics.length > 0 && <div className="wl-chips"><span>{t('Hidden topics:', 'หัวข้อที่ซ่อน:')}</span>{state.mutedTopics.map(topic => <button type="button" key={topic} onClick={() => patch({ mutedTopics: state.mutedTopics.filter(id => id !== topic) })}>{t('Restore', 'แสดงอีกครั้ง')}: {watchTopics[topic][language]}</button>)}</div>}
-        </details>
+        </div>
         <div className="wl-feed-toolbar">
           <div className="wl-chips" aria-label={t('Feed view', 'มุมมองเรื่อง')}>
             {(['for-you', 'explore', 'saved'] as WatchView[]).map(feed => <button type="button" key={feed} aria-pressed={state.feed === feed} onClick={() => patch({ feed })}>{feed === 'for-you' ? t('For you', 'สำหรับคุณ') : feed === 'explore' ? t('Explore', 'สำรวจ') : `${t('Saved', 'บันทึกไว้')} (${state.savedIds.length})`}</button>)}
           </div>
           {state.feed !== 'saved' && <div className="wl-select-field"><label htmlFor="wl-source-format">{t('Source format', 'รูปแบบต้นทาง')}</label><select id="wl-source-format" value={state.media} onChange={event => patch({ media: event.target.value as WatchMedia })}><option value="all">{t('All formats', 'ทุกรูปแบบ')}</option><option value="article">{t('Articles', 'บทความ')}</option><option value="video">{t('Videos', 'วิดีโอ')}</option><option value="short">{t('Short videos', 'วิดีโอสั้น')}</option></select></div>}
         </div>
-        <p className="wl-editorial-note">{t('For you shows five recent, reviewed stories; Explore opens the full edition. Crawl results are reviewed before they are added, and discovery does not publish automatically.', 'สำหรับคุณแสดงข่าวล่าสุดที่ตรวจแล้วห้าเรื่อง · สำรวจเพื่อดูฉบับเต็ม ผลการ Crawl จะผ่านการตรวจก่อนเพิ่มและไม่เผยแพร่โดยอัตโนมัติ')}</p>
+        <p className="wl-editorial-note">{t('Editorial snapshot · existing manually curated content. Source dates are shown below; discovery and freshness monitoring are not connected yet.', 'ชุดเนื้อหาที่คัดไว้โดยบรรณาธิการ · แสดงวันที่ต้นทางในแต่ละเรื่อง ระบบค้นหาและตรวจความใหม่อัตโนมัติยังไม่ได้เชื่อมต่อ')}</p>
         {state.goal === 'practice' && state.minutes === 2 && <p className="wl-note">{t('Our connected Labs take about 4 minutes. Read a brief now and save the practice for later.', 'Lab ที่เชื่อมไว้ใช้เวลาประมาณ 4 นาที อ่านสรุปก่อนแล้วเก็บแบบฝึกไว้ทำภายหลังได้')}</p>}
         <div className="wl-story-grid">
           {visible.map(({ story, reason }) => {
             const saved = state.savedIds.includes(story.id);
             const linkedLab = story.relatedLab ? connectedLabs[story.relatedLab] : null;
             return <article className="wl-story" key={story.id} id={`watch-${story.id}`}>
-              <p className="wl-reason">{reason === 'interest' ? `${t('Because you chose', 'เพราะคุณเลือก')} ${watchTopics[[story.topic, ...(story.relatedTopics ?? [])].find(topic => state.interests.includes(topic)) ?? story.topic][language]}` : reason === 'practice' ? t('A brief and practice fit your available time', 'อ่านสรุปพร้อมแบบฝึกได้ในเวลาที่คุณมี') : reason === 'saved' ? t('Saved by you · topic and format filters do not hide saved items', 'คุณบันทึกไว้ · ตัวกรองหัวข้อและรูปแบบไม่ซ่อนรายการบันทึก') : reason === 'explore' ? t('A topic to explore', 'หัวข้อให้ลองสำรวจ') : t('From the editorial selection', 'จากเรื่องที่บรรณาธิการคัดไว้')}</p>
+              <p className="wl-reason">{reason === 'interest' ? `${t('Because you chose', 'เพราะคุณเลือก')} ${watchTopics[story.topic][language]}` : reason === 'practice' ? t('A brief and practice fit your available time', 'อ่านสรุปพร้อมแบบฝึกได้ในเวลาที่คุณมี') : reason === 'saved' ? t('Saved by you · topic and format filters do not hide saved items', 'คุณบันทึกไว้ · ตัวกรองหัวข้อและรูปแบบไม่ซ่อนรายการบันทึก') : reason === 'explore' ? t('A topic to explore', 'หัวข้อให้ลองสำรวจ') : t('From the editorial selection', 'จากเรื่องที่บรรณาธิการคัดไว้')}</p>
               <div className="wl-meta"><span>{watchTopics[story.topic][language]}</span><span>{story.mediaType === 'article' ? t('Article', 'บทความ') : story.mediaType === 'short' ? t('Short video', 'วิดีโอสั้น') : t('Video', 'วิดีโอ')}</span><span>{t('Brief ≈ 1 min', 'สรุป ≈ 1 นาที')}</span></div>
               <h2 lang="en">{story.title}</h2>
               {language === 'th' && <span className="wl-small" lang="th">{t('', 'หัวข้อและสรุปต้นฉบับภาษาอังกฤษ · ยังไม่มีสรุปภาษาไทยที่ผ่านการตรวจ')}</span>}

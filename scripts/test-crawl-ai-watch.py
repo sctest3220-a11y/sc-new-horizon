@@ -38,41 +38,5 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(page.meta['og:image'],'/image.png')
         self.assertNotIn('Do not copy',str(vars(page)))
 
-    def test_featured_images_use_fallbacks_preserve_attribution_and_deduplicate(self):
-        page = scout.Metadata()
-        page.feed('<meta property="og:image" content="/hero.jpg"><meta property="og:image:alt" content="Article illustration"><meta name="twitter:image" content="/hero.jpg"><img src="/hero.jpg"><meta name="twitter:image:src" content="https://cdn.example.com/other.png">')
-        images = scout.image_candidates(page, 'https://example.com/news/story', 'Publisher')
-        self.assertEqual(len(images), 2)
-        self.assertEqual(images[0]['url'], 'https://example.com/hero.jpg')
-        self.assertEqual(images[0]['alt'], 'Article illustration')
-        self.assertEqual(images[0]['sourceUrl'], 'https://example.com/news/story')
-        self.assertEqual(images[0]['reviewStatus'], 'unverified')
-        self.assertEqual(images[1]['metadataSource'], 'twitter:image:src')
-
-    def test_featured_images_skip_invalid_urls_and_use_twitter(self):
-        page = scout.Metadata()
-        page.feed('<meta property="og:image" content="javascript:alert(1)"><meta name="twitter:image" content="/twitter.jpg"><img src="https://example.com:bad/image.jpg">')
-        images = scout.image_candidates(page, 'https://example.com/story', 'Publisher')
-        self.assertEqual([image['url'] for image in images], ['https://example.com/twitter.jpg'])
-
-    def test_rsi_matches_without_substring_false_positives(self):
-        lanes = {'rsi': ['rsi', 'self-improving']}
-        self.assertEqual(scout.classify('RSI: self-improving agents', lanes), ['rsi'])
-        self.assertEqual(scout.classify('A university version update', lanes), [])
-
-    def test_sampling_retains_unfamiliar_topics_and_respects_budget(self):
-        records = [(f'https://example.com/{i}', 'agent' if i < 10 else 'unfamiliar breakthrough') for i in range(20)]
-        selected = scout.select_records(records, {'agents': ['agent']})
-        self.assertEqual(len(selected), 6)
-        self.assertEqual(len(set(selected)), 6)
-        self.assertEqual(sum(title == 'unfamiliar breakthrough' for _, title in selected), 2)
-
-    def test_stale_candidates_cannot_hide_current_coverage_gaps(self):
-        candidates = [{'id': 'old', 'lanes': ['rsi']}, {'id': 'new', 'lanes': []}]
-        report = scout.coverage_report(candidates, {'new'}, {'rsi': ['rsi']})
-        self.assertEqual(report['counts']['rsi'], 0)
-        self.assertEqual(report['investigations'][0]['lane'], 'rsi')
-        self.assertEqual(report['unclassifiedIds'], ['new'])
-
 if __name__ == '__main__':
     unittest.main()

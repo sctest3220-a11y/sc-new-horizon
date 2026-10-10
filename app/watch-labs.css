@@ -44,7 +44,7 @@
 .wl-source-details dt { font-weight:650; }
 .wl-source-details dd { margin:0; overflow-wrap:anywhere; }
 .wl-media { background:var(--wl-bg); padding:14px; border-radius:8px; margin:14px 0; }
-.wl-media iframe,.wl-media video { width:100%; min-height:200px; aspect-ratio:16 / 9; border:0; border-radius:6px; background:#000; }
+.wl-media iframe { width:100%; min-height:200px; aspect-ratio:16 / 9; border:0; border-radius:6px; }
 .wl-source-image { margin:18px 0; }
 .wl-source-image img { width:100%; max-height:300px; object-fit:contain; border-radius:8px; }
 .wl-source-image figcaption { color:var(--wl-muted); font-size:12px; margin-top:6px; }
@@ -78,6 +78,3 @@
 .wl-awareness .wl-source-image { max-width: 34rem; }
 .wl-story-source { font-size: .85rem; }
 .wl-source-image img { object-fit: contain; max-height: 22rem; }
-
-.wl-preferences > summary { cursor:pointer; font-weight:600; line-height:1.6; overflow-wrap:anywhere; }
-.wl-preferences[open] > summary { margin-bottom:18px; }

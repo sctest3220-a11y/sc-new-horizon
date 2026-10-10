@@ -14,9 +14,10 @@
     "crawl:news": "python3 scripts/crawl-ai-watch.py",
     "crawl:training": "node scripts/crawl-ai-training.mjs",
     "inventory:assets": "node scripts/build-review-inventory-assets.mjs",
-    "inventory:cloudflare:build": "node scripts/build-inventory-cloudflare.mjs",
-    "inventory:cloudflare:test": "node scripts/test-inventory-cloudflare.mjs",
-    "inventory:feedback:import": "node scripts/import-inventory-feedback.mjs"
+    "inventory:refine": "node scripts/apply-inventory-wording-refinements.mjs && node scripts/apply-thai-review-translations.mjs && node scripts/scan-review-artifact-needs.mjs && node scripts/build-review-inventory-assets.mjs",
+    "test:watch-labs": "node --test scripts/test-watch-labs.mjs",
+    "crawl:news": "python3 scripts/crawl-ai-watch.py",
+    "test:news-scout": "python3 scripts/test-crawl-ai-watch.py"
   },
   "dependencies": {
     "next": "16.2.6",

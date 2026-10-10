@@ -1,6 +1,6 @@
 export type WatchLanguage = 'en' | 'th';
 export type Bilingual = { en: string; th: string };
-export type WatchTopic = 'agents' | 'trust' | 'models' | 'robotics' | 'work' | 'coding' | 'commerce' | 'security' | 'multimodal' | 'research' | 'governance' | 'education';
+export type WatchTopic = 'agents' | 'trust' | 'models' | 'robotics' | 'work';
 export type ConnectedLabId = 'agent-boundaries' | 'evidence-check';
 export type WatchMedia = 'all' | 'article' | 'video' | 'short';
 export type WatchView = 'for-you' | 'explore' | 'saved';
@@ -9,9 +9,8 @@ export type WatchStory = {
   id: string;
   contentVersion: string;
   topic: WatchTopic;
-  relatedTopics?: WatchTopic[];
   relatedLab?: ConnectedLabId;
-  awareness?: { hook: Bilingual; kind: 'reported-case' | 'simulation' | 'model-release' | 'product-launch' | 'industry-analysis'; checkedAt: string };
+  awareness?: { hook: Bilingual; kind: 'reported-case' | 'simulation' | 'model-release'; checkedAt: string };
   references?: { label: string; url: string }[];
   category: string;
   title: string;
@@ -24,18 +23,10 @@ export type WatchStory = {
   duration?: string;
   embedVideo?: boolean;
   articleImage?: { url: string; alt: string; credit: string };
-  publisherVideo?: { url: string; credit: string };
   publisherType?: 'official' | 'standards' | 'research' | 'news';
 };
 
 export const watchTopics: Record<WatchTopic, Bilingual> = {
-  coding: { en: 'Coding and software', th: 'การเขียนโค้ดและซอฟต์แวร์' },
-  commerce: { en: 'Shopping and commerce', th: 'การซื้อสินค้าและการค้า' },
-  security: { en: 'Security and privacy', th: 'ความปลอดภัยและความเป็นส่วนตัว' },
-  multimodal: { en: 'Images, video and voice', th: 'ภาพ วิดีโอ และเสียง' },
-  research: { en: 'Research and benchmarks', th: 'งานวิจัยและการทดสอบเปรียบเทียบ' },
-  governance: { en: 'Policy and governance', th: 'นโยบายและการกำกับดูแล' },
-  education: { en: 'Learning and education', th: 'การเรียนรู้และการศึกษา' },
   agents: { en: 'Work with agents', th: 'ทำงานกับ Agent' },
   trust: { en: 'Check claims and risks', th: 'ตรวจสอบข้ออ้างและความเสี่ยง' },
   models: { en: 'Understand AI capabilities', th: 'เข้าใจความสามารถของ AI' },
@@ -104,7 +95,7 @@ export function parseWatchState(raw: string | null): WatchState {
     }
     return {
       ...fallback,
-      interests: topics(data.interests), mutedTopics: topics(data.mutedTopics), savedIds: shortStrings(data.savedIds),
+      interests: topics(data.interests).slice(0, 3), mutedTopics: topics(data.mutedTopics), savedIds: shortStrings(data.savedIds),
       minutes: data.minutes === 2 || data.minutes === 10 ? data.minutes : 5,
       goal: data.goal === 'practice' ? 'practice' : 'learn',
       feed: data.feed === 'explore' || data.feed === 'saved' ? data.feed : 'for-you',
@@ -119,30 +110,26 @@ export function parseWatchState(raw: string | null): WatchState {
 export type RecommendationReason = 'interest' | 'practice' | 'explore' | 'saved' | 'balanced';
 export type WatchRecommendation = { story: WatchStory; reason: RecommendationReason };
 
-export function storyTopics(story: WatchStory): WatchTopic[] {
-  return [story.topic, ...(story.relatedTopics ?? [])];
-}
-
 /** Ranks the editorial snapshot; no assessment evidence or inferred weaknesses are used. */
 export function selectWatchStories(stories: WatchStory[], state: WatchState, labMinutes: Record<ConnectedLabId, number>): WatchRecommendation[] {
   const eligible = stories.filter(story => state.feed === 'saved'
     ? state.savedIds.includes(story.id)
-    : !storyTopics(story).some(topic => state.mutedTopics.includes(topic)) && (state.media === 'all' || story.mediaType === state.media));
+    : !state.mutedTopics.includes(story.topic) && (state.media === 'all' || story.mediaType === state.media));
   if (state.feed === 'saved') return eligible.map(story => ({ story, reason: 'saved' }));
   if (state.feed === 'explore') return eligible.map(story => ({ story, reason: 'explore' }));
   const canPractise = (story: WatchStory) => story.relatedLab && labMinutes[story.relatedLab] + 1 <= state.minutes;
-  const ranked = eligible.map((story, order) => ({ story, order, score: (storyTopics(story).some(topic => state.interests.includes(topic)) ? 4 : 0) + (state.goal === 'practice' && canPractise(story) ? 2 : 0) }))
+  const ranked = eligible.map((story, order) => ({ story, order, score: (state.interests.includes(story.topic) ? 4 : 0) + (state.goal === 'practice' && canPractise(story) ? 2 : 0) }))
     .sort((a, b) => b.score - a.score || a.order - b.order);
   // Keep one exploratory pick, favoring a different medium when eligible supply allows it.
   if (ranked.length > 2) {
-    const candidates = ranked.flatMap((entry, index) => index >= 2 && !storyTopics(entry.story).some(topic => state.interests.includes(topic)) ? [{ ...entry, index }] : []);
+    const candidates = ranked.flatMap((entry, index) => index >= 2 && !state.interests.includes(entry.story.topic) ? [{ ...entry, index }] : []);
     const varied = ranked[0].story.mediaType === ranked[1].story.mediaType
       ? candidates.find(entry => entry.story.mediaType !== ranked[0].story.mediaType)
       : undefined;
     const exploratoryIndex = (varied ?? candidates[0])?.index ?? -1;
     if (exploratoryIndex > 2) ranked.splice(2, 0, ranked.splice(exploratoryIndex, 1)[0]);
   }
-  return ranked.map(({ story }) => ({ story, reason: storyTopics(story).some(topic => state.interests.includes(topic)) ? 'interest' : state.goal === 'practice' && canPractise(story) ? 'practice' : state.interests.length ? 'explore' : 'balanced' }));
+  return ranked.map(({ story }) => ({ story, reason: state.interests.includes(story.topic) ? 'interest' : state.goal === 'practice' && canPractise(story) ? 'practice' : state.interests.length ? 'explore' : 'balanced' }));
 }
 
 export function youtubePlayerUrl(raw: string): string | null {
@@ -158,8 +145,6 @@ export const awarenessLabels = {
   'reported-case': { en: 'Reported case', th: 'กรณีที่มีรายงาน' },
   simulation: { en: 'Research simulation', th: 'งานวิจัยจำลอง' },
   'model-release': { en: 'Model announcement', th: 'ประกาศ Model' },
-  'product-launch': { en: 'AI product launch', th: 'เปิดตัวผลิตภัณฑ์ AI' },
-  'industry-analysis': { en: 'Independent analysis', th: 'บทวิเคราะห์อิสระ' },
 } as const;
 
 /** Only explicitly curated awareness stories are eligible; hidden topics remain hidden. */

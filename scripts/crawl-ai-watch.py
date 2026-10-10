@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Bounded source discovery. Metadata candidates only; never publishes."""
+"""Bounded manual source discovery. Metadata candidates only; never publishes."""
 import hashlib
 import json
-import re
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -16,8 +15,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 AGENT = 'NewHorizonNewsScout'
 MAX_BYTES = 2_000_000
-MAX_PER_SOURCE = 6
-MAX_SOURCES = 16
+MAX_PER_SOURCE = 3
 
 
 def normalize_url(raw, base):
@@ -34,31 +32,7 @@ def allowed(url, source):
 
 def classify(text, lanes):
     text = text.casefold()
-    return [lane for lane, terms in lanes.items() if any(re.search(r'(?<!\w)' + re.escape(term.casefold()) + r'(?!\w)', text) for term in terms)]
-
-
-def select_records(records, lanes, limit=MAX_PER_SOURCE):
-    """Reserve two slots for unfamiliar headlines; rotate selection each UTC day."""
-    day = datetime.now(timezone.utc).date().isoformat()
-    ranked = sorted(records, key=lambda item: hashlib.sha256((day + item[0]).encode()).hexdigest())
-    known = [item for item in ranked if classify(item[1], lanes)]
-    unfamiliar = [item for item in ranked if not classify(item[1], lanes)]
-    selected = known[:max(0, limit - 2)] + unfamiliar[:min(2, limit)]
-    return (selected + [item for item in ranked if item not in selected])[:limit]
-
-
-def coverage_report(candidates, observed_ids, lanes):
-    """Only this run's observations count; old candidates cannot conceal gaps."""
-    observed = [item for item in candidates if item['id'] in observed_ids]
-    counts = {lane: sum(lane in item['lanes'] for item in observed) for lane in lanes}
-    return {
-        'scope': 'current-run-metadata-not-published-feed',
-        'counts': counts,
-        'investigations': [{'lane': lane, 'reason': 'No matching metadata observed this run; this is not evidence that no developments exist.',
-                            'action': 'Review source failures, search synonyms and source diversity; propose a versioned discovery change.'}
-                           for lane, count in counts.items() if count == 0],
-        'unclassifiedIds': [item['id'] for item in observed if not item['lanes']],
-    }
+    return [lane for lane, terms in lanes.items() if any(term in text for term in terms)]
 
 
 class Metadata(HTMLParser):
@@ -87,39 +61,6 @@ class Metadata(HTMLParser):
     def handle_data(self, data):
         if self.in_title:
             self.title += data
-
-
-def image_candidates(page, url, publisher):
-    """Prefer publisher preview metadata; retain provenance for editorial review."""
-    candidates, seen = [], set()
-    for key, alt_key in [('og:image:secure_url', 'og:image:alt'), ('og:image', 'og:image:alt'),
-                         ('og:image:url', 'og:image:alt'), ('twitter:image', 'twitter:image:alt'),
-                         ('twitter:image:src', 'twitter:image:alt')]:
-        raw = page.meta.get(key)
-        if not raw:
-            continue
-        try:
-            image_url = normalize_url(raw, url)
-        except ValueError:
-            continue
-        if not image_url or image_url in seen:
-            continue
-        seen.add(image_url)
-        candidates.append({'kind': 'image', 'url': image_url, 'alt': page.meta.get(alt_key, '')[:300],
-                           'metadataSource': key, 'sourceUrl': url, 'publisher': publisher,
-                           'reviewStatus': 'unverified', 'creditStatus': 'needs-source-credit-review'})
-    # Inline images are alternatives, never automatically treated as a featured image.
-    for image in page.images[:4]:
-        try:
-            image_url = normalize_url(image['url'], url)
-        except ValueError:
-            continue
-        if image_url and image_url not in seen:
-            seen.add(image_url)
-            candidates.append({'kind': 'image', 'url': image_url, 'alt': image['alt'],
-                               'metadataSource': 'inline-image', 'sourceUrl': url, 'publisher': publisher,
-                               'reviewStatus': 'unverified', 'creditStatus': 'needs-source-credit-review'})
-    return candidates[:5]
 
 
 class Fetcher:
@@ -208,7 +149,7 @@ def main():
     previous = json.loads(previous_path.read_text()) if previous_path.exists() else {'candidates': []}
     candidates = {item['id']: item for item in previous['candidates']}
     reports, found, changes = [], [], 0
-    for source in config['sources'][:MAX_SOURCES]:
+    for source in config['sources'][:8]:
         report = {'source': source['id'], 'url': source['url'], 'fetched': 0, 'candidates': 0, 'errors': []}
         try:
             fetcher = Fetcher(source)
@@ -217,16 +158,18 @@ def main():
             report['discoveredLinks'] = len(records)
             if not records:
                 report['errors'].append({'url': source['url'], 'error': 'No eligible links found; source adapter needs review'})
-            # Balance recognized lanes with exploration beyond known keywords.
-            for url, feed_title in select_records(records, config['lanes']):
+            # Prefer matching feed titles but retain broad coverage for index pages.
+            records.sort(key=lambda item: not bool(classify(item[1], config['lanes'])))
+            for url, feed_title in records[:MAX_PER_SOURCE]:
                 try:
                     html = body if url == source['url'] else fetcher.get(url)
                     page = Metadata(); page.feed(html); report['fetched'] += 1
                     title = (page.meta.get('og:title') or page.title or feed_title).strip()[:300]
                     lanes = classify(title + ' ' + page.meta.get('description', '') + ' ' + page.meta.get('og:description', ''), config['lanes'])
-                    if not title:
+                    if not title or not lanes:
                         continue
-                    media = image_candidates(page, url, source['publisher'])
+                    images = ([{'url': page.meta['og:image'], 'alt': ''}] if page.meta.get('og:image') else []) + page.images[:4]
+                    media = [{'kind': 'image', 'url': normalize_url(item['url'], url), 'alt': item['alt'], 'reviewStatus': 'unverified'} for item in images]
                     videos = ([page.meta['og:video']] if page.meta.get('og:video') else []) + page.videos[:3]
                     media += [{'kind': 'video', 'url': normalize_url(raw, url), 'reviewStatus': 'unverified'} for raw in videos]
                     media = [item for item in media if item['url']][:8]
@@ -243,8 +186,7 @@ def main():
         except Exception as error:
             report['errors'].append({'url': source['url'], 'error': str(error)[:300]})
         reports.append(report)
-    result = {'runAt': now, 'mode': 'discovery-only', 'instructionsVersion': config['version'], 'newOrChanged': changes, 'observedIds': sorted(set(found)), 'sources': reports, 'candidates': sorted(candidates.values(), key=lambda item: item['id'])}
-    result['coverage'] = coverage_report(result['candidates'], set(found), config['lanes'])
+    result = {'runAt': now, 'mode': 'manual-discovery-only', 'instructionsVersion': config['version'], 'newOrChanged': changes, 'observedIds': sorted(set(found)), 'sources': reports, 'candidates': sorted(candidates.values(), key=lambda item: item['id'])}
     serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
     temporary = output / 'latest.tmp'
     temporary.write_text(serialized); temporary.replace(previous_path)

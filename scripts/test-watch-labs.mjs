@@ -32,7 +32,7 @@ test('corrupt, missing, and unknown-version storage recovers without throwing', 
 
 test('storage rejects invalid preference values and caps untrusted data', () => {
   const result = parseWatchState(JSON.stringify({ version:1, interests:['agents','constructor','trust','models','work'], mutedTopics:['robotics','__proto__'], minutes:999, savedIds:['old-story','old-story',44], drafts:{ 'agent-boundaries':{version:'agent-boundaries@1',note:'x'.repeat(3000),answers:{permissions:'draft-only',invalid:'<script>'},checked:true,takeawaySaved:true} } }));
-  assert.deepEqual(result.interests,['agents','trust','models','work']);
+  assert.deepEqual(result.interests,['agents','trust','models']);
   assert.deepEqual(result.mutedTopics,['robotics']);
   assert.equal(result.minutes,5);
   assert.deepEqual(result.savedIds,['old-story']);
@@ -137,17 +137,4 @@ test('awareness teasers share curated records and respect topic preferences', ()
   assert.ok(!picks.some(story => story.id === 'agents-bank-run-simulation'));
   assert.equal(stories.find(story => story.id === 'agents-bank-run-simulation').awareness.kind, 'simulation');
   assert.equal(stories.find(story => story.id === 'pip-ilands-paid-work').awareness.kind, 'reported-case');
-});
-
-test('expanded interests survive storage and rank related stories', () => {
-  const interests = ['coding', 'commerce', 'security', 'multimodal', 'research', 'governance', 'education'];
-  const state = parseWatchState(JSON.stringify({...newWatchState(), interests}));
-  assert.deepEqual(state.interests, interests);
-  for (const topic of interests) {
-    const ranked = selectWatchStories(stories, {...newWatchState(), interests: [topic]}, times);
-    assert.equal(ranked[0].reason, 'interest', topic);
-    assert.ok(ranked[0].story.relatedTopics.includes(topic), topic);
-    const muted = selectWatchStories(stories, {...newWatchState(), mutedTopics: [topic]}, times);
-    assert.ok(muted.every(({story}) => !story.relatedTopics?.includes(topic)));
-  }
 });

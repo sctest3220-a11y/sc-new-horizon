@@ -1,6 +1,6 @@
 {
   "reviewer": "KJ-Dee",
-  "updatedAt": "2026-09-19T13:17:20.254Z",
+  "updatedAt": "2026-09-24T02:42:14.559Z",
   "questions": {
     "ADV-D1-AI-SYSTEMS-01": {
       "draft": {
@@ -55393,10 +55393,10 @@
         "decision": "revise",
         "rating": "1",
         "clarity": "confusing",
-        "artifact": "irrelevant",
+        "artifact": "not-needed",
         "format": "parts",
         "comment": "",
-        "suggestedChange": ""
+        "suggestedChange": "ฝ่ายบริการลูกค้าใช้ AI เพื่อเตรียมคำตอบในการปิดเคส, AI ทำการสรุปจากแหล่งต้นฉบับทั้งหมด ทั้งที่ต้องการระบุเฉพาะจุดแตกต่างระหว่างแต่ละเวอร์ชัน, รายละเอียดเพิ่มเติม: การขอคืนเงินที่เกินวงเงินอนุมัติของพนักงาน  จะต้องได้รับอนุมัติจากผู้มีอำนาจที่กำหนดไว้\n"
       },
       "entries": [
         {
@@ -55411,7 +55411,7 @@
           "savedAt": "2026-09-19T06:46:56.182Z"
         }
       ],
-      "updatedAt": "2026-09-19T06:46:56.182Z"
+      "updatedAt": "2026-09-23T04:57:54.169Z"
     },
     "NH-FUNCTION-CUSTOMERSERVICE-D2-PROMPT-DESIGN-APPLIED-02": {
       "draft": {

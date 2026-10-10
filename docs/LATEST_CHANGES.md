@@ -1,33 +1,5 @@
 # Latest Changes
 
-## Assessment visibility and plan-based reporting — 10 October 2026
-
-- Added Pilot Operations controls for user-facing assessment diagnostics: question metadata, telemetry, scored evidence, psychometrics, and answer reveals can be enabled or hidden independently.
-- Changed the default user experience to show basic questions without telemetry, psychometric details, internal scoring metadata, or answer reveals; hidden diagnostics remain active for scoring, adaptive routing, and admin analysis.
-- Added Free report and Paid/Freemium report controls for summaries, recommendations, history, detailed breakdowns, question analysis, benchmarks, advanced recommendations, telemetry details, psychometrics, and exports.
-- Added a basic-report upgrade state for users who do not have the detailed report entitlement.
-- Documented the retention and production-security rule: hidden diagnostic data must remain protected server-side and must not merely be hidden in the browser.
-- Targeted ESLint passes for the changed pages. Full TypeScript validation continues to report pre-existing errors in unrelated inventory and platform files.
-
-## Append-only assessment release 2026-10-07.1
-
-- Added 229 bilingual rewritten/retranslated questions to the assessment source.
-- Preserved all 634 existing live questions; no live record is overwritten.
-- Versioned runtime IDs prevent collisions when a new record shares a source question ID with an existing live item.
-- The combined assessment pool is 863 questions.
-- Verified role, domain, and difficulty metadata, then passed ESLint and the production build.
-- Release manifest and append-only import package: `exports/production/releases/2026-10-07.1/`.
-- External production import is still a separate deployment/integration step.
-
-## Platform RSI and proactive AI Watch — 29 September 2026
-
-- Recorded bounded recursive self-improvement as a platform-agent requirement: observe, diagnose, propose, evaluate against a baseline, approve/promote, monitor and reuse outcomes in the next cycle.
-- Documented the cause of reactive discovery: a manual feed, on-demand collector, simulated Admin agents, fixed keyword coverage and no persistent improvement loop.
-- Added a source-backed RSI story and bilingual hook, a self-improving-agents discovery lane, Sakana source coverage, unfamiliar-headline sampling and current-run coverage investigations.
-- Prepared a daily GitHub Actions discovery workflow that retains review artifacts. It is not active until available on the default branch with Actions enabled, and does not publish content.
-- Real agent workers, persistent experiment history, independent evaluations, promotion/rollback and a missed-run watchdog remain to build. See [the RSI decision and acceptance criteria](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
-- Validation of the local implementation: eight collector tests and thirteen Watch/Labs tests passed. Documentation is mirrored in the New Horizon Obsidian project.
-
 ## Manual awareness-news scout — 29 September 2026
 
 - Added executable, bounded source discovery for awareness-provoking stories, AI trends and new technologies, driven by shared JSON editorial instructions.

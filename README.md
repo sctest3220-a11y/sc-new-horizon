@@ -69,26 +69,6 @@ Manual AI Watch discovery is now available with `npm run crawl:news` (Python 3).
 
 AI Watch awareness curation (September 29): the local app now connects source-backed Pip/iLands, agent bank-run simulation, and Jev stories to **Did you know** teasers. Original-source images and click-to-load videos appear inside each curated story, with visible credits and links. This remains manually curated and is not deployed to the inventory-only Cloudflare site. See [the curation requirements](docs/AI_WATCH_AWARENESS_CURATION.md).
 
-### Cloudflare inventory testing — September 28, 2026
-
-[Open the hosted Question Inventory](https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev/admin/question-inventory). This public test deployment serves only the question inventory and its media, with 3,328 draft items and 634 existing live-bank items. It is a draft-content preview, not an approved external feedback pilot or a deployment of the full assessment app.
-
-**Live now:** release identifiers, content fingerprints, and feedback separated by question-content version. Older saved reviews remain downloadable without appearing as reviews of rewritten questions. The [release manifest](https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev/review-release.json) identifies the deployed build. Build, release/import unit tests, and local/live browser checks passed.
-
-**Automatic refresh is not active yet.** The infrastructure is pushed to `codex/inventory-versioned-deployment` in `sctest3220-a11y/sc-new-horizon`. Merge that temporary setup branch into `main`, then configure the `inventory-testing` GitHub environment with the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable. The branch can be deleted after merging; its workflow then lives on `main`.
-
-Collaborators should open question-rewrite PRs **against `main`**, not the setup branch. Include regenerated `exports/review-inventory/questions.json`, `live-questions.json`, `artifact-needs.json`, and any changed `public/stimuli` assets; editing rewrite notes alone does not change hosted questions. Once activated, the workflow tests relevant PRs and deploys the tested artifact after relevant changes merge to `main`. It records release metadata, retains build artifacts for 90 days, serializes deployments, and skips superseded main commits. Rollback instructions are in the [Cloudflare testing guide](docs/QUESTION_INVENTORY_CLOUDFLARE_TEST.md).
-
-**Reviews do not automatically sync to the repo.** Testers select **Download feedback JSON** and send the file to the maintainer. From the repository root, import it with:
-
-```sh
-node scripts/import-inventory-feedback.mjs /path/to/inventory-feedback.json tester-alias
-```
-
-Review and commit `exports/review-feedback/cloudflare/tester-alias.json` through a feedback PR. Repeated imports deduplicate saved entries; conflicting entries are rejected, question versions remain separate, and question source files are never changed by the importer. Pre-versioning feedback is retained as `legacy-unversioned`. Feedback stays in the tester's browser until exported; shared cloud review storage is not implemented. This repository is public, so inspect review text for private information before committing it.
-
-See the [setup, release, rollback, and feedback-import guide](docs/QUESTION_INVENTORY_CLOUDFLARE_TEST.md) for complete instructions.
-
 AI Watch and connected Labs: [the first local release](docs/AI_WATCH_LABS_LOCAL_RELEASE.md) adds explicit-interest ranking, saved stories, topic controls, optional video loading, and two bilingual Labs with recoverable drafts and takeaways. Use AI Watch / AI Labs in the navigation or `/?view=watch` / `/?view=labs`. Data remains browser-local. The [roadmap](docs/AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) defines later shared editorial workflows, discovery, and multimodal expansion; these services are not connected yet.
 
 Detailed telemetry and agent documentation:

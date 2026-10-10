@@ -28,7 +28,7 @@ function getArtifactNeed(question) {
 
 const candidates = questions.flatMap((question) => {
   const need = getArtifactNeed(question);
-  if (!need) return [];
+  if (!need || need.need === 'not required') return [];
   return [{
     id: question.id,
     domain: question.domain,
@@ -114,7 +114,7 @@ const markdown = [
   '',
   '## Generation Notes',
   '',
-  'Generate reusable artifact templates first, not one-off visuals per question. Each template should have legible text, realistic metadata, a clear evidence signal, and a direct relationship to the question decision.',
+  'Follow artifact standard v1.3. Reassess necessity for each question before generation; keyword matches are candidates, not proof that an artifact is required. Generate question-specific evidence where needed, without highlighted answers, invented risks or decorative repetition. Preserve equivalent English and Thai evidence.',
   '',
 ];
 

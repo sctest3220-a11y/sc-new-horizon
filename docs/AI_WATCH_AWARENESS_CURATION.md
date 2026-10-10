@@ -12,7 +12,7 @@ Every story should explain what happened, why it matters to ordinary users, the 
 
 Original-source images and videos belong **inside the curated story**, adjacent to its title and independent summary. Do not put the artifacts in a separate media section. Keep the original publisher, source date, credits, canonical link, and supporting references visible. Use publisher-hosted images and approved official video players; preserve aspect ratio and do not download or rehost third-party media. Videos load on explicit user action and do not autoplay. A broken image/player must leave attribution and an original-source link available. If no suitable original media exists, retain the text story rather than inventing documentary evidence.
 
-The local implementation uses `WatchMedia` for both Watch and awareness cards. YouTube embeds are HTTPS, provider-validated, click-to-load players. Publisher-hosted MP4 playback is supported for original video links verified in the source article; it loads only after a user clicks, streams from the publisher, and is not downloaded or rehosted. Public availability of an image alone is not a license to republish it; editorial media-rights review remains part of hosted release preparation.
+The local implementation uses `WatchMedia` for both Watch and awareness cards. YouTube embeds are HTTPS, provider-validated, click-to-load players. Direct publisher-video adapters beyond the existing YouTube integration remain future work. Public availability of an image alone is not a license to republish it; editorial media-rights review remains part of hosted release preparation.
 
 ## Did you know
 
@@ -21,8 +21,6 @@ The home-page awareness cards select from the same `trendFeed` records as AI Wat
 The hooks and controls have English/Thai copy; current news summaries retain explicit English labels until Thai editorial review. Existing local preferences are not a shared account profile. Automatic discovery, freshness expiry, cross-device preferences, authenticated editorial approval, and analytics remain planned services, not claims about the current app.
 
 ## Source checks for the initial examples
-
-- [Meta's Muse launch](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/), September 8, 2026. Meta says Muse can open a browser, fill forms, negotiate and make purchases, with approval for sensitive actions. These are vendor claims, not an independent reliability or safety evaluation. The story embeds the launch video from Meta's own media host, click-to-load, with the original article and an [Axios report on agentic-shopping competition](https://www.axios.com/2026/09/21/amazon-meta-muse-ai-agentic-shopping) linked for context.
 
 - [iLands](https://www.ilands.ai/) describes Pip's paid writing commission; [platform documentation](https://ilands.ai/platform) states availability limits. Undated page, checked September 29, 2026. Label: platform-reported case. Pip's avatar is publisher-hosted and credited.
 - [Financial Fragility in Societies of LLM Agents](https://arxiv.org/abs/2609.30940), submitted September 25, 2026. Label: research simulation / preprint. Do not present simulated failures as an actual AI-caused bank run.
@@ -38,18 +36,16 @@ Related: [Watch/Labs roadmap](AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md), [local relea
 
 ## Executable discovery instructions — September 29 follow-up
 
-The manual News Scout now reads `config/ai-watch-discovery.json`, which explicitly includes agent capabilities (including personal and shopping agents), collective risks, models/technologies, and everyday impact. The allowlist now includes Meta, TechCrunch AI, The Verge AI, Ars Technica, and OpenAI newsroom feeds alongside Hugging Face, arXiv, iLands, and TypeSafe. It samples up to six links per source. Run `npm run crawl:news` or `python3 scripts/crawl-ai-watch.py`. It uses allowlisted feeds/indexes, bounded metadata fetches, robots checks, URL deduplication and metadata-change fingerprints. Original-source media URLs remain unverified leads, never downloaded assets.
+The manual News Scout now reads `config/ai-watch-discovery.json`, which explicitly includes agent capabilities, collective risks, models/technologies, and everyday impact. Run `npm run crawl:news` or `python3 scripts/crawl-ai-watch.py`. It uses allowlisted feeds/indexes, bounded metadata fetches, robots checks, URL deduplication and metadata-change fingerprints. Original-source media URLs remain unverified leads, never downloaded assets.
 
 Inspect `.agent-drafts/ai-watch/latest.json` for candidate lanes, publication dates (null when unknown), check dates, source references, media leads and failures. No article body, automatic summary or unreviewed teaser is published. The collector is deterministic, not an LLM agent. An editor must verify evidence and media, write an original summary/hook, and add the approved record to `trendFeed` through the normal code review process. Shared queue, scheduled runs and an admin publish action remain unimplemented.
 
 Validation: five offline tests cover URL restrictions, feed/index parsing, deduplication, editorial lanes and metadata-only extraction. The first live run observed six candidates; three arXiv article fetches returned HTTP 406 and were recorded as failures. TypeSafe is monitored through its known announcement page because its blog index yielded no links. This source set is a starter allowlist, not complete web coverage.
 
-Final live verification observed seven candidates, including the Jev announcement, with three arXiv HTTP 406 failures recorded. Repeated runs retained stable candidate IDs without duplicating the six previously seen records; the corrected TypeSafe adapter added one new candidate. The expanded source set improves publisher breadth but is still an allowlist-based manual scout, not full-web coverage, a semantic search agent, or a scheduled service. Feed coverage and crawl failures must be reviewed on each run.
+Final live verification observed seven candidates, including the Jev announcement, with three arXiv HTTP 406 failures recorded. Repeated runs retained stable candidate IDs without duplicating the six previously seen records; the corrected TypeSafe adapter added one new candidate.
 
 ## Interest-first headlines and alternative coverage
 
 Lead with the concrete surprising event and its consequence, then explain why it matters and what the evidence supports. Avoid abstract headlines such as “an agent reaches beyond the chat window.” Do not invent autonomy, motives, consciousness, earnings, or certainty for clicks. Alternative reporting and original publisher videos on the same event are useful editorial candidates, with primary-source references retained.
 
 Pip's revised headline is “An AI agent asked a philosopher for work—and reportedly got paid.” The supplied [CNN video](https://www.youtube.com/watch?v=RTuybvHww7Y) is now the inline click-to-load player; its title and CNN authorship were checked through YouTube metadata, not a full transcript review. The iLands account remains a supporting reference. Pip's avatar has been removed because reuse permission was not established. Do not generate replacement news images. Attribution/hotlinking alone is not reuse permission; use authorized players or licensed/permitted original media, otherwise link only.
-
-September 29 RSI follow-up: discovery now includes self-improving agents and Sakana, reserves capacity for unfamiliar headlines, and writes current-run coverage investigations. A daily GitHub Actions workflow definition retains reports for review; activation and operating-agent integration remain pending. See [RSI operating requirements](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).

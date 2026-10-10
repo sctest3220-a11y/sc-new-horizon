@@ -17,6 +17,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const exportsDir = path.join(projectRoot, 'exports/review-inventory');
@@ -28,6 +29,7 @@ const previousPath = path.join(exportsDir, 'versions', '2026-10-07.1', 'question
 const draftPath = path.join(exportsDir, 'questions.json');
 const livePath = path.join(exportsDir, 'live-questions.json');
 const artifactNeedsPath = path.join(exportsDir, 'artifact-needs.json');
+const versionsPath = path.join(exportsDir, 'versions.json');
 let inventoryVersionForView = null;
 
 // Only the fields the admin page actually reads. Dropping the rest (provenance,
@@ -84,7 +86,8 @@ function isUpToDate() {
   const summaryPath = path.join(outputDir, 'summary.json');
   if (!fs.existsSync(summaryPath)) return false;
   const builtAt = fs.statSync(summaryPath).mtimeMs;
-  return [draftPath, livePath, artifactNeedsPath]
+  const versions = fs.existsSync(versionsPath) ? readJson(versionsPath).versions : [];
+  return [draftPath, livePath, artifactNeedsPath, versionsPath, fileURLToPath(import.meta.url), ...versions.map(v => path.join(exportsDir, v.snapshot))]
     .filter((input) => fs.existsSync(input))
     .every((input) => fs.statSync(input).mtimeMs <= builtAt) &&
     fs.statSync(fileURLToPath(import.meta.url)).mtimeMs <= builtAt;
@@ -93,7 +96,7 @@ function isUpToDate() {
 function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
   const detail = pick(question, detailFields);
   detail.sourceInventory = question.sourceInventory ?? sourceInventory;
-  if (sourceInventory === 'live') detail.version = 'live-bank';
+  if (sourceInventory === 'live' && inventoryVersionForView) detail.version = inventoryVersionForView;
   if (sourceInventory === 'live' && detail.th && detail.userFacingDraft) {
     detail.userFacingDraft.th = { context: detail.th.context, prompt: detail.th.prompt };
     const translatedOptions = detail.th.options ?? {};
@@ -110,6 +113,26 @@ function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
     detail.artifactNeed = artifactNeedsById.get(question.id);
   }
   if (question.review?.status) detail.review = { status: question.review.status };
+  const classification = question.userFacingDraft?.reviewedClassification;
+  if (classification) {
+    detail.auditClassification = classification.original;
+    detail.domain = classification.domain;
+    detail.competencyIds = classification.competencyIds;
+    detail.competencyLabel = classification.competencyLabel;
+  }
+  const format = question.userFacingDraft?.reviewedFormat;
+  if (format) {
+    detail.auditRecommendedFormat = detail.recommendedFormat;
+    detail.recommendedFormat = {
+      format: format.format, interaction: format.interaction,
+      reason: 'The saved question asks for two separate decisions within one scenario.',
+      rewritePrompt: detail.userFacingDraft.prompt,
+      sampleParts: detail.userFacingDraft.parts.map(part => ({
+        prompt: part.prompt,
+        expectedEvidence: part.options.filter(option => part.correctOptionIds.includes(option.id)).map(option => option.label).join(' '),
+      })),
+    };
+  }
   return detail;
 }
 
@@ -118,6 +141,7 @@ function buildDetail(question, sourceInventory, sourceBank, artifactNeedsById) {
 function buildIndexRecord(detail) {
   const record = {
     id: detail.id,
+    version: detail.version ?? (detail.sourceInventory === 'live' ? 'live-bank' : null),
     version: detail.version ?? inventoryVersionForView,
     domain: detail.domain,
     difficulty: detail.difficulty,
@@ -153,11 +177,18 @@ function main() {
   }
 
   const draft = readJson(draftPath);
-  const previous = fs.existsSync(previousPath) ? readJson(previousPath) : null;
   inventoryVersionForView = draft.inventoryVersion;
   const live = fs.existsSync(livePath) ? readJson(livePath) : null;
   const artifactNeeds = fs.existsSync(artifactNeedsPath) ? readJson(artifactNeedsPath) : null;
   const artifactNeedsById = new Map((artifactNeeds?.candidates ?? []).map((candidate) => [candidate.id, candidate]));
+  const versions = fs.existsSync(versionsPath) ? readJson(versionsPath) : { latest: null, versions: [] };
+  // Validate snapshots before replacing any generated output.
+  const snapshots = versions.versions.map(entry => {
+    if (!/^\d{4}\.\d{2}\.\d{2}-V\.\d+$/.test(entry.id) || entry.snapshot !== `versions/${entry.id}.json`) throw new Error('Invalid review version path');
+    const contents = fs.readFileSync(path.join(exportsDir, entry.snapshot), 'utf8');
+    if (createHash('sha256').update(contents).digest('hex') !== entry.sha256) throw new Error(`Saved review version changed: ${entry.version}`);
+    return { entry, snapshot: JSON.parse(contents) };
+  });
 
   fs.rmSync(outputDir, { recursive: true, force: true });
   fs.mkdirSync(detailDir, { recursive: true });
@@ -174,21 +205,21 @@ function main() {
   writeAll(draft.questions, 'draft', 'New draft review inventory');
   writeAll(live?.questions ?? [], 'live', 'Existing live bank');
 
-  if (previous) {
-    const versionDir = path.join(outputDir, 'versions', previousVersion);
-    const versionDetailDir = path.join(versionDir, 'detail');
-    fs.mkdirSync(versionDetailDir, { recursive: true });
-    const previousIndex = [];
-    for (const question of previous.questions) {
-      const detail = buildDetail(question, 'draft', 'Previous draft review inventory', artifactNeedsById);
-      fs.writeFileSync(path.join(versionDetailDir, `${safeFileName(detail.id)}.json`), JSON.stringify(detail));
-      previousIndex.push(buildIndexRecord(detail));
-    }
-    fs.writeFileSync(path.join(versionDir, 'index.json'), JSON.stringify(previousIndex));
+  for (const { entry, snapshot } of snapshots) {
+    const versionDirectory = path.join(outputDir, 'versions', entry.id);
+    fs.mkdirSync(path.join(versionDirectory, 'detail'), { recursive: true });
+    const versionIndex = snapshot.questions.map(question => {
+      const detail = buildDetail(question, question.sourceInventory, question.sourceBank, new Map());
+      fs.writeFileSync(path.join(versionDirectory, 'detail', `${safeFileName(detail.id)}.json`), JSON.stringify(detail));
+      return buildIndexRecord(detail);
+    });
+    fs.writeFileSync(path.join(versionDirectory, 'index.json'), JSON.stringify(versionIndex));
   }
 
   const summary = {
     inventoryVersion: draft.inventoryVersion,
+    latestReviewVersion: versions.latest,
+    reviewVersions: versions.versions.map(({ id, version, draftCount, liveCount, artifactCounts }) => ({ id, version, draftCount, liveCount, artifactCounts })),
     status: draft.status,
     liveIntegration: draft.liveIntegration ?? false,
     draftCount: draft.questions.length,
