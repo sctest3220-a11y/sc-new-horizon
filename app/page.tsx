@@ -19,14 +19,23 @@ type AssessmentDisplaySettings = {
   showPsychometrics: boolean;
   showAnswerReveal: boolean;
 };
+type ReportAccessSettings = {
+  free: { summary: boolean; recommendations: boolean; history: boolean };
+  paid: { detailedBreakdown: boolean; questionAnalysis: boolean; benchmarks: boolean; advancedRecommendations: boolean; telemetry: boolean; psychometrics: boolean; exports: boolean };
+};
 const ASSESSMENT_DISPLAY_SETTINGS_KEY = 'new-horizon-assessment-display-v1';
 const defaultAssessmentDisplaySettings: AssessmentDisplaySettings = {
-  showQuestionMeta: true,
-  showTelemetry: true,
+  showQuestionMeta: false,
+  showTelemetry: false,
   showFocus: true,
-  showScoredEvidence: true,
-  showPsychometrics: true,
-  showAnswerReveal: true,
+  showScoredEvidence: false,
+  showPsychometrics: false,
+  showAnswerReveal: false,
+};
+const REPORT_ACCESS_SETTINGS_KEY = 'new-horizon-report-access-v1';
+const defaultReportAccessSettings: ReportAccessSettings = {
+  free: { summary: true, recommendations: true, history: false },
+  paid: { detailedBreakdown: true, questionAnalysis: true, benchmarks: true, advancedRecommendations: true, telemetry: false, psychometrics: false, exports: true },
 };
 type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'sales' | 'customerService' | 'technical' | 'operations';
 type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
@@ -13089,6 +13098,7 @@ export default function Home() {
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai, setShowDraftThai] = useState(false);
   const [assessmentDisplaySettings, setAssessmentDisplaySettings] = useState(defaultAssessmentDisplaySettings);
+  const [reportAccessSettings, setReportAccessSettings] = useState(defaultReportAccessSettings);
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(null);
@@ -13120,6 +13130,7 @@ export default function Home() {
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
   const [homeMoreOpen, setHomeMoreOpen] = useState(false);
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
+  const paidReport = mode !== 'free';
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(allAssessmentItems[0]);
@@ -13194,6 +13205,28 @@ export default function Home() {
       window.cancelAnimationFrame(frame);
       window.removeEventListener('storage', onStorage);
     };
+  }, [step]);
+
+  useEffect(() => {
+    const loadReportAccess = (serialized: string | null) => {
+      if (!serialized) {
+        setReportAccessSettings(defaultReportAccessSettings);
+        return;
+      }
+      try {
+        const parsed = JSON.parse(serialized) as Partial<ReportAccessSettings>;
+        setReportAccessSettings({ ...defaultReportAccessSettings, ...parsed, free: { ...defaultReportAccessSettings.free, ...parsed.free }, paid: { ...defaultReportAccessSettings.paid, ...parsed.paid } });
+      } catch {
+        window.localStorage.removeItem(REPORT_ACCESS_SETTINGS_KEY);
+        setReportAccessSettings(defaultReportAccessSettings);
+      }
+    };
+    loadReportAccess(window.localStorage.getItem(REPORT_ACCESS_SETTINGS_KEY));
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === REPORT_ACCESS_SETTINGS_KEY) loadReportAccess(event.newValue);
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, [step]);
 
   const activeConfig = useMemo(
@@ -16610,7 +16643,7 @@ export default function Home() {
             >
               Summary
             </button>
-            <button
+            {paidReport && reportAccessSettings.paid.questionAnalysis && (<button
               type="button"
               role="tab"
               aria-selected={reportTab === 'analysis'}
@@ -16618,9 +16651,10 @@ export default function Home() {
               onClick={() => setReportTab('analysis')}
             >
               Question review
-            </button>
+            </button>)}
           </div>
-          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
+          {!paidReport && <article className="result-card wide report-locked-card"><p className="eyebrow">More insight available</p><h2>Unlock the detailed assessment report</h2><p>Your basic report includes your score and practical next steps. Detailed question analysis, benchmarks, and advanced recommendations can be enabled for paid users by the administrator.</p></article>}
+          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'} ${paidReport ? 'plan-paid' : 'plan-free'} ${paidReport && reportAccessSettings.paid.questionAnalysis ? 'report-access-analysis' : 'report-access-no-analysis'}`}>
             <article className="result-card wide comparison-note report-primary report-order-summary">
               <h2>Score interpretation</h2>
               <div className="evidence-grid">

@@ -126,6 +126,14 @@
 .pilot-toggle i::after { background: #fff; border-radius: 50%; content: ''; height: 18px; left: 3px; position: absolute; top: 3px; transition: .2s; width: 18px; }
 .pilot-toggle input:checked + i { background: #327b65; }
 .pilot-toggle input:checked + i::after { transform: translateX(18px); }
+.pilot-report-plan-grid { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pilot-report-plan-grid > div { background: #f7faf8; border: 1px solid #e2e9e5; border-radius: 6px; padding: 0 16px; }
+.pilot-report-plan-grid h3 { color: #21483c; font-size: 14px; margin: 16px 0 0; }
+.report-locked-card { background: #f4faf7; border-color: #cfe3d9; margin: 18px 0; }
+.report-locked-card h2 { margin: 0 0 8px; }
+.report-locked-card p:last-child { color: var(--muted); margin-bottom: 0; }
+.plan-free .analysis-primary,
+.report-access-no-analysis .analysis-primary { display: none; }
 
 .pilot-table-wrap { overflow-x: auto; }
 .pilot-table { border-collapse: collapse; min-width: 900px; width: 100%; }
@@ -168,7 +176,7 @@
   .pilot-save-state small { display: none; }
   .pilot-ops-heading { align-items: flex-start; flex-direction: column; }
   .pilot-kpis { grid-template-columns: repeat(2, 1fr); }
-  .pilot-overview-grid, .pilot-settings-layout { grid-template-columns: 1fr; }
+  .pilot-overview-grid, .pilot-settings-layout, .pilot-report-plan-grid { grid-template-columns: 1fr; }
   .pilot-panel-wide { grid-column: auto; }
   .pilot-boundary-grid { grid-template-columns: 1fr; }
 }

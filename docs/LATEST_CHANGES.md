@@ -1,5 +1,14 @@
 # Latest Changes
 
+## Assessment visibility and plan-based reporting — 10 October 2026
+
+- Added Pilot Operations controls for user-facing assessment diagnostics: question metadata, telemetry, scored evidence, psychometrics, and answer reveals can be enabled or hidden independently.
+- Changed the default user experience to show basic questions without telemetry, psychometric details, internal scoring metadata, or answer reveals; hidden diagnostics remain active for scoring, adaptive routing, and admin analysis.
+- Added Free report and Paid/Freemium report controls for summaries, recommendations, history, detailed breakdowns, question analysis, benchmarks, advanced recommendations, telemetry details, psychometrics, and exports.
+- Added a basic-report upgrade state for users who do not have the detailed report entitlement.
+- Documented the retention and production-security rule: hidden diagnostic data must remain protected server-side and must not merely be hidden in the browser.
+- Targeted ESLint passes for the changed pages. Full TypeScript validation continues to report pre-existing errors in unrelated inventory and platform files.
+
 ## Append-only assessment release 2026-10-07.1
 
 - Added 229 bilingual rewritten/retranslated questions to the assessment source.
