@@ -48,6 +48,7 @@ jobs:
           # The 889-question release contains more files than the runner's
           # default descriptor limit, so raise it before starting the worker.
           ulimit -n 65536 || true
+          pnpm exec wrangler d1 execute new-horizon-inventory-results --config work/inventory-cloudflare/wrangler.json --local --file app/api/results/schema.sql
           pnpm exec wrangler dev --config work/inventory-cloudflare/dist/server/wrangler.json --port 4174 > /tmp/inventory-worker.log 2>&1 &
           worker_pid=$!
           trap 'kill "$worker_pid" || true' EXIT
