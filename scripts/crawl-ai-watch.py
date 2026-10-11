@@ -140,6 +140,23 @@ def discover(body, source):
     return result
 
 
+def coverage_report(lanes, candidates, observed_ids):
+    """Count this run's observations, not stale candidates from earlier runs."""
+    observed = set(observed_ids)
+    counts = {lane: 0 for lane in lanes}
+    for item in candidates:
+        if item['id'] in observed:
+            for lane in set(item['lanes']) & counts.keys():
+                counts[lane] += 1
+    return {
+        'observedByLane': counts,
+        'investigations': [
+            {'lane': lane, 'reason': 'No candidates observed in this run'}
+            for lane, count in counts.items() if count == 0
+        ],
+    }
+
+
 def main():
     config = json.loads((ROOT / 'config/ai-watch-discovery.json').read_text())
     now = datetime.now(timezone.utc).isoformat()
@@ -187,6 +204,7 @@ def main():
             report['errors'].append({'url': source['url'], 'error': str(error)[:300]})
         reports.append(report)
     result = {'runAt': now, 'mode': 'manual-discovery-only', 'instructionsVersion': config['version'], 'newOrChanged': changes, 'observedIds': sorted(set(found)), 'sources': reports, 'candidates': sorted(candidates.values(), key=lambda item: item['id'])}
+    result['coverage'] = coverage_report(config['lanes'], result['candidates'], found)
     serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
     temporary = output / 'latest.tmp'
     temporary.write_text(serialized); temporary.replace(previous_path)
