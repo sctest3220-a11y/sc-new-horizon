@@ -6,6 +6,7 @@ on:
       - 'exports/review-inventory/**'
       - 'public/stimuli/**'
       - 'app/admin/question-inventory/**'
+      - 'app/api/results/**'
       - 'app/globals.css'
       - 'deploy/inventory-preview/**'
       - 'scripts/*inventory*.mjs'
@@ -44,12 +45,11 @@ jobs:
       - name: Test built Worker
         shell: bash
         run: |
-          # Wrangler watches the generated inventory assets in local mode.
-          # The 889-question release contains more files than the runner's
-          # default descriptor limit, so raise it before starting the worker.
+          # Poll the generated asset tree to avoid one filesystem watcher per
+          # detail file; retain a generous descriptor limit for Worker modules.
           ulimit -n 65536 || true
           pnpm exec wrangler d1 execute new-horizon-inventory-results --config work/inventory-cloudflare/dist/server/wrangler.json --local --file app/api/results/schema.sql
-          pnpm exec wrangler dev --config work/inventory-cloudflare/dist/server/wrangler.json --port 4174 > /tmp/inventory-worker.log 2>&1 &
+          CHOKIDAR_USEPOLLING=1 pnpm exec wrangler dev --config work/inventory-cloudflare/dist/server/wrangler.json --port 4174 > /tmp/inventory-worker.log 2>&1 &
           worker_pid=$!
           trap 'kill "$worker_pid" || true' EXIT
           for attempt in {1..60}; do
@@ -119,6 +119,7 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Set CLOUDFLARE_API_TOKEN in the inventory-testing environment'; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'Set CLOUDFLARE_ACCOUNT_ID in the inventory-testing environment'; exit 1; }
+          pnpm exec wrangler d1 execute new-horizon-inventory-results --config work/inventory-cloudflare/dist/server/wrangler.json --remote --file app/api/results/schema.sql
           pnpm exec wrangler deploy --config work/inventory-cloudflare/dist/server/wrangler.json
       - name: Verify deployed release
         if: steps.current.outputs.deploy == 'true'
@@ -132,7 +133,14 @@ jobs:
             try {
               const response = await fetch(`${url}/review-release.json`, { cache: 'no-store' });
               const actual = await response.json();
-              if (actual.releaseId === expected.releaseId) { success = true; break; }
+              if (actual.releaseId === expected.releaseId) {
+                const page = await fetch(`${url}/admin/question-inventory`);
+                if (!page.ok || !(await page.text()).includes('data-question-id=')) throw new Error('Deployed inventory did not render questions');
+                const feedback = await fetch(`${url}/api/results?feedback=all&contentVersion=${expected.contentVersion}`);
+                if (!feedback.ok || !Array.isArray((await feedback.json()).entries)) throw new Error('Deployed feedback storage unavailable');
+                success = true;
+                break;
+              }
             } catch {}
             await new Promise(resolve => setTimeout(resolve, 5000));
           }

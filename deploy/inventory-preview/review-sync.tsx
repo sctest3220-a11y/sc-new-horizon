@@ -17,14 +17,14 @@ export function ReviewSync() {
     async function check() {
       try {
         const response = await fetch('/review-release.json', { cache: 'no-store' });
-        if (response.ok) setNewRelease((await response.json()).releaseId !== release.releaseId);
+        if (response.ok) setNewRelease(((await response.json()) as { releaseId: string }).releaseId !== release.releaseId);
       } catch { /* Offline reviewers may still export locally saved feedback. */ }
     }
     void check();
     window.addEventListener('focus', check);
     return () => window.removeEventListener('focus', check);
   }, []);
-  function download() {
+  async function download() {
     try {
       const versions: Record<string, Record<string, unknown>> = {};
       const legacy: Record<string, unknown> = {};
@@ -39,6 +39,14 @@ export function ReviewSync() {
           const [, version, ...id] = key.split(':');
           (versions[version] ??= {})[id.join(':')] = question;
         }
+      }
+      const response = await fetch(`/api/results?feedback=all&contentVersion=${release.contentVersion}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error('Hosted feedback could not be downloaded. Please retry.');
+      const data = await response.json() as { entries?: Array<{ id: string; questionId: string; savedAt: string }> };
+      const current = versions[release.contentVersion] ??= {};
+      for (const entry of data.entries ?? []) {
+        const question = (current[entry.questionId] ??= { entries: [] }) as { entries: Array<{ id: string }> };
+        if (!question.entries.some(saved => saved.id === entry.id)) question.entries.push(entry);
       }
       const batches = Object.entries(versions).map(([version, questions]) => ({
         release: version === release.contentVersion ? release : JSON.parse(localStorage.getItem(`${manifestPrefix}${version}`) || 'null'),

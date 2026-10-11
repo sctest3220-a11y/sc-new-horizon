@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { reviewContentVersion } from './review-version';
 
 type ReviewSummary = {
   count: number;
@@ -22,7 +23,7 @@ const emptySummary: ReviewSummary = {
 async function readSummary(questionId: string): Promise<ReviewSummary> {
   if (typeof window === 'undefined') return emptySummary;
   try {
-    const response = await fetch(`/api/results?questionId=${encodeURIComponent(questionId)}`);
+    const response = await fetch(`/api/results?questionId=${encodeURIComponent(questionId)}&contentVersion=${reviewContentVersion}`);
     if (!response.ok) return emptySummary;
     const parsed = await response.json() as { entries?: Array<{ decision?: string; rating?: string; clarity?: string; artifact?: string; savedAt?: string }> };
     const entries = parsed.entries ?? [];
@@ -126,7 +127,8 @@ export function ReviewFilterControls({ questionIds }: { questionIds: string[] })
   }, [decisionFilter, ids, ratingFilter, reviewCountFilter]);
 
   useEffect(() => {
-    fetch('/api/results?feedback=all', { cache: 'no-store' }).then((response) => response.ok ? response.json() : null).then((data: { entries?: Array<{ questionId?: string; rating?: number; decision?: string }> } | null) => {
+    fetch(`/api/results?feedback=all&contentVersion=${reviewContentVersion}`, { cache: 'no-store' }).then((response) => response.ok ? response.json() : null).then((raw) => {
+      const data = raw as { entries?: Array<{ questionId?: string; rating?: number; decision?: string }> } | null;
       if (!data) return;
       const grouped = new Map<string, Array<{ rating?: number; decision?: string }>>();
       for (const entry of data.entries ?? []) if (entry.questionId) (grouped.get(entry.questionId) ?? (grouped.set(entry.questionId, []), grouped.get(entry.questionId)!)).push(entry);
@@ -139,10 +141,11 @@ export function ReviewFilterControls({ questionIds }: { questionIds: string[] })
         if (countMatch && ratingMatch && decisionMatch) matches.push(id);
       }
       setGlobalMatches(matches); setGlobalMatchCount(matches.length);
-      fetch('/review-inventory/index.json', { cache: 'no-store' }).then((response) => response.ok ? response.json() : []).then((all: FullQuestion[]) => {
+      fetch('/review-inventory/index.json', { cache: 'no-store' }).then((response) => response.ok ? response.json() : []).then((raw) => {
+        const all = raw as FullQuestion[];
         const wanted = new Set(matches); const selected = all.filter((question) => wanted.has(question.id)).slice(0, 25);
         setGlobalQuestions(selected);
-        return Promise.all(selected.map((question) => fetch(`/review-inventory/detail/${encodeURIComponent(question.id)}.json`, { cache: 'no-store' }).then((response) => response.ok ? response.json() : question).then((detail) => detail?.prompt ? detail : question).catch(() => question)));
+        return Promise.all(selected.map((question) => fetch(`/review-inventory/detail/${encodeURIComponent(question.id)}.json`, { cache: 'no-store' }).then((response) => response.ok ? response.json() : question).then((raw) => { const detail = raw as FullQuestion; return detail?.prompt ? detail : question; }).catch(() => question)));
       }).then((selected) => setGlobalQuestions(selected as FullQuestion[]))
       .catch(() => setGlobalQuestions([]));
     }).catch(() => setGlobalMatches([]));

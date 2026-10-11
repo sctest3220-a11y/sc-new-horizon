@@ -8,7 +8,7 @@ Worker: `new-horizon-question-inventory-test`. Cloudflare version at first publi
 
 This is a public, inventory-only technical preview of draft content, not the external feedback pilot described in QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md. It contains 3,328 draft and 634 existing inventory questions. Rewrite, translation, rubric, and artifact readiness gates still apply before a formal pilot. Robots indexing is discouraged; there is no authentication or access restriction.
 
-Feedback is stored in browser localStorage on the hosted origin. It is not shared between reviewers, devices, or the localhost site. Download feedback JSON to retain submitted reviews; downloads include release metadata and source hashes, and exclude unsubmitted drafts. No repository feedback files, credentials, or main assessment/admin routes are shipped. The existing managed New Horizon site is separate.
+Submitted feedback is stored in the hosted D1 database, keyed by content fingerprint and question ID. Browsers also retain a local export copy. Download feedback JSON combines current hosted reviews with saved browser archives, includes release metadata and source hashes, and excludes unsubmitted drafts. The preview remains public; reviewer aliases are not authenticated identities. No repository feedback files, credentials, or main assessment/admin routes are shipped. The existing managed New Horizon site is separate.
 
 ## Build and deploy
 
@@ -20,7 +20,7 @@ npx wrangler login
 npx wrangler deploy --config work/inventory-cloudflare/dist/server/wrangler.json
 ```
 
-The builder recreates the disposable `work/inventory-cloudflare` directory from an allowlist. It uses Cloudflare's ASSETS binding to load question JSON and standard page navigation for the isolated preview. Do not deploy the main app's `dist/server/wrangler.json` for inventory-only updates. Select the intended Cloudflare account when publishing.
+The builder recreates the disposable `work/inventory-cloudflare` directory from an allowlist, type-checks that isolated application, and builds the Worker and static assets. Do not deploy the main app's `dist/server/wrangler.json` for inventory-only updates. Select the intended Cloudflare account when publishing. Apply `app/api/results/schema.sql` to the bound D1 database before publishing; the workflow does this with idempotent `CREATE TABLE/INDEX IF NOT EXISTS` statements.
 
 ## Verify
 
@@ -30,11 +30,11 @@ npm run inventory:cloudflare:test
 TEST_URL=https://new-horizon-question-inventory-test.new-horizon-sc.workers.dev npm run inventory:cloudflare:test
 ```
 
-The smoke test uses an isolated browser context, checks question rendering, saved-feedback persistence, JSON export without drafts, Thai navigation, search, visible media, and the absence of `/admin`. Its test feedback is never uploaded to a shared store. Production build and targeted ESLint checks also pass. Baseline inventory TypeScript issues remain outside this hosting task.
+The smoke test uses an isolated browser context and local D1 database. It checks question rendering, saved-feedback persistence, JSON export without drafts, Thai navigation, search, visible media, and the absence of `/admin`. Run it locally rather than against the shared preview because it writes test feedback. The isolated inventory application must pass TypeScript before bundling.
 
 Live HTTPS browser verification passed after the new domain finished provisioning: question rendering, saved feedback after reload, JSON export, Thai navigation, question search, `/admin` returning 404, and no browser runtime errors.
 
-The current release metadata is available at `/review-release.json`. Future centralized feedback requires a storage service and reviewer/access model; it is not implemented in this testing deployment.
+The current release metadata is available at `/review-release.json`. Centralized feedback uses D1; authenticated reviewer access remains future work.
 
 ## Updates from collaborators
 
@@ -77,4 +77,12 @@ This produces `exports/review-feedback/cloudflare/tester-alias.json`. Inspect it
 
 This repository is public: inspect review text and remove private information before committing. Review decisions remain feedback until a collaborator explicitly updates the question source and merges a rewrite PR.
 
-For automatic collection later, use authenticated reviewer submissions to a Cloudflare database, followed by a maintainer-only export/import job or feedback PR. Keep GitHub write credentials out of the browser and public Worker. That database and synchronization job are not part of the current implementation.
+Hosted collection now uses the Cloudflare database. A maintainer-only automatic export/import job and authenticated reviewer submissions remain future work. Keep GitHub write credentials out of the browser and public Worker.
+
+## Main-branch CI repair — 2026-10-11
+
+The merge left `previousVersionById` referenced but undeclared, causing an HTTP 500 whenever a question rendered. Restore the previous-version assets and lookup, use the selected snapshot's detail directory, and keep 20 questions per page. The earlier one-question workaround did not address the cause.
+
+The review form also posted `question_feedback` to an API that only stored assessment results. The API now stores and reads version-scoped feedback separately, and the form reports success only after persistence succeeds. Exports read the hosted entries and preserve legacy browser archives.
+
+The release builder now runs TypeScript before bundling. The browser smoke test covers a full page, save/reload, feedback access from a fresh browser, version isolation, exports without drafts, Thai navigation, search, saved snapshots, media, and the absent `/admin` route. Run it against a local Worker/database; it writes test feedback. Wrangler uses polling in CI to avoid exhausting file watchers.

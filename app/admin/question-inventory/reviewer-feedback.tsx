@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { reviewContentVersion } from './review-version';
 
 type FeedbackState = {
   decision: string;
@@ -32,16 +33,16 @@ function blankFeedback(): FeedbackState {
 }
 
 export function ReviewerFeedback({ questionId }: { questionId: string }) {
-  // Start empty on both server and client, then load from localStorage after
-  // mount: reading it during render made the hydrated HTML differ from the
-  // server's whenever this browser already held feedback for the question.
+  // Start empty on server and client, then load version-scoped hosted feedback.
   const [feedback, setFeedback] = useState<FeedbackState>(blankFeedback);
   const [entries, setEntries] = useState<SavedFeedbackEntry[]>([]);
   const [savedAt, setSavedAt] = useState('');
   const [historyOrder, setHistoryOrder] = useState<'newest' | 'oldest'>('newest');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`/api/results?questionId=${encodeURIComponent(questionId)}`).then((response) => response.ok ? response.json() : null).then((data) => {
+    fetch(`/api/results?questionId=${encodeURIComponent(questionId)}&contentVersion=${reviewContentVersion}`).then((response) => response.ok ? response.json() : null).then((data) => {
       if (!data) return;
       const next = ((data as { entries?: SavedFeedbackEntry[] }).entries ?? []);
       setEntries(next); setSavedAt(next[0]?.savedAt ?? '');
@@ -53,26 +54,38 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
     setFeedback(next);
   }
 
-  function saveEntry() {
-    const timestamp = new Date().toISOString();
-    const nextEntries = [{ ...feedback, id: timestamp, savedAt: timestamp }, ...entries];
-    const nextDraft = blankFeedback();
-    setEntries(nextEntries);
-    setFeedback(nextDraft);
-    setSavedAt(timestamp);
-    fetch('/api/results', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'question_feedback', questionId, ...feedback }) })
-      .then(() => window.dispatchEvent(new CustomEvent('new-horizon-review-updated', { detail: { questionId } })))
-      .catch(() => undefined);
+  async function saveEntry() {
+    if (saving) return;
+    setSaving(true);
+    setError('');
+    try {
+      const response = await fetch('/api/results', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'question_feedback', questionId, contentVersion: reviewContentVersion, ...feedback }) });
+      if (!response.ok) throw new Error('Feedback could not be saved. Please retry.');
+      const { entry } = await response.json() as { entry: SavedFeedbackEntry };
+      const nextEntries = [entry, ...entries];
+      setEntries(nextEntries);
+      setFeedback(blankFeedback());
+      setSavedAt(entry.savedAt);
+      try {
+        localStorage.setItem(`new-horizon-review-v2:${reviewContentVersion}:${questionId}`, JSON.stringify({ entries: nextEntries, updatedAt: entry.savedAt }));
+      } catch { /* The hosted copy remains saved when browser storage is full. */ }
+      window.dispatchEvent(new CustomEvent('new-horizon-review-updated', { detail: { questionId } }));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Feedback could not be saved. Please retry.');
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
     <section className="reviewer-feedback">
+      {error && <p role="alert">{error}</p>}
       <div className="reviewer-feedback-heading">
         <div>
           <span>Reviewer feedback</span>
           <strong>Hosted feedback for this question</strong>
         </div>
-        <small>{savedAt ? `Draft autosaved ${new Date(savedAt).toLocaleString()}` : 'No draft yet'}</small>
+        <small>{savedAt ? `Review saved ${new Date(savedAt).toLocaleString()}` : 'No saved review yet'}</small>
       </div>
       <div className="reviewer-rating-panel" aria-label="Question rating">
         <span>Question rating</span>
@@ -142,7 +155,7 @@ export function ReviewerFeedback({ questionId }: { questionId: string }) {
         <textarea value={feedback.suggestedChange} onChange={(event) => update({ suggestedChange: event.target.value })} placeholder="Rewrite idea, artifact request, scoring note, or reason to reject." />
       </label>
       <div className="reviewer-feedback-actions">
-        <button type="button" onClick={saveEntry}>Save review</button>
+        <button type="button" onClick={saveEntry} disabled={saving}>{saving ? 'Saving…' : 'Save review'}</button>
         <span>Saving records this review in the hosted database and clears the editable fields.</span>
       </div>
       {entries.length ? (
