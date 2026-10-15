@@ -89,6 +89,10 @@ The agreed marketing examples and their limitations are recorded in [campaign ar
 7. Independently calculate all displayed totals, percentages, rates, ratios, costs, and differences. Record the calculation check during review.
 8. Check that the artifact's evidence supports the scope of the proposed action. Evidence suitable for a bounded pilot may not justify automatic execution or full-scale deployment.
 
+## Focus and cognitive load
+
+Artifacts must help the user find the evidence needed for one clear decision without creating unnecessary search work. Prefer the smallest artifact that preserves realism and answerability. Remove decorative panels, unrelated metadata, duplicate text, extra timestamps, redundant workflow steps, and visual styling that competes with the decision. If a detail does not support the scenario, a plausible distractor, or the keyed evidence, omit it. During QA, review the artifact at inline size and ask whether a user can identify the decision-relevant evidence quickly; if not, simplify, split, or replace it.
+
 ## Readability
 
 1. Use legible text, sufficient contrast, and a stable aspect ratio.

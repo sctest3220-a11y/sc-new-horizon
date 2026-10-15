@@ -126,6 +126,14 @@
 .pilot-toggle i::after { background: #fff; border-radius: 50%; content: ''; height: 18px; left: 3px; position: absolute; top: 3px; transition: .2s; width: 18px; }
 .pilot-toggle input:checked + i { background: #327b65; }
 .pilot-toggle input:checked + i::after { transform: translateX(18px); }
+.pilot-report-plan-grid { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pilot-report-plan-grid > div { background: #f7faf8; border: 1px solid #e2e9e5; border-radius: 6px; padding: 0 16px; }
+.pilot-report-plan-grid h3 { color: #21483c; font-size: 14px; margin: 16px 0 0; }
+.report-locked-card { background: #f4faf7; border-color: #cfe3d9; margin: 18px 0; }
+.report-locked-card h2 { margin: 0 0 8px; }
+.report-locked-card p:last-child { color: var(--muted); margin-bottom: 0; }
+.plan-free .analysis-primary,
+.report-access-no-analysis .analysis-primary { display: none; }
 
 .pilot-table-wrap { overflow-x: auto; }
 .pilot-table { border-collapse: collapse; min-width: 900px; width: 100%; }
@@ -168,7 +176,7 @@
   .pilot-save-state small { display: none; }
   .pilot-ops-heading { align-items: flex-start; flex-direction: column; }
   .pilot-kpis { grid-template-columns: repeat(2, 1fr); }
-  .pilot-overview-grid, .pilot-settings-layout { grid-template-columns: 1fr; }
+  .pilot-overview-grid, .pilot-settings-layout, .pilot-report-plan-grid { grid-template-columns: 1fr; }
   .pilot-panel-wide { grid-column: auto; }
   .pilot-boundary-grid { grid-template-columns: 1fr; }
 }
@@ -7215,6 +7223,58 @@ h3 {
   grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.72fr);
 }
 
+.inventory-theme-toggle { border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; font-weight: 700; padding: 5px 9px; }
+[data-inventory-theme="dark"] .inventory-page { background: #111713; color: #e7eee9; }
+[data-inventory-theme="dark"] .inventory-page .inventory-panel, [data-inventory-theme="dark"] .inventory-page .inventory-question-card, [data-inventory-theme="dark"] .inventory-page .inventory-question-id, [data-inventory-theme="dark"] .inventory-page .inventory-artifact-note, [data-inventory-theme="dark"] .inventory-page .reviewer-feedback, [data-inventory-theme="dark"] .inventory-page .reviewer-feedback-history article { background: #19221c; color: #e7eee9; border-color: #39463f; }
+[data-inventory-theme="dark"] .inventory-page h1, [data-inventory-theme="dark"] .inventory-page h2, [data-inventory-theme="dark"] .inventory-page h3, [data-inventory-theme="dark"] .inventory-page strong, [data-inventory-theme="dark"] .inventory-page dt { color: #f3f7f4; }
+[data-inventory-theme="dark"] .inventory-page p, [data-inventory-theme="dark"] .inventory-page span, [data-inventory-theme="dark"] .inventory-page small, [data-inventory-theme="dark"] .inventory-page label, [data-inventory-theme="dark"] .inventory-page dd { color: #c9d6cd; }
+[data-inventory-theme="dark"] .inventory-page input, [data-inventory-theme="dark"] .inventory-page select, [data-inventory-theme="dark"] .inventory-page textarea { background: #101711; color: #f3f7f4; border-color: #53665a; }
+[data-inventory-theme="dark"] .inventory-page input::placeholder, [data-inventory-theme="dark"] .inventory-page textarea::placeholder { color: #aebeb4; opacity: 1; }
+[data-inventory-theme="dark"] .inventory-page option { background: #19221c; color: #f3f7f4; }
+[data-inventory-theme="dark"] .inventory-page button { color: #f3f7f4; border-color: #53665a; }
+[data-inventory-theme="dark"] .inventory-page .inventory-question-meta span, [data-inventory-theme="dark"] .inventory-page .reviewer-feedback-history small { color: #aebeb4; }
+[data-inventory-theme="dark"] .inventory-page .inventory-disclosure > summary, [data-inventory-theme="dark"] .inventory-page .inventory-question-id summary { color: #f3f7f4; }
+[data-inventory-theme="dark"] .inventory-page .inventory-app-header,
+[data-inventory-theme="dark"] .inventory-page .inventory-hero,
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis > div,
+[data-inventory-theme="dark"] .inventory-page .inventory-filter-result-panel,
+[data-inventory-theme="dark"] .inventory-page .inventory-review-filter-panel,
+[data-inventory-theme="dark"] .inventory-page .inventory-disclosure,
+[data-inventory-theme="dark"] .inventory-page .inventory-user-facing,
+[data-inventory-theme="dark"] .inventory-page .inventory-options li,
+[data-inventory-theme="dark"] .inventory-page .inventory-language-pane { background: #19221c !important; color: #e7eee9; border-color: #39463f; }
+[data-inventory-theme="dark"] .inventory-page .inventory-kpi-label, [data-inventory-theme="dark"] .inventory-page .eyebrow { color: #aebeb4; }
+[data-inventory-theme="dark"] .inventory-page .inventory-question-details,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-details summary,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-details dl,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-review-layout,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-meta,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-language,
+[data-inventory-theme="dark"] .inventory-page .inventory-review-stats,
+[data-inventory-theme="dark"] .inventory-page .reviewer-rating-panel,
+[data-inventory-theme="dark"] .inventory-page .reviewer-rating-panel > div,
+[data-inventory-theme="dark"] .inventory-page .reviewer-rating-panel button,
+[data-inventory-theme="dark"] .inventory-page .inventory-version-panel { background: #19221c !important; color: #e7eee9 !important; border-color: #39463f !important; }
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis,
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis > div,
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis strong,
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis small,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-details,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-details summary,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-meta,
+[data-inventory-theme="dark"] .inventory-page .inventory-question-meta span,
+[data-inventory-theme="dark"] .inventory-page .inventory-review-stats,
+[data-inventory-theme="dark"] .inventory-page .inventory-review-stats span { background: #19221c !important; color: #e7eee9 !important; border-color: #53665a !important; }
+[data-inventory-theme="dark"] .inventory-page .inventory-hero,
+[data-inventory-theme="dark"] .inventory-page .inventory-hero > div,
+[data-inventory-theme="dark"] .inventory-page .inventory-kpis,
+[data-inventory-theme="dark"] .inventory-page .inventory-format-note,
+[data-inventory-theme="dark"] .inventory-page .inventory-format-note strong,
+[data-inventory-theme="dark"] .inventory-page .inventory-format-note p,
+[data-inventory-theme="dark"] .inventory-page .inventory-format-note small,
+[data-inventory-theme="dark"] .inventory-page .inventory-format-note li { background: #19221c !important; color: #e7eee9 !important; border-color: #53665a !important; }
+[data-inventory-theme="dark"] .inventory-page .reviewer-rating-panel button.is-active { background: #397b5d !important; color: #ffffff !important; }
+
 .inventory-question-content {
   min-width: 0;
 }
@@ -7852,7 +7912,21 @@ h3 {
   border-top: 1px solid rgba(23, 33, 28, 0.1);
   display: grid;
   gap: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 6px;
   padding-top: 12px;
+}
+
+.reviewer-feedback-history-disclosure {
+  border-top: 1px solid rgba(23, 33, 28, 0.1);
+  padding-top: 10px;
+}
+
+.reviewer-feedback-history-disclosure summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #344239;
 }
 
 .reviewer-feedback-history article {
@@ -7919,6 +7993,8 @@ h3 {
   .reviewer-feedback-heading {
     display: grid;
   }
+  .inventory-question-review-layout { display: block; }
+  .reviewer-feedback { border-top: 1px solid var(--inventory-line, #d8d4ca); margin-top: 14px; padding-top: 14px; }
 }
 
 .inventory-question-id { margin: 0 0 1rem; border: 1px solid var(--inventory-line, #d8d4ca); border-radius: 10px; padding: .65rem .85rem; background: color-mix(in srgb, white 70%, transparent); }

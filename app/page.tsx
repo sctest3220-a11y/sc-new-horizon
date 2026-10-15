@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { questionTranslationsTh } from './questionTranslations.th';
+import { productionQuestionRelease } from './productionQuestionRelease';
 import WatchLabs from './watch-labs';
 import AwarenessFlash from './watch-awareness';
 import type { WatchStory as NewsFeedItem } from './watch-model';
@@ -10,6 +11,32 @@ type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
 type Audience = 'general' | 'student' | 'educator' | 'professional' | 'team';
 type Difficulty = 'awareness' | 'applied' | 'proficient' | 'advanced';
 type AssessmentMode = 'free' | 'premium' | 'executive' | 'practice';
+type AssessmentDisplaySettings = {
+  showQuestionMeta: boolean;
+  showTelemetry: boolean;
+  showFocus: boolean;
+  showScoredEvidence: boolean;
+  showPsychometrics: boolean;
+  showAnswerReveal: boolean;
+};
+type ReportAccessSettings = {
+  free: { summary: boolean; recommendations: boolean; history: boolean };
+  paid: { detailedBreakdown: boolean; questionAnalysis: boolean; benchmarks: boolean; advancedRecommendations: boolean; telemetry: boolean; psychometrics: boolean; exports: boolean };
+};
+const ASSESSMENT_DISPLAY_SETTINGS_KEY = 'new-horizon-assessment-display-v1';
+const defaultAssessmentDisplaySettings: AssessmentDisplaySettings = {
+  showQuestionMeta: false,
+  showTelemetry: false,
+  showFocus: true,
+  showScoredEvidence: false,
+  showPsychometrics: false,
+  showAnswerReveal: false,
+};
+const REPORT_ACCESS_SETTINGS_KEY = 'new-horizon-report-access-v1';
+const defaultReportAccessSettings: ReportAccessSettings = {
+  free: { summary: true, recommendations: true, history: false },
+  paid: { detailedBreakdown: true, questionAnalysis: true, benchmarks: true, advancedRecommendations: true, telemetry: false, psychometrics: false, exports: true },
+};
 type FunctionTrack = 'general' | 'people' | 'finance' | 'marketing' | 'sales' | 'customerService' | 'technical' | 'operations';
 type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'retail' | 'public';
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
@@ -6085,6 +6112,8 @@ const competencyDepthQuestionBank: Question[] = [
 ];
 
 const questionBank: Question[] = [
+  // Append the approved production release with versioned runtime IDs. Existing bank items remain intact.
+  ...(productionQuestionRelease as unknown as Question[]),
   ...generalRelianceQuestions,
   ...horizonRelianceQuestions,
   ...functionalQuestionBank,
@@ -12077,6 +12106,25 @@ function getDifficultyFromLastAnswer(answers: Answer[]) {
   return latest.question.difficulty;
 }
 
+const difficultyCoverageShares: Record<Difficulty, number> = {
+  awareness: 0.2,
+  applied: 0.3,
+  proficient: 0.3,
+  advanced: 0.2,
+};
+
+function getDifficultyCoverageNeed(answers: Answer[], totalQuestions: number) {
+  const counts = (['awareness', 'applied', 'proficient', 'advanced'] as Difficulty[]).reduce<Record<Difficulty, number>>((out, difficulty) => {
+    out[difficulty] = answers.filter((answer) => answer.question.difficulty === difficulty).length;
+    return out;
+  }, { awareness: 0, applied: 0, proficient: 0, advanced: 0 });
+  return (Object.keys(difficultyCoverageShares) as Difficulty[]).sort((left, right) => {
+    const leftNeed = Math.ceil(totalQuestions * difficultyCoverageShares[left]) - counts[left];
+    const rightNeed = Math.ceil(totalQuestions * difficultyCoverageShares[right]) - counts[right];
+    return rightNeed - leftNeed || difficultyValue[right] - difficultyValue[left];
+  })[0];
+}
+
 function chooseByDifficulty(candidates: Question[], targetDifficulty: Difficulty, seed: number) {
   const ranked = [...candidates].sort((left, right) => {
     const leftDistance = Math.abs(difficultyValue[left.difficulty] - difficultyValue[targetDifficulty]);
@@ -12255,7 +12303,23 @@ const thaiStimulusSources: Record<string, string> = {
 };
 
 function getTranslationStatus(question: Question): TranslationStatus | undefined {
-  return questionTranslationsTh[question.id]?.status ?? question.translationStatus;
+  if (questionTranslationsTh[question.id]?.status) return questionTranslationsTh[question.id].status;
+  if (question.translationStatus) return question.translationStatus;
+  // Some imported assessment records carry complete Thai beside the English but
+  // predate the status field. Treat only complete items as available; partial
+  // records must continue to show the disabled Thai control rather than mixing languages.
+  const optionsComplete = question.options.length > 0 && question.options.every((option) => option.labelTh);
+  const partsComplete = Boolean(
+    question.parts?.length &&
+    question.parts.every((part) => part.promptTh && part.options.length > 0 && part.options.every((option) => option.labelTh)),
+  );
+  const rankComplete = Boolean(question.rankItems?.length && question.rankItems.every((item) => item.labelTh));
+  const matchComplete = Boolean(
+    question.matchPairs?.length &&
+    question.matchPairs.every((pair) => pair.leftTh && pair.correctTh && pair.choicesTh?.length === pair.choices.length),
+  );
+  const hasCompleteInlineThai = Boolean(question.contextTh && question.promptTh && (optionsComplete || partsComplete || rankComplete || matchComplete));
+  return hasCompleteInlineThai ? 'reviewed' : undefined;
 }
 
 function localizeQuestion(question: Question, language: AppLanguage, includeDrafts = false): Question {
@@ -12406,6 +12470,13 @@ function selectNextQuestion(
   const selectableCandidates = cappedCandidates.length ? cappedCandidates : candidates;
   if (!selectableCandidates.length) return bank[seededValue(`${assessmentMode}-fallback`, seed) % bank.length];
   if (answers.length === 0) {
+    // Ensure the current append-only release is represented in every assessment run.
+    // Without this gate, the fixed legacy starter list can hide a valid new release
+    // indefinitely because the adaptive pool is much larger than the 229 additions.
+    const releaseStarterCandidates = selectableCandidates.filter((question) => question.id.endsWith('@2026-10-07.1'));
+    if (releaseStarterCandidates.length) {
+      return releaseStarterCandidates[seededValue(`${assessmentMode}-release-starter`, seed) % releaseStarterCandidates.length];
+    }
     const premiumStarterIds: Record<FunctionTrack, string[]> = {
       general: ['MULTI-CONCEPT-GEN-001', 'FUNC-GEN-D5-001', 'D3-PRO-010', 'D4-PRO-011'],
       people: ['FUNC-PEOPLE-D4-001'],
@@ -12437,14 +12508,16 @@ function selectNextQuestion(
     : 0;
   const sameDomainRun = consecutiveSameDomain === -1 ? answers.length : consecutiveSameDomain;
   const remainingSlots = (profile.totalQuestions ?? modeConfig[assessmentMode].totalQuestions) - answers.length;
+  const totalQuestions = profile.totalQuestions ?? modeConfig[assessmentMode].totalQuestions;
+  const coverageDifficulty = getDifficultyCoverageNeed(answers, totalQuestions);
   const unsampledDomainCount = (Object.keys(domains) as DomainId[]).filter((domain) => counts[domain].count === 0).length;
   const coverageAtRisk = unsampledDomainCount >= remainingSlots;
   const canRefineSameDomain = Boolean(latestAnswer) && sameDomainRun < 2 && !coverageAtRisk;
   const sameDomainCandidates = latestAnswer ? selectableCandidates.filter((question) => question.domain === latestAnswer.question.domain) : [];
   const sameDomainDifficultyCandidates = sameDomainCandidates.filter((question) => question.difficulty === targetDifficulty);
-  if (canRefineSameDomain && sameDomainDifficultyCandidates.length) return chooseByDifficulty(sameDomainDifficultyCandidates, targetDifficulty, seed);
+  if (canRefineSameDomain && coverageDifficulty === targetDifficulty && sameDomainDifficultyCandidates.length) return chooseByDifficulty(sameDomainDifficultyCandidates, targetDifficulty, seed);
   const sameDomainFallback = canRefineSameDomain ? chooseByDifficulty(sameDomainCandidates, targetDifficulty, seed) : undefined;
-  if (canRefineSameDomain && sameDomainFallback) return sameDomainFallback;
+  if (canRefineSameDomain && coverageDifficulty === targetDifficulty && sameDomainFallback) return sameDomainFallback;
   if (assessmentMode === 'executive') {
     const interactionCounts = answers.reduce(
       (acc, answer) => {
@@ -12469,8 +12542,9 @@ function selectNextQuestion(
       if (visualCount < 5 && hasHelpfulVisualEvidence(question)) rank += 18;
       if (question.type === 'reliance-decision') rank -= 28;
       if (flaggedQuestionIds.has(question.id)) rank -= 72;
-      if (latestScore < 55 && question.difficulty === 'awareness') rank += 34;
-      if (latestScore >= 82 && question.difficulty === 'proficient') rank += 34;
+    if (latestScore < 55 && question.difficulty === 'awareness') rank += 34;
+    if (latestScore >= 82 && question.difficulty === 'proficient') rank += 34;
+      if (question.difficulty === coverageDifficulty) rank += 46;
       return { question, rank };
     });
     return chooseFromAdaptiveTier(scoredCandidates, seed, answers.length);
@@ -12503,6 +12577,7 @@ function selectNextQuestion(
     if (flaggedQuestionIds.has(question.id)) rank -= 72;
     if (latestScore < 55 && question.difficulty === 'awareness') rank += 30;
     if (latestScore >= 82 && question.difficulty === 'proficient') rank += 30;
+    if (question.difficulty === coverageDifficulty) rank += 46;
     return { question, rank };
   });
   return chooseFromAdaptiveTier(scoredCandidates, seed, answers.length);
@@ -12965,6 +13040,8 @@ export default function Home() {
   const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai, setShowDraftThai] = useState(false);
+  const [assessmentDisplaySettings, setAssessmentDisplaySettings] = useState(defaultAssessmentDisplaySettings);
+  const [reportAccessSettings, setReportAccessSettings] = useState(defaultReportAccessSettings);
   const [mode, setMode] = useState<AssessmentMode>('free');
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [authProfile, setAuthProfile] = useState<AuthProfile | null>(null);
@@ -12996,6 +13073,13 @@ export default function Home() {
   const [selectedDemoDomain, setSelectedDemoDomain] = useState<DomainId>('D4');
   const [homeMoreOpen, setHomeMoreOpen] = useState(false);
   const [reportTab, setReportTab] = useState<'report' | 'analysis'>('report');
+  const paidReport = mode !== 'free';
+  const skipHiddenFeedback = !assessmentDisplaySettings.showQuestionMeta
+    && !assessmentDisplaySettings.showTelemetry
+    && !assessmentDisplaySettings.showFocus
+    && !assessmentDisplaySettings.showScoredEvidence
+    && !assessmentDisplaySettings.showPsychometrics
+    && !assessmentDisplaySettings.showAnswerReveal;
   const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(true);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [current, setCurrent] = useState<Question>(allAssessmentItems[0]);
@@ -13047,6 +13131,52 @@ export default function Home() {
     runId: 'agent-run-preview',
   }));
   const [selectedAgentId, setSelectedAgentId] = useState('orchestrator');
+
+  useEffect(() => {
+    const loadDisplaySettings = (serialized: string | null) => {
+      if (!serialized) {
+        setAssessmentDisplaySettings(defaultAssessmentDisplaySettings);
+        return;
+      }
+      try {
+        setAssessmentDisplaySettings({ ...defaultAssessmentDisplaySettings, ...JSON.parse(serialized) });
+      } catch {
+        window.localStorage.removeItem(ASSESSMENT_DISPLAY_SETTINGS_KEY);
+        setAssessmentDisplaySettings(defaultAssessmentDisplaySettings);
+      }
+    };
+    const frame = window.requestAnimationFrame(() => loadDisplaySettings(window.localStorage.getItem(ASSESSMENT_DISPLAY_SETTINGS_KEY)));
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === ASSESSMENT_DISPLAY_SETTINGS_KEY) loadDisplaySettings(event.newValue);
+    };
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener('storage', onStorage);
+    };
+  }, [step]);
+
+  useEffect(() => {
+    const loadReportAccess = (serialized: string | null) => {
+      if (!serialized) {
+        setReportAccessSettings(defaultReportAccessSettings);
+        return;
+      }
+      try {
+        const parsed = JSON.parse(serialized) as Partial<ReportAccessSettings>;
+        setReportAccessSettings({ ...defaultReportAccessSettings, ...parsed, free: { ...defaultReportAccessSettings.free, ...parsed.free }, paid: { ...defaultReportAccessSettings.paid, ...parsed.paid } });
+      } catch {
+        window.localStorage.removeItem(REPORT_ACCESS_SETTINGS_KEY);
+        setReportAccessSettings(defaultReportAccessSettings);
+      }
+    };
+    loadReportAccess(window.localStorage.getItem(REPORT_ACCESS_SETTINGS_KEY));
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === REPORT_ACCESS_SETTINGS_KEY) loadReportAccess(event.newValue);
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, [step]);
 
   const activeConfig = useMemo(
     () => ({ ...modeConfig[mode], totalQuestions: assessmentTargetTotal }),
@@ -14025,7 +14155,7 @@ export default function Home() {
         appendBehaviorEvent({ type: 'mandatory_completed', answeredCount: nextAnswers.length, requiredCount: modeConfig[mode].totalQuestions, targetCount: activeConfig.totalQuestions });
       }
       setPendingQuestion(null);
-      setStep('feedback');
+      setStep(skipHiddenFeedback ? 'results' : 'feedback');
       return;
     }
     const nextQuestion = selectNextQuestion(nextAnswers, mode, assessmentSeed, {
@@ -14039,6 +14169,13 @@ export default function Home() {
       flaggedQuestionIds: flaggedQualityQuestionIds,
     });
     setPendingQuestion(nextQuestion);
+    if (skipHiddenFeedback) {
+      setCurrent(nextQuestion);
+      setPendingQuestion(null);
+      resetInteractionState(nextQuestion, assessmentSeed, nextAnswers.length);
+      setStep('assessment');
+      return;
+    }
     setStep('feedback');
   }
 
@@ -15894,7 +16031,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="question-meta">
+              {assessmentDisplaySettings.showQuestionMeta && <div className="question-meta">
                 <span>
                   {current.domain}
                   <HelpBubble label="Telemetry help: domain">
@@ -15919,8 +16056,8 @@ export default function Home() {
                     Interaction format helps compare single choice, multi-select, matching, ranking, written, and multi-part questions fairly.
                   </HelpBubble>
                 </span>
-              </div>
-              <div className="live-telemetry-strip" aria-label="Live telemetry help">
+              </div>}
+              {assessmentDisplaySettings.showTelemetry && <div className="live-telemetry-strip" aria-label="Live telemetry help">
                 <span>
                   Time on question
                   <HelpBubble label="Telemetry help: time on question">
@@ -15939,13 +16076,13 @@ export default function Home() {
                     Opening, zooming, or launching artifacts flags which screenshots, workflows, or documents may need larger or clearer versions.
                   </HelpBubble>
                 </span>
-              </div>
-              <div className="question-focus-strip">
+              </div>}
+              {assessmentDisplaySettings.showFocus && <div className="question-focus-strip">
                 <span>{difficultyLabels[current.difficulty]} task</span>
                 <strong>{getQuestionFocus(current)}</strong>
                 <small>{difficultyDescriptions[current.difficulty]}</small>
-              </div>
-              <details className="measure-details">
+              </div>}
+              {assessmentDisplaySettings.showScoredEvidence && <details className="measure-details">
                 <summary>
                   <span>Scored evidence</span>
                   <strong>
@@ -15967,7 +16104,7 @@ export default function Home() {
                 <div className="skill-chip-row" aria-label="Scored skill tags">
                   {currentSkills.map((skill) => <span key={skill}>{skill}</span>)}
                 </div>
-              </details>
+              </details>}
               {useRelianceStage && current.type === 'reliance-decision' && (
                 <div className="reliance-stage">
                   <div>
@@ -16141,7 +16278,7 @@ export default function Home() {
               )}
               {renderQuestionFeedback(current)}
             </article>
-            <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
+            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
               <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
                 <span>
                   Current item difficulty
@@ -16218,7 +16355,7 @@ export default function Home() {
                   );
                 })}
               </div>
-            </aside>
+            </aside>}
           </div>
         </section>
       )}
@@ -16228,15 +16365,17 @@ export default function Home() {
           <div className="feedback-workbench">
             <article className="feedback-card">
               <p className="eyebrow">Answer review</p>
-              <h1>{lastAnswer.option.score}/100</h1>
-              <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
-              <div className="score-explanation-panel" aria-label="Score explanation">
+              {assessmentDisplaySettings.showAnswerReveal ? <>
+                <h1>{lastAnswer.option.score}/100</h1>
+                <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
+              </> : <p className="result-level">Answer recorded. Continue when you are ready.</p>}
+              {assessmentDisplaySettings.showAnswerReveal && <div className="score-explanation-panel" aria-label="Score explanation">
                 <span>Score explanation</span>
                 <p>{getRawScoreMethod(lastAnswer)}</p>
                 {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
                 <p><strong>Practice cue</strong> {getAnswerPracticeCue(lastAnswer)}</p>
-              </div>
-              <div className="feedback-grid">
+              </div>}
+              {assessmentDisplaySettings.showAnswerReveal && <div className="feedback-grid">
                 <div>
                   <span>Your answer</span>
                   <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).label}</p>
@@ -16245,13 +16384,13 @@ export default function Home() {
                   <span>Expected answer</span>
                   <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage, showDraftThai))}</p>
                 </div>
-              </div>
-              <div className="rubric-panel">
+              </div>}
+              {assessmentDisplaySettings.showAnswerReveal && <div className="rubric-panel">
                 <span>Rubric and calibration</span>
                 <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
                 <p>{localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).feedback}</p>
-              </div>
-              <div className="rubric-panel">
+              </div>}
+              {assessmentDisplaySettings.showAnswerReveal && assessmentDisplaySettings.showScoredEvidence && <div className="rubric-panel">
                 <span>Measured competencies</span>
                 <div className="measure-grid compact">
                   {getQuestionMeasures(lastAnswer.question).map((measure) => (
@@ -16262,8 +16401,8 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
-              {lastAnswer.question.rubricCriteria && (
+              </div>}
+              {assessmentDisplaySettings.showAnswerReveal && lastAnswer.question.rubricCriteria && (
                 <div className="criterion-list">
                   {lastAnswer.question.rubricCriteria.map((criterion) => {
                     const hit = lastAnswer.rubricHits?.some((rubricHit) => rubricHit.id === criterion.id);
@@ -16277,7 +16416,7 @@ export default function Home() {
                   })}
                 </div>
               )}
-              {renderQuestionFeedback(lastAnswer.question, 'reveal')}
+              {assessmentDisplaySettings.showAnswerReveal && renderQuestionFeedback(lastAnswer.question, 'reveal')}
               {!pendingQuestion && showContinuationPanel && (
                 <div className={`continue-callout ${continuationRecommendation.urgency}`}>
                   <p className="eyebrow">{continuationRecommendation.kicker}</p>
@@ -16327,7 +16466,7 @@ export default function Home() {
                 </div>
               )}
             </article>
-            <aside className="adaptive-panel" aria-label="Next adaptive step">
+            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Next adaptive step">
               <div className={`movement-card ${difficultyMovement.tone}`}>
                 <span>{difficultyMovement.label}</span>
                 <p>{difficultyMovement.detail}</p>
@@ -16416,7 +16555,7 @@ export default function Home() {
               <button className="primary submit-answer" onClick={continueAfterFeedback}>
                 {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
               </button>
-            </aside>
+            </aside>}
           </div>
         </section>
       )}
@@ -16462,7 +16601,7 @@ export default function Home() {
             >
               Summary
             </button>
-            <button
+            {paidReport && reportAccessSettings.paid.questionAnalysis && (<button
               type="button"
               role="tab"
               aria-selected={reportTab === 'analysis'}
@@ -16470,9 +16609,10 @@ export default function Home() {
               onClick={() => setReportTab('analysis')}
             >
               Question review
-            </button>
+            </button>)}
           </div>
-          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'}`}>
+          {!paidReport && <article className="result-card wide report-locked-card"><p className="eyebrow">More insight available</p><h2>Unlock the detailed assessment report</h2><p>Your basic report includes your score and practical next steps. Detailed question analysis, benchmarks, and advanced recommendations can be enabled for paid users by the administrator.</p></article>}
+          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'} ${paidReport ? 'plan-paid' : 'plan-free'} ${paidReport && reportAccessSettings.paid.questionAnalysis ? 'report-access-analysis' : 'report-access-no-analysis'}`}>
             <article className="result-card wide comparison-note report-primary report-order-summary">
               <h2>Score interpretation</h2>
               <div className="evidence-grid">

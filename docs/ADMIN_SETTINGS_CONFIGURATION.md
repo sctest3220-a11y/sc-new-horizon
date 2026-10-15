@@ -72,6 +72,12 @@ The browser-local prototype supports:
 
 The prototype deliberately prevents `Ready` and `Running` status while a required readiness gate remains open. This is a user-interface guard, not a production security control.
 
+### Assessment visibility and diagnostic retention
+
+Assessment presentation settings control user visibility only. Turning off question metadata, live telemetry, scored evidence, psychometric panels, or answer reveals must not stop collection, scoring, adaptive routing, or diagnostic retention. Diagnostic data remains available to authorized administrators and analytical workflows even when it is not rendered to the user.
+
+The current browser prototype persists the display and report settings locally and keeps the in-memory telemetry/scoring flow active. Before production, diagnostic events and derived measures must be written to protected, tenant-scoped server storage with consent, purpose limitation, retention/deletion rules, role-based access, audit logging, and export controls. User-facing APIs must omit hidden diagnostic fields rather than sending them to the browser and hiding them with CSS.
+
 Before MVP go-live, replace browser-local state and demonstration tester records with authenticated, tenant-scoped server records. Every launch, gate decision, configuration change, export, and content version must record actor, timestamp, reason, prior value, new value, and relevant evidence. Invitation delivery, consent records, production publishing, role permissions, audit history, and cross-user analytics are not provided by the browser-local prototype.
 
 ## Overview
@@ -172,6 +178,8 @@ Initial configurable components:
 | Adaptive-test explanation | Simple | Detailed | Detailed | Optional |
 
 Raw telemetry must not be exposed as unexplained event data. User-facing reports should translate it into understandable observations and state why the information matters.
+
+Report entitlements control presentation and access, not whether diagnostic evidence is retained. Free users receive the configured basic report; Freemium and Premium users may receive additional detail when an administrator enables it. Locked report data must not be included in an unauthorized user response.
 
 ## Premium Report Copilot
 

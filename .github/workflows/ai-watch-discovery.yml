@@ -1,0 +1,50 @@
+name: AI Watch discovery
+on:
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ai-watch-discovery
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify collector behavior
+        run: python3 scripts/test-crawl-ai-watch.py
+      - name: Discover candidates and coverage gaps
+        run: python3 scripts/crawl-ai-watch.py
+      - name: Retain review evidence even on partial failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-discovery-${{ github.run_id }}
+          path: .agent-drafts/ai-watch/*.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Summarize operational coverage
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('.agent-drafts/ai-watch/latest.json')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              if not path.exists():
+                  summary.write('No discovery report produced. Inspect the failed job.\n')
+              else:
+                  report = json.loads(path.read_text())
+                  gaps = report['coverage']['investigations']
+                  failures = sum(len(source['errors']) for source in report['sources'])
+                  summary.write(f"Observed candidates: {len(report['observedIds'])}. Source errors: {failures}. Coverage gaps: {len(gaps)}. Published: 0.\n\n")
+                  for gap in gaps:
+                      summary.write(f"- Investigate {gap['lane']}\n")
+                  summary.write('\nReview the artifact for source errors and unfamiliar topics. This run does not update the public feed.\n')
+          PY

@@ -8,9 +8,13 @@ A separate **3,328-item draft review inventory** is now tracked on `main`: 768 c
 
 The existing **634 live questions remain separate** and are exported for side-by-side admin review. Use the admin inventory page at `/admin/question-inventory` to review draft and live questions, switch English/Thai at page and question level, filter by domain/competency/difficulty/profile, and capture reviewer ratings/comments locally. See [the milestone guide](docs/QUESTION_INVENTORY_MILESTONE.md), [rewrite rules and versioning standard](docs/QUESTION_REWRITE_RULES.md), [artifact design and QA standard](docs/ARTIFACT_DESIGN_AND_QA_STANDARD.md), [question version history](exports/review-inventory/question-version-history.json), [review workbook](exports/review-inventory/new-horizon-3328-review.xlsx), [question JSON](exports/review-inventory/questions.json), [live-bank export](exports/review-inventory/live-questions.json), [artifact needs](exports/review-inventory/artifact-needs.md), and [Thai translation QA](exports/review-inventory/thai-translation-qa.json).
 
+### Assessment release 2026-10-07.1
+
+The assessment now appends 229 bilingual rewrite/retranslation records to the existing 634 live questions, for a combined assessment pool of 863 items. Existing live records are preserved; the new records use versioned runtime IDs so matching source IDs cannot overwrite live questions. The release package and append-only manifest are in [exports/production/releases/2026-10-07.1](exports/production/releases/2026-10-07.1). Local access is `pnpm build && pnpm start`, then [http://localhost:3000](http://localhost:3000). The release is not yet connected to an external production importer.
+
 Collaborators can run only the question-review surface locally without configuring Supabase or an AI API. Follow [Review the question inventory locally](docs/QUESTION_INVENTORY_LOCAL_REVIEW.md) for the recommended full clone, an inventory-only sparse checkout, a data-only checkout, local URLs, update commands, and the current browser-local feedback limitation.
 
-The planned external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). The team will complete bounded English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, and a frozen release manifest before deploying only the reviewer surface to Cloudflare with central feedback storage.
+The formal external-review sequence is documented in [Question Inventory: Internal Review to Hosted Feedback Pilot](docs/QUESTION_INVENTORY_REVIEW_TO_HOSTING_PROCESS.md). English rewriting, rubric/artifact QA, Thai equivalence review, inventory regeneration, a frozen release manifest, and central feedback storage remain requirements for that pilot. A separate public Cloudflare technical preview is already available for testing draft content; it currently uses browser-local feedback, as described below.
 
 ## What It Includes
 
@@ -75,6 +79,7 @@ Detailed telemetry and agent documentation:
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
 - [`docs/TRANSLATION_PROVIDER_STRATEGY.md`](docs/TRANSLATION_PROVIDER_STRATEGY.md)
 - [`docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md`](docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md)
+- [`docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md`](docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
 - [`docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`](docs/AGENT_PLATFORM_TOOLING_STRATEGY.md)
 - [`docs/JEV_PREPRODUCTION_EVALUATION.md`](docs/JEV_PREPRODUCTION_EVALUATION.md)
@@ -388,3 +393,5 @@ After seeing the basic score, a short clarity, difficulty, artifact, and length 
 The admin quality engine aggregates these signals into a supervised improvement queue. High confusion, long response time, weak discrimination, abandonment, poor artifact ratings, and route-level difficulty feedback can nominate questions, formats, profile fields, surveys, or artifacts for revision. This is a continuous-improvement system, not a claim of general intelligence: scored content remains versioned and reviewable so historical scores do not change silently.
 
 Legacy `reliance-decision` items now render as complete control-pattern scenarios instead of the simplified Human / AI / Both card format. The general bank also includes 26 Horizon "AI or Me?" reliance scenarios (`REL-H-*`) whose best answer varies between AI-led, human-owned, and shared ownership, so the format can detect both over-reliance and under-reliance. The admin artifact backlog lists a realistic replacement brief and stable asset path for each unique document image so generated replacements remain relevant to their questions.
+
+RSI and proactive discovery (September 29): see [the platform improvement-loop requirement](docs/AGENT_RECURSIVE_SELF_IMPROVEMENT.md). The collector now reports lane gaps and retains unfamiliar-topic candidates. `.github/workflows/ai-watch-discovery.yml` defines daily artifact-only discovery, pending activation on the default branch; this does not publish stories or make the simulated Admin agents autonomous.

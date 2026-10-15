@@ -23,6 +23,8 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const exportsDir = path.join(projectRoot, 'exports/review-inventory');
 const outputDir = path.join(projectRoot, 'public/review-inventory');
 const detailDir = path.join(outputDir, 'detail');
+const previousVersion = '2026-09-30.1';
+const previousPath = path.join(exportsDir, 'versions', '2026-10-07.1', 'questions-previous.json');
 
 const draftPath = path.join(exportsDir, 'questions.json');
 const livePath = path.join(exportsDir, 'live-questions.json');
@@ -85,7 +87,7 @@ function isUpToDate() {
   if (!fs.existsSync(summaryPath)) return false;
   const builtAt = fs.statSync(summaryPath).mtimeMs;
   const versions = fs.existsSync(versionsPath) ? readJson(versionsPath).versions : [];
-  return [draftPath, livePath, artifactNeedsPath, versionsPath, fileURLToPath(import.meta.url), ...versions.map(v => path.join(exportsDir, v.snapshot))]
+  return [draftPath, livePath, artifactNeedsPath, versionsPath, previousPath, fileURLToPath(import.meta.url), ...versions.map(v => path.join(exportsDir, v.snapshot))]
     .filter((input) => fs.existsSync(input))
     .every((input) => fs.statSync(input).mtimeMs <= builtAt) &&
     fs.statSync(fileURLToPath(import.meta.url)).mtimeMs <= builtAt;
@@ -212,6 +214,16 @@ function main() {
       return buildIndexRecord(detail);
     });
     fs.writeFileSync(path.join(versionDirectory, 'index.json'), JSON.stringify(versionIndex));
+  }
+
+  if (fs.existsSync(previousPath)) {
+    const previous = readJson(previousPath);
+    const previousDirectory = path.join(outputDir, 'versions', previousVersion, 'detail');
+    fs.mkdirSync(previousDirectory, { recursive: true });
+    for (const question of previous.questions) {
+      const detail = buildDetail(question, 'draft', 'Previous audit inventory', new Map());
+      fs.writeFileSync(path.join(previousDirectory, `${safeFileName(detail.id)}.json`), JSON.stringify(detail));
+    }
   }
 
   const summary = {

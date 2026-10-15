@@ -1,5 +1,7 @@
 # Agent Platform Tooling Strategy
 
+Platform RSI requirement and implementation boundaries: [Recursive self-improvement](AGENT_RECURSIVE_SELF_IMPROVEMENT.md).
+
 ## Decision
 
 New Horizon should not use a single autonomous "swarm manager" as the platform control plane. The platform should separate durable workflow control, bounded agent reasoning, model routing, LLM evaluation, product telemetry, crawling, and infrastructure scaling.

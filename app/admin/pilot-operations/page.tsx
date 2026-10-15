@@ -55,6 +55,43 @@ type PilotIssue = {
 };
 
 const STORAGE_KEY = 'new-horizon-pilot-operations-v1';
+const DISPLAY_SETTINGS_KEY = 'new-horizon-assessment-display-v1';
+type AssessmentDisplaySettings = {
+  showQuestionMeta: boolean;
+  showTelemetry: boolean;
+  showFocus: boolean;
+  showScoredEvidence: boolean;
+  showPsychometrics: boolean;
+  showAnswerReveal: boolean;
+};
+type ReportAccessSettings = {
+  free: {
+    summary: boolean;
+    recommendations: boolean;
+    history: boolean;
+  };
+  paid: {
+    detailedBreakdown: boolean;
+    questionAnalysis: boolean;
+    benchmarks: boolean;
+    advancedRecommendations: boolean;
+    telemetry: boolean;
+    psychometrics: boolean;
+    exports: boolean;
+  };
+};
+const defaultDisplaySettings: AssessmentDisplaySettings = {
+  showQuestionMeta: false,
+  showTelemetry: false,
+  showFocus: true,
+  showScoredEvidence: false,
+  showPsychometrics: false,
+  showAnswerReveal: false,
+};
+const defaultReportAccess: ReportAccessSettings = {
+  free: { summary: true, recommendations: true, history: false },
+  paid: { detailedBreakdown: true, questionAnalysis: true, benchmarks: true, advancedRecommendations: true, telemetry: false, psychometrics: false, exports: true },
+};
 
 const defaultConfig: PilotConfig = {
   name: 'Assessment quality pilot - Round 1',
@@ -116,6 +153,8 @@ export default function PilotOperationsPage() {
   const [gates, setGates] = useState(defaultGates);
   const [testers] = useState(defaultTesters);
   const [issues, setIssues] = useState(defaultIssues);
+  const [displaySettings, setDisplaySettings] = useState(defaultDisplaySettings);
+  const [reportAccess, setReportAccess] = useState(defaultReportAccess);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -123,10 +162,12 @@ export default function PilotOperationsPage() {
       const saved = window.localStorage.getItem(STORAGE_KEY);
       if (saved) {
         try {
-          const parsed = JSON.parse(saved) as { config?: PilotConfig; gates?: ReadinessGate[]; issues?: PilotIssue[] };
+          const parsed = JSON.parse(saved) as { config?: PilotConfig; gates?: ReadinessGate[]; issues?: PilotIssue[]; displaySettings?: AssessmentDisplaySettings; reportAccess?: ReportAccessSettings };
           if (parsed.config) setConfig(parsed.config);
           if (parsed.gates) setGates(parsed.gates);
           if (parsed.issues) setIssues(parsed.issues);
+          if (parsed.displaySettings) setDisplaySettings({ ...defaultDisplaySettings, ...parsed.displaySettings });
+          if (parsed.reportAccess) setReportAccess({ ...defaultReportAccess, ...parsed.reportAccess, free: { ...defaultReportAccess.free, ...parsed.reportAccess.free }, paid: { ...defaultReportAccess.paid, ...parsed.reportAccess.paid } });
         } catch {
           window.localStorage.removeItem(STORAGE_KEY);
         }
@@ -139,8 +180,9 @@ export default function PilotOperationsPage() {
   useEffect(() => {
     if (!ready) return;
     const timestamp = new Date().toLocaleString();
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ config, gates, issues, savedAt: timestamp }));
-  }, [config, gates, issues, ready]);
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ config, gates, issues, displaySettings, reportAccess, savedAt: timestamp }));
+    window.localStorage.setItem(DISPLAY_SETTINGS_KEY, JSON.stringify(displaySettings));
+  }, [config, displaySettings, gates, issues, reportAccess, ready]);
 
   const metrics = useMemo(() => {
     const completed = testers.filter((tester) => tester.status === 'Completed');
@@ -172,7 +214,7 @@ export default function PilotOperationsPage() {
     <main className="pilot-ops-shell">
       <header className="pilot-ops-topbar">
         <div>
-          <Link className="pilot-ops-brand" href="/?view=admin"><span>NH</span> New Horizon Admin</Link>
+          <Link className="pilot-ops-brand" href="/"><span>NH</span> New Horizon</Link>
           <nav aria-label="Admin navigation">
             <Link href="/?view=admin">Dashboard</Link>
             <strong>Pilot operations</strong>
@@ -287,6 +329,28 @@ export default function PilotOperationsPage() {
                 <Toggle label="Answer reveal" detail="Show the expected evidence and score explanation after submission." checked={config.answerReveal} onChange={(value) => setField('answerReveal', value)} />
                 <Toggle label="Question feedback" detail="Allow useful, unclear, rating, and optional comment signals." checked={config.quickFeedback} onChange={(value) => setField('quickFeedback', value)} />
                 <Toggle label="Report survey" detail="Prompt for a short survey before detailed analysis is unlocked." checked={config.reportSurvey} onChange={(value) => setField('reportSurvey', value)} />
+              </div>
+            </section>
+
+            <section className="pilot-panel pilot-panel-wide">
+              <div className="pilot-panel-heading"><div><p>Assessment presentation</p><h2>Optional question diagnostics</h2></div></div>
+              <p className="pilot-muted">These controls hide information from the assessment display only. Scoring, adaptive routing, and telemetry continue to run.</p>
+              <div className="pilot-toggle-list">
+                <Toggle label="Question metadata" detail="Show domain, difficulty, item type, and interaction format." checked={displaySettings.showQuestionMeta} onChange={(value) => setDisplaySettings((current) => ({ ...current, showQuestionMeta: value }))} />
+                <Toggle label="Live telemetry strip" detail="Show time, answer interaction, and artifact-use indicators." checked={displaySettings.showTelemetry} onChange={(value) => setDisplaySettings((current) => ({ ...current, showTelemetry: value }))} />
+                <Toggle label="Task focus strip" detail="Show the difficulty task, focus label, and description." checked={displaySettings.showFocus} onChange={(value) => setDisplaySettings((current) => ({ ...current, showFocus: value }))} />
+                <Toggle label="Scored evidence" detail="Show evidence mode, competency, and skill details." checked={displaySettings.showScoredEvidence} onChange={(value) => setDisplaySettings((current) => ({ ...current, showScoredEvidence: value }))} />
+                <Toggle label="Psychometric panel" detail="Show theta, target level, item parameters, information, SEM, and coverage pressure." checked={displaySettings.showPsychometrics} onChange={(value) => setDisplaySettings((current) => ({ ...current, showPsychometrics: value }))} />
+                <Toggle label="Answer reveal" detail="Show score explanation, expected answer, rubric, and measured competency details after submission." checked={displaySettings.showAnswerReveal} onChange={(value) => setDisplaySettings((current) => ({ ...current, showAnswerReveal: value }))} />
+              </div>
+            </section>
+
+            <section className="pilot-panel pilot-panel-wide">
+              <div className="pilot-panel-heading"><div><p>Results and monetization</p><h2>Report access by plan</h2></div></div>
+              <p className="pilot-muted">Free users receive a useful summary. Paid users can receive deeper analysis. Locked data is never intended for the user-facing assessment response.</p>
+              <div className="pilot-report-plan-grid">
+                <div><h3>Free report</h3><Toggle label="Score summary" detail="Overall score, level, and completion status." checked={reportAccess.free.summary} onChange={(value) => setReportAccess((current) => ({ ...current, free: { ...current.free, summary: value } }))} /><Toggle label="Basic recommendations" detail="Strengths, gaps, and general next steps." checked={reportAccess.free.recommendations} onChange={(value) => setReportAccess((current) => ({ ...current, free: { ...current.free, recommendations: value } }))} /><Toggle label="History" detail="Show prior results and growth over time." checked={reportAccess.free.history} onChange={(value) => setReportAccess((current) => ({ ...current, free: { ...current.free, history: value } }))} /></div>
+                <div><h3>Paid / freemium unlock</h3><Toggle label="Detailed breakdown" detail="Subcategory and competency-level results." checked={reportAccess.paid.detailedBreakdown} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, detailedBreakdown: value } }))} /><Toggle label="Question analysis" detail="Question-level scoring and expected evidence." checked={reportAccess.paid.questionAnalysis} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, questionAnalysis: value } }))} /><Toggle label="Benchmarks" detail="Role, group, and target comparisons." checked={reportAccess.paid.benchmarks} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, benchmarks: value } }))} /><Toggle label="Advanced recommendations" detail="Personalized learning paths and follow-up actions." checked={reportAccess.paid.advancedRecommendations} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, advancedRecommendations: value } }))} /><Toggle label="Telemetry details" detail="Timing and interaction analysis; off by default for users." checked={reportAccess.paid.telemetry} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, telemetry: value } }))} /><Toggle label="Psychometric details" detail="Item parameters, information, SEM, and reliability signals." checked={reportAccess.paid.psychometrics} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, psychometrics: value } }))} /><Toggle label="Report exports" detail="Allow downloadable advanced report formats." checked={reportAccess.paid.exports} onChange={(value) => setReportAccess((current) => ({ ...current, paid: { ...current.paid, exports: value } }))} /></div>
               </div>
             </section>
           </div>

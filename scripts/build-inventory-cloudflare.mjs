@@ -23,8 +23,6 @@ const pagePath = path.join(output, 'app/admin/question-inventory/page.tsx');
 let page = await readFile(pagePath, 'utf8');
 if (!page.includes('await fetch(new URL(assetPath, origin))')) throw new Error('Inventory asset loader changed; review deployment adapter.');
 page = page.replace("import Link from 'next/link';", "function Link(props: React.ComponentProps<'a'>) { return <a {...props} />; }")
-  .replace("import { headers } from 'next/headers';", "import { headers } from 'next/headers';\nimport { env } from 'cloudflare:workers';")
-  .replace('await fetch(new URL(assetPath, origin))', 'await env.ASSETS.fetch(new URL(assetPath, origin))')
   .replace(/\s*<Link href="\/">Assessment<\/Link>/g, '')
   .replace(/\s*<Link href="\/\?view=admin">Admin<\/Link>/g, '')
   .replace(/<div className="inventory-nav-links">[\s\S]*?<\/div>/g, '<p className="eyebrow">Cloudflare test preview · Draft content · Inventory only</p>');
@@ -36,7 +34,7 @@ export default function Layout({children}: {children: React.ReactNode}) { return
 await writeFile(path.join(output, 'app/page.tsx'), `import { redirect } from 'next/navigation';\nexport default function Home() { redirect('/admin/question-inventory'); }\n`);
 await writeFile(path.join(output, 'package.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', private: true, type: 'module' }));
 await symlink(path.join(root, 'node_modules'), path.join(output, 'node_modules'), 'dir');
-await writeFile(path.join(output, 'wrangler.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', main: 'vinext/server/app-router-entry', compatibility_date: '2026-05-15', compatibility_flags: ['nodejs_compat'], workers_dev: true, assets: { binding: 'ASSETS' }, d1_databases: [{ binding: 'RESULTS_DB', database_name: 'new-horizon-inventory-results', database_id: '17983c70-a2ec-40f6-afbc-50722fb2b9a3' }] }, null, 2));
+await writeFile(path.join(output, 'wrangler.json'), JSON.stringify({ name: 'new-horizon-question-inventory-test', main: 'vinext/server/app-router-entry', compatibility_date: '2026-05-15', compatibility_flags: ['nodejs_compat'], workers_dev: true, assets: { binding: 'ASSETS', directory: './public' }, d1_databases: [{ binding: 'RESULTS_DB', database_name: 'new-horizon-inventory-results', database_id: '17983c70-a2ec-40f6-afbc-50722fb2b9a3' }] }, null, 2));
 await writeFile(path.join(output, 'vite.config.ts'), `import { defineConfig } from 'vite';
 import vinext from 'vinext';
 import tailwindcss from '@tailwindcss/postcss';
@@ -52,19 +50,25 @@ for (const name of ['questions.json', 'live-questions.json', 'artifact-needs.jso
 }
 const summary = JSON.parse(await readFile(path.join(output, 'public/review-inventory/summary.json'), 'utf8'));
 const contentVersion = sha256(JSON.stringify({ inventory: await hashTree(path.join(output, 'public/review-inventory')), stimuli: await hashTree(path.join(output, 'public/stimuli')) }));
+await writeFile(path.join(output, 'app/admin/question-inventory/review-version.ts'), `export const reviewContentVersion = ${JSON.stringify(contentVersion)};\n`);
 const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const sourceDirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim());
 const viewHash = await hashTree(path.join(output, 'app'));
 const release = { schemaVersion: 2, releaseId: `${sourceCommit.slice(0, 12)}-${contentVersion.slice(0, 12)}-${viewHash.slice(0, 12)}${sourceDirty ? '-dirty' : ''}`, contentVersion, sourceCommit, sourceDirty, createdAt: new Date().toISOString(), status: 'draft-technical-test', feedback: 'browser-local', inventoryVersion: summary.inventoryVersion, draftCount: summary.draftCount, liveCount: summary.liveCount, sha256: hashes };
 await writeFile(path.join(output, 'public/review-release.json'), JSON.stringify(release, null, 2));
 await writeFile(path.join(output, 'app/admin/question-inventory/release.json'), JSON.stringify(release));
-for (const component of ['reviewer-feedback.tsx', 'review-controls.tsx']) {
+// Preserve legacy browser exports alongside the versioned hosted feedback.
+for (const component of ['review-sync.tsx']) {
   const target = path.join(output, 'app/admin/question-inventory', component);
   const source = await readFile(target, 'utf8');
   if (!source.includes('new-horizon-review:')) throw new Error(`Feedback storage adapter changed: ${component}`);
-  await writeFile(target, source.replaceAll('new-horizon-review:', `new-horizon-review-v2:${contentVersion}:`));
+  // Keep the legacy prefix intact so old unversioned reviews remain exportable.
+  await writeFile(target, source.replace('// @ts-expect-error release.json exists only in the isolated deployment build.\n', ''));
 }
 // Avoid a cached manifest or document obscuring a newly deployed release.
 await writeFile(path.join(output, 'public/_headers'), '/review-release.json\n  Cache-Control: no-store\n/admin/question-inventory\n  Cache-Control: no-store\n');
 console.log(`Inventory-only Cloudflare source prepared at ${output}`);
+// Vinext transpiles without type-checking; unresolved render variables must fail
+// the release before the browser smoke test (and before deployment).
+execFileSync(process.execPath, [path.join(root, 'node_modules/typescript/bin/tsc'), '--noEmit', '--incremental', 'false'], { cwd: output, stdio: 'inherit' });
 execFileSync(process.execPath, [path.join(root, 'node_modules/vinext/dist/cli.js'), 'build'], { cwd: output, stdio: 'inherit' });

@@ -7,6 +7,19 @@ scout = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(scout)
 
 class DiscoveryTests(unittest.TestCase):
+    def test_coverage_uses_only_current_observations(self):
+        candidates = [
+            {'id': 'fresh', 'lanes': ['agents', 'agents']},
+            {'id': 'old', 'lanes': ['risks']},
+        ]
+        report = scout.coverage_report(['agents', 'risks'], candidates, ['fresh', 'fresh'])
+        self.assertEqual(report['observedByLane'], {'agents': 1, 'risks': 0})
+        self.assertEqual([gap['lane'] for gap in report['investigations']], ['risks'])
+
+    def test_empty_run_reports_all_coverage_gaps(self):
+        report = scout.coverage_report(['agents', 'risks'], [], [])
+        self.assertEqual(len(report['investigations']), 2)
+
     def test_canonical_urls_reject_unsafe_schemes_and_credentials(self):
         self.assertEqual(scout.normalize_url('/blog/a?utm_source=x&edition=1#part', 'https://example.com'), 'https://example.com/blog/a?edition=1')
         for url in ['javascript:alert(1)', 'http://example.com/a', 'https://user:pass@example.com/a', 'https://example.com:8080/a']:
