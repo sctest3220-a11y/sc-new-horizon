@@ -1,0 +1,26 @@
+{
+  "optionsPerDomain": {
+    "min": 1,
+    "max": 3,
+    "shortageBehavior": "Show verified shortage; never invent a match to fill quota."
+  },
+  "providerNeutral": true,
+  "partnerPriorityBoost": false,
+  "selectionOrder": [
+    "learner priorities and goals",
+    "explicit competency evidence",
+    "level and depth",
+    "language and format",
+    "budget and current access"
+  ],
+  "matchConfidence": {
+    "high": "Named competency topic explicitly supported by syllabus objective, lesson or exercise.",
+    "medium": "Plausible incomplete evidence; not an automatic recommendation.",
+    "low": "Title-only or adjacent content; excluded."
+  },
+  "coverage": "High match does not mean full competency coverage or proven course effectiveness. State missing skills.",
+  "availability": "Independent of mapping confidence; never label pending, interest-only, expired or cached evidence as confirmed enrollment.",
+  "deduplication": "Shared canonical course counts once in learning plan duration and enrollment.",
+  "refresh": "Refresh official evidence at least weekly. Preserve archived reports and source history; do not change learner priorities.",
+  "D3Correction": "Remove Chula AI-10 D3 recommendation; retain Chula AI-10 only for explicit D5 use-case and D6 role-clarity matches in this shortlist."
+}

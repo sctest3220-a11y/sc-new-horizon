@@ -1,0 +1,2886 @@
+{
+  "version": "2026-10-19-r03",
+  "lastResearchDate": "2026-10-19",
+  "productionConnected": false,
+  "courses": [
+    {
+      "id": "ais",
+      "domain": "D1",
+      "url": "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+      "reviewedOn": "2026-10-19",
+      "evidenceIds": [
+        "ais"
+      ],
+      "availabilityVerification": {
+        "lastDirectVerifiedAt": null,
+        "reviewedAt": "2026-10-19",
+        "status": "cached-source-only",
+        "priorReportResearchDate": "2026-10-15"
+      },
+      "status": "conditional",
+      "enrollmentReady": false,
+      "competencyMappings": [
+        {
+          "domain": "D1",
+          "competencyId": "D1-core-concepts",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Official objective 1: explain AI principles and everyday AI tools",
+          "limitation": "Introductory concepts only",
+          "sourceUrl": "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "ais",
+      "reportDisplayFields": {
+        "course": {
+          "en": "AI Companion: Getting to Know and Using AI for Life and Work\nAIS / Thai MOOC",
+          "th": "เพื่อน AI คู่คิด: รู้จัก เข้าใจ ใช้เป็น\nAIS / Thai MOOC"
+        },
+        "fit": {
+          "en": "High match: core AI concepts; objective 1 explains AI and everyday tools. Practical introduction, not deep model mechanics.",
+          "th": "จับคู่มั่นใจสูง: แนวคิด AI พื้นฐาน วัตถุประสงค์ข้อ 1 อธิบาย AI และเครื่องมือประจำวัน เน้นเริ่มใช้งาน ไม่เจาะกลไกโมเดล"
+        },
+        "format": {
+          "en": "Online, self-paced\n4 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\n4 ชั่วโมง"
+        },
+        "cost": {
+          "en": "Free MOOC listing; confirm access terms",
+          "th": "รายการ MOOC ฟรี; ตรวจเงื่อนไขเข้าเรียน"
+        },
+        "entry": {
+          "en": "Beginner; Thai listing. Public audience; audio not independently checked. Unit tests; certificate ≥70%.",
+          "th": "เริ่มต้น; รายการภาษาไทย สำหรับบุคคลทั่วไป ยังไม่ตรวจภาษาเสียง แบบทดสอบระหว่างเรียน; ประกาศนียบัตร ≥70%"
+        },
+        "access": {
+          "en": "Enrollment route listed; account needed. No closing date stated.",
+          "th": "มีช่องทางสมัคร ต้องมีบัญชี ไม่ระบุวันปิดรับ"
+        }
+      },
+      "priorMapping": {
+        "domain": "D1",
+        "competencies": [
+          "AI concepts and everyday tool limits"
+        ],
+        "basis": "Published objectives introduce AI principles and common tools.",
+        "type": "Horizon interpretation",
+        "coverage": "partial"
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "arit",
+      "domain": "D2",
+      "url": "https://www.arit.co.th/courses/generative-ai-foundations",
+      "reviewedOn": "2026-10-19",
+      "evidenceIds": [
+        "arit"
+      ],
+      "availabilityVerification": {
+        "lastDirectVerifiedAt": null,
+        "reviewedAt": "2026-10-19",
+        "status": "cached-source-only",
+        "priorReportResearchDate": "2026-10-15"
+      },
+      "status": "conditional",
+      "enrollmentReady": false,
+      "competencyMappings": [
+        {
+          "domain": "D2",
+          "competencyId": "D2-prompt-design",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Official Prompt Engineering section: text, image, video prompts",
+          "limitation": "No measured learner performance",
+          "sourceUrl": "https://www.arit.co.th/courses/generative-ai-foundations",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D2",
+          "competencyId": "D2-output-refinement",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Prompt Refinement section and output correctness checks",
+          "limitation": "No agent workflow certification",
+          "sourceUrl": "https://www.arit.co.th/courses/generative-ai-foundations",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D2",
+          "competencyId": "D2-tool-selection",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Methods section: factors in choosing tools",
+          "limitation": "Connectors/MCP integration not established",
+          "sourceUrl": "https://www.arit.co.th/courses/generative-ai-foundations",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "arit",
+      "reportDisplayFields": {
+        "course": {
+          "en": "Generative AI Foundations\nARIT",
+          "th": "Generative AI Foundations\nARIT"
+        },
+        "fit": {
+          "en": "High match: prompt design, tool selection and output refinement. Explicit prompt and refinement syllabus; basic level.",
+          "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่ง เลือกเครื่องมือ และปรับปรุงผลลัพธ์ มีหัวข้อคำสั่งและการปรับคำสั่งชัดเจน ระดับพื้นฐาน"
+        },
+        "format": {
+          "en": "12 hours / 2 days\nDec intake: Hybrid; venue to confirm",
+          "th": "12 ชั่วโมง / 2 วัน\nรอบ ธ.ค.: ไฮบริด; ยืนยันสถานที่"
+        },
+        "cost": {
+          "en": "THB 8,500 excluding VAT (Dec form)",
+          "th": "8,500 บาท ไม่รวม VAT (แบบฟอร์มรอบ ธ.ค.)"
+        },
+        "entry": {
+          "en": "Basic; Thai listing. Confirm teaching language and prerequisites. Training with CCS exam.",
+          "th": "พื้นฐาน; รายการภาษาไทย ยืนยันภาษาสอนและพื้นฐานที่ต้องมี อบรมพร้อมสอบ CCS"
+        },
+        "access": {
+          "en": "29–30 Oct / 16–18 Dec 2026 listed. Dec dates conflict with “2 days”; confirm dates, format and seats.",
+          "th": "ระบุ 29–30 ต.ค. / 16–18 ธ.ค. 2026 รอบ ธ.ค. ขัดกับ “2 วัน”; ยืนยันวัน รูปแบบ และที่นั่ง"
+        }
+      },
+      "priorMapping": {
+        "domain": "D2",
+        "competencies": [
+          "Prompt design and refinement",
+          "Tool selection"
+        ],
+        "basis": "Published outline covers prompts and tool use; basic level.",
+        "type": "Horizon interpretation",
+        "coverage": "partial"
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "chula",
+      "domain": "D4",
+      "url": "https://mooc.chula.ac.th/course-detail/247",
+      "reviewedOn": "2026-10-19",
+      "evidenceIds": [
+        "chula"
+      ],
+      "availabilityVerification": {
+        "lastDirectVerifiedAt": null,
+        "reviewedAt": "2026-10-19",
+        "status": "cached-source-only",
+        "priorReportResearchDate": "2026-10-15"
+      },
+      "status": "conditional",
+      "enrollmentReady": false,
+      "canonicalCourseId": "CHULAMOOC2656",
+      "partner": "ChulaXL",
+      "title": {
+        "en": "AI Governance\nChulaXL • CHULAMOOC2656",
+        "th": "ธรรมาภิบาลและการกำกับดูแลปัญญาประดิษฐ์\nChulaXL • CHULAMOOC2656"
+      },
+      "partnerSyllabusSource": {
+        "file": "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-19-r01\\partner-source.json",
+        "sheet": "AI Series",
+        "range": "A2:L5"
+      },
+      "competencyMappings": [
+        {
+          "domain": "D4",
+          "competencyId": "D4-regulatory-policy",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "AI Series H2 chapters 3–4: governance approaches and global regulation",
+          "limitation": "General fluency, not Thailand-specific legal compliance",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/247",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "partnerAvailability": {
+        "status": "unconfirmed",
+        "lastReviewedOn": "2026-10-19",
+        "lastDirectVerifiedAt": null,
+        "officialCourseUrl": "https://mooc.chula.ac.th/course-detail/247",
+        "enrollmentUrl": null,
+        "note": "Official public MOOC source corroborates syllabus; not evidence of ChulaXL entitlement or open partner intake."
+      },
+      "reportDisplayFields": {
+        "course": {
+          "en": "AI Governance\nChulaXL • CHULAMOOC2656",
+          "th": "ธรรมาภิบาลและการกำกับดูแลปัญญาประดิษฐ์\nChulaXL • CHULAMOOC2656"
+        },
+        "fit": {
+          "en": "High match: regulatory/policy fluency, chapters 3–4. Governance awareness; not implementation of logs, permissions or incident response.",
+          "th": "จับคู่มั่นใจสูง: ความเข้าใจกฎระเบียบและนโยบาย บทที่ 3–4 เน้นความเข้าใจการกำกับดูแล ไม่ใช่การติดตั้งบันทึกระบบ สิทธิ์ หรือรับมือเหตุการณ์"
+        },
+        "format": {
+          "en": "3h 42m\nOnline reference; partner format pending",
+          "th": "3 ชม. 42 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      },
+      "priorMapping": {
+        "domain": "D4",
+        "competencies": [
+          "AI risk and governance awareness"
+        ],
+        "basis": "Governance syllabus; not engineering-control certification.",
+        "type": "Horizon interpretation",
+        "coverage": "partial"
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "nida",
+      "domain": "D5",
+      "url": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "reviewedOn": "2026-10-19",
+      "evidenceIds": [
+        "nida"
+      ],
+      "availabilityVerification": {
+        "lastDirectVerifiedAt": null,
+        "reviewedAt": "2026-10-19",
+        "status": "cached-source-only",
+        "priorReportResearchDate": "2026-10-15"
+      },
+      "mapping": {
+        "domain": "D5",
+        "competencies": [
+          "Use-case identification in communication"
+        ],
+        "basis": "Role-specific use cases; not a general ROI/portfolio course.",
+        "type": "Horizon interpretation",
+        "coverage": "partial"
+      },
+      "status": "conditional",
+      "enrollmentReady": false
+    },
+    {
+      "id": "skooldio-coaching",
+      "domain": "D6",
+      "url": "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+      "title": {
+        "en": "Mentoring and Coaching with AI",
+        "th": "Mentoring and Coaching with AI — โค้ชทีมด้วย AI"
+      },
+      "provider": "Skooldio",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "reviewedOn": "2026-10-19",
+      "evidenceIds": [
+        "coaching"
+      ],
+      "competencyMappings": [
+        {
+          "domain": "D6",
+          "competencyId": "D6-learning-loops",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Official demos: AI-assisted feedback, individual development plans, leadership reflection",
+          "limitation": "Manager-focused improvement loop; not complete collaboration-domain coverage",
+          "sourceUrl": "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "skooldio-coaching",
+      "reportDisplayFields": {
+        "course": {
+          "en": "Mentoring and Coaching with AI\nSkooldio",
+          "th": "Mentoring and Coaching with AI\nSkooldio"
+        },
+        "fit": {
+          "en": "High match: learning/improvement loops through AI-assisted feedback, development plans and reflection. Best for managers; not general human–AI accountability training.",
+          "th": "จับคู่มั่นใจสูง: วงจรเรียนรู้และพัฒนาผ่าน AI ช่วยให้ข้อเสนอแนะ วางแผนพัฒนา และสะท้อนผล เหมาะกับหัวหน้างาน ไม่ใช่การฝึกความรับผิดชอบคน–AI ทุกบริบท"
+        },
+        "format": {
+          "en": "Online\nAbout 1h 28m listed video, plus practice",
+          "th": "ออนไลน์\nวิดีโอที่ระบุประมาณ 1 ชม. 28 นาที และเวลาฝึกเพิ่ม"
+        },
+        "cost": {
+          "en": "THB 1,990 listed; confirm VAT / checkout total",
+          "th": "แสดง 1,990 บาท; ยืนยัน VAT / ยอดชำระ"
+        },
+        "entry": {
+          "en": "ChatGPT/Claude familiarity. Thai listing; audio to confirm. No HR/coaching background needed; certificate terms unverified.",
+          "th": "คุ้นเคย ChatGPT/Claude รายการไทย; ยืนยันภาษาเสียง ไม่ต้องมีพื้นฐาน HR/โค้ช เกณฑ์ประกาศนียบัตรยังไม่ยืนยัน"
+        },
+        "access": {
+          "en": "Course listed; checkout untested. Individual lifetime / corporate 1-year access per FAQ.",
+          "th": "มีรายการหลักสูตร ยังไม่ทดสอบชำระเงิน FAQ ระบุบุคคลตลอดชีพ / องค์กร 1 ปี"
+        }
+      },
+      "priorMapping": {
+        "domain": "D6",
+        "competencies": [
+          "AI-assisted feedback",
+          "Team coaching and development"
+        ],
+        "coverage": "role-specific partial",
+        "type": "Horizon interpretation",
+        "basis": "Published exercises include simulated coaching conversations, feedback drafting and individual development plans. Does not establish coverage of all handoff/accountability competencies."
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "chulaxl-foundations",
+      "domain": "D1",
+      "url": "https://mooc.chula.ac.th/course-detail/251",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "canonicalCourseId": "NEURON0129",
+      "partner": "ChulaXL",
+      "title": {
+        "en": "AI & ML Foundations\nChulaXL • NEURON0129",
+        "th": "ความรู้พื้นฐานเกี่ยวกับ AI และ ML\nChulaXL • NEURON0129"
+      },
+      "reviewedOn": "2026-10-19",
+      "partnerSyllabusSource": {
+        "file": "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-19-r01\\partner-source.json",
+        "sheet": "AI Series",
+        "range": "A2:L5"
+      },
+      "competencyMappings": [
+        {
+          "domain": "D1",
+          "competencyId": "D1-core-concepts",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "AI Series H5 chapters 1–11,15",
+          "limitation": "No advanced mastery established",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/251",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D1",
+          "competencyId": "D1-genai-mechanics",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "H5 chapters 12–16: fine-tuning, RAG, tokens",
+          "limitation": "Embeddings not explicit",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/251",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D1",
+          "competencyId": "D1-capability-limits",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "H5 chapters 14,19: randomness and hallucination",
+          "limitation": "Not all uncertainty/staleness skills",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/251",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D1",
+          "competencyId": "D1-ai-systems",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "H5 chapter 17: context window",
+          "limitation": "Memory, tool connectors and agents not established",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/251",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "partnerAvailability": {
+        "status": "unconfirmed",
+        "lastReviewedOn": "2026-10-19",
+        "lastDirectVerifiedAt": null,
+        "officialCourseUrl": "https://mooc.chula.ac.th/course-detail/251",
+        "enrollmentUrl": null,
+        "note": "Official public MOOC source corroborates syllabus; not evidence of ChulaXL entitlement or open partner intake."
+      },
+      "reportDisplayFields": {
+        "course": {
+          "en": "AI & ML Foundations\nChulaXL • NEURON0129",
+          "th": "ความรู้พื้นฐานเกี่ยวกับ AI และ ML\nChulaXL • NEURON0129"
+        },
+        "fit": {
+          "en": "High match: core concepts, GenAI mechanics, capability limits and context windows. Partial coverage; no advanced systems engineering.",
+          "th": "จับคู่มั่นใจสูง: แนวคิด AI กลไก GenAI ข้อจำกัด และหน้าต่างบริบท ครอบคลุมบางส่วน ไม่ใช่วิศวกรรมระบบขั้นสูง"
+        },
+        "format": {
+          "en": "2h 05m\nOnline reference; partner format pending",
+          "th": "2 ชม. 5 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "chulaxl-prompt",
+      "domain": "D2",
+      "url": "https://mooc.chula.ac.th/course-detail/253",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "canonicalCourseId": "CHULAMOOC2654",
+      "partner": "ChulaXL",
+      "title": {
+        "en": "Generative AI & Prompt Engineering\nChulaXL • CHULAMOOC2654",
+        "th": "ปัญญาประดิษฐ์เชิงสร้างสรรค์และกระบวนการสร้างคำสั่ง\nChulaXL • CHULAMOOC2654"
+      },
+      "reviewedOn": "2026-10-19",
+      "partnerSyllabusSource": {
+        "file": "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-19-r01\\partner-source.json",
+        "sheet": "AI Series",
+        "range": "A2:L5"
+      },
+      "competencyMappings": [
+        {
+          "domain": "D2",
+          "competencyId": "D2-prompt-design",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "H3 chapters 3–6",
+          "limitation": "No measured learner performance",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/253",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D2",
+          "competencyId": "D2-output-refinement",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "H3 chapter 7 + official description: quality and refinement",
+          "limitation": "No agent workflow certification",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/253",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "partnerAvailability": {
+        "status": "unconfirmed",
+        "lastReviewedOn": "2026-10-19",
+        "lastDirectVerifiedAt": null,
+        "officialCourseUrl": "https://mooc.chula.ac.th/course-detail/253",
+        "enrollmentUrl": null,
+        "note": "Official public MOOC source corroborates syllabus; not evidence of ChulaXL entitlement or open partner intake."
+      },
+      "reportDisplayFields": {
+        "course": {
+          "en": "Generative AI & Prompt Engineering\nChulaXL • CHULAMOOC2654",
+          "th": "ปัญญาประดิษฐ์เชิงสร้างสรรค์และกระบวนการสร้างคำสั่ง\nChulaXL • CHULAMOOC2654"
+        },
+        "fit": {
+          "en": "High match: prompt design and output refinement, chapters 3–7. Introductory coverage; agent workflows are not demonstrated.",
+          "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่งและปรับปรุงผลลัพธ์ บทที่ 3–7 ครอบคลุมเบื้องต้น ไม่ยืนยันการฝึกเวิร์กโฟลว์เอเจนต์"
+        },
+        "format": {
+          "en": "1h 16m\nOnline reference; partner format pending",
+          "th": "1 ชม. 16 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "chulaxl-ai10",
+      "domain": "D3",
+      "url": "https://mooc.chula.ac.th/course-detail/254",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "canonicalCourseId": "CHULAMOOC2653",
+      "partner": "ChulaXL",
+      "title": {
+        "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+        "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653"
+      },
+      "reviewedOn": "2026-10-19",
+      "partnerSyllabusSource": {
+        "file": "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-19-r01\\partner-source.json",
+        "sheet": "AI Series",
+        "range": "A2:L5"
+      },
+      "competencyMappings": [
+        {
+          "domain": "D5",
+          "competencyId": "D5-usecase-fit",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "AI Series H4 chapter 3 CUAI-02: AI use-case evaluation",
+          "limitation": "Introductory orientation; no measured ROI",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/254",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D6",
+          "competencyId": "D6-role-clarity",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "AI Series H4 chapter 9 CUAI-08: human role in AI",
+          "limitation": "Human-role awareness; handoff/accountability practice not established",
+          "sourceUrl": "https://mooc.chula.ac.th/course-detail/254",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "partnerAvailability": {
+        "status": "unconfirmed",
+        "lastReviewedOn": "2026-10-19",
+        "lastDirectVerifiedAt": null,
+        "officialCourseUrl": "https://mooc.chula.ac.th/course-detail/254",
+        "enrollmentUrl": null,
+        "note": "Official public MOOC source corroborates syllabus; not evidence of ChulaXL entitlement or open partner intake."
+      },
+      "reportDisplayFields": {
+        "course": {
+          "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+          "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653"
+        },
+        "fit": {
+          "en": "High match: human–AI role clarity, chapter 9. Role awareness only; not team handoff or accountability practice.",
+          "th": "จับคู่มั่นใจสูง: ความชัดเจนของบทบาทคนและ AI บทที่ 9 เน้นความเข้าใจบทบาท ไม่ใช่การฝึกส่งต่องานหรือกำหนดความรับผิดชอบ"
+        },
+        "format": {
+          "en": "1h 52m\nOnline reference; partner format pending",
+          "th": "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "ie-critical",
+      "domain": "D3",
+      "url": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "competencyMappings": [
+        {
+          "domain": "D3",
+          "competencyId": "D3-data-chart-judgment",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Modules 1–3: causality, biased samples, aggregation, base rates; practical assignments",
+          "limitation": "Does not establish every chart-forensics skill",
+          "sourceUrl": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D3",
+          "competencyId": "D3-source-verification",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Module 2 source/framing examination; module 3 Fact-Checking; module 4 claim/evidence exercises",
+          "limitation": "Claim/evidence checking; citation triangulation depth not independently observed",
+          "sourceUrl": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "ie-critical",
+      "reviewedOn": "2026-10-19",
+      "reportDisplayFields": {
+        "course": {
+          "en": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+          "th": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera"
+        },
+        "fit": {
+          "en": "High match: data/chart judgment and claim verification. Modules cover causality, biased samples, misleading averages and claim-testing exercises. Not media-forensics training.",
+          "th": "จับคู่มั่นใจสูง: วิเคราะห์ข้อมูล/กราฟและตรวจข้ออ้าง มีบทเรียนเหตุและผล ตัวอย่างลำเอียง ค่าเฉลี่ยชวนเข้าใจผิด และแบบฝึกตรวจข้ออ้าง ไม่ใช่การพิสูจน์สื่อดิจิทัล"
+        },
+        "format": {
+          "en": "Online, self-paced\nPlan about 20 hours; module totals show 16 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nเผื่อประมาณ 20 ชม.; รวมเวลารายโมดูลได้ 16 ชม."
+        },
+        "cost": {
+          "en": "Paid access / certificate; Thai checkout price unverified. Trial ≠ free completion.",
+          "th": "เข้าถึง/ประกาศนียบัตรแบบชำระเงิน; ยังไม่ยืนยันราคาในไทย ทดลองฟรีไม่เท่ากับเรียนจบฟรี"
+        },
+        "entry": {
+          "en": "Beginner; no experience required. English; Thai subtitles unverified. 25 assignments, some AI-graded.",
+          "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษาอังกฤษ; ยังไม่ยืนยันคำบรรยายไทย งานประเมิน 25 งาน บางงานตรวจด้วย AI"
+        },
+        "access": {
+          "en": "Enroll action shown. Confirm Thailand account access and payment terms; no fixed intake stated.",
+          "th": "มีปุ่มสมัคร ยืนยันสิทธิ์บัญชีในไทยและเงื่อนไขชำระเงิน ไม่ระบุรอบตายตัว"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "ms-responsible",
+      "domain": "D4",
+      "url": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "competencyMappings": [
+        {
+          "domain": "D4",
+          "competencyId": "D4-regulatory-policy",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Objectives: governance systems, actionable policies; units 4–5",
+          "limitation": "Policy/governance fluency, not specific statutory obligations",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D4",
+          "competencyId": "D4-fairness-ethics",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Objective 2 and guiding-principles unit: six responsible-AI principles",
+          "limitation": "Principles, not practical bias testing or IP clearance",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "ms-responsible",
+      "reviewedOn": "2026-10-19",
+      "reportDisplayFields": {
+        "course": {
+          "en": "Embrace responsible AI principles and practices\nMicrosoft Learn • module",
+          "th": "Embrace responsible AI principles and practices\nMicrosoft Learn • โมดูล"
+        },
+        "fit": {
+          "en": "High match: regulatory/policy fluency and fairness/ethics. Objectives address principles and policies; governance unit covers ownership. Not Thai legal compliance advice.",
+          "th": "จับคู่มั่นใจสูง: ความเข้าใจนโยบายและความเป็นธรรม/จริยธรรม วัตถุประสงค์ครอบคลุมหลักการ นโยบาย และบทบาทกำกับดูแล ไม่ใช่คำแนะนำการปฏิบัติตามกฎหมายไทย"
+        },
+        "format": {
+          "en": "Online, self-paced\nAbout 58 minutes / 9 units",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 58 นาที / 9 หน่วย"
+        },
+        "cost": {
+          "en": "Free learning content",
+          "th": "เนื้อหาเรียนฟรี"
+        },
+        "entry": {
+          "en": "Beginner; English. Basic AI and business knowledge. Sign in for assessment credit; not a certification exam.",
+          "th": "เริ่มต้น; อังกฤษ มีพื้นฐาน AI และธุรกิจ เข้าระบบเพื่อบันทึกผลประเมิน ไม่ใช่การสอบใบรับรองวิชาชีพ"
+        },
+        "access": {
+          "en": "Public learning units available. No cohort dates; Thai localization unverified.",
+          "th": "มีหน่วยเรียนสาธารณะ ไม่กำหนดรอบเรียน ยังไม่ยืนยันฉบับภาษาไทย"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    },
+    {
+      "id": "dlai-everyone",
+      "domain": "D5",
+      "url": "https://www.coursera.org/learn/ai-for-everyone",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "competencyMappings": [
+        {
+          "domain": "D5",
+          "competencyId": "D5-usecase-fit",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Week 2: How to choose an AI project parts 1 and 2",
+          "limitation": "Project-selection introduction",
+          "sourceUrl": "https://www.coursera.org/learn/ai-for-everyone",
+          "reviewedOn": "2026-10-19"
+        },
+        {
+          "domain": "D5",
+          "competencyId": "D5-transformation-strategy",
+          "matchConfidence": "high",
+          "coverage": "partial",
+          "evidence": "Week 3: AI Transformation Playbook parts 1 and 2",
+          "limitation": "No detailed ROI-model or scale-gate assessment",
+          "sourceUrl": "https://www.coursera.org/learn/ai-for-everyone",
+          "reviewedOn": "2026-10-19"
+        }
+      ],
+      "canonicalCourseId": "dlai-everyone",
+      "reviewedOn": "2026-10-19",
+      "reportDisplayFields": {
+        "course": {
+          "en": "AI For Everyone\nDeepLearning.AI / Coursera",
+          "th": "AI For Everyone\nDeepLearning.AI / Coursera"
+        },
+        "fit": {
+          "en": "High match: use-case evaluation and transformation strategy. Weeks 2–3 cover project selection and the transformation playbook. No detailed ROI-model practice shown.",
+          "th": "จับคู่มั่นใจสูง: ประเมินกรณีใช้งานและกลยุทธ์เปลี่ยนผ่าน สัปดาห์ 2–3 ครอบคลุมการเลือกโครงการและแนวทางเปลี่ยนผ่าน ไม่ระบุการฝึกแบบจำลอง ROI ละเอียด"
+        },
+        "format": {
+          "en": "Online, self-paced\nAbout 7 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 7 ชั่วโมง"
+        },
+        "cost": {
+          "en": "Paid certificate; localized checkout price unverified. Provider pricing differs by access route.",
+          "th": "ประกาศนียบัตรแบบชำระเงิน; ยืนยันราคาหน้าชำระเงินในไทย ราคาต่างกันตามช่องทาง"
+        },
+        "entry": {
+          "en": "Beginner; no experience required. Language/audio options vary by locale; confirm English/Thai. 4 assignments.",
+          "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษา/เสียงขึ้นกับหน้าที่เลือก โปรดยืนยันอังกฤษ/ไทย งานประเมิน 4 งาน"
+        },
+        "access": {
+          "en": "Enroll action shown. Confirm Thailand account terms. Business-oriented, not a coding course.",
+          "th": "มีปุ่มสมัคร ยืนยันเงื่อนไขบัญชีในไทย เน้นธุรกิจ ไม่ใช่หลักสูตรเขียนโค้ด"
+        }
+      },
+      "mappingSelectionPolicy": "Use competencyMappings; partial coverage only. Match confidence does not imply confirmed availability."
+    }
+  ],
+  "courseFields": [
+    {
+      "id": "course.chula.course",
+      "en": "AI Governance\nCHULA MOOC",
+      "th": "ธรรมาภิบาลและการกำกับดูแลปัญญาประดิษฐ์\nCHULA MOOC",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.chula.fit",
+      "en": "AI risks and governance approaches; healthcare case. Conditional on eligibility.",
+      "th": "ความเสี่ยงและการกำกับดูแล AI พร้อมกรณีด้านสุขภาพ ต้องตรวจสิทธิ์เข้าเรียน",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.chula.format",
+      "en": "Online / myCourseVille\n3 hours 42 minutes",
+      "th": "ออนไลน์ / myCourseVille\n3 ชั่วโมง 42 นาที",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.chula.cost",
+      "en": "Confirm course-specific fee / access.",
+      "th": "ยืนยันค่าเรียนและสิทธิ์เข้าเรียนของรายวิชา",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.chula.entry",
+      "en": "Broad audience stated; no specific prerequisite. Teaching language to confirm. Completion: 60%.",
+      "th": "ระบุกลุ่มผู้เรียนทั่วไป ไม่ระบุพื้นฐานเฉพาะ ยืนยันภาษาที่สอน เกณฑ์จบ 60%",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.chula.access",
+      "en": "Eligibility unconfirmed: public audience, but registration labeled Chula students/staff.",
+      "th": "ยังไม่ยืนยันสิทธิ์: ระบุผู้เรียนทั่วไป แต่ลิงก์สมัครระบุนิสิต/บุคลากรจุฬาฯ",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://mooc.chula.ac.th/course-detail/247",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.course",
+      "en": "Data + AI for Communication\nNIDA / Thai MOOC",
+      "th": "Data + AI for Communication\nNIDA / Thai MOOC",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.fit",
+      "en": "AI use cases for communication roles; not a general ROI or portfolio strategy course.",
+      "th": "กรณีใช้ AI ในงานสื่อสาร ไม่ใช่หลักสูตร ROI หรือกลยุทธ์โครงการโดยรวม",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.format",
+      "en": "Online, self-paced\n10 hours",
+      "th": "ออนไลน์ เรียนตามเวลาสะดวก\n10 ชั่วโมง",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.cost",
+      "en": "Free MOOC",
+      "th": "MOOC เรียนฟรี",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.entry",
+      "en": "Thai • communication students, professionals and managers. Content developed in 2022.",
+      "th": "ภาษาไทย • นักศึกษา คนทำงาน และผู้บริหารด้านการสื่อสาร พัฒนาเนื้อหาในปี 2022",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.nida.access",
+      "en": "Enrollment route visible; no closing date stated. Certificate criteria differ between listings; confirm before choosing.",
+      "th": "มีช่องทางสมัคร ไม่ระบุวันปิดรับ ข้อมูลเกณฑ์ประกาศนียบัตรต่างกันระหว่างหน้าเว็บ ควรยืนยันก่อนเลือก",
+      "page": 4,
+      "kind": "course-field",
+      "source": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-15-r01",
+      "baseline": "New in 2026-10-15-r01"
+    },
+    {
+      "id": "course.xl-found.course",
+      "en": "AI & ML Foundations\nChulaXL • NEURON0129",
+      "th": "ความรู้พื้นฐานเกี่ยวกับ AI และ ML\nChulaXL • NEURON0129",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.course"
+    },
+    {
+      "id": "course.xl-found.fit",
+      "en": "High match: core concepts, GenAI mechanics, capability limits and context windows. Partial coverage; no advanced systems engineering.",
+      "th": "จับคู่มั่นใจสูง: แนวคิด AI กลไก GenAI ข้อจำกัด และหน้าต่างบริบท ครอบคลุมบางส่วน ไม่ใช่วิศวกรรมระบบขั้นสูง",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.fit"
+    },
+    {
+      "id": "course.xl-found.format",
+      "en": "2h 05m\nOnline reference; partner format pending",
+      "th": "2 ชม. 5 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.format"
+    },
+    {
+      "id": "course.xl-found.cost",
+      "en": "Partner price / VAT: unconfirmed",
+      "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.cost"
+    },
+    {
+      "id": "course.xl-found.entry",
+      "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+      "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.entry"
+    },
+    {
+      "id": "course.xl-found.access",
+      "en": "Partner access pending\nDates / seats: unconfirmed",
+      "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+      "page": 4,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-found.access"
+    },
+    {
+      "id": "course.xl-prompt.course",
+      "en": "Generative AI & Prompt Engineering\nChulaXL • CHULAMOOC2654",
+      "th": "ปัญญาประดิษฐ์เชิงสร้างสรรค์และกระบวนการสร้างคำสั่ง\nChulaXL • CHULAMOOC2654",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.course"
+    },
+    {
+      "id": "course.xl-prompt.fit",
+      "en": "High match: prompt design and output refinement, chapters 3–7. Introductory coverage; agent workflows are not demonstrated.",
+      "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่งและปรับปรุงผลลัพธ์ บทที่ 3–7 ครอบคลุมเบื้องต้น ไม่ยืนยันการฝึกเวิร์กโฟลว์เอเจนต์",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.fit"
+    },
+    {
+      "id": "course.xl-prompt.format",
+      "en": "1h 16m\nOnline reference; partner format pending",
+      "th": "1 ชม. 16 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.format"
+    },
+    {
+      "id": "course.xl-prompt.cost",
+      "en": "Partner price / VAT: unconfirmed",
+      "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.cost"
+    },
+    {
+      "id": "course.xl-prompt.entry",
+      "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+      "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.entry"
+    },
+    {
+      "id": "course.xl-prompt.access",
+      "en": "Partner access pending\nDates / seats: unconfirmed",
+      "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+      "page": 5,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-prompt.access"
+    },
+    {
+      "id": "course.xl-gov.course",
+      "en": "AI Governance\nChulaXL • CHULAMOOC2656",
+      "th": "ธรรมาภิบาลและการกำกับดูแลปัญญาประดิษฐ์\nChulaXL • CHULAMOOC2656",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.course"
+    },
+    {
+      "id": "course.xl-gov.fit",
+      "en": "High match: regulatory/policy fluency, chapters 3–4. Governance awareness; not implementation of logs, permissions or incident response.",
+      "th": "จับคู่มั่นใจสูง: ความเข้าใจกฎระเบียบและนโยบาย บทที่ 3–4 เน้นความเข้าใจการกำกับดูแล ไม่ใช่การติดตั้งบันทึกระบบ สิทธิ์ หรือรับมือเหตุการณ์",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.fit"
+    },
+    {
+      "id": "course.xl-gov.format",
+      "en": "3h 42m\nOnline reference; partner format pending",
+      "th": "3 ชม. 42 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.format"
+    },
+    {
+      "id": "course.xl-gov.cost",
+      "en": "Partner price / VAT: unconfirmed",
+      "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.cost"
+    },
+    {
+      "id": "course.xl-gov.entry",
+      "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+      "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.entry"
+    },
+    {
+      "id": "course.xl-gov.access",
+      "en": "Partner access pending\nDates / seats: unconfirmed",
+      "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+      "page": 7,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-gov.access"
+    },
+    {
+      "id": "course.xl-ai10-d5.course",
+      "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+      "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.course"
+    },
+    {
+      "id": "course.xl-ai10-d5.fit",
+      "en": "High match: use-case evaluation, chapter 3. Short orientation; ROI measurement and portfolio prioritization are not established.",
+      "th": "จับคู่มั่นใจสูง: ประเมินกรณีใช้งาน บทที่ 3 เป็นบทนำสั้น ๆ ยังไม่ยืนยันการฝึกวัด ROI หรือจัดลำดับโครงการ",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.fit"
+    },
+    {
+      "id": "course.xl-ai10-d5.format",
+      "en": "1h 52m\nOnline reference; partner format pending",
+      "th": "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.format"
+    },
+    {
+      "id": "course.xl-ai10-d5.cost",
+      "en": "Partner price / VAT: unconfirmed",
+      "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.cost"
+    },
+    {
+      "id": "course.xl-ai10-d5.entry",
+      "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+      "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.entry"
+    },
+    {
+      "id": "course.xl-ai10-d5.access",
+      "en": "Partner access pending\nDates / seats: unconfirmed",
+      "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+      "page": 8,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d5.access"
+    },
+    {
+      "id": "course.xl-ai10-d6.course",
+      "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+      "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.course"
+    },
+    {
+      "id": "course.xl-ai10-d6.fit",
+      "en": "High match: human–AI role clarity, chapter 9. Role awareness only; not team handoff or accountability practice.",
+      "th": "จับคู่มั่นใจสูง: ความชัดเจนของบทบาทคนและ AI บทที่ 9 เน้นความเข้าใจบทบาท ไม่ใช่การฝึกส่งต่องานหรือกำหนดความรับผิดชอบ",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.fit"
+    },
+    {
+      "id": "course.xl-ai10-d6.format",
+      "en": "1h 52m\nOnline reference; partner format pending",
+      "th": "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.format"
+    },
+    {
+      "id": "course.xl-ai10-d6.cost",
+      "en": "Partner price / VAT: unconfirmed",
+      "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.cost"
+    },
+    {
+      "id": "course.xl-ai10-d6.entry",
+      "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+      "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.entry"
+    },
+    {
+      "id": "course.xl-ai10-d6.access",
+      "en": "Partner access pending\nDates / seats: unconfirmed",
+      "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+      "page": 9,
+      "kind": "course",
+      "source": "ChulaXL AI Series workbook + official CHULA MOOC / reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "2026-10-19-r01 / course.xl-ai10-d6.access"
+    },
+    {
+      "id": "course.ais.course",
+      "en": "AI Companion: Getting to Know and Using AI for Life and Work\nAIS / Thai MOOC",
+      "th": "เพื่อน AI คู่คิด: รู้จัก เข้าใจ ใช้เป็น\nAIS / Thai MOOC",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ais.fit",
+      "en": "High match: core AI concepts; objective 1 explains AI and everyday tools. Practical introduction, not deep model mechanics.",
+      "th": "จับคู่มั่นใจสูง: แนวคิด AI พื้นฐาน วัตถุประสงค์ข้อ 1 อธิบาย AI และเครื่องมือประจำวัน เน้นเริ่มใช้งาน ไม่เจาะกลไกโมเดล",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ais.format",
+      "en": "Online, self-paced\n4 hours",
+      "th": "ออนไลน์ ตามเวลาสะดวก\n4 ชั่วโมง",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ais.cost",
+      "en": "Free MOOC listing; confirm access terms",
+      "th": "รายการ MOOC ฟรี; ตรวจเงื่อนไขเข้าเรียน",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ais.entry",
+      "en": "Beginner; Thai listing. Public audience; audio not independently checked. Unit tests; certificate ≥70%.",
+      "th": "เริ่มต้น; รายการภาษาไทย สำหรับบุคคลทั่วไป ยังไม่ตรวจภาษาเสียง แบบทดสอบระหว่างเรียน; ประกาศนียบัตร ≥70%",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ais.access",
+      "en": "Enrollment route listed; account needed. No closing date stated.",
+      "th": "มีช่องทางสมัคร ต้องมีบัญชี ไม่ระบุวันปิดรับ",
+      "page": 4,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.course",
+      "en": "Generative AI Foundations\nARIT",
+      "th": "Generative AI Foundations\nARIT",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.fit",
+      "en": "High match: prompt design, tool selection and output refinement. Explicit prompt and refinement syllabus; basic level.",
+      "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่ง เลือกเครื่องมือ และปรับปรุงผลลัพธ์ มีหัวข้อคำสั่งและการปรับคำสั่งชัดเจน ระดับพื้นฐาน",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.format",
+      "en": "12 hours / 2 days\nDec intake: Hybrid; venue to confirm",
+      "th": "12 ชั่วโมง / 2 วัน\nรอบ ธ.ค.: ไฮบริด; ยืนยันสถานที่",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.cost",
+      "en": "THB 8,500 excluding VAT (Dec form)",
+      "th": "8,500 บาท ไม่รวม VAT (แบบฟอร์มรอบ ธ.ค.)",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.entry",
+      "en": "Basic; Thai listing. Confirm teaching language and prerequisites. Training with CCS exam.",
+      "th": "พื้นฐาน; รายการภาษาไทย ยืนยันภาษาสอนและพื้นฐานที่ต้องมี อบรมพร้อมสอบ CCS",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.arit.access",
+      "en": "29–30 Oct / 16–18 Dec 2026 listed. Dec dates conflict with “2 days”; confirm dates, format and seats.",
+      "th": "ระบุ 29–30 ต.ค. / 16–18 ธ.ค. 2026 รอบ ธ.ค. ขัดกับ “2 วัน”; ยืนยันวัน รูปแบบ และที่นั่ง",
+      "page": 5,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.course",
+      "en": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+      "th": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.fit",
+      "en": "High match: data/chart judgment and claim verification. Modules cover causality, biased samples, misleading averages and claim-testing exercises. Not media-forensics training.",
+      "th": "จับคู่มั่นใจสูง: วิเคราะห์ข้อมูล/กราฟและตรวจข้ออ้าง มีบทเรียนเหตุและผล ตัวอย่างลำเอียง ค่าเฉลี่ยชวนเข้าใจผิด และแบบฝึกตรวจข้ออ้าง ไม่ใช่การพิสูจน์สื่อดิจิทัล",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.format",
+      "en": "Online, self-paced\nPlan about 20 hours; module totals show 16 hours",
+      "th": "ออนไลน์ ตามเวลาสะดวก\nเผื่อประมาณ 20 ชม.; รวมเวลารายโมดูลได้ 16 ชม.",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.cost",
+      "en": "Paid access / certificate; Thai checkout price unverified. Trial ≠ free completion.",
+      "th": "เข้าถึง/ประกาศนียบัตรแบบชำระเงิน; ยังไม่ยืนยันราคาในไทย ทดลองฟรีไม่เท่ากับเรียนจบฟรี",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.entry",
+      "en": "Beginner; no experience required. English; Thai subtitles unverified. 25 assignments, some AI-graded.",
+      "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษาอังกฤษ; ยังไม่ยืนยันคำบรรยายไทย งานประเมิน 25 งาน บางงานตรวจด้วย AI",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ie-critical.access",
+      "en": "Enroll action shown. Confirm Thailand account access and payment terms; no fixed intake stated.",
+      "th": "มีปุ่มสมัคร ยืนยันสิทธิ์บัญชีในไทยและเงื่อนไขชำระเงิน ไม่ระบุรอบตายตัว",
+      "page": 6,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.course",
+      "en": "Embrace responsible AI principles and practices\nMicrosoft Learn • module",
+      "th": "Embrace responsible AI principles and practices\nMicrosoft Learn • โมดูล",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.fit",
+      "en": "High match: regulatory/policy fluency and fairness/ethics. Objectives address principles and policies; governance unit covers ownership. Not Thai legal compliance advice.",
+      "th": "จับคู่มั่นใจสูง: ความเข้าใจนโยบายและความเป็นธรรม/จริยธรรม วัตถุประสงค์ครอบคลุมหลักการ นโยบาย และบทบาทกำกับดูแล ไม่ใช่คำแนะนำการปฏิบัติตามกฎหมายไทย",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.format",
+      "en": "Online, self-paced\nAbout 58 minutes / 9 units",
+      "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 58 นาที / 9 หน่วย",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.cost",
+      "en": "Free learning content",
+      "th": "เนื้อหาเรียนฟรี",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.entry",
+      "en": "Beginner; English. Basic AI and business knowledge. Sign in for assessment credit; not a certification exam.",
+      "th": "เริ่มต้น; อังกฤษ มีพื้นฐาน AI และธุรกิจ เข้าระบบเพื่อบันทึกผลประเมิน ไม่ใช่การสอบใบรับรองวิชาชีพ",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.ms-responsible.access",
+      "en": "Public learning units available. No cohort dates; Thai localization unverified.",
+      "th": "มีหน่วยเรียนสาธารณะ ไม่กำหนดรอบเรียน ยังไม่ยืนยันฉบับภาษาไทย",
+      "page": 7,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.course",
+      "en": "AI For Everyone\nDeepLearning.AI / Coursera",
+      "th": "AI For Everyone\nDeepLearning.AI / Coursera",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.fit",
+      "en": "High match: use-case evaluation and transformation strategy. Weeks 2–3 cover project selection and the transformation playbook. No detailed ROI-model practice shown.",
+      "th": "จับคู่มั่นใจสูง: ประเมินกรณีใช้งานและกลยุทธ์เปลี่ยนผ่าน สัปดาห์ 2–3 ครอบคลุมการเลือกโครงการและแนวทางเปลี่ยนผ่าน ไม่ระบุการฝึกแบบจำลอง ROI ละเอียด",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.format",
+      "en": "Online, self-paced\nAbout 7 hours",
+      "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 7 ชั่วโมง",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.cost",
+      "en": "Paid certificate; localized checkout price unverified. Provider pricing differs by access route.",
+      "th": "ประกาศนียบัตรแบบชำระเงิน; ยืนยันราคาหน้าชำระเงินในไทย ราคาต่างกันตามช่องทาง",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.entry",
+      "en": "Beginner; no experience required. Language/audio options vary by locale; confirm English/Thai. 4 assignments.",
+      "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษา/เสียงขึ้นกับหน้าที่เลือก โปรดยืนยันอังกฤษ/ไทย งานประเมิน 4 งาน",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.dlai-everyone.access",
+      "en": "Enroll action shown. Confirm Thailand account terms. Business-oriented, not a coding course.",
+      "th": "มีปุ่มสมัคร ยืนยันเงื่อนไขบัญชีในไทย เน้นธุรกิจ ไม่ใช่หลักสูตรเขียนโค้ด",
+      "page": 8,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.course",
+      "en": "Mentoring and Coaching with AI\nSkooldio",
+      "th": "Mentoring and Coaching with AI\nSkooldio",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.fit",
+      "en": "High match: learning/improvement loops through AI-assisted feedback, development plans and reflection. Best for managers; not general human–AI accountability training.",
+      "th": "จับคู่มั่นใจสูง: วงจรเรียนรู้และพัฒนาผ่าน AI ช่วยให้ข้อเสนอแนะ วางแผนพัฒนา และสะท้อนผล เหมาะกับหัวหน้างาน ไม่ใช่การฝึกความรับผิดชอบคน–AI ทุกบริบท",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.format",
+      "en": "Online\nAbout 1h 28m listed video, plus practice",
+      "th": "ออนไลน์\nวิดีโอที่ระบุประมาณ 1 ชม. 28 นาที และเวลาฝึกเพิ่ม",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.cost",
+      "en": "THB 1,990 listed; confirm VAT / checkout total",
+      "th": "แสดง 1,990 บาท; ยืนยัน VAT / ยอดชำระ",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.entry",
+      "en": "ChatGPT/Claude familiarity. Thai listing; audio to confirm. No HR/coaching background needed; certificate terms unverified.",
+      "th": "คุ้นเคย ChatGPT/Claude รายการไทย; ยืนยันภาษาเสียง ไม่ต้องมีพื้นฐาน HR/โค้ช เกณฑ์ประกาศนียบัตรยังไม่ยืนยัน",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    },
+    {
+      "id": "course.skooldio-coaching.access",
+      "en": "Course listed; checkout untested. Individual lifetime / corporate 1-year access per FAQ.",
+      "th": "มีรายการหลักสูตร ยังไม่ทดสอบชำระเงิน FAQ ระบุบุคคลตลอดชีพ / องค์กร 1 ปี",
+      "page": 9,
+      "kind": "course",
+      "source": "FB-011 / official provider syllabus reviewed 2026-10-19",
+      "note": "",
+      "status": "Pending review",
+      "version": "2026-10-19-r02",
+      "baseline": "New in 2026-10-19-r02"
+    }
+  ],
+  "watchlist": {
+    "status": "Not recommended until intake verified",
+    "courses": [
+      {
+        "id": "botnoi",
+        "domain": "D2",
+        "url": "https://botnoicourse.com/courses/agentic-builder"
+      },
+      {
+        "id": "skooldio-critical",
+        "domain": "D3",
+        "url": "https://www.skooldio.com/courses/critical-thinking",
+        "status": "coming-soon",
+        "priceTHB": 2490,
+        "format": "online",
+        "duration": null,
+        "language": "not verified",
+        "prerequisites": "not stated",
+        "location": null,
+        "startDate": null,
+        "enrollmentDeadline": null,
+        "evidenceIds": [
+          "critical"
+        ],
+        "reason": "Explicit coming soon / interest signup; exclude from current recommendations",
+        "mapping": "Partial D3: questioning, evidence and bias; not a dedicated AI-output-verification lab."
+      },
+      {
+        "id": "chula250",
+        "domain": "D1",
+        "secondaryDomains": [
+          "D3",
+          "D6"
+        ],
+        "url": "https://mooc.chula.ac.th/course-detail/250",
+        "status": "eligibility-unverified",
+        "durationMinutes": 53,
+        "format": "online",
+        "fee": null,
+        "language": "not verified",
+        "prerequisites": "not specified",
+        "location": null,
+        "evidenceIds": [
+          "chula250"
+        ],
+        "reason": "Broad awareness only; enrollment destination fetch failed and public access unresolved."
+      }
+    ],
+    "sourceText": [
+      {
+        "id": "course.botnoi.course",
+        "en": "Agentic Builder\nBOTNOI",
+        "th": "Agentic Builder\nBOTNOI",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      },
+      {
+        "id": "course.botnoi.fit",
+        "en": "Build agent workflows with RAG and tools; SME project practice.",
+        "th": "สร้างงานแบบ Agent ด้วย RAG และเครื่องมือ ฝึกโครงงานสำหรับ SME",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      },
+      {
+        "id": "course.botnoi.format",
+        "en": "Onsite • 4 days / 24 hours\nVenue to confirm.",
+        "th": "เรียนในสถานที่ • 4 วัน / 24 ชั่วโมง\nยืนยันสถานที่",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      },
+      {
+        "id": "course.botnoi.cost",
+        "en": "Advertised free",
+        "th": "ประกาศว่าเรียนฟรี",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      },
+      {
+        "id": "course.botnoi.entry",
+        "en": "Eligibility, language and prerequisites to confirm.",
+        "th": "ยืนยันสิทธิ์เข้าเรียน ภาษา และพื้นฐานที่ต้องมี",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      },
+      {
+        "id": "course.botnoi.access",
+        "en": "Future option only: interest form, no confirmed intake. Prior provider information; page text could not be rechecked in this revision.",
+        "th": "ทางเลือกในอนาคต: แบบแจ้งความสนใจ ยังไม่ยืนยันรอบเรียน ใช้ข้อมูลผู้จัดจากการตรวจครั้งก่อน ครั้งนี้ตรวจข้อความบนหน้าเว็บซ้ำไม่ได้",
+        "page": 3,
+        "kind": "course-field",
+        "source": "https://botnoicourse.com/courses/agentic-builder",
+        "note": "",
+        "status": "Pending review",
+        "version": "2026-10-15-r01",
+        "baseline": "New in 2026-10-15-r01"
+      }
+    ],
+    "reason": "Watchlist entries have no verified eligible intake. See per-record reasons; BOTNOI remains interest-only with unreadable direct page.",
+    "lastReviewedOn": "2026-10-19"
+  },
+  "policy": "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-15-r01\\COURSE_REFRESH_REQUIREMENTS.txt",
+  "schemaVersion": 2,
+  "verificationPolicy": {
+    "reviewMethod": "Official provider pages retrieved through web search/open; cache-backed responses. Direct HTTP retry blocked by local network permissions.",
+    "reviewIsNotLiveEnrollmentTest": true,
+    "freshnessDays": 7,
+    "doNotResetAvailabilityFreshnessOnCachedReview": true,
+    "missingMeansUnknownNotExpired": true,
+    "renderFilter": "Exclude expired, cancelled, closed and interest-only offerings. Conditional records must not be labeled enrollment-ready. Re-evaluate date boundaries at export."
+  },
+  "offerings": [
+    {
+      "id": "ais-self-paced",
+      "courseId": "ais",
+      "enrollmentUrl": "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": "th",
+      "languageStatus": "Thai listing; teaching audio not independently verified",
+      "location": null,
+      "prerequisites": "No specific prerequisite stated; public learning audience",
+      "fee": {
+        "amount": 0,
+        "currency": "THB",
+        "basis": "Existing free-MOOC classification; current checkout not verified"
+      },
+      "format": "online",
+      "durationHours": 4,
+      "evidenceIds": [
+        "ais"
+      ]
+    },
+    {
+      "id": "nida-self-paced",
+      "courseId": "nida",
+      "enrollmentUrl": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": "th",
+      "languageStatus": "Thai listing; teaching audio not independently verified",
+      "location": null,
+      "prerequisites": "Communication students, professionals and managers",
+      "fee": {
+        "amount": 0,
+        "currency": "THB",
+        "basis": "Existing free-MOOC classification; current checkout not verified"
+      },
+      "format": "online",
+      "durationHours": 10,
+      "evidenceIds": [
+        "nida"
+      ]
+    },
+    {
+      "id": "chula-self-paced",
+      "courseId": "chula",
+      "enrollmentUrl": "https://www.mycourseville.com/?q=onlinecourse/course/74340",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": "th",
+      "languageStatus": "Thai listing; teaching audio not independently verified",
+      "location": null,
+      "prerequisites": "No specific prerequisite stated; public learning audience",
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "basis": "Course-specific fee unconfirmed"
+      },
+      "format": "online",
+      "durationHours": 3.7,
+      "accessCaveat": "Public eligibility unresolved; source link labeled Chula students/staff",
+      "evidenceIds": [
+        "chula",
+        "chula-access"
+      ]
+    },
+    {
+      "id": "arit-oct-2026",
+      "courseId": "arit",
+      "enrollmentUrl": "https://www.arit.co.th/course-register?id=1577",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-30",
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": null,
+      "languageStatus": "not explicitly verified",
+      "location": null,
+      "prerequisites": "Basic level; specific entry requirements not stated",
+      "fee": {
+        "amount": 8500,
+        "currency": "THB",
+        "vatIncluded": null,
+        "extraCosts": "Exam terms unconfirmed"
+      },
+      "format": null,
+      "durationHours": 12,
+      "evidenceIds": [
+        "arit"
+      ],
+      "accessCaveat": "Enrollment page fetch failed twice; not evidence of expiry. Confirm format, VAT and seats."
+    },
+    {
+      "id": "arit-dec-2026",
+      "courseId": "arit",
+      "enrollmentUrl": "https://www.arit.co.th/course-register?id=1593",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": "2026-12-16",
+      "endDate": "2026-12-18",
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": null,
+      "languageStatus": "not explicitly verified",
+      "location": null,
+      "prerequisites": "Basic level; specific entry requirements not stated",
+      "fee": {
+        "amount": 8500,
+        "currency": "THB",
+        "vatIncluded": false,
+        "extraCosts": "Exam terms unconfirmed"
+      },
+      "format": "hybrid",
+      "durationHours": 12,
+      "evidenceIds": [
+        "arit",
+        "arit-dec"
+      ],
+      "accessCaveat": "Date range conflicts with two-day duration; confirm schedule and seats."
+    },
+    {
+      "id": "skooldio-coaching-self-paced",
+      "courseId": "skooldio-coaching",
+      "enrollmentUrl": "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+      "status": "conditional",
+      "enrollmentReady": false,
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "availabilityEvidence": "cache-backed; reconfirm before enrollment",
+      "language": "th",
+      "languageStatus": "Thai listing; audio language to confirm",
+      "location": null,
+      "prerequisites": "Some familiarity with ChatGPT or Claude; no HR, psychology or coaching background required",
+      "fee": {
+        "amount": 1990,
+        "currency": "THB",
+        "vatIncluded": null,
+        "extraCosts": "AI tool subscriptions not specified"
+      },
+      "format": "online self-paced",
+      "durationMinutes": 87.71666666666667,
+      "durationBasis": "Sum of published video runtimes; not total workload",
+      "accessCaveat": "Course-specific listing and price verified through cached provider page; purchase flow not verified.",
+      "accessTerm": "Provider FAQ: lifetime for individual purchase, one year for corporate purchase",
+      "evidenceIds": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "chulaxl-foundations-chulaxl-pending",
+      "courseId": "chulaxl-foundations",
+      "provider": "ChulaXL",
+      "status": "pending-partner-confirmation",
+      "enrollmentReady": false,
+      "enrollmentUrl": null,
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/251",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "vatIncluded": null
+      },
+      "format": null,
+      "referenceFormat": "online",
+      "language": null,
+      "outlineLanguage": "th",
+      "prerequisites": null,
+      "location": null,
+      "durationMinutes": 125,
+      "certificateTerms": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null
+    },
+    {
+      "id": "chulaxl-prompt-chulaxl-pending",
+      "courseId": "chulaxl-prompt",
+      "provider": "ChulaXL",
+      "status": "pending-partner-confirmation",
+      "enrollmentReady": false,
+      "enrollmentUrl": null,
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/253",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "vatIncluded": null
+      },
+      "format": null,
+      "referenceFormat": "online",
+      "language": null,
+      "outlineLanguage": "th",
+      "prerequisites": null,
+      "location": null,
+      "durationMinutes": 76,
+      "certificateTerms": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null
+    },
+    {
+      "id": "chulaxl-ai10-chulaxl-pending",
+      "courseId": "chulaxl-ai10",
+      "provider": "ChulaXL",
+      "status": "pending-partner-confirmation",
+      "enrollmentReady": false,
+      "enrollmentUrl": null,
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/254",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "vatIncluded": null
+      },
+      "format": null,
+      "referenceFormat": "online",
+      "language": null,
+      "outlineLanguage": "th",
+      "prerequisites": null,
+      "location": null,
+      "durationMinutes": 112,
+      "certificateTerms": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null
+    },
+    {
+      "id": "chula-chulaxl-pending",
+      "courseId": "chula",
+      "provider": "ChulaXL",
+      "status": "pending-partner-confirmation",
+      "enrollmentReady": false,
+      "enrollmentUrl": null,
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/247",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "vatIncluded": null
+      },
+      "format": null,
+      "referenceFormat": "online",
+      "language": null,
+      "outlineLanguage": "th",
+      "prerequisites": null,
+      "location": null,
+      "durationMinutes": 222,
+      "certificateTerms": null,
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null
+    },
+    {
+      "id": "ie-critical-self-paced",
+      "courseId": "ie-critical",
+      "format": "online",
+      "location": "Global online option for Thailand-based learners; account-specific access untested",
+      "status": "listed-reconfirm-access",
+      "enrollmentReady": false,
+      "informationUrl": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "enrollmentUrl": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "durationMinutes": 1200,
+      "durationEvidence": {
+        "en": "Online, self-paced\nPlan about 20 hours; module totals show 16 hours",
+        "th": "ออนไลน์ ตามเวลาสะดวก\nเผื่อประมาณ 20 ชม.; รวมเวลารายโมดูลได้ 16 ชม."
+      },
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "basis": "Paid access / certificate; Thai checkout price unverified. Trial ≠ free completion."
+      },
+      "language": "en",
+      "languageEvidence": {
+        "en": "Beginner; no experience required. English; Thai subtitles unverified. 25 assignments, some AI-graded.",
+        "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษาอังกฤษ; ยังไม่ยืนยันคำบรรยายไทย งานประเมิน 25 งาน บางงานตรวจด้วย AI"
+      },
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "sourceEvidence": "Public official web pages retrieved; account, checkout and language options not tested."
+    },
+    {
+      "id": "ms-responsible-self-paced",
+      "courseId": "ms-responsible",
+      "format": "online",
+      "location": "Global online option for Thailand-based learners; account-specific access untested",
+      "status": "public-content",
+      "enrollmentReady": false,
+      "informationUrl": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "enrollmentUrl": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "durationMinutes": 58,
+      "durationEvidence": {
+        "en": "Online, self-paced\nAbout 58 minutes / 9 units",
+        "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 58 นาที / 9 หน่วย"
+      },
+      "fee": {
+        "amount": 0,
+        "currency": "THB",
+        "basis": "Free learning content"
+      },
+      "language": "en",
+      "languageEvidence": {
+        "en": "Beginner; English. Basic AI and business knowledge. Sign in for assessment credit; not a certification exam.",
+        "th": "เริ่มต้น; อังกฤษ มีพื้นฐาน AI และธุรกิจ เข้าระบบเพื่อบันทึกผลประเมิน ไม่ใช่การสอบใบรับรองวิชาชีพ"
+      },
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "sourceEvidence": "Public official web pages retrieved; account, checkout and language options not tested."
+    },
+    {
+      "id": "dlai-everyone-self-paced",
+      "courseId": "dlai-everyone",
+      "format": "online",
+      "location": "Global online option for Thailand-based learners; account-specific access untested",
+      "status": "listed-reconfirm-access",
+      "enrollmentReady": false,
+      "informationUrl": "https://www.coursera.org/learn/ai-for-everyone",
+      "enrollmentUrl": "https://www.coursera.org/learn/ai-for-everyone",
+      "startDate": null,
+      "endDate": null,
+      "enrollmentDeadline": null,
+      "durationMinutes": 420,
+      "durationEvidence": {
+        "en": "Online, self-paced\nAbout 7 hours",
+        "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 7 ชั่วโมง"
+      },
+      "fee": {
+        "amount": null,
+        "currency": "THB",
+        "basis": "Paid certificate; localized checkout price unverified. Provider pricing differs by access route."
+      },
+      "language": null,
+      "languageEvidence": {
+        "en": "Beginner; no experience required. Language/audio options vary by locale; confirm English/Thai. 4 assignments.",
+        "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษา/เสียงขึ้นกับหน้าที่เลือก โปรดยืนยันอังกฤษ/ไทย งานประเมิน 4 งาน"
+      },
+      "lastReviewedOn": "2026-10-19",
+      "lastDirectAvailabilityVerifiedAt": null,
+      "sourceEvidence": "Public official web pages retrieved; account, checkout and language options not tested."
+    }
+  ],
+  "retiredOfferings": [
+    {
+      "id": "skooldio-exec-2025-10-02",
+      "courseId": "skooldio-executives",
+      "domain": "D5",
+      "date": "2025-10-02",
+      "status": "expired",
+      "previouslyRecommended": false,
+      "reason": "Discovered intake already passed; not added to current recommendations",
+      "evidenceIds": [
+        "executives"
+      ],
+      "source": "https://www.skooldio.com/workshops/generative-ai-mastery-for-executives"
+    },
+    {
+      "id": "skooldio-exec-2026-02-13",
+      "courseId": "skooldio-executives",
+      "domain": "D5",
+      "date": "2026-02-13",
+      "status": "expired",
+      "previouslyRecommended": false,
+      "reason": "Discovered intake already passed; not added to current recommendations",
+      "evidenceIds": [
+        "executives"
+      ],
+      "source": "https://www.skooldio.com/workshops/generative-ai-mastery-for-executives"
+    },
+    {
+      "id": "skooldio-exec-2026-05-15",
+      "courseId": "skooldio-executives",
+      "domain": "D5",
+      "date": "2026-05-15",
+      "status": "expired",
+      "previouslyRecommended": false,
+      "reason": "Discovered intake already passed; not added to current recommendations",
+      "evidenceIds": [
+        "executives"
+      ],
+      "source": "https://www.skooldio.com/workshops/generative-ai-mastery-for-executives"
+    },
+    {
+      "id": "skooldio-exec-2026-09-04",
+      "courseId": "skooldio-executives",
+      "domain": "D5",
+      "date": "2026-09-04",
+      "status": "expired",
+      "previouslyRecommended": false,
+      "reason": "Discovered intake already passed; not added to current recommendations",
+      "evidenceIds": [
+        "executives"
+      ],
+      "source": "https://www.skooldio.com/workshops/generative-ai-mastery-for-executives"
+    }
+  ],
+  "domainCoverage": {
+    "D1": "AIS retained; Chula250 discovered but held for eligibility",
+    "D2": "ARIT two intakes separated; BOTNOI remains watchlist",
+    "D3": "No enrollment-ready verified match; critical-thinking candidate coming soon",
+    "D4": "CHULA governance conditional; public eligibility unresolved",
+    "D5": "NIDA retained; executive workshop discovered intakes all passed",
+    "D6": "New partial-fit coaching option, conditional on purchase/access confirmation"
+  },
+  "evidence": [
+    {
+      "id": "ais",
+      "url": "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "2 weeks",
+      "findings": "4h; public audience; enrollment link visible; 70% certificate criterion; no closing date in retrieved page."
+    },
+    {
+      "id": "nida",
+      "url": "https://learn.thaimooc.ac.th/courses/course-v1:NIDA%2B00356%2B0/about",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last month",
+      "findings": "10h; communication audience; enrollment route visible; 75% completion on enrollment page. Catalog conflict retained."
+    },
+    {
+      "id": "arit",
+      "url": "https://www.arit.co.th/courses/generative-ai-foundations",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "2 weeks",
+      "findings": "THB8500, basic,12h/2days; Oct29-30 and Dec16-18 2026 listed."
+    },
+    {
+      "id": "arit-dec",
+      "url": "https://www.arit.co.th/course-register?id=1593",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "3 months",
+      "findings": "Registration page specifies Hybrid and price excluding VAT; still describes Dec16-18 as 2 days. Form exists; seats/deadline not verified."
+    },
+    {
+      "id": "chula",
+      "url": "https://mooc.chula.ac.th/course-detail/247",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last week",
+      "findings": "3h42; public audience but registration labeled Chula students/staff; completion60%."
+    },
+    {
+      "id": "chula-access",
+      "url": "https://www.mycourseville.com/?q=onlinecourse/course/74340",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last month",
+      "findings": "Course-specific page offers Facebook/platform login; login does not establish public eligibility."
+    },
+    {
+      "id": "coaching",
+      "url": "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last week",
+      "findings": "Online course listed THB1990. Prior AI chatbot familiarity; no HR/coaching prerequisites. Nine listed videos total87m43s (derived). Coaching simulation, feedback and IDP exercises."
+    },
+    {
+      "id": "critical",
+      "url": "https://www.skooldio.com/courses/critical-thinking",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "3 days",
+      "findings": "THB2490; page explicitly coming soon with discount-interest registration. Not open enrollment."
+    },
+    {
+      "id": "chula250",
+      "url": "https://mooc.chula.ac.th/course-detail/250",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last week",
+      "findings": "53min broad AI literacy; output evaluation included; public audience but Chula-only registration label."
+    },
+    {
+      "id": "executives",
+      "url": "https://www.skooldio.com/workshops/generative-ai-mastery-for-executives",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "yesterday",
+      "findings": "Published batches Oct2 2025, Feb13/May15/Sep4 2026 all marked passed; pre-registration only."
+    },
+    {
+      "id": "botnoi",
+      "url": "https://botnoicourse.com/courses/agentic-builder",
+      "reviewedOn": "2026-10-19",
+      "method": "web open/click",
+      "cacheAgeAsReported": "last week",
+      "findings": "Direct web open returns no text twice; search extract supports old onsite description, not a new intake. No expiry inferred."
+    }
+  ],
+  "refreshRun": {
+    "type": "user-directed recommendation revision",
+    "date": "2026-10-19",
+    "version": "2026-10-19-r03",
+    "sourceReport": "2026-10-19-r02",
+    "productionConnected": false
+  },
+  "partnerRecommendationPolicy": {
+    "choice": "1–3 provider-neutral options per domain; learner priorities override gap ranking.",
+    "matching": "High match does not mean full competency coverage or proven course effectiveness. State missing skills.",
+    "deduplication": "CHULAMOOC2653 is one course for multiple domains; count duration and enrollment once.",
+    "availability": "Pending partner offerings appear as conditional learning options with information links; never as confirmed enrollment.",
+    "refresh": "Retain weekly refresh policy; seek partner fees, delivery language/format, dates, prerequisites, certification and direct enrollment URL. Failed fetch is not expiry.",
+    "assessment": "No competency-level response data in the sample; do not infer individual competency gaps from domain scores.",
+    "catalogScope": "ChulaXL is one provider; no exclusivity or partnership ranking boost."
+  },
+  "partnerReview": {
+    "reportVersion": "2026-10-19-r01",
+    "sourceSha256": "8ae72f683f516ce5bda262ee2da950de316d3effcae29090a4c7399ed22644d0",
+    "questions": [
+      [
+        "Lesson counts",
+        "G2:G5 says 8 / 9 / 13 / 16; H2:H5 and official pages list 7 / 8 / 12 / 19.",
+        "Use named outlines; ask partner to reconcile counts."
+      ],
+      [
+        "Course identifier",
+        "B5 is numeric 129; official identifier NEURON0129.",
+        "Preserve raw 129; use NEURON0129 as canonical ID."
+      ],
+      [
+        "Level",
+        "L2:L5 all Intermediate; published objectives are introductory.",
+        "Keep source label and distinguish Horizon fit judgment."
+      ],
+      [
+        "Enrollment",
+        "No partner price, dates, entitlement, prerequisites, delivery language or enrollment URL supplied.",
+        "Conditional recommendation; no Enroll now CTA."
+      ],
+      [
+        "Assessment",
+        "100 posttest points is weighting, not a required pass mark.",
+        "Official public-course pass mark is 60%; partner certificate/pass criteria need confirmation."
+      ],
+      [
+        "D3 depth",
+        "Digital content consumption is adjacent to source verification.",
+        "Do not claim exact gap closure; seek practical verification training."
+      ]
+    ]
+  },
+  "reportRecommendations": [
+    {
+      "courseId": "chulaxl-foundations",
+      "canonicalCourseId": "NEURON0129",
+      "domain": "D1",
+      "displayId": "xl-found",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D1-core-concepts",
+        "D1-genai-mechanics",
+        "D1-capability-limits",
+        "D1-ai-systems"
+      ],
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/251",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "AI & ML Foundations\nChulaXL • NEURON0129",
+          "th": "ความรู้พื้นฐานเกี่ยวกับ AI และ ML\nChulaXL • NEURON0129"
+        },
+        "fit": {
+          "en": "High match: core concepts, GenAI mechanics, capability limits and context windows. Partial coverage; no advanced systems engineering.",
+          "th": "จับคู่มั่นใจสูง: แนวคิด AI กลไก GenAI ข้อจำกัด และหน้าต่างบริบท ครอบคลุมบางส่วน ไม่ใช่วิศวกรรมระบบขั้นสูง"
+        },
+        "format": {
+          "en": "2h 05m\nOnline reference; partner format pending",
+          "th": "2 ชม. 5 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      }
+    },
+    {
+      "courseId": "chulaxl-prompt",
+      "canonicalCourseId": "CHULAMOOC2654",
+      "domain": "D2",
+      "displayId": "xl-prompt",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D2-prompt-design",
+        "D2-output-refinement"
+      ],
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/253",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Generative AI & Prompt Engineering\nChulaXL • CHULAMOOC2654",
+          "th": "ปัญญาประดิษฐ์เชิงสร้างสรรค์และกระบวนการสร้างคำสั่ง\nChulaXL • CHULAMOOC2654"
+        },
+        "fit": {
+          "en": "High match: prompt design and output refinement, chapters 3–7. Introductory coverage; agent workflows are not demonstrated.",
+          "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่งและปรับปรุงผลลัพธ์ บทที่ 3–7 ครอบคลุมเบื้องต้น ไม่ยืนยันการฝึกเวิร์กโฟลว์เอเจนต์"
+        },
+        "format": {
+          "en": "1h 16m\nOnline reference; partner format pending",
+          "th": "1 ชม. 16 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      }
+    },
+    {
+      "courseId": "chula",
+      "canonicalCourseId": "CHULAMOOC2656",
+      "domain": "D4",
+      "displayId": "xl-gov",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D4-regulatory-policy"
+      ],
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/247",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "AI Governance\nChulaXL • CHULAMOOC2656",
+          "th": "ธรรมาภิบาลและการกำกับดูแลปัญญาประดิษฐ์\nChulaXL • CHULAMOOC2656"
+        },
+        "fit": {
+          "en": "High match: regulatory/policy fluency, chapters 3–4. Governance awareness; not implementation of logs, permissions or incident response.",
+          "th": "จับคู่มั่นใจสูง: ความเข้าใจกฎระเบียบและนโยบาย บทที่ 3–4 เน้นความเข้าใจการกำกับดูแล ไม่ใช่การติดตั้งบันทึกระบบ สิทธิ์ หรือรับมือเหตุการณ์"
+        },
+        "format": {
+          "en": "3h 42m\nOnline reference; partner format pending",
+          "th": "3 ชม. 42 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      }
+    },
+    {
+      "courseId": "chulaxl-ai10",
+      "canonicalCourseId": "CHULAMOOC2653",
+      "domain": "D5",
+      "displayId": "xl-ai10-d5",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D5-usecase-fit"
+      ],
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/254",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+          "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653"
+        },
+        "fit": {
+          "en": "High match: use-case evaluation, chapter 3. Short orientation; ROI measurement and portfolio prioritization are not established.",
+          "th": "จับคู่มั่นใจสูง: ประเมินกรณีใช้งาน บทที่ 3 เป็นบทนำสั้น ๆ ยังไม่ยืนยันการฝึกวัด ROI หรือจัดลำดับโครงการ"
+        },
+        "format": {
+          "en": "1h 52m\nOnline reference; partner format pending",
+          "th": "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      }
+    },
+    {
+      "courseId": "chulaxl-ai10",
+      "canonicalCourseId": "CHULAMOOC2653",
+      "domain": "D6",
+      "displayId": "xl-ai10-d6",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D6-role-clarity"
+      ],
+      "informationUrl": "https://mooc.chula.ac.th/course-detail/254",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+          "th": "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653"
+        },
+        "fit": {
+          "en": "High match: human–AI role clarity, chapter 9. Role awareness only; not team handoff or accountability practice.",
+          "th": "จับคู่มั่นใจสูง: ความชัดเจนของบทบาทคนและ AI บทที่ 9 เน้นความเข้าใจบทบาท ไม่ใช่การฝึกส่งต่องานหรือกำหนดความรับผิดชอบ"
+        },
+        "format": {
+          "en": "1h 52m\nOnline reference; partner format pending",
+          "th": "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน"
+        },
+        "cost": {
+          "en": "Partner price / VAT: unconfirmed",
+          "th": "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน"
+        },
+        "entry": {
+          "en": "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+          "th": "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน"
+        },
+        "access": {
+          "en": "Partner access pending\nDates / seats: unconfirmed",
+          "th": "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน"
+        }
+      }
+    },
+    {
+      "courseId": "ais",
+      "canonicalCourseId": "ais",
+      "domain": "D1",
+      "displayId": "ais",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D1-core-concepts"
+      ],
+      "informationUrl": "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "AI Companion: Getting to Know and Using AI for Life and Work\nAIS / Thai MOOC",
+          "th": "เพื่อน AI คู่คิด: รู้จัก เข้าใจ ใช้เป็น\nAIS / Thai MOOC"
+        },
+        "fit": {
+          "en": "High match: core AI concepts; objective 1 explains AI and everyday tools. Practical introduction, not deep model mechanics.",
+          "th": "จับคู่มั่นใจสูง: แนวคิด AI พื้นฐาน วัตถุประสงค์ข้อ 1 อธิบาย AI และเครื่องมือประจำวัน เน้นเริ่มใช้งาน ไม่เจาะกลไกโมเดล"
+        },
+        "format": {
+          "en": "Online, self-paced\n4 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\n4 ชั่วโมง"
+        },
+        "cost": {
+          "en": "Free MOOC listing; confirm access terms",
+          "th": "รายการ MOOC ฟรี; ตรวจเงื่อนไขเข้าเรียน"
+        },
+        "entry": {
+          "en": "Beginner; Thai listing. Public audience; audio not independently checked. Unit tests; certificate ≥70%.",
+          "th": "เริ่มต้น; รายการภาษาไทย สำหรับบุคคลทั่วไป ยังไม่ตรวจภาษาเสียง แบบทดสอบระหว่างเรียน; ประกาศนียบัตร ≥70%"
+        },
+        "access": {
+          "en": "Enrollment route listed; account needed. No closing date stated.",
+          "th": "มีช่องทางสมัคร ต้องมีบัญชี ไม่ระบุวันปิดรับ"
+        }
+      }
+    },
+    {
+      "courseId": "arit",
+      "canonicalCourseId": "arit",
+      "domain": "D2",
+      "displayId": "arit",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D2-prompt-design",
+        "D2-output-refinement",
+        "D2-tool-selection"
+      ],
+      "informationUrl": "https://www.arit.co.th/courses/generative-ai-foundations",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Generative AI Foundations\nARIT",
+          "th": "Generative AI Foundations\nARIT"
+        },
+        "fit": {
+          "en": "High match: prompt design, tool selection and output refinement. Explicit prompt and refinement syllabus; basic level.",
+          "th": "จับคู่มั่นใจสูง: ออกแบบคำสั่ง เลือกเครื่องมือ และปรับปรุงผลลัพธ์ มีหัวข้อคำสั่งและการปรับคำสั่งชัดเจน ระดับพื้นฐาน"
+        },
+        "format": {
+          "en": "12 hours / 2 days\nDec intake: Hybrid; venue to confirm",
+          "th": "12 ชั่วโมง / 2 วัน\nรอบ ธ.ค.: ไฮบริด; ยืนยันสถานที่"
+        },
+        "cost": {
+          "en": "THB 8,500 excluding VAT (Dec form)",
+          "th": "8,500 บาท ไม่รวม VAT (แบบฟอร์มรอบ ธ.ค.)"
+        },
+        "entry": {
+          "en": "Basic; Thai listing. Confirm teaching language and prerequisites. Training with CCS exam.",
+          "th": "พื้นฐาน; รายการภาษาไทย ยืนยันภาษาสอนและพื้นฐานที่ต้องมี อบรมพร้อมสอบ CCS"
+        },
+        "access": {
+          "en": "29–30 Oct / 16–18 Dec 2026 listed. Dec dates conflict with “2 days”; confirm dates, format and seats.",
+          "th": "ระบุ 29–30 ต.ค. / 16–18 ธ.ค. 2026 รอบ ธ.ค. ขัดกับ “2 วัน”; ยืนยันวัน รูปแบบ และที่นั่ง"
+        }
+      }
+    },
+    {
+      "courseId": "ie-critical",
+      "canonicalCourseId": "ie-critical",
+      "domain": "D3",
+      "displayId": "ie-critical",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D3-data-chart-judgment",
+        "D3-source-verification"
+      ],
+      "informationUrl": "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+          "th": "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera"
+        },
+        "fit": {
+          "en": "High match: data/chart judgment and claim verification. Modules cover causality, biased samples, misleading averages and claim-testing exercises. Not media-forensics training.",
+          "th": "จับคู่มั่นใจสูง: วิเคราะห์ข้อมูล/กราฟและตรวจข้ออ้าง มีบทเรียนเหตุและผล ตัวอย่างลำเอียง ค่าเฉลี่ยชวนเข้าใจผิด และแบบฝึกตรวจข้ออ้าง ไม่ใช่การพิสูจน์สื่อดิจิทัล"
+        },
+        "format": {
+          "en": "Online, self-paced\nPlan about 20 hours; module totals show 16 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nเผื่อประมาณ 20 ชม.; รวมเวลารายโมดูลได้ 16 ชม."
+        },
+        "cost": {
+          "en": "Paid access / certificate; Thai checkout price unverified. Trial ≠ free completion.",
+          "th": "เข้าถึง/ประกาศนียบัตรแบบชำระเงิน; ยังไม่ยืนยันราคาในไทย ทดลองฟรีไม่เท่ากับเรียนจบฟรี"
+        },
+        "entry": {
+          "en": "Beginner; no experience required. English; Thai subtitles unverified. 25 assignments, some AI-graded.",
+          "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษาอังกฤษ; ยังไม่ยืนยันคำบรรยายไทย งานประเมิน 25 งาน บางงานตรวจด้วย AI"
+        },
+        "access": {
+          "en": "Enroll action shown. Confirm Thailand account access and payment terms; no fixed intake stated.",
+          "th": "มีปุ่มสมัคร ยืนยันสิทธิ์บัญชีในไทยและเงื่อนไขชำระเงิน ไม่ระบุรอบตายตัว"
+        }
+      }
+    },
+    {
+      "courseId": "ms-responsible",
+      "canonicalCourseId": "ms-responsible",
+      "domain": "D4",
+      "displayId": "ms-responsible",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D4-regulatory-policy",
+        "D4-fairness-ethics"
+      ],
+      "informationUrl": "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Embrace responsible AI principles and practices\nMicrosoft Learn • module",
+          "th": "Embrace responsible AI principles and practices\nMicrosoft Learn • โมดูล"
+        },
+        "fit": {
+          "en": "High match: regulatory/policy fluency and fairness/ethics. Objectives address principles and policies; governance unit covers ownership. Not Thai legal compliance advice.",
+          "th": "จับคู่มั่นใจสูง: ความเข้าใจนโยบายและความเป็นธรรม/จริยธรรม วัตถุประสงค์ครอบคลุมหลักการ นโยบาย และบทบาทกำกับดูแล ไม่ใช่คำแนะนำการปฏิบัติตามกฎหมายไทย"
+        },
+        "format": {
+          "en": "Online, self-paced\nAbout 58 minutes / 9 units",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 58 นาที / 9 หน่วย"
+        },
+        "cost": {
+          "en": "Free learning content",
+          "th": "เนื้อหาเรียนฟรี"
+        },
+        "entry": {
+          "en": "Beginner; English. Basic AI and business knowledge. Sign in for assessment credit; not a certification exam.",
+          "th": "เริ่มต้น; อังกฤษ มีพื้นฐาน AI และธุรกิจ เข้าระบบเพื่อบันทึกผลประเมิน ไม่ใช่การสอบใบรับรองวิชาชีพ"
+        },
+        "access": {
+          "en": "Public learning units available. No cohort dates; Thai localization unverified.",
+          "th": "มีหน่วยเรียนสาธารณะ ไม่กำหนดรอบเรียน ยังไม่ยืนยันฉบับภาษาไทย"
+        }
+      }
+    },
+    {
+      "courseId": "dlai-everyone",
+      "canonicalCourseId": "dlai-everyone",
+      "domain": "D5",
+      "displayId": "dlai-everyone",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D5-usecase-fit",
+        "D5-transformation-strategy"
+      ],
+      "informationUrl": "https://www.coursera.org/learn/ai-for-everyone",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "AI For Everyone\nDeepLearning.AI / Coursera",
+          "th": "AI For Everyone\nDeepLearning.AI / Coursera"
+        },
+        "fit": {
+          "en": "High match: use-case evaluation and transformation strategy. Weeks 2–3 cover project selection and the transformation playbook. No detailed ROI-model practice shown.",
+          "th": "จับคู่มั่นใจสูง: ประเมินกรณีใช้งานและกลยุทธ์เปลี่ยนผ่าน สัปดาห์ 2–3 ครอบคลุมการเลือกโครงการและแนวทางเปลี่ยนผ่าน ไม่ระบุการฝึกแบบจำลอง ROI ละเอียด"
+        },
+        "format": {
+          "en": "Online, self-paced\nAbout 7 hours",
+          "th": "ออนไลน์ ตามเวลาสะดวก\nประมาณ 7 ชั่วโมง"
+        },
+        "cost": {
+          "en": "Paid certificate; localized checkout price unverified. Provider pricing differs by access route.",
+          "th": "ประกาศนียบัตรแบบชำระเงิน; ยืนยันราคาหน้าชำระเงินในไทย ราคาต่างกันตามช่องทาง"
+        },
+        "entry": {
+          "en": "Beginner; no experience required. Language/audio options vary by locale; confirm English/Thai. 4 assignments.",
+          "th": "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษา/เสียงขึ้นกับหน้าที่เลือก โปรดยืนยันอังกฤษ/ไทย งานประเมิน 4 งาน"
+        },
+        "access": {
+          "en": "Enroll action shown. Confirm Thailand account terms. Business-oriented, not a coding course.",
+          "th": "มีปุ่มสมัคร ยืนยันเงื่อนไขบัญชีในไทย เน้นธุรกิจ ไม่ใช่หลักสูตรเขียนโค้ด"
+        }
+      }
+    },
+    {
+      "courseId": "skooldio-coaching",
+      "canonicalCourseId": "skooldio-coaching",
+      "domain": "D6",
+      "displayId": "skooldio-coaching",
+      "matchConfidence": "high",
+      "competencyIds": [
+        "D6-learning-loops"
+      ],
+      "informationUrl": "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+      "enrollmentReady": false,
+      "availability": "conditional; see offering evidence",
+      "fields": {
+        "course": {
+          "en": "Mentoring and Coaching with AI\nSkooldio",
+          "th": "Mentoring and Coaching with AI\nSkooldio"
+        },
+        "fit": {
+          "en": "High match: learning/improvement loops through AI-assisted feedback, development plans and reflection. Best for managers; not general human–AI accountability training.",
+          "th": "จับคู่มั่นใจสูง: วงจรเรียนรู้และพัฒนาผ่าน AI ช่วยให้ข้อเสนอแนะ วางแผนพัฒนา และสะท้อนผล เหมาะกับหัวหน้างาน ไม่ใช่การฝึกความรับผิดชอบคน–AI ทุกบริบท"
+        },
+        "format": {
+          "en": "Online\nAbout 1h 28m listed video, plus practice",
+          "th": "ออนไลน์\nวิดีโอที่ระบุประมาณ 1 ชม. 28 นาที และเวลาฝึกเพิ่ม"
+        },
+        "cost": {
+          "en": "THB 1,990 listed; confirm VAT / checkout total",
+          "th": "แสดง 1,990 บาท; ยืนยัน VAT / ยอดชำระ"
+        },
+        "entry": {
+          "en": "ChatGPT/Claude familiarity. Thai listing; audio to confirm. No HR/coaching background needed; certificate terms unverified.",
+          "th": "คุ้นเคย ChatGPT/Claude รายการไทย; ยืนยันภาษาเสียง ไม่ต้องมีพื้นฐาน HR/โค้ช เกณฑ์ประกาศนียบัตรยังไม่ยืนยัน"
+        },
+        "access": {
+          "en": "Course listed; checkout untested. Individual lifetime / corporate 1-year access per FAQ.",
+          "th": "มีรายการหลักสูตร ยังไม่ทดสอบชำระเงิน FAQ ระบุบุคคลตลอดชีพ / องค์กร 1 ปี"
+        }
+      }
+    }
+  ],
+  "recommendationPolicy": {
+    "optionsPerDomain": {
+      "min": 1,
+      "max": 3,
+      "shortageBehavior": "Show verified shortage; never invent a match to fill quota."
+    },
+    "providerNeutral": true,
+    "partnerPriorityBoost": false,
+    "selectionOrder": [
+      "learner priorities and goals",
+      "explicit competency evidence",
+      "level and depth",
+      "language and format",
+      "budget and current access"
+    ],
+    "matchConfidence": {
+      "high": "Named competency topic explicitly supported by syllabus objective, lesson or exercise.",
+      "medium": "Plausible incomplete evidence; not an automatic recommendation.",
+      "low": "Title-only or adjacent content; excluded."
+    },
+    "coverage": "High match does not mean full competency coverage or proven course effectiveness. State missing skills.",
+    "availability": "Independent of mapping confidence; never label pending, interest-only, expired or cached evidence as confirmed enrollment.",
+    "deduplication": "Shared canonical course counts once in learning plan duration and enrollment.",
+    "refresh": "Refresh official evidence at least weekly. Preserve archived reports and source history; do not change learner priorities.",
+    "D3Correction": "Remove Chula AI-10 D3 recommendation; retain Chula AI-10 only for explicit D5 use-case and D6 role-clarity matches in this shortlist."
+  },
+  "reportVersion": "2026-10-19-r02",
+  "reportDomainCounts": {
+    "D1": 2,
+    "D2": 2,
+    "D4": 2,
+    "D5": 2,
+    "D6": 2,
+    "D3": 1
+  }
+}

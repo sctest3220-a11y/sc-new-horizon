@@ -1,0 +1,90 @@
+{
+  "version": "2026-10-19-r02",
+  "baseBranch": "kj-dee-branch",
+  "baseCommit": "77426c2",
+  "catalogVersion": "2026-10-19-r03",
+  "mode": "additive-review-artifacts",
+  "productionCodeChanged": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+      "bytes": 9
+    },
+    {
+      "path": "audit-data.json",
+      "sha256": "d197871b48cbdc31e35b77ef6294cdd3020c9cff5526d2b468818f68f4c3ccf7",
+      "bytes": 436238
+    },
+    {
+      "path": "change-log.json",
+      "sha256": "bcd6809fdf71be46517c3be8f7dabd9a34ad29615cca99be48fa54115c140b35",
+      "bytes": 43434
+    },
+    {
+      "path": "content.en-th.json",
+      "sha256": "2c303fdf1f3dc2238c825a5c56c3bc22eace20d86be4cd7d18215b17b4e38832",
+      "bytes": 100527
+    },
+    {
+      "path": "course-catalog-snapshot.json",
+      "sha256": "36d847cd925ea4e76c5e3f148b97be5a65bde0a1e3b51b56301d8c76719f9186",
+      "bytes": 147835
+    },
+    {
+      "path": "course-selection-policy.json",
+      "sha256": "c3a9803f90815d17318c70df4d653f6ed35f3e06844c36d2e226b5750c0bbcae",
+      "bytes": 1336
+    },
+    {
+      "path": "Horizon_Report_2026-10-19-r02.html",
+      "sha256": "f9e795e7d0b082b1a541adac1bd01713abba8c1b2c5f957754f3f17b9b929c0c",
+      "bytes": 96293
+    },
+    {
+      "path": "Horizon_Report_Audit_2026-10-19-r02.xlsx",
+      "sha256": "984d25c848d8875ec3bdc5093ee6329729d9b518f15c23c2d72953064c4b3887",
+      "bytes": 133826
+    },
+    {
+      "path": "Horizon_Report_EN_2026-10-19-r02.pdf",
+      "sha256": "7fc91d9d187d78a00f4d0c8c7bc54baae30caadaa01368619a73ed755149d81d",
+      "bytes": 113060
+    },
+    {
+      "path": "Horizon_Report_TH_2026-10-19-r02.pdf",
+      "sha256": "4b9145cb2ab45cfee68a2c502d7bda717f37c2366c7578524cc2e80e0f4c78ae",
+      "bytes": 157776
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "effc3660d78f9d8fcb9a3eb2d205d3ed6acde2320b729a15fcfeac9328769581",
+      "bytes": 1628
+    },
+    {
+      "path": "mapping-evidence.json",
+      "sha256": "cf9329f043318588f2f1aaa3ad8d04281ab798b016ca7716f15c783a493132a0",
+      "bytes": 8814
+    },
+    {
+      "path": "README.txt",
+      "sha256": "8b0a20a55088e6b7a9d3d108d253abab447df8b4ab2de01101acea9af5e4fd40",
+      "bytes": 1586
+    },
+    {
+      "path": "report-validation.json",
+      "sha256": "be0293101efde9e61e584523ac947aceb41cef7d4b2d6f9d6dca55fcff20ad85",
+      "bytes": 3513
+    },
+    {
+      "path": "REVIEW_GUIDE.txt",
+      "sha256": "b521bac1dd2567cc49e6c2f3ce4638fa52289fab02e373b955caed3ebb5feae7",
+      "bytes": 968
+    },
+    {
+      "path": "validation-summary.json",
+      "sha256": "6a51344fdc1cff2bb12e62ed04566289fbaa5c7a14f3a0b57a426378cb85b273",
+      "bytes": 374
+    }
+  ]
+}

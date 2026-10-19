@@ -1,0 +1,174 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "lang": "en",
+      "bounds": [
+        {
+          "page": "1",
+          "bottom": 802.3125,
+          "footer": 843.46875,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "2",
+          "bottom": 1625.296875,
+          "footer": 1674.9375,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "3",
+          "bottom": 2377.3125,
+          "footer": 2506.40625,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "4",
+          "bottom": 3246,
+          "footer": 3337.875,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "5",
+          "bottom": 4105.78125,
+          "footer": 4169.34375,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "6",
+          "bottom": 4835.65625,
+          "footer": 5000.8125,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "7",
+          "bottom": 5770.71875,
+          "footer": 5832.28125,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "8",
+          "bottom": 6615.625,
+          "footer": 6663.75,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "9",
+          "bottom": 7469.078125,
+          "footer": 7495.21875,
+          "overflow": false,
+          "wide": []
+        }
+      ]
+    },
+    {
+      "lang": "th",
+      "bounds": [
+        {
+          "page": "1",
+          "bottom": 809.421875,
+          "footer": 843.46875,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "2",
+          "bottom": 1592.71875,
+          "footer": 1674.9375,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "3",
+          "bottom": 2380.921875,
+          "footer": 2506.40625,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "4",
+          "bottom": 3224.21875,
+          "footer": 3337.875,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "5",
+          "bottom": 4063.90625,
+          "footer": 4169.34375,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "6",
+          "bottom": 4805.3125,
+          "footer": 5000.8125,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "7",
+          "bottom": 5722.40625,
+          "footer": 5832.28125,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "8",
+          "bottom": 6574.53125,
+          "footer": 6663.75,
+          "overflow": false,
+          "wide": []
+        },
+        {
+          "page": "9",
+          "bottom": 7389.78125,
+          "footer": 7495.21875,
+          "overflow": false,
+          "wide": []
+        }
+      ]
+    }
+  ],
+  "switches": [
+    {
+      "input": "en",
+      "output": "en",
+      "fallback": false
+    },
+    {
+      "input": "th",
+      "output": "th",
+      "fallback": false
+    },
+    {
+      "input": "th-TH",
+      "output": "th",
+      "fallback": false
+    },
+    {
+      "input": "en-US",
+      "output": "en",
+      "fallback": false
+    },
+    {
+      "input": "xx",
+      "output": "en",
+      "fallback": true
+    }
+  ],
+  "seriesChecks": {
+    "absent": true,
+    "complete": true,
+    "partial": true,
+    "fixtureExported": false
+  }
+}

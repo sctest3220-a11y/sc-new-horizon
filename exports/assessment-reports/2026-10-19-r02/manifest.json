@@ -1,0 +1,49 @@
+{
+  "version": "2026-10-19-r02",
+  "files": [
+    {
+      "name": "audit-data.json",
+      "sha256": "d197871b48cbdc31e35b77ef6294cdd3020c9cff5526d2b468818f68f4c3ccf7"
+    },
+    {
+      "name": "change-log.json",
+      "sha256": "bcd6809fdf71be46517c3be8f7dabd9a34ad29615cca99be48fa54115c140b35"
+    },
+    {
+      "name": "content.en-th.json",
+      "sha256": "2c303fdf1f3dc2238c825a5c56c3bc22eace20d86be4cd7d18215b17b4e38832"
+    },
+    {
+      "name": "Horizon_Report_2026-10-19-r02.html",
+      "sha256": "f9e795e7d0b082b1a541adac1bd01713abba8c1b2c5f957754f3f17b9b929c0c"
+    },
+    {
+      "name": "Horizon_Report_Audit_2026-10-19-r02.xlsx",
+      "sha256": "984d25c848d8875ec3bdc5093ee6329729d9b518f15c23c2d72953064c4b3887"
+    },
+    {
+      "name": "Horizon_Report_EN_2026-10-19-r02.pdf",
+      "sha256": "7fc91d9d187d78a00f4d0c8c7bc54baae30caadaa01368619a73ed755149d81d"
+    },
+    {
+      "name": "Horizon_Report_TH_2026-10-19-r02.pdf",
+      "sha256": "4b9145cb2ab45cfee68a2c502d7bda717f37c2366c7578524cc2e80e0f4c78ae"
+    },
+    {
+      "name": "mapping-evidence.json",
+      "sha256": "cf9329f043318588f2f1aaa3ad8d04281ab798b016ca7716f15c783a493132a0"
+    },
+    {
+      "name": "report-validation.json",
+      "sha256": "be0293101efde9e61e584523ac947aceb41cef7d4b2d6f9d6dca55fcff20ad85"
+    },
+    {
+      "name": "REVIEW_GUIDE.txt",
+      "sha256": "b521bac1dd2567cc49e6c2f3ce4638fa52289fab02e373b955caed3ebb5feae7"
+    },
+    {
+      "name": "validation-summary.json",
+      "sha256": "6a51344fdc1cff2bb12e62ed04566289fbaa5c7a14f3a0b57a426378cb85b273"
+    }
+  ]
+}

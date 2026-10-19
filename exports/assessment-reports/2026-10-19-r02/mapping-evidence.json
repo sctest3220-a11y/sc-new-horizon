@@ -1,0 +1,273 @@
+{
+  "reviewedOn": "2026-10-19",
+  "framework": "sc-new-horizon/app/page.tsx competencyDefinitions",
+  "policy": [
+    [
+      "Provider-neutral selection",
+      "1–3 choices per domain where evidence supports them. Order by user priority, exact competency, level, language, format, budget and access. Partnership never boosts match confidence or ranking. Deduplicate shared courses."
+    ],
+    [
+      "Thailand access",
+      "Thai providers plus global online learning options. Account-specific access and local checkout are not confirmed merely by a public listing."
+    ],
+    [
+      "Current source workbook",
+      "C:\\Users\\kanja\\.codex\\HoriZon_AI Assessment\\output\\report-versions\\2026-10-19-r01\\ChulaXL_Course_Outline_AI Series.xlsx | AI Series A2:L5. Original preserved unchanged."
+    ],
+    [
+      "Microsoft free-training policy",
+      "https://learn.microsoft.com/en-us/training/support/faq | Training is free; profile not required to read content."
+    ],
+    [
+      "ARIT hybrid intake source",
+      "https://www.arit.co.th/course-register?id=1593 | Hybrid, THB8500 excluding VAT; date/duration discrepancy."
+    ],
+    [
+      "AI For Everyone alternate provider source",
+      "https://www.deeplearning.ai/courses/ai-for-everyone | Syllabus corroboration; pricing differs by access route."
+    ]
+  ],
+  "mappings": [
+    [
+      "NEURON0129",
+      "D1",
+      "D1-core-concepts",
+      "High: explicit topic",
+      "Partial competency",
+      "AI Series H5 chapters 1–11,15",
+      "No advanced mastery established",
+      "https://mooc.chula.ac.th/course-detail/251",
+      "Pending review",
+      ""
+    ],
+    [
+      "NEURON0129",
+      "D1",
+      "D1-genai-mechanics",
+      "High: explicit topic",
+      "Partial competency",
+      "H5 chapters 12–16: fine-tuning, RAG, tokens",
+      "Embeddings not explicit",
+      "https://mooc.chula.ac.th/course-detail/251",
+      "Pending review",
+      ""
+    ],
+    [
+      "NEURON0129",
+      "D1",
+      "D1-capability-limits",
+      "High: explicit topic",
+      "Partial competency",
+      "H5 chapters 14,19: randomness and hallucination",
+      "Not all uncertainty/staleness skills",
+      "https://mooc.chula.ac.th/course-detail/251",
+      "Pending review",
+      ""
+    ],
+    [
+      "NEURON0129",
+      "D1",
+      "D1-ai-systems",
+      "High: explicit topic",
+      "Partial competency",
+      "H5 chapter 17: context window",
+      "Memory, tool connectors and agents not established",
+      "https://mooc.chula.ac.th/course-detail/251",
+      "Pending review",
+      ""
+    ],
+    [
+      "ais",
+      "D1",
+      "D1-core-concepts",
+      "High: explicit topic",
+      "Partial competency",
+      "Official objective 1: explain AI principles and everyday AI tools",
+      "Introductory concepts only",
+      "https://learn.thaimooc.ac.th/courses/course-v1:AIS%2B00913%2B0/about",
+      "Pending review",
+      ""
+    ],
+    [
+      "CHULAMOOC2654",
+      "D2",
+      "D2-prompt-design",
+      "High: explicit topic",
+      "Partial competency",
+      "H3 chapters 3–6",
+      "No measured learner performance",
+      "https://mooc.chula.ac.th/course-detail/253",
+      "Pending review",
+      ""
+    ],
+    [
+      "CHULAMOOC2654",
+      "D2",
+      "D2-output-refinement",
+      "High: explicit topic",
+      "Partial competency",
+      "H3 chapter 7 + official description: quality and refinement",
+      "No agent workflow certification",
+      "https://mooc.chula.ac.th/course-detail/253",
+      "Pending review",
+      ""
+    ],
+    [
+      "arit",
+      "D2",
+      "D2-prompt-design",
+      "High: explicit topic",
+      "Partial competency",
+      "Official Prompt Engineering section: text, image, video prompts",
+      "No measured learner performance",
+      "https://www.arit.co.th/courses/generative-ai-foundations",
+      "Pending review",
+      ""
+    ],
+    [
+      "arit",
+      "D2",
+      "D2-output-refinement",
+      "High: explicit topic",
+      "Partial competency",
+      "Prompt Refinement section and output correctness checks",
+      "No agent workflow certification",
+      "https://www.arit.co.th/courses/generative-ai-foundations",
+      "Pending review",
+      ""
+    ],
+    [
+      "arit",
+      "D2",
+      "D2-tool-selection",
+      "High: explicit topic",
+      "Partial competency",
+      "Methods section: factors in choosing tools",
+      "Connectors/MCP integration not established",
+      "https://www.arit.co.th/courses/generative-ai-foundations",
+      "Pending review",
+      ""
+    ],
+    [
+      "ie-critical",
+      "D3",
+      "D3-data-chart-judgment",
+      "High: explicit topic",
+      "Partial competency",
+      "Modules 1–3: causality, biased samples, aggregation, base rates; practical assignments",
+      "Does not establish every chart-forensics skill",
+      "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "Pending review",
+      ""
+    ],
+    [
+      "ie-critical",
+      "D3",
+      "D3-source-verification",
+      "High: explicit topic",
+      "Partial competency",
+      "Module 2 source/framing examination; module 3 Fact-Checking; module 4 claim/evidence exercises",
+      "Claim/evidence checking; citation triangulation depth not independently observed",
+      "https://www.coursera.org/learn/beyond-the-obvious-how-to-think-in-the-age-of-generative-ai",
+      "Pending review",
+      ""
+    ],
+    [
+      "CHULAMOOC2656",
+      "D4",
+      "D4-regulatory-policy",
+      "High: explicit topic",
+      "Partial competency",
+      "AI Series H2 chapters 3–4: governance approaches and global regulation",
+      "General fluency, not Thailand-specific legal compliance",
+      "https://mooc.chula.ac.th/course-detail/247",
+      "Pending review",
+      ""
+    ],
+    [
+      "ms-responsible",
+      "D4",
+      "D4-regulatory-policy",
+      "High: explicit topic",
+      "Partial competency",
+      "Objectives: governance systems, actionable policies; units 4–5",
+      "Policy/governance fluency, not specific statutory obligations",
+      "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "Pending review",
+      ""
+    ],
+    [
+      "ms-responsible",
+      "D4",
+      "D4-fairness-ethics",
+      "High: explicit topic",
+      "Partial competency",
+      "Objective 2 and guiding-principles unit: six responsible-AI principles",
+      "Principles, not practical bias testing or IP clearance",
+      "https://learn.microsoft.com/en-us/training/modules/embrace-responsible-ai-principles-practices/",
+      "Pending review",
+      ""
+    ],
+    [
+      "CHULAMOOC2653",
+      "D5",
+      "D5-usecase-fit",
+      "High: explicit topic",
+      "Partial competency",
+      "AI Series H4 chapter 3 CUAI-02: AI use-case evaluation",
+      "Introductory orientation; no measured ROI",
+      "https://mooc.chula.ac.th/course-detail/254",
+      "Pending review",
+      ""
+    ],
+    [
+      "dlai-everyone",
+      "D5",
+      "D5-usecase-fit",
+      "High: explicit topic",
+      "Partial competency",
+      "Week 2: How to choose an AI project parts 1 and 2",
+      "Project-selection introduction",
+      "https://www.coursera.org/learn/ai-for-everyone",
+      "Pending review",
+      ""
+    ],
+    [
+      "dlai-everyone",
+      "D5",
+      "D5-transformation-strategy",
+      "High: explicit topic",
+      "Partial competency",
+      "Week 3: AI Transformation Playbook parts 1 and 2",
+      "No detailed ROI-model or scale-gate assessment",
+      "https://www.coursera.org/learn/ai-for-everyone",
+      "Pending review",
+      ""
+    ],
+    [
+      "CHULAMOOC2653",
+      "D6",
+      "D6-role-clarity",
+      "High: explicit topic",
+      "Partial competency",
+      "AI Series H4 chapter 9 CUAI-08: human role in AI",
+      "Human-role awareness; handoff/accountability practice not established",
+      "https://mooc.chula.ac.th/course-detail/254",
+      "Pending review",
+      ""
+    ],
+    [
+      "skooldio-coaching",
+      "D6",
+      "D6-learning-loops",
+      "High: explicit topic",
+      "Partial competency",
+      "Official demos: AI-assisted feedback, individual development plans, leadership reflection",
+      "Manager-focused improvement loop; not complete collaboration-domain coverage",
+      "https://www.skooldio.com/courses/mentoring-and-coaching-with-ai",
+      "Pending review",
+      ""
+    ]
+  ],
+  "availability": "Web-retrieved provider pages; no account enrollment or purchase completed. ChulaXL delivery terms remain pending."
+}

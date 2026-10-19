@@ -1,0 +1,792 @@
+[
+  [
+    "courses.intro",
+    "Edited",
+    "Choose any domain first. Four unique partner courses are shown across six domains; Chula AI-10 is the same course wherever it appears.",
+    "Compare the options for your goal. ChulaXL is one partner, not the only provider. You may start here, build on a strength, or choose another domain first.",
+    "เลือกเริ่มจากด้านใดก็ได้ มีหลักสูตรพาร์ตเนอร์ 4 หลักสูตรสำหรับ 6 ด้าน โดย Chula AI-10 ที่ปรากฏหลายด้านเป็นหลักสูตรเดียวกัน",
+    "เปรียบเทียบตัวเลือกตามเป้าหมายของคุณ ChulaXL เป็นหนึ่งในพาร์ตเนอร์ ไม่ใช่ผู้ให้บริการเพียงรายเดียว คุณเลือกเริ่มด้านนี้ ต่อยอดจุดแข็ง หรือเรียนด้านอื่นก่อนได้",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "courses.header.fit",
+    "Edited",
+    "Learning fit / limits",
+    "Competency fit / coverage",
+    "สิ่งที่ได้เรียนรู้ / ขอบเขต",
+    "สมรรถนะที่ตรง / ขอบเขต",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "courses.header.entry",
+    "Edited",
+    "Level / assessment weighting",
+    "Level / language / entry",
+    "ระดับ / สัดส่วนคะแนน",
+    "ระดับ / ภาษา / พื้นฐาน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "courses.freshness",
+    "Edited",
+    "Reviewed 19 Oct 2026. Partner enrollment, fees and access dates are unconfirmed. Links show official course information, not confirmed ChulaXL enrollment. Check the platform for weekly updates.",
+    "Reviewed 19 Oct 2026. Provider pages may be cached. Confirm current access, local price, dates and language before enrolling. A course listed here is not a reserved seat.",
+    "ทบทวนข้อมูล 19 ต.ค. 2026 ยังไม่ยืนยันการสมัคร ค่าธรรมเนียม และช่วงเวลาเข้าเรียนผ่านพาร์ตเนอร์ ลิงก์เป็นข้อมูลหลักสูตรทางการ ไม่ใช่ช่องสมัคร ChulaXL ที่ยืนยันแล้ว โปรดตรวจข้อมูลอัปเดตรายสัปดาห์ในแพลตฟอร์ม",
+    "ทบทวนข้อมูล 19 ต.ค. 2026 หน้าแหล่งข้อมูลอาจเป็นสำเนาที่จัดเก็บไว้ โปรดยืนยันสิทธิ์เข้าเรียน ราคาที่ใช้ในไทย วันเรียน และภาษาก่อนสมัคร การอยู่ในรายการนี้ไม่ใช่การสำรองที่นั่ง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "courses.scope",
+    "Edited",
+    "*Horizon introductory-fit judgment; partner labels all four Intermediate. Thai outlines; delivery format, teaching language, prerequisites and certificate terms need partner confirmation. All four total 8h 55m; no repeated AI-10 enrollment is needed. Completion does not prove gap closure.",
+    "High match confidence means the published syllabus explicitly covers the named competency topic. Coverage remains partial; completion does not prove workplace competence. Partner status does not increase a course’s ranking.",
+    "*Horizon ประเมินว่าเหมาะปูพื้นฐาน พาร์ตเนอร์ระบุทั้ง 4 เป็น Intermediate เอกสารเป็นภาษาไทย; รูปแบบสอน ภาษาที่สอน พื้นฐานที่ต้องมี และเกณฑ์ประกาศนียบัตรรอยืนยัน ทั้ง 4 รวม 8 ชม. 55 นาที ไม่ต้องสมัคร AI-10 ซ้ำ การเรียนจบไม่ได้ยืนยันว่าปิดช่องว่างแล้ว",
+    "มั่นใจในการจับคู่สูง หมายถึงหลักสูตรระบุหัวข้อที่ตรงกับสมรรถนะนั้นอย่างชัดเจน แต่ยังครอบคลุมเพียงบางส่วน การเรียนจบไม่ยืนยันความสามารถในงาน และสถานะพาร์ตเนอร์ไม่เพิ่มอันดับหลักสูตร",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "reflect.choose.body",
+    "Edited",
+    "1. Choose one work goal or personal interest.\n2. Pick the domain that helps—even if its score is high.\n3. Compare course level, format, time, cost and access on pages 4–5.\n4. Save your priority in the platform; other domains can wait.",
+    "1. Choose one work goal or personal interest.\n2. Pick the domain that helps—even if its score is high.\n3. Compare course level, format, time, cost and access on pages 4–9.\n4. Save your priority in the platform; other domains can wait.",
+    "1. เลือกเป้าหมายงานหรือเรื่องที่สนใจหนึ่งเรื่อง\n2. เลือกด้านที่ช่วยให้ไปถึงเป้าหมาย แม้ด้านนั้นได้คะแนนสูง\n3. เปรียบเทียบระดับ รูปแบบ เวลา ค่าเรียน และสิทธิ์สมัครในหน้า 4–5\n4. บันทึกลำดับที่คุณเลือกในแพลตฟอร์ม ด้านอื่นรอเรียนภายหลังได้",
+    "1. เลือกเป้าหมายงานหรือเรื่องที่สนใจหนึ่งเรื่อง\n2. เลือกด้านที่ช่วยให้ไปถึงเป้าหมาย แม้ด้านนั้นได้คะแนนสูง\n3. เปรียบเทียบระดับ รูปแบบ เวลา ค่าเรียน และสิทธิ์สมัครในหน้า 4–9\n4. บันทึกลำดับที่คุณเลือกในแพลตฟอร์ม ด้านอื่นรอเรียนภายหลังได้",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-found.fit",
+    "Edited",
+    "Concepts, RAG, tokens, context and hallucination. Refresh selected topics; this is not advanced systems engineering.",
+    "High match: core concepts, GenAI mechanics, capability limits and context windows. Partial coverage; no advanced systems engineering.",
+    "แนวคิด AI, RAG, โทเคน บริบท และการสร้างคำตอบที่ผิด เลือกทบทวนหัวข้อที่ต้องการ ไม่ใช่วิศวกรรมระบบขั้นสูง",
+    "จับคู่มั่นใจสูง: แนวคิด AI กลไก GenAI ข้อจำกัด และหน้าต่างบริบท ครอบคลุมบางส่วน ไม่ใช่วิศวกรรมระบบขั้นสูง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-found.format",
+    "Edited",
+    "2h 05m\nOnline reference*",
+    "2h 05m\nOnline reference; partner format pending",
+    "2 ชม. 5 นาที\nอ้างอิงออนไลน์*",
+    "2 ชม. 5 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-found.entry",
+    "Edited",
+    "Introductory fit*\nQuiz 50% + posttest 50%",
+    "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบย่อย 50% + หลังเรียน 50%",
+    "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-prompt.fit",
+    "Edited",
+    "Prompt design and output refinement. Build on your D2 strength; no demonstrated agent-workflow training.",
+    "High match: prompt design and output refinement, chapters 3–7. Introductory coverage; agent workflows are not demonstrated.",
+    "ออกแบบคำสั่งและปรับปรุงผลลัพธ์ ต่อยอดจุดแข็ง D2 ยังไม่มีหลักฐานว่าฝึกสร้างเวิร์กโฟลว์เอเจนต์",
+    "จับคู่มั่นใจสูง: ออกแบบคำสั่งและปรับปรุงผลลัพธ์ บทที่ 3–7 ครอบคลุมเบื้องต้น ไม่ยืนยันการฝึกเวิร์กโฟลว์เอเจนต์",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-prompt.format",
+    "Edited",
+    "1h 16m\nOnline reference*",
+    "1h 16m\nOnline reference; partner format pending",
+    "1 ชม. 16 นาที\nอ้างอิงออนไลน์*",
+    "1 ชม. 16 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-prompt.entry",
+    "Edited",
+    "Introductory fit*\nPosttest 100%",
+    "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบหลังเรียน 100%",
+    "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-gov.fit",
+    "Edited",
+    "Governance approaches, regulation and risk tools. Relevant to your largest domain gap; practical engineering controls need further evidence.",
+    "High match: regulatory/policy fluency, chapters 3–4. Governance awareness; not implementation of logs, permissions or incident response.",
+    "แนวทางกำกับดูแล กฎระเบียบ และเครื่องมือจัดการความเสี่ยง ตรงกับช่องว่างระดับด้านที่มากที่สุด แต่ยังต้องฝึกมาตรการเชิงวิศวกรรมเพิ่มเติม",
+    "จับคู่มั่นใจสูง: ความเข้าใจกฎระเบียบและนโยบาย บทที่ 3–4 เน้นความเข้าใจการกำกับดูแล ไม่ใช่การติดตั้งบันทึกระบบ สิทธิ์ หรือรับมือเหตุการณ์",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-gov.format",
+    "Edited",
+    "3h 42m\nOnline reference*",
+    "3h 42m\nOnline reference; partner format pending",
+    "3 ชม. 42 นาที\nอ้างอิงออนไลน์*",
+    "3 ชม. 42 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-gov.entry",
+    "Edited",
+    "Introductory fit*\nPosttest 100%",
+    "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบหลังเรียน 100%",
+    "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d5.fit",
+    "Edited",
+    "Chapter 3 introduces use-case fit. Useful for selecting a work problem; it does not establish ROI or portfolio-management skills.",
+    "High match: use-case evaluation, chapter 3. Short orientation; ROI measurement and portfolio prioritization are not established.",
+    "บทที่ 3 แนะนำการประเมินความเหมาะสมของกรณีใช้งาน ช่วยเลือกปัญหาในงาน ยังไม่ครอบคลุมทักษะวัด ROI หรือจัดลำดับโครงการ",
+    "จับคู่มั่นใจสูง: ประเมินกรณีใช้งาน บทที่ 3 เป็นบทนำสั้น ๆ ยังไม่ยืนยันการฝึกวัด ROI หรือจัดลำดับโครงการ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d5.format",
+    "Edited",
+    "1h 52m\nOnline reference*",
+    "1h 52m\nOnline reference; partner format pending",
+    "1 ชม. 52 นาที\nอ้างอิงออนไลน์*",
+    "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d5.entry",
+    "Edited",
+    "Introductory fit*\nPosttest 100%",
+    "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบหลังเรียน 100%",
+    "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d6.fit",
+    "Edited",
+    "Chapters 9 and 11 introduce human roles and personal growth. Build on D6; team coaching and change management need deeper learning.",
+    "High match: human–AI role clarity, chapter 9. Role awareness only; not team handoff or accountability practice.",
+    "บทที่ 9 และ 11 แนะนำบทบาทมนุษย์และการพัฒนาตนเอง ต่อยอด D6 ส่วนการโค้ชทีมและบริหารการเปลี่ยนแปลงต้องเรียนรู้เชิงลึกเพิ่ม",
+    "จับคู่มั่นใจสูง: ความชัดเจนของบทบาทคนและ AI บทที่ 9 เน้นความเข้าใจบทบาท ไม่ใช่การฝึกส่งต่องานหรือกำหนดความรับผิดชอบ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d6.format",
+    "Edited",
+    "1h 52m\nOnline reference*",
+    "1h 52m\nOnline reference; partner format pending",
+    "1 ชม. 52 นาที\nอ้างอิงออนไลน์*",
+    "1 ชม. 52 นาที\nอ้างอิงออนไลน์; รูปแบบพาร์ตเนอร์รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.xl-ai10-d6.entry",
+    "Edited",
+    "Introductory fit*\nPosttest 100%",
+    "Introductory fit; partner labels Intermediate. Thai outline; teaching language and prerequisites: confirm.",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบหลังเรียน 100%",
+    "เหมาะปูพื้นฐาน; พาร์ตเนอร์ระบุ Intermediate เอกสารไทย; ภาษาสอนและพื้นฐานที่ต้องมี: รอยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.heading",
+    "Added",
+    "",
+    "Choose your route",
+    "",
+    "เลือกแนวทางที่เหมาะกับคุณ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.course",
+    "Added",
+    "",
+    "AI Companion: Getting to Know and Using AI for Life and Work\nAIS / Thai MOOC",
+    "",
+    "เพื่อน AI คู่คิด: รู้จัก เข้าใจ ใช้เป็น\nAIS / Thai MOOC",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.fit",
+    "Added",
+    "",
+    "High match: core AI concepts; objective 1 explains AI and everyday tools. Practical introduction, not deep model mechanics.",
+    "",
+    "จับคู่มั่นใจสูง: แนวคิด AI พื้นฐาน วัตถุประสงค์ข้อ 1 อธิบาย AI และเครื่องมือประจำวัน เน้นเริ่มใช้งาน ไม่เจาะกลไกโมเดล",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.format",
+    "Added",
+    "",
+    "Online, self-paced\n4 hours",
+    "",
+    "ออนไลน์ ตามเวลาสะดวก\n4 ชั่วโมง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.cost",
+    "Added",
+    "",
+    "Free MOOC listing; confirm access terms",
+    "",
+    "รายการ MOOC ฟรี; ตรวจเงื่อนไขเข้าเรียน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.entry",
+    "Added",
+    "",
+    "Beginner; Thai listing. Public audience; audio not independently checked. Unit tests; certificate ≥70%.",
+    "",
+    "เริ่มต้น; รายการภาษาไทย สำหรับบุคคลทั่วไป ยังไม่ตรวจภาษาเสียง แบบทดสอบระหว่างเรียน; ประกาศนียบัตร ≥70%",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ais.access",
+    "Added",
+    "",
+    "Enrollment route listed; account needed. No closing date stated.",
+    "",
+    "มีช่องทางสมัคร ต้องมีบัญชี ไม่ระบุวันปิดรับ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.course",
+    "Added",
+    "",
+    "Generative AI Foundations\nARIT",
+    "",
+    "Generative AI Foundations\nARIT",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.fit",
+    "Added",
+    "",
+    "High match: prompt design, tool selection and output refinement. Explicit prompt and refinement syllabus; basic level.",
+    "",
+    "จับคู่มั่นใจสูง: ออกแบบคำสั่ง เลือกเครื่องมือ และปรับปรุงผลลัพธ์ มีหัวข้อคำสั่งและการปรับคำสั่งชัดเจน ระดับพื้นฐาน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.format",
+    "Added",
+    "",
+    "12 hours / 2 days\nDec intake: Hybrid; venue to confirm",
+    "",
+    "12 ชั่วโมง / 2 วัน\nรอบ ธ.ค.: ไฮบริด; ยืนยันสถานที่",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.cost",
+    "Added",
+    "",
+    "THB 8,500 excluding VAT (Dec form)",
+    "",
+    "8,500 บาท ไม่รวม VAT (แบบฟอร์มรอบ ธ.ค.)",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.entry",
+    "Added",
+    "",
+    "Basic; Thai listing. Confirm teaching language and prerequisites. Training with CCS exam.",
+    "",
+    "พื้นฐาน; รายการภาษาไทย ยืนยันภาษาสอนและพื้นฐานที่ต้องมี อบรมพร้อมสอบ CCS",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.arit.access",
+    "Added",
+    "",
+    "29–30 Oct / 16–18 Dec 2026 listed. Dec dates conflict with “2 days”; confirm dates, format and seats.",
+    "",
+    "ระบุ 29–30 ต.ค. / 16–18 ธ.ค. 2026 รอบ ธ.ค. ขัดกับ “2 วัน”; ยืนยันวัน รูปแบบ และที่นั่ง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.course",
+    "Added",
+    "",
+    "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+    "",
+    "Beyond the Obvious: How to Think in the Age of Generative AI\nIE Business School / Coursera",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.fit",
+    "Added",
+    "",
+    "High match: data/chart judgment and claim verification. Modules cover causality, biased samples, misleading averages and claim-testing exercises. Not media-forensics training.",
+    "",
+    "จับคู่มั่นใจสูง: วิเคราะห์ข้อมูล/กราฟและตรวจข้ออ้าง มีบทเรียนเหตุและผล ตัวอย่างลำเอียง ค่าเฉลี่ยชวนเข้าใจผิด และแบบฝึกตรวจข้ออ้าง ไม่ใช่การพิสูจน์สื่อดิจิทัล",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.format",
+    "Added",
+    "",
+    "Online, self-paced\nPlan about 20 hours; module totals show 16 hours",
+    "",
+    "ออนไลน์ ตามเวลาสะดวก\nเผื่อประมาณ 20 ชม.; รวมเวลารายโมดูลได้ 16 ชม.",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.cost",
+    "Added",
+    "",
+    "Paid access / certificate; Thai checkout price unverified. Trial ≠ free completion.",
+    "",
+    "เข้าถึง/ประกาศนียบัตรแบบชำระเงิน; ยังไม่ยืนยันราคาในไทย ทดลองฟรีไม่เท่ากับเรียนจบฟรี",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.entry",
+    "Added",
+    "",
+    "Beginner; no experience required. English; Thai subtitles unverified. 25 assignments, some AI-graded.",
+    "",
+    "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษาอังกฤษ; ยังไม่ยืนยันคำบรรยายไทย งานประเมิน 25 งาน บางงานตรวจด้วย AI",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ie-critical.access",
+    "Added",
+    "",
+    "Enroll action shown. Confirm Thailand account access and payment terms; no fixed intake stated.",
+    "",
+    "มีปุ่มสมัคร ยืนยันสิทธิ์บัญชีในไทยและเงื่อนไขชำระเงิน ไม่ระบุรอบตายตัว",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.course",
+    "Added",
+    "",
+    "Embrace responsible AI principles and practices\nMicrosoft Learn • module",
+    "",
+    "Embrace responsible AI principles and practices\nMicrosoft Learn • โมดูล",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.fit",
+    "Added",
+    "",
+    "High match: regulatory/policy fluency and fairness/ethics. Objectives address principles and policies; governance unit covers ownership. Not Thai legal compliance advice.",
+    "",
+    "จับคู่มั่นใจสูง: ความเข้าใจนโยบายและความเป็นธรรม/จริยธรรม วัตถุประสงค์ครอบคลุมหลักการ นโยบาย และบทบาทกำกับดูแล ไม่ใช่คำแนะนำการปฏิบัติตามกฎหมายไทย",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.format",
+    "Added",
+    "",
+    "Online, self-paced\nAbout 58 minutes / 9 units",
+    "",
+    "ออนไลน์ ตามเวลาสะดวก\nประมาณ 58 นาที / 9 หน่วย",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.cost",
+    "Added",
+    "",
+    "Free learning content",
+    "",
+    "เนื้อหาเรียนฟรี",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.entry",
+    "Added",
+    "",
+    "Beginner; English. Basic AI and business knowledge. Sign in for assessment credit; not a certification exam.",
+    "",
+    "เริ่มต้น; อังกฤษ มีพื้นฐาน AI และธุรกิจ เข้าระบบเพื่อบันทึกผลประเมิน ไม่ใช่การสอบใบรับรองวิชาชีพ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.ms-responsible.access",
+    "Added",
+    "",
+    "Public learning units available. No cohort dates; Thai localization unverified.",
+    "",
+    "มีหน่วยเรียนสาธารณะ ไม่กำหนดรอบเรียน ยังไม่ยืนยันฉบับภาษาไทย",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.course",
+    "Added",
+    "",
+    "AI For Everyone\nDeepLearning.AI / Coursera",
+    "",
+    "AI For Everyone\nDeepLearning.AI / Coursera",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.fit",
+    "Added",
+    "",
+    "High match: use-case evaluation and transformation strategy. Weeks 2–3 cover project selection and the transformation playbook. No detailed ROI-model practice shown.",
+    "",
+    "จับคู่มั่นใจสูง: ประเมินกรณีใช้งานและกลยุทธ์เปลี่ยนผ่าน สัปดาห์ 2–3 ครอบคลุมการเลือกโครงการและแนวทางเปลี่ยนผ่าน ไม่ระบุการฝึกแบบจำลอง ROI ละเอียด",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.format",
+    "Added",
+    "",
+    "Online, self-paced\nAbout 7 hours",
+    "",
+    "ออนไลน์ ตามเวลาสะดวก\nประมาณ 7 ชั่วโมง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.cost",
+    "Added",
+    "",
+    "Paid certificate; localized checkout price unverified. Provider pricing differs by access route.",
+    "",
+    "ประกาศนียบัตรแบบชำระเงิน; ยืนยันราคาหน้าชำระเงินในไทย ราคาต่างกันตามช่องทาง",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.entry",
+    "Added",
+    "",
+    "Beginner; no experience required. Language/audio options vary by locale; confirm English/Thai. 4 assignments.",
+    "",
+    "เริ่มต้น ไม่ต้องมีประสบการณ์ ภาษา/เสียงขึ้นกับหน้าที่เลือก โปรดยืนยันอังกฤษ/ไทย งานประเมิน 4 งาน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.dlai-everyone.access",
+    "Added",
+    "",
+    "Enroll action shown. Confirm Thailand account terms. Business-oriented, not a coding course.",
+    "",
+    "มีปุ่มสมัคร ยืนยันเงื่อนไขบัญชีในไทย เน้นธุรกิจ ไม่ใช่หลักสูตรเขียนโค้ด",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.course",
+    "Added",
+    "",
+    "Mentoring and Coaching with AI\nSkooldio",
+    "",
+    "Mentoring and Coaching with AI\nSkooldio",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.fit",
+    "Added",
+    "",
+    "High match: learning/improvement loops through AI-assisted feedback, development plans and reflection. Best for managers; not general human–AI accountability training.",
+    "",
+    "จับคู่มั่นใจสูง: วงจรเรียนรู้และพัฒนาผ่าน AI ช่วยให้ข้อเสนอแนะ วางแผนพัฒนา และสะท้อนผล เหมาะกับหัวหน้างาน ไม่ใช่การฝึกความรับผิดชอบคน–AI ทุกบริบท",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.format",
+    "Added",
+    "",
+    "Online\nAbout 1h 28m listed video, plus practice",
+    "",
+    "ออนไลน์\nวิดีโอที่ระบุประมาณ 1 ชม. 28 นาที และเวลาฝึกเพิ่ม",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.cost",
+    "Added",
+    "",
+    "THB 1,990 listed; confirm VAT / checkout total",
+    "",
+    "แสดง 1,990 บาท; ยืนยัน VAT / ยอดชำระ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.entry",
+    "Added",
+    "",
+    "ChatGPT/Claude familiarity. Thai listing; audio to confirm. No HR/coaching background needed; certificate terms unverified.",
+    "",
+    "คุ้นเคย ChatGPT/Claude รายการไทย; ยืนยันภาษาเสียง ไม่ต้องมีพื้นฐาน HR/โค้ช เกณฑ์ประกาศนียบัตรยังไม่ยืนยัน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "course.skooldio-coaching.access",
+    "Added",
+    "",
+    "Course listed; checkout untested. Individual lifetime / corporate 1-year access per FAQ.",
+    "",
+    "มีรายการหลักสูตร ยังไม่ทดสอบชำระเงิน FAQ ระบุบุคคลตลอดชีพ / องค์กร 1 ปี",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D1.title",
+    "Added",
+    "",
+    "D1 • AI Foundations & Concepts",
+    "",
+    "D1 • พื้นฐานและแนวคิด AI",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D1",
+    "Added",
+    "",
+    "Choose ChulaXL for model concepts, RAG and context; choose AIS / Thai MOOC for a broader everyday-use introduction.",
+    "",
+    "เลือก ChulaXL หากต้องการเข้าใจโมเดล RAG และบริบท หรือ AIS / Thai MOOC หากต้องการเริ่มใช้ AI ในชีวิตและงานทั่วไป",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D2.title",
+    "Added",
+    "",
+    "D2 • Practical Application & Tooling",
+    "",
+    "D2 • การประยุกต์ใช้และเครื่องมือ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D2",
+    "Added",
+    "",
+    "Choose the short ChulaXL course for a focused refresher; compare ARIT if you prefer scheduled instruction and an exam. Confirm its intake details first.",
+    "",
+    "เลือก ChulaXL เพื่อทบทวนแบบสั้น หรือเปรียบเทียบ ARIT หากชอบเรียนตามรอบพร้อมสอบ โดยยืนยันรายละเอียดรอบก่อน",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D3.title",
+    "Added",
+    "",
+    "D3 • Critical Evaluation & Judgment",
+    "",
+    "D3 • การประเมินและตัดสินใจอย่างมีวิจารณญาณ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D3",
+    "Added",
+    "",
+    "Choose this for practice in evaluating evidence and data. If you prefer Thai-language or shorter learning, keep D3 on your plan while further suitable options are verified.",
+    "",
+    "เลือกหลักสูตรนี้หากต้องการฝึกประเมินหลักฐานและข้อมูล หากต้องการภาษาไทยหรือหลักสูตรที่สั้นกว่า คุณเก็บ D3 ไว้ในแผนระหว่างรอตรวจสอบตัวเลือกที่เหมาะสมเพิ่มเติมได้",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D4.title",
+    "Added",
+    "",
+    "D4 • Risk, Ethics & Governance",
+    "",
+    "D4 • ความเสี่ยง จริยธรรม และการกำกับดูแล",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D4",
+    "Added",
+    "",
+    "Choose ChulaXL for broader governance and regulation context; choose the free Microsoft module for a shorter introduction to policies and organizational responsibilities.",
+    "",
+    "เลือก ChulaXL เพื่อเรียนบริบทการกำกับดูแลและกฎระเบียบกว้างขึ้น หรือโมดูลฟรีของ Microsoft เพื่อเรียนเรื่องนโยบายและความรับผิดชอบในองค์กรแบบสั้น",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D5.title",
+    "Added",
+    "",
+    "D5 • Strategy & Value Realization",
+    "",
+    "D5 • กลยุทธ์และการสร้างคุณค่า",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D5",
+    "Added",
+    "",
+    "Choose Chula AI-10 for a brief use-case orientation; choose AI For Everyone for project selection and organizational strategy.",
+    "",
+    "เลือก Chula AI-10 เพื่อรู้จักการประเมินกรณีใช้งานแบบสั้น หรือ AI For Everyone เพื่อเรียนการเลือกโครงการและกลยุทธ์องค์กร",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "options.D6.title",
+    "Added",
+    "",
+    "D6 • Human-AI Collaboration",
+    "",
+    "D6 • การทำงานร่วมกันระหว่างคนกับ AI",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "choice.D6",
+    "Added",
+    "",
+    "Choose Chula AI-10 for human–AI roles; choose Skooldio if coaching people and planning their development are part of your work. AI-10 is the same course listed under D5; do not enroll twice.",
+    "",
+    "เลือก Chula AI-10 เพื่อเข้าใจบทบาทคน–AI หรือ Skooldio หากงานของคุณต้องโค้ชและวางแผนพัฒนาคน AI-10 เป็นหลักสูตรเดียวกับใน D5 ไม่ต้องสมัครซ้ำ",
+    "FB-011",
+    "Multi-provider options; explicit mapping confidence"
+  ],
+  [
+    "courses.title2",
+    "Retired",
+    "ChulaXL learning options • D4–D6",
+    "",
+    "ทางเลือกการเรียนรู้จาก ChulaXL • D4–D6",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.fit",
+    "Retired",
+    "Chapter 5 introduces digital-content awareness. Partial D3 fit only: source verification, chart judgment and fraud practice remain unverified.",
+    "",
+    "บทที่ 5 ปูพื้นฐานการรับเนื้อหาดิจิทัล ตรง D3 บางส่วน ยังไม่ยืนยันการฝึกตรวจแหล่งข้อมูล วิเคราะห์กราฟ และตรวจกลโกง",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.access",
+    "Retired",
+    "Partner access pending\nDates / seats: unconfirmed",
+    "",
+    "รอยืนยันสิทธิ์ผ่านพาร์ตเนอร์\nวันเรียน / ที่นั่ง: ยังไม่ยืนยัน",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.entry",
+    "Retired",
+    "Introductory fit*\nPosttest 100%",
+    "",
+    "เหมาะใช้ปูพื้นฐาน*\nแบบทดสอบหลังเรียน 100%",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "courses.title1",
+    "Retired",
+    "ChulaXL learning options • D1–D3",
+    "",
+    "ทางเลือกการเรียนรู้จาก ChulaXL • D1–D3",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.cost",
+    "Retired",
+    "Partner price / VAT: unconfirmed",
+    "",
+    "ราคาพาร์ตเนอร์ / VAT: ยังไม่ยืนยัน",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.format",
+    "Retired",
+    "1h 52m\nOnline reference*",
+    "",
+    "1 ชม. 52 นาที\nอ้างอิงออนไลน์*",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "courses.none",
+    "Retired",
+    "No suitable course verified in this shortlist. You can still choose this domain; check the platform for new options.",
+    "",
+    "ยังไม่มีหลักสูตรที่เหมาะสมและยืนยันแล้วในรายการนี้ คุณยังเลือกด้านนี้ได้ และตรวจทางเลือกใหม่ในแพลตฟอร์มได้",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ],
+  [
+    "course.xl-ai10-d3.course",
+    "Retired",
+    "Chula AI-10: AI Competencies for Everyone\nChulaXL • CHULAMOOC2653",
+    "",
+    "Chula AI-10 กรอบสมรรถนะด้านเอไอสำหรับทุกคน\nChulaXL • CHULAMOOC2653",
+    "",
+    "FB-011",
+    "Weak D3 match / obsolete layout labels removed; prior version archived"
+  ]
+]
