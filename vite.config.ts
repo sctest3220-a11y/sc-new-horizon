@@ -61,9 +61,16 @@ export default defineConfig(async (): Promise<UserConfig> => {
         },
       },
     },
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      // Keep the documented dev URL (and the Go API's default CORS origin)
+      // at :3000; vinext 1.3 otherwise falls back to Vite's :5173. Fail
+      // instead of silently moving to another port when 3000 is taken.
+      port: 3000,
+      strictPort: true,
+      ...(isCodexSeatbeltSandbox
+        ? { watch: { useFsEvents: false, usePolling: true } }
+        : {}),
+    },
     plugins: [
       vinext(),
       reviewFeedbackSync(),
