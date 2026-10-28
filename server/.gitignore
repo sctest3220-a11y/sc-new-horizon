@@ -1,0 +1,32 @@
+# Go API server (server/). Root .gitignore already ignores .env* files.
+
+# Binaries from go build
+/bin/
+/api
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binaries, coverage and profiles
+*.test
+*.out
+coverage.*
+*.prof
+*.pprof
+
+# Local workspace files (the module builds on its own)
+go.work
+go.work.sum
+
+# Live reload (air) build output
+/tmp/
+
+# Runtime logs and uploads written by Fiber handlers
+*.log
+/uploads/
+
+# Editors
+.idea/
+.vscode/
+*.swp

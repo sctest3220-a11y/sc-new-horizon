@@ -30,6 +30,11 @@ yarn-error.log*
 .env*
 !.env.example
 
+# docker compose: personal overrides and local bind-mounted data
+docker-compose.override.yml
+compose.override.yml
+/.docker-data/
+
 # deployment and generated files
 .vercel
 next-env.d.ts
