@@ -16465,6 +16465,10 @@ export default function Home() {
                   </div>
                 </div>
               )}
+              {/* Always rendered: the adaptive panel below is hidden unless psychometrics are enabled. */}
+              <button className="primary submit-answer" onClick={continueAfterFeedback}>
+                {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
+              </button>
             </article>
             {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Next adaptive step">
               <div className={`movement-card ${difficultyMovement.tone}`}>
@@ -16552,9 +16556,6 @@ export default function Home() {
                   </div>
                 </div>
               )}
-              <button className="primary submit-answer" onClick={continueAfterFeedback}>
-                {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
-              </button>
             </aside>}
           </div>
         </section>
