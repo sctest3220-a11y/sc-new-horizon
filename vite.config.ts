@@ -2,7 +2,7 @@ import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { reviewFeedbackSync } from './scripts/lib/review-feedback-sync-plugin.mjs';
-import { defineConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
@@ -35,7 +35,9 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+// The explicit return type keeps TypeScript from hitting "excessive stack
+// depth" while inferring and matching the plugin types against defineConfig.
+export default defineConfig(async (): Promise<UserConfig> => {
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= 'false';

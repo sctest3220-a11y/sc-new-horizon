@@ -3,3 +3,15 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
   workerd: true
+
+# Security patches for deep dependencies (pnpm audit), kept within each
+# package's current major. Remove an entry once its parent ships the fix.
+overrides:
+  brace-expansion@^1: ^1.1.21 # eslint
+  brace-expansion@^5: ^5.0.12 # typescript-eslint, eslint-plugin-import
+  fast-uri@^3: ^3.1.9 # react-server-dom-webpack (via vinext)
+  fflate@~0.7: ~0.7.5 # @vercel/og (via vinext)
+  js-yaml@^4: ^4.3.2 # eslint
+  source-map-js@^1: ^1.2.2 # postcss, react-server-dom-webpack
+  undici@^7: ^7.30.1 # miniflare (via @cloudflare/vite-plugin)
+  zod@^4: ^4.6.6 # eslint-plugin-react-hooks
