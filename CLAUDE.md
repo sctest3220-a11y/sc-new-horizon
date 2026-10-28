@@ -11,8 +11,9 @@ SC Horizon / New Horizon is an adaptive AI-readiness assessment MVP. See [README
 | Frontend | Next.js 16 (App Router), React 19, TypeScript 5.9, Tailwind CSS 4. Most of the app is one client component: `app/page.tsx` (~17k lines). |
 | Build / runtime | **Vinext** (Vite 8 build of Next.js) with `@cloudflare/vite-plugin`, configured in `vite.config.ts`. It does not use `next build`. |
 | Backend | One API route, `app/api/results/route.ts`, running on Cloudflare Workers. It stores reviewer feedback; its assessment-results table has no caller (see [Cloudflare Worker scope](#cloudflare-worker-scope)). |
-| Database | Cloudflare D1 (SQLite) for `/api/results`, schema in `app/api/results/schema.sql`. Supabase Postgres schema is a draft in `supabase-schema.sql`. Most app data (scores, telemetry, profiles, agent runs) is in browser `localStorage`. |
-| CI/CD | GitHub Actions. `.github/workflows/question-inventory.yml` tests, builds and smoke-tests the inventory Worker with Playwright, then runs `wrangler deploy` to Cloudflare on pushes to `main`. `.github/workflows/ai-watch-discovery.yml` runs a daily Python crawler and only uploads an artifact. |
+| Go API | `server/`: Go 1.27, Fiber v3, pgx v5, goose migrations embedded in the binary. Only `/healthz` and `/readyz` so far; the Next.js app does not call it yet. See [server/README.md](server/README.md). |
+| Database | Postgres 17 for the Go API, run with `docker-compose.yml`; migrations in `server/internal/db/migrations/` (baseline only, no app tables). Cloudflare D1 (SQLite) for `/api/results`, schema in `app/api/results/schema.sql`. Supabase Postgres schema is a draft in `supabase-schema.sql`. Most app data (scores, telemetry, profiles, agent runs) is in browser `localStorage`. |
+| CI/CD | GitHub Actions. `.github/workflows/question-inventory.yml` tests, builds and smoke-tests the inventory Worker with Playwright, then runs `wrangler deploy` to Cloudflare on pushes to `main`. `.github/workflows/ai-watch-discovery.yml` runs a daily Python crawler and only uploads an artifact. `.github/workflows/server.yml` vets, tests and Docker-builds `server/` (no deploy). |
 | Tooling | pnpm, ESLint, Playwright, Node test scripts and Python crawlers in `scripts/`. `.openai/hosting.json` and `@openai/sites-vite-plugin` are hosting tooling only. Older docs mention Vercel. |
 
 ### AI integration
@@ -30,6 +31,8 @@ pnpm build && pnpm start   # production-style run
 ```
 
 The question reviewer is at `/admin/question-inventory`. The app runs without env vars. Login needs `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in `.env.local` (see `docs/DEPLOYMENT.md`). For a reviewer-only setup, see `docs/QUESTION_INVENTORY_LOCAL_REVIEW.md`.
+
+Go API and Postgres (needs Docker): `cp .env.example .env`, set `POSTGRES_PASSWORD`, then `docker compose up --build` (API on http://localhost:8080). Tests: `cd server && go test ./...`.
 
 ### Authentication
 
