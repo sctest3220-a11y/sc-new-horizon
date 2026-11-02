@@ -1,6 +1,6 @@
 # 3. The assessment engine
 
-How the quiz scores, adapts and records. The rules that constrain changes here are in [`../../app/CLAUDE.md`](../../app/CLAUDE.md). All of it is in `app/page.tsx`; search for the function names below (line numbers drift).
+How the quiz scores, adapts and records. The rules that constrain changes here are in [`../../app/CLAUDE.md`](../../app/CLAUDE.md). The logic is in `app/learner-app.tsx` and the screens are `/assessment`, `/assessment/premium`, `/assessment/run` and `/results` under `app/(learner)/`; search for the function names below (line numbers drift). Answer feedback is a phase of `/assessment/run`, not a URL of its own.
 
 
 ## Admin settings
@@ -15,7 +15,7 @@ The only admin screen is `/admin/pilot-operations` (`app/admin/pilot-operations/
 
 The diagnostics toggles also change the flow: when all six are off, the feedback screen after each answer is skipped (`skipHiddenFeedback`). The default has "Task focus" on, so that screen shows by default.
 
-The admin console inside `app/page.tsx` (behind the preview button) only shows analytics and simulated agent jobs: quality analysis, cohort, function and role averages, priority gaps, item difficulty behaviour, interaction mix and latest runs. It has no quiz settings.
+The admin console at `/admin` (behind the preview button) only shows analytics and simulated agent jobs: quality analysis, cohort, function and role averages, priority gaps, item difficulty behaviour, interaction mix and latest runs. It has no quiz settings.
 
 `docs/ADMIN_SETTINGS_CONFIGURATION.md` describes a larger admin console that is not built.
 

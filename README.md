@@ -93,8 +93,10 @@ Useful pages:
 
 | URL | What it is |
 | --- | --- |
-| http://localhost:3000/ | The assessment and home page |
-| http://localhost:3000/?view=watch, `?view=labs` | AI Watch and AI Labs |
+| http://localhost:3000/ | Home page |
+| http://localhost:3000/assessment | Start the assessment (`/assessment/premium` for the premium diagnostic) |
+| http://localhost:3000/watch, `/labs` | AI Watch and AI Labs |
+| http://localhost:3000/dashboard, `/admin` | Learner dashboard and the admin console preview |
 | http://localhost:3000/admin/question-inventory | Question-inventory reviewer |
 | http://localhost:3000/admin/pilot-operations | Pilot settings |
 
@@ -121,7 +123,7 @@ From the repository root unless noted.
 | `pnpm dev` | Builds the review-inventory assets, then starts the dev server on port 3000 (fails if the port is taken) |
 | `pnpm build` | Builds the assets and a Cloudflare Worker bundle with Vinext. It cannot be served by `pnpm start` under Node. |
 | `pnpm lint` | ESLint over the repository |
-| `pnpm exec tsc --noEmit -p .` | Type check. 18 errors in `app/page.tsx` already exist; compare counts. |
+| `pnpm exec tsc --noEmit -p .` | Type check. 18 errors in `app/learner-app.tsx` already exist; compare counts. |
 | `pnpm test` | Every test suite: node, components, Go, Python |
 | `pnpm test:coverage` | Node and Go suites with coverage, then the coverage rules (needs `TEST_DATABASE_URL`) |
 | `pnpm test:node` / `test:components` / `test:go` / `test:news-scout` | One group of suites |

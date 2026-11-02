@@ -3,7 +3,7 @@
 **The question bank is frozen for the Event Demo phase** (see [`../SCOPE.md`](../SCOPE.md)). This document explains it so feature work reads from it correctly, not so it can be changed.
 
 
-Where the quiz questions come from, how they are stored and imported, where the reference data comes from, and what the user sees at the end. Search `app/page.tsx` for the names below.
+Where the quiz questions come from, how they are stored and imported, where the reference data comes from, and what the user sees at the end. Search `app/learner-app.tsx` for the names below.
 
 ## Storage and lookup
 
@@ -11,7 +11,7 @@ There is no question database. Every question is a TypeScript or JSON object in 
 
 | Set | Where it lives | Used by |
 |---|---|---|
-| Live bank (634 + 229 release = 863) | `Question[]` arrays in `app/page.tsx` plus `app/productionQuestionRelease.ts` | The quiz |
+| Live bank (634 + 229 release = 863) | `Question[]` arrays in `app/learner-app.tsx` plus `app/productionQuestionRelease.ts` | The quiz |
 | Thai text for the live bank | `app/questionTranslations.th.ts`, keyed by question ID, plus optional `*Th` fields on each item | `localizeQuestion` |
 | Draft review inventory (3,328) | `exports/review-inventory/questions.json`, generated | `/admin/question-inventory` only, never the quiz |
 
@@ -26,7 +26,7 @@ ID schemes:
 
 ## Question bank
 
-The 634 original ("live") questions are written in `app/page.tsx`, mostly by hand. The `ADV-*` and `TREND-*` items are built from templates per competency. The count comes from the release manifest (`baseLiveBankQuestions`) and the README.
+The 634 original ("live") questions are written in `app/learner-app.tsx`, mostly by hand. The `ADV-*` and `TREND-*` items are built from templates per competency. The count comes from the release manifest (`baseLiveBankQuestions`) and the README.
 
 | List | Contents |
 |---|---|
@@ -45,7 +45,7 @@ The 634 original ("live") questions are written in `app/page.tsx`, mostly by han
 
 - `app/productionQuestionRelease.ts` (generated, do not hand-edit) is spread at the **front** of `questionBank` as `productionQuestionRelease as unknown as Question[]`. There is no merge step, and the cast turns off type checking, so missing fields do not fail the build.
 - Every ID gets the suffix `@2026-10-07.1`, and `sourceQuestionId` keeps the original ID, so a release item can never overwrite a live one. The release is append-only (`replaceLive: 0`).
-- 125 items are new, taken from the draft review inventory (`source: "draft-inventory"`). 104 are rewrites of live questions (`source: "live-bank"`). The old versions are not removed, and nothing reads `sourceQuestionId`, so both versions can be served. Only 17 of the 104 old IDs appear literally in `page.tsx`; the rest are template IDs such as `TREND-*`.
+- 125 items are new, taken from the draft review inventory (`source: "draft-inventory"`). 104 are rewrites of live questions (`source: "live-bank"`). The old versions are not removed, and nothing reads `sourceQuestionId`, so both versions can be served. Only 17 of the 104 old IDs appear literally in `learner-app.tsx`; the rest are template IDs such as `TREND-*`.
 - Release items are in `questionBank` only, so **executive mode never serves them**. They do appear in `allAssessmentItems`.
 - `questionBankVersion` (saved in the score log) is still `question-bank-2026-09-15-mvp` and was not bumped for the release.
 - The release package is in `exports/production/releases/2026-10-07.1/`: `release-questions.json` (229 records), `question-ids.json` and `manifest.json`. The manifest records status `production-import-ready`, source branch `new-horizon/kj-dee-branch` at `5794850`, feedback file `exports/review-inventory/feedback-application-2026-10-06.json`, 48 remaining collaborator issues, previous release `2026-09-30.1` and rollback snapshot `exports/review-inventory/versions/2026-10-07.1/questions-previous.json`. It is not connected to an external importer.
@@ -55,7 +55,7 @@ The 634 original ("live") questions are written in `app/page.tsx`, mostly by han
 The 3,328 draft items are generated, not written: 768 core, 1,296 function, 320 industry and 944 executive variants that share 96 competency/difficulty families and 384 base evidence patterns. They are coverage variants, not calibrated independent items.
 
 - **Generator**: `inventory/build-bank.mjs` (`generateInventory`, `validateInventory`; `inventoryVersion` `2026-09-30.1`). It combines four evidence cases per competency and difficulty from the blueprint files (`foundations.mjs` D1, `application.mjs` D2, `evaluation.mjs` D3, `governance.mjs` D4, `strategy.mjs` D5, `collaboration.mjs` D6) with role contexts (`contexts.mjs`), role overlays (`overlays.mjs`) and distractors (`distractors.mjs`). `{{deliverable}}` and `{{source}}` placeholders are filled from the context.
-- **Platform model**: the generator reads competencies, domains, track labels and the live bank straight out of `app/page.tsx` through `scripts/lib/read-platform-model.mjs`. It evaluates the data section above `const learningCatalog:` in a VM, so moving that line breaks the generator.
+- **Platform model**: the generator reads competencies, domains, track labels and the live bank straight out of `app/learner-app.tsx` through `scripts/lib/read-platform-model.mjs`. It evaluates the data section above `const learningCatalog:` in a VM, so moving that line breaks the generator.
 - **Run**: `node scripts/generate-review-inventory.mjs` writes `questions.json`, `coverage.json` and `samples.md` to `exports/review-inventory/`. Later scripts add English rewrites, Thai and artifact needs (`pnpm inventory:refine`).
 - **Record fields**: `id`, `version`, `layer`, `scope`, `domain`, `competencyIds`, `skillIds`, `difficulty` (with `difficultyStatus: provisional`), `type`, `interaction`, `evidenceMode`, `recommendedFormat`, `context`, `prompt`, `options[{id,label,score,feedback}]`, `correctOptionIds`, `rationale`, `userFacingDraft` (the rewritten English, with Thai `thLabel` / `thFeedback` on options and `th` for context and prompt), `th`, `familyId`, `casePatternId`, `variant`, `review`, `qualityFlags`, `artifactNeed`, `provenance`, `contentHash`.
 - **Live-bank export**: `scripts/export-live-question-inventory.mjs` writes `exports/review-inventory/live-questions.json` so reviewers see live items beside drafts. It holds 660 base items plus the 229 release items, more than the 634 the manifest records.
@@ -95,7 +95,7 @@ Nothing imports questions at runtime. Each "import" is a script that writes a fi
 
 ## Where the reference data comes from
 
-All hard-coded in `app/page.tsx`. Nothing is loaded from an API or a database.
+All hard-coded in `app/learner-app.tsx`. Nothing is loaded from an API or a database.
 
 | Data | Name | Source |
 |---|---|---|

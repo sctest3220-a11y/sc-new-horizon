@@ -18,11 +18,11 @@ The journey is **discover → understand → practise → save a useful result �
 | Did you know (`app/watch-awareness.tsx`, imported as `AwarenessFlash`) | Home-page cards drawn from the same `trendFeed` stories that have a bilingual `awareness` hook, ranked by the Watch interests, excluding muted topics. "Another story" button, no timer or animation. | Shared publication with Watch through a real pipeline. |
 | Labs (`app/connected-labs.ts`) | Two bilingual EN/TH fictional Labs, `agent-boundaries` and `evidence-check` (4 minutes each). Each has two multiple-choice decisions, per-answer feedback, revision, optional notes and a saved takeaway; rules grade the decisions, never the notes. The 7 older Labs (`labConfigs`, kinds `ownership`, `proof`, `next`, `prompt`, `media`, `workflow`, `trust`; graded by `evaluateLab`, opened by `startLabActivity`) still exist. | LLM grading of written answers. The old `prompt` Lab only matches English keywords, so the UI calls them "checklist cues" and the model answer "an example". Human pilot review before hosting. |
 
-Navigation: primary nav buttons or `/?view=watch` and `/?view=labs` (internally `step` `'news'` and `'learningLabs'` in `app/page.tsx`). The dashboard also shows `dashboardNews`, filtered by weak domains and profile tags, falling back to the first 4 `trendFeed` items.
+Navigation: primary nav links to `/watch` and `/labs` (internally `step` `'news'` and `'learningLabs'`); an older Lab opens at `/labs/<kind>`. Old `/?view=watch` and `/?view=labs` links redirect. The dashboard also shows `dashboardNews`, filtered by weak domains and profile tags, falling back to the first 4 `trendFeed` items.
 
 ## Where the data comes from
 
-- **Stories**: about 34 entries hand-written into `trendFeed` in `app/page.tsx` (search `const trendFeed`). Each has `id`, `contentVersion`, `topic`, optional `relatedLab` and `awareness` hook, title, summary (`signal`), source, date, URL, domain, media type and references. Publishers include Anthropic, Google DeepMind, OpenAI, Epoch AI, Axios, Stanford HAI, METR, NHTSA, Waymo, RoboCup, Microsoft WorkLab, an arXiv preprint, CNN, South China Morning Post and Google Korea (YouTube). Dates run from May to 25 September 2026; a few say only "2026", and the Pip story says its publication date is unverified. Source checks were manual, on 29 September. The stories are real but a frozen snapshot: changing them means editing code and going through review.
+- **Stories**: about 34 entries hand-written into `trendFeed` in `app/learner-app.tsx` (search `const trendFeed`). Each has `id`, `contentVersion`, `topic`, optional `relatedLab` and `awareness` hook, title, summary (`signal`), source, date, URL, domain, media type and references. Publishers include Anthropic, Google DeepMind, OpenAI, Epoch AI, Axios, Stanford HAI, METR, NHTSA, Waymo, RoboCup, Microsoft WorkLab, an arXiv preprint, CNN, South China Morning Post and Google Korea (YouTube). Dates run from May to 25 September 2026; a few say only "2026", and the Pip story says its publication date is unverified. Source checks were manual, on 29 September. The stories are real but a frozen snapshot: changing them means editing code and going through review.
 - **Media**: images and videos are hotlinked from publishers, never downloaded. Pip's avatar was removed because reuse permission was not established. Never generate news images.
 - **Labs**: hand-written in `app/connected-labs.ts` and `labConfigs`, separate from the question bank.
 - **User state**: browser `localStorage` key `new-horizon-watch-labs-v1:<ownerId>` (signed-in profile ID or local profile ID): preferences, saved story IDs, current feed and filter, active Lab and origin story, Lab drafts and takeaways. Parsing limits lengths and recovers from corrupt or unknown-version data. The component remounts when the identity changes. No account sync, server analytics or AI calls.
@@ -58,6 +58,6 @@ model files are above the 90% floor on lines, branches and functions.
 
 `app/watch-model.ts` and `app/connected-labs.ts` have no runtime imports except
 type imports of each other, and only TypeScript that Node can strip. The test
-imports them directly, so importing React, `app/page.tsx` or any other module
+imports them directly, so importing React, `app/learner-app.tsx` or any other module
 from them, or using an enum, breaks the suite.
 

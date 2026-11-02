@@ -10,16 +10,22 @@ underneath them.
 
 ## Layout
 
-**New code lives beside `app/page.tsx`, not inside it.** The newer surfaces show
-the split:
+**Each learner screen is a route; new code lives beside `app/learner-app.tsx`,
+not inside it.** A screen is `app/(learner)/<route>/page.tsx` (a server
+component that sets the title) plus its client `screen.tsx`, which reads
+shared state through `useApp()` (`app/learner-app-context.tsx`). The URLs are
+listed in one place, `app/learner-routes-model.ts`. The newer surfaces show the
+split inside a screen:
 
 - `app/watch-labs.tsx` is the component;
 - `app/watch-model.ts` and `app/connected-labs.ts` hold the logic and data;
 - `app/watch-labs.css` holds the styles;
 - `scripts/test-watch-labs.mjs` holds the tests.
 
-`app/page.tsx` grew to ~17k lines because everything was added in place. Every
-addition there makes the next change harder to review and to test.
+The screens were all one ~17k-line `app/page.tsx` until they moved to routes.
+Their state, logic and question bank are still one module,
+`app/learner-app.tsx`, because everything was added in place. Every addition
+there makes the next change harder to review and to test.
 
 **Logic modules have no runtime imports.** `app/watch-model.ts` imports nothing;
 `app/connected-labs.ts` imports only types from it. The tests transpile each
@@ -55,7 +61,7 @@ Comparing them as numbers or dates breaks the moment the format gains a suffix.
 
 **`strict` is on, and types sit next to the code that owns them.** Examples:
 `WatchState` and `Bilingual` in `app/watch-model.ts`, and the question types at
-the top of `app/page.tsx`. There is no shared `types.ts`.
+the top of `app/learner-app.tsx`. There is no shared `types.ts`.
 
 **Bilingual data is `{ en, th }` in new code, and `xxx` / `xxxTh` sibling
 fields in question data.** New components take a `language` prop and pick a
@@ -93,7 +99,7 @@ Don't mix the two styles in one component.
 ## Errors and unavailable storage
 
 **Storage access is wrapped, and failure degrades to memory, visibly.**
-`readLocalStorage` and `writeLocalStorage` in `app/page.tsx` swallow errors.
+`readLocalStorage` and `writeLocalStorage` in `app/learner-app.tsx` swallow errors.
 `app/watch-labs.tsx` goes further: it records `storageStatus: 'memory'` and
 tells the user that their progress will not be kept. Use the second pattern for
 anything the user would miss.
@@ -131,7 +137,7 @@ broken promise. Every use case gets its edge cases in the same file:
 ## Documentation
 
 **Comments explain why, not what**, and are rare. Examples are the hydration
-and storage notes in `app/page.tsx` and the deploy-adapter checks in
+and storage notes in `app/learner-app.tsx` and the deploy-adapter checks in
 `scripts/build-inventory-cloudflare.mjs`. Generated files start with a
 `GENERATED … do not hand-edit` header naming their source. No linter enforces
 any of this.

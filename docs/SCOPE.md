@@ -36,8 +36,8 @@ when a developer has agreed it should.
 
 | Working | Detail |
 | --- | --- |
-| Adaptive assessment | `/`: free, premium and executive routes, scoring, continuation and results report, all in `app/page.tsx`. Data is in `localStorage`. See [`frontend/03-assessment-engine.md`](frontend/03-assessment-engine.md). |
-| AI Watch and AI Labs | `/?view=watch`, `/?view=labs`: a local release. Stories are hand-written in `trendFeed`. See [`frontend/05-watch-and-labs.md`](frontend/05-watch-and-labs.md). |
+| Adaptive assessment | `/assessment`, `/assessment/premium`, `/assessment/run`, `/results`: free, premium and executive modes, scoring, continuation and results report. Screens are in `app/(learner)/`, logic in `app/learner-app.tsx`. Data is in `localStorage`. See [`frontend/03-assessment-engine.md`](frontend/03-assessment-engine.md). |
+| AI Watch and AI Labs | `/watch`, `/labs`, `/labs/<kind>`: a local release. Stories are hand-written in `trendFeed`. See [`frontend/05-watch-and-labs.md`](frontend/05-watch-and-labs.md). |
 | Pilot operations admin | `/admin/pilot-operations`: saves to `localStorage`, and only some settings reach the quiz. |
 | Question inventory reviewer | `/admin/question-inventory`: reviewer feedback goes to Cloudflare D1 through `/api/results`. Deployed as a separate Cloudflare Worker. |
 | Optional sign-in | Supabase Google OAuth and magic links, run in the browser. Profiles and sessions are copied to Supabase. |
@@ -113,7 +113,7 @@ What CI does for a PR into `The-Gang`:
    currently handles sign-in in the browser. Until this is decided, no endpoint
    that reads or writes user data may be deployed without auth.
 5. **Should stabilization include the type and lint debt?** `tsc` reports 18
-   errors in `app/page.tsx`, and no CI job runs `tsc` or `eslint` on the main
+   errors in `app/learner-app.tsx`, and no CI job runs `tsc` or `eslint` on the main
    app.
 
 ## Decided

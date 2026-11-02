@@ -17,7 +17,7 @@ Ask in this order, and stop at the first yes.
 | Question | If yes, it lives… | Example |
 | --- | --- | --- |
 | Can it be computed from other state or props? | Nowhere: compute it during render, with `useMemo` if it is expensive | `dashboardNews`, `selectWatchStories(...)` |
-| Is it part of the address a user could share or reload? | In the URL (`?view=`, `?question=`), read after mount | `step` ↔ `?view=watch` |
+| Is it part of the address a user could share or reload? | In the URL: a route, or a query parameter read after mount | `step` ← `/watch`, `/labs/<kind>`; `?question=` |
 | Is it Event Demo data that must survive a device change? | In Postgres, behind the Go API | Assessment runs, profiles, saved stories (once migrated) |
 | Has a developer agreed it stays on this device? | In `localStorage`, versioned and parsed | Language choice, theme, dismissed hints |
 | Otherwise | In component state, in the lowest component that needs it | An open panel, a draft in a form |
@@ -27,10 +27,12 @@ Ask in this order, and stop at the first yes.
 a render late, so the screen shows the stale list for a frame, or forever if the
 dependency array is wrong.
 
-**State lives in the lowest component that needs it.** `app/page.tsx` holds
-dozens of `useState` calls (66 at the time of writing). Each one re-renders the
-whole page on change, which is why typing in a small form can feel slow there.
-New state in a new component keeps re-renders local.
+**State lives in the lowest component that needs it.** `useAppController()` in
+`app/learner-app.tsx` holds dozens of `useState` calls (66 at the time of
+writing) for every learner screen. Each one re-renders the whole screen and the
+header on change, which is why typing in a small form can feel slow there. New
+state in a new component keeps re-renders local. Put state in the controller
+only when more than one route needs it, as an assessment in progress does.
 
 ## Initial render and restore
 
@@ -41,8 +43,8 @@ The server and the first client render must produce the same HTML. Therefore:
   `Math.random()` or `window.location` in an initializer.
 - **Restore in an effect, then mark ready.** Follow `app/watch-labs.tsx`: read
   inside `requestAnimationFrame` (or `useEffect`), run the result through the
-  parser, set `ready`. The `browserStateReady` effect in `app/page.tsx` does the
-  same for the whole page.
+  parser, set `ready`. The `browserStateReady` effect in `app/learner-app.tsx`
+  does the same for every learner route.
 - **Render loading honestly.** Until `ready`, show a loading state or the
   default. Never show "no saved stories" before you have looked.
 - **Remount on identity change with `key`.** Don't write an effect that clears

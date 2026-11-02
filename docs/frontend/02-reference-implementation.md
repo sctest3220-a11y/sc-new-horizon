@@ -20,8 +20,8 @@ inventory tool, so read it as an example, not as a feature to extend.
 
 | Step | File | What happens |
 | --- | --- | --- |
-| 1 | `app/page.tsx` | The `?view=watch` / `?view=labs` restore effect sets `step` after the first animation frame. `WatchLabs` renders only once `browserStateReady` is true. |
-| 2 | `app/page.tsx` | It mounts `<WatchLabs key={authProfile?.id ?? localProfileId} ownerId={…} />`. The `key` remounts the component when the identity changes. |
+| 1 | `app/(learner)/watch/page.tsx`, `labs/page.tsx` | Each route renders `LearningScreen`, which picks the view from `step`, derived from the URL (`stepForPath` in `app/learner-routes-model.ts`). `WatchLabs` renders only once `browserStateReady` is true. |
+| 2 | `app/(learner)/learning-screen.tsx` | It mounts `<WatchLabs key={authProfile?.id ?? localProfileId} ownerId={…} />`. The `key` remounts the component when the identity changes. |
 | 3 | `app/watch-labs.tsx` | State starts as `newWatchState()`, a deterministic default. Then an effect reads `new-horizon-watch-labs-v1:<ownerId>` on the next animation frame. |
 | 4 | `app/watch-model.ts` | `parseWatchState` validates the stored JSON. It accepts only `version: 1`, filters IDs by pattern, and caps lengths. Anything else becomes the default. |
 | 5 | `app/watch-labs.tsx` | A second effect writes the state back. It only runs once `ready` is true, and it falls back to `'memory'` if storage throws. |
@@ -66,7 +66,7 @@ test pins this.
    `app/watch-labs.test.tsx`: each state, each control, what is saved, and
    both languages.
 4. Style it in `app/<feature>.css` with a surface prefix. Check it at 375px.
-5. Render it from `app/page.tsx` with a `key` for the identity it belongs to.
+5. Render it from the screen of the route it belongs to (`app/(learner)/<route>/screen.tsx`), with a `key` for the identity it belongs to. A new screen also needs its URL in `app/learner-routes-model.ts`.
 6. Run the Definition of done in `app/CLAUDE.md`.
 
 ## Moving a feature's data to the Go API

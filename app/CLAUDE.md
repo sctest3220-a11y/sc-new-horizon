@@ -46,8 +46,9 @@ a flaky test.
    `Math.random()`, `Date.now()` and the auth profile. Start from a
    deterministic default and restore in `useEffect` or `requestAnimationFrame`,
    behind a `ready` flag, as `app/watch-labs.tsx` and the `browserStateReady`
-   effect in `app/page.tsx` do. Otherwise the server HTML and the first client
-   render differ, React discards the tree, and saved state flashes or is lost.
+   effect in `app/learner-app.tsx` do. Otherwise the server HTML and the first
+   client render differ, React discards the tree, and saved state flashes or is
+   lost.
    This was fixed once already (commit `8666ead`). No test pins this yet.
 2. **Persisted browser state has a versioned key and a parser that never
    throws.** The key follows `new-horizon-<thing>-v<N>`. The parser returns the
@@ -57,7 +58,8 @@ a flaky test.
    browser. Bump `v<N>` when the shape changes incompatibly.
    (`scripts/test-watch-labs.mjs`, `"corrupt, missing, and unknown-version
    storage recovers without throwing"` and `"storage rejects invalid preference
-   values and caps untrusted data"`; the `app/page.tsx` parsers have no test.)
+   values and caps untrusted data"`; the `app/learner-app.tsx` parsers go
+   through `app/page-storage-model.ts`, pinned by `scripts/test-page-storage.mjs`.)
 3. **New persisted Event Demo data goes to the Go API, not `localStorage`,
    unless a developer has agreed otherwise.** See the root `CLAUDE.md`. Rule 2
    still applies to whatever stays in the browser. No test pins this.
@@ -72,8 +74,8 @@ a flaky test.
    `scripts/prepare-production-release.mjs`, which no test covers.)
 5. **Every user-facing string ships in English and Thai, through the mechanism
    its surface owns.**
-   - `app/page.tsx` interface text: add the English→Thai pair to
-     `thaiUiCopy`.
+   - Interface text in the `app/(learner)/` screens: add the English→Thai
+     pair to `thaiUiCopy` in `app/learner-app.tsx`.
    - Watch/Labs and any new component: render both languages from props
      (`Bilingual = { en, th }`) inside a `data-no-translate` subtree, so the
      legacy DOM pass does not rewrite it.
@@ -105,7 +107,11 @@ There is no middleware, so nothing is protected by default. In dev,
 
 | Method / Path | Handler / File | Guarded by |
 | --- | --- | --- |
-| `GET /` (plus `?view=watch`, `?view=labs`, `?view=admin`, `?question=<id>`) | `app/page.tsx` (client component; `?view=` is read after mount) | Nothing; the admin view is a button gate |
+| `GET /` | `app/(learner)/page.tsx` → `home-screen.tsx`. Old `/?view=…` and `/?question=<id>` links redirect after mount (`legacyRedirect` in `app/learner-routes-model.ts`) | Nothing |
+| `GET /dashboard`, `/watch`, `/labs`, `/labs/<kind>` | `app/(learner)/<route>/page.tsx` → its `screen.tsx` (Watch and Labs share `learning-screen.tsx`). An unknown `<kind>` is a 404 | Nothing |
+| `GET /assessment`, `/assessment/premium` | Onboarding screens; starting the survey moves to `/assessment/run` | Nothing |
+| `GET /assessment/run` (plus `?question=<id>` preview), `/results` | Question, answer feedback and results screens. Opened with no assessment in memory, they go back to `/assessment` | Nothing |
+| `GET /admin`, `/admin/developer-report` | Admin console preview and the sample developer report, under `app/(learner)/admin/` | Nothing; the console is a button gate |
 | `GET /admin/pilot-operations` | `app/admin/pilot-operations/page.tsx` | Nothing |
 | `GET /admin/question-inventory` | `app/admin/question-inventory/page.tsx` (server component) | Nothing |
 | `GET /admin/question-inventory/results` | `app/admin/question-inventory/results/page.tsx` | Nothing |
@@ -121,7 +127,9 @@ flow and its D1 storage are outside the Event Demo (`docs/SCOPE.md`, Decided). C
 
 | Adding… | Path |
 | --- | --- |
-| A new screen or feature component | Its own file, `app/<feature>.tsx`, rendered from `app/page.tsx` (like `app/watch-labs.tsx`). Not another block inside `app/page.tsx`. |
+| A new learner screen | A route: `app/(learner)/<route>/page.tsx` (server component: `metadata` title, renders the screen) and `screen.tsx` (`'use client'`, reads state through `useApp()`). Add its URL to `app/learner-routes-model.ts` and a case to `app/screens.test.tsx`. |
+| A feature component inside a screen | Its own file, `app/<feature>.tsx`, taking props (like `app/watch-labs.tsx`). Not another block inside a `screen.tsx`. |
+| State shared by several learner screens | `useAppController()` in `app/learner-app.tsx`, returned to the screens through `app/learner-app-context.tsx`. State only one screen uses stays in that screen. |
 | Pure logic: parsing, ranking, scoring of a feature | `app/<feature>-model.ts`, with no runtime imports and only strippable TypeScript (no enums or namespaces), like `app/watch-model.ts`, so Node can load it directly in tests |
 | Tests for that logic (≥ 90% lines, branches, functions) | `scripts/test-<feature>.mjs` (`node:test`), importing the `.ts` file directly, modelled on `scripts/test-watch-labs.mjs` |
 | Tests for a component | `app/<feature>.test.tsx` (Vitest + React Testing Library), modelled on `app/watch-labs.test.tsx` |
@@ -131,9 +139,20 @@ flow and its D1 storage are outside the Event Demo (`docs/SCOPE.md`, Decided). C
 | Build or data scripts and their helpers | `scripts/<verb>-<thing>.mjs`, shared helpers in `scripts/lib/` |
 | Question, translation, artifact or inventory content | Nowhere this phase. The bank is frozen. |
 
-`app/page.tsx` is where existing behaviour lives, not where new code goes.
-Extract into the files above as you touch it. Don't start a wholesale split
-without a dedicated task.
+`app/learner-app.tsx` is where existing behaviour lives, not where new code
+goes. It still holds the question bank, the scoring logic and one controller
+hook for every screen. Move logic out into `app/<feature>-model.ts` as you
+touch it. Don't start a wholesale split without a dedicated task.
+
+Two scripts-facing rules keep that file readable by `scripts/`:
+
+- **Don't add `export` to a declaration in `app/learner-app.tsx`.** Add the
+  name to the `export { … }` list at the end of the file. Several scripts
+  evaluate the data section of the file as plain script text, and an `export`
+  keyword there breaks them.
+- **Keep `useAppController()` after all the data.**
+  `scripts/dump-question-bank.mjs` and `scripts/export-question-bank.mjs` stop
+  reading at that line.
 
 ## Definition of done
 
@@ -153,7 +172,7 @@ pnpm build
 
 What a green run can hide:
 
-- **`tsc` already reports 18 errors in `app/page.tsx`.** Compare the count
+- **`tsc` already reports 18 errors in `app/learner-app.tsx`.** Compare the count
   before and after. Only an increase is yours.
 - **No CI job runs `lint` or `tsc` for the main app.** `test.yml` runs the tests
   and coverage, but a type or lint error still passes CI.
@@ -175,7 +194,8 @@ What a green run can hide:
 | `/admin/question-inventory/results` shows fewer reviews than D1 has | The results page builds its feedback breakdown from this browser's `localStorage` only. It never reads `question_feedback`. |
 | Reviewer feedback re-posted by dev sync lands as `legacy-unversioned` | `review-sync.tsx` re-posts any `new-horizon-review*` key without its `contentVersion`. Known; the inventory is frozen. |
 | Thai text in a new component turns into a different Thai string, or into English | The legacy `applyUiLanguage` pass rewrote it. Wrap the component in `data-no-translate` and render both languages yourself. |
-| `/?view=watch` shows the home page in an automated check | The view is applied after the first animation frame. Wait for it, and don't test in a hidden browser pane. |
+| `/?view=watch` stays on the home page, or AI Watch is blank, in an automated check | The redirect and the saved-state restore both run after the first animation frame, and a hidden browser pane never fires one. Wait for it, and show the pane or use a headless browser. |
+| The question and the answer feedback show at the same time on `/assessment/run` | Both phases share one URL, so `screen.tsx` must keep its `step === 'assessment'` / `step === 'feedback'` checks. Pinned by `"answering shows feedback in place of the question, then the next question"` in `app/screens.test.tsx`. |
 | A logic test fails with `ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX` or module-not-found | `scripts/test-*.mjs` loads `app/*-model.ts` directly with Node's type stripping. Keep enums, namespaces, parameter properties and runtime imports out of logic modules. |
 | `pnpm test:coverage` fails on a logic module with "no test loads this logic module" | Every `app/*-model.ts` needs a `scripts/test-*.mjs` that imports it. Add one; don't rename the file to dodge the check. |
 | `wrangler dev` on the inventory build hits "too many open files" | The build carries thousands of per-question detail files. Do what `.github/workflows/question-inventory.yml` does: `ulimit -n 65536` and `CHOKIDAR_USEPOLLING=1`. |

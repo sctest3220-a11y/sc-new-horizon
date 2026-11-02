@@ -1,5 +1,12 @@
 # Latest Changes
 
+## Each learner screen has its own URL — 2 November 2026
+
+- The screens that `app/page.tsx` switched between with in-memory state are now routes: `/`, `/dashboard`, `/watch`, `/labs`, `/labs/<kind>`, `/assessment`, `/assessment/premium`, `/assessment/run`, `/results`, `/admin` and `/admin/developer-report`. Each has its own page title, a working back button and a shareable link.
+- Old `/?view=…` and `/?question=<id>` links redirect to the new URLs.
+- Opening `/assessment/run` or `/results` with no assessment in progress returns to `/assessment`. An unknown lab URL is a 404.
+- State, logic and the question bank stay in one module, now `app/learner-app.tsx`. The `(learner)` layout keeps that state across routes, so an assessment in progress survives navigation. No question, scoring or copy changed.
+
 ## Manual awareness-news scout — 29 September 2026
 
 - Added executable, bounded source discovery for awareness-provoking stories, AI trends and new technologies, driven by shared JSON editorial instructions.

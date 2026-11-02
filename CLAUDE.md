@@ -19,8 +19,9 @@ is "tidy up the question bank": the question bank is frozen.
 ## Layout
 
 - `app/`: the web app. Next.js 16 App Router on React 19.3, **built and served
-  by Vinext 1.3** (Vite 8 + `@cloudflare/vite-plugin`), not `next build`. Most
-  of it is one client component, `app/page.tsx` (~17k lines).
+  by Vinext 1.3** (Vite 8 + `@cloudflare/vite-plugin`), not `next build`. Each
+  learner screen is a route under `app/(learner)/`. Their state, logic and
+  question bank are still one module, `app/learner-app.tsx` (~14k lines).
 - `server/`: the Go API. Go 1.27, Fiber v3, pgx v5, goose migrations embedded
   in the binary. It is meant to become the system of record (see
   `docs/SCOPE.md`).
@@ -160,7 +161,7 @@ decision, and several have tests that will fail.
 - **AI provider keys never reach browser code.** Every LLM call, when one
   exists, goes through the Go API, because a key in the bundle is readable by
   every visitor. Today the app makes no AI calls. Mentions of OpenAI, Anthropic
-  and Gemini in `app/page.tsx` are question content and news links. No test
+  and Gemini in `app/learner-app.tsx` are question content and news links. No test
   pins this yet.
 - **Secrets live in `.env`, which is never committed; only `.env.example` is
   tracked.** `.gitignore` ignores `.env*` and re-includes `!.env.example`.
@@ -183,7 +184,7 @@ decision, and several have tests that will fail.
 
 These are known gaps. They are not rules to copy:
 
-- The admin console in `app/page.tsx` is a preview gate: a button sets
+- The admin console at `/admin` is a preview gate: a button sets
   `adminAuthenticated` to `true`.
 - `/api/results` and the `/admin/*` routes have no auth check, so anyone can
   read or post reviewer feedback on the deployed Worker.
@@ -214,7 +215,7 @@ Decided). Don't build on any of them.
   failure: a new failure is a bug.
 - **CI is green but the main app has type errors.** No workflow runs `tsc` or
   `eslint` on the main app. `tsc --noEmit` reports 18 existing errors in
-  `app/page.tsx`. CI type-checks only the inventory subset, inside
+  `app/learner-app.tsx`. CI type-checks only the inventory subset, inside
   `scripts/build-inventory-cloudflare.mjs`. Compare error counts before and
   after your change: new errors are yours.
 - **The inventory deploy fails with "Inventory asset loader changed" or
@@ -227,6 +228,7 @@ Decided). Don't build on any of them.
 - **`go get` or `go mod download` fails with `x509: OSStatus -26276` inside the
   sandbox.** The sandbox blocks the macOS certificate check. Run that one
   command outside the sandbox.
-- **A page opened in the hidden browser pane shows the home view for
-  `/?view=watch`.** Hidden panes delay `requestAnimationFrame`, which the app
-  uses to restore state after load. Verify in a real or headless browser.
+- **A page opened in the hidden browser pane stays half-loaded: AI Watch is
+  blank and `/?view=` links don't redirect.** Hidden panes delay
+  `requestAnimationFrame`, which the app uses to restore state after load.
+  Show the pane, or verify in a real or headless browser.
