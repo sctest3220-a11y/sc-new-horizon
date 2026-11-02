@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { questionTranslationsTh } from './questionTranslations.th';
 import { productionQuestionRelease } from './productionQuestionRelease';
 import WatchLabs from './watch-labs';
+import { parseStoredList, parseStoredRecord } from './page-storage-model';
 import AwarenessFlash from './watch-awareness';
 import type { WatchStory as NewsFeedItem } from './watch-model';
 
@@ -500,23 +501,11 @@ function createLocalProfileId() {
 }
 
 function parseUserProfileSurvey(value: string | null): UserProfileSurvey | null {
-  if (!value) return null;
-  try {
-    return JSON.parse(value) as UserProfileSurvey;
-  } catch {
-    return null;
-  }
+  return parseStoredRecord<UserProfileSurvey>(value);
 }
 
 function parseProfileSignalLog(raw: string | null): ProfileSignalLogEntry[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((entry): entry is ProfileSignalLogEntry => Boolean(entry?.id && entry?.profileId && entry?.questionSignals));
-  } catch {
-    return [];
-  }
+  return parseStoredList<ProfileSignalLogEntry>(raw, ['id', 'profileId', 'questionSignals']);
 }
 
 function readLocalStorage(key: string) {
@@ -10179,13 +10168,7 @@ const rubricVersion = 'rubric-2026-09-15-mvp';
 const artifactVersion = 'artifact-set-2026-09-15-mvp';
 
 function parseAuthProfile(value: string | null): AuthProfile | null {
-  if (!value) return null;
-  try {
-    const parsed = JSON.parse(value) as AuthProfile;
-    return parsed?.id ? parsed : null;
-  } catch {
-    return null;
-  }
+  return parseStoredRecord<AuthProfile>(value, ['id']);
 }
 
 function getAuthRedirectUrl() {
@@ -10402,47 +10385,19 @@ function cleanAverageLabel(label: string) {
 }
 
 function parseScoreLog(raw: string | null): ScoreLogEntry[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((entry): entry is ScoreLogEntry => Boolean(entry?.id && entry?.groupKey && entry?.scores));
-  } catch {
-    return [];
-  }
+  return parseStoredList<ScoreLogEntry>(raw, ['id', 'groupKey', 'scores']);
 }
 
 function parseSupervisedAgentRuns(raw: string | null): SupervisedAgentRun[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((entry): entry is SupervisedAgentRun => Boolean(entry?.id && entry?.drafts && entry?.activityLog));
-  } catch {
-    return [];
-  }
+  return parseStoredList<SupervisedAgentRun>(raw, ['id', 'drafts', 'activityLog']);
 }
 
 function parseBehaviorLog(raw: string | null): AssessmentBehaviorEvent[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((entry): entry is AssessmentBehaviorEvent => Boolean(entry?.id && entry?.profileId && entry?.sessionId && entry?.type));
-  } catch {
-    return [];
-  }
+  return parseStoredList<AssessmentBehaviorEvent>(raw, ['id', 'profileId', 'sessionId', 'type']);
 }
 
 function parseAssessmentFeedback(raw: string | null): AssessmentFeedbackSurvey[] {
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((entry): entry is AssessmentFeedbackSurvey => Boolean(entry?.id && entry?.sessionId && entry?.profileId));
-  } catch {
-    return [];
-  }
+  return parseStoredList<AssessmentFeedbackSurvey>(raw, ['id', 'sessionId', 'profileId']);
 }
 
 function getPersonaLeaderboard(entries: ScoreLogEntry[], groupKey: string) {
