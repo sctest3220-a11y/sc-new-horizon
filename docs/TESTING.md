@@ -82,8 +82,8 @@ Don't point `TEST_DATABASE_URL` at a database you care about. The tests run
 migrations against it.
 
 CI (`.github/workflows/test.yml`) runs `pnpm test` and then
-`pnpm test:coverage` on every pull request and every push to `main`, with a
-Postgres service.
+`pnpm test:coverage` on every pull request and every push to `The-Gang` or
+`main`, with a Postgres service.
 
 ## Where tests go
 

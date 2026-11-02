@@ -78,6 +78,27 @@ re-litigated every session.
 | Payments, billing, subscriptions, plan enforcement | No commercial operation is planned for the demo. Entitlement toggles stay as they are. |
 | New product features from the roadmap docs | This phase polishes what exists. A spec in `docs/` is not a work order. |
 
+## Branches and pull requests
+
+**`The-Gang` is the primary working branch. Every pull request targets
+`The-Gang` by default, not `main`.** Branch from `The-Gang`, and open the PR
+with `--base The-Gang`. Target another branch only when a developer asks for
+it. `main` is what the inventory Worker deploys from, so a PR opened against
+it by default would take work towards deployment before it has been reviewed
+on `The-Gang`.
+
+What CI does for a PR into `The-Gang`:
+
+- `.github/workflows/test.yml` runs all tests and the coverage rules on every
+  pull request, whatever its target.
+- `.github/workflows/server.yml` runs on every pull request that touches
+  `server/**`.
+- `.github/workflows/question-inventory.yml` runs only on pull requests into
+  `main`. Inventory changes aren't smoke-tested on the way into `The-Gang`,
+  and the inventory is frozen anyway.
+- Pushes to `The-Gang` and to `main` also run `test.yml`. A merged pull request,
+  or a direct push, is tested again on the branch itself.
+
 ## Open questions
 
 1. **Which features are in the Event Demo?** This decides which data moves to

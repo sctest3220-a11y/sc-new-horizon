@@ -141,8 +141,9 @@ implications outside this repository.
   `docs/SCOPE.md`. Don't add a deploy workflow or hosting config without that
   decision.
 - **`test.yml` runs every test suite and the coverage rules** on every pull
-  request and on pushes to `main`. It runs them against a Postgres service and
-  needs the full git history (`fetch-depth: 0`).
+  request and on pushes to `The-Gang` (the primary branch; PRs target it by
+  default, see `docs/SCOPE.md`) and `main`. It runs them against a Postgres
+  service and needs the full git history (`fetch-depth: 0`).
 - **`server.yml` builds; it does not deploy.** It runs `gofmt`, `go vet`,
   `go test -race` and `docker build` on changes to `server/**`,
   `docker-compose.yml` or the workflow itself.

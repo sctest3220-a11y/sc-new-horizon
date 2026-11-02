@@ -1,11 +1,11 @@
 name: Tests and coverage
 # Runs every test suite and the coverage rules in docs/TESTING.md on every pull
-# request and on pushes to main. No path filter: a change anywhere can break a
-# suite somewhere else.
+# request and on pushes to The-Gang (the primary working branch) and main. No
+# path filter: a change anywhere can break a suite somewhere else.
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [The-Gang, main]
   workflow_dispatch:
 permissions:
   contents: read
