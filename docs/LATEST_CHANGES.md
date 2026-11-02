@@ -629,3 +629,99 @@ The product should keep this visible and consent-aware: implicit behavior signal
 - `pnpm lint` passed.
 - `pnpm build` passed.
 - GitHub push was verified after credential setup and reported `Everything up-to-date`.
+
+## Earlier notes from the README (moved 2026-10-28)
+
+These "latest update" notes lived in the root `README.md` until the README was
+restructured into setup and commands. They are kept verbatim, in their original
+order, which is not strictly chronological.
+
+Manual AI Watch discovery is now available with `npm run crawl:news` (Python 3). The scout reads [awareness/trend/technology discovery instructions](config/ai-watch-discovery.json) and writes review candidates plus fetch failures to `.agent-drafts/ai-watch/latest.json`. It does not automatically publish or run on a schedule; see [the editorial workflow](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch awareness curation (September 29): the local app now connects source-backed Pip/iLands, agent bank-run simulation, and Jev stories to **Did you know** teasers. Original-source images and click-to-load videos appear inside each curated story, with visible credits and links. This remains manually curated and is not deployed to the inventory-only Cloudflare site. See [the curation requirements](docs/AI_WATCH_AWARENESS_CURATION.md).
+
+AI Watch and connected Labs: [the first local release](docs/AI_WATCH_LABS_LOCAL_RELEASE.md) adds explicit-interest ranking, saved stories, topic controls, optional video loading, and two bilingual Labs with recoverable drafts and takeaways. Use AI Watch / AI Labs in the navigation or `/?view=watch` / `/?view=labs`. Data remains browser-local. The [roadmap](docs/AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) defines later shared editorial workflows, discovery, and multimodal expansion; these services are not connected yet.
+
+Detailed telemetry and agent documentation:
+
+- [`docs/LEGAL_PRIVACY_PDPA_TERMS.md`](docs/LEGAL_PRIVACY_PDPA_TERMS.md)
+- [`docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md`](docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md)
+- [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
+- [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
+- [`docs/TRANSLATION_PROVIDER_STRATEGY.md`](docs/TRANSLATION_PROVIDER_STRATEGY.md)
+- [`docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md`](docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md)
+- [`docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md`](docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md)
+- [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
+- [`docs/AGENT_PLATFORM_TOOLING_STRATEGY.md`](docs/AGENT_PLATFORM_TOOLING_STRATEGY.md)
+- [`docs/JEV_PREPRODUCTION_EVALUATION.md`](docs/JEV_PREPRODUCTION_EVALUATION.md)
+- [`docs/LAYA_PREPRODUCTION_EVALUATION.md`](docs/LAYA_PREPRODUCTION_EVALUATION.md)
+- [`docs/TELEMETRY_TRACKING_PURPOSE.md`](docs/TELEMETRY_TRACKING_PURPOSE.md)
+- [`docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md`](docs/TELEMETRY_AND_AGENT_ORCHESTRATION.md)
+- [`docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md`](docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md)
+- [`docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md`](docs/AI_BOOTCAMP_WORKSHOP_CATALOG.md)
+- [`docs/MVP_REQUIREMENTS_SPECIFICATION.md`](docs/MVP_REQUIREMENTS_SPECIFICATION.md)
+
+Use the feature catalog as the current status source: `MVP - Built` means visible in the local prototype, `MVP - Go-live` means required before the first governed multi-user launch, `Production` means commercial hardening after the core MVP is proven, and `Future` means deferred roadmap work. A documented feature is not automatically implemented.
+
+Agent-platform decision: the MVP does not require Temporal, Kubernetes/KEDA, ClickHouse, Hermes, or a large multi-agent runtime. It must preserve typed job contracts, durable IDs, audit/cost metadata, human approval, and server-side provider boundaries. The target production stack introduces Temporal, bounded LangGraph workers, LiteLLM, Langfuse, and later ClickHouse/KEDA only when the adoption triggers in `docs/AGENT_PLATFORM_TOOLING_STRATEGY.md` are met.
+
+Latest question-inventory update: the 3,328-item review inventory and the existing 634 live questions are now available from the Admin Question Inventory page. The review workflow supports English/Thai viewing, question-level language overrides, role/function/industry/profile filters, reviewer ratings, saved feedback history, review-count/status indicators, artifact-need briefs, and translation QA output. Thai fields are machine-assisted reviewer drafts and should receive human language review before production use. The inventory is on `main`; references to the older `Lufy-branch` milestone are obsolete.
+
+Latest report explainability update: question-level score calculation now shows the prompt, user answer, expected evidence, feedback reason, raw score, difficulty-adjusted readiness score, and measured competencies. Domains without sampled evidence display as `Not assessed` and are left unplotted on the user's radar shape, while still appearing as coverage gaps for continuation recommendations.
+
+Latest framework/artifact quality update: the D1-D6 framework crosswalk now includes Gartner AI maturity, McKinsey AI value measurement, and BCG Responsible AI maturity as supporting maturity/value references alongside UNESCO, OECD/EC, NIST AI RMF, EU AI Act, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. Artifact and lab quality standards now require relevant, necessary, realistic, legible evidence and complete pilot-lab instructions, scoring criteria, expected outputs, and debriefs before release.
+
+Latest assessment-quality analytics update: Admin now includes 10 quality-analysis panels covering item discrimination, distractors, artifact dependency, clarity risk, difficulty calibration, competency coverage, reliability, written-rubric behavior, route/persona fit, and report recommendation engagement. These use local MVP telemetry and clearly mark insufficient data until pilot volume is large enough.
+
+Latest calibration update: Admin quality review now includes an item calibration dashboard with attempt count, average score/time, confusion rate, artifact action rate, feedback polarity, difficulty mismatch, artifact presence, and recommended human-review action. Review signals can de-prioritize weak items in routing, but item rewrites, artifact replacement, recalibration, and retirement remain human-approved.
+
+Latest routing update: adaptive question selection now uses profile domain targets before general weak-domain balancing. General free users are routed mostly toward D1/D2/D3/D6, while premium routes blend function, industry, and professional baseline targets. The analysis tab shows target counts by domain, and answer review now includes a practice cue after each question.
+
+Research documentation update: `docs/GLOBAL_AI_FRAMEWORK_CROSSWALK.md` now records the source-backed rationale for profile-weighted question routing and radar targets. It maps the recommendation to UNESCO, OECD/European Commission, EU AI Act Article 4, NIST AI RMF, DigComp 2.2, ISO/IEC 42001, and Singapore AI Verify/MGF GenAI.
+
+Latest radar-target update: profile targets now show distinct radar shapes. General users emphasize foundations, practical tooling, and critical judgment; work/team/function/industry/premium contexts shift targets toward the domains most relevant to the selected profile. Premium target blending now weights function first, industry second, and professional baseline third.
+
+Latest report UX update: the Summary tab now prioritizes score meaning, continuation, personalized summary, strengths, priority gaps, domain/competency results, learning path, courses, bootcamps, and feedback. Secondary calibration and motivation content is moved into Question review/analysis so the main report is easier to scan.
+
+Premium report roadmap: Premium users should receive a bounded, evidence-grounded `Ask about your results` copilot for scoring explanations, confidence and coverage questions, competency analysis, learning paths, recommendation rationale, and follow-up planning. Basic score transparency remains available to all users. The copilot must use versioned structured assessment evidence, respect report entitlements, cite relevant results, avoid inventing evidence or describing unassessed competencies as weak, and expose configurable usage, retention, model-routing, telemetry, and cost controls in Admin.
+
+B2C/B2B administration roadmap: New Horizon uses one account model with personal workspaces and optional memberships in one or more organizations. Personal assessment history remains private unless explicitly shared. Organization capabilities include invitations, teams, role-based permissions, seats and entitlements, assessment campaigns, privacy-safe cohort analytics, tenant-level LLM budgets, user lifecycle controls, and append-only audit history. Platform roles and organization roles remain separate, with row-level security enforcing tenant boundaries.
+
+Living feature catalog: `docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md` itemizes B2C, B2B member/manager, B2B administrator, specialist platform-admin, and Super Admin capabilities. It distinguishes features present in the local prototype from MVP go-live requirements, production hardening, and future roadmap work. Update it whenever a feature is added, built, materially changed, deferred, or removed.
+
+Legal/privacy roadmap: `docs/LEGAL_PRIVACY_PDPA_TERMS.md` defines the required Thailand PDPA, Privacy Notice, Terms of Use, Acceptable Use, Cookie Notice, Assessment/AI Disclaimer, B2B DPA, consent, rights, retention, child-user, breach, international-transfer, subprocessor, and legal-release controls. It is a drafting and engineering specification, not legal advice; final Thai and English documents require qualified Thai legal review before public launch.
+
+Latest scoring/learning-path update: overall scoring now starts with the D1-D6 domain average, then applies an answer-quality evidence factor so mostly incorrect runs do not receive an inflated readiness score from a few partial-credit answers. The report shows the domain average, answer-quality average, applied factor, and final score. Bootcamp/workshop recommendations now appear inside the recommended learning path card, with the detailed bootcamp section still underneath recommended courses.
+
+Latest UX priority update: the landing page is simplified around Free Assessment, Premium Diagnostic, peer comparison, and concise guide cards. Heavier explanatory content now sits behind an expandable `Explore more` panel. Leaderboards use anonymous labels by default. Premium now includes role, function, and industry context instead of exposing a separate executive assessment tier. Question-level feedback resets at the start of each assessment and disables browser autocomplete on the comment input to prevent stale notes from prior users. Artifact cards now show an `Inspect for` cue so users know why the document/image matters before spending time on it.
+
+Latest bootcamp update: the report learning path now recommends New Horizon bootcamps and workshops when guided practice is a better next step than a self-paced course alone. Recommendations use weak domains, overall score, assessment mode, function track, executive role, weak competencies, and profile tags. Users can expand each workshop to see who it is for, why to take it, expected learning outputs, labs, best-fit roles, and framework alignment.
+
+Latest framework/scoring update: the home page now includes discoverable menu tabs for `Scoring model`, `Global frameworks`, and `Adaptive testing`. The scoring tab explains raw answer evidence, difficulty-adjusted readiness evidence, competency/domain roll-ups, overall score, confidence, and continuation logic. The framework tab maps New Horizon D1-D6 to UNESCO, OECD/EC, NIST AI RMF, EU AI Act Article 4, DigComp, ISO/IEC 42001, AI Verify, and AI literacy research. When the model changes, keep the home tabs, report scoring explanation, admin review prompts, README, latest-change log, and crosswalk document updated together.
+
+Latest artifact relevance cleanup: more low-value concept cards, simple workflow diagrams, generic product maps, and explanatory visual cards are hidden when the question can be answered without inspecting them. The same helpful-artifact gate now drives artifact-backed item counts, adaptive routing, telemetry analysis, and admin artifact replacement briefs. Future questions should show artifacts only when they contain evidence needed by the answer key, clarify context, or simulate realistic document inspection.
+
+Latest artifact update: the assessment now includes a full-size artifact reader with 1x, 1.5x, and 2x zoom, plus an open-file action for users who need to inspect small text or dense workflow details. Flood and disaster-misinformation questions use multiple realistic artifact types instead of repeating one generic image. The bank includes a station social post, a forwarded chat screenshot, and a claim-review dashboard with source, weather, traffic-camera, and alert evidence. Mismatched placeholder artifacts were also corrected so CEO/celebrity endorsement questions no longer reuse flood imagery.
+
+Latest realistic artifact expansion: scheduling-email, support-ticket, and refund-agent workflow questions now use generated realistic PNG screenshots with larger readable text and work-like UI evidence. These replace several older schematic SVG references where the question depends on reading email, payment, SLA, approval, audit, or workflow details. The artifact reader logs full-size opens, zoom changes, and external file opens so dense artifacts can be improved from actual user behavior.
+
+Latest artifact relevance update: the assessment now hides several low-value concept/rollout artifacts when the scenario and answer options already contain enough evidence. Adaptive routing also counts only helpful displayed visuals, so the system does not reward decorative images as artifact-backed evidence. Future artifacts should either contain necessary evidence, make the scenario clearer, or simulate realistic document inspection.
+
+Latest evidence-completion update: after the standard 12-question or 20-question milestone, users can continue in targeted batches until planned and profile-priority competencies have high-confidence evidence or the safety cap is reached. This makes the full assessment more adaptive than a fixed-length quiz while still keeping a clear stopping rule.
+
+Latest telemetry/agent-review update: reports now show what telemetry is collected, why it matters, and what should improve next. Admin Agent Ops now emphasizes survey and trend analysis before edits; agents produce evidence-backed suggestions, and a human reviewer remains responsible for approving changes to scored questions, artifacts, profile fields, surveys, or learning recommendations.
+
+Latest synced update: `175e1b3 Improve assessment continuation recommendation`.
+
+The assessment now makes the optional continuation route much more visible. At the end of the last mandatory question, users see a large recommendation block before they move to the report. The same recommendation also appears near the top of the test report, immediately after score interpretation, so users understand that the first result is a snapshot and can choose whether to collect stronger evidence.
+
+The recommendation explains why the user should continue. It considers pilot confidence, low-confidence sampled competencies, unsampled profile-priority competencies, planned coverage gaps, and profile signals. For content creators or marketing/media users, the follow-up route emphasizes deeper evidence around image/video AI, media provenance, prompt refinement, claim verification, IP/ethics, and campaign measurement. Technical, finance, and people/HR profiles receive their own targeted competency routes.
+
+Users now get a primary action to continue with the recommended targeted route, plus secondary options to view the report snapshot or choose a selected-domain deep dive. This is intended to improve score differentiation between casual/beginner users and advanced users whose abilities need harder, more profile-relevant evidence.
+
+Latest landing-page update: the home page now includes a daily/weekly peer challenge board with top-10 scores, visible peer groups, strongest domains, score-to-chase, hot-skill trends, and a call to take the test. The MVP uses local saved runs when available and fills with demo pilot rows until enough local data exists. Production should replace this with consented, privacy-safe server-side leaderboard views scoped by persona, organization, geography, or cohort.
+
+Latest Agent Ops update: admins can now run supervised local agent jobs from the Admin page. A run reads telemetry, assessment feedback, profile snapshots, item counts, and artifact counts, then creates reviewable draft proposals for question rewrites, artifact replacements, profile ontology updates, survey tuning, learning recommendations, and AI Watch briefs. Drafts can be approved or rejected locally; nothing is published into the scored assessment automatically.
+
+Latest personalization update: the landing page, user dashboard, and report include a profile-aware "Did you know?" prompt. The prompt is selected from user profile tags, weak domains, function/role context, and assessment signals. Clicks are logged as interest signals so later versions can learn which topics motivate users to explore deeper routes, labs, or AI Watch.
+RSI and proactive discovery (September 29): see [the platform improvement-loop requirement](docs/AGENT_RECURSIVE_SELF_IMPROVEMENT.md). The collector now reports lane gaps and retains unfamiliar-topic candidates. `.github/workflows/ai-watch-discovery.yml` defines daily artifact-only discovery, pending activation on the default branch; this does not publish stories or make the simulated Admin agents autonomous.
