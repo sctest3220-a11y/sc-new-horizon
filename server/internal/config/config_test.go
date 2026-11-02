@@ -34,10 +34,28 @@ func TestLoadOverrides(t *testing.T) {
 	}
 }
 
+func TestLoadReadsProcessEnvironment(t *testing.T) {
+	t.Setenv("DATABASE_URL", "postgres://from-env")
+	t.Setenv("PORT", "9191")
+	t.Setenv("CORS_ORIGINS", "")
+	t.Setenv("MIGRATE_ON_START", "")
+
+	cfg, err := Load()
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if cfg.DatabaseURL != "postgres://from-env" || cfg.Port != 9191 {
+		t.Errorf("environment not read: %+v", cfg)
+	}
+}
+
 func TestLoadRejectsInvalid(t *testing.T) {
 	cases := map[string]map[string]string{
 		"missing database": {},
 		"bad port":         {"DATABASE_URL": "postgres://db", "PORT": "99999"},
+		"zero port":        {"DATABASE_URL": "postgres://db", "PORT": "0"},
+		"non-numeric port": {"DATABASE_URL": "postgres://db", "PORT": "http"},
+		"blank database":   {"DATABASE_URL": "   "},
 		"bad migrate flag": {"DATABASE_URL": "postgres://db", "MIGRATE_ON_START": "maybe"},
 		"wildcard origin":  {"DATABASE_URL": "postgres://db", "CORS_ORIGINS": "*"},
 	}

@@ -1,0 +1,59 @@
+name: Tests and coverage
+# Runs every test suite and the coverage rules in docs/TESTING.md on every pull
+# request and on pushes to main. No path filter: a change anywhere can break a
+# suite somewhere else.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: horizon_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      # Gates the Go database integration tests; without it they skip.
+      TEST_DATABASE_URL: postgres://postgres:test@localhost:5432/horizon_test?sslmode=disable
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # check-coverage.mjs diffs against a fixed base commit, so the full
+          # history must be present.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: server/go.mod
+          cache-dependency-path: server/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pnpm install --frozen-lockfile
+      - name: Every test suite
+        run: pnpm test
+      - name: Coverage rules
+        run: pnpm test:coverage

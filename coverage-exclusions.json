@@ -1,0 +1,39 @@
+{
+  "_about": "Code that cannot run under test, excluded from coverage. Each entry names an anchor line (trimmed text; with \"after\", the first anchor line after that unique line) and excludes the brace region the anchor opens. A missing or ambiguous anchor fails the check. Every entry needs a reason a reviewer can verify. See docs/TESTING.md.",
+  "exclusions": [
+    {
+      "file": "server/cmd/api/main.go",
+      "anchor": "func main() {",
+      "reason": "Process entry point: builds the logger, calls run, and exits with os.Exit(1) on error. Exiting would kill the test binary; run itself is tested in cmd/api/main_test.go."
+    },
+    {
+      "file": "server/cmd/api/main.go",
+      "anchor": "if err := db.Migrate(ctx, pool, logger); err != nil {",
+      "reason": "Forwarding a migration failure out of run needs a database that rejects migrations at startup. Migrate's own failure is tested (TestMigrateFailsOnClosedPool); this branch only returns it."
+    },
+    {
+      "file": "server/internal/db/migrate.go",
+      "after": "migrations, err := fs.Sub(embeddedMigrations, \"migrations\")",
+      "anchor": "if err != nil {",
+      "reason": "fs.Sub fails only for an invalid path; \"migrations\" is a constant, valid path into the embedded FS."
+    },
+    {
+      "file": "server/internal/db/migrate.go",
+      "after": "locker, err := lock.NewPostgresSessionLocker()",
+      "anchor": "if err != nil {",
+      "reason": "NewPostgresSessionLocker fails only for invalid options, and none are passed."
+    },
+    {
+      "file": "server/internal/db/migrate.go",
+      "after": "goose.WithSlog(logger),",
+      "anchor": "if err != nil {",
+      "reason": "NewProvider fails only for a nil database, an empty or malformed migrations FS, or conflicting options; all three are fixed at compile time here, and a malformed migration file would fail TestConnectAndMigrate."
+    },
+    {
+      "file": "server/internal/db/migrate.go",
+      "after": "version, err := provider.GetDBVersion(ctx)",
+      "anchor": "if err != nil {",
+      "reason": "Reading the version fails only if the database drops between a successful Up and the next query; that race cannot be produced deterministically."
+    }
+  ]
+}

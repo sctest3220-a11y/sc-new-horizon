@@ -151,7 +151,7 @@ If the hosted inventory preview is required:
 
 ```sh
 node scripts/build-inventory-cloudflare.mjs
-node scripts/test-inventory-cloudflare.mjs
+node scripts/smoke-inventory-cloudflare.mjs
 ```
 
 The hosted preview release manifest must show the source commit, inventory version, content hash, and a non-clean/dirty marker when the build was not made from a clean commit. Never describe a dirty preview as a release candidate.

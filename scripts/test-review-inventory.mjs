@@ -61,8 +61,9 @@ test('overlays require the profile boundary as well as the competency decision',
 });
 
 test('review drafts do not enter the existing live bank', async () => {
-  // Current application includes the 26 Horizon items absent from the historical 634-item export.
-  assert.equal(model.allAssessmentItems.length, 660);
+  // 634 historical live items + 26 Horizon items absent from that export
+  // + 229 versioned records appended by release 2026-10-07.1.
+  assert.equal(model.allAssessmentItems.length, 889);
   const liveIds = new Set(model.allAssessmentItems.map(q => q.id));
   assert.ok(bank.every(q => !liveIds.has(q.id) && q.review.status === 'draft'));
   const source = await fs.readFile(new URL('../app/page.tsx', import.meta.url), 'utf8');

@@ -1,23 +1,13 @@
-import test, { after } from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
-import path from 'node:path';
 import vm from 'node:vm';
-import { createRequire } from 'node:module';
 import ts from 'typescript';
-
-// Compile the pure model independently of the app's existing TypeScript debt.
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'horizon-watch-tests-'));
-fs.writeFileSync(path.join(dir, 'package.json'), '{"type":"commonjs"}');
-for (const name of ['watch-model', 'connected-labs']) {
-  const source = fs.readFileSync(new URL(`../app/${name}.ts`, import.meta.url), 'utf8');
-  fs.writeFileSync(path.join(dir, `${name}.js`), ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
-}
-const require = createRequire(import.meta.url);
-const { newWatchState, parseWatchState, selectWatchStories, youtubePlayerUrl, watchTopics, selectAwarenessStories } = require(path.join(dir, 'watch-model.js'));
-const { connectedLabs, currentLabDraft, emptyLabDraft, evaluateConnectedLab } = require(path.join(dir, 'connected-labs.js'));
-after(() => fs.rmSync(dir, { recursive: true, force: true }));
+// Node strips the types at import time, so coverage is measured on the real
+// source files. The models must stay free of non-erasable TypeScript (enums,
+// namespaces, parameter properties) and of runtime imports.
+import { newWatchState, parseWatchState, selectWatchStories, youtubePlayerUrl, watchTopics, selectAwarenessStories } from '../app/watch-model.ts';
+import { connectedLabs, currentLabDraft, emptyLabDraft, evaluateConnectedLab } from '../app/connected-labs.ts';
 
 const pageSource = fs.readFileSync(new URL('../app/page.tsx', import.meta.url), 'utf8');
 const sourceFile = ts.createSourceFile('page.tsx', pageSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -137,4 +127,60 @@ test('awareness teasers share curated records and respect topic preferences', ()
   assert.ok(!picks.some(story => story.id === 'agents-bank-run-simulation'));
   assert.equal(stories.find(story => story.id === 'agents-bank-run-simulation').awareness.kind, 'simulation');
   assert.equal(stories.find(story => story.id === 'pip-ilands-paid-work').awareness.kind, 'reported-case');
+});
+
+test('storage keeps every valid preference value and both Lab drafts', () => {
+  const raw = { version:1, interests:['agents'], minutes:10, goal:'practice', feed:'explore', media:'short', activeLab:'evidence-check', originStoryId:'some-story',
+    drafts:{ 'evidence-check':{version:'evidence-check@1',answers:{source:'primary'},note:'kept',checked:true,takeawaySaved:false}, 'agent-boundaries':{version:'agent-boundaries@1'} } };
+  const result = parseWatchState(JSON.stringify(raw));
+  assert.equal(result.minutes, 10);
+  assert.equal(result.goal, 'practice');
+  assert.equal(result.feed, 'explore');
+  assert.equal(result.media, 'short');
+  assert.equal(result.activeLab, 'evidence-check');
+  assert.equal(result.originStoryId, 'some-story');
+  assert.deepEqual(result.drafts['evidence-check'], { version:'evidence-check@1', answers:{source:'primary'}, note:'kept', checked:true, takeawaySaved:false });
+  assert.deepEqual(result.drafts['agent-boundaries'], { version:'agent-boundaries@1', answers:{}, note:'', checked:false, takeawaySaved:false });
+  for (const [field, value] of [['minutes',2],['feed','saved'],['media','article'],['media','video']]) assert.equal(parseWatchState(JSON.stringify({ version:1, [field]:value }))[field], value);
+});
+
+test('storage falls back field by field when values are the wrong type or too long', () => {
+  const result = parseWatchState(JSON.stringify({ version:1, interests:'agents', savedIds:['x'.repeat(121), ''], goal:'win', feed:'everything', media:'podcast', activeLab:'unknown-lab', originStoryId:'y'.repeat(121),
+    drafts:{ 'unknown-lab':{version:'v'}, 'agent-boundaries':{version:'v'.repeat(81)}, 'evidence-check':{version:7}, list:[] } }));
+  assert.deepEqual(result.interests, []);
+  assert.deepEqual(result.savedIds, []);
+  assert.equal(result.goal, 'learn');
+  assert.equal(result.feed, 'for-you');
+  assert.equal(result.media, 'all');
+  assert.equal(result.activeLab, null);
+  assert.equal(result.originStoryId, null);
+  assert.deepEqual(result.drafts, {});
+  const answers = Object.fromEntries(Array.from({ length: 25 }, (_, i) => [`criterion-${i}`, 'choice']));
+  const capped = parseWatchState(JSON.stringify({ version:1, drafts:{ 'agent-boundaries':{ version:'agent-boundaries@1', answers:{ ...answers, Upper:'choice', ok:5 } } } }));
+  assert.equal(Object.keys(capped.drafts['agent-boundaries'].answers).length, 20);
+  assert.ok(!('Upper' in capped.drafts['agent-boundaries'].answers));
+});
+
+test('the explore feed lists every eligible story in editorial order', () => {
+  const selected = selectWatchStories(stories, { ...newWatchState(), feed:'explore', mutedTopics:['robotics'] }, times);
+  assert.deepEqual(selected.map(({ story }) => story.id), stories.filter(story => story.topic !== 'robotics').map(story => story.id));
+  assert.ok(selected.every(entry => entry.reason === 'explore'));
+});
+
+test('ranking handles tiny editions, and still lifts one exploratory pick when the first pair already varies media', () => {
+  const [a, b] = stories;
+  assert.deepEqual(selectWatchStories([a, b], newWatchState(), times).map(entry => entry.story.id), [a.id, b.id]);
+  assert.deepEqual(selectWatchStories([], newWatchState(), times), []);
+  const article = { ...a, id:'x-article', topic:'agents', mediaType:'article' };
+  const video = { ...a, id:'x-video', topic:'agents', mediaType:'video' };
+  const third = { ...a, id:'x-third', topic:'agents', mediaType:'article' };
+  const late = { ...a, id:'x-late', topic:'trust', mediaType:'article' };
+  const picked = selectWatchStories([article, video, third, late], { ...newWatchState(), interests:['agents'] }, times);
+  assert.deepEqual(picked.map(entry => entry.story.id), ['x-article', 'x-video', 'x-late', 'x-third']);
+  assert.equal(picked[2].reason, 'explore');
+});
+
+test('video embeds accept Shorts and reject other YouTube paths and malformed URLs', () => {
+  assert.equal(youtubePlayerUrl('https://www.youtube.com/shorts/yo7nPQ42Kcg'), 'https://www.youtube-nocookie.com/embed/yo7nPQ42Kcg?autoplay=0');
+  for (const url of ['https://www.youtube.com/embed/yo7nPQ42Kcg', 'https://youtu.be/', 'https://www.youtube.com/watch', 'not a url']) assert.equal(youtubePlayerUrl(url), null);
 });

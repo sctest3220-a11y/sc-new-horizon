@@ -68,7 +68,7 @@ jobs:
             head -c 4000 /tmp/inventory-route-body.html || true
             echo
           fi
-          TEST_URL=http://localhost:4174/admin/question-inventory node scripts/test-inventory-cloudflare.mjs || {
+          TEST_URL=http://localhost:4174/admin/question-inventory node scripts/smoke-inventory-cloudflare.mjs || {
             cat /tmp/inventory-worker.log
             exit 1
           }
