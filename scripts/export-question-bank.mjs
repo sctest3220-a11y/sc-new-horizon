@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const ts = require('typescript');
 
-const appPath = path.resolve('app/page.tsx');
+const appPath = path.resolve('app/learner-app.tsx');
 const outDir = path.resolve('exports');
 const outPath = path.join(outDir, 'new-horizon-question-bank-review.xlsx');
 const artifactToolPath = '/Users/SC/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
@@ -15,7 +15,7 @@ const source = await fs.readFile(appPath, 'utf8');
 const withoutImports = source
   .replace(/^'use client';\s*/u, '')
   .replace(/^import .*?;\s*/gmu, '');
-const constantsOnly = withoutImports.slice(0, withoutImports.indexOf('export default function Home()'));
+const constantsOnly = withoutImports.slice(0, withoutImports.indexOf('export function useAppController()'));
 
 const appended = `
 globalThis.__questionBankExport = {

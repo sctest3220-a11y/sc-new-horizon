@@ -216,7 +216,7 @@ export default function PilotOperationsPage() {
         <div>
           <Link className="pilot-ops-brand" href="/"><span>NH</span> New Horizon</Link>
           <nav aria-label="Admin navigation">
-            <Link href="/?view=admin">Dashboard</Link>
+            <Link href="/admin">Dashboard</Link>
             <strong>Pilot operations</strong>
             <Link href="/admin/question-inventory">Question inventory</Link>
           </nav>

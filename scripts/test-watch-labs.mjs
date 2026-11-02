@@ -9,8 +9,8 @@ import ts from 'typescript';
 import { newWatchState, parseWatchState, selectWatchStories, youtubePlayerUrl, watchTopics, selectAwarenessStories } from '../app/watch-model.ts';
 import { connectedLabs, currentLabDraft, emptyLabDraft, evaluateConnectedLab } from '../app/connected-labs.ts';
 
-const pageSource = fs.readFileSync(new URL('../app/page.tsx', import.meta.url), 'utf8');
-const sourceFile = ts.createSourceFile('page.tsx', pageSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+const pageSource = fs.readFileSync(new URL('../app/learner-app.tsx', import.meta.url), 'utf8');
+const sourceFile = ts.createSourceFile('learner-app.tsx', pageSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 const feed = sourceFile.statements.filter(ts.isVariableStatement).flatMap(statement => [...statement.declarationList.declarations]).find(declaration => declaration.name.getText(sourceFile) === 'trendFeed');
 assert.ok(feed?.initializer, 'The actual editorial snapshot must remain available to the test.');
 const stories = JSON.parse(JSON.stringify(vm.runInNewContext(`(${feed.initializer.getText(sourceFile)})`)));

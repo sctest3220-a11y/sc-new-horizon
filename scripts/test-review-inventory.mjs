@@ -66,7 +66,7 @@ test('review drafts do not enter the existing live bank', async () => {
   assert.equal(model.allAssessmentItems.length, 889);
   const liveIds = new Set(model.allAssessmentItems.map(q => q.id));
   assert.ok(bank.every(q => !liveIds.has(q.id) && q.review.status === 'draft'));
-  const source = await fs.readFile(new URL('../app/page.tsx', import.meta.url), 'utf8');
+  const source = await fs.readFile(new URL('../app/learner-app.tsx', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /from ['"].*(?:inventory|review-inventory)/);
 });
 

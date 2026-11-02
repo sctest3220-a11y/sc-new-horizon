@@ -1,4 +1,4 @@
-// Dumps the question bank + metadata from app/page.tsx to JSON (no UI dependencies).
+// Dumps the question bank + metadata from app/learner-app.tsx to JSON (no UI dependencies).
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -6,9 +6,9 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const ts = require('typescript');
-const source = await fs.readFile(path.resolve('app/page.tsx'), 'utf8');
+const source = await fs.readFile(path.resolve('app/learner-app.tsx'), 'utf8');
 const withoutImports = source.replace(/^'use client';\s*/u, '').replace(/^import .*?;\s*/gmu, '');
-const constantsOnly = withoutImports.slice(0, withoutImports.indexOf('export default function Home()'));
+const constantsOnly = withoutImports.slice(0, withoutImports.indexOf('export function useAppController()'));
 // The Thai translation table lives in a sibling module; inline it so localizeQuestion() and the dump can see it.
 const translationsSource = (await fs.readFile(path.resolve('app/questionTranslations.th.ts'), 'utf8'))
   .replace(/^export type .*?;\n\n/gmsu, '')

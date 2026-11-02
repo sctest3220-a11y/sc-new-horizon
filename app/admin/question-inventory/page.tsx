@@ -933,7 +933,7 @@ export default async function QuestionInventoryPage({
           <div>
             <div className="inventory-nav-links">
               <Link href="/" className="inventory-back-link">Main page</Link>
-              <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+              <Link href="/assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
             </div>
             <h1>Question Inventory</h1>
             <p>
@@ -1069,7 +1069,7 @@ export default async function QuestionInventoryPage({
         </Link>
         <nav aria-label="Question inventory navigation">
           <Link href="/">Assessment</Link>
-          <Link href="/?view=admin">Admin</Link>
+          <Link href="/admin">Admin</Link>
           <strong>Question inventory</strong>
           <Link href="/admin/question-inventory/results">Test progress</Link>
         </nav>
@@ -1086,7 +1086,7 @@ export default async function QuestionInventoryPage({
         <div>
           <div className="inventory-nav-links">
             <Link href="/" className="inventory-back-link">Main page</Link>
-            <Link href="/?view=assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
+            <Link href="/assessment" className="inventory-back-link inventory-assessment-link">Open assessment</Link>
             <Link href="/admin/question-inventory/results" className="inventory-back-link">Test progress</Link>
           </div>
           <p className="eyebrow">Draft question review inventory</p>

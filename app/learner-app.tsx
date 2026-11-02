@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { questionTranslationsTh } from './questionTranslations.th';
 import { productionQuestionRelease } from './productionQuestionRelease';
-import WatchLabs from './watch-labs';
 import { parseStoredList, parseStoredRecord } from './page-storage-model';
-import AwarenessFlash from './watch-awareness';
+import { labPath, legacyRedirect, pathForStep, stepForPath, type AppStep, type LabKind } from './learner-routes-model';
 import type { WatchStory as NewsFeedItem } from './watch-model';
 
 type DomainId = 'D1' | 'D2' | 'D3' | 'D4' | 'D5' | 'D6';
@@ -171,7 +171,6 @@ type PracticeActivity = {
   questionId: string;
   labKind: LabKind;
 };
-type LabKind = 'ownership' | 'proof' | 'next' | 'prompt' | 'media' | 'workflow' | 'trust';
 type LabArtifact = {
   title: string;
   rows: string[];
@@ -12989,8 +12988,16 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
   };
 }
 
-export default function Home() {
-  const [step, setStep] = useState<'home' | 'dashboard' | 'admin' | 'news' | 'learningLabs' | 'lab' | 'developerReport' | 'onboarding' | 'premiumOnboarding' | 'assessment' | 'feedback' | 'results'>('home');
+export function useAppController() {
+  // The screen comes from the URL (app/learner-routes-model.ts). Answer feedback
+  // is a phase of the assessment run, so it is the one step held in state.
+  const pathname = usePathname();
+  const router = useRouter();
+  const [assessmentPhase, setAssessmentPhase] = useState<'question' | 'feedback'>('question');
+  const routeStep = stepForPath(pathname);
+  const step: AppStep = routeStep === 'assessment' && assessmentPhase === 'feedback' ? 'feedback' : routeStep;
+  const [assessmentActive, setAssessmentActive] = useState(false);
+  const [openedLabKind, setOpenedLabKind] = useState<LabKind | null>(null);
   const [browserStateReady, setBrowserStateReady] = useState(false);
   const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
@@ -13217,11 +13224,12 @@ export default function Home() {
     const frame = window.requestAnimationFrame(() => {
       const params = new URLSearchParams(window.location.search);
       const previewQuestionId = params.get('question');
-      const requestedView = params.get('view');
       const restoredMode: AssessmentMode = previewQuestionId ? 'premium' : 'free';
       const restoredSessionId = `session-${createAssessmentSeed().toString(36)}`;
 
-      setStep(previewQuestionId ? 'assessment' : requestedView === 'assessment' ? 'onboarding' : requestedView === 'admin' ? 'admin' : requestedView === 'watch' ? 'news' : requestedView === 'labs' ? 'learningLabs' : 'home');
+      const legacyTarget = legacyRedirect(window.location.pathname, window.location.search);
+      if (legacyTarget) router.replace(legacyTarget);
+      if (previewQuestionId) setAssessmentActive(true);
       setAppLanguage(readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
       setShowDraftThai(readLocalStorage(thaiDraftStorageKey) === '1');
       setMode(restoredMode);
@@ -13241,20 +13249,13 @@ export default function Home() {
       setBrowserStateReady(true);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, []);
+  }, [router]);
 
-  useEffect(() => {
-    if (!browserStateReady) return;
-    const url = new URL(window.location.href);
-    const learningView = step === 'news' ? 'watch' : step === 'learningLabs' ? 'labs' : null;
-    if (learningView) {
-      url.searchParams.set('view', learningView);
-      url.searchParams.delete('question');
-    } else if (url.searchParams.get('view') === 'watch' || url.searchParams.get('view') === 'labs') {
-      url.searchParams.delete('view');
-    } else return;
-    if (url.href !== window.location.href) window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
-  }, [browserStateReady, step]);
+  function setStep(next: AppStep) {
+    if (next === 'assessment' || next === 'feedback') setAssessmentPhase(next === 'feedback' ? 'feedback' : 'question');
+    const target = next === 'lab' ? labPath(activeLabKind) : pathForStep(next);
+    if (target !== pathname) router.push(target);
+  }
 
   useEffect(() => {
     if (!browserStateReady) return;
@@ -13665,10 +13666,10 @@ export default function Home() {
         syncUserProfileToSupabase(profile, userProfileSurvey, localProfileId);
         setAuthMessage(`Signed in as ${profile.email ?? profile.name ?? 'Google user'}.`);
         window.history.replaceState(null, '', window.location.pathname);
-        setStep('dashboard');
+        router.push(pathForStep('dashboard'));
       })
       .catch(() => setAuthMessage('Sign-in could not be completed. Check Supabase Auth configuration.'));
-  }, [localProfileId, userProfileSurvey]);
+  }, [localProfileId, router, userProfileSurvey]);
 
   function logCompletedResults() {
     if (answers.length < activeConfig.totalQuestions) return;
@@ -13909,6 +13910,7 @@ export default function Home() {
     };
     appendBehaviorEvent({ type: 'assessment_started', mode: nextMode, answeredCount: 0, targetCount: modeConfig[nextMode].totalQuestions, label: `Initial difficulty: ${initialDifficulty}` });
     resetInteractionState(firstQuestion, nextSeed, 0);
+    setAssessmentActive(true);
     setStep('assessment');
   }
 
@@ -13997,15 +13999,21 @@ export default function Home() {
     writeLocalStorage(authProfileStorageKey, '');
   }
 
-  function startLabActivity(activity: PracticeActivity) {
-    const config = labConfigs[activity.labKind];
-    setActiveLabKind(activity.labKind);
+  /** Starts a lab from a clean slate. The lab route calls this when it is opened directly. */
+  function openLab(kind: LabKind) {
+    const config = labConfigs[kind];
+    setActiveLabKind(kind);
+    setOpenedLabKind(kind);
     setLabDraft('');
     setLabSelections([]);
     setLabMatches({});
     setLabOrder([...(config.idealOrder ?? config.items?.map((item) => item.id) ?? [])].reverse());
     setLabFeedbackVisible(false);
-    setStep('lab');
+  }
+
+  function startLabActivity(activity: PracticeActivity) {
+    openLab(activity.labKind);
+    router.push(labPath(activity.labKind));
   }
 
   function toggleLabSelection(choiceId: string, single = false) {
@@ -14377,3012 +14385,262 @@ export default function Home() {
   );
   const useRelianceStage = false;
 
-  return (
-    <main>
-      {surveyOpen && (
-        <div className="survey-backdrop" role="presentation">
-          <section className="profile-survey" role="dialog" aria-modal="true" aria-labelledby="profile-survey-title">
-            <div className="profile-survey-header">
-              <div>
-                <p className="eyebrow">Optional profile survey</p>
-                <h1 id="profile-survey-title">Personalize your assessment.</h1>
-                <p>
-                  Tell us what you already use, what similar people in your role are exploring, and what you may want to learn next.
-                  New Horizon uses these signals to tune examples, learning paths, cohort analysis, and the starting difficulty before your answers take over.
-                </p>
-              </div>
-              <button type="button" className="icon-close" onClick={skipProfileSurvey} aria-label="Skip profile survey">X</button>
-            </div>
-            <div className="profile-context-card">
-              <span>Current context</span>
-              <strong>{activeSurveyContext}</strong>
-              <p>These answers are stored locally in the MVP as profile and interest signals. Production should add consent, versioning, privacy controls, and backend profile graph storage.</p>
-            </div>
-            <div className="survey-question-list">
-              {activeSurveyQuestions.map((question) => (
-                <fieldset key={question.id}>
-                  <legend>{question.label}</legend>
-                  <div className="survey-option-grid">
-                    {question.options.map((option) => {
-                      const selected = (surveyAnswers[question.id] ?? []).includes(option);
-                      return (
-                        <button
-                          key={option}
-                          type="button"
-                          className={selected ? 'selected' : ''}
-                          onClick={() => toggleSurveyAnswer(question, option)}
-                          aria-pressed={selected}
-                        >
-                          {option}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </fieldset>
-              ))}
-            </div>
-            <div className="profile-ontology-note">
-              <span>Profile graph seed</span>
-              <p>Tool choices, workflows, risk concerns, artifacts, role, function, and industry become tags that can later connect to competencies, courses, question routing, and cohort analytics.</p>
-            </div>
-            <div className="survey-actions">
-              <button type="button" className="secondary dark" onClick={skipProfileSurvey}>Skip for now</button>
-              <button type="button" className="primary" onClick={saveProfileSurvey}>Save profile and start</button>
-            </div>
-          </section>
-        </div>
-      )}
-      {step === 'home' && profilePulseOpen && (
-        <aside className="profile-pulse-card" aria-label="Optional profile pulse">
-          <div>
-            <p className="eyebrow">Optional profile pulse</p>
-            <h2>{microProfilePulse.title}</h2>
-            <p>{microProfilePulse.prompt}</p>
-          </div>
-          <div className="profile-pulse-options">
-            {microProfilePulse.options.map((option) => {
-              const selected = profilePulseSelections.includes(option.id);
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  className={selected ? 'selected' : ''}
-                  onClick={() => toggleProfilePulse(option.id)}
-                  aria-pressed={selected}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          <div className="profile-pulse-actions">
-            <button type="button" className="secondary dark" onClick={dismissProfilePulse}>Skip</button>
-            <button type="button" className="primary" disabled={!profilePulseSelections.length} onClick={applyProfilePulse}>Tune my test</button>
-          </div>
-          <small>Used to route questions and recommendations in this browser.</small>
-        </aside>
-      )}
-      <header className="topbar">
-        <button className="brand nav-reset" onClick={() => setStep('home')} aria-label="New Horizon home">
-          <span className="brand-mark">NH</span>
-          <span>New Horizon</span>
-        </button>
-        <nav aria-label="Primary navigation">
-          <button onClick={() => setStep('home')}>Home</button>
-          <button onClick={() => setStep('onboarding')}>Assessment</button>
-          <button onClick={() => setStep('premiumOnboarding')}>Premium</button>
-          <button onClick={() => setStep('learningLabs')}>AI Labs</button>
-          <button onClick={() => setStep('news')}>AI Watch</button>
-          <button onClick={() => setStep('dashboard')}>Dashboard</button>
-          <button onClick={() => setStep('admin')}>Admin</button>
-        </nav>
-        <div className="topbar-actions">
-          <div className="language-toggle" aria-label="Language">
-            {(['en', 'th'] as AppLanguage[]).map((language) => (
-              <button
-                key={language}
-                type="button"
-                className={appLanguage === language ? 'selected' : ''}
-                onClick={() => setAppLanguage(language)}
-                aria-pressed={appLanguage === language}
-              >
-                {language === 'en' ? 'EN' : 'TH'}
-              </button>
-            ))}
-          </div>
-          <button className="small-button" onClick={() => setStep('onboarding')}>Start</button>
-        </div>
-      </header>
-
-      {step === 'home' && (
-        <>
-          <section id="top" className="hero">
-            <div className="hero-copy">
-              <p className="eyebrow">AI-powered readiness assessment</p>
-              <h1>Measure practical AI readiness.</h1>
-              <p className="lede">
-                New Horizon is an adaptive assessment platform for real AI capability: inspect artifacts,
-                verify sources, choose safe workflows, govern agents, and turn scores into learning paths.
-              </p>
-              <div className="hero-actions">
-                <button className="primary" onClick={() => setStep('onboarding')}>Start Free Assessment</button>
-                <button className="secondary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
-                <button className="secondary" type="button" onClick={() => showHomeSection('process')}>See How It Works</button>
-                <button className="secondary" type="button" onClick={() => showHomeSection('scoring-model')}>Scoring model</button>
-              </div>
-            </div>
-            <div className="hero-panel" aria-label="Assessment preview">
-              <div className="preview-card assessment-preview-card">
-                <span className="status-dot" />
-                <p>Adaptive assessment platform</p>
-                <strong>Artifacts, scoring, radar, learning paths</strong>
-              </div>
-              <div className="assessment-snapshot" aria-label="Assessment platform snapshot">
-                {[
-                  ['Raw artifacts', 'Invoices, reports, policies, source packets, workflows'],
-                  ['Question formats', 'Single, multi-select, matching, drag-order, written response, mini-parts'],
-                  ['Adaptive engine', 'Domain coverage plus difficulty up/down after each answer'],
-                  ['Decision output', 'D1-D6 radar, group average, research target, learning path'],
-                ].map(([title, body]) => (
-                  <div key={title}>
-                    <span>{title}</span>
-                    <p>{body}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="preview-question">
-                <p>Example task</p>
-                <strong>Inspect a raw policy packet. What did the AI overstate, omit, or make unsafe?</strong>
-              </div>
-            </div>
-          </section>
-
-          <section className="stats" aria-label="MVP scope highlights">
-            <div><strong>{liveItemCount}</strong><span>live seed items</span></div>
-            <div><strong>{artifactItemCount}</strong><span>artifact-backed items</span></div>
-            <div><strong>{multiPartItemCount}</strong><span>multi-part clusters</span></div>
-            <div><strong>6</strong><span>AILF domains</span></div>
-            <div><strong>{interactionCount}</strong><span>question formats</span></div>
-          </section>
-
-          <section className="home-menu-tabs" aria-label="Home guide menu">
-            {[
-              ['Scoring model', 'How answers, difficulty, competencies, domains, and confidence become the score.', 'scoring-model'],
-              ['Global frameworks', 'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.', 'global-frameworks'],
-              ['Adaptive testing', 'Why the test continues when coverage or confidence is not strong enough.', 'process'],
-            ].map(([title, body, target]) => (
-              <a key={title} href={`#${target}`}>
-                <span>{title}</span>
-                <p>{body}</p>
-              </a>
-            ))}
-          </section>
-
-          <section className="section did-you-know-section" aria-labelledby="did-you-know-title">
-            <AwarenessFlash stories={trendFeed} language={appLanguage} ownerId={authProfile?.id ?? localProfileId} onOpenWatch={() => setStep('news')} />
-            <article className="did-you-know-card featured">
-              <div>
-                <p className="eyebrow">Did you know?</p>
-                <span>{personalizedDidYouKnow.domain} · {personalizedDidYouKnow.topic}</span>
-                <h2 id="did-you-know-title">{personalizedDidYouKnow.fact}</h2>
-                <p>{personalizedDidYouKnow.whyItMatters}</p>
-              </div>
-              <div className="did-you-know-actions">
-                <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
-                <button className="secondary dark" type="button" onClick={() => openProfileSurvey('free')}>Tune topics</button>
-              </div>
-            </article>
-            <div className="did-you-know-grid">
-              {(secondaryDidYouKnow.length ? secondaryDidYouKnow : didYouKnowInsights.filter((insight) => insight.id !== personalizedDidYouKnow.id).slice(0, 2)).map((insight) => (
-                <article key={insight.id} className="did-you-know-card compact">
-                  <span>{insight.domain} · {insight.topic}</span>
-                  <strong>{insight.fact}</strong>
-                  <p>{insight.whyItMatters}</p>
-                  <button className="text-button" type="button" onClick={() => followDidYouKnow(insight)}>Learn more</button>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="section peer-board-section" aria-labelledby="peer-board-title">
-            <div className="section-heading-row">
-              <div>
-                <p className="eyebrow">Peer challenge</p>
-                <h2 id="peer-board-title">Where would you land today?</h2>
-                <p>
-                  Compare against the visible top 10 for the day or week, then take the assessment to see
-                  whether your strongest domain is enough to break into your peer group.
-                </p>
-              </div>
-              <div className="period-toggle" aria-label="Leaderboard period">
-                {(['day', 'week'] as LandingLeaderboardPeriod[]).map((period) => (
-                  <button
-                    key={period}
-                    type="button"
-                    className={landingLeaderboardPeriod === period ? 'selected' : ''}
-                    onClick={() => setLandingLeaderboardPeriod(period)}
-                  >
-                    {period === 'day' ? 'Today' : 'This week'}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="peer-board-grid">
-              <article className="peer-leaderboard-card">
-                <div className="peer-card-heading">
-                  <div>
-                    <span>Top 10</span>
-                    <strong>{landingLeaderboardPeriod === 'day' ? 'Daily board' : 'Weekly board'}</strong>
-                  </div>
-                  <small>{landingLeaderboard.some((row) => row.source === 'local') ? 'Local pilot data' : 'Demo until your first runs'}</small>
-                </div>
-                <div className="landing-leaderboard-list">
-                  {landingLeaderboard.map((row) => (
-                    <div key={row.id} className={row.source}>
-                      <b>#{row.rank}</b>
-                      <span>
-                        <strong>{row.displayName}</strong>
-                        <small>{row.groupLabel}</small>
-                      </span>
-                      <i>{row.strongestDomain}</i>
-                      <em>{row.overall}</em>
-                    </div>
-                  ))}
-                </div>
-              </article>
-              <div className="peer-insight-grid">
-                {landingPeerInsights.map((insight) => (
-                  <article key={insight.label} className="peer-insight-card">
-                    <span>{insight.label}</span>
-                    <strong>{insight.value}</strong>
-                    <p>{insight.detail}</p>
-                  </article>
-                ))}
-                <article className="peer-cta-card">
-                  <span>Find your rank</span>
-                  <strong>Can you beat your peer average?</strong>
-                  <p>Scores above 80 need stronger applied or advanced evidence, not just easy-item correctness.</p>
-                  <div className="hero-actions">
-                    <button className="primary" onClick={() => setStep('onboarding')}>Take the free test</button>
-                    <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Choose peer group</button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <section className={`home-more-panel ${homeMoreOpen ? 'open' : ''}`}>
-            <button
-              type="button"
-              className="home-more-summary"
-              onClick={() => setHomeMoreOpen((open) => !open)}
-              aria-expanded={homeMoreOpen}
-            >
-              <span>Explore more</span>
-              <strong>{homeMoreOpen ? 'Hide learning prompts, practice labs, scoring, and frameworks' : 'Learning prompts, practice labs, scoring, and frameworks'}</strong>
-            </button>
-
-            <div className="home-more-content" hidden={!homeMoreOpen}>
-          <section id="labs" className="section field-lab">
-            <div>
-              <p className="eyebrow">Learn by doing</p>
-              <h2>Practice the activities the assessment is built from.</h2>
-              <p>
-                Each activity box maps to a practical assessment format. Users do not just read about AI;
-                they inspect, repair, verify, sequence, match, and explain.
-                Pilot labs should be treated as samples until they include complete instructions, realistic artifacts,
-                scoring criteria, and a debrief.
-              </p>
-            </div>
-            <div className="activity-grid">
-              {learnByDoingActivities.map((activity) => (
-                <button className="activity-card" key={activity.title} onClick={() => startLabActivity(activity)} type="button">
-                  <div>
-                    <span>{activity.domain} · {domains[activity.domain].short}</span>
-                    <strong>{activity.format}</strong>
-                  </div>
-                  <h3>{activity.title}</h3>
-                  <p>{activity.detail}</p>
-                  <small>Start activity</small>
-                </button>
-              ))}
-            </div>
-            <div className="room-grid">
-              {fieldLabRooms.map((activity) => (
-                <button className="room-card" key={activity.title} onClick={() => startLabActivity(activity)} type="button">
-                  <span>{activity.domain} · {activity.format}</span>
-                  <h3>{activity.title}</h3>
-                  <p>{activity.detail}</p>
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section id="platform" className="section two-column">
-            <div>
-              <p className="eyebrow">The platform</p>
-              <h2>A field test for the way people actually use AI.</h2>
-              <p>
-                New Horizon turns AI readiness into observable behavior. Users inspect messy artifacts,
-                make judgment calls, explain evidence, and see how their choices change the next task.
-              </p>
-            </div>
-            <div className="card-grid">
-              {[
-                ['Evidence over opinion', 'The assessment asks users to prove what they trust, reject, revise, or escalate.'],
-                ['Adaptive under the hood', 'Difficulty and domain focus move as the score estimate and coverage gaps change.'],
-                ['Useful after the score', 'Results point to competencies, practical skills, benchmarks, and real learning options.'],
-              ].map(([title, body]) => (
-                <article className="info-card" key={title}>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section id="scoring-model" className="section scoring-model-section">
-            <div className="section-heading-row">
-              <div>
-                <p className="eyebrow">Scoring and adaptive testing</p>
-                <h2>Scores reward harder evidence, not just correct guesses.</h2>
-                <p>
-                  New Horizon separates raw answer correctness from readiness evidence. The same raw score
-                  contributes differently depending on difficulty, competency coverage, and confidence.
-                </p>
-              </div>
-              <span>Transparent MVP logic</span>
-            </div>
-            <div className="score-model-grid">
-              {scoringModelExplainers.map(([title, body]) => (
-                <article className="info-card score-model-card" key={title}>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </article>
-              ))}
-            </div>
-            <div className="difficulty-band-table" role="table" aria-label="Difficulty readiness bands">
-              <div role="row">
-                <strong role="columnheader">Difficulty</strong>
-                <strong role="columnheader">Partial anchor</strong>
-                <strong role="columnheader">Maximum readiness</strong>
-              </div>
-              {(Object.keys(difficultyReadinessBands) as Difficulty[]).map((difficulty) => (
-                <div role="row" key={difficulty}>
-                  <span role="cell">{difficultyLabels[difficulty]}</span>
-                  <span role="cell">{difficultyReadinessBands[difficulty].partial}/100</span>
-                  <span role="cell">{difficultyReadinessBands[difficulty].max}/100</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="global-frameworks" className="section global-framework-section band">
-            <div className="section-heading-row">
-              <div>
-                <p className="eyebrow">Global framework crosswalk</p>
-                <h2>Mapped to reputable AI literacy, governance, and readiness frameworks.</h2>
-                <p>
-                  New Horizon is not claiming certification equivalence. It uses these frameworks as a
-                  crosswalk so domains, competencies, questions, telemetry, and improvement reviews stay globally grounded.
-                </p>
-              </div>
-              <span>D1-D6 crosswalk</span>
-            </div>
-            <div className="framework-crosswalk-grid">
-              {globalFrameworkCrosswalk.map((row) => (
-                <article className="framework-card" key={row.domain} style={{ borderTopColor: domains[row.domain].color }}>
-                  <span>{row.domain} · {domains[row.domain].name}</span>
-                  <h3>{domains[row.domain].short}</h3>
-                  <p><strong>Maps to</strong> {row.mapsTo}</p>
-                  <p><strong>Tests</strong> {row.emphasis}</p>
-                  <p><strong>Improve next</strong> {row.improveNext}</p>
-                </article>
-              ))}
-            </div>
-            <div className="framework-source-list">
-              {frameworkSourceLinks.map((source) => (
-                <a key={source.label} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
-              ))}
-            </div>
-          </section>
-
-          <section className="section gamification-section">
-            <div>
-              <p className="eyebrow">Progress system</p>
-              <h2>Make readiness feel earned.</h2>
-              <p>
-                Gamification should reward careful judgment, evidence review, and improvement over time.
-                The goal is confidence through practice, not points for rushing.
-              </p>
-            </div>
-            <div className="game-grid">
-              {gamificationRules.map(([title, body]) => (
-                <article className="game-card" key={title}>
-                  <span>{title}</span>
-                  <p>{body}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section id="process" className="section band">
-            <p className="eyebrow">Simple process</p>
-            <h2>One clear flow from assessment to action.</h2>
-            <div className="steps">
-              {[
-                ['01', 'Build a light profile', 'Choose your audience, role, tools, interests, and peer-tool awareness.'],
-                ['02', 'Answer adaptive scenarios', 'Questions create domain, competency, skill, difficulty, and behavior signals.'],
-                ['03', 'Decide whether to keep going', 'If confidence or coverage is weak, add targeted questions before final results.'],
-                ['04', 'Follow a learning path', 'See tools, concepts, labs, and courses matched to your profile and gaps.'],
-              ].map(([num, title, body]) => (
-                <article className="step-card" key={num}>
-                  <span>{num}</span>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section id="domains" className="section">
-            <p className="eyebrow">AILF framework pack</p>
-            <h2>Six domains of AI readiness.</h2>
-            <div className="domain-grid">
-              {(Object.keys(domains) as DomainId[]).map((id) => (
-                <article className="domain-card" key={id} style={{ borderTopColor: domains[id].color }}>
-                  <span>{id}</span>
-                  <h3>{domains[id].name}</h3>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section id="results" className="section results-preview">
-            <div>
-              <p className="eyebrow">Your results</p>
-              <h2>Radar profile, gaps, and next steps.</h2>
-              <p>
-                MVP results are indicative, not certification-grade. They show readiness patterns and recommend
-                practical learning actions while collecting evidence for future calibration.
-              </p>
-              <div className="hero-actions">
-                <button className="primary light" onClick={() => setStep('onboarding')}>Try Free Flow</button>
-                <button className="secondary invert" onClick={() => setStep('premiumOnboarding')}>Try Premium Diagnostic</button>
-              </div>
-            </div>
-            <div className="mock-result">
-              <RadarChart
-                scores={{ D1: 72, D2: 68, D3: 46, D4: 58, D5: 64, D6: 76 }}
-                selectedDomain={selectedPreviewDomain}
-                onSelectDomain={setSelectedPreviewDomain}
-              />
-              <div className="preview-domain-drilldown">
-                <span>{selectedPreviewDomain} · {domains[selectedPreviewDomain].name}</span>
-                <strong>Competency map</strong>
-                <div>
-                  {previewDomainCompetencies.map((competency) => (
-                    <p key={competency.id}>
-                      <b>{competency.label}</b>
-                      <small>{competency.skills.slice(0, 3).join(', ')}</small>
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="section premium-section">
-            <div>
-              <p className="eyebrow">Premium assessment</p>
-              <h2>Deeper diagnosis for people who want more than a score.</h2>
-              <p>
-                The MVP premium pilot adds function, industry, role context, a longer adaptive run,
-                evidence review, precision language, leadership pathways, and a richer learning plan.
-              </p>
-            </div>
-            <div className="premium-grid">
-              {['Function context', 'Industry scenarios', 'Leadership role context', 'Premium learning plan'].map((item) => (
-                <article className="info-card" key={item}>
-                  <h3>{item}</h3>
-                  <p>Pilot-grade now, designed for calibrated psychometrics after response data is collected.</p>
-                </article>
-              ))}
-            </div>
-            <div className="hero-actions">
-              <button className="primary" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>
-            </div>
-          </section>
-            </div>
-          </section>
-        </>
-      )}
-
-      {step === 'dashboard' && (
-        <section className="dashboard-shell">
-          <div className="dashboard-hero">
-            <div>
-              <p className="eyebrow">Registered user landing page</p>
-              <h1>Your AI readiness dashboard.</h1>
-              <p>
-                This is the logged-in home experience for New Horizon. It brings together profile signals,
-                assessment progress, recommended tools and concepts, learning actions, and a personalized AI Watch feed.
-              </p>
-            </div>
-            <div className="dashboard-identity">
-              <span>{authProfile ? 'Signed in' : isSupabaseConfigured() ? 'Sign in available' : 'Auth setup needed'}</span>
-              <strong>{authProfile?.name ?? userProfileSurvey?.context ?? (mode === 'executive' ? executiveLabels[executiveRole] : mode === 'premium' ? functionLabels[functionTrack] : audienceLabels[audience])}</strong>
-              <p>{authProfile?.email ?? localProfileId}</p>
-              {authProfile ? (
-                <>
-                  <button className="primary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Update profile signals</button>
-                  <button className="secondary" type="button" onClick={signOutUser}>Sign out</button>
-                </>
-              ) : (
-                <div className="auth-actions">
-                  <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>Continue with Google</button>
-                  <div className="email-auth-row">
-                    <input
-                      type="email"
-                      value={authEmail}
-                      onChange={(event) => setAuthEmail(event.target.value)}
-                      placeholder="you@example.com"
-                      aria-label="Email for magic link"
-                    />
-                    <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>Email link</button>
-                  </div>
-                  <button className="secondary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Continue as guest</button>
-                </div>
-              )}
-              <small>{authMessage || (isSupabaseConfigured() ? 'Google profile seeds email, name, avatar URL, and provider ID. Role/function signals still come from New Horizon.' : 'Set Supabase public env vars to activate Google and email login.')}</small>
-            </div>
-          </div>
-
-          <div className="dashboard-grid">
-            <article className="dashboard-card profile-overview">
-              <span>Profile signals</span>
-              <h2>{userProfileSurvey ? userProfileSurvey.tags.length : 0} saved tags</h2>
-              {userProfileSurvey ? (
-                <div className="profile-tag-grid">
-                  {userProfileSurvey.tags.slice(0, 10).map((tag) => <span key={tag}>{tag}</span>)}
-                </div>
-              ) : (
-                <p>No profile survey saved yet. Registered users should be prompted to update tools, workflows, peer-tool awareness, and learning interests.</p>
-              )}
-            </article>
-
-            <article className="dashboard-card progress-overview">
-              <span>Progress</span>
-              <h2>{scoreLogAnalytics.totalRuns} saved run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'}</h2>
-              <div className="dashboard-stats">
-                <div><strong>{scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : 'New'}</strong><small>average readiness</small></div>
-                <div><strong>{scoreLogAnalytics.signalSnapshots || 0}</strong><small>question signals</small></div>
-                <div><strong>{coveragePlan.sampled}/24</strong><small>competencies sampled</small></div>
-              </div>
-              <button className="secondary dark" type="button" onClick={() => setStep('onboarding')}>Take assessment</button>
-            </article>
-
-            <article className="dashboard-card radar-overview">
-              <span>Readiness profile</span>
-              <RadarChart
-                scores={results.domainScores}
-                benchmarks={radarProfiles}
-                selectedDomain={selectedRadarDomain}
-                onSelectDomain={setSelectedRadarDomain}
-              />
-            </article>
-
-            <article className="dashboard-card recommendation-overview">
-              <span>Personalized recommendations</span>
-              <h2>Explore next</h2>
-              <div className="personalized-exploration dashboard-exploration">
-                <div>
-                  <span>Tools</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.tools.slice(0, 5).map((tool) => <span key={tool}>{tool}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Concepts</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.concepts.slice(0, 5).map((concept) => <span key={concept}>{concept}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Practice</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.practice.slice(0, 3).map((activity) => <span key={activity}>{activity}</span>)}
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className="dashboard-card did-you-know-dashboard">
-              <span>Did you know?</span>
-              <h2>{personalizedDidYouKnow.topic}</h2>
-              <p>{personalizedDidYouKnow.fact}</p>
-              <small>{personalizedDidYouKnow.whyItMatters}</small>
-              <div className="dashboard-card-actions">
-                <button className="secondary dark" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
-                <button className="text-button" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Retune profile</button>
-              </div>
-            </article>
-
-            <article className="dashboard-card learning-overview">
-              <span>Learning path</span>
-              <h2>Recommended courses</h2>
-              <div className="dashboard-course-list">
-                {courseRecommendations.slice(0, 3).map((course) => (
-                  <a key={course.id} href={course.url} target="_blank" rel="noreferrer">
-                    <strong>{course.title}</strong>
-                    <small>{course.provider} · {course.level}</small>
-                  </a>
-                ))}
-              </div>
-            </article>
-
-            <article className="dashboard-card news-overview">
-              <span>Personalized AI Watch</span>
-              <h2>Signals for your gaps</h2>
-              <div className="dashboard-news-list">
-                {(dashboardNews.length ? dashboardNews : trendFeed.slice(0, 4)).map((item) => (
-                  <a key={item.title} href={item.url} target="_blank" rel="noreferrer">
-                    <small>{item.category} · {item.source}</small>
-                    <strong>{item.title}</strong>
-                  </a>
-                ))}
-              </div>
-              <button className="secondary dark" type="button" onClick={() => setStep('news')}>Open AI Watch</button>
-            </article>
-          </div>
-        </section>
-      )}
-
-      {step === 'admin' && (
-        <section className="admin-shell">
-          {!adminAuthenticated ? (
-            <div className="admin-login">
-              <div>
-                <p className="eyebrow">Admin login</p>
-                <h1>Assessment intelligence console.</h1>
-                <p>
-                  Admin users should see aggregate assessment performance, group patterns, function gaps,
-                  competency coverage, question-format behavior, and longitudinal trends. This MVP uses a preview gate;
-                  production should require Supabase Auth role-based access control.
-                </p>
-              </div>
-              <div className="admin-login-card">
-                <span>{authProfile ? 'Admin identity detected' : 'Admin authentication'}</span>
-                {authProfile && (
-                  <div className="admin-auth-profile">
-                    <strong>{authProfile.name ?? authProfile.email}</strong>
-                    <small>{authProfile.email}</small>
-                  </div>
-                )}
-                <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>Continue with Google</button>
-                <div className="email-auth-row">
-                  <input
-                    type="email"
-                    value={authEmail}
-                    onChange={(event) => setAuthEmail(event.target.value)}
-                    placeholder="admin@newhorizon.ai"
-                    aria-label="Admin email magic link"
-                  />
-                  <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>Email link</button>
-                </div>
-                <label>
-                  Preview email
-                  <input type="email" placeholder="admin@newhorizon.ai" aria-label="Admin email" />
-                </label>
-                <label>
-                  Preview password
-                  <input type="password" placeholder="Preview only" aria-label="Admin password" />
-                </label>
-                <button className="secondary" type="button" onClick={() => setAdminAuthenticated(true)}>Open admin dashboard preview</button>
-                <small>{authMessage || 'Google/email sign-in uses Supabase when env vars are configured. Admin dashboard access is preview-only until admin role claims are added.'}</small>
-              </div>
-            </div>
-          ) : (
-            <>
-              <div className="admin-hero">
-                <div>
-                  <p className="eyebrow">Admin dashboard</p>
-                  <h1>Assessment analytics across users and groups.</h1>
-                  <p>
-                    Track readiness by cohort, function, role, domain, competency, difficulty, question format, and trend over time.
-                    The current view summarizes saved local MVP runs; production should query Supabase analytics views.
-                  </p>
-                </div>
-                <div className="admin-hero-actions">
-                  <a className="primary" href="/admin/pilot-operations">Pilot operations</a>
-                  <a className="primary" href="/admin/question-inventory">Question inventory</a>
-                  <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
-                </div>
-              </div>
-
-              <div className="admin-kpi-grid">
-                <div><span>Completed runs</span><strong>{adminAnalytics.totalRuns}</strong><small>non-practice assessments</small></div>
-                <div><span>Profiles</span><strong>{adminAnalytics.totalProfiles}</strong><small>local profile ids</small></div>
-                <div><span>Question signals</span><strong>{adminAnalytics.totalQuestionSignals}</strong><small>item-level records</small></div>
-                <div><span>Average readiness</span><strong>{adminAnalytics.totalRuns ? `${adminAnalytics.averageOverall}/100` : 'No data'}</strong><small>all saved runs</small></div>
-              </div>
-
-              <div className="admin-grid">
-                <article className="admin-card admin-wide analytics-readiness-card">
-                  <div className="admin-card-heading">
-                    <div>
-                      <span>MVP refinement</span>
-                      <h2>Analytics readiness checklist</h2>
-                    </div>
-                    <button className="secondary dark" type="button" onClick={exportPilotReviewCsv} disabled={!adminAnalytics.totalQuestionSignals}>
-                      Export pilot review CSV
-                    </button>
-                  </div>
-                  <p>
-                    This panel separates pilot-local evidence from production-ready analytics. Use the export for offline item review;
-                    keep cohort claims labeled insufficient until server-side aggregate views are deployed.
-                  </p>
-                  <div className="telemetry-grid readiness-grid">
-                    {analyticsReadinessRows.map((row) => (
-                      <div key={row.label}>
-                        <h3>{row.label}</h3>
-                        <strong>{row.status}</strong>
-                        <p>{row.detail}</p>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-
-                <article className="admin-card admin-wide">
-                  <div className="admin-card-heading">
-                    <div>
-                      <span>Agent operations</span>
-                      <h2>Supervised agent jobs</h2>
-                    </div>
-                    <div className="admin-action-row">
-                      <button className="primary" type="button" onClick={runSupervisedAgentJobs}>Run supervised jobs</button>
-                      <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>Run simulation only</button>
-                    </div>
-                  </div>
-                  <div className="admin-kpi-grid compact-kpis agent-review-kpis">
-                    <div><span>Runs</span><strong>{supervisedAgentRuns.length}</strong><small>persisted local runs</small></div>
-                    <div><span>Pending</span><strong>{pendingAgentDraftCount}</strong><small>drafts needing review</small></div>
-                    <div><span>Approved</span><strong>{approvedAgentDraftCount}</strong><small>accepted proposals</small></div>
-                    <div><span>Rejected</span><strong>{rejectedAgentDraftCount}</strong><small>blocked proposals</small></div>
-                  </div>
-                  {latestSupervisedAgentRun && (
-                    <div className="supervised-run-panel">
-                      <div className="report-heading">
-                        <div>
-                          <p className="eyebrow">Latest supervised run</p>
-                          <h3>{latestSupervisedAgentRun.headline}</h3>
-                          <p>{latestSupervisedAgentRun.summary}</p>
-                          <small>{latestSupervisedAgentRun.id} · {new Date(latestSupervisedAgentRun.createdAt).toLocaleString()}</small>
-                        </div>
-                        <span>{latestSupervisedAgentRun.status}</span>
-                      </div>
-                      <div className="agent-draft-grid">
-                        {latestSupervisedAgentRun.drafts.map((draft) => (
-                          <article key={draft.id} className={`agent-draft-card ${draft.status}`}>
-                            <div>
-                              <span>{draft.kind} · {draft.ownerAgent}</span>
-                              <h4>{draft.title}</h4>
-                              <p>{draft.summary}</p>
-                              <small>{draft.rationale}</small>
-                            </div>
-                            <div className="source-signal-list">
-                              {draft.sourceSignals.map((signal) => <b key={signal}>{signal}</b>)}
-                            </div>
-                            <div className="draft-review-actions">
-                              <button
-                                className="secondary dark"
-                                type="button"
-                                disabled={draft.status === 'approved'}
-                                onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'approved')}
-                              >
-                                Approve
-                              </button>
-                              <button
-                                className="secondary dark"
-                                type="button"
-                                disabled={draft.status === 'rejected'}
-                                onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'rejected')}
-                              >
-                                Reject
-                              </button>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-                      <div className="agent-list">
-                        {latestSupervisedAgentRun.safetyEvents.map((event) => <p key={event}>{event}</p>)}
-                      </div>
-                    </div>
-                  )}
-                  {agentWorkflowReport ? (
-                    <div className="agent-report">
-                      <div className="agent-report-hero">
-                        <div>
-                          <strong>{agentWorkflowReport.headline}</strong>
-                          <p>{agentWorkflowReport.summary}</p>
-                          <small>{agentWorkflowReport.runId} · {agentWorkflowReport.generatedAt}</small>
-                        </div>
-                      </div>
-                      <section className="agent-workflow-visual" aria-label="Interactive agent workflow">
-                        <div className="agent-workflow-toolbar">
-                          <div>
-                            <span>Workflow map</span>
-                            <h3>Assessment improvement orchestration</h3>
-                          </div>
-                          <p>Click an agent to inspect its stages, controls, and latest output.</p>
-                        </div>
-                        <div className="agent-workflow-scroll">
-                          <div className="agent-workflow-canvas">
-                            <svg className="agent-workflow-connectors" viewBox="0 0 1160 570" role="img" aria-label="Connections between assessment agents">
-                              <defs>
-                                <marker id="agent-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                  <path d="M0,0 L8,4 L0,8 Z" />
-                                </marker>
-                              </defs>
-                              {agentWorkflowEdges.map((edge) => {
-                                const target = agentWorkflowReport.agents.find((agent) => agent.id === edge.to);
-                                return (
-                                  <path
-                                    key={`${edge.from}-${edge.to}`}
-                                    className={`agent-workflow-edge ${target?.status ?? 'idle'}`}
-                                    d={getWorkflowConnectorPath(edge.from, edge.to)}
-                                    markerEnd="url(#agent-arrow)"
-                                  />
-                                );
-                              })}
-                              <path
-                                className={`agent-workflow-edge ${agentWorkflowReport.agents.find((agent) => agent.id === 'reviewer')?.status ?? 'idle'}`}
-                                d="M 944 285 C 978 285, 978 285, 1012 285"
-                                markerEnd="url(#agent-arrow)"
-                              />
-                            </svg>
-                            {agentWorkflowNodes.map((node) => {
-                              const agent = agentWorkflowReport.agents.find((candidate) => candidate.id === node.id);
-                              if (!agent) return null;
-                              return (
-                                <button
-                                  key={node.id}
-                                  className={`agent-workflow-node ${agent.status} ${selectedAgentId === node.id ? 'selected' : ''}`}
-                                  style={{ left: node.x, top: node.y }}
-                                  type="button"
-                                  onClick={() => setSelectedAgentId(node.id)}
-                                  aria-pressed={selectedAgentId === node.id}
-                                >
-                                  <span>{node.eyebrow}</span>
-                                  <strong>{agent.name}</strong>
-                                  <small><b aria-hidden="true" />{agent.status} · {agent.outputCount} stage{agent.outputCount === 1 ? '' : 's'}</small>
-                                </button>
-                              );
-                            })}
-                            <div className="agent-human-gate" style={{ left: 1012, top: 224 }}>
-                              <span>Human gate</span>
-                              <strong>Admin approval</strong>
-                              <small>Approve · revise · reject</small>
-                            </div>
-                            <div className="agent-workflow-legend" aria-label="Workflow status legend">
-                              {(['complete', 'running', 'review', 'blocked', 'idle'] as AgentStatus[]).map((status) => (
-                                <span key={status} className={status}><b />{status}</span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        {(() => {
-                          const selectedAgent = agentWorkflowReport.agents.find((agent) => agent.id === selectedAgentId) ?? agentWorkflowReport.agents[0];
-                          const selectedActivity = agentWorkflowReport.activityLog.filter((entry) => entry.agent === selectedAgent.name);
-                          return (
-                            <div className="agent-workflow-inspector">
-                              <div className="agent-inspector-summary">
-                                <span className={`agent-status ${selectedAgent.status}`}>{selectedAgent.status}</span>
-                                <h3>{selectedAgent.name}</h3>
-                                <p>{selectedAgent.role}</p>
-                                <dl>
-                                  <div><dt>Schedule</dt><dd>{selectedAgent.cadence}</dd></div>
-                                  <div><dt>Guardrail</dt><dd>{selectedAgent.guardrail}</dd></div>
-                                </dl>
-                              </div>
-                              <div className="agent-inspector-stages">
-                                <h3>Latest run stages</h3>
-                                {selectedActivity.length ? selectedActivity.map((entry) => (
-                                  <div key={`${entry.step}-${entry.activity}`} className={`agent-inspector-stage ${entry.status}`}>
-                                    <span>{entry.step}</span>
-                                    <div>
-                                      <strong>{entry.activity}</strong>
-                                      <p>{entry.output}</p>
-                                    </div>
-                                  </div>
-                                )) : <p>No stage activity has been recorded for this agent.</p>}
-                              </div>
-                            </div>
-                          );
-                        })()}
-                      </section>
-                      <div className="agent-status-grid">
-                        {agentWorkflowReport.agents.map((agent) => (
-                          <div key={agent.id}>
-                            <span className={`agent-status ${agent.status}`}>{agent.status}</span>
-                            <strong>{agent.name}</strong>
-                            <p>{agent.role}</p>
-                            <small>{agent.cadence}</small>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="agent-report-columns">
-                        <div>
-                          <h3>Activity Log</h3>
-                          <ol className="agent-timeline">
-                            {agentWorkflowReport.activityLog.map((entry) => (
-                              <li key={`${entry.step}-${entry.agent}`}>
-                                <span>{entry.step}</span>
-                                <div>
-                                  <strong>{entry.agent}</strong>
-                                  <p>{entry.activity}</p>
-                                  <small>{entry.output}</small>
-                                </div>
-                              </li>
-                            ))}
-                          </ol>
-                        </div>
-                        <div>
-                          <h3>Safety Cut</h3>
-                          <div className="agent-list">
-                            {agentWorkflowReport.safetyEvents.map((event) => <p key={event}>{event}</p>)}
-                          </div>
-                          <h3>Outputs</h3>
-                          <div className="agent-list">
-                            {agentWorkflowReport.outputs.map((output) => <p key={output}>{output}</p>)}
-                          </div>
-                          <h3>Recommendations</h3>
-                          <div className="agent-list">
-                            {agentWorkflowReport.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="context-line">{agentWorkflowReport.productionNote}</p>
-                    </div>
-                  ) : (
-                    <p>No agent run has been generated yet.</p>
-                  )}
-                </article>
-
-                <article className="admin-card admin-wide quality-engine-card">
-                  <span>Continuous improvement</span>
-                  <h2>Supervised assessment quality engine</h2>
-                  <p>
-                    Telemetry and end-of-assessment feedback automatically identify candidates for revision. Proposed changes remain in a review queue before they can alter a scored assessment.
-                  </p>
-                  <div className="admin-kpi-grid compact-kpis">
-                    <div><span>Started</span><strong>{qualityInsights.started}</strong><small>tracked sessions</small></div>
-                    <div><span>Abandoned</span><strong>{qualityInsights.abandoned}</strong><small>incomplete exits</small></div>
-                    <div><span>Mandatory complete</span><strong>{qualityInsights.mandatory}</strong><small>base routes</small></div>
-                    <div><span>Continued</span><strong>{qualityInsights.continued}</strong><small>optional depth</small></div>
-                  </div>
-                  <div className="agent-report-columns">
-                    <div>
-                      <h3>Improvement queue</h3>
-                      <div className="agent-list">
-                        {qualityInsights.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
-                      </div>
-                    </div>
-	                    <div>
-	                      <h3>Question candidates</h3>
-	                      <div className="admin-list compact">
-	                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
-	                          <p key={row.questionId}>
-	                            <strong>{row.questionId}</strong>
-	                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
-	                          </p>
-	                        )) : <p>No item behavior data yet.</p>}
-	                      </div>
-	                    </div>
-	                  </div>
-	                  <div className="quality-review-table">
-	                    <h3>Item calibration dashboard</h3>
-	                    <div className="quality-review-rows">
-	                      {qualityInsights.qualityRows.length ? qualityInsights.qualityRows.map((row) => (
-	                        <div key={row.questionId} className={`quality-review-row ${row.status}`}>
-	                          <span>{row.status}</span>
-	                          <strong>{row.questionId}</strong>
-                            <div className="calibration-chip-row">
-                              <b>{row.actionLabel}</b>
-                              <b>{row.domain ?? 'Unknown'} · {row.difficulty ?? 'unmapped'} · {row.interaction}</b>
-                              <b>{row.attempts} attempts</b>
-                              <b>{row.averageScore}/100 avg</b>
-                              <b>{formatDuration(row.averageDurationMs)} avg</b>
-                              <b>{row.confusionRate}% confusing</b>
-                              <b>{row.artifactOpenRate}% artifact actions/attempt</b>
-                              <b>{row.feedbackCount} feedback · {row.unclear} unclear</b>
-                              <b>{row.difficultyMismatch}</b>
-                            </div>
-	                          <small>{row.artifactRequired} · {row.negativeSignals} negative signals</small>
-	                          <p>{row.action}</p>
-	                        </div>
-	                      )) : <p>No item-level feedback has been submitted yet.</p>}
-	                    </div>
-	                  </div>
-	                </article>
-
-                <article className="admin-card admin-wide assessment-quality-suite">
-                  <div className="admin-card-heading">
-                    <div>
-                      <span>Assessment quality</span>
-                      <h2>10-point quality analysis suite</h2>
-                    </div>
-                    <small>{adminAnalytics.totalQuestionSignals ? `${adminAnalytics.totalQuestionSignals} saved question signals` : 'Insufficient data until users complete assessments'}</small>
-                  </div>
-                  <div className="quality-suite-grid">
-                    <div>
-                      <h3>1. Item discrimination</h3>
-                      {assessmentQualityAnalytics.discriminationRows.length ? assessmentQualityAnalytics.discriminationRows.map((row) => (
-                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · high {row.highCorrect}% vs low {row.lowCorrect}% · gap {row.gap}</small></p>
-                      )) : <p>No completed item signals yet.</p>}
-                    </div>
-                    <div>
-                      <h3>2. Distractor analysis</h3>
-                      {assessmentQualityAnalytics.distractorRows.length ? assessmentQualityAnalytics.distractorRows.map((row) => (
-                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · top wrong {row.topDistractor} · {row.neverChosen} never chosen</small></p>
-                      )) : <p>No answer-option data yet.</p>}
-                    </div>
-                    <div>
-                      <h3>3. Artifact dependency</h3>
-                      {assessmentQualityAnalytics.artifactDependencyRows.length ? assessmentQualityAnalytics.artifactDependencyRows.map((row) => (
-                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · opened {row.opened}/{row.attempts} · score {row.openedScore} vs {row.notOpenedScore} · {row.timeDeltaSeconds}s delta</small></p>
-                      )) : <p>No artifact-linked attempts yet.</p>}
-                    </div>
-                    <div>
-                      <h3>4. Clarity index</h3>
-                      {assessmentQualityAnalytics.clarityRows.length ? assessmentQualityAnalytics.clarityRows.map((row) => (
-                        <p key={row.questionId}><strong>{row.questionId}</strong><small>risk {row.clarityRisk}/100 · {row.unclear} unclear · {row.confusionRate}% confusing · {row.actionLabel}</small></p>
-                      )) : <p>No clarity risk signals yet.</p>}
-                    </div>
-                    <div>
-                      <h3>5. Difficulty calibration</h3>
-                      {assessmentQualityAnalytics.difficultyCalibrationRows.map((row) => (
-                        <p key={row.difficulty}><strong>{difficultyLabels[row.difficulty]}</strong><small>{row.status} · {row.count} signals · {row.average}/100 avg · {row.quickHigh} fast-high</small></p>
-                      ))}
-                    </div>
-                    <div>
-                      <h3>6. Competency heatmap</h3>
-                      {assessmentQualityAnalytics.competencyHeatmapRows.map((row) => (
-                        <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{row.status} · bank {row.bankCount} · sampled {row.sampled} · {row.average}/100 · {row.difficultySpread}</small></p>
-                      ))}
-                    </div>
-                    <div>
-                      <h3>7. Reliability estimate</h3>
-                      {assessmentQualityAnalytics.reliabilityRows.length ? assessmentQualityAnalytics.reliabilityRows.map((row) => (
-                        <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.questions} questions · {row.sampledDomains} domains · {row.sampledCompetencies} competencies · {row.advancedSignals} hard signals</small></p>
-                      )) : <p>No completed runs yet.</p>}
-                    </div>
-                    <div>
-                      <h3>8. Written rubric audit</h3>
-                      {assessmentQualityAnalytics.writtenAuditRows.length ? assessmentQualityAnalytics.writtenAuditRows.map((row) => (
-                        <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · {row.attempts} attempts · {row.noRubricHits} no-hit · {row.short} short · {row.average}/100</small></p>
-                      )) : <p>No written-response attempts yet.</p>}
-                    </div>
-                    <div>
-                      <h3>9. Route/persona fit</h3>
-                      {assessmentQualityAnalytics.routeFitRows.length ? assessmentQualityAnalytics.routeFitRows.map((row) => (
-                        <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.detail}</small></p>
-                      )) : <p>No completed route snapshots yet.</p>}
-                    </div>
-                    <div>
-                      <h3>10. Learning/report engagement</h3>
-                      {assessmentQualityAnalytics.reportEngagementRows.length ? assessmentQualityAnalytics.reportEngagementRows.map((row) => (
-                        <p key={row.area}><strong>{row.area}</strong><small>{row.count} click{row.count === 1 ? '' : 's'}</small></p>
-                      )) : <p>No report engagement clicks yet.</p>}
-                      <p><strong>Recommendation signals</strong><small>{assessmentQualityAnalytics.recommendationSignals} course/tool/coverage/continuation click{assessmentQualityAnalytics.recommendationSignals === 1 ? '' : 's'}</small></p>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="admin-card admin-wide telemetry-analysis-card">
-                  <div className="report-heading">
-                    <div>
-                      <p className="eyebrow">Human review gate</p>
-                      <h2>Analyze surveys and behavior before platform edits</h2>
-                    </div>
-                    <span>{pendingAgentDraftCount} pending drafts</span>
-                  </div>
-                  <p>
-                    Agents should use telemetry and survey trends to explain what should change, why it matters,
-                    and which users are affected. A human reviewer approves the next platform edit after seeing the evidence.
-                  </p>
-                  <div className="telemetry-grid">
-                    <div>
-                      <h3>Current signals</h3>
-                      {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
-                    </div>
-                    <div>
-                      <h3>Analysis questions</h3>
-                      {[
-                        'Which artifacts trigger zoom/open-file behavior and long answer time?',
-                        'Which questions look confusing because users revise often or answer slowly?',
-                        'Which competencies remain unsampled or low-confidence after 20 questions?',
-                        'Which survey comments point to unrealistic artifacts, unclear wording, or missing topics?',
-                      ].map((item) => <p key={item}>{item}</p>)}
-                    </div>
-                    <div>
-                      <h3>Human decision</h3>
-                      {[
-                        'Approve, reject, or rewrite each agent proposal.',
-                        'Version scored items so historical scores stay explainable.',
-                        'Review new artifacts for readability and relevance before release.',
-                        'Keep profile collection transparent and useful to the learner.',
-                      ].map((item) => <p key={item}>{item}</p>)}
-                    </div>
-                  </div>
-                </article>
-
-                <article className="admin-card admin-wide artifact-backlog">
-                  <span>Artifact production</span>
-                  <h2>Real-document replacement briefs</h2>
-                  <p>These briefs map every unique visual artifact to the first question that uses it, so realistic replacements can be generated externally and dropped into the same asset path.</p>
-                  <div className="admin-list artifact-brief-list">
-                    {artifactReplacementBriefs.map((artifact) => (
-                      <details key={artifact.src}>
-                        <summary><strong>{artifact.label}</strong><small>{artifact.questionId} · {artifact.src}</small></summary>
-                        <p>{artifact.description}</p>
-                      </details>
-                    ))}
-                  </div>
-                </article>
-
-                <article className="admin-card admin-wide">
-                  <span>Domain trend</span>
-                  <h2>Lowest average domains</h2>
-                  <div className="admin-domain-bars">
-                    {adminAnalytics.domainRows.map((row) => (
-                      <div key={row.domain}>
-                        <label>{row.domain} · {row.label}</label>
-                        <meter min="0" max="100" value={row.average} />
-                        <strong>{adminAnalytics.totalRuns ? `${row.average}/100` : 'No data'}</strong>
-                        <small>{row.evidence} question signal{row.evidence === 1 ? '' : 's'}</small>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>User groups</span>
-                  <h2>Cohort averages</h2>
-                  <div className="admin-list">
-                    {adminAnalytics.groupRows.length ? adminAnalytics.groupRows.map((row) => (
-                      <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 · latest {row.lastRun ? new Date(row.lastRun).toLocaleDateString() : 'n/a'}</small></p>
-                    )) : <p>No saved cohort data yet.</p>}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>Functions</span>
-                  <h2>Function analysis</h2>
-                  <div className="admin-list">
-                    {adminAnalytics.functionRows.length ? adminAnalytics.functionRows.map((row) => (
-                      <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 average</small></p>
-                    )) : <p>No function-specific premium runs yet.</p>}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>Executive roles</span>
-                  <h2>Role analysis</h2>
-                  <div className="admin-list">
-                    {adminAnalytics.executiveRows.length ? adminAnalytics.executiveRows.map((row) => (
-                      <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 average</small></p>
-                    )) : <p>No executive-role runs yet.</p>}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>Competencies</span>
-                  <h2>Priority gaps</h2>
-                  <div className="admin-list">
-                    {adminAnalytics.competencyRows.length ? adminAnalytics.competencyRows.map((row) => (
-                      <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{row.average}/100 · {row.evidence} evidence signals</small></p>
-                    )) : <p>No competency signal log yet.</p>}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>Difficulty calibration</span>
-                  <h2>Item difficulty behavior</h2>
-                  <div className="admin-list compact">
-                    {adminAnalytics.difficultyRows.map((row) => (
-                      <p key={row.label}><strong>{row.label}</strong><small>{row.count} signals · {row.count ? `${row.average}/100` : 'no data'}</small></p>
-                    ))}
-                  </div>
-                </article>
-
-                <article className="admin-card">
-                  <span>Formats</span>
-                  <h2>Question interaction mix</h2>
-                  <div className="admin-list compact">
-                    {adminAnalytics.interactionRows.length ? adminAnalytics.interactionRows.map((row) => (
-                      <p key={row.label}><strong>{row.label}</strong><small>{row.count} signals · {row.average}/100</small></p>
-                    )) : <p>No interaction data yet.</p>}
-                  </div>
-                </article>
-
-                <article className="admin-card admin-wide">
-                  <span>Recent trend</span>
-                  <h2>Latest assessment runs</h2>
-                  <div className="admin-run-grid">
-                    {adminAnalytics.recentRuns.length ? adminAnalytics.recentRuns.map((run) => (
-                      <div key={run.id}>
-                        <strong>{run.score}/100</strong>
-                        <span>{run.mode}</span>
-                        <p>{run.label}</p>
-                        <small>{run.date}</small>
-                      </div>
-                    )) : <p>No saved runs yet. Complete assessments to populate admin trends.</p>}
-                  </div>
-                </article>
-              </div>
-            </>
-          )}
-        </section>
-      )}
-
-      {step === 'lab' && (
-        <section className="lab-shell">
-          <div className="lab-top">
-            <button className="secondary" onClick={() => setStep('learningLabs')} type="button">Back to Labs</button>
-            <div>
-              <p className="eyebrow">Learn by doing</p>
-              <h1>{activeLab.title}</h1>
-              <p>{activeLab.brief}</p>
-            </div>
-            <div className="lab-meta">
-              <span>{activeLab.domain}</span>
-              <strong>{domains[activeLab.domain].name}</strong>
-              <small>{activeLab.format}</small>
-            </div>
-          </div>
-
-          <div className="lab-workbench">
-            <article className="lab-artifact">
-              <span>Practice artifact</span>
-              <h2>{activeLab.artifact.title}</h2>
-              <div className="lab-artifact-rows">
-                {activeLab.artifact.rows.map((row) => (
-                  <p key={row}>{row}</p>
-                ))}
-              </div>
-              {activeLab.artifact.note && <strong>{activeLab.artifact.note}</strong>}
-            </article>
-
-            <article className="lab-task">
-              {activeLab.kind === 'prompt' && (
-                <>
-                  <span>Build the prompt</span>
-                  <h2>{activeLab.prompt}</h2>
-                  <textarea
-                    value={labDraft}
-                    onChange={(event) => {
-                      setLabDraft(event.target.value);
-                      setLabFeedbackVisible(false);
-                    }}
-                    placeholder="Example: Act as a customer support assistant. Use only the ticket facts and refund policy below..."
-                  />
-                  <button
-                    className="secondary"
-                    onClick={() => {
-                      setLabDraft(modelPromptRepairAnswer);
-                      setLabFeedbackVisible(false);
-                    }}
-                    type="button"
-                  >
-                    Show Example Prompt
-                  </button>
-                  <div className="lab-checklist">
-                    {(activeLab.checklist ?? []).map((item) => (
-                      <span className={getLabKeywordHit(item, labDraft) ? 'hit' : ''} key={item}>{item}</span>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {(activeLab.kind === 'proof' || activeLab.kind === 'media') && (
-                <>
-                  <span>Select checks</span>
-                  <h2>Which actions belong in your verification routine?</h2>
-                  <div className="lab-choice-list">
-                    {(activeLab.choices ?? []).map((choice) => (
-                      <button
-                        className={labSelections.includes(choice.id) ? 'selected' : ''}
-                        key={choice.id}
-                        onClick={() => toggleLabSelection(choice.id)}
-                        type="button"
-                      >
-                        {choice.label}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {activeLab.kind === 'next' && (
-                <>
-                  <span>Choose next action</span>
-                  <h2>What would you do first?</h2>
-                  <div className="lab-choice-list">
-                    {(activeLab.choices ?? []).map((choice) => (
-                      <button
-                        className={labSelections.includes(choice.id) ? 'selected' : ''}
-                        key={choice.id}
-                        onClick={() => toggleLabSelection(choice.id, true)}
-                        type="button"
-                      >
-                        {choice.label}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {activeLab.kind === 'workflow' && (
-                <>
-                  <span>Order the workflow</span>
-                  <h2>Move the steps into the safest launch sequence.</h2>
-                  <div className="lab-order-list">
-                    {labOrder.map((itemId, index) => {
-                      const item = activeLab.items?.find((labItem) => labItem.id === itemId);
-                      return (
-                        <div key={itemId}>
-                          <strong>{index + 1}</strong>
-                          <p>{item?.label}</p>
-                          <button onClick={() => moveLabOrder(index, -1)} disabled={index === 0} type="button">Up</button>
-                          <button onClick={() => moveLabOrder(index, 1)} disabled={index === labOrder.length - 1} type="button">Down</button>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-
-              {(activeLab.kind === 'trust' || activeLab.kind === 'ownership') && (
-                <>
-                  <span>Match controls</span>
-                  <h2>{activeLab.kind === 'trust' ? 'Which control fits each risk?' : 'Who should own each step?'}</h2>
-                  <div className="lab-match-list">
-                    {(activeLab.items ?? []).map((item) => (
-                      <label key={item.id}>
-                        <span>{item.label}</span>
-                        <select
-                          value={labMatches[item.id] ?? ''}
-                          onChange={(event) => {
-                            setLabMatches((matches) => ({ ...matches, [item.id]: event.target.value }));
-                            setLabFeedbackVisible(false);
-                          }}
-                        >
-                          <option value="">Choose</option>
-                          {(activeLab.matchChoices ?? []).map((choice) => (
-                            <option key={choice} value={choice}>{choice}</option>
-                          ))}
-                        </select>
-                      </label>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              <div className="lab-actions">
-                <button className="primary" disabled={!labCanSubmit} onClick={() => setLabFeedbackVisible(true)} type="button">Check My Work</button>
-                <button className="secondary" onClick={() => startAssessment('free')} type="button">Start Full Assessment</button>
-              </div>
-            </article>
-
-            <aside className="lab-feedback">
-              <span>Lab feedback</span>
-              {labFeedbackVisible ? (
-                <>
-                  {activeLab.kind === 'prompt' ? <><strong>{labEvaluation.strengths.length}/{(activeLab.checklist ?? []).length} checklist cues found</strong><p>English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.</p></> : <strong>{labEvaluation.score}/100</strong>}
-                  <p>{labEvaluation.summary}</p>
-                  <div>
-                    <h3>What worked</h3>
-                    {(labEvaluation.strengths.length ? labEvaluation.strengths : ['No strong evidence yet. Try adding one concrete check or control.']).map((item) => (
-                      <p key={item}>{item}</p>
-                    ))}
-                  </div>
-                  <div>
-                    <h3>Improve next</h3>
-                    {(labEvaluation.misses.length ? labEvaluation.misses : ['You covered the key requirements for this lab.']).map((item) => (
-                      <p key={item}>{item}</p>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <p>Complete the lab and check your work. Feedback will explain what you handled well and what to improve before the full assessment.</p>
-              )}
-            </aside>
-          </div>
-        </section>
-      )}
-
-      {(step === 'news' || step === 'learningLabs') && browserStateReady && (
-        <WatchLabs
-          key={authProfile?.id ?? localProfileId}
-          stories={trendFeed}
-          language={appLanguage}
-          ownerId={authProfile?.id ?? localProfileId}
-          view={step === 'news' ? 'watch' : 'labs'}
-          onViewChange={(view) => setStep(view === 'watch' ? 'news' : 'learningLabs')}
-          onLegacyLabs={() => showHomeSection('labs')}
-        />
-      )}
-
-      {step === 'onboarding' && (
-        <section className="workspace">
-          <div className="workspace-header">
-            <p className="eyebrow">Free assessment</p>
-            <h1>Start with a broad profile.</h1>
-            <p>No enterprise setup. Choose the option that best describes you today.</p>
-          </div>
-          <div className="audience-grid" role="radiogroup" aria-label="Audience type">
-            {(Object.keys(audienceLabels) as Audience[]).map((id) => (
-              <button
-                key={id}
-                className={audience === id ? 'audience-card selected' : 'audience-card'}
-                onClick={() => setAudience(id)}
-                role="radio"
-                aria-checked={audience === id}
-              >
-                <strong>{audienceLabels[id]}</strong>
-                <span>{id === 'team' ? 'Benchmark readiness with a group lens.' : 'Discover your individual AI readiness.'}</span>
-              </button>
-            ))}
-          </div>
-          <article className="profile-builder-card">
-            <div>
-              <p className="eyebrow">Profile builder and signals</p>
-              <h2>Profile is built before, during, and after the assessment.</h2>
-              <p>
-                Before the test, New Horizon asks optional role-aware questions about tools, workflows, peer-tool awareness, risk concerns, and learning interests.
-                During the test, every item adds evidence signals for domains, competencies, skills, difficulty, item type, and knowing-vs-doing behavior.
-              </p>
-            </div>
-            <div className="profile-builder-steps">
-              <span>Before: survey tags</span>
-              <span>During: answer signals</span>
-              <span>After: confidence gaps</span>
-              <span>Next: learning personalization</span>
-            </div>
-          </article>
-          <div className="workspace-actions">
-            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={() => openProfileSurvey('free')}>Build Profile and Begin 12-Question Assessment</button>
-          </div>
-        </section>
-      )}
-
-      {step === 'premiumOnboarding' && (
-        <section className="workspace">
-          <div className="workspace-header">
-            <p className="eyebrow">Premium diagnostic</p>
-            <h1>Add context for a deeper profile.</h1>
-            <p>Premium uses the same AILF spine, then adapts interpretation by function and industry.</p>
-          </div>
-          <div className="setup-columns">
-            <div>
-              <h2>Function</h2>
-              <div className="choice-grid" role="radiogroup" aria-label="Function track">
-                {(Object.keys(functionLabels) as FunctionTrack[]).map((id) => (
-                  <button
-                    key={id}
-                    className={functionTrack === id ? 'choice-card selected' : 'choice-card'}
-                    onClick={() => setFunctionTrack(id)}
-                    role="radio"
-                    aria-checked={functionTrack === id}
-                  >
-                    {functionLabels[id]}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2>Industry</h2>
-              <div className="choice-grid" role="radiogroup" aria-label="Industry track">
-                {(Object.keys(industryLabels) as IndustryTrack[]).map((id) => (
-                  <button
-                    key={id}
-                    className={industryTrack === id ? 'choice-card selected' : 'choice-card'}
-                    onClick={() => setIndustryTrack(id)}
-                    role="radio"
-                    aria-checked={industryTrack === id}
-                  >
-                    {industryLabels[id]}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2>Role context</h2>
-              <div className="choice-grid executive-grid" role="radiogroup" aria-label="Role context">
-                {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
-                  <button
-                    key={id}
-                    className={executiveRole === id ? 'choice-card selected' : 'choice-card'}
-                    onClick={() => setExecutiveRole(id)}
-                    role="radio"
-                    aria-checked={executiveRole === id}
-                  >
-                    {executiveLabels[id]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="premium-summary">
-            <strong>Premium pilot includes</strong>
-            <span>20 adaptive questions, function/industry/role context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
-          </div>
-          <article className="profile-builder-card compact">
-            <div>
-              <p className="eyebrow">Profile builder</p>
-              <h2>Premium profile signals</h2>
-              <p>
-                Before the diagnostic starts, New Horizon asks about current tools, similar-role tools, workflows, risks, and learning interests.
-                Those tags personalize item routing, artifacts, tool suggestions, and the learning path.
-              </p>
-            </div>
-            <div className="profile-builder-steps">
-              <span>{functionLabels[functionTrack]}</span>
-              <span>{industryLabels[industryTrack]}</span>
-              <span>{executiveLabels[executiveRole]}</span>
-              <span>Tool awareness</span>
-              <span>Learning intent</span>
-            </div>
-          </article>
-          <div className="workspace-actions">
-            <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-            <button className="primary" onClick={() => openProfileSurvey('premium')}>Build Profile and Begin Premium Diagnostic</button>
-          </div>
-        </section>
-      )}
-
-      {step === 'assessment' && current && (
-        <section className="assessment-shell">
-          <div className="assessment-workbench">
-            <article className="question-card task-card" data-question-id={current.id}>
-              <div className="task-toolbar">
-                <div>
-                  <p className="eyebrow">{activeConfig.label}</p>
-                  <h1>{domains[current.domain].short}</h1>
-                  {continuationFocus && <p className="context-line">Continuation: {continuationFocus.label}</p>}
-                </div>
-                <div className="progress-block">
-                  <span>
-                    Question {progress} of {activeConfig.totalQuestions}
-                    <HelpBubble label="Telemetry help: progress">
-                      Progress is logged so the system can tell whether users complete, abandon, or continue after required milestones.
-                    </HelpBubble>
-                  </span>
-                  <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
-                  <div className="question-language-toggle" aria-label="Question language">
-                    <small>Question language</small>
-                    <div>
-                      <button
-                        type="button"
-                        className={questionLanguage === 'en' ? 'selected' : ''}
-                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'en' })}
-                        aria-pressed={questionLanguage === 'en'}
-                      >
-                        EN
-                      </button>
-                      <button
-                        type="button"
-                        className={questionLanguage === 'th' ? 'selected' : ''}
-                        onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'th' })}
-                        aria-pressed={questionLanguage === 'th'}
-                        disabled={!currentThaiAvailable}
-                        aria-label={currentThaiAvailable ? 'Show question in Thai' : 'Thai translation unavailable for this question'}
-                      >
-                        TH
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {assessmentDisplaySettings.showQuestionMeta && <div className="question-meta">
-                <span>
-                  {current.domain}
-                  <HelpBubble label="Telemetry help: domain">
-                    Domain identifies which D1-D6 capability area this question contributes evidence to.
-                  </HelpBubble>
-                </span>
-                <span className={`difficulty-pill ${current.difficulty}`}>
-                  Difficulty: {difficultyLabels[current.difficulty]}
-                  <HelpBubble label="Telemetry help: difficulty">
-                    Difficulty is stored with the answer so harder correct or partially correct work can count differently from easy work.
-                  </HelpBubble>
-                </span>
-                <span>
-                  {current.type}
-                  <HelpBubble label="Telemetry help: item type">
-                    Item type shows whether this is a report review, media check, fraud task, scenario, or similar evidence format.
-                  </HelpBubble>
-                </span>
-                <span>
-                  {current.interaction ?? 'single'}
-                  <HelpBubble label="Telemetry help: interaction format">
-                    Interaction format helps compare single choice, multi-select, matching, ranking, written, and multi-part questions fairly.
-                  </HelpBubble>
-                </span>
-              </div>}
-              {assessmentDisplaySettings.showTelemetry && <div className="live-telemetry-strip" aria-label="Live telemetry help">
-                <span>
-                  Time on question
-                  <HelpBubble label="Telemetry help: time on question">
-                    Time is used to spot confusing wording, hard-to-read artifacts, and questions that need calibration review.
-                  </HelpBubble>
-                </span>
-                <span>
-                  Answer interactions
-                  <HelpBubble label="Telemetry help: answer interactions">
-                    Clicks, selections, revisions, and text edits help estimate hesitation and whether the question format is clear.
-                  </HelpBubble>
-                </span>
-                <span>
-                  Artifact use
-                  <HelpBubble label="Telemetry help: artifact use">
-                    Opening, zooming, or launching artifacts flags which screenshots, workflows, or documents may need larger or clearer versions.
-                  </HelpBubble>
-                </span>
-              </div>}
-              {assessmentDisplaySettings.showFocus && <div className="question-focus-strip">
-                <span>{difficultyLabels[current.difficulty]} task</span>
-                <strong>{getQuestionFocus(current)}</strong>
-                <small>{difficultyDescriptions[current.difficulty]}</small>
-              </div>}
-              {assessmentDisplaySettings.showScoredEvidence && <details className="measure-details">
-                <summary>
-                  <span>Scored evidence</span>
-                  <strong>
-                    {getEvidenceMode(current)} · {currentMeasures.map((measure) => measure.domain).join(' / ')}
-                    <HelpBubble label="Telemetry help: scored evidence">
-                      Scored evidence records whether the item mostly tests knowing, doing, or a hybrid task, then maps it to competencies.
-                    </HelpBubble>
-                  </strong>
-                </summary>
-                <div className="measure-grid">
-                  {currentMeasures.map((measure) => (
-                    <div key={measure.id}>
-                      <span>{measure.domain}</span>
-                      <strong>{measure.label}</strong>
-                      <p>{measure.skills.slice(0, 3).join(', ')}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="skill-chip-row" aria-label="Scored skill tags">
-                  {currentSkills.map((skill) => <span key={skill}>{skill}</span>)}
-                </div>
-              </details>}
-              {useRelianceStage && current.type === 'reliance-decision' && (
-                <div className="reliance-stage">
-                  <div>
-                    {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                    {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
-                    {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
-                  </div>
-                  <div className="reliance-prompt">
-                    <span>Make the call</span>
-                    <h2>{shownQuestion.prompt}</h2>
-                    <div className="reliance-options" aria-label="Reliance decision">
-                      {displayedOptions.map((option) => {
-                        const choice = getRelianceChoice(option);
-                        return (
-                          <button key={option.id} className={`reliance-choice ${option.id}`} onClick={() => chooseOption(option)}>
-                            <span>{choice.label}</span>
-                            <strong>{choice.detail}</strong>
-                          </button>
-                        );
-                      })}
-                    </div>
-                    <p>{shownQuestion.context}</p>
-                  </div>
-                </div>
-              )}
-              {!useRelianceStage && (
-                <>
-                  <div className="task-brief">
-                    <span>Task brief</span>
-                    <p>{getTaskInstruction(current)}</p>
-                  </div>
-                  <div className="scenario-panel">
-                    <span>Scenario</span>
-                    <p className="context">{shownQuestion.context}</p>
-                    {(currentDisplayStimulus || shownQuestion.visualStimulus || currentDisplayVisualStimulus) && (
-                      <div className="scenario-artifact" aria-label="Evidence embedded in the question">
-                        {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
-                        {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
-                        {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
-                      </div>
-                    )}
-                    <h2>{shownQuestion.prompt}</h2>
-                  </div>
-                </>
-              )}
-              {(current.interaction ?? 'single') === 'single' && !useRelianceStage && (
-                <div className="options">
-                  {displayedOptions.map((option, index) => (
-                    <button key={option.id} onClick={() => chooseOption(option)}>
-                      <span>{optionDisplayLetter(index)}</span>
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-              {current.interaction === 'multi' && (
-                <div className="interaction-panel">
-                  <div className="options multi-options">
-                    {displayedOptions.map((option, index) => (
-                      <button
-                        key={option.id}
-                        className={multiSelected.includes(option.id) ? 'selected' : ''}
-                        onClick={() => toggleMultiOption(option.id)}
-                        aria-pressed={multiSelected.includes(option.id)}
-                      >
-                        <span>{optionDisplayLetter(index)}</span>
-                        {option.label}
-                      </button>
-                    ))}
-                  </div>
-                  <button className="primary submit-answer" onClick={submitMultiSelect}>Submit Selected Answers</button>
-                </div>
-              )}
-              {current.interaction === 'rank' && (
-                <div className="interaction-panel">
-                  <div className="rank-list" aria-label="Drag-order response">
-                    {rankOrder.map((itemId, index) => {
-                      const item = shownQuestion.rankItems?.find((rankItem) => rankItem.id === itemId);
-                      return (
-                        <div
-                          className="rank-item"
-                          draggable
-                          key={itemId}
-                          onDragStart={() => setDraggedIndex(index)}
-                          onDragOver={(event) => event.preventDefault()}
-                          onDrop={() => {
-                            if (draggedIndex !== null) moveRankItem(draggedIndex, index);
-                          }}
-                        >
-                          <span>{index + 1}</span>
-                          <strong>{item?.label}</strong>
-                          <div>
-                            <button onClick={() => moveRankItem(index, index - 1)} aria-label={`Move ${item?.label} up`}>Up</button>
-                            <button onClick={() => moveRankItem(index, index + 1)} aria-label={`Move ${item?.label} down`}>Down</button>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <button className="primary submit-answer" onClick={submitRankOrder}>Submit Order</button>
-                </div>
-              )}
-              {current.interaction === 'match' && (
-                <div className="interaction-panel">
-                  <div className="match-list">
-                    {displayedMatchPairs.map((pair) => (
-                      <label className="match-row" key={pair.id}>
-                        <span>{pair.left}</span>
-                        <select
-                          value={matchSelections[pair.id] ?? ''}
-                          onChange={(event) => chooseMatch(pair.id, event.target.value)}
-                        >
-                          <option value="">Choose match</option>
-                          {(displayedMatchChoices[pair.id] ?? pair.choices).map((choice) => (
-                            <option key={choice} value={choice}>{choice}</option>
-                          ))}
-                        </select>
-                      </label>
-                    ))}
-                  </div>
-                  <button className="primary submit-answer" onClick={submitMatches}>Submit Matches</button>
-                </div>
-              )}
-              {current.interaction === 'parts' && (
-                <div className="interaction-panel">
-                  <div className="part-list">
-                    {displayedParts.map((part, partIndex) => (
-                      <section className="part-card" key={part.id}>
-                        <div className="part-header">
-                          <span>Part {partIndex + 1}</span>
-                          <strong>{part.domain} · {domains[part.domain].short}</strong>
-                        </div>
-                        <p>{part.prompt}</p>
-                        <div className="options part-options">
-                          {(displayedPartOptions[part.id] ?? part.options).map((option, optionIndex) => (
-                            <button
-                              key={option.id}
-                              className={partSelections[part.id] === option.id ? 'selected' : ''}
-                              onClick={() => choosePartOption(part.id, option.id)}
-                              aria-pressed={partSelections[part.id] === option.id}
-                            >
-                              <span>{optionDisplayLetter(optionIndex)}</span>
-                              {option.label}
-                            </button>
-                          ))}
-                        </div>
-                      </section>
-                    ))}
-                  </div>
-                  <button
-                    className="primary submit-answer"
-                    onClick={submitPartAnswers}
-                    disabled={(current.parts ?? []).some((part) => !partSelections[part.id])}
-                  >
-                    Submit Mini-Parts
-                  </button>
-                </div>
-              )}
-              {current.interaction === 'text' && (
-                <div className="interaction-panel">
-                  <label className="written-response">
-                    <span>Your written answer</span>
-                    <textarea
-                      value={textResponse}
-                      onChange={(event) => updateTextResponse(event.target.value)}
-                      placeholder="Write 3-5 sentences explaining the evidence, action, and customer response you would use."
-                    />
-                  </label>
-                  <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>
-                </div>
-              )}
-              {renderQuestionFeedback(current)}
-            </article>
-            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
-              <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
-                <span>
-                  Current item difficulty
-                  <HelpBubble label="Telemetry help: current item difficulty">
-                    Current difficulty is the seeded challenge level for this item before large-scale pilot calibration.
-                  </HelpBubble>
-                </span>
-                <strong>{difficultyLabels[current.difficulty]}</strong>
-                <p>{difficultyDescriptions[current.difficulty]}</p>
-              </div>
-              <div className="adaptive-card highlight">
-                <span>
-                  Ability estimate theta
-                  <HelpBubble label="Telemetry help: theta">
-                    Theta is a pilot ability estimate from prior answers. It helps choose harder, easier, or coverage-focused next questions.
-                  </HelpBubble>
-                </span>
-                <strong>{formatAbility(adaptiveReadout.theta)}</strong>
-                <p>Pilot estimate from {adaptiveReadout.answeredCount} answered items.</p>
-              </div>
-              <div className="indicator-grid">
-                <div>
-                  <span>Target level<HelpBubble label="Telemetry help: target level">Target level is the next difficulty pressure after the previous answer and coverage needs.</HelpBubble></span>
-                  <strong>{adaptiveReadout.targetDifficulty}</strong>
-                </div>
-                <div>
-                  <span>Item b<HelpBubble label="Telemetry help: item difficulty b">Item b is the seeded psychometric difficulty value used to compare the item with the current ability estimate.</HelpBubble></span>
-                  <strong>{formatAbility(adaptiveReadout.b)}</strong>
-                </div>
-                <div>
-                  <span>Item a<HelpBubble label="Telemetry help: item discrimination a">Item a estimates how strongly this item should separate lower and higher readiness users.</HelpBubble></span>
-                  <strong>{adaptiveReadout.a.toFixed(2)}</strong>
-                </div>
-                <div>
-                  <span>Guess c<HelpBubble label="Telemetry help: guessing c">Guess c is the estimated chance someone could get credit without the underlying skill, lower for richer formats.</HelpBubble></span>
-                  <strong>{adaptiveReadout.c.toFixed(2)}</strong>
-                </div>
-                <div>
-                  <span>Info<HelpBubble label="Telemetry help: item information">Information estimates how useful this item is for reducing uncertainty at the current ability level.</HelpBubble></span>
-                  <strong>{adaptiveReadout.information}</strong>
-                </div>
-                <div>
-                  <span>SEM<HelpBubble label="Telemetry help: standard error">SEM is standard error of measurement. Lower means the current estimate is becoming more stable.</HelpBubble></span>
-                  <strong>{adaptiveReadout.sem}</strong>
-                </div>
-              </div>
-              <div className="adaptive-card">
-                <span>
-                  Why this question?
-                  <HelpBubble label="Telemetry help: routing reason">
-                    Routing combines prior score, difficulty movement, domain coverage, and profile-priority competencies.
-                  </HelpBubble>
-                </span>
-                <p>{adaptiveReadout.adaptationReason}</p>
-              </div>
-              <div className="adaptive-card">
-                <span>
-                  Coverage pressure
-                  <HelpBubble label="Telemetry help: coverage confidence">
-                    Coverage confidence estimates whether enough relevant competencies have been tested to trust the result.
-                  </HelpBubble>
-                </span>
-                <p>Next target: {adaptiveReadout.targetDomain} · {domains[adaptiveReadout.targetDomain].short}. Confidence {adaptiveReadout.confidence}%.</p>
-              </div>
-              <div className="domain-meter-list">
-                {(Object.keys(domains) as DomainId[]).map((domain) => {
-                  const answeredInDomain = getAnsweredDomainCounts(answers)[domain].count;
-                  return (
-                    <div key={domain}>
-                      <span>{domain}</span>
-                      <div><i style={{ width: `${Math.min(100, answeredInDomain * 34)}%`, background: domains[domain].color }} /></div>
-                      <strong>{answeredInDomain}</strong>
-                    </div>
-                  );
-                })}
-              </div>
-            </aside>}
-          </div>
-        </section>
-      )}
-
-      {step === 'feedback' && lastAnswer && (
-        <section className="assessment-shell">
-          <div className="feedback-workbench">
-            <article className="feedback-card">
-              <p className="eyebrow">Answer review</p>
-              {assessmentDisplaySettings.showAnswerReveal ? <>
-                <h1>{lastAnswer.option.score}/100</h1>
-                <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
-              </> : <p className="result-level">Answer recorded. Continue when you are ready.</p>}
-              {assessmentDisplaySettings.showAnswerReveal && <div className="score-explanation-panel" aria-label="Score explanation">
-                <span>Score explanation</span>
-                <p>{getRawScoreMethod(lastAnswer)}</p>
-                {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
-                <p><strong>Practice cue</strong> {getAnswerPracticeCue(lastAnswer)}</p>
-              </div>}
-              {assessmentDisplaySettings.showAnswerReveal && <div className="feedback-grid">
-                <div>
-                  <span>Your answer</span>
-                  <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).label}</p>
-                </div>
-                <div>
-                  <span>Expected answer</span>
-                  <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage, showDraftThai))}</p>
-                </div>
-              </div>}
-              {assessmentDisplaySettings.showAnswerReveal && <div className="rubric-panel">
-                <span>Rubric and calibration</span>
-                <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
-                <p>{localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).feedback}</p>
-              </div>}
-              {assessmentDisplaySettings.showAnswerReveal && assessmentDisplaySettings.showScoredEvidence && <div className="rubric-panel">
-                <span>Measured competencies</span>
-                <div className="measure-grid compact">
-                  {getQuestionMeasures(lastAnswer.question).map((measure) => (
-                    <div key={measure.id}>
-                      <span>{measure.domain}</span>
-                      <strong>{measure.label}</strong>
-                      <p>{measure.skills.slice(0, 3).join(', ')}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>}
-              {assessmentDisplaySettings.showAnswerReveal && lastAnswer.question.rubricCriteria && (
-                <div className="criterion-list">
-                  {lastAnswer.question.rubricCriteria.map((criterion) => {
-                    const hit = lastAnswer.rubricHits?.some((rubricHit) => rubricHit.id === criterion.id);
-                    return (
-                      <div key={criterion.id} className={hit ? 'hit' : ''}>
-                        <span>{hit ? 'Detected' : 'Missing'}</span>
-                        <strong>{criterion.label}</strong>
-                        <small>{criterion.points} pts</small>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-              {assessmentDisplaySettings.showAnswerReveal && renderQuestionFeedback(lastAnswer.question, 'reveal')}
-              {!pendingQuestion && showContinuationPanel && (
-                <div className={`continue-callout ${continuationRecommendation.urgency}`}>
-                  <p className="eyebrow">{continuationRecommendation.kicker}</p>
-                  <h2>{continuationRecommendation.headline}</h2>
-                  <p>{continuationRecommendation.summary}</p>
-                  <div className="continue-reasons">
-                    {continuationRecommendation.reasons.map((reason) => <span key={reason}>{reason}</span>)}
-                  </div>
-                  {continuationRecommendation.targetLabels.length > 0 && (
-                    <div className="continue-targets">
-                      <strong>Next focus</strong>
-                      {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
-                    </div>
-                  )}
-                  <div className="continue-primary-actions">
-                    <button
-                      type="button"
-                      className="primary"
-                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
-                    >
-                      Continue with {continuationRecommendation.questionCount} targeted questions
-                    </button>
-                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
-                  </div>
-                </div>
-              )}
-              {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
-                <div className="continue-callout recommended">
-                  <p className="eyebrow">Evidence completion route</p>
-                  <h2>Keep going until relevant competencies are high-confidence</h2>
-                  <p>{evidenceCompletion.summary}</p>
-                  <div className="continue-reasons">
-                    <span>{evidenceCompletion.unsampled} relevant competencies still unsampled</span>
-                    <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
-                    <span>Maximum cap: {Math.min(60, allAssessmentItems.length)} total questions</span>
-                  </div>
-                  <div className="continue-targets">
-                    <strong>Next focus</strong>
-                    {evidenceCompletion.targets.slice(0, 5).map((competency) => <span key={competency.id}>{competency.label}</span>)}
-                  </div>
-                  <div className="continue-primary-actions">
-                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                      Add {evidenceCompletion.questionCount} evidence questions
-                    </button>
-                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
-                  </div>
-                </div>
-              )}
-              {/* Always rendered: the adaptive panel below is hidden unless psychometrics are enabled. */}
-              <button className="primary submit-answer" onClick={continueAfterFeedback}>
-                {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
-              </button>
-            </article>
-            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Next adaptive step">
-              <div className={`movement-card ${difficultyMovement.tone}`}>
-                <span>{difficultyMovement.label}</span>
-                <p>{difficultyMovement.detail}</p>
-              </div>
-              <div className="adaptive-card highlight">
-                <span>Updated theta</span>
-                <strong>{formatAbility(estimateTheta(answers))}</strong>
-                <p>Updated after {answers.length} answered items.</p>
-              </div>
-              <div className="adaptive-card">
-                <span>Next step</span>
-                <p>
-                  {pendingQuestion
-                    ? `Next item: ${pendingQuestion.domain} · ${domains[pendingQuestion.domain].short} · ${pendingQuestion.difficulty} · ${pendingQuestion.type}.`
-                    : 'Assessment complete. Results are ready.'}
-                </p>
-                {pendingQuestion && (
-                  <div className="difficulty-compare">
-                    <span>{lastAnswer.question.domain} · {lastAnswer.question.difficulty}</span>
-                    <b aria-hidden="true">→</b>
-                    <span>{pendingQuestion.domain} · {pendingQuestion.difficulty}</span>
-                  </div>
-                )}
-              </div>
-              {!pendingQuestion && showContinuationPanel && (
-                <div className="adaptive-card continuation-inline">
-                  <span>{continuationRecommendation.confidenceLabel}</span>
-                  <strong>{results.confidence}%</strong>
-                  <p>
-                    {continuationRecommendation.reasons[0]} The recommended route adds {continuationRecommendation.questionCount} targeted questions.
-                  </p>
-                  <div className="continuation-actions">
-                    <button
-                      type="button"
-                      className="primary"
-                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
-                    >
-                      Continue recommended route
-                    </button>
-                    <button
-                      type="button"
-                      className="secondary dark"
-                      disabled={!continuationTargets.priorityGapIds.length}
-                      onClick={() => continueAssessment({
-                        kind: 'priority',
-                        label: 'Role-priority gap route',
-                        targetCompetencyIds: continuationTargets.priorityGapIds,
-                      }, 8)}
-                    >
-                      Keep going: role gaps
-                    </button>
-                    <button
-                      type="button"
-                      className="secondary dark"
-                      onClick={() => continueAssessment({
-                        kind: 'domain',
-                        label: `${selectedRadarDomain} deep dive`,
-                        targetDomain: selectedRadarDomain,
-                        targetCompetencyIds: continuationTargets.domainIds,
-                      })}
-                    >
-                      Keep going: {selectedRadarDomain} deep dive
-                    </button>
-                  </div>
-                  <div className="continuation-summary">
-                    <span>{continuationTargets.confidenceIds.length} confidence targets</span>
-                    <span>{continuationTargets.priorityGapIds.length} role-priority gaps</span>
-                    <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
-                  </div>
-                </div>
-              )}
-              {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
-                <div className="adaptive-card continuation-inline">
-                  <span>Evidence completion</span>
-                  <strong>{results.confidence}%</strong>
-                  <p>
-                    {evidenceCompletion.summary} Add {evidenceCompletion.questionCount} evidence questions to improve coverage.
-                  </p>
-                  <div className="continuation-actions">
-                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                      Keep going
-                    </button>
-                  </div>
-                </div>
-              )}
-            </aside>}
-          </div>
-        </section>
-      )}
-
-      {step === 'results' && (
-        <section className="results-shell">
-          <div className="results-hero">
-            <div>
-              <p className="eyebrow">{mode === 'executive' ? 'Premium leadership diagnostic' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
-              <h1>{results.overall}</h1>
-              <p className="result-level">{results.level} AI readiness</p>
-              <p>
-                Based on {answers.length} {mode === 'practice' ? 'practice activity' : 'adaptive responses'} for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase()}.
-                Evidence confidence is pilot-grade: {results.confidence}%.
-              </p>
-              <p className="context-line">{getScoreBandDescription(results.overall, results.level)}</p>
-              {mode === 'premium' && (
-                <p className="context-line">
-                  Context: {functionLabels[functionTrack]} in {industryLabels[industryTrack].toLowerCase()}.
-                </p>
-              )}
-              {mode === 'executive' && (
-                <p className="context-line">
-                  Context: {executiveLabels[executiveRole]} profile, weighted toward D5 strategy, D4 governance, and D6 change leadership.
-                </p>
-              )}
-            </div>
-            <RadarChart
-              scores={results.domainScores}
-              benchmarks={radarProfiles}
-              assessedDomains={assessedDomains}
-              selectedDomain={selectedRadarDomain}
-              onSelectDomain={setSelectedRadarDomain}
-            />
-          </div>
-          <div className="report-tabs" role="tablist" aria-label="Assessment report sections">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={reportTab === 'report'}
-              className={reportTab === 'report' ? 'selected' : ''}
-              onClick={() => setReportTab('report')}
-            >
-              Summary
-            </button>
-            {paidReport && reportAccessSettings.paid.questionAnalysis && (<button
-              type="button"
-              role="tab"
-              aria-selected={reportTab === 'analysis'}
-              className={reportTab === 'analysis' ? 'selected' : ''}
-              onClick={() => setReportTab('analysis')}
-            >
-              Question review
-            </button>)}
-          </div>
-          {!paidReport && <article className="result-card wide report-locked-card"><p className="eyebrow">More insight available</p><h2>Unlock the detailed assessment report</h2><p>Your basic report includes your score and practical next steps. Detailed question analysis, benchmarks, and advanced recommendations can be enabled for paid users by the administrator.</p></article>}
-          <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'} ${paidReport ? 'plan-paid' : 'plan-free'} ${paidReport && reportAccessSettings.paid.questionAnalysis ? 'report-access-analysis' : 'report-access-no-analysis'}`}>
-            <article className="result-card wide comparison-note report-primary report-order-summary">
-              <h2>Score interpretation</h2>
-              <div className="evidence-grid">
-                <p><strong>Your score</strong> A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.</p>
-                <p><strong>Group average</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
-                <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
-              </div>
-            </article>
-            <article className="result-card wide score-calculation-card analysis-primary">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Score calculation</p>
-                  <h2>How this result was derived</h2>
-                </div>
-                <span>{answers.length} answered item{answers.length === 1 ? '' : 's'}</span>
-              </div>
-              <div className="calculation-summary-grid">
-                <p><strong>Question</strong> Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.</p>
-                <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
-                <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
-                <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
-                <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Domains with no sampled evidence are shown as Not assessed in the scorecard; the MVP formula still includes them as 0 until the route collects enough evidence, so the report should recommend continuation instead of treating the score as final. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
-                <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
-              </div>
-              <details className="calculation-details" open>
-                <summary>Question-level calculation</summary>
-                <div className="calculation-table">
-                  {questionScoreCalculations.map((row, index) => {
-                    const answer = answers[index];
-                    return (
-                      <div key={`${row.questionId}-${index}`}>
-                        <span>Q{index + 1}</span>
-                        <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
-                        <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
-                        <small>{row.calculation}</small>
-                        {answer && (
-                          <>
-                            <p><strong>Question</strong> {answer.question.prompt}</p>
-                            <p><strong>Your answer</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                            <p><strong>Expected evidence</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                            <p><strong>Why it scored this way</strong> {answer.option.feedback}</p>
-                          </>
-                        )}
-                        <p><strong>Measured</strong> {row.competencies}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </details>
-              <details className="calculation-details" open>
-                <summary>Domain roll-up</summary>
-                <div className="calculation-table domain-calculation-table">
-                  {domainScoreCalculations.map((row) => (
-                    <div key={row.domain}>
-                      <span>{row.domain}</span>
-                      <strong>{domains[row.domain].short}</strong>
-                      <b>{row.score}/100</b>
-                      <small>{row.calculation}</small>
-                      <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : 'No sampled evidence in this run.'}</p>
-                    </div>
-                  ))}
-                </div>
-              </details>
-              <details className="calculation-details">
-                <summary>Competency roll-up</summary>
-                <div className="calculation-table competency-calculation-table">
-                  {competencyScores.filter((competency) => competency.evidenceCount > 0).map((competency) => (
-                    <div key={competency.id}>
-                      <span>{competency.domain}</span>
-                      <strong>{competency.label}</strong>
-                      <b>{competency.score}/100</b>
-                      <small>{competency.evidenceCount} evidence · {competency.confidence} confidence</small>
-                      <p>Average readiness evidence from mapped question signals.</p>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            </article>
-            <article className="result-card wide did-you-know-report analysis-primary">
-              <div>
-                <p className="eyebrow">Did you know?</p>
-                <h2>{personalizedDidYouKnow.topic}</h2>
-                <p>{personalizedDidYouKnow.fact}</p>
-                <small>{personalizedDidYouKnow.whyItMatters}</small>
-              </div>
-              <div className="did-you-know-actions">
-                <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
-                <button className="secondary dark" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Improve personalization</button>
-              </div>
-            </article>
-            {showContinuationPanel && (
-              <article className={`result-card wide continuation-panel prominent report-primary report-order-continuation ${continuationRecommendation.urgency}`}>
-                <div>
-                  <p className="eyebrow">{continuationRecommendation.kicker}</p>
-                  <h2>{continuationRecommendation.headline}</h2>
-                  <p>{continuationRecommendation.summary}</p>
-                  <div className="continue-reasons">
-                    {continuationRecommendation.reasons.map((reason) => <span key={reason}>{reason}</span>)}
-                  </div>
-                </div>
-                <div className="continuation-decision">
-                  <strong>{continuationRecommendation.confidenceLabel}: {results.confidence}%</strong>
-                  <p>{continuationRecommendation.questionCount} targeted questions can improve the score estimate and competency evidence.</p>
-                  {continuationRecommendation.targetLabels.length > 0 && (
-                    <div className="continue-targets">
-                      {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
-                    </div>
-                  )}
-                  <div className="continuation-actions">
-                    <button
-                      type="button"
-                      className="primary"
-                      onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
-                    >
-                      Continue recommended route
-                    </button>
-                    <button
-                      type="button"
-                      className="secondary dark"
-                      onClick={() => continueAssessment({
-                        kind: 'domain',
-                        label: `${selectedRadarDomain} deep dive`,
-                        targetDomain: selectedRadarDomain,
-                        targetCompetencyIds: continuationTargets.domainIds,
-                      })}
-                    >
-                      Choose {selectedRadarDomain} deep dive
-                    </button>
-                  </div>
-                </div>
-                <div className="continuation-summary">
-                  <span>{continuationTargets.confidenceIds.length} confidence targets</span>
-                  <span>{continuationTargets.priorityGapIds.length} profile-priority gaps</span>
-                  <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
-                </div>
-              </article>
-            )}
-            {showEvidenceCompletionPanel && (
-              <article className="result-card wide continuation-panel prominent recommended report-primary report-order-continuation">
-                <div>
-                  <p className="eyebrow">Evidence completion</p>
-                  <h2>Continue beyond 20 until confidence is high</h2>
-                  <p>{evidenceCompletion.summary}</p>
-                  <div className="continue-reasons">
-                    <span>{evidenceCompletion.unsampled} relevant competencies unsampled</span>
-                    <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
-                    <span>{evidenceCompletion.remainingCapacity} question slots left before the safety cap</span>
-                  </div>
-                </div>
-                <div className="continuation-decision">
-                  <strong>Recommended if you want a fuller profile</strong>
-                  <p>The next batch targets planned and profile-priority competencies that still need repeated evidence.</p>
-                  <div className="continue-targets">
-                    {evidenceCompletion.targets.slice(0, 6).map((competency) => <span key={competency.id}>{competency.label}</span>)}
-                  </div>
-                  <div className="continuation-actions">
-                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                      Add {evidenceCompletion.questionCount} evidence questions
-                    </button>
-                  </div>
-                </div>
-                <div className="continuation-summary">
-                  <span>{coveragePlan.prioritySampled}/{coveragePlan.priorityTotal} priority sampled</span>
-                  <span>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal} planned sampled</span>
-                  <span>{coveragePlan.sampled}/24 total competencies sampled</span>
-                </div>
-              </article>
-            )}
-            <article className="result-card wide leaderboard-card analysis-primary">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Persona leaderboard</p>
-                  <h2>Top 10 · {cleanAverageLabel(scoreGroup.label)}</h2>
-                </div>
-                <span>{personaLeaderboard.length} ranked run{personaLeaderboard.length === 1 ? '' : 's'}</span>
-              </div>
-              <div className="leaderboard-list">
-                {personaLeaderboard.length ? personaLeaderboard.map((entry) => (
-                  <div key={entry.id} className={entry.id === loggedResultId ? 'current' : ''}>
-                    <strong>#{entry.rank}</strong>
-                    <span>{entry.displayName}</span>
-                    <b>{entry.overall}/100</b>
-                    <small>{new Date(entry.createdAt).toLocaleDateString()}</small>
-                  </div>
-                )) : <p>Your completed run will establish this persona leaderboard.</p>}
-              </div>
-              <p className="context-line">MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.</p>
-            </article>
-            <article className="result-card wide telemetry-analysis-card analysis-primary">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Telemetry and result analysis</p>
-                  <h2>What the assessment tracks and why</h2>
-                </div>
-                <span>Local MVP log</span>
-              </div>
-              <div className="telemetry-grid">
-                <div>
-                  <h3>Currently tracked</h3>
-                  {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
-                </div>
-                <div>
-                  <h3>Used for analysis</h3>
-                  {telemetryAnalysis.resultUse.map((item) => <p key={item}>{item}</p>)}
-                </div>
-                <div>
-                  <h3>Improve next</h3>
-                  {telemetryAnalysis.improvements.map((item) => <p key={item}>{item}</p>)}
-                </div>
-              </div>
-              <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
-            </article>
-            <article id="assessment-feedback-survey" className="result-card wide assessment-feedback-gate report-primary report-order-survey">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">30-second feedback</p>
-                  <h2>{detailedAnalysisUnlocked ? 'Thanks. Your detailed evidence is unlocked.' : 'Help improve the assessment and unlock your detailed evidence.'}</h2>
-                </div>
-                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Quick survey'}</span>
-              </div>
-              {!detailedAnalysisUnlocked ? (
-                <>
-                  <p>Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.</p>
-                  <div className="feedback-survey-grid">
-                    <label>Question clarity
-                      <select value={feedbackDraft.clarity} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, clarity: event.target.value as AssessmentFeedbackSurvey['clarity'] }))}>
-                        <option value="clear">Clear</option><option value="mixed">Some were unclear</option><option value="confusing">Confusing</option>
-                      </select>
-                    </label>
-                    <label>Difficulty
-                      <select value={feedbackDraft.difficultyFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, difficultyFit: event.target.value as AssessmentFeedbackSurvey['difficultyFit'] }))}>
-                        <option value="right">About right</option><option value="too-easy">Too easy</option><option value="too-hard">Too hard</option>
-                      </select>
-                    </label>
-                    <label>Artifacts
-                      <select value={feedbackDraft.artifactQuality} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, artifactQuality: event.target.value as AssessmentFeedbackSurvey['artifactQuality'] }))}>
-                        <option value="realistic">Realistic and relevant</option><option value="mixed">Mixed quality</option><option value="poor">Poor or irrelevant</option>
-                      </select>
-                    </label>
-                    <label>Assessment length
-                      <select value={feedbackDraft.lengthFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, lengthFit: event.target.value as AssessmentFeedbackSurvey['lengthFit'] }))}>
-                        <option value="right">About right</option><option value="short">Too short</option><option value="long">Too long</option>
-                      </select>
-                    </label>
-                  </div>
-                  <label className="written-response">Suggestions for improvement
-                    <textarea value={feedbackDraft.suggestions} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, suggestions: event.target.value }))} placeholder="Optional: name a confusing question, unrealistic artifact, or missing topic." />
-                  </label>
-                  <button className="primary" type="button" onClick={submitAssessmentFeedback}>Submit feedback and unlock analysis</button>
-                </>
-              ) : (
-                <>
-                  <p>Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.</p>
-                  <button className="secondary dark" type="button" onClick={() => setReportTab('analysis')}>Open detailed analysis</button>
-                </>
-              )}
-            </article>
-            <article className="result-card wide assessment-feedback-gate analysis-primary">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Question-level analysis</p>
-                  <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Feedback unlock required.'}</h2>
-                </div>
-                <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Locked'}</span>
-              </div>
-              {!detailedAnalysisUnlocked ? (
-                <>
-                  <p>Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.</p>
-                  <button className="primary" type="button" onClick={() => setReportTab('report')}>Go to feedback survey</button>
-                </>
-              ) : (
-                <div className="question-analysis-list">
-                  {answers.map((answer, index) => {
-                    const benchmark = questionBenchmarks[answer.question.id];
-                    return (
-                      <details key={`${answer.question.id}-${index}`}>
-                        <summary>
-                          <span>{index + 1}</span>
-                          <strong>{answer.question.domain} · {difficultyLabels[answer.question.difficulty]} · {answer.question.interaction ?? 'single'}</strong>
-                          <b>{getReadinessScore(answer.option.score, answer.question.difficulty)}/100</b>
-                          <small>{formatDuration(answer.behavior?.durationMs)} · {answer.behavior?.hesitation ?? 'timing unavailable'}</small>
-                        </summary>
-                        <p><strong>Question:</strong> {answer.question.prompt}</p>
-                        <p><strong>Your answer:</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                        <p><strong>Expected evidence:</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                        <p><strong>Measured:</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
-                        <p><strong>Behavior:</strong> {answer.behavior?.interactionCount ?? 0} interactions, {answer.behavior?.revisionCount ?? 0} revisions.</p>
-                        <p><strong>Local comparison:</strong> {benchmark ? `${benchmark.averageScore}/100 average across ${benchmark.attempts} attempt${benchmark.attempts === 1 ? '' : 's'}; ${formatDuration(benchmark.averageDurationMs)} average time.` : 'No comparison data yet.'}</p>
-                      </details>
-                    );
-                  })}
-                </div>
-              )}
-            </article>
-            <article className="result-card wide ai-generated-report report-primary report-order-generated">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Personalized AI report</p>
-                  <h2>{generatedReport.headline}</h2>
-                </div>
-                <span>{cleanAverageLabel(scoreGroup.label)}</span>
-              </div>
-              <p>{generatedReport.summary}</p>
-              <div className="report-section">
-                <h3>What this means</h3>
-                <div className="evidence-grid">
-                  {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
-                </div>
-              </div>
-            </article>
-            <article className="result-card wide report-primary report-order-domain">
-              <h2>Domain scorecard</h2>
-              <div className="demo-domain-grid">
-                {(Object.keys(results.domainScores) as DomainId[]).map((domain) => {
-                  const target = getTargetScore(domain, radarProfiles);
-                  const gap = target - results.domainScores[domain];
-                  const evidence = domainEvidenceById[domain];
-                  const assessed = (evidence?.evidenceCount ?? 0) > 0;
-                  return (
-                    <button
-                      key={domain}
-                      className={selectedRadarDomain === domain ? 'selected' : ''}
-                      type="button"
-                      onClick={() => selectReportDomain(domain, 'radar')}
-                    >
-                      <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
-                      <strong>{assessed ? `${results.domainScores[domain]}/100` : 'Not assessed'}</strong>
-                      {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label="Not assessed" />}
-                      <small>{assessed ? (gap > 0 ? `${gap} points below target` : 'At or above target') : 'No question sampled this domain yet'}</small>
-                    </button>
-                  );
-                })}
-              </div>
-            </article>
-            <article className="result-card wide coverage-plan analysis-primary">
-              <h2>Assessment coverage plan</h2>
-              <p>{coveragePlan.testFrame}</p>
-              <div className="coverage-stats">
-                <div>
-                  <span>Profile</span>
-                  <strong>{coveragePlan.contextLabel}</strong>
-                </div>
-                <div>
-                  <span>Sampled</span>
-                  <strong>{coveragePlan.sampled}/24</strong>
-                </div>
-                <div>
-                  <span>Role priority</span>
-                  <strong>{coveragePlan.prioritySampled}/{coveragePlan.priorityTotal}</strong>
-                </div>
-                <div>
-                  <span>Planned route</span>
-                  <strong>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal}</strong>
-                </div>
-              </div>
-              <div className="domain-target-grid" aria-label="Profile domain targets">
-                {(Object.keys(domains) as DomainId[]).map((domain) => (
-                  <div key={domain}>
-                    <span>{domain}</span>
-                    <strong>{profileDomainTargets[domain]}</strong>
-                    <small>{domains[domain].short}</small>
-                  </div>
-                ))}
-              </div>
-              <div className="coverage-grid">
-                {coveragePlan.coverage.map((competency) => (
-                  <div key={competency.id} className={competency.status}>
-                    <span>{competency.domain}</span>
-                    <strong>{competency.label}</strong>
-                    <small>{competency.statusLabel}</small>
-                  </div>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide profile-insights analysis-primary">
-              <h2>User profile signals</h2>
-              {userProfileSurvey ? (
-                <>
-                  <p>
-                    Latest profile context: <strong>{userProfileSurvey.context}</strong>. These tags can personalize question routing,
-                    artifact selection, course recommendations, and cohort analytics.
-                  </p>
-                  <div className="profile-tag-grid">
-                    {userProfileSurvey.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                </>
-              ) : (
-                <p>No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.</p>
-              )}
-            </article>
-            <article className="result-card wide analysis-primary">
-              <h2>Domain evidence quality</h2>
-              <div className="domain-evidence-grid">
-                {domainEvidenceSummary.map((item) => (
-                  <button
-                    key={item.domain}
-                    type="button"
-                    className={selectedRadarDomain === item.domain ? 'selected' : ''}
-                    onClick={() => selectReportDomain(item.domain, 'domain')}
-                  >
-                    <span>{item.domain} · {domains[item.domain].short}</span>
-                    <strong>{item.evidenceCount ? `${item.score}/100` : 'Not sampled'}</strong>
-                    <p>{Number(item.evidenceCount.toFixed(2))} evidence signal{item.evidenceCount === 1 ? '' : 's'} · {item.confidence}</p>
-                  </button>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide domain-drilldown report-primary report-order-competencies">
-              <h2>{domains[selectedRadarDomain].name} competency drilldown</h2>
-              <p>{selectedRadarDomain} · {domains[selectedRadarDomain].name}</p>
-              <div className="drilldown-domain-tabs" aria-label="Choose a domain for competency drilldown">
-                {(Object.keys(domains) as DomainId[]).map((domain) => (
-                  <button
-                    key={domain}
-                    type="button"
-                    className={selectedRadarDomain === domain ? 'selected' : ''}
-                    onClick={() => selectReportDomain(domain, 'radar')}
-                  >
-                    <span>{domain}</span>
-                    <strong>{domains[domain].name}</strong>
-                  </button>
-                ))}
-              </div>
-              <CompetencyRadar domain={selectedRadarDomain} competencies={selectedDomainCompetencies} />
-              <div className="competency-table compact">
-                {selectedDomainCompetencies.map((competency) => (
-                  <details key={competency.id} open={competency.evidenceCount > 0}>
-                    <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label, domain: competency.domain })}>
-                      <span>{competency.id}</span>
-                      <strong>{competency.label}</strong>
-                      <b>{competency.evidenceCount ? `${competency.score}/100` : 'Not sampled'}</b>
-                      <small>{competency.statusLabel} · {competency.evidenceCount} evidence · {competency.confidence} confidence</small>
-                    </summary>
-                    <p>{competency.rationale} Skills: {competency.skills.join(', ')}</p>
-                  </details>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide score-analytics analysis-primary">
-              <h2>Saved score analytics</h2>
-              <div className="evidence-grid">
-                <p><strong>Saved runs</strong> {scoreLogAnalytics.totalRuns} completed assessment run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'} on this device.</p>
-                <p><strong>Individual profiles</strong> {scoreLogAnalytics.individualProfiles || 'No'} local profile{scoreLogAnalytics.individualProfiles === 1 ? '' : 's'} with saved signals.</p>
-                <p><strong>Question signals</strong> {scoreLogAnalytics.signalSnapshots || 'No'} item-level signal snapshot{scoreLogAnalytics.signalSnapshots === 1 ? '' : 's'} saved for trend analysis.</p>
-                <p><strong>Average overall</strong> {scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : 'No saved score distribution yet.'}</p>
-                <p><strong>Stored dimensions</strong> Anonymous profile ID, survey tags, audience, function, industry, executive role, domain scores, competency scores, evidence-mode scores, question difficulty, item type, assessment mode, date, and group key.</p>
-              </div>
-              <div className="analytics-chips">
-                {scoreLogAnalytics.byMode.map((item) => (
-                  <span key={item.label}>{item.label}: {item.count}</span>
-                ))}
-                {scoreLogAnalytics.profileFields.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </article>
-            <article className="result-card report-primary report-order-strengths">
-              <h2>Strengths</h2>
-              {results.strongest.filter((domain) => assessedDomains.includes(domain)).map((domain) => (
-                <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
-              ))}
-              {!results.strongest.some((domain) => assessedDomains.includes(domain)) && <p>Not enough sampled evidence yet. Continue the test to establish strengths.</p>}
-            </article>
-            <article className="result-card report-primary report-order-gaps">
-              <h2>Priority gaps</h2>
-              {results.weakest.map((domain) => (
-                <p key={domain}><strong>{domains[domain].short}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : 'Not assessed yet'}</p>
-              ))}
-            </article>
-            <article className="result-card wide analysis-primary">
-              <h2>Knowledge vs practical skill</h2>
-              <div className="evidence-mode-grid">
-                {evidenceModeSummary.map((item) => (
-                  <div key={item.mode}>
-                    <span>{item.label}</span>
-                    <strong>{item.count ? `${item.score}/100` : 'Not sampled'}</strong>
-                    <p>{item.count} scored signal{item.count === 1 ? '' : 's'}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide analysis-primary">
-              <h2>Readiness badges</h2>
-              <div className="badge-grid">
-                {earnedBadges.map((badge) => (
-                  <div key={badge.domain} className={badge.earned ? 'earned' : ''}>
-                    <span>{badge.earned ? 'Earned' : 'In progress'}</span>
-                    <strong>{badge.title}</strong>
-                    <p>{badge.domain} · {badge.score}/100 · {badge.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide analysis-primary">
-              <h2>Competency and skill scores</h2>
-              <div className="competency-table">
-                {coveragePlan.coverage.map((competency) => (
-                  <details key={competency.id} open={competency.evidenceCount > 0 && competency.score < 65}>
-                    <summary>
-                      <span>{competency.domain}</span>
-                      <strong>{competency.label}</strong>
-                      <b>{competency.evidenceCount ? `${competency.score}/100` : 'Not sampled'}</b>
-                      <small>{competency.statusLabel} · {competency.evidenceCount} evidence · {competency.confidence} confidence</small>
-                    </summary>
-                    <p>{competency.rationale} Skills: {competency.skills.join(', ')}</p>
-                  </details>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide report-primary report-order-learning">
-              <h2>{mode === 'executive' ? 'Executive learning path' : mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
-              <div className="personalized-exploration">
-                <div>
-                  <span>Tools to explore</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.tools.map((tool) => <span key={tool}>{tool}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Concepts to strengthen</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.concepts.map((concept) => <span key={concept}>{concept}</span>)}
-                  </div>
-                </div>
-                <div>
-                  <span>Practice next</span>
-                  <div className="profile-tag-grid">
-                    {personalizedExploration.practice.map((activity) => <span key={activity}>{activity}</span>)}
-                  </div>
-                </div>
-              </div>
-              <div className="learning-list">
-                {results.weakest.map((domain) => (
-                  <div key={domain}>
-                    <span>{activeLearningCatalog[domain].format}</span>
-                    <strong>{activeLearningCatalog[domain].title}</strong>
-                    <p>{activeLearningCatalog[domain].detail}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="learning-list bootcamp-inline-list">
-                {bootcampRecommendations.slice(0, 2).map((bootcamp) => (
-                  <div key={bootcamp.id}>
-                    <span>{bootcamp.duration} · {bootcamp.level} workshop</span>
-                    <strong>{bootcamp.title}</strong>
-                    <p>{bootcamp.whyTakeIt}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide report-primary report-order-courses">
-              <h2>Thailand course recommendations</h2>
-              <div className="course-list">
-                {courseRecommendations.map((course) => (
-                  <article key={course.id}>
-                    <div>
-                      <span>{course.provider} · {course.level}</span>
-                      <h3><a href={course.url} target="_blank" rel="noreferrer">{course.title}</a></h3>
-                      <p>{course.fit}</p>
-                    </div>
-                    <dl>
-                      <div><dt>Format</dt><dd>{course.format}</dd></div>
-                      <div><dt>Price</dt><dd>{course.price}</dd></div>
-                      <div><dt>Maps to</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
-                    </dl>
-                  </article>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide report-primary report-order-bootcamps">
-              <h2>Recommended bootcamps and workshops</h2>
-              <p className="context-line">
-                Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.
-              </p>
-              <div className="bootcamp-list">
-                {bootcampRecommendations.map((bootcamp, index) => (
-                  <details key={bootcamp.id} open={index === 0}>
-                    <summary>
-                      <span>{bootcamp.duration} · {bootcamp.level}</span>
-                      <strong>{bootcamp.title}</strong>
-                      <b>{bootcamp.domains.join(', ')}</b>
-                    </summary>
-                    <div className="bootcamp-detail-grid">
-                      <p><strong>For who</strong> {bootcamp.forWho}</p>
-                      <p><strong>Why take it</strong> {bootcamp.whyTakeIt}</p>
-                      <div>
-                        <strong>Expected learning outputs</strong>
-                        <ul>
-                          {bootcamp.expectedOutputs.map((output) => <li key={output}>{output}</li>)}
-                        </ul>
-                      </div>
-                      <div>
-                        <strong>Workshop labs</strong>
-                        <ul>
-                          {bootcamp.labs.map((lab) => <li key={lab}>{lab}</li>)}
-                        </ul>
-                      </div>
-                      <p><strong>Framework alignment</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
-                      <p><strong>Best fit roles</strong> {bootcamp.roles.join(', ')}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </article>
-            <article className="result-card wide analysis-primary">
-              <h2>Where to improve next</h2>
-              <div className="improvement-brief">
-                {improvementBrief.map((item) => (
-                  <div key={item.domain}>
-                    <span>{item.domain} · {domains[item.domain].name}</span>
-                    <strong>{item.score}/100 now · target {item.target}/100</strong>
-                    <p>{item.gapText}: {item.action}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-            {(mode === 'premium' || mode === 'executive') && (
-              <article className="result-card wide analysis-primary">
-                <h2>Evidence summary</h2>
-                <div className="evidence-grid">
-                  <p><strong>Adaptive coverage</strong> {mode === 'executive' ? 'Executive-weighted D5/D4/D6 coverage plus D1-D3 calibration checks.' : 'D1-D6 sampled with extra attention to low-confidence domains.'}</p>
-                  <p><strong>Scenario context</strong> {mode === 'executive' ? `Recommendations tuned for ${executiveLabels[executiveRole].toLowerCase()} oversight decisions.` : `Recommendations tuned for ${functionLabels[functionTrack].toLowerCase()} and ${industryLabels[industryTrack].toLowerCase()}.`}</p>
-                  <p><strong>Target status</strong> Research-informed targets are role/audience-weighted and source-backed. Group averages come from saved New Horizon runs on this device.</p>
-                </div>
-                <div className="source-list">
-                  {targetEvidenceSources.map((source) => (
-                    <p key={source.label}>
-                      <strong><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></strong>
-                      {' '}{source.detail}
-                    </p>
-                  ))}
-                </div>
-              </article>
-            )}
-          </div>
-          {reportTab === 'report' && !detailedAnalysisUnlocked && feedbackPromptOpen && (
-            <aside className="feedback-nudge-card" aria-label="Feedback invitation">
-              <button
-                type="button"
-                className="nudge-close"
-                aria-label="Dismiss feedback invitation"
-                onClick={() => setFeedbackPromptOpen(false)}
-              >
-                &times;
-              </button>
-              <span>30-second exchange</span>
-              <strong>Unlock your detailed evidence trail</strong>
-              <p>Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
-              <div className="profile-pulse-actions">
-                <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>Later</button>
-                <button
-                  type="button"
-                  className="primary"
-                  onClick={() => {
-                    setFeedbackPromptOpen(false);
-                    document.getElementById('assessment-feedback-survey')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }}
-                >
-                  Give feedback
-                </button>
-              </div>
-            </aside>
-          )}
-          <div className="upgrade-panel">
-            <div>
-              <h2>Ready for a deeper profile?</h2>
-              <p>Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.</p>
-            </div>
-            <div className="hero-actions">
-              <button className="primary" onClick={() => mode === 'practice' ? showHomeSection('labs') : startAssessment(mode)}>
-                {mode === 'practice' ? 'Back to Activities' : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
-              </button>
-              {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Start Full Free Assessment</button>}
-              {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>}
-              {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {step === 'developerReport' && (
-        <section className="results-shell demo-report-shell">
-          <div className="results-hero demo-report-hero">
-            <div>
-              <p className="eyebrow">Generated report preview</p>
-              <h1>{fullStackDeveloperReport.overall}</h1>
-              <p className="result-level">{fullStackDeveloperReport.level} AI readiness</p>
-              <p>
-                Simulated premium technical-track report for a {fullStackDeveloperReport.profile.toLowerCase()}.
-                Evidence confidence is pilot-grade: {fullStackDeveloperReport.confidence}%.
-              </p>
-              <p className="context-line">
-                Strongest signal: D2 practical tooling. Priority development area: D4 risk, governance, permissions, audit logs, and production controls.
-              </p>
-            </div>
-            <RadarChart
-              scores={fullStackDeveloperReport.scores}
-              benchmarks={fullStackDeveloperReport.benchmarks}
-              selectedDomain={selectedDemoDomain}
-              onSelectDomain={setSelectedDemoDomain}
-            />
-          </div>
-
-          <div className="result-grid">
-            <article className="result-card wide demo-report-card">
-              <div className="report-heading">
-                <div>
-                  <p className="eyebrow">Personalized AI report</p>
-                  <h2>Full-stack developer: applied readiness, production governance gap.</h2>
-                </div>
-                <span>Demo user</span>
-              </div>
-              <div className="evidence-grid">
-                {fullStackDeveloperReport.interpretation.map((item) => <p key={item}>{item}</p>)}
-              </div>
-            </article>
-
-            <article className="result-card demo-report-card">
-              <span>Strengths</span>
-              <h2>What is working</h2>
-              <div className="agent-list">
-                {fullStackDeveloperReport.strengths.map((strength) => <p key={strength}>{strength}</p>)}
-              </div>
-            </article>
-
-            <article className="result-card demo-report-card">
-              <span>Priority gaps</span>
-              <h2>What to improve</h2>
-              <div className="agent-list">
-                {fullStackDeveloperReport.gaps.map((gap) => <p key={gap}>{gap}</p>)}
-              </div>
-            </article>
-
-            <article className="result-card wide demo-report-card">
-              <h2>Domain scorecard</h2>
-              <div className="demo-domain-grid">
-                {(Object.keys(fullStackDeveloperReport.scores) as DomainId[]).map((domain) => {
-                  const target = fullStackDeveloperReport.benchmarks[1].scores[domain];
-                  const gap = target - fullStackDeveloperReport.scores[domain];
-                  return (
-                    <button
-                      key={domain}
-                      className={selectedDemoDomain === domain ? 'selected' : ''}
-                      type="button"
-                      onClick={() => setSelectedDemoDomain(domain)}
-                    >
-                      <span style={{ color: domains[domain].color }}>{domain} · {domains[domain].short}</span>
-                      <strong>{fullStackDeveloperReport.scores[domain]}/100</strong>
-                      <meter min="0" max="100" value={fullStackDeveloperReport.scores[domain]} />
-                      <small>{gap > 0 ? `${gap} points below target` : 'At or above target'}</small>
-                    </button>
-                  );
-                })}
-              </div>
-            </article>
-
-            <article className="result-card wide demo-report-card">
-              <h2>Personalized learning path</h2>
-              <div className="demo-learning-path">
-                {fullStackDeveloperReport.learningPath.map((phase) => (
-                  <div key={phase.phase}>
-                    <span>{phase.phase}</span>
-                    <strong>{phase.title}</strong>
-                    {phase.actions.map((action) => <p key={action}>{action}</p>)}
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article className="result-card wide demo-report-card">
-              <h2>Courses from latest Training Scout crawl</h2>
-              <div className="course-list">
-                {fullStackDeveloperReport.courses.map((course) => (
-                  <article key={course.url}>
-                    <span>{course.provider} · {course.domains.join(', ')}</span>
-                    <h3>{course.title}</h3>
-                    <p>{course.fit}</p>
-                    <a href={course.url} target="_blank" rel="noreferrer">Open course</a>
-                  </article>
-                ))}
-              </div>
-            </article>
-
-            <article className="result-card wide demo-report-card">
-              <h2>Tools and platforms to explore</h2>
-              <div className="personalized-exploration">
-                {fullStackDeveloperReport.tools.map((group) => (
-                  <div key={group.category}>
-                    <span>{group.category}</span>
-                    <div className="profile-tag-grid">
-                      {group.items.map((item) => <span key={item}>{item}</span>)}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article className="result-card wide demo-report-card">
-              <h2>Practice projects</h2>
-              <div className="improvement-brief">
-                {fullStackDeveloperReport.projects.map((project, index) => (
-                  <div key={project}>
-                    <span>Project {index + 1}</span>
-                    <strong>{project}</strong>
-                  </div>
-                ))}
-              </div>
-              <p className="context-line">
-                MVP preview: this report uses simulated assessment evidence plus the local Playwright course crawl. Production should generate reports server-side with consented user data, stored report versions, audit logs, and provider-key controls.
-              </p>
-            </article>
-          </div>
-        </section>
-      )}
-    </main>
-  );
+  return {
+    activeConfig,
+    assessmentActive,
+    openLab,
+    openedLabKind,
+    activeLab,
+    activeLearningCatalog,
+    activeSurveyContext,
+    activeSurveyQuestions,
+    adaptiveReadout,
+    adminAnalytics,
+    adminAuthenticated,
+    agentWorkflowReport,
+    analyticsReadinessRows,
+    answers,
+    appLanguage,
+    appendBehaviorEvent,
+    applyProfilePulse,
+    approvedAgentDraftCount,
+    artifactItemCount,
+    artifactReplacementBriefs,
+    assessedDomains,
+    assessmentDisplaySettings,
+    assessmentQualityAnalytics,
+    audience,
+    authEmail,
+    authMessage,
+    authProfile,
+    bootcampRecommendations,
+    browserStateReady,
+    chooseMatch,
+    chooseOption,
+    choosePartOption,
+    competencyScores,
+    continuationFocus,
+    continuationRecommendation,
+    continuationTargets,
+    continueAfterFeedback,
+    continueAssessment,
+    continueEvidenceCompletion,
+    courseRecommendations,
+    coveragePlan,
+    current,
+    currentDisplayStimulus,
+    currentDisplayVisualStimulus,
+    currentMeasures,
+    currentSkills,
+    currentThaiAvailable,
+    dashboardNews,
+    detailedAnalysisUnlocked,
+    difficultyMovement,
+    dismissProfilePulse,
+    displayedMatchChoices,
+    displayedMatchPairs,
+    displayedOptions,
+    displayedPartOptions,
+    displayedParts,
+    domainEvidenceById,
+    domainEvidenceSummary,
+    domainScoreCalculations,
+    draggedIndex,
+    earnedBadges,
+    evidenceCompletion,
+    evidenceModeSummary,
+    executiveRole,
+    exportPilotReviewCsv,
+    feedbackDraft,
+    feedbackPromptOpen,
+    followDidYouKnow,
+    functionTrack,
+    generatedReport,
+    groupAverageProfile,
+    homeMoreOpen,
+    improvementBrief,
+    industryTrack,
+    interactionCount,
+    labCanSubmit,
+    labDraft,
+    labEvaluation,
+    labFeedbackVisible,
+    labMatches,
+    labOrder,
+    labSelections,
+    landingLeaderboard,
+    landingLeaderboardPeriod,
+    landingPeerInsights,
+    lastAnswer,
+    latestSupervisedAgentRun,
+    liveItemCount,
+    localProfileId,
+    loggedResultId,
+    matchSelections,
+    mode,
+    moveLabOrder,
+    moveRankItem,
+    multiPartItemCount,
+    multiSelected,
+    openProfileSurvey,
+    paidReport,
+    partSelections,
+    pendingAgentDraftCount,
+    pendingQuestion,
+    personaLeaderboard,
+    personalizedDidYouKnow,
+    personalizedExploration,
+    previewDomainCompetencies,
+    profileDomainTargets,
+    profilePulseOpen,
+    profilePulseSelections,
+    progress,
+    qualityInsights,
+    questionBenchmarks,
+    questionLanguage,
+    questionScoreCalculations,
+    radarProfiles,
+    rankOrder,
+    rejectedAgentDraftCount,
+    renderQuestionFeedback,
+    reportAccessSettings,
+    reportTab,
+    results,
+    runAgentWorkflowSimulation,
+    runSupervisedAgentJobs,
+    saveProfileSurvey,
+    scoreGroup,
+    scoreLogAnalytics,
+    secondaryDidYouKnow,
+    selectReportDomain,
+    selectedAgentId,
+    selectedDemoDomain,
+    selectedDomainCompetencies,
+    selectedPreviewDomain,
+    selectedRadarDomain,
+    setAdminAuthenticated,
+    setAppLanguage,
+    setAudience,
+    setAuthEmail,
+    setAuthMessage,
+    setDraggedIndex,
+    setExecutiveRole,
+    setFeedbackDraft,
+    setFeedbackPromptOpen,
+    setFunctionTrack,
+    setHomeMoreOpen,
+    setIndustryTrack,
+    setLabDraft,
+    setLabFeedbackVisible,
+    setLabMatches,
+    setLandingLeaderboardPeriod,
+    setQuestionLanguageOverride,
+    setReportTab,
+    setSelectedAgentId,
+    setSelectedDemoDomain,
+    setSelectedPreviewDomain,
+    setSelectedRadarDomain,
+    setStep,
+    showContinuationPanel,
+    showDraftThai,
+    showEvidenceCompletionPanel,
+    showHomeSection,
+    shownQuestion,
+    signOutUser,
+    skipProfileSurvey,
+    startAssessment,
+    startLabActivity,
+    step,
+    submitAssessmentFeedback,
+    submitMatches,
+    submitMultiSelect,
+    submitPartAnswers,
+    submitRankOrder,
+    submitTextAnswer,
+    supervisedAgentRuns,
+    surveyAnswers,
+    surveyOpen,
+    telemetryAnalysis,
+    textResponse,
+    toggleLabSelection,
+    toggleMultiOption,
+    toggleProfilePulse,
+    toggleSurveyAnswer,
+    trackArtifactAction,
+    updateAgentDraftStatus,
+    updateTextResponse,
+    useRelianceStage,
+    userProfileSurvey,
+  };
 }
+
+// Shared with the route screens under app/(learner). Kept at the end of the
+// file: scripts/ read the data section above as plain script text.
+export {
+  CompetencyRadar,
+  HelpBubble,
+  RadarChart,
+  StimulusFigure,
+  VisualStimulusCard,
+  agentWorkflowEdges,
+  agentWorkflowNodes,
+  allAssessmentItems,
+  audienceLabels,
+  cleanAverageLabel,
+  didYouKnowInsights,
+  difficultyDescriptions,
+  difficultyLabels,
+  difficultyReadinessBands,
+  domains,
+  estimateTheta,
+  executiveLabels,
+  fieldLabRooms,
+  formatAbility,
+  formatDuration,
+  frameworkSourceLinks,
+  fullStackDeveloperReport,
+  functionLabels,
+  gamificationRules,
+  getAnswerPracticeCue,
+  getAnsweredDomainCounts,
+  getCalibrationSummary,
+  getCorrectAnswerSummary,
+  getEvidenceMode,
+  getLabKeywordHit,
+  getQuestionFocus,
+  getQuestionMeasures,
+  getRawScoreMethod,
+  getReadinessScore,
+  getRelianceChoice,
+  getScoreBandDescription,
+  getScoreExplanation,
+  getTargetScore,
+  getTaskInstruction,
+  getWorkflowConnectorPath,
+  globalFrameworkCrosswalk,
+  industryLabels,
+  isSupabaseConfigured,
+  learnByDoingActivities,
+  localizeAnswerOption,
+  localizeQuestion,
+  microProfilePulse,
+  modelPromptRepairAnswer,
+  optionDisplayLetter,
+  scoringModelExplainers,
+  sendEmailMagicLink,
+  startGoogleSignIn,
+  targetEvidenceSources,
+  trendFeed,
+};
+export type {
+  AgentStatus,
+  AppLanguage,
+  AssessmentFeedbackSurvey,
+  Audience,
+  Difficulty,
+  DomainId,
+  ExecutiveRole,
+  FunctionTrack,
+  IndustryTrack,
+  LandingLeaderboardPeriod,
+};

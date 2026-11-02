@@ -5,7 +5,7 @@ import {stripTypeScriptTypes} from 'node:module';
 import {englishProjection,translate} from './lib/translate-thai-inventory.mjs';
 const root=new URL('../',import.meta.url);
 await fs.mkdir(new URL('work/thai-inventory/',root),{recursive:true});
-const source=await fs.readFile(new URL('app/page.tsx',root),'utf8');
+const source=await fs.readFile(new URL('app/learner-app.tsx',root),'utf8');
 const translations=await fs.readFile(new URL('app/questionTranslations.th.ts',root),'utf8');
 const data=source.slice(0,source.indexOf('const learningCatalog:')).replace(/^import .*?;\s*/gmu,'');
 const localizer=source.slice(source.indexOf('const thaiStimulusSources:'),source.indexOf('function localizeAnswerOption('));
