@@ -184,3 +184,12 @@ test('video embeds accept Shorts and reject other YouTube paths and malformed UR
   assert.equal(youtubePlayerUrl('https://www.youtube.com/shorts/yo7nPQ42Kcg'), 'https://www.youtube-nocookie.com/embed/yo7nPQ42Kcg?autoplay=0');
   for (const url of ['https://www.youtube.com/embed/yo7nPQ42Kcg', 'https://youtu.be/', 'https://www.youtube.com/watch', 'not a url']) assert.equal(youtubePlayerUrl(url), null);
 });
+
+test('source dates are shown in the reader language, and free text is left for translation', async () => {
+  const { formatSourceDate } = await import('../app/watch-model.ts');
+  assert.equal(formatSourceDate('September 25, 2026', 'en'), 'September 25, 2026');
+  assert.equal(formatSourceDate('September 25, 2026', 'th'), '25 กันยายน 2569');
+  assert.equal(formatSourceDate('July 2026', 'th'), 'กรกฎาคม 2569');
+  assert.equal(formatSourceDate('2026-09-29', 'en'), 'September 29, 2026');
+  for (const text of ['Publication date unverified · checked September 29, 2026', 'Smarch 3, 2026', 'Smarch 2026']) assert.equal(formatSourceDate(text, 'th'), text);
+});

@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../../../language';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { notFound, useParams } from 'next/navigation';
@@ -12,6 +13,7 @@ import { isLabKind } from '../../../learner-routes-model';
 import { useApp } from '../../../learner-app-context';
 
 export default function LabScreen() {
+  const tc = useContent();
   const t = useTranslations('lab');
   const {
     activeLab,
@@ -48,33 +50,33 @@ export default function LabScreen() {
         <button className="secondary" onClick={() => setStep('learningLabs')} type="button">{t('backToLabs')}</button>
         <div>
           <p className="eyebrow">{t('learnByDoing')}</p>
-          <h1>{activeLab.title}</h1>
-          <p>{activeLab.brief}</p>
+          <h1>{tc(activeLab.title)}</h1>
+          <p>{tc(activeLab.brief)}</p>
         </div>
         <div className="lab-meta">
-          <span>{activeLab.domain}</span>
-          <strong>{domains[activeLab.domain].name}</strong>
-          <small>{activeLab.format}</small>
+          <span>{tc(activeLab.domain ?? '')}</span>
+          <strong>{tc(domains[activeLab.domain].name)}</strong>
+          <small>{tc(activeLab.format)}</small>
         </div>
       </div>
 
       <div className="lab-workbench">
         <article className="lab-artifact">
           <span>{t('practiceArtifact')}</span>
-          <h2>{activeLab.artifact.title}</h2>
+          <h2>{tc(activeLab.artifact.title)}</h2>
           <div className="lab-artifact-rows">
             {activeLab.artifact.rows.map((row) => (
-              <p key={row}>{row}</p>
+              <p key={row}>{tc(row)}</p>
             ))}
           </div>
-          {activeLab.artifact.note && <strong>{activeLab.artifact.note}</strong>}
+          {activeLab.artifact.note && <strong>{tc(activeLab.artifact.note)}</strong>}
         </article>
 
         <article className="lab-task">
           {activeLab.kind === 'prompt' && (
             <>
               <span>{t('buildThePrompt')}</span>
-              <h2>{activeLab.prompt}</h2>
+              <h2>{tc(activeLab.prompt ?? '')}</h2>
               <textarea
                 value={labDraft}
                 onChange={(event) => {
@@ -95,7 +97,7 @@ export default function LabScreen() {
               </button>
               <div className="lab-checklist">
                 {(activeLab.checklist ?? []).map((item) => (
-                  <span className={getLabKeywordHit(item, labDraft) ? 'hit' : ''} key={item}>{item}</span>
+                  <span className={getLabKeywordHit(item, labDraft) ? 'hit' : ''} key={item}>{tc(item)}</span>
                 ))}
               </div>
             </>
@@ -113,7 +115,7 @@ export default function LabScreen() {
                     onClick={() => toggleLabSelection(choice.id)}
                     type="button"
                   >
-                    {choice.label}
+                    {tc(choice.label)}
                   </button>
                 ))}
               </div>
@@ -132,7 +134,7 @@ export default function LabScreen() {
                     onClick={() => toggleLabSelection(choice.id, true)}
                     type="button"
                   >
-                    {choice.label}
+                    {tc(choice.label)}
                   </button>
                 ))}
               </div>
@@ -149,7 +151,7 @@ export default function LabScreen() {
                   return (
                     <div key={itemId}>
                       <strong>{index + 1}</strong>
-                      <p>{item?.label}</p>
+                      <p>{tc(item?.label ?? '')}</p>
                       <button onClick={() => moveLabOrder(index, -1)} disabled={index === 0} type="button">{t('up')}</button>
                       <button onClick={() => moveLabOrder(index, 1)} disabled={index === labOrder.length - 1} type="button">{t('down')}</button>
                     </div>
@@ -166,7 +168,7 @@ export default function LabScreen() {
               <div className="lab-match-list">
                 {(activeLab.items ?? []).map((item) => (
                   <label key={item.id}>
-                    <span>{item.label}</span>
+                    <span>{tc(item.label)}</span>
                     <select
                       value={labMatches[item.id] ?? ''}
                       onChange={(event) => {
@@ -176,7 +178,7 @@ export default function LabScreen() {
                     >
                       <option value="">{t('choose')}</option>
                       {(activeLab.matchChoices ?? []).map((choice) => (
-                        <option key={choice} value={choice}>{choice}</option>
+                        <option key={choice} value={choice}>{tc(choice)}</option>
                       ))}
                     </select>
                   </label>
@@ -196,17 +198,17 @@ export default function LabScreen() {
           {labFeedbackVisible ? (
             <>
               {activeLab.kind === 'prompt' ? <><strong>{t('checklistCuesFound', { length: labEvaluation.strengths.length, length2: (activeLab.checklist ?? []).length })}</strong><p>{t('englishKeywordHintsOnlyThis')}</p></> : <strong>{labEvaluation.score}/100</strong>}
-              <p>{labEvaluation.summary}</p>
+              <p>{tc(labEvaluation.summary)}</p>
               <div>
                 <h3>{t('whatWorked')}</h3>
                 {(labEvaluation.strengths.length ? labEvaluation.strengths : [t('noStrongEvidenceYetTry')]).map((item) => (
-                  <p key={item}>{item}</p>
+                  <p key={item}>{tc(item)}</p>
                 ))}
               </div>
               <div>
                 <h3>{t('improveNext')}</h3>
                 {(labEvaluation.misses.length ? labEvaluation.misses : [t('youCoveredTheKeyRequirements')]).map((item) => (
-                  <p key={item}>{item}</p>
+                  <p key={item}>{tc(item)}</p>
                 ))}
               </div>
             </>

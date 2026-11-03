@@ -151,3 +151,23 @@ export const awarenessLabels = {
 export function selectAwarenessStories(stories: WatchStory[], state: WatchState): WatchStory[] {
   return selectWatchStories(stories.filter(story => story.awareness), { ...state, feed: 'for-you', media: 'all' }, { 'agent-boundaries': 4, 'evidence-check': 4 }).map(item => item.story);
 }
+
+const sourceMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+/**
+ * A story's source date in the reader's language. Stories record dates as
+ * written by hand ("September 25, 2026", "July 2026", "2026-09-29"); anything
+ * else (such as "Publication date unverified · …") is returned unchanged for
+ * the content catalog to translate.
+ */
+export function formatSourceDate(date: string, language: WatchLanguage): string {
+  const iso = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const long = date.match(/^([A-Z][a-z]+) (\d{1,2}), (\d{4})$/);
+  const monthYear = date.match(/^([A-Z][a-z]+) (\d{4})$/);
+  const locale = language === 'th' ? 'th-TH' : 'en-US';
+  const format = (year: number, month: number, day?: number) => new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', ...(day ? { day: 'numeric' } : {}), timeZone: 'UTC' }).format(Date.UTC(year, month, day ?? 1));
+  if (iso) return format(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
+  if (long && sourceMonths.includes(long[1])) return format(Number(long[3]), sourceMonths.indexOf(long[1]), Number(long[2]));
+  if (monthYear && sourceMonths.includes(monthYear[1])) return format(Number(monthYear[2]), sourceMonths.indexOf(monthYear[1]));
+  return date;
+}

@@ -7,7 +7,7 @@ import { questionTranslationsTh } from './questionTranslations.th';
 import { productionQuestionRelease } from './productionQuestionRelease';
 import { parseStoredList, parseStoredRecord } from './page-storage-model';
 import type { AppLanguage } from './language-model';
-import { useLanguage } from './language';
+import { useLanguage, useContent } from './language';
 import { labPath, legacyRedirect, pathForStep, stepForPath, type AppStep, type LabKind } from './learner-routes-model';
 import type { WatchStory as NewsFeedItem } from './watch-model';
 
@@ -358,6 +358,7 @@ type QuestionScoreCalculation = {
   questionId: string;
   domain: DomainId;
   competencies: string;
+  competencyLabels: string[];
   difficulty: Difficulty;
   interaction: NonNullable<Question['interaction']>;
   rawScore: number;
@@ -9591,6 +9592,13 @@ function getImprovementBrief(scores: Record<DomainId, number>, benchmarks: Bench
   });
 }
 
+/** Translators the report needs: catalog messages (`report` namespace), content strings and a locale-aware list join. */
+type ReportText = {
+  t: (key: string, values?: Record<string, string | number>) => string;
+  tc: (text: string) => string;
+  list: (items: string[]) => string;
+};
+
 function getGeneratedReport(
   assessmentMode: AssessmentMode,
   audience: Audience,
@@ -9605,15 +9613,18 @@ function getGeneratedReport(
   improvementBrief: Array<{ domain: DomainId; score: number; target: number; gapText: string; action: string }>,
   personalizedExploration: PersonalizedExplorationPlan,
   courseRecommendations: LearningRecommendation[],
+  { t, tc, list }: ReportText,
 ): GeneratedReport {
+  // i18n-namespace: report
   const contextLabel = assessmentMode === 'executive'
-    ? executiveLabels[executiveRole]
+    ? tc(executiveLabels[executiveRole])
     : assessmentMode === 'premium'
-      ? `${functionLabels[functionTrack]} in ${industryLabels[industryTrack]}`
-      : audienceLabels[audience];
-  const strongest = results.strongest.map((domain) => `${domains[domain].short} (${results.domainScores[domain]})`).join(' and ');
-  const weakest = results.weakest.map((domain) => `${domains[domain].short} (${results.domainScores[domain]})`).join(' and ');
-  const targetProfile = benchmarks[0]?.label ?? 'research-informed target';
+      ? t('functionInIndustry', { functionLabel: tc(functionLabels[functionTrack]), industry: tc(industryLabels[industryTrack]) })
+      : tc(audienceLabels[audience]);
+  const domainScore = (domain: DomainId) => t('domainScore', { domain: tc(domains[domain].short), score: results.domainScores[domain] });
+  const strongest = list(results.strongest.map(domainScore));
+  const weakest = list(results.weakest.map(domainScore));
+  const targetProfile = benchmarks[0]?.label ? tc(benchmarks[0].label) : t('researchInformedTarget');
   const practicalEvidence = evidenceModeSummary.find((item) => item.mode === 'doing');
   const knowledgeEvidence = evidenceModeSummary.find((item) => item.mode === 'knowing');
   const priorityCompetencies = coverage
@@ -9622,29 +9633,35 @@ function getGeneratedReport(
     .slice(0, 5);
   const unsampledPriority = coverage.filter((competency) => competency.priority && competency.evidenceCount === 0).slice(0, 3);
   const learningPath = [
-    `Start with ${domains[results.weakest[0]].short}: ${improvementBrief[0]?.action ?? `build practical evidence in ${domains[results.weakest[0]].name}`}`,
+    t('startWith', {
+      domain: tc(domains[results.weakest[0]].short),
+      action: improvementBrief[0]?.action ? tc(improvementBrief[0].action) : t('buildEvidenceIn', { domain: tc(domains[results.weakest[0]].name) }),
+    }),
     priorityCompetencies.length
-      ? `Practice ${priorityCompetencies[0].label.toLowerCase()} using artifact review, written rationale, and feedback loops.`
-      : 'Complete a longer diagnostic route to expose competency-level gaps before choosing advanced training.',
-    `Use ${personalizedExploration.tools.slice(0, 2).join(' and ')} on one low-risk workflow, then compare the output against source evidence.`,
+      ? t('practiceCompetency', { competency: tc(priorityCompetencies[0].label) })
+      : t('completeLongerRoute'),
+    t('useTools', { tools: list(personalizedExploration.tools.slice(0, 2).map(tc)) }),
     courseRecommendations[0]
-      ? `Take ${courseRecommendations[0].title} from ${courseRecommendations[0].provider} as the first structured course.`
-      : 'Choose one starter course mapped to the weakest D1-D6 domains before retesting.',
-    'Retake a targeted deep dive after 2-4 weeks and look for higher evidence counts, fewer overrides, and stronger practical scores.',
+      ? t('takeCourse', { title: tc(courseRecommendations[0].title), provider: tc(courseRecommendations[0].provider) })
+      : t('chooseStarterCourse'),
+    t('retakeDeepDive'),
   ];
+  const evidence = (summary?: { count: number; score: number }) => ({ count: summary?.count ?? 0, sampled: summary?.count ? 'yes' : 'no', score: summary?.score ?? 0 });
+  const knowing = evidence(knowledgeEvidence);
+  const doing = evidence(practicalEvidence);
 
   return {
-    headline: `${contextLabel} report: ${results.level} readiness with ${results.confidence}% pilot confidence`,
-    summary: `This MVP-generated report reads ${answers.length} assessment response${answers.length === 1 ? '' : 's'} against the ${targetProfile} profile. Current strengths are ${strongest}; the highest-priority gaps are ${weakest}. The overall score is ${results.overall}/100, so the next step should be targeted practice rather than broad tool adoption.`,
+    headline: t('headline', { context: contextLabel, level: tc(results.level), confidence: results.confidence }),
+    summary: t('summary', { count: answers.length, target: targetProfile, strongest, weakest, overall: results.overall }),
     analysis: [
-      `Domain pattern: ${strongest} are currently stronger signals, while ${weakest} need more evidence or remediation before the profile should be treated as stable.`,
-      `Evidence mix: ${knowledgeEvidence?.count ?? 0} knowing signal${knowledgeEvidence?.count === 1 ? '' : 's'} at ${knowledgeEvidence?.count ? `${knowledgeEvidence.score}/100` : 'not sampled'} and ${practicalEvidence?.count ?? 0} doing signal${practicalEvidence?.count === 1 ? '' : 's'} at ${practicalEvidence?.count ? `${practicalEvidence.score}/100` : 'not sampled'}.`,
+      t('domainPattern', { strongest, weakest }),
+      t('evidenceMix', { knowingCount: knowing.count, knowingSampled: knowing.sampled, knowingScore: knowing.score, doingCount: doing.count, doingSampled: doing.sampled, doingScore: doing.score }),
       priorityCompetencies.length
-        ? `Competency risk: the lowest sampled competencies are ${priorityCompetencies.slice(0, 3).map((competency) => `${competency.label} (${competency.score})`).join(', ')}.`
-        : 'Competency risk: the current run did not sample enough competency-specific evidence for stable sub-scores.',
+        ? t('competencyRisk', { competencies: list(priorityCompetencies.slice(0, 3).map((competency) => t('domainScore', { domain: tc(competency.label), score: competency.score }))) })
+        : t('competencyRiskUnsampled'),
       unsampledPriority.length
-        ? `Coverage caution: ${unsampledPriority.map((competency) => competency.label).join(', ')} are role-priority areas with no direct evidence yet.`
-        : 'Coverage note: role-priority competencies have at least some sampled evidence in this run.',
+        ? t('coverageCaution', { competencies: list(unsampledPriority.map((competency) => tc(competency.label))) })
+        : t('coverageNote'),
     ],
     priorityDomains: improvementBrief.map((item) => ({
       domain: item.domain,
@@ -10879,6 +10896,7 @@ function getQuestionScoreCalculations(answers: Answer[]): QuestionScoreCalculati
       questionId: answer.question.id,
       domain: answer.question.domain,
       competencies: getQuestionMeasures(answer.question).map((competency) => competency.label).join(', '),
+      competencyLabels: getQuestionMeasures(answer.question).map((competency) => competency.label),
       difficulty: answer.question.difficulty,
       interaction: answer.question.interaction ?? 'single',
       rawScore,
@@ -11075,6 +11093,8 @@ function getContinuationRecommendation({
   executiveRole,
   profileTags,
   confidence,
+  t,
+  tc,
 }: {
   coverage: CompetencyCoverage[];
   continuationTargets: { confidenceIds: string[]; priorityGapIds: string[]; domainIds: string[] };
@@ -11086,7 +11106,10 @@ function getContinuationRecommendation({
   executiveRole: ExecutiveRole;
   profileTags: string[];
   confidence: number;
+  t: (key: string, values?: Record<string, string | number>) => string;
+  tc: (text: string) => string;
 }): ContinuationRecommendation {
+  // i18n-namespace: continuation
   const profileText = [
     mode,
     audience,
@@ -11135,20 +11158,20 @@ function getContinuationRecommendation({
   const unsampledPlannedCount = coverage.filter((competency) => competency.planned && competency.evidenceCount === 0).length;
   const unsure = confidence < 86 || lowConfidenceCount > 0 || unsampledPriorityIds.length > 0;
   const contextLabel = mode === 'executive'
-    ? executiveLabels[executiveRole]
+    ? tc(executiveLabels[executiveRole])
     : mode === 'premium'
-      ? `${functionLabels[functionTrack]} in ${industryLabels[industryTrack].toLowerCase()}`
-      : audienceLabels[audience];
+      ? t('functionInIndustry', { functionLabel: tc(functionLabels[functionTrack]), industry: tc(industryLabels[industryTrack]).toLowerCase() })
+      : tc(audienceLabels[audience]);
   const profileReason = hasProfileRoute
     ? functionTrack === 'marketing' || /content|creator|creative|image|video|media/.test(profileText)
-      ? 'Your profile points to creative, image/video, campaign, or content work, so media provenance, claim checking, IP/ethics, prompt refinement, and campaign measurement need deeper evidence.'
-      : `Your ${contextLabel.toLowerCase()} profile has role-relevant competencies that still need stronger evidence.`
+      ? t('reasonCreativeProfile')
+      : t('reasonRoleProfile', { context: contextLabel.toLowerCase() })
     : '';
   const reasons = [
-    confidence < 86 ? `Result confidence is ${confidence}%, so the platform should not treat the level estimate as fully stable yet.` : '',
-    lowConfidenceCount ? `${lowConfidenceCount} sampled competenc${lowConfidenceCount === 1 ? 'y is' : 'ies are'} still low or medium confidence.` : '',
-    hasPriorityGaps ? `${unsampledPriorityIds.length} profile-priority competenc${unsampledPriorityIds.length === 1 ? 'y was' : 'ies were'} not sampled in the mandatory route.` : '',
-    unsampledPlannedCount ? `${unsampledPlannedCount} planned baseline competenc${unsampledPlannedCount === 1 ? 'y has' : 'ies have'} no evidence yet.` : '',
+    confidence < 86 ? t('reasonConfidence', { confidence }) : '',
+    lowConfidenceCount ? t('reasonLowConfidence', { count: lowConfidenceCount }) : '',
+    hasPriorityGaps ? t('reasonPriorityUnsampled', { count: unsampledPriorityIds.length }) : '',
+    unsampledPlannedCount ? t('reasonPlannedUnsampled', { count: unsampledPlannedCount }) : '',
     profileReason,
   ].filter(Boolean).slice(0, 4);
   const route: ContinuationFocus = hasProfileRoute || hasPriorityGaps
@@ -11157,16 +11180,16 @@ function getContinuationRecommendation({
       ? { kind: 'confidence', label: 'Confidence calibration route', targetCompetencyIds: targetIds.length ? targetIds : continuationTargets.confidenceIds }
       : { kind: 'domain', label: `${selectedDomain} deep dive`, targetDomain: selectedDomain, targetCompetencyIds: targetIds.length ? targetIds : continuationTargets.domainIds };
   return {
-    kicker: unsure ? 'Recommended next step' : 'Optional deeper check',
-    headline: unsure ? 'Continue the test before finalizing this profile' : 'Continue for a sharper competency profile',
+    kicker: unsure ? t('kickerRecommended') : t('kickerOptional'),
+    headline: unsure ? t('headlineUnsure') : t('headlineSure'),
     summary: unsure
-      ? `For ${contextLabel.toLowerCase()}, the next questions should focus on the evidence gaps that could change the level estimate.`
-      : `The current score is usable as a snapshot, but extra questions can separate good general AI users from advanced users in ${contextLabel.toLowerCase()}.`,
-    reasons: reasons.length ? reasons : ['The short route is a snapshot; deeper items improve score differentiation and competency-level confidence.'],
+      ? t('summaryUnsure', { context: contextLabel.toLowerCase() })
+      : t('summarySure', { context: contextLabel.toLowerCase() }),
+    reasons: reasons.length ? reasons : [t('reasonSnapshot')],
     route,
     questionCount: route.kind === 'priority' ? 8 : 6,
     targetLabels,
-    confidenceLabel: confidence < 78 ? 'Low confidence' : confidence < 86 ? 'Medium confidence' : 'Pilot confidence',
+    confidenceLabel: confidence < 78 ? t('confidenceLow') : confidence < 86 ? t('confidenceMedium') : t('confidencePilot'),
     urgency: unsure ? 'recommended' : 'optional',
   };
 }
@@ -11199,7 +11222,9 @@ function getTelemetryAnalysis(
   answers: Answer[],
   feedback: AssessmentFeedbackSurvey[],
   coverage: CompetencyCoverage[],
+  t: (key: string, values?: Record<string, string | number>) => string,
 ) {
+  // i18n-namespace: telemetry
   const answeredEvents = behaviorEvents.filter((event) => event.type === 'question_answered');
   const artifactEvents = behaviorEvents.filter((event) => event.type === 'artifact_opened' || event.type === 'artifact_zoomed' || event.type === 'artifact_external_opened');
   const reportEvents = behaviorEvents.filter((event) => event.type === 'report_interest');
@@ -11212,26 +11237,28 @@ function getTelemetryAnalysis(
   const latestFeedback = feedback[0];
   return {
     trackedNow: [
-      `${answeredEvents.length || answers.length} answered-question records with selected answer, expected answer/rubric, domain, competency, difficulty, and adjusted score.`,
-      `${artifactEvents.length} artifact interaction events, including full-size opens, zoom use, and external file opens.`,
-      `${formatDuration(averageDuration)} average answer time across tracked question responses.`,
-      `${confusingEvents.length} slow/confusing answer events for item clarity and artifact-legibility review.`,
-      `${reportEvents.length} report-interest clicks showing which domains, competencies, courses, tools, continuation prompts, or did-you-know topics drew attention.`,
-      `${textAnswers} written responses and ${artifactQuestions} artifact-backed answered items in this run.`,
+      t('answeredRecords', { count: answeredEvents.length || answers.length }),
+      t('artifactEvents', { count: artifactEvents.length }),
+      t('averageAnswerTime', { duration: formatDuration(averageDuration) }),
+      t('confusingEvents', { count: confusingEvents.length }),
+      t('reportInterestClicks', { count: reportEvents.length }),
+      t('writtenAndArtifactItems', { written: textAnswers, artifact: artifactQuestions }),
     ],
     resultUse: [
-      'Differentiate ability by correctness, difficulty-adjusted evidence, competency coverage, and confidence rather than raw score alone.',
-      'Find items where users are slow, revise repeatedly, open artifacts at high zoom, or answer incorrectly despite easy difficulty.',
-      'Detect whether users abandon, stop after mandatory questions, continue into deeper routes, or engage with report recommendations.',
-      `Estimate coverage strength: ${highConfidenceRelevant}/${relevantTotal || 1} relevant competencies currently have high-confidence evidence.`,
+      t('differentiateAbility'),
+      t('findSlowItems'),
+      t('detectAbandonment'),
+      t('estimateCoverage', { high: highConfidenceRelevant, total: relevantTotal || 1 }),
     ],
     improvements: [
-      'Track whether users open the full-size reader before answering correctly or incorrectly.',
-      'Track artifact zoom level by artifact path to identify screenshots, workflows, or diagrams that are too dense.',
-      'Add server-side cohort benchmarks for item difficulty, discrimination, median time, and confusion rate.',
-      'Ask a one-question post-item clarity pulse only after unusually long time or repeated answer changes.',
-      'Keep agent proposals in review: survey and trend analysis should produce suggestions first, then a human approves platform edits.',
-      latestFeedback ? `Latest survey signal: clarity ${latestFeedback.clarity}, difficulty ${latestFeedback.difficultyFit}, artifact quality ${latestFeedback.artifactQuality}.` : 'No feedback survey has been submitted in the current local log yet.',
+      t('trackReader'),
+      t('trackZoom'),
+      t('addCohortBenchmarks'),
+      t('clarityPulse'),
+      t('keepProposalsInReview'),
+      latestFeedback
+        ? t('latestSurveySignal', { clarity: latestFeedback.clarity, difficulty: latestFeedback.difficultyFit, artifactQuality: latestFeedback.artifactQuality })
+        : t('noFeedbackYet'),
     ],
   };
 }
@@ -11992,7 +12019,8 @@ function scoreTextAnswer(question: Question, response: string) {
   return { score, hits };
 }
 
-function getCorrectAnswerSummary(question: Question) {
+/** The expected answer as text. `tc` translates the app's own words in it (domain names, the fallback); question text arrives already localized. */
+function getCorrectAnswerSummary(question: Question, tc: (text: string) => string = (text) => text) {
   if (question.interaction === 'multi') {
     const correct = new Set(question.correctOptionIds ?? []);
     return question.options.filter((option) => correct.has(option.id)).map((option) => option.label).join(' | ');
@@ -12012,11 +12040,11 @@ function getCorrectAnswerSummary(question: Question) {
     return (question.parts ?? [])
       .map((part) => {
         const correct = part.options.find((option) => option.id === part.correctOptionId);
-        return `${domains[part.domain].short}: ${correct?.label ?? part.correctOptionId}`;
+        return `${tc(domains[part.domain].short)}: ${correct?.label ?? part.correctOptionId}`;
       })
       .join(' | ');
   }
-  if (question.interaction === 'text') return question.exemplarAnswer ?? 'Rubric-scored written response.';
+  if (question.interaction === 'text') return question.exemplarAnswer ?? tc('Rubric-scored written response.');
   const best = [...question.options].sort((a, b) => b.score - a.score)[0];
   return best ? best.label : 'Rubric-scored response.';
 }
@@ -12722,6 +12750,7 @@ function RadarChart({
   selectedDomain?: DomainId;
   onSelectDomain?: (domain: DomainId) => void;
 }) {
+  const tc = useContent();
   const t = useTranslations('components');
   const axis = Object.keys(domains) as DomainId[];
   const center = 150;
@@ -12794,7 +12823,7 @@ function RadarChart({
                 className="radar-hotspot"
                 onClick={() => onSelectDomain(point.domain)}
               >
-                <title>{t('drillIntoDomain', { domain: point.domain, name: domains[point.domain].name })}</title>
+                <title>{t('drillIntoDomain', { domain: tc(point.domain ?? ''), name: tc(domains[point.domain].name) })}</title>
               </circle>
             )}
           </g>
@@ -12809,8 +12838,8 @@ function RadarChart({
             className={`radar-label ${selectedDomain === point.domain ? 'selected' : ''} ${onSelectDomain ? 'clickable' : ''}`}
             onClick={() => onSelectDomain?.(point.domain)}
           >
-            <tspan className="radar-code">{point.domain}</tspan>
-            <tspan x={point.labelX} dy="12" className="radar-short">{domains[point.domain].short}</tspan>
+            <tspan className="radar-code">{tc(point.domain ?? '')}</tspan>
+            <tspan x={point.labelX} dy="12" className="radar-short">{tc(domains[point.domain].short)}</tspan>
           </text>
         ))}
       </svg>
@@ -12824,7 +12853,7 @@ function RadarChart({
             disabled={!onSelectDomain}
           >
             <i style={{ background: domains[domain].color }} />
-            <strong>{domain}</strong> {domains[domain].name}
+            <strong>{tc(domain ?? '')}</strong> {tc(domains[domain].name)}
           </button>
         ))}
       </div>
@@ -12837,8 +12866,8 @@ function RadarChart({
           {benchmarks.map((benchmark) => (
             <span key={benchmark.label}>
               <i className={benchmark.tone} />
-              {benchmark.label}
-              <small>{benchmark.detail}</small>
+              {tc(benchmark.label)}
+              <small>{tc(benchmark.detail)}</small>
             </span>
           ))}
         </div>
@@ -12854,6 +12883,7 @@ function CompetencyRadar({
   domain: DomainId;
   competencies: Array<CompetencyDefinition & { score?: number; evidenceCount?: number; confidence?: string }>;
 }) {
+  const tc = useContent();
   const t = useTranslations('components');
   const center = 150;
   const radius = 78;
@@ -12881,11 +12911,11 @@ function CompetencyRadar({
   return (
     <div className="competency-radar-panel">
       <div>
-        <span>{t('competencyRadar', { domain: domain })}</span>
-        <strong>{domains[domain].short}</strong>
+        <span>{t('competencyRadar', { domain: tc(domain ?? '') })}</span>
+        <strong>{tc(domains[domain].short)}</strong>
         <p>{t('ofCompetenciesSampledInThis', { scoredCount: scoredCount, length: safeCompetencies.length })}</p>
       </div>
-      <svg viewBox="0 0 300 300" role="img" aria-label={t('competencyRadarGraph', { name: domains[domain].name })} className="competency-radar">
+      <svg viewBox="0 0 300 300" role="img" aria-label={t('competencyRadarGraph', { name: tc(domains[domain].name) })} className="competency-radar">
         {[0.25, 0.5, 0.75, 1].map((ring) => (
           <polygon
             key={ring}
@@ -12907,7 +12937,7 @@ function CompetencyRadar({
           return (
             <g key={point.competency.id}>
               <circle cx={pointX} cy={pointY} r={(point.competency.evidenceCount ?? 0) > 0 ? '5' : '3'} fill={domains[domain].color}>
-                <title>{t('competencyPoint', { label: point.competency.label, sampled: (point.competency.evidenceCount ?? 0) > 0 ? 'yes' : 'no', score })}</title>
+                <title>{t('competencyPoint', { label: tc(point.competency.label), sampled: (point.competency.evidenceCount ?? 0) > 0 ? 'yes' : 'no', score })}</title>
               </circle>
               <text x={point.labelX} y={point.labelY} textAnchor={point.labelAnchor} dominantBaseline="middle" className="competency-radar-label">
                 C{index + 1}
@@ -12920,7 +12950,7 @@ function CompetencyRadar({
         {safeCompetencies.map((competency, index) => (
           <p key={competency.id}>
             <span>C{index + 1}</span>
-            <strong>{competency.label}</strong>
+            <strong>{tc(competency.label)}</strong>
             <b>{(competency.evidenceCount ?? 0) > 0 ? `${competency.score}/100` : t('notSampled')}</b>
           </p>
         ))}
@@ -12932,25 +12962,41 @@ function CompetencyRadar({
 function getLabKeywordHit(label: string, draft: string) {
   const normalized = draft.toLowerCase();
   const keywordMap: Record<string, string[]> = {
-    role: ['role', 'act as', 'you are', 'assistant'],
-    task: ['draft', 'rewrite', 'create', 'write', 'improve', 'task'],
-    context: ['context', 'customer', 'refund', 'case', 'facts', 'background'],
-    source: ['policy', 'source', 'record', 'evidence', 'ticket', 'approved'],
-    constraints: ['do not invent', 'privacy', 'constraint', 'do not', 'only use', 'avoid'],
-    format: ['format', 'bullet', 'email', 'subject', 'tone', 'structure'],
-    review: ['review', 'verify', 'human', 'approval', 'check', 'flag'],
+    // English and Thai cues, so a prompt written in either language can be recognised.
+    role: ['role', 'act as', 'you are', 'assistant', 'บทบาท', 'คุณคือ', 'ในฐานะ', 'ผู้ช่วย'],
+    task: ['draft', 'rewrite', 'create', 'write', 'improve', 'task', 'ร่าง', 'เขียน', 'ปรับปรุง', 'สร้าง', 'งาน'],
+    context: ['context', 'customer', 'refund', 'case', 'facts', 'background', 'บริบท', 'ลูกค้า', 'คืนเงิน', 'กรณี', 'ข้อเท็จจริง', 'ภูมิหลัง'],
+    source: ['policy', 'source', 'record', 'evidence', 'ticket', 'approved', 'นโยบาย', 'แหล่งข้อมูล', 'ที่มา', 'บันทึก', 'หลักฐาน', 'อนุมัติแล้ว'],
+    constraints: ['do not invent', 'privacy', 'constraint', 'do not', 'only use', 'avoid', 'ห้ามแต่ง', 'ความเป็นส่วนตัว', 'ข้อจำกัด', 'ห้าม', 'ใช้เฉพาะ', 'หลีกเลี่ยง'],
+    format: ['format', 'bullet', 'email', 'subject', 'tone', 'structure', 'รูปแบบ', 'หัวข้อย่อย', 'อีเมล', 'หัวเรื่อง', 'น้ำเสียง', 'โครงสร้าง'],
+    review: ['review', 'verify', 'human', 'approval', 'check', 'flag', 'ตรวจทาน', 'ตรวจสอบ', 'มนุษย์', 'อนุมัติ'],
   };
   return (keywordMap[label] ?? [label]).some((keyword) => normalized.includes(keyword));
 }
 
-function evaluateLab(config: LabConfig, state: { draft: string; selections: string[]; order: string[]; matches: Record<string, string> }) {
+/** How evaluateLab phrases feedback; the screens pass translated versions. */
+type LabFeedbackText = {
+  included: (item: string) => string;
+  add: (item: string) => string;
+  step: (position: number, label: string) => string;
+  shouldBe: (label: string, correct: string) => string;
+};
+
+const englishLabFeedback: LabFeedbackText = {
+  included: (item) => `Included ${item}`,
+  add: (item) => `Add ${item}`,
+  step: (position, label) => `${position}. ${label}`,
+  shouldBe: (label, correct) => `${label} -> ${correct}`,
+};
+
+function evaluateLab(config: LabConfig, state: { draft: string; selections: string[]; order: string[]; matches: Record<string, string> }, feedback: LabFeedbackText = englishLabFeedback) {
   if (config.kind === 'prompt') {
     const checklist = config.checklist ?? [];
     const hits = checklist.filter((item) => getLabKeywordHit(item, state.draft));
     return {
       score: Math.round((hits.length / Math.max(1, checklist.length)) * 100),
-      strengths: hits.map((item) => `Included ${item}`),
-      misses: checklist.filter((item) => !hits.includes(item)).map((item) => `Add ${item}`),
+      strengths: hits.map((item) => feedback.included(item)),
+      misses: checklist.filter((item) => !hits.includes(item)).map((item) => feedback.add(item)),
       summary: 'A strong prompt gives the AI a clear job, usable context, source boundaries, output format, and review rules.',
     };
   }
@@ -12963,7 +13009,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
       strengths: correctPositions.map((item) => config.items?.find((labItem) => labItem.id === item)?.label ?? item),
       misses: ideal
         .filter((item, index) => state.order[index] !== item)
-        .map((item, index) => `${index + 1}. ${config.items?.find((labItem) => labItem.id === item)?.label ?? item}`),
+        .map((item, index) => feedback.step(index + 1, config.items?.find((labItem) => labItem.id === item)?.label ?? item)),
       summary: 'A safe workflow defines scope first, tests on known cases, inserts human approval, measures outcomes, and only then scales.',
     };
   }
@@ -12976,7 +13022,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
       strengths: correct.map((item) => item.label),
       misses: items
         .filter((item) => state.matches[item.id] !== item.correct)
-        .map((item) => `${item.label} -> ${item.correct}`),
+        .map((item) => feedback.shouldBe(item.label, item.correct)),
       summary: config.kind === 'trust'
         ? 'Trust improves when risks map to specific controls: data boundaries, permission gates, logs, and escalation paths.'
         : 'Good human-AI collaboration separates assistance from accountability.',
@@ -13000,7 +13046,11 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export function useAppController() {
+  const tc = useContent();
   const t = useTranslations('app');
+  const tReport = useTranslations('report');
+  const tTelemetry = useTranslations('telemetry');
+  const tContinuation = useTranslations('continuation');
   // The screen comes from the URL (app/learner-routes-model.ts). Answer feedback
   // is a phase of the assessment run, so it is the one step held in state.
   const pathname = usePathname();
@@ -13012,6 +13062,7 @@ export function useAppController() {
   const [openedLabKind, setOpenedLabKind] = useState<LabKind | null>(null);
   const [browserStateReady, setBrowserStateReady] = useState(false);
   const { language: appLanguage, setLanguage: setAppLanguage } = useLanguage();
+  const listFormat = useMemo(() => new Intl.ListFormat(appLanguage, { type: 'conjunction' }), [appLanguage]);
   const [showDraftThai, setShowDraftThai] = useState(false);
   const [assessmentDisplaySettings, setAssessmentDisplaySettings] = useState(defaultAssessmentDisplaySettings);
   const [reportAccessSettings, setReportAccessSettings] = useState(defaultReportAccessSettings);
@@ -13335,7 +13386,11 @@ export function useAppController() {
     executiveRole,
     profileTags: userProfileTags,
     confidence: results.confidence,
+    t: (key, values) => tContinuation(key as Parameters<typeof tContinuation>[0], values),
+    tc,
   }), [
+    tContinuation,
+    tc,
     audience,
     continuationTargets,
     coveragePlan.coverage,
@@ -13356,8 +13411,8 @@ export function useAppController() {
     && !evidenceCompletion.complete
     && evidenceCompletion.questionCount > 0;
   const telemetryAnalysis = useMemo(
-    () => getTelemetryAnalysis(behaviorLog, answers, assessmentFeedback, coveragePlan.coverage),
-    [answers, assessmentFeedback, behaviorLog, coveragePlan.coverage],
+    () => getTelemetryAnalysis(behaviorLog, answers, assessmentFeedback, coveragePlan.coverage, (key, values) => tTelemetry(key as Parameters<typeof tTelemetry>[0], values)),
+    [answers, assessmentFeedback, behaviorLog, coveragePlan.coverage, tTelemetry],
   );
   const previewDomainCompetencies = useMemo(
     () => getCompetenciesForDomain(selectedPreviewDomain),
@@ -13497,6 +13552,11 @@ export function useAppController() {
     selections: labSelections,
     order: labOrder,
     matches: labMatches,
+  }, {
+    included: (item) => t('labIncluded', { item: tc(item) }),
+    add: (item) => t('labAdd', { item: tc(item) }),
+    step: (position, label) => t('labStep', { position, label: tc(label) }),
+    shouldBe: (label, correct) => t('labShouldBe', { label: tc(label), correct: tc(correct) }),
   });
   const labCanSubmit = activeLab.kind === 'prompt'
     ? labDraft.trim().length >= 20
@@ -13587,7 +13647,7 @@ export function useAppController() {
       <div className={`question-feedback-strip ${placement}`} aria-label={t('questionFeedback')}>
         <div>
           <span>{t('quickFeedback')}</span>
-          <strong>{savedKind && draftKind === null ? t('savedForItemReview') : placement === 'reveal' ? t('wasThisItemUseful') : t('helpImproveThisItem')}</strong>
+          <strong>{savedKind && draftKind === null ? t('savedForItemReview') : tc(placement === 'reveal' ? t('wasThisItemUseful') : t('helpImproveThisItem'))}</strong>
         </div>
         <div className="question-feedback-actions">
           <button
@@ -14216,9 +14276,9 @@ export function useAppController() {
     const score = scoreMultiSelect(current, multiSelected);
     submitAnswer({
       id: multiSelected.join(',') || 'none',
-      label: multiSelected.length ? `Selected ${multiSelected.length} options` : 'No options selected',
+      label: t('answerSelectedOptions', { count: multiSelected.length }),
       score,
-      feedback: score >= 90 ? 'Strong multi-select judgment.' : 'Partial signal. Review which criteria are decision-grade and which are distractors.',
+      feedback: score >= 90 ? t('feedbackMultiStrong') : t('feedbackMultiPartial'),
     });
   }
 
@@ -14238,14 +14298,14 @@ export function useAppController() {
     const ideal = current.idealOrder ?? [];
     const exactPositions = ideal.filter((id, index) => rankOrder[index] === id).length;
     const verdict = score >= 90
-      ? 'Strong sequencing judgment.'
-      : `Partial signal: ${exactPositions} of ${ideal.length} steps were in the right position. The order matters, not only the ingredients.`;
-    const rationale = shownQuestion.rankRationale ? ` Why this order: ${shownQuestion.rankRationale}` : '';
+      ? t('feedbackRankStrong')
+      : t('feedbackRankPartial', { exact: exactPositions, total: ideal.length });
+    const rationale = shownQuestion.rankRationale ? ` ${t('feedbackRankRationale', { rationale: shownQuestion.rankRationale })}` : '';
     submitAnswer({
       id: rankOrder.join('>'),
-      label: 'Submitted ordered sequence',
+      label: t('answerOrderedSequence'),
       score,
-      feedback: `${verdict} Best order: ${getCorrectAnswerSummary(shownQuestion)}.${rationale}`,
+      feedback: `${t('feedbackRankBestOrder', { verdict, order: getCorrectAnswerSummary(shownQuestion, tc) })}${rationale}`,
     });
   }
 
@@ -14254,9 +14314,9 @@ export function useAppController() {
     const score = scoreMatches(shownQuestion, matchSelections);
     submitAnswer({
       id: Object.values(matchSelections).join('|') || 'unmatched',
-      label: 'Submitted matching response',
+      label: t('answerMatching'),
       score,
-      feedback: score >= 90 ? 'Strong matching of risk to control.' : 'Partial signal. Revisit which owner, control, or evidence belongs with each risk.',
+      feedback: score >= 90 ? t('feedbackMatchStrong') : t('feedbackMatchPartial'),
     });
   }
 
@@ -14275,9 +14335,9 @@ export function useAppController() {
     submitAnswer(
       {
         id: 'written',
-        label: textResponse.trim() || 'No written response',
+        label: textResponse.trim() || t('answerNoWrittenResponse'),
         score: result.score,
-        feedback: result.score >= 80 ? 'Strong written evidence against the rubric.' : 'Partial written evidence. Compare your response to the exemplar and rubric.',
+        feedback: result.score >= 80 ? t('feedbackTextStrong') : t('feedbackTextPartial'),
       },
       { textResponse, rubricHits: result.hits },
     );
@@ -14357,9 +14417,9 @@ export function useAppController() {
     submitAnswer(
       {
         id: Object.entries(partSelections).map(([partId, optionId]) => `${partId}:${optionId}`).join('|') || 'unanswered-parts',
-        label: `${result.partScores.filter((partScore) => partScore.score >= 82).length} of ${result.partScores.length} mini-parts strong`,
+        label: t('answerMiniParts', { strong: result.partScores.filter((partScore) => partScore.score >= 82).length, total: result.partScores.length }),
         score: result.score,
-        feedback: result.score >= 82 ? 'Strong concept-cluster evidence.' : 'Partial concept-cluster evidence. Review the mini-part explanations and follow-up domains.',
+        feedback: result.score >= 82 ? t('feedbackPartsStrong') : t('feedbackPartsPartial'),
       },
       { partSelections, partScores: result.partScores },
     );
@@ -14389,6 +14449,7 @@ export function useAppController() {
     improvementBrief,
     personalizedExploration,
     courseRecommendations,
+    { t: (key, values) => tReport(key as Parameters<typeof tReport>[0], values), tc, list: (items) => listFormat.format(items) },
   );
   const useRelianceStage = false;
 

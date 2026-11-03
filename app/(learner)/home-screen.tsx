@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../language';
 import { useTranslations } from 'next-intl';
 import AwarenessFlash from '../watch-awareness';
 import {
@@ -23,6 +24,7 @@ import {
 import { useApp } from '../learner-app-context';
 
 export default function HomeScreen() {
+  const tc = useContent();
   const t = useTranslations('home');
   const {
     appLanguage,
@@ -61,8 +63,8 @@ export default function HomeScreen() {
         <aside className="profile-pulse-card" aria-label={t('optionalProfilePulse')}>
           <div>
             <p className="eyebrow">{t('optionalProfilePulse')}</p>
-            <h2>{microProfilePulse.title}</h2>
-            <p>{microProfilePulse.prompt}</p>
+            <h2>{tc(microProfilePulse.title)}</h2>
+            <p>{tc(microProfilePulse.prompt)}</p>
           </div>
           <div className="profile-pulse-options">
             {microProfilePulse.options.map((option) => {
@@ -75,7 +77,7 @@ export default function HomeScreen() {
                   onClick={() => toggleProfilePulse(option.id)}
                   aria-pressed={selected}
                 >
-                  {option.label}
+                  {tc(option.label)}
                 </button>
               );
             })}
@@ -116,8 +118,8 @@ export default function HomeScreen() {
                 [t('decisionOutput'), t('d1D6RadarGroupAverage')],
               ].map(([title, body]) => (
                 <div key={title}>
-                  <span>{title}</span>
-                  <p>{body}</p>
+                  <span>{tc(title)}</span>
+                  <p>{tc(body)}</p>
                 </div>
               ))}
             </div>
@@ -143,8 +145,8 @@ export default function HomeScreen() {
             [t('adaptiveTesting'), t('whyTheTestContinuesWhen'), 'process'],
           ].map(([title, body, target]) => (
             <a key={title} href={`#${target}`}>
-              <span>{title}</span>
-              <p>{body}</p>
+              <span>{tc(title)}</span>
+              <p>{tc(body)}</p>
             </a>
           ))}
         </section>
@@ -154,9 +156,9 @@ export default function HomeScreen() {
           <article className="did-you-know-card featured">
             <div>
               <p className="eyebrow">{t('didYouKnow')}</p>
-              <span>{personalizedDidYouKnow.domain} · {personalizedDidYouKnow.topic}</span>
-              <h2 id="did-you-know-title">{personalizedDidYouKnow.fact}</h2>
-              <p>{personalizedDidYouKnow.whyItMatters}</p>
+              <span>{tc(personalizedDidYouKnow.domain ?? '')} · {tc(personalizedDidYouKnow.topic)}</span>
+              <h2 id="did-you-know-title">{tc(personalizedDidYouKnow.fact)}</h2>
+              <p>{tc(personalizedDidYouKnow.whyItMatters)}</p>
             </div>
             <div className="did-you-know-actions">
               <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>{t('learnMore')}</button>
@@ -166,9 +168,9 @@ export default function HomeScreen() {
           <div className="did-you-know-grid">
             {(secondaryDidYouKnow.length ? secondaryDidYouKnow : didYouKnowInsights.filter((insight) => insight.id !== personalizedDidYouKnow.id).slice(0, 2)).map((insight) => (
               <article key={insight.id} className="did-you-know-card compact">
-                <span>{insight.domain} · {insight.topic}</span>
-                <strong>{insight.fact}</strong>
-                <p>{insight.whyItMatters}</p>
+                <span>{tc(insight.domain ?? '')} · {tc(insight.topic)}</span>
+                <strong>{tc(insight.fact)}</strong>
+                <p>{tc(insight.whyItMatters)}</p>
                 <button className="text-button" type="button" onClick={() => followDidYouKnow(insight)}>{t('learnMore')}</button>
               </article>
             ))}
@@ -211,10 +213,10 @@ export default function HomeScreen() {
                   <div key={row.id} className={row.source}>
                     <b>#{row.rank}</b>
                     <span>
-                      <strong>{row.displayName}</strong>
-                      <small>{row.groupLabel}</small>
+                      <strong>{tc(row.displayName)}</strong>
+                      <small>{tc(row.groupLabel)}</small>
                     </span>
-                    <i>{row.strongestDomain}</i>
+                    <i>{tc(row.strongestDomain ?? '')}</i>
                     <em>{row.overall}</em>
                   </div>
                 ))}
@@ -223,9 +225,9 @@ export default function HomeScreen() {
             <div className="peer-insight-grid">
               {landingPeerInsights.map((insight) => (
                 <article key={insight.label} className="peer-insight-card">
-                  <span>{insight.label}</span>
-                  <strong>{insight.value}</strong>
-                  <p>{insight.detail}</p>
+                  <span>{tc(insight.label)}</span>
+                  <strong>{tc(insight.value)}</strong>
+                  <p>{tc(insight.detail)}</p>
                 </article>
               ))}
               <article className="peer-cta-card">
@@ -265,11 +267,11 @@ export default function HomeScreen() {
             {learnByDoingActivities.map((activity) => (
               <button className="activity-card" key={activity.title} onClick={() => startLabActivity(activity)} type="button">
                 <div>
-                  <span>{activity.domain} · {domains[activity.domain].short}</span>
-                  <strong>{activity.format}</strong>
+                  <span>{tc(activity.domain ?? '')} · {tc(domains[activity.domain].short)}</span>
+                  <strong>{tc(activity.format)}</strong>
                 </div>
-                <h3>{activity.title}</h3>
-                <p>{activity.detail}</p>
+                <h3>{tc(activity.title)}</h3>
+                <p>{tc(activity.detail)}</p>
                 <small>{t('startActivity')}</small>
               </button>
             ))}
@@ -277,9 +279,9 @@ export default function HomeScreen() {
           <div className="room-grid">
             {fieldLabRooms.map((activity) => (
               <button className="room-card" key={activity.title} onClick={() => startLabActivity(activity)} type="button">
-                <span>{activity.domain} · {activity.format}</span>
-                <h3>{activity.title}</h3>
-                <p>{activity.detail}</p>
+                <span>{tc(activity.domain ?? '')} · {tc(activity.format)}</span>
+                <h3>{tc(activity.title)}</h3>
+                <p>{tc(activity.detail)}</p>
               </button>
             ))}
           </div>
@@ -300,8 +302,8 @@ export default function HomeScreen() {
               [t('usefulAfterTheScore'), t('resultsPointToCompetenciesPractical')],
             ].map(([title, body]) => (
               <article className="info-card" key={title}>
-                <h3>{title}</h3>
-                <p>{body}</p>
+                <h3>{tc(title)}</h3>
+                <p>{tc(body)}</p>
               </article>
             ))}
           </div>
@@ -321,8 +323,8 @@ export default function HomeScreen() {
           <div className="score-model-grid">
             {scoringModelExplainers.map(([title, body]) => (
               <article className="info-card score-model-card" key={title}>
-                <h3>{title}</h3>
-                <p>{body}</p>
+                <h3>{tc(title)}</h3>
+                <p>{tc(body)}</p>
               </article>
             ))}
           </div>
@@ -334,7 +336,7 @@ export default function HomeScreen() {
             </div>
             {(Object.keys(difficultyReadinessBands) as Difficulty[]).map((difficulty) => (
               <div role="row" key={difficulty}>
-                <span role="cell">{difficultyLabels[difficulty]}</span>
+                <span role="cell">{tc(difficultyLabels[difficulty])}</span>
                 <span role="cell">{difficultyReadinessBands[difficulty].partial}/100</span>
                 <span role="cell">{difficultyReadinessBands[difficulty].max}/100</span>
               </div>
@@ -356,17 +358,17 @@ export default function HomeScreen() {
           <div className="framework-crosswalk-grid">
             {globalFrameworkCrosswalk.map((row) => (
               <article className="framework-card" key={row.domain} style={{ borderTopColor: domains[row.domain].color }}>
-                <span>{row.domain} · {domains[row.domain].name}</span>
-                <h3>{domains[row.domain].short}</h3>
-                <p><strong>{t('mapsTo')}</strong> {row.mapsTo}</p>
-                <p><strong>{t('tests')}</strong> {row.emphasis}</p>
-                <p><strong>{t('improveNext')}</strong> {row.improveNext}</p>
+                <span>{tc(row.domain ?? '')} · {tc(domains[row.domain].name)}</span>
+                <h3>{tc(domains[row.domain].short)}</h3>
+                <p><strong>{t('mapsTo')}</strong> {tc(row.mapsTo)}</p>
+                <p><strong>{t('tests')}</strong> {tc(row.emphasis)}</p>
+                <p><strong>{t('improveNext')}</strong> {tc(row.improveNext)}</p>
               </article>
             ))}
           </div>
           <div className="framework-source-list">
             {frameworkSourceLinks.map((source) => (
-              <a key={source.label} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
+              <a key={source.label} href={source.url} target="_blank" rel="noreferrer">{tc(source.label)}</a>
             ))}
           </div>
         </section>
@@ -382,8 +384,8 @@ export default function HomeScreen() {
           <div className="game-grid">
             {gamificationRules.map(([title, body]) => (
               <article className="game-card" key={title}>
-                <span>{title}</span>
-                <p>{body}</p>
+                <span>{tc(title)}</span>
+                <p>{tc(body)}</p>
               </article>
             ))}
           </div>
@@ -400,9 +402,9 @@ export default function HomeScreen() {
               ['04', t('followALearningPath'), t('seeToolsConceptsLabsAnd')],
             ].map(([num, title, body]) => (
               <article className="step-card" key={num}>
-                <span>{num}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
+                <span>{tc(num)}</span>
+                <h3>{tc(title)}</h3>
+                <p>{tc(body)}</p>
               </article>
             ))}
           </div>
@@ -414,8 +416,8 @@ export default function HomeScreen() {
           <div className="domain-grid">
             {(Object.keys(domains) as DomainId[]).map((id) => (
               <article className="domain-card" key={id} style={{ borderTopColor: domains[id].color }}>
-                <span>{id}</span>
-                <h3>{domains[id].name}</h3>
+                <span>{tc(id ?? '')}</span>
+                <h3>{tc(domains[id].name)}</h3>
               </article>
             ))}
           </div>
@@ -440,13 +442,13 @@ export default function HomeScreen() {
               onSelectDomain={setSelectedPreviewDomain}
             />
             <div className="preview-domain-drilldown">
-              <span>{selectedPreviewDomain} · {domains[selectedPreviewDomain].name}</span>
+              <span>{tc(selectedPreviewDomain ?? '')} · {tc(domains[selectedPreviewDomain].name)}</span>
               <strong>{t('competencyMap')}</strong>
               <div>
                 {previewDomainCompetencies.map((competency) => (
                   <p key={competency.id}>
-                    <b>{competency.label}</b>
-                    <small>{competency.skills.slice(0, 3).join(', ')}</small>
+                    <b>{tc(competency.label)}</b>
+                    <small>{competency.skills.slice(0, 3).map(tc).join(', ')}</small>
                   </p>
                 ))}
               </div>
@@ -465,7 +467,7 @@ export default function HomeScreen() {
           <div className="premium-grid">
             {[t('functionContext'), t('industryScenarios'), t('leadershipRoleContext'), t('premiumLearningPlan')].map((item) => (
               <article className="info-card" key={item}>
-                <h3>{item}</h3>
+                <h3>{tc(item)}</h3>
                 <p>{t('pilotGradeNowDesignedFor')}</p>
               </article>
             ))}

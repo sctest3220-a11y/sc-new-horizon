@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import { translateContent } from '../i18n/content';
 import { messages, timeZone } from '../i18n/messages';
 import {
   createLocalLanguageStore,
@@ -69,6 +70,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       </NextIntlClientProvider>
     </LanguageContext.Provider>
   );
+}
+
+/**
+ * Translates content strings (data written in English in app/learner-app.tsx)
+ * into the current language. Interface copy uses useTranslations instead.
+ */
+export function useContent(): (text: string) => string {
+  const { language } = useLanguage();
+  return useCallback((text: string) => translateContent(text, language), [language]);
 }
 
 export function useLanguage(): LanguageContextValue {

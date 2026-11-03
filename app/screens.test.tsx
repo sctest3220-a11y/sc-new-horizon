@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from '@testing-librar
 import { useSyncExternalStore, type ComponentProps } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { LanguageProvider } from './language';
+import { missingContent } from '../i18n/content';
 import { LearnerAppProvider } from './learner-app-context';
 import LearnerShell from './(learner)/learner-shell';
 import HomePage from './(learner)/page';
@@ -269,5 +270,28 @@ describe('language preference', () => {
     await waitFor(() => expect(document.title).toBe('แดชบอร์ด | New Horizon'));
     fireEvent.click(languageButton('EN'));
     await waitFor(() => expect(document.title).toBe('Dashboard | New Horizon'));
+  });
+});
+
+describe('Thai content', () => {
+  it.each([
+    ['/'], ['/dashboard'], ['/watch'], ['/labs'], ['/assessment'], ['/assessment/premium'],
+    ['/labs/ownership'], ['/labs/proof'], ['/labs/next'], ['/labs/prompt'], ['/labs/media'], ['/labs/workflow'], ['/labs/trust'],
+    ['/?question=D1-A-001'],
+  ])('every content string on %s has a Thai translation', async (url) => {
+    missingContent.clear();
+    window.localStorage.setItem('new-horizon-language-v1', 'th');
+    await renderApp(url);
+    await act(() => new Promise((resolve) => setTimeout(resolve, 50)));
+    expect([...missingContent]).toEqual([]);
+  });
+
+  it('the prompt Lab recognises a prompt written in Thai', async () => {
+    window.localStorage.setItem('new-horizon-language-v1', 'th');
+    await renderApp('/labs/prompt');
+    const draft = await screen.findByRole('textbox');
+    fireEvent.change(draft, { target: { value: 'คุณคือผู้ช่วยฝ่ายบริการลูกค้า ร่างอีเมลตอบเรื่องคืนเงิน ใช้เฉพาะนโยบายที่อนุมัติแล้ว ห้ามแต่งข้อเท็จจริง จัดรูปแบบเป็นหัวข้อย่อย และให้คนตรวจทานก่อนส่ง' } });
+    fireEvent.click(screen.getByRole('button', { name: /ตรวจ|ส่ง|Check|Submit/ }));
+    expect(await screen.findByText(/7\/7/)).toBeTruthy();
   });
 });

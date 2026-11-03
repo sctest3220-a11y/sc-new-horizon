@@ -24,6 +24,9 @@ const learnerDir = new URL('app/(learner)/', root);
 const sourceFiles = [
   ...fs.readdirSync(learnerDir, { recursive: true }).filter((file) => file.endsWith('.tsx')).map((file) => path.join('app/(learner)', file)),
   'app/learner-app.tsx',
+  'app/watch-labs.tsx',
+  'app/watch-awareness.tsx',
+  'app/watch-media.tsx',
 ];
 const isEmail = (text) => /^[\w.+-]+@[\w.-]+$/.test(text.trim());
 const TEXT_ATTRIBUTES = new Set(['aria-label', 'placeholder', 'title', 'alt', 'label', 'caption', 'description', 'ariaLabel', 'heading']);
@@ -83,11 +86,17 @@ function scanSources() {
     const namespaceOf = (node) => {
       for (let scope = node.parent; scope; scope = scope.parent) {
         if (!(ts.isFunctionDeclaration(scope) || ts.isArrowFunction(scope) || ts.isFunctionExpression(scope)) || !scope.body || !ts.isBlock(scope.body)) continue;
+        // A function that receives t as a parameter names its namespace in a comment.
+        const marker = scope.body.getFullText(sourceFile).match(/\/\/ i18n-namespace: (\w+)/);
+        if (marker) return marker[1];
         for (const statement of scope.body.statements) {
           if (!ts.isVariableStatement(statement)) continue;
           for (const declaration of statement.declarationList.declarations) {
             const init = declaration.initializer;
-            if (declaration.name.getText(sourceFile) === 't' && init && ts.isCallExpression(init) && init.expression.getText(sourceFile) === 'useTranslations') return init.arguments[0]?.text;
+            if (declaration.name.getText(sourceFile) !== 't' || !init) continue;
+            if (ts.isCallExpression(init) && init.expression.getText(sourceFile) === 'useTranslations') return init.arguments[0]?.text;
+            // const t = useMemo(() => watchTranslator(language), [language])
+            if (init.getText(sourceFile).includes('watchTranslator(')) return 'watch';
           }
         }
       }
@@ -98,6 +107,7 @@ function scanSources() {
     (function visit(node) {
       if (ts.isStringLiteral(node)) literals.add(node.text);
       if (ts.isCallExpression(node) && node.expression.getText(sourceFile) === 'useTranslations' && node.arguments[0] && ts.isStringLiteral(node.arguments[0])) namespaces.add(node.arguments[0].text);
+      if (ts.isCallExpression(node) && node.expression.getText(sourceFile) === 'watchTranslator') namespaces.add('watch');
       if (ts.isJsxText(node) && /[A-Za-z]{2}/.test(node.text.replace(/&[a-zA-Z]+;/g, '')) && !untranslatedAllowlist.has(node.text.trim())) hardCoded.push(`${where(node)} "${node.text.trim().slice(0, 60)}"`);
       if ((ts.isTemplateExpression(node) || ts.isNoSubstitutionTemplateLiteral(node)) && /[A-Za-z]{3}/.test(node.getText(sourceFile).replace(/\$\{[^}]*\}/g, '')) && isRendered(node, sourceFile)) hardCoded.push(`${where(node)} ${node.getText(sourceFile).slice(0, 60)}`);
       if (ts.isStringLiteral(node) && /[A-Za-z]{2}/.test(node.text) && !isEmail(node.text) && !untranslatedAllowlist.has(node.text) && isRendered(node, sourceFile)) hardCoded.push(`${where(node)} "${node.text.slice(0, 60)}"`);

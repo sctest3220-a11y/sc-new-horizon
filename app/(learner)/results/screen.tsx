@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../../language';
 import { useTranslations } from 'next-intl';
 import {
   type AssessmentFeedbackSurvey,
@@ -14,6 +15,8 @@ import {
   formatDuration,
   functionLabels,
   getCorrectAnswerSummary,
+  localizeAnswerOption,
+  localizeQuestion,
   getQuestionMeasures,
   getReadinessScore,
   getScoreBandDescription,
@@ -24,10 +27,12 @@ import {
 import { useApp, useRequireFlowState } from '../../learner-app-context';
 
 export default function ResultsScreen() {
+  const tc = useContent();
   const t = useTranslations('results');
   const {
     activeLearningCatalog,
     answers,
+    appLanguage,
     appendBehaviorEvent,
     assessedDomains,
     audience,
@@ -80,6 +85,7 @@ export default function ResultsScreen() {
     setSelectedRadarDomain,
     setStep,
     showContinuationPanel,
+    showDraftThai,
     showEvidenceCompletionPanel,
     showHomeSection,
     startAssessment,
@@ -93,16 +99,16 @@ export default function ResultsScreen() {
     <section className="results-shell">
       <div className="results-hero">
         <div>
-          <p className="eyebrow">{mode === 'executive' ? t('premiumLeadershipDiagnostic') : mode === 'premium' ? t('premiumDiagnosticPilot') : mode === 'practice' ? t('practiceActivityResult') : t('indicativeMvpResult')}</p>
+          <p className="eyebrow">{mode === 'executive' ? t('premiumLeadershipDiagnostic') : tc(mode === 'premium' ? t('premiumDiagnosticPilot') : mode === 'practice' ? t('practiceActivityResult') : t('indicativeMvpResult'))}</p>
           <h1>{results.overall}</h1>
-          <p className="result-level">{t('aiReadiness', { level: results.level })}</p>
-          <p>{t('basedOnForEvidenceConfidence', { count: answers.length, responseKind: mode === 'practice' ? t('practiceActivity') : t('adaptiveResponses'), audience: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase(), confidence: results.confidence })}</p>
-          <p className="context-line">{getScoreBandDescription(results.overall, results.level)}</p>
+          <p className="result-level">{t('aiReadiness', { level: tc(results.level) })}</p>
+          <p>{t('basedOnForEvidenceConfidence', { count: answers.length, responseKind: mode === 'practice' ? t('practiceActivity') : t('adaptiveResponses'), audience: mode === 'executive' ? tc(executiveLabels[executiveRole].toLowerCase()) : tc(audienceLabels[audience].toLowerCase()), confidence: results.confidence })}</p>
+          <p className="context-line">{tc(getScoreBandDescription(results.overall, results.level) ?? '')}</p>
           {mode === 'premium' && (
-            <p className="context-line">{t('contextIn', { functionLabel: functionLabels[functionTrack], industry: industryLabels[industryTrack].toLowerCase() })}</p>
+            <p className="context-line">{t('contextIn', { functionLabel: tc(functionLabels[functionTrack]), industry: tc(industryLabels[industryTrack].toLowerCase()) })}</p>
           )}
           {mode === 'executive' && (
-            <p className="context-line">{t('contextProfileWeightedTowardD5', { executiveLabel: executiveLabels[executiveRole] })}</p>
+            <p className="context-line">{t('contextProfileWeightedTowardD5', { executiveLabel: tc(executiveLabels[executiveRole]) })}</p>
           )}
         </div>
         <RadarChart
@@ -139,8 +145,8 @@ export default function ResultsScreen() {
           <h2>{t('scoreInterpretation')}</h2>
           <div className="evidence-grid">
             <p>{t.rich('yourScoreASampledReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
-            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? t('groupAverageFor', { detail: groupAverageProfile.detail, group: scoreGroup.label.toLowerCase() }) : t('noSavedGroupYet', { group: scoreGroup.label.toLowerCase() })}</p>
-            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? t('functionInIndustry', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() }) : audienceLabels[audience].toLowerCase() })}</p>
+            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? t('groupAverageFor', { detail: tc(groupAverageProfile.detail), group: tc(scoreGroup.label.toLowerCase()) }) : t('noSavedGroupYet', { group: tc(scoreGroup.label.toLowerCase()) })}</p>
+            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? tc(executiveLabels[executiveRole].toLowerCase()) : tc(mode === 'premium' ? t('functionInIndustry', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() }) : audienceLabels[audience].toLowerCase()) })}</p>
           </div>
         </article>
         <article className="result-card wide score-calculation-card analysis-primary">
@@ -167,18 +173,19 @@ export default function ResultsScreen() {
                 return (
                   <div key={`${row.questionId}-${index}`}>
                     <span>Q{index + 1}</span>
-                    <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
+                    <strong>{tc(row.domain ?? '')} · {tc(difficultyLabels[row.difficulty])} · {tc(row.interaction ?? '')}</strong>
                     <b>{t('rawReadiness', { rawScore: row.rawScore, readinessScore: row.readinessScore })}</b>
                     <small>{row.calculation}</small>
                     {answer && (
                       <>
-                        <p><strong>{t('question')}</strong> {answer.question.prompt}</p>
-                        <p><strong>{t('yourAnswer')}</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                        <p><strong>{t('expectedEvidence')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                        <p><strong>{t('whyItScoredThisWay')}</strong> {answer.option.feedback}</p>
+                        {/* Question text has its own reviewed translations (localizeQuestion), not the content catalog. */}
+                        <p><strong>{t('question')}</strong> {localizeQuestion(answer.question, appLanguage, showDraftThai).prompt}</p>
+                        <p><strong>{t('yourAnswer')}</strong> {answer.textResponse?.trim() || localizeAnswerOption(answer, appLanguage, showDraftThai).label}</p>
+                        <p><strong>{t('expectedEvidence')}</strong> {getCorrectAnswerSummary(localizeQuestion(answer.question, appLanguage, showDraftThai), tc)}</p>
+                        <p><strong>{t('whyItScoredThisWay')}</strong> {localizeAnswerOption(answer, appLanguage, showDraftThai).feedback}</p>
                       </>
                     )}
-                    <p><strong>{t('measured')}</strong> {row.competencies}</p>
+                    <p><strong>{t('measured')}</strong> {row.competencyLabels.map(tc).join(', ')}</p>
                   </div>
                 );
               })}
@@ -189,8 +196,8 @@ export default function ResultsScreen() {
             <div className="calculation-table domain-calculation-table">
               {domainScoreCalculations.map((row) => (
                 <div key={row.domain}>
-                  <span>{row.domain}</span>
-                  <strong>{domains[row.domain].short}</strong>
+                  <span>{tc(row.domain ?? '')}</span>
+                  <strong>{tc(domains[row.domain].short)}</strong>
                   <b>{row.score}/100</b>
                   <small>{row.calculation}</small>
                   <p>{row.count ? t('readinessPointsAcross', { points: row.points, count: row.count }) : t('noSampledEvidenceInThis')}</p>
@@ -203,10 +210,10 @@ export default function ResultsScreen() {
             <div className="calculation-table competency-calculation-table">
               {competencyScores.filter((competency) => competency.evidenceCount > 0).map((competency) => (
                 <div key={competency.id}>
-                  <span>{competency.domain}</span>
-                  <strong>{competency.label}</strong>
+                  <span>{tc(competency.domain ?? '')}</span>
+                  <strong>{tc(competency.label)}</strong>
                   <b>{competency.score}/100</b>
-                  <small>{t('evidenceConfidence', { evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
+                  <small>{t('evidenceConfidence', { evidenceCount: competency.evidenceCount, confidence: tc(competency.confidence) })}</small>
                   <p>{t('averageReadinessEvidenceFromMapped')}</p>
                 </div>
               ))}
@@ -216,9 +223,9 @@ export default function ResultsScreen() {
         <article className="result-card wide did-you-know-report analysis-primary">
           <div>
             <p className="eyebrow">{t('didYouKnow')}</p>
-            <h2>{personalizedDidYouKnow.topic}</h2>
-            <p>{personalizedDidYouKnow.fact}</p>
-            <small>{personalizedDidYouKnow.whyItMatters}</small>
+            <h2>{tc(personalizedDidYouKnow.topic)}</h2>
+            <p>{tc(personalizedDidYouKnow.fact)}</p>
+            <small>{tc(personalizedDidYouKnow.whyItMatters)}</small>
           </div>
           <div className="did-you-know-actions">
             <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>{t('learnMore')}</button>
@@ -228,19 +235,19 @@ export default function ResultsScreen() {
         {showContinuationPanel && (
           <article className={`result-card wide continuation-panel prominent report-primary report-order-continuation ${continuationRecommendation.urgency}`}>
             <div>
-              <p className="eyebrow">{continuationRecommendation.kicker}</p>
-              <h2>{continuationRecommendation.headline}</h2>
-              <p>{continuationRecommendation.summary}</p>
+              <p className="eyebrow">{tc(continuationRecommendation.kicker)}</p>
+              <h2>{tc(continuationRecommendation.headline)}</h2>
+              <p>{tc(continuationRecommendation.summary)}</p>
               <div className="continue-reasons">
-                {continuationRecommendation.reasons.map((reason) => <span key={reason}>{reason}</span>)}
+                {continuationRecommendation.reasons.map((reason) => <span key={reason}>{tc(reason)}</span>)}
               </div>
             </div>
             <div className="continuation-decision">
-              <strong>{continuationRecommendation.confidenceLabel}: {results.confidence}%</strong>
+              <strong>{tc(continuationRecommendation.confidenceLabel)}: {results.confidence}%</strong>
               <p>{t('targetedQuestionsCanImproveThe', { questionCount: continuationRecommendation.questionCount })}</p>
               {continuationRecommendation.targetLabels.length > 0 && (
                 <div className="continue-targets">
-                  {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
+                  {continuationRecommendation.targetLabels.map((label) => <span key={label}>{tc(label)}</span>)}
                 </div>
               )}
               <div className="continuation-actions">
@@ -260,13 +267,13 @@ export default function ResultsScreen() {
                     targetDomain: selectedRadarDomain,
                     targetCompetencyIds: continuationTargets.domainIds,
                   })}
-                >{t('chooseDeepDive', { selectedRadarDomain: selectedRadarDomain })}</button>
+                >{t('chooseDeepDive', { selectedRadarDomain: tc(selectedRadarDomain ?? '') })}</button>
               </div>
             </div>
             <div className="continuation-summary">
               <span>{t('confidenceTargets', { length: continuationTargets.confidenceIds.length })}</span>
               <span>{t('profilePriorityGaps', { length: continuationTargets.priorityGapIds.length })}</span>
-              <span>{t('followUps', { length: continuationTargets.domainIds.length, selectedRadarDomain: selectedRadarDomain })}</span>
+              <span>{t('followUps', { length: continuationTargets.domainIds.length, selectedRadarDomain: tc(selectedRadarDomain ?? '') })}</span>
             </div>
           </article>
         )}
@@ -275,7 +282,7 @@ export default function ResultsScreen() {
             <div>
               <p className="eyebrow">{t('evidenceCompletion')}</p>
               <h2>{t('continueBeyond20UntilConfidence')}</h2>
-              <p>{evidenceCompletion.summary}</p>
+              <p>{t('evidenceReadout', { count: evidenceCompletion.targets.length })}</p>
               <div className="continue-reasons">
                 <span>{t('relevantCompetenciesUnsampled', { unsampled: evidenceCompletion.unsampled })}</span>
                 <span>{t('sampledCompetenciesBelowHighConfidence', { lowConfidence: evidenceCompletion.lowConfidence })}</span>
@@ -286,7 +293,7 @@ export default function ResultsScreen() {
               <strong>{t('recommendedIfYouWantA')}</strong>
               <p>{t('theNextBatchTargetsPlanned')}</p>
               <div className="continue-targets">
-                {evidenceCompletion.targets.slice(0, 6).map((competency) => <span key={competency.id}>{competency.label}</span>)}
+                {evidenceCompletion.targets.slice(0, 6).map((competency) => <span key={competency.id}>{tc(competency.label)}</span>)}
               </div>
               <div className="continuation-actions">
                 <button type="button" className="primary" onClick={continueEvidenceCompletion}>{t('addEvidenceQuestions', { questionCount: evidenceCompletion.questionCount })}</button>
@@ -311,7 +318,7 @@ export default function ResultsScreen() {
             {personaLeaderboard.length ? personaLeaderboard.map((entry) => (
               <div key={entry.id} className={entry.id === loggedResultId ? 'current' : ''}>
                 <strong>#{entry.rank}</strong>
-                <span>{entry.displayName}</span>
+                <span>{tc(entry.displayName)}</span>
                 <b>{entry.overall}/100</b>
                 <small>{new Date(entry.createdAt).toLocaleDateString()}</small>
               </div>
@@ -330,15 +337,15 @@ export default function ResultsScreen() {
           <div className="telemetry-grid">
             <div>
               <h3>{t('currentlyTracked')}</h3>
-              {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
+              {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{tc(item)}</p>)}
             </div>
             <div>
               <h3>{t('usedForAnalysis')}</h3>
-              {telemetryAnalysis.resultUse.map((item) => <p key={item}>{item}</p>)}
+              {telemetryAnalysis.resultUse.map((item) => <p key={item}>{tc(item)}</p>)}
             </div>
             <div>
               <h3>{t('improveNext')}</h3>
-              {telemetryAnalysis.improvements.map((item) => <p key={item}>{item}</p>)}
+              {telemetryAnalysis.improvements.map((item) => <p key={item}>{tc(item)}</p>)}
             </div>
           </div>
           <p className="context-line">{t('agentSuggestionsShouldAnalyzeSurvey')}</p>
@@ -399,14 +406,14 @@ export default function ResultsScreen() {
                   <details key={`${answer.question.id}-${index}`}>
                     <summary>
                       <span>{index + 1}</span>
-                      <strong>{answer.question.domain} · {difficultyLabels[answer.question.difficulty]} · {answer.question.interaction ?? t('single')}</strong>
+                      <strong>{tc(answer.question.domain ?? '')} · {tc(difficultyLabels[answer.question.difficulty])} · {tc(answer.question.interaction ?? t('single'))}</strong>
                       <b>{getReadinessScore(answer.option.score, answer.question.difficulty)}/100</b>
-                      <small>{formatDuration(answer.behavior?.durationMs)} · {answer.behavior?.hesitation ?? t('timingUnavailable')}</small>
+                      <small>{formatDuration(answer.behavior?.durationMs)} · {tc(answer.behavior?.hesitation ?? t('timingUnavailable'))}</small>
                     </summary>
-                    <p><strong>{t('question2')}</strong> {answer.question.prompt}</p>
-                    <p><strong>{t('yourAnswer2')}</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                    <p><strong>{t('expectedEvidence2')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                    <p><strong>{t('measured2')}</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
+                    <p><strong>{t('question2')}</strong> {localizeQuestion(answer.question, appLanguage, showDraftThai).prompt}</p>
+                    <p><strong>{t('yourAnswer2')}</strong> {answer.textResponse?.trim() || localizeAnswerOption(answer, appLanguage, showDraftThai).label}</p>
+                    <p><strong>{t('expectedEvidence2')}</strong> {getCorrectAnswerSummary(localizeQuestion(answer.question, appLanguage, showDraftThai), tc)}</p>
+                    <p><strong>{t('measured2')}</strong> {getQuestionMeasures(answer.question).map((competency) => tc(competency.label)).join(', ')}</p>
                     <p>{t.rich('behaviorInteractionsRevisions', { strong: (chunks) => <strong>{chunks}</strong>, interactions: answer.behavior?.interactionCount ?? 0, revisions: answer.behavior?.revisionCount ?? 0 })}</p>
                     <p><strong>{t('localComparison')}</strong> {benchmark ? t('benchmarkAverage', { averageScore: benchmark.averageScore, attempts: benchmark.attempts, duration: formatDuration(benchmark.averageDurationMs) }) : t('noComparisonDataYet')}</p>
                   </details>
@@ -419,15 +426,15 @@ export default function ResultsScreen() {
           <div className="report-heading">
             <div>
               <p className="eyebrow">{t('personalizedAiReport')}</p>
-              <h2>{generatedReport.headline}</h2>
+              <h2>{tc(generatedReport.headline)}</h2>
             </div>
             <span>{cleanAverageLabel(scoreGroup.label)}</span>
           </div>
-          <p>{generatedReport.summary}</p>
+          <p>{tc(generatedReport.summary)}</p>
           <div className="report-section">
             <h3>{t('whatThisMeans')}</h3>
             <div className="evidence-grid">
-              {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
+              {generatedReport.analysis.map((item) => <p key={item}>{tc(item)}</p>)}
             </div>
           </div>
         </article>
@@ -446,10 +453,10 @@ export default function ResultsScreen() {
                   type="button"
                   onClick={() => selectReportDomain(domain, 'radar')}
                 >
-                  <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
+                  <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{tc(domain ?? '')} · {tc(domains[domain].short)}</span>
                   <strong>{assessed ? `${results.domainScores[domain]}/100` : t('notAssessed')}</strong>
                   {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label={t('notAssessed')} />}
-                  <small>{assessed ? (gap > 0 ? t('pointsBelowTarget', { gap }) : t('atOrAboveTarget')) : t('noQuestionSampledThisDomain')}</small>
+                  <small>{assessed ? tc((gap > 0 ? t('pointsBelowTarget', { gap }) : t('atOrAboveTarget'))) : t('noQuestionSampledThisDomain')}</small>
                 </button>
               );
             })}
@@ -457,11 +464,11 @@ export default function ResultsScreen() {
         </article>
         <article className="result-card wide coverage-plan analysis-primary">
           <h2>{t('assessmentCoveragePlan')}</h2>
-          <p>{coveragePlan.testFrame}</p>
+          <p>{tc(coveragePlan.testFrame)}</p>
           <div className="coverage-stats">
             <div>
               <span>{t('profile')}</span>
-              <strong>{coveragePlan.contextLabel}</strong>
+              <strong>{tc(coveragePlan.contextLabel)}</strong>
             </div>
             <div>
               <span>{t('sampled')}</span>
@@ -479,18 +486,18 @@ export default function ResultsScreen() {
           <div className="domain-target-grid" aria-label={t('profileDomainTargets')}>
             {(Object.keys(domains) as DomainId[]).map((domain) => (
               <div key={domain}>
-                <span>{domain}</span>
+                <span>{tc(domain ?? '')}</span>
                 <strong>{profileDomainTargets[domain]}</strong>
-                <small>{domains[domain].short}</small>
+                <small>{tc(domains[domain].short)}</small>
               </div>
             ))}
           </div>
           <div className="coverage-grid">
             {coveragePlan.coverage.map((competency) => (
               <div key={competency.id} className={competency.status}>
-                <span>{competency.domain}</span>
-                <strong>{competency.label}</strong>
-                <small>{competency.statusLabel}</small>
+                <span>{tc(competency.domain ?? '')}</span>
+                <strong>{tc(competency.label)}</strong>
+                <small>{tc(competency.statusLabel)}</small>
               </div>
             ))}
           </div>
@@ -499,9 +506,9 @@ export default function ResultsScreen() {
           <h2>{t('userProfileSignals')}</h2>
           {userProfileSurvey ? (
             <>
-              <p>{t.rich('latestProfileContextTheseTags', { strong: () => <strong>{userProfileSurvey.context}</strong> })}</p>
+              <p>{t.rich('latestProfileContextTheseTags', { strong: () => <strong>{tc(userProfileSurvey.context)}</strong> })}</p>
               <div className="profile-tag-grid">
-                {userProfileSurvey.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                {userProfileSurvey.tags.map((tag) => <span key={tag}>{tc(tag)}</span>)}
               </div>
             </>
           ) : (
@@ -518,16 +525,16 @@ export default function ResultsScreen() {
                 className={selectedRadarDomain === item.domain ? 'selected' : ''}
                 onClick={() => selectReportDomain(item.domain, 'domain')}
               >
-                <span>{item.domain} · {domains[item.domain].short}</span>
+                <span>{tc(item.domain ?? '')} · {tc(domains[item.domain].short)}</span>
                 <strong>{item.evidenceCount ? `${item.score}/100` : t('notSampled')}</strong>
-                <p>{t('evidenceSignal', { evidenceCount: Number(item.evidenceCount.toFixed(2)), confidence: item.confidence })}</p>
+                <p>{t('evidenceSignal', { evidenceCount: Number(item.evidenceCount.toFixed(2)), confidence: tc(item.confidence) })}</p>
               </button>
             ))}
           </div>
         </article>
         <article className="result-card wide domain-drilldown report-primary report-order-competencies">
-          <h2>{t('competencyDrilldown', { name: domains[selectedRadarDomain].name })}</h2>
-          <p>{selectedRadarDomain} · {domains[selectedRadarDomain].name}</p>
+          <h2>{t('competencyDrilldown', { name: tc(domains[selectedRadarDomain].name) })}</h2>
+          <p>{tc(selectedRadarDomain ?? '')} · {tc(domains[selectedRadarDomain].name)}</p>
           <div className="drilldown-domain-tabs" aria-label={t('chooseADomainForCompetency')}>
             {(Object.keys(domains) as DomainId[]).map((domain) => (
               <button
@@ -536,8 +543,8 @@ export default function ResultsScreen() {
                 className={selectedRadarDomain === domain ? 'selected' : ''}
                 onClick={() => selectReportDomain(domain, 'radar')}
               >
-                <span>{domain}</span>
-                <strong>{domains[domain].name}</strong>
+                <span>{tc(domain ?? '')}</span>
+                <strong>{tc(domains[domain].name)}</strong>
               </button>
             ))}
           </div>
@@ -546,12 +553,12 @@ export default function ResultsScreen() {
             {selectedDomainCompetencies.map((competency) => (
               <details key={competency.id} open={competency.evidenceCount > 0}>
                 <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label, domain: competency.domain })}>
-                  <span>{competency.id}</span>
-                  <strong>{competency.label}</strong>
+                  <span>{tc(competency.id)}</span>
+                  <strong>{tc(competency.label)}</strong>
                   <b>{competency.evidenceCount ? `${competency.score}/100` : t('notSampled')}</b>
-                  <small>{t('evidenceConfidence2', { statusLabel: competency.statusLabel, evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
+                  <small>{t('evidenceConfidence2', { statusLabel: tc(competency.statusLabel), evidenceCount: competency.evidenceCount, confidence: tc(competency.confidence) })}</small>
                 </summary>
-                <p>{t('skills', { rationale: competency.rationale, skills: competency.skills.join(', ') })}</p>
+                <p>{t('skills', { rationale: tc(competency.rationale), skills: competency.skills.map(tc).join(', ') })}</p>
               </details>
             ))}
           </div>
@@ -567,24 +574,24 @@ export default function ResultsScreen() {
           </div>
           <div className="analytics-chips">
             {scoreLogAnalytics.byMode.map((item) => (
-              <span key={item.label}>{item.label}: {item.count}</span>
+              <span key={item.label}>{tc(item.label)}: {item.count}</span>
             ))}
             {scoreLogAnalytics.profileFields.map((item) => (
-              <span key={item}>{item}</span>
+              <span key={item}>{tc(item)}</span>
             ))}
           </div>
         </article>
         <article className="result-card report-primary report-order-strengths">
           <h2>{t('strengths')}</h2>
           {results.strongest.filter((domain) => assessedDomains.includes(domain)).map((domain) => (
-            <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
+            <p key={domain}><strong>{tc(domains[domain].short)}</strong> {results.domainScores[domain]}/100</p>
           ))}
           {!results.strongest.some((domain) => assessedDomains.includes(domain)) && <p>{t('notEnoughSampledEvidenceYet')}</p>}
         </article>
         <article className="result-card report-primary report-order-gaps">
           <h2>{t('priorityGaps')}</h2>
           {results.weakest.map((domain) => (
-            <p key={domain}><strong>{domains[domain].short}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : t('notAssessedYet')}</p>
+            <p key={domain}><strong>{tc(domains[domain].short)}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : t('notAssessedYet')}</p>
           ))}
         </article>
         <article className="result-card wide analysis-primary">
@@ -592,7 +599,7 @@ export default function ResultsScreen() {
           <div className="evidence-mode-grid">
             {evidenceModeSummary.map((item) => (
               <div key={item.mode}>
-                <span>{item.label}</span>
+                <span>{tc(item.label)}</span>
                 <strong>{item.count ? `${item.score}/100` : t('notSampled')}</strong>
                 <p>{t('scoredSignal', { count: item.count })}</p>
               </div>
@@ -605,8 +612,8 @@ export default function ResultsScreen() {
             {earnedBadges.map((badge) => (
               <div key={badge.domain} className={badge.earned ? 'earned' : ''}>
                 <span>{badge.earned ? t('earned') : t('inProgress')}</span>
-                <strong>{badge.title}</strong>
-                <p>{badge.domain} · {badge.score}/100 · {badge.detail}</p>
+                <strong>{tc(badge.title)}</strong>
+                <p>{tc(badge.domain ?? '')} · {badge.score}/100 · {tc(badge.detail)}</p>
               </div>
             ))}
           </div>
@@ -617,53 +624,53 @@ export default function ResultsScreen() {
             {coveragePlan.coverage.map((competency) => (
               <details key={competency.id} open={competency.evidenceCount > 0 && competency.score < 65}>
                 <summary>
-                  <span>{competency.domain}</span>
-                  <strong>{competency.label}</strong>
+                  <span>{tc(competency.domain ?? '')}</span>
+                  <strong>{tc(competency.label)}</strong>
                   <b>{competency.evidenceCount ? `${competency.score}/100` : t('notSampled')}</b>
-                  <small>{t('evidenceConfidence2', { statusLabel: competency.statusLabel, evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
+                  <small>{t('evidenceConfidence2', { statusLabel: tc(competency.statusLabel), evidenceCount: competency.evidenceCount, confidence: tc(competency.confidence) })}</small>
                 </summary>
-                <p>{t('skills', { rationale: competency.rationale, skills: competency.skills.join(', ') })}</p>
+                <p>{t('skills', { rationale: tc(competency.rationale), skills: competency.skills.map(tc).join(', ') })}</p>
               </details>
             ))}
           </div>
         </article>
         <article className="result-card wide report-primary report-order-learning">
-          <h2>{mode === 'executive' ? t('executiveLearningPath') : mode === 'premium' ? t('premiumLearningPath') : t('recommendedLearningPath')}</h2>
+          <h2>{mode === 'executive' ? t('executiveLearningPath') : tc(mode === 'premium' ? t('premiumLearningPath') : t('recommendedLearningPath'))}</h2>
           <div className="personalized-exploration">
             <div>
               <span>{t('toolsToExplore')}</span>
               <div className="profile-tag-grid">
-                {personalizedExploration.tools.map((tool) => <span key={tool}>{tool}</span>)}
+                {personalizedExploration.tools.map((tool) => <span key={tool}>{tc(tool)}</span>)}
               </div>
             </div>
             <div>
               <span>{t('conceptsToStrengthen')}</span>
               <div className="profile-tag-grid">
-                {personalizedExploration.concepts.map((concept) => <span key={concept}>{concept}</span>)}
+                {personalizedExploration.concepts.map((concept) => <span key={concept}>{tc(concept)}</span>)}
               </div>
             </div>
             <div>
               <span>{t('practiceNext')}</span>
               <div className="profile-tag-grid">
-                {personalizedExploration.practice.map((activity) => <span key={activity}>{activity}</span>)}
+                {personalizedExploration.practice.map((activity) => <span key={activity}>{tc(activity)}</span>)}
               </div>
             </div>
           </div>
           <div className="learning-list">
             {results.weakest.map((domain) => (
               <div key={domain}>
-                <span>{activeLearningCatalog[domain].format}</span>
-                <strong>{activeLearningCatalog[domain].title}</strong>
-                <p>{activeLearningCatalog[domain].detail}</p>
+                <span>{tc(activeLearningCatalog[domain].format)}</span>
+                <strong>{tc(activeLearningCatalog[domain].title)}</strong>
+                <p>{tc(activeLearningCatalog[domain].detail)}</p>
               </div>
             ))}
           </div>
           <div className="learning-list bootcamp-inline-list">
             {bootcampRecommendations.slice(0, 2).map((bootcamp) => (
               <div key={bootcamp.id}>
-                <span>{t('workshop', { duration: bootcamp.duration, level: bootcamp.level })}</span>
-                <strong>{bootcamp.title}</strong>
-                <p>{bootcamp.whyTakeIt}</p>
+                <span>{t('workshop', { duration: tc(bootcamp.duration), level: tc(bootcamp.level ?? '') })}</span>
+                <strong>{tc(bootcamp.title)}</strong>
+                <p>{tc(bootcamp.whyTakeIt)}</p>
               </div>
             ))}
           </div>
@@ -674,14 +681,14 @@ export default function ResultsScreen() {
             {courseRecommendations.map((course) => (
               <article key={course.id}>
                 <div>
-                  <span>{course.provider} · {course.level}</span>
-                  <h3><a href={course.url} target="_blank" rel="noreferrer">{course.title}</a></h3>
-                  <p>{course.fit}</p>
+                  <span>{tc(course.provider)} · {tc(course.level ?? '')}</span>
+                  <h3><a href={course.url} target="_blank" rel="noreferrer">{tc(course.title)}</a></h3>
+                  <p>{tc(course.fit)}</p>
                 </div>
                 <dl>
-                  <div><dt>{t('format')}</dt><dd>{course.format}</dd></div>
-                  <div><dt>{t('price')}</dt><dd>{course.price}</dd></div>
-                  <div><dt>{t('mapsTo')}</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
+                  <div><dt>{t('format')}</dt><dd>{tc(course.format)}</dd></div>
+                  <div><dt>{t('price')}</dt><dd>{tc(course.price)}</dd></div>
+                  <div><dt>{t('mapsTo')}</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).map(tc).join(', ')}</dd></div>
                 </dl>
               </article>
             ))}
@@ -696,27 +703,27 @@ export default function ResultsScreen() {
             {bootcampRecommendations.map((bootcamp, index) => (
               <details key={bootcamp.id} open={index === 0}>
                 <summary>
-                  <span>{bootcamp.duration} · {bootcamp.level}</span>
-                  <strong>{bootcamp.title}</strong>
+                  <span>{tc(bootcamp.duration)} · {tc(bootcamp.level ?? '')}</span>
+                  <strong>{tc(bootcamp.title)}</strong>
                   <b>{bootcamp.domains.join(', ')}</b>
                 </summary>
                 <div className="bootcamp-detail-grid">
-                  <p><strong>{t('forWho')}</strong> {bootcamp.forWho}</p>
-                  <p><strong>{t('whyTakeIt')}</strong> {bootcamp.whyTakeIt}</p>
+                  <p><strong>{t('forWho')}</strong> {tc(bootcamp.forWho)}</p>
+                  <p><strong>{t('whyTakeIt')}</strong> {tc(bootcamp.whyTakeIt)}</p>
                   <div>
                     <strong>{t('expectedLearningOutputs')}</strong>
                     <ul>
-                      {bootcamp.expectedOutputs.map((output) => <li key={output}>{output}</li>)}
+                      {bootcamp.expectedOutputs.map((output) => <li key={output}>{tc(output)}</li>)}
                     </ul>
                   </div>
                   <div>
                     <strong>{t('workshopLabs')}</strong>
                     <ul>
-                      {bootcamp.labs.map((lab) => <li key={lab}>{lab}</li>)}
+                      {bootcamp.labs.map((lab) => <li key={lab}>{tc(lab)}</li>)}
                     </ul>
                   </div>
-                  <p><strong>{t('frameworkAlignment')}</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
-                  <p><strong>{t('bestFitRoles')}</strong> {bootcamp.roles.join(', ')}</p>
+                  <p><strong>{t('frameworkAlignment')}</strong> {bootcamp.mappedFrameworks.map(tc).join('; ')}</p>
+                  <p><strong>{t('bestFitRoles')}</strong> {bootcamp.roles.map(tc).join(', ')}</p>
                 </div>
               </details>
             ))}
@@ -727,9 +734,9 @@ export default function ResultsScreen() {
           <div className="improvement-brief">
             {improvementBrief.map((item) => (
               <div key={item.domain}>
-                <span>{item.domain} · {domains[item.domain].name}</span>
+                <span>{tc(item.domain ?? '')} · {tc(domains[item.domain].name)}</span>
                 <strong>{t('n100NowTarget100', { score: item.score, target: item.target })}</strong>
-                <p>{item.gapText}: {item.action}</p>
+                <p>{tc(item.gapText)}: {tc(item.action)}</p>
               </div>
             ))}
           </div>
@@ -739,14 +746,14 @@ export default function ResultsScreen() {
             <h2>{t('evidenceSummary')}</h2>
             <div className="evidence-grid">
               <p><strong>{t('adaptiveCoverage')}</strong> {mode === 'executive' ? t('executiveWeightedD5D4D6') : t('d1D6SampledWithExtra')}</p>
-              <p><strong>{t('scenarioContext')}</strong> {mode === 'executive' ? t('recommendationsTunedExecutive', { role: executiveLabels[executiveRole].toLowerCase() }) : t('recommendationsTunedFunction', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() })}</p>
+              <p><strong>{t('scenarioContext')}</strong> {mode === 'executive' ? t('recommendationsTunedExecutive', { role: tc(executiveLabels[executiveRole].toLowerCase()) }) : t('recommendationsTunedFunction', { functionLabel: tc(functionLabels[functionTrack].toLowerCase()), industry: tc(industryLabels[industryTrack].toLowerCase()) })}</p>
               <p>{t.rich('targetStatusResearchInformedTargets', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             </div>
             <div className="source-list">
               {targetEvidenceSources.map((source) => (
                 <p key={source.label}>
-                  <strong><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></strong>
-                  {' '}{source.detail}
+                  <strong><a href={source.url} target="_blank" rel="noreferrer">{tc(source.label)}</a></strong>
+                  {' '}{tc(source.detail)}
                 </p>
               ))}
             </div>

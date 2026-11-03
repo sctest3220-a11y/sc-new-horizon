@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../../../language';
 import { useTranslations } from 'next-intl';
 import {
   type ExecutiveRole,
@@ -12,6 +13,7 @@ import {
 import { useApp } from '../../../learner-app-context';
 
 export default function PremiumOnboardingScreen() {
+  const tc = useContent();
   const t = useTranslations('premium');
   const {
     executiveRole,
@@ -43,7 +45,7 @@ export default function PremiumOnboardingScreen() {
                 role="radio"
                 aria-checked={functionTrack === id}
               >
-                {functionLabels[id]}
+                {tc(functionLabels[id])}
               </button>
             ))}
           </div>
@@ -59,7 +61,7 @@ export default function PremiumOnboardingScreen() {
                 role="radio"
                 aria-checked={industryTrack === id}
               >
-                {industryLabels[id]}
+                {tc(industryLabels[id])}
               </button>
             ))}
           </div>
@@ -75,7 +77,7 @@ export default function PremiumOnboardingScreen() {
                 role="radio"
                 aria-checked={executiveRole === id}
               >
-                {executiveLabels[id]}
+                {tc(executiveLabels[id])}
               </button>
             ))}
           </div>
@@ -94,9 +96,9 @@ export default function PremiumOnboardingScreen() {
           </p>
         </div>
         <div className="profile-builder-steps">
-          <span>{functionLabels[functionTrack]}</span>
-          <span>{industryLabels[industryTrack]}</span>
-          <span>{executiveLabels[executiveRole]}</span>
+          <span>{tc(functionLabels[functionTrack])}</span>
+          <span>{tc(industryLabels[industryTrack])}</span>
+          <span>{tc(executiveLabels[executiveRole])}</span>
           <span>{t('toolAwareness')}</span>
           <span>{t('learningIntent')}</span>
         </div>

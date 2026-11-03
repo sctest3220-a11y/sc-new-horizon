@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../language';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -21,6 +22,7 @@ const primaryNavigation = [
 ] as const satisfies readonly { step: Exclude<AppStep, 'lab'>; label: string }[];
 
 export default function LearnerShell({ children }: { children: React.ReactNode }) {
+  const tc = useContent();
   const t = useTranslations('shell');
   const {
     activeSurveyContext,
@@ -60,13 +62,13 @@ export default function LearnerShell({ children }: { children: React.ReactNode }
             </div>
             <div className="profile-context-card">
               <span>{t('currentContext')}</span>
-              <strong>{activeSurveyContext}</strong>
+              <strong>{tc(activeSurveyContext)}</strong>
               <p>{t('theseAnswersAreStoredLocally')}</p>
             </div>
             <div className="survey-question-list">
               {activeSurveyQuestions.map((question) => (
                 <fieldset key={question.id}>
-                  <legend>{question.label}</legend>
+                  <legend>{tc(question.label)}</legend>
                   <div className="survey-option-grid">
                     {question.options.map((option) => {
                       const selected = (surveyAnswers[question.id] ?? []).includes(option);
@@ -78,7 +80,7 @@ export default function LearnerShell({ children }: { children: React.ReactNode }
                           onClick={() => toggleSurveyAnswer(question, option)}
                           aria-pressed={selected}
                         >
-                          {option}
+                          {tc(option)}
                         </button>
                       );
                     })}

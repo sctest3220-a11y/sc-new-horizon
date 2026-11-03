@@ -1,5 +1,6 @@
 'use client';
 
+import { useContent } from '../../language';
 import { useTranslations } from 'next-intl';
 import {
   type Audience,
@@ -8,6 +9,7 @@ import {
 import { useApp } from '../../learner-app-context';
 
 export default function OnboardingScreen() {
+  const tc = useContent();
   const t = useTranslations('onboarding');
   const {
     audience,
@@ -32,7 +34,7 @@ export default function OnboardingScreen() {
             role="radio"
             aria-checked={audience === id}
           >
-            <strong>{audienceLabels[id]}</strong>
+            <strong>{tc(audienceLabels[id])}</strong>
             <span>{id === 'team' ? t('benchmarkReadinessWithAGroup') : t('discoverYourIndividualAiReadiness')}</span>
           </button>
         ))}
