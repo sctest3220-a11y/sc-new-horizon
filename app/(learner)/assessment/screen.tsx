@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   type Audience,
   audienceLabels,
@@ -7,6 +8,7 @@ import {
 import { useApp } from '../../learner-app-context';
 
 export default function OnboardingScreen() {
+  const t = useTranslations('onboarding');
   const {
     audience,
     openProfileSurvey,
@@ -17,11 +19,11 @@ export default function OnboardingScreen() {
   return (
     <section className="workspace">
       <div className="workspace-header">
-        <p className="eyebrow">Free assessment</p>
-        <h1>Start with a broad profile.</h1>
-        <p>No enterprise setup. Choose the option that best describes you today.</p>
+        <p className="eyebrow">{t('freeAssessment')}</p>
+        <h1>{t('startWithABroadProfile')}</h1>
+        <p>{t('noEnterpriseSetupChooseThe')}</p>
       </div>
-      <div className="audience-grid" role="radiogroup" aria-label="Audience type">
+      <div className="audience-grid" role="radiogroup" aria-label={t('audienceType')}>
         {(Object.keys(audienceLabels) as Audience[]).map((id) => (
           <button
             key={id}
@@ -31,29 +33,29 @@ export default function OnboardingScreen() {
             aria-checked={audience === id}
           >
             <strong>{audienceLabels[id]}</strong>
-            <span>{id === 'team' ? 'Benchmark readiness with a group lens.' : 'Discover your individual AI readiness.'}</span>
+            <span>{id === 'team' ? t('benchmarkReadinessWithAGroup') : t('discoverYourIndividualAiReadiness')}</span>
           </button>
         ))}
       </div>
       <article className="profile-builder-card">
         <div>
-          <p className="eyebrow">Profile builder and signals</p>
-          <h2>Profile is built before, during, and after the assessment.</h2>
+          <p className="eyebrow">{t('profileBuilderAndSignals')}</p>
+          <h2>{t('profileIsBuiltBeforeDuring')}</h2>
           <p>
-            Before the test, New Horizon asks optional role-aware questions about tools, workflows, peer-tool awareness, risk concerns, and learning interests.
-            During the test, every item adds evidence signals for domains, competencies, skills, difficulty, item type, and knowing-vs-doing behavior.
+            
+            {t('beforeTheTestNewHorizon')}
           </p>
         </div>
         <div className="profile-builder-steps">
-          <span>Before: survey tags</span>
-          <span>During: answer signals</span>
-          <span>After: confidence gaps</span>
-          <span>Next: learning personalization</span>
+          <span>{t('beforeSurveyTags')}</span>
+          <span>{t('duringAnswerSignals')}</span>
+          <span>{t('afterConfidenceGaps')}</span>
+          <span>{t('nextLearningPersonalization')}</span>
         </div>
       </article>
       <div className="workspace-actions">
-        <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-        <button className="primary" onClick={() => openProfileSurvey('free')}>Build Profile and Begin 12-Question Assessment</button>
+        <button className="secondary dark" onClick={() => setStep('home')}>{t('back')}</button>
+        <button className="primary" onClick={() => openProfileSurvey('free')}>{t('buildProfileAndBegin12')}</button>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   type AgentStatus,
   agentWorkflowEdges,
@@ -13,6 +14,7 @@ import {
 import { useApp } from '../../learner-app-context';
 
 export default function AdminScreen() {
+  const t = useTranslations('admin');
   const {
     adminAnalytics,
     adminAuthenticated,
@@ -46,84 +48,78 @@ export default function AdminScreen() {
       {!adminAuthenticated ? (
         <div className="admin-login">
           <div>
-            <p className="eyebrow">Admin login</p>
-            <h1>Assessment intelligence console.</h1>
+            <p className="eyebrow">{t('adminLogin')}</p>
+            <h1>{t('assessmentIntelligenceConsole')}</h1>
             <p>
-              Admin users should see aggregate assessment performance, group patterns, function gaps,
-              competency coverage, question-format behavior, and longitudinal trends. This MVP uses a preview gate;
-              production should require Supabase Auth role-based access control.
+              
+              {t('adminUsersShouldSeeAggregate')}
             </p>
           </div>
           <div className="admin-login-card">
-            <span>{authProfile ? 'Admin identity detected' : 'Admin authentication'}</span>
+            <span>{authProfile ? t('adminIdentityDetected') : t('adminAuthentication')}</span>
             {authProfile && (
               <div className="admin-auth-profile">
                 <strong>{authProfile.name ?? authProfile.email}</strong>
                 <small>{authProfile.email}</small>
               </div>
             )}
-            <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>Continue with Google</button>
+            <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>{t('continueWithGoogle')}</button>
             <div className="email-auth-row">
               <input
                 type="email"
                 value={authEmail}
                 onChange={(event) => setAuthEmail(event.target.value)}
                 placeholder="admin@newhorizon.ai"
-                aria-label="Admin email magic link"
+                aria-label={t('adminEmailMagicLink')}
               />
-              <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>Email link</button>
+              <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>{t('emailLink')}</button>
             </div>
-            <label>
-              Preview email
-              <input type="email" placeholder="admin@newhorizon.ai" aria-label="Admin email" />
-            </label>
-            <label>
-              Preview password
-              <input type="password" placeholder="Preview only" aria-label="Admin password" />
-            </label>
-            <button className="secondary" type="button" onClick={() => setAdminAuthenticated(true)}>Open admin dashboard preview</button>
-            <small>{authMessage || 'Google/email sign-in uses Supabase when env vars are configured. Admin dashboard access is preview-only until admin role claims are added.'}</small>
+            <label>{t.rich('previewEmail', { input: () => <input type="email" placeholder="admin@newhorizon.ai" aria-label={t('adminEmail')} /> })}</label>
+            <label>{t.rich('previewPassword', { input: () => <input type="password" placeholder={t('previewOnly')} aria-label={t('adminPassword')} /> })}</label>
+            <button className="secondary" type="button" onClick={() => setAdminAuthenticated(true)}>{t('openAdminDashboardPreview')}</button>
+            <small>{authMessage || t('googleEmailSignInUses')}</small>
           </div>
         </div>
       ) : (
         <>
           <div className="admin-hero">
             <div>
-              <p className="eyebrow">Admin dashboard</p>
-              <h1>Assessment analytics across users and groups.</h1>
+              <p className="eyebrow">{t('adminDashboard')}</p>
+              <h1>{t('assessmentAnalyticsAcrossUsersAnd')}</h1>
               <p>
-                Track readiness by cohort, function, role, domain, competency, difficulty, question format, and trend over time.
-                The current view summarizes saved local MVP runs; production should query Supabase analytics views.
+                
+                {t('trackReadinessByCohortFunction')}
               </p>
             </div>
             <div className="admin-hero-actions">
-              <a className="primary" href="/admin/pilot-operations">Pilot operations</a>
-              <a className="primary" href="/admin/question-inventory">Question inventory</a>
-              <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>Sign out preview</button>
+              <a className="primary" href="/admin/pilot-operations">{t('pilotOperations')}</a>
+              <a className="primary" href="/admin/question-inventory">{t('questionInventory')}</a>
+              <button className="secondary dark" type="button" onClick={() => setAdminAuthenticated(false)}>{t('signOutPreview')}</button>
             </div>
           </div>
 
           <div className="admin-kpi-grid">
-            <div><span>Completed runs</span><strong>{adminAnalytics.totalRuns}</strong><small>non-practice assessments</small></div>
-            <div><span>Profiles</span><strong>{adminAnalytics.totalProfiles}</strong><small>local profile ids</small></div>
-            <div><span>Question signals</span><strong>{adminAnalytics.totalQuestionSignals}</strong><small>item-level records</small></div>
-            <div><span>Average readiness</span><strong>{adminAnalytics.totalRuns ? `${adminAnalytics.averageOverall}/100` : 'No data'}</strong><small>all saved runs</small></div>
+            <div><span>{t('completedRuns')}</span><strong>{adminAnalytics.totalRuns}</strong><small>{t('nonPracticeAssessments')}</small></div>
+            <div><span>{t('profiles')}</span><strong>{adminAnalytics.totalProfiles}</strong><small>{t('localProfileIds')}</small></div>
+            <div><span>{t('questionSignals')}</span><strong>{adminAnalytics.totalQuestionSignals}</strong><small>{t('itemLevelRecords')}</small></div>
+            <div><span>{t('averageReadiness')}</span><strong>{adminAnalytics.totalRuns ? `${adminAnalytics.averageOverall}/100` : t('noData')}</strong><small>{t('allSavedRuns')}</small></div>
           </div>
 
           <div className="admin-grid">
             <article className="admin-card admin-wide analytics-readiness-card">
               <div className="admin-card-heading">
                 <div>
-                  <span>MVP refinement</span>
-                  <h2>Analytics readiness checklist</h2>
+                  <span>{t('mvpRefinement')}</span>
+                  <h2>{t('analyticsReadinessChecklist')}</h2>
                 </div>
                 <button className="secondary dark" type="button" onClick={exportPilotReviewCsv} disabled={!adminAnalytics.totalQuestionSignals}>
-                  Export pilot review CSV
+                  
+                  {t('exportPilotReviewCsv')}
                 </button>
               </div>
               <p>
-                This panel separates pilot-local evidence from production-ready analytics. Use the export for offline item review;
-                keep cohort claims labeled insufficient until server-side aggregate views are deployed.
+                
+                {t('thisPanelSeparatesPilotLocal')}
               </p>
               <div className="telemetry-grid readiness-grid">
                 {analyticsReadinessRows.map((row) => (
@@ -139,25 +135,25 @@ export default function AdminScreen() {
             <article className="admin-card admin-wide">
               <div className="admin-card-heading">
                 <div>
-                  <span>Agent operations</span>
-                  <h2>Supervised agent jobs</h2>
+                  <span>{t('agentOperations')}</span>
+                  <h2>{t('supervisedAgentJobs')}</h2>
                 </div>
                 <div className="admin-action-row">
-                  <button className="primary" type="button" onClick={runSupervisedAgentJobs}>Run supervised jobs</button>
-                  <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>Run simulation only</button>
+                  <button className="primary" type="button" onClick={runSupervisedAgentJobs}>{t('runSupervisedJobs')}</button>
+                  <button className="secondary dark" type="button" onClick={runAgentWorkflowSimulation}>{t('runSimulationOnly')}</button>
                 </div>
               </div>
               <div className="admin-kpi-grid compact-kpis agent-review-kpis">
-                <div><span>Runs</span><strong>{supervisedAgentRuns.length}</strong><small>persisted local runs</small></div>
-                <div><span>Pending</span><strong>{pendingAgentDraftCount}</strong><small>drafts needing review</small></div>
-                <div><span>Approved</span><strong>{approvedAgentDraftCount}</strong><small>accepted proposals</small></div>
-                <div><span>Rejected</span><strong>{rejectedAgentDraftCount}</strong><small>blocked proposals</small></div>
+                <div><span>{t('runs')}</span><strong>{supervisedAgentRuns.length}</strong><small>{t('persistedLocalRuns')}</small></div>
+                <div><span>{t('pending')}</span><strong>{pendingAgentDraftCount}</strong><small>{t('draftsNeedingReview')}</small></div>
+                <div><span>{t('approved')}</span><strong>{approvedAgentDraftCount}</strong><small>{t('acceptedProposals')}</small></div>
+                <div><span>{t('rejected')}</span><strong>{rejectedAgentDraftCount}</strong><small>{t('blockedProposals')}</small></div>
               </div>
               {latestSupervisedAgentRun && (
                 <div className="supervised-run-panel">
                   <div className="report-heading">
                     <div>
-                      <p className="eyebrow">Latest supervised run</p>
+                      <p className="eyebrow">{t('latestSupervisedRun')}</p>
                       <h3>{latestSupervisedAgentRun.headline}</h3>
                       <p>{latestSupervisedAgentRun.summary}</p>
                       <small>{latestSupervisedAgentRun.id} · {new Date(latestSupervisedAgentRun.createdAt).toLocaleString()}</small>
@@ -183,7 +179,8 @@ export default function AdminScreen() {
                             disabled={draft.status === 'approved'}
                             onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'approved')}
                           >
-                            Approve
+                            
+                            {t('approve')}
                           </button>
                           <button
                             className="secondary dark"
@@ -191,7 +188,8 @@ export default function AdminScreen() {
                             disabled={draft.status === 'rejected'}
                             onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'rejected')}
                           >
-                            Reject
+                            
+                            {t('reject')}
                           </button>
                         </div>
                       </article>
@@ -211,17 +209,17 @@ export default function AdminScreen() {
                       <small>{agentWorkflowReport.runId} · {agentWorkflowReport.generatedAt}</small>
                     </div>
                   </div>
-                  <section className="agent-workflow-visual" aria-label="Interactive agent workflow">
+                  <section className="agent-workflow-visual" aria-label={t('interactiveAgentWorkflow')}>
                     <div className="agent-workflow-toolbar">
                       <div>
-                        <span>Workflow map</span>
-                        <h3>Assessment improvement orchestration</h3>
+                        <span>{t('workflowMap')}</span>
+                        <h3>{t('assessmentImprovementOrchestration')}</h3>
                       </div>
-                      <p>Click an agent to inspect its stages, controls, and latest output.</p>
+                      <p>{t('clickAnAgentToInspect')}</p>
                     </div>
                     <div className="agent-workflow-scroll">
                       <div className="agent-workflow-canvas">
-                        <svg className="agent-workflow-connectors" viewBox="0 0 1160 570" role="img" aria-label="Connections between assessment agents">
+                        <svg className="agent-workflow-connectors" viewBox="0 0 1160 570" role="img" aria-label={t('connectionsBetweenAssessmentAgents')}>
                           <defs>
                             <marker id="agent-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
                               <path d="M0,0 L8,4 L0,8 Z" />
@@ -258,16 +256,16 @@ export default function AdminScreen() {
                             >
                               <span>{node.eyebrow}</span>
                               <strong>{agent.name}</strong>
-                              <small><b aria-hidden="true" />{agent.status} · {agent.outputCount} stage{agent.outputCount === 1 ? '' : 's'}</small>
+                              <small>{t.rich('stage', { b: () => <b aria-hidden="true" />, status: agent.status, outputCount: agent.outputCount, value: agent.outputCount === 1 ? '' : 's' })}</small>
                             </button>
                           );
                         })}
                         <div className="agent-human-gate" style={{ left: 1012, top: 224 }}>
-                          <span>Human gate</span>
-                          <strong>Admin approval</strong>
-                          <small>Approve · revise · reject</small>
+                          <span>{t('humanGate')}</span>
+                          <strong>{t('adminApproval')}</strong>
+                          <small>{t('approveReviseReject')}</small>
                         </div>
-                        <div className="agent-workflow-legend" aria-label="Workflow status legend">
+                        <div className="agent-workflow-legend" aria-label={t('workflowStatusLegend')}>
                           {(['complete', 'running', 'review', 'blocked', 'idle'] as AgentStatus[]).map((status) => (
                             <span key={status} className={status}><b />{status}</span>
                           ))}
@@ -284,12 +282,12 @@ export default function AdminScreen() {
                             <h3>{selectedAgent.name}</h3>
                             <p>{selectedAgent.role}</p>
                             <dl>
-                              <div><dt>Schedule</dt><dd>{selectedAgent.cadence}</dd></div>
-                              <div><dt>Guardrail</dt><dd>{selectedAgent.guardrail}</dd></div>
+                              <div><dt>{t('schedule')}</dt><dd>{selectedAgent.cadence}</dd></div>
+                              <div><dt>{t('guardrail')}</dt><dd>{selectedAgent.guardrail}</dd></div>
                             </dl>
                           </div>
                           <div className="agent-inspector-stages">
-                            <h3>Latest run stages</h3>
+                            <h3>{t('latestRunStages')}</h3>
                             {selectedActivity.length ? selectedActivity.map((entry) => (
                               <div key={`${entry.step}-${entry.activity}`} className={`agent-inspector-stage ${entry.status}`}>
                                 <span>{entry.step}</span>
@@ -298,7 +296,7 @@ export default function AdminScreen() {
                                   <p>{entry.output}</p>
                                 </div>
                               </div>
-                            )) : <p>No stage activity has been recorded for this agent.</p>}
+                            )) : <p>{t('noStageActivityHasBeen')}</p>}
                           </div>
                         </div>
                       );
@@ -316,7 +314,7 @@ export default function AdminScreen() {
                   </div>
                   <div className="agent-report-columns">
                     <div>
-                      <h3>Activity Log</h3>
+                      <h3>{t('activityLog')}</h3>
                       <ol className="agent-timeline">
                         {agentWorkflowReport.activityLog.map((entry) => (
                           <li key={`${entry.step}-${entry.agent}`}>
@@ -331,15 +329,15 @@ export default function AdminScreen() {
                       </ol>
                     </div>
                     <div>
-                      <h3>Safety Cut</h3>
+                      <h3>{t('safetyCut')}</h3>
                       <div className="agent-list">
                         {agentWorkflowReport.safetyEvents.map((event) => <p key={event}>{event}</p>)}
                       </div>
-                      <h3>Outputs</h3>
+                      <h3>{t('outputs')}</h3>
                       <div className="agent-list">
                         {agentWorkflowReport.outputs.map((output) => <p key={output}>{output}</p>)}
                       </div>
-                      <h3>Recommendations</h3>
+                      <h3>{t('recommendations')}</h3>
                       <div className="agent-list">
                         {agentWorkflowReport.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
                       </div>
@@ -348,43 +346,44 @@ export default function AdminScreen() {
                   <p className="context-line">{agentWorkflowReport.productionNote}</p>
                 </div>
               ) : (
-                <p>No agent run has been generated yet.</p>
+                <p>{t('noAgentRunHasBeen')}</p>
               )}
             </article>
 
             <article className="admin-card admin-wide quality-engine-card">
-              <span>Continuous improvement</span>
-              <h2>Supervised assessment quality engine</h2>
+              <span>{t('continuousImprovement')}</span>
+              <h2>{t('supervisedAssessmentQualityEngine')}</h2>
               <p>
-                Telemetry and end-of-assessment feedback automatically identify candidates for revision. Proposed changes remain in a review queue before they can alter a scored assessment.
+                
+                {t('telemetryAndEndOfAssessment')}
               </p>
               <div className="admin-kpi-grid compact-kpis">
-                <div><span>Started</span><strong>{qualityInsights.started}</strong><small>tracked sessions</small></div>
-                <div><span>Abandoned</span><strong>{qualityInsights.abandoned}</strong><small>incomplete exits</small></div>
-                <div><span>Mandatory complete</span><strong>{qualityInsights.mandatory}</strong><small>base routes</small></div>
-                <div><span>Continued</span><strong>{qualityInsights.continued}</strong><small>optional depth</small></div>
+                <div><span>{t('started')}</span><strong>{qualityInsights.started}</strong><small>{t('trackedSessions')}</small></div>
+                <div><span>{t('abandoned')}</span><strong>{qualityInsights.abandoned}</strong><small>{t('incompleteExits')}</small></div>
+                <div><span>{t('mandatoryComplete')}</span><strong>{qualityInsights.mandatory}</strong><small>{t('baseRoutes')}</small></div>
+                <div><span>{t('continued')}</span><strong>{qualityInsights.continued}</strong><small>{t('optionalDepth')}</small></div>
               </div>
               <div className="agent-report-columns">
                 <div>
-                  <h3>Improvement queue</h3>
+                  <h3>{t('improvementQueue')}</h3>
                   <div className="agent-list">
                     {qualityInsights.recommendations.map((recommendation) => <p key={recommendation}>{recommendation}</p>)}
                   </div>
                 </div>
 	                    <div>
-	                      <h3>Question candidates</h3>
+	                      <h3>{t('questionCandidates')}</h3>
 	                      <div className="admin-list compact">
 	                        {qualityInsights.questionRows.length ? qualityInsights.questionRows.map((row) => (
 	                          <p key={row.questionId}>
 	                            <strong>{row.questionId}</strong>
-	                            <small>{row.attempts} attempts · {row.averageScore}/100 · {formatDuration(row.averageDurationMs)} · {row.confusionRate}% confusing</small>
+	                            <small>{t('attempts100Confusing', { attempts: row.attempts, averageScore: row.averageScore, formatDuration: formatDuration(row.averageDurationMs), confusionRate: row.confusionRate })}</small>
 	                          </p>
-	                        )) : <p>No item behavior data yet.</p>}
+	                        )) : <p>{t('noItemBehaviorDataYet')}</p>}
 	                      </div>
 	                    </div>
 	                  </div>
 	                  <div className="quality-review-table">
-	                    <h3>Item calibration dashboard</h3>
+	                    <h3>{t('itemCalibrationDashboard')}</h3>
 	                    <div className="quality-review-rows">
 	                      {qualityInsights.qualityRows.length ? qualityInsights.qualityRows.map((row) => (
 	                        <div key={row.questionId} className={`quality-review-row ${row.status}`}>
@@ -392,19 +391,19 @@ export default function AdminScreen() {
 	                          <strong>{row.questionId}</strong>
                         <div className="calibration-chip-row">
                           <b>{row.actionLabel}</b>
-                          <b>{row.domain ?? 'Unknown'} · {row.difficulty ?? 'unmapped'} · {row.interaction}</b>
-                          <b>{row.attempts} attempts</b>
-                          <b>{row.averageScore}/100 avg</b>
-                          <b>{formatDuration(row.averageDurationMs)} avg</b>
-                          <b>{row.confusionRate}% confusing</b>
-                          <b>{row.artifactOpenRate}% artifact actions/attempt</b>
-                          <b>{row.feedbackCount} feedback · {row.unclear} unclear</b>
+                          <b>{row.domain ?? t('unknown')} · {row.difficulty ?? t('unmapped')} · {row.interaction}</b>
+                          <b>{t('attempts', { attempts: row.attempts })}</b>
+                          <b>{t('n100Avg', { averageScore: row.averageScore })}</b>
+                          <b>{t('avg', { formatDuration: formatDuration(row.averageDurationMs) })}</b>
+                          <b>{t('confusing', { confusionRate: row.confusionRate })}</b>
+                          <b>{t('artifactActionsAttempt', { artifactOpenRate: row.artifactOpenRate })}</b>
+                          <b>{t('feedbackUnclear', { feedbackCount: row.feedbackCount, unclear: row.unclear })}</b>
                           <b>{row.difficultyMismatch}</b>
                         </div>
-	                          <small>{row.artifactRequired} · {row.negativeSignals} negative signals</small>
+	                          <small>{t('negativeSignals', { artifactRequired: row.artifactRequired, negativeSignals: row.negativeSignals })}</small>
 	                          <p>{row.action}</p>
 	                        </div>
-	                      )) : <p>No item-level feedback has been submitted yet.</p>}
+	                      )) : <p>{t('noItemLevelFeedbackHas')}</p>}
 	                    </div>
 	                  </div>
 	                </article>
@@ -412,72 +411,72 @@ export default function AdminScreen() {
             <article className="admin-card admin-wide assessment-quality-suite">
               <div className="admin-card-heading">
                 <div>
-                  <span>Assessment quality</span>
-                  <h2>10-point quality analysis suite</h2>
+                  <span>{t('assessmentQuality')}</span>
+                  <h2>{t('n10PointQualityAnalysisSuite')}</h2>
                 </div>
-                <small>{adminAnalytics.totalQuestionSignals ? `${adminAnalytics.totalQuestionSignals} saved question signals` : 'Insufficient data until users complete assessments'}</small>
+                <small>{adminAnalytics.totalQuestionSignals ? `${adminAnalytics.totalQuestionSignals} saved question signals` : t('insufficientDataUntilUsersComplete')}</small>
               </div>
               <div className="quality-suite-grid">
                 <div>
-                  <h3>1. Item discrimination</h3>
+                  <h3>{t('n1ItemDiscrimination')}</h3>
                   {assessmentQualityAnalytics.discriminationRows.length ? assessmentQualityAnalytics.discriminationRows.map((row) => (
-                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · high {row.highCorrect}% vs low {row.lowCorrect}% · gap {row.gap}</small></p>
-                  )) : <p>No completed item signals yet.</p>}
+                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{t('highVsLowGap', { status: row.status, highCorrect: row.highCorrect, lowCorrect: row.lowCorrect, gap: row.gap })}</small></p>
+                  )) : <p>{t('noCompletedItemSignalsYet')}</p>}
                 </div>
                 <div>
-                  <h3>2. Distractor analysis</h3>
+                  <h3>{t('n2DistractorAnalysis')}</h3>
                   {assessmentQualityAnalytics.distractorRows.length ? assessmentQualityAnalytics.distractorRows.map((row) => (
-                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · top wrong {row.topDistractor} · {row.neverChosen} never chosen</small></p>
-                  )) : <p>No answer-option data yet.</p>}
+                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{t('topWrongNeverChosen', { status: row.status, topDistractor: row.topDistractor, neverChosen: row.neverChosen })}</small></p>
+                  )) : <p>{t('noAnswerOptionDataYet')}</p>}
                 </div>
                 <div>
-                  <h3>3. Artifact dependency</h3>
+                  <h3>{t('n3ArtifactDependency')}</h3>
                   {assessmentQualityAnalytics.artifactDependencyRows.length ? assessmentQualityAnalytics.artifactDependencyRows.map((row) => (
-                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · opened {row.opened}/{row.attempts} · score {row.openedScore} vs {row.notOpenedScore} · {row.timeDeltaSeconds}s delta</small></p>
-                  )) : <p>No artifact-linked attempts yet.</p>}
+                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{t('openedScoreVsSDelta', { status: row.status, opened: row.opened, attempts: row.attempts, openedScore: row.openedScore, notOpenedScore: row.notOpenedScore, timeDeltaSeconds: row.timeDeltaSeconds })}</small></p>
+                  )) : <p>{t('noArtifactLinkedAttemptsYet')}</p>}
                 </div>
                 <div>
-                  <h3>4. Clarity index</h3>
+                  <h3>{t('n4ClarityIndex')}</h3>
                   {assessmentQualityAnalytics.clarityRows.length ? assessmentQualityAnalytics.clarityRows.map((row) => (
-                    <p key={row.questionId}><strong>{row.questionId}</strong><small>risk {row.clarityRisk}/100 · {row.unclear} unclear · {row.confusionRate}% confusing · {row.actionLabel}</small></p>
-                  )) : <p>No clarity risk signals yet.</p>}
+                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{t('risk100UnclearConfusing', { clarityRisk: row.clarityRisk, unclear: row.unclear, confusionRate: row.confusionRate, actionLabel: row.actionLabel })}</small></p>
+                  )) : <p>{t('noClarityRiskSignalsYet')}</p>}
                 </div>
                 <div>
-                  <h3>5. Difficulty calibration</h3>
+                  <h3>{t('n5DifficultyCalibration')}</h3>
                   {assessmentQualityAnalytics.difficultyCalibrationRows.map((row) => (
-                    <p key={row.difficulty}><strong>{difficultyLabels[row.difficulty]}</strong><small>{row.status} · {row.count} signals · {row.average}/100 avg · {row.quickHigh} fast-high</small></p>
+                    <p key={row.difficulty}><strong>{difficultyLabels[row.difficulty]}</strong><small>{t('signals100AvgFastHigh', { status: row.status, count: row.count, average: row.average, quickHigh: row.quickHigh })}</small></p>
                   ))}
                 </div>
                 <div>
-                  <h3>6. Competency heatmap</h3>
+                  <h3>{t('n6CompetencyHeatmap')}</h3>
                   {assessmentQualityAnalytics.competencyHeatmapRows.map((row) => (
-                    <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{row.status} · bank {row.bankCount} · sampled {row.sampled} · {row.average}/100 · {row.difficultySpread}</small></p>
+                    <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{t('bankSampled100', { status: row.status, bankCount: row.bankCount, sampled: row.sampled, average: row.average, difficultySpread: row.difficultySpread })}</small></p>
                   ))}
                 </div>
                 <div>
-                  <h3>7. Reliability estimate</h3>
+                  <h3>{t('n7ReliabilityEstimate')}</h3>
                   {assessmentQualityAnalytics.reliabilityRows.length ? assessmentQualityAnalytics.reliabilityRows.map((row) => (
-                    <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.questions} questions · {row.sampledDomains} domains · {row.sampledCompetencies} competencies · {row.advancedSignals} hard signals</small></p>
-                  )) : <p>No completed runs yet.</p>}
+                    <p key={row.id}><strong>{row.label}</strong><small>{t('questionsDomainsCompetenciesHardSignals', { status: row.status, questions: row.questions, sampledDomains: row.sampledDomains, sampledCompetencies: row.sampledCompetencies, advancedSignals: row.advancedSignals })}</small></p>
+                  )) : <p>{t('noCompletedRunsYet')}</p>}
                 </div>
                 <div>
-                  <h3>8. Written rubric audit</h3>
+                  <h3>{t('n8WrittenRubricAudit')}</h3>
                   {assessmentQualityAnalytics.writtenAuditRows.length ? assessmentQualityAnalytics.writtenAuditRows.map((row) => (
-                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{row.status} · {row.attempts} attempts · {row.noRubricHits} no-hit · {row.short} short · {row.average}/100</small></p>
-                  )) : <p>No written-response attempts yet.</p>}
+                    <p key={row.questionId}><strong>{row.questionId}</strong><small>{t('attemptsNoHitShort100', { status: row.status, attempts: row.attempts, noRubricHits: row.noRubricHits, short: row.short, average: row.average })}</small></p>
+                  )) : <p>{t('noWrittenResponseAttemptsYet')}</p>}
                 </div>
                 <div>
-                  <h3>9. Route/persona fit</h3>
+                  <h3>{t('n9RoutePersonaFit')}</h3>
                   {assessmentQualityAnalytics.routeFitRows.length ? assessmentQualityAnalytics.routeFitRows.map((row) => (
                     <p key={row.id}><strong>{row.label}</strong><small>{row.status} · {row.detail}</small></p>
-                  )) : <p>No completed route snapshots yet.</p>}
+                  )) : <p>{t('noCompletedRouteSnapshotsYet')}</p>}
                 </div>
                 <div>
-                  <h3>10. Learning/report engagement</h3>
+                  <h3>{t('n10LearningReportEngagement')}</h3>
                   {assessmentQualityAnalytics.reportEngagementRows.length ? assessmentQualityAnalytics.reportEngagementRows.map((row) => (
-                    <p key={row.area}><strong>{row.area}</strong><small>{row.count} click{row.count === 1 ? '' : 's'}</small></p>
-                  )) : <p>No report engagement clicks yet.</p>}
-                  <p><strong>Recommendation signals</strong><small>{assessmentQualityAnalytics.recommendationSignals} course/tool/coverage/continuation click{assessmentQualityAnalytics.recommendationSignals === 1 ? '' : 's'}</small></p>
+                    <p key={row.area}><strong>{row.area}</strong><small>{t('click', { count: row.count, value: row.count === 1 ? '' : 's' })}</small></p>
+                  )) : <p>{t('noReportEngagementClicksYet')}</p>}
+                  <p><strong>{t('recommendationSignals')}</strong><small>{t('courseToolCoverageContinuationClick', { recommendationSignals: assessmentQualityAnalytics.recommendationSignals, value: assessmentQualityAnalytics.recommendationSignals === 1 ? '' : 's' })}</small></p>
                 </div>
               </div>
             </article>
@@ -485,22 +484,22 @@ export default function AdminScreen() {
             <article className="admin-card admin-wide telemetry-analysis-card">
               <div className="report-heading">
                 <div>
-                  <p className="eyebrow">Human review gate</p>
-                  <h2>Analyze surveys and behavior before platform edits</h2>
+                  <p className="eyebrow">{t('humanReviewGate')}</p>
+                  <h2>{t('analyzeSurveysAndBehaviorBefore')}</h2>
                 </div>
-                <span>{pendingAgentDraftCount} pending drafts</span>
+                <span>{t('pendingDrafts', { pendingAgentDraftCount: pendingAgentDraftCount })}</span>
               </div>
               <p>
-                Agents should use telemetry and survey trends to explain what should change, why it matters,
-                and which users are affected. A human reviewer approves the next platform edit after seeing the evidence.
+                
+                {t('agentsShouldUseTelemetryAnd')}
               </p>
               <div className="telemetry-grid">
                 <div>
-                  <h3>Current signals</h3>
+                  <h3>{t('currentSignals')}</h3>
                   {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
                 </div>
                 <div>
-                  <h3>Analysis questions</h3>
+                  <h3>{t('analysisQuestions')}</h3>
                   {[
                     'Which artifacts trigger zoom/open-file behavior and long answer time?',
                     'Which questions look confusing because users revise often or answer slowly?',
@@ -509,7 +508,7 @@ export default function AdminScreen() {
                   ].map((item) => <p key={item}>{item}</p>)}
                 </div>
                 <div>
-                  <h3>Human decision</h3>
+                  <h3>{t('humanDecision')}</h3>
                   {[
                     'Approve, reject, or rewrite each agent proposal.',
                     'Version scored items so historical scores stay explainable.',
@@ -521,9 +520,9 @@ export default function AdminScreen() {
             </article>
 
             <article className="admin-card admin-wide artifact-backlog">
-              <span>Artifact production</span>
-              <h2>Real-document replacement briefs</h2>
-              <p>These briefs map every unique visual artifact to the first question that uses it, so realistic replacements can be generated externally and dropped into the same asset path.</p>
+              <span>{t('artifactProduction')}</span>
+              <h2>{t('realDocumentReplacementBriefs')}</h2>
+              <p>{t('theseBriefsMapEveryUnique')}</p>
               <div className="admin-list artifact-brief-list">
                 {artifactReplacementBriefs.map((artifact) => (
                   <details key={artifact.src}>
@@ -535,83 +534,83 @@ export default function AdminScreen() {
             </article>
 
             <article className="admin-card admin-wide">
-              <span>Domain trend</span>
-              <h2>Lowest average domains</h2>
+              <span>{t('domainTrend')}</span>
+              <h2>{t('lowestAverageDomains')}</h2>
               <div className="admin-domain-bars">
                 {adminAnalytics.domainRows.map((row) => (
                   <div key={row.domain}>
                     <label>{row.domain} · {row.label}</label>
                     <meter min="0" max="100" value={row.average} />
-                    <strong>{adminAnalytics.totalRuns ? `${row.average}/100` : 'No data'}</strong>
-                    <small>{row.evidence} question signal{row.evidence === 1 ? '' : 's'}</small>
+                    <strong>{adminAnalytics.totalRuns ? `${row.average}/100` : t('noData')}</strong>
+                    <small>{t('questionSignal', { evidence: row.evidence, value: row.evidence === 1 ? '' : 's' })}</small>
                   </div>
                 ))}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>User groups</span>
-              <h2>Cohort averages</h2>
+              <span>{t('userGroups')}</span>
+              <h2>{t('cohortAverages')}</h2>
               <div className="admin-list">
                 {adminAnalytics.groupRows.length ? adminAnalytics.groupRows.map((row) => (
-                  <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 · latest {row.lastRun ? new Date(row.lastRun).toLocaleDateString() : 'n/a'}</small></p>
-                )) : <p>No saved cohort data yet.</p>}
+                  <p key={row.key}><strong>{row.label}</strong><small>{t('runs100Latest', { count: row.count, average: row.average, value: row.lastRun ? new Date(row.lastRun).toLocaleDateString() : 'n/a' })}</small></p>
+                )) : <p>{t('noSavedCohortDataYet')}</p>}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>Functions</span>
-              <h2>Function analysis</h2>
+              <span>{t('functions')}</span>
+              <h2>{t('functionAnalysis')}</h2>
               <div className="admin-list">
                 {adminAnalytics.functionRows.length ? adminAnalytics.functionRows.map((row) => (
-                  <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 average</small></p>
-                )) : <p>No function-specific premium runs yet.</p>}
+                  <p key={row.key}><strong>{row.label}</strong><small>{t('runs100Average', { count: row.count, average: row.average })}</small></p>
+                )) : <p>{t('noFunctionSpecificPremiumRuns')}</p>}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>Executive roles</span>
-              <h2>Role analysis</h2>
+              <span>{t('executiveRoles')}</span>
+              <h2>{t('roleAnalysis')}</h2>
               <div className="admin-list">
                 {adminAnalytics.executiveRows.length ? adminAnalytics.executiveRows.map((row) => (
-                  <p key={row.key}><strong>{row.label}</strong><small>{row.count} runs · {row.average}/100 average</small></p>
-                )) : <p>No executive-role runs yet.</p>}
+                  <p key={row.key}><strong>{row.label}</strong><small>{t('runs100Average', { count: row.count, average: row.average })}</small></p>
+                )) : <p>{t('noExecutiveRoleRunsYet')}</p>}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>Competencies</span>
-              <h2>Priority gaps</h2>
+              <span>{t('competencies')}</span>
+              <h2>{t('priorityGaps')}</h2>
               <div className="admin-list">
                 {adminAnalytics.competencyRows.length ? adminAnalytics.competencyRows.map((row) => (
-                  <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{row.average}/100 · {row.evidence} evidence signals</small></p>
-                )) : <p>No competency signal log yet.</p>}
+                  <p key={row.id}><strong>{row.domain} · {row.label}</strong><small>{t('n100EvidenceSignals', { average: row.average, evidence: row.evidence })}</small></p>
+                )) : <p>{t('noCompetencySignalLogYet')}</p>}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>Difficulty calibration</span>
-              <h2>Item difficulty behavior</h2>
+              <span>{t('difficultyCalibration')}</span>
+              <h2>{t('itemDifficultyBehavior')}</h2>
               <div className="admin-list compact">
                 {adminAnalytics.difficultyRows.map((row) => (
-                  <p key={row.label}><strong>{row.label}</strong><small>{row.count} signals · {row.count ? `${row.average}/100` : 'no data'}</small></p>
+                  <p key={row.label}><strong>{row.label}</strong><small>{t('signals', { count: row.count, value: row.count ? `${row.average}/100` : t('noData2') })}</small></p>
                 ))}
               </div>
             </article>
 
             <article className="admin-card">
-              <span>Formats</span>
-              <h2>Question interaction mix</h2>
+              <span>{t('formats')}</span>
+              <h2>{t('questionInteractionMix')}</h2>
               <div className="admin-list compact">
                 {adminAnalytics.interactionRows.length ? adminAnalytics.interactionRows.map((row) => (
-                  <p key={row.label}><strong>{row.label}</strong><small>{row.count} signals · {row.average}/100</small></p>
-                )) : <p>No interaction data yet.</p>}
+                  <p key={row.label}><strong>{row.label}</strong><small>{t('signals100', { count: row.count, average: row.average })}</small></p>
+                )) : <p>{t('noInteractionDataYet')}</p>}
               </div>
             </article>
 
             <article className="admin-card admin-wide">
-              <span>Recent trend</span>
-              <h2>Latest assessment runs</h2>
+              <span>{t('recentTrend')}</span>
+              <h2>{t('latestAssessmentRuns')}</h2>
               <div className="admin-run-grid">
                 {adminAnalytics.recentRuns.length ? adminAnalytics.recentRuns.map((run) => (
                   <div key={run.id}>
@@ -620,7 +619,7 @@ export default function AdminScreen() {
                     <p>{run.label}</p>
                     <small>{run.date}</small>
                   </div>
-                )) : <p>No saved runs yet. Complete assessments to populate admin trends.</p>}
+                )) : <p>{t('noSavedRunsYetComplete')}</p>}
               </div>
             </article>
           </div>

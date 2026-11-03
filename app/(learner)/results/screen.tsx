@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   type AssessmentFeedbackSurvey,
   CompetencyRadar,
@@ -23,6 +24,7 @@ import {
 import { useApp, useRequireFlowState } from '../../learner-app-context';
 
 export default function ResultsScreen() {
+  const t = useTranslations('results');
   const {
     activeLearningCatalog,
     answers,
@@ -91,23 +93,16 @@ export default function ResultsScreen() {
     <section className="results-shell">
       <div className="results-hero">
         <div>
-          <p className="eyebrow">{mode === 'executive' ? 'Premium leadership diagnostic' : mode === 'premium' ? 'Premium diagnostic pilot' : mode === 'practice' ? 'Practice activity result' : 'Indicative MVP result'}</p>
+          <p className="eyebrow">{mode === 'executive' ? t('premiumLeadershipDiagnostic') : mode === 'premium' ? t('premiumDiagnosticPilot') : mode === 'practice' ? t('practiceActivityResult') : t('indicativeMvpResult')}</p>
           <h1>{results.overall}</h1>
-          <p className="result-level">{results.level} AI readiness</p>
-          <p>
-            Based on {answers.length} {mode === 'practice' ? 'practice activity' : 'adaptive responses'} for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase()}.
-            Evidence confidence is pilot-grade: {results.confidence}%.
-          </p>
+          <p className="result-level">{t('aiReadiness', { level: results.level })}</p>
+          <p>{t('basedOnForEvidenceConfidence', { length: answers.length, value: mode === 'practice' ? t('practiceActivity') : t('adaptiveResponses'), value2: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase(), confidence: results.confidence })}</p>
           <p className="context-line">{getScoreBandDescription(results.overall, results.level)}</p>
           {mode === 'premium' && (
-            <p className="context-line">
-              Context: {functionLabels[functionTrack]} in {industryLabels[industryTrack].toLowerCase()}.
-            </p>
+            <p className="context-line">{t('contextIn', { functionLabel: functionLabels[functionTrack], value: industryLabels[industryTrack].toLowerCase() })}</p>
           )}
           {mode === 'executive' && (
-            <p className="context-line">
-              Context: {executiveLabels[executiveRole]} profile, weighted toward D5 strategy, D4 governance, and D6 change leadership.
-            </p>
+            <p className="context-line">{t('contextProfileWeightedTowardD5', { executiveLabel: executiveLabels[executiveRole] })}</p>
           )}
         </div>
         <RadarChart
@@ -118,7 +113,7 @@ export default function ResultsScreen() {
           onSelectDomain={setSelectedRadarDomain}
         />
       </div>
-      <div className="report-tabs" role="tablist" aria-label="Assessment report sections">
+      <div className="report-tabs" role="tablist" aria-label={t('assessmentReportSections')}>
         <button
           type="button"
           role="tab"
@@ -126,7 +121,8 @@ export default function ResultsScreen() {
           className={reportTab === 'report' ? 'selected' : ''}
           onClick={() => setReportTab('report')}
         >
-          Summary
+          
+          {t('summary')}
         </button>
         {paidReport && reportAccessSettings.paid.questionAnalysis && (<button
           type="button"
@@ -135,37 +131,38 @@ export default function ResultsScreen() {
           className={reportTab === 'analysis' ? 'selected' : ''}
           onClick={() => setReportTab('analysis')}
         >
-          Question review
+          
+          {t('questionReview')}
         </button>)}
       </div>
-      {!paidReport && <article className="result-card wide report-locked-card"><p className="eyebrow">More insight available</p><h2>Unlock the detailed assessment report</h2><p>Your basic report includes your score and practical next steps. Detailed question analysis, benchmarks, and advanced recommendations can be enabled for paid users by the administrator.</p></article>}
+      {!paidReport && <article className="result-card wide report-locked-card"><p className="eyebrow">{t('moreInsightAvailable')}</p><h2>{t('unlockTheDetailedAssessmentReport')}</h2><p>{t('yourBasicReportIncludesYour')}</p></article>}
       <div className={`result-grid ${reportTab === 'analysis' ? 'show-analysis' : 'show-report'} ${paidReport ? 'plan-paid' : 'plan-free'} ${paidReport && reportAccessSettings.paid.questionAnalysis ? 'report-access-analysis' : 'report-access-no-analysis'}`}>
         <article className="result-card wide comparison-note report-primary report-order-summary">
-          <h2>Score interpretation</h2>
+          <h2>{t('scoreInterpretation')}</h2>
           <div className="evidence-grid">
-            <p><strong>Your score</strong> A sampled readiness estimate, not a validated psychometric score. Unsampled domains no longer add a midpoint floor.</p>
-            <p><strong>Group average</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
-            <p><strong>Target profile</strong> Research-informed target for {mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase()}. Built from cited competency, workforce, governance, and Thailand-readiness sources; not a validated norm yet.</p>
+            <p>{t.rich('yourScoreASampledReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
+            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
+            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, value: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase() })}</p>
           </div>
         </article>
         <article className="result-card wide score-calculation-card analysis-primary">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">Score calculation</p>
-              <h2>How this result was derived</h2>
+              <p className="eyebrow">{t('scoreCalculation')}</p>
+              <h2>{t('howThisResultWasDerived')}</h2>
             </div>
-            <span>{answers.length} answered item{answers.length === 1 ? '' : 's'}</span>
+            <span>{t('answeredItem', { length: answers.length, value: answers.length === 1 ? '' : 's' })}</span>
           </div>
           <div className="calculation-summary-grid">
-            <p><strong>Question</strong> Raw answer score comes from selected option, rubric hits, matching, ranking, multi-select, or mini-part scores.</p>
-            <p><strong>Difficulty</strong> Raw score is converted into readiness evidence using the item difficulty band.</p>
-            <p><strong>Competency</strong> Competency score is the average readiness evidence for all signals mapped to that competency.</p>
-            <p><strong>Domain</strong> Domain score is readiness points divided by evidence count. Secondary domains count at 0.35 weight.</p>
-            <p><strong>Assessment</strong> Domain average is {Object.values(results.domainScores).join(' + ')} / 6 = {results.domainAverage}. Domains with no sampled evidence are shown as Not assessed in the scorecard; the MVP formula still includes them as 0 until the route collects enough evidence, so the report should recommend continuation instead of treating the score as final. Answer quality average is {results.answerQuality.rawAverage}/100, applying a {Math.round(results.answerQuality.factor * 100)}% evidence factor. Final score: {results.domainAverage} × {Math.round(results.answerQuality.factor * 100)}% = {results.overall}.</p>
-            <p><strong>Timing/confidence</strong> Time, hesitation, item `a/b/c`, information, and SEM are shown as telemetry and calibration signals; they do not directly change the score yet.</p>
+            <p>{t.rich('questionRawAnswerScoreComes', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
+            <p>{t.rich('difficultyRawScoreIsConverted', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
+            <p>{t.rich('competencyCompetencyScoreIsThe', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
+            <p>{t.rich('domainDomainScoreIsReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
+            <p>{t.rich('assessmentDomainAverageIs6', { strong: (chunks) => <strong>{chunks}</strong>, value: Object.values(results.domainScores).join(' + '), domainAverage: results.domainAverage, rawAverage: results.answerQuality.rawAverage, Math: Math.round(results.answerQuality.factor * 100), domainAverage2: results.domainAverage, Math2: Math.round(results.answerQuality.factor * 100), overall: results.overall })}</p>
+            <p>{t.rich('timingConfidenceTimeHesitationItem', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
           </div>
           <details className="calculation-details" open>
-            <summary>Question-level calculation</summary>
+            <summary>{t('questionLevelCalculation')}</summary>
             <div className="calculation-table">
               {questionScoreCalculations.map((row, index) => {
                 const answer = answers[index];
@@ -173,24 +170,24 @@ export default function ResultsScreen() {
                   <div key={`${row.questionId}-${index}`}>
                     <span>Q{index + 1}</span>
                     <strong>{row.domain} · {difficultyLabels[row.difficulty]} · {row.interaction}</strong>
-                    <b>{row.rawScore} raw {'->'} {row.readinessScore} readiness</b>
+                    <b>{t('rawReadiness', { rawScore: row.rawScore, readinessScore: row.readinessScore })}</b>
                     <small>{row.calculation}</small>
                     {answer && (
                       <>
-                        <p><strong>Question</strong> {answer.question.prompt}</p>
-                        <p><strong>Your answer</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                        <p><strong>Expected evidence</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                        <p><strong>Why it scored this way</strong> {answer.option.feedback}</p>
+                        <p><strong>{t('question')}</strong> {answer.question.prompt}</p>
+                        <p><strong>{t('yourAnswer')}</strong> {answer.textResponse?.trim() || answer.option.label}</p>
+                        <p><strong>{t('expectedEvidence')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
+                        <p><strong>{t('whyItScoredThisWay')}</strong> {answer.option.feedback}</p>
                       </>
                     )}
-                    <p><strong>Measured</strong> {row.competencies}</p>
+                    <p><strong>{t('measured')}</strong> {row.competencies}</p>
                   </div>
                 );
               })}
             </div>
           </details>
           <details className="calculation-details" open>
-            <summary>Domain roll-up</summary>
+            <summary>{t('domainRollUp')}</summary>
             <div className="calculation-table domain-calculation-table">
               {domainScoreCalculations.map((row) => (
                 <div key={row.domain}>
@@ -198,21 +195,21 @@ export default function ResultsScreen() {
                   <strong>{domains[row.domain].short}</strong>
                   <b>{row.score}/100</b>
                   <small>{row.calculation}</small>
-                  <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : 'No sampled evidence in this run.'}</p>
+                  <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : t('noSampledEvidenceInThis')}</p>
                 </div>
               ))}
             </div>
           </details>
           <details className="calculation-details">
-            <summary>Competency roll-up</summary>
+            <summary>{t('competencyRollUp')}</summary>
             <div className="calculation-table competency-calculation-table">
               {competencyScores.filter((competency) => competency.evidenceCount > 0).map((competency) => (
                 <div key={competency.id}>
                   <span>{competency.domain}</span>
                   <strong>{competency.label}</strong>
                   <b>{competency.score}/100</b>
-                  <small>{competency.evidenceCount} evidence · {competency.confidence} confidence</small>
-                  <p>Average readiness evidence from mapped question signals.</p>
+                  <small>{t('evidenceConfidence', { evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
+                  <p>{t('averageReadinessEvidenceFromMapped')}</p>
                 </div>
               ))}
             </div>
@@ -220,14 +217,14 @@ export default function ResultsScreen() {
         </article>
         <article className="result-card wide did-you-know-report analysis-primary">
           <div>
-            <p className="eyebrow">Did you know?</p>
+            <p className="eyebrow">{t('didYouKnow')}</p>
             <h2>{personalizedDidYouKnow.topic}</h2>
             <p>{personalizedDidYouKnow.fact}</p>
             <small>{personalizedDidYouKnow.whyItMatters}</small>
           </div>
           <div className="did-you-know-actions">
-            <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
-            <button className="secondary dark" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Improve personalization</button>
+            <button className="primary" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>{t('learnMore')}</button>
+            <button className="secondary dark" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>{t('improvePersonalization')}</button>
           </div>
         </article>
         {showContinuationPanel && (
@@ -242,7 +239,7 @@ export default function ResultsScreen() {
             </div>
             <div className="continuation-decision">
               <strong>{continuationRecommendation.confidenceLabel}: {results.confidence}%</strong>
-              <p>{continuationRecommendation.questionCount} targeted questions can improve the score estimate and competency evidence.</p>
+              <p>{t('targetedQuestionsCanImproveThe', { questionCount: continuationRecommendation.questionCount })}</p>
               {continuationRecommendation.targetLabels.length > 0 && (
                 <div className="continue-targets">
                   {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
@@ -254,7 +251,8 @@ export default function ResultsScreen() {
                   className="primary"
                   onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
                 >
-                  Continue recommended route
+                  
+                  {t('continueRecommendedRoute')}
                 </button>
                 <button
                   type="button"
@@ -265,56 +263,52 @@ export default function ResultsScreen() {
                     targetDomain: selectedRadarDomain,
                     targetCompetencyIds: continuationTargets.domainIds,
                   })}
-                >
-                  Choose {selectedRadarDomain} deep dive
-                </button>
+                >{t('chooseDeepDive', { selectedRadarDomain: selectedRadarDomain })}</button>
               </div>
             </div>
             <div className="continuation-summary">
-              <span>{continuationTargets.confidenceIds.length} confidence targets</span>
-              <span>{continuationTargets.priorityGapIds.length} profile-priority gaps</span>
-              <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
+              <span>{t('confidenceTargets', { length: continuationTargets.confidenceIds.length })}</span>
+              <span>{t('profilePriorityGaps', { length: continuationTargets.priorityGapIds.length })}</span>
+              <span>{t('followUps', { length: continuationTargets.domainIds.length, selectedRadarDomain: selectedRadarDomain })}</span>
             </div>
           </article>
         )}
         {showEvidenceCompletionPanel && (
           <article className="result-card wide continuation-panel prominent recommended report-primary report-order-continuation">
             <div>
-              <p className="eyebrow">Evidence completion</p>
-              <h2>Continue beyond 20 until confidence is high</h2>
+              <p className="eyebrow">{t('evidenceCompletion')}</p>
+              <h2>{t('continueBeyond20UntilConfidence')}</h2>
               <p>{evidenceCompletion.summary}</p>
               <div className="continue-reasons">
-                <span>{evidenceCompletion.unsampled} relevant competencies unsampled</span>
-                <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
-                <span>{evidenceCompletion.remainingCapacity} question slots left before the safety cap</span>
+                <span>{t('relevantCompetenciesUnsampled', { unsampled: evidenceCompletion.unsampled })}</span>
+                <span>{t('sampledCompetenciesBelowHighConfidence', { lowConfidence: evidenceCompletion.lowConfidence })}</span>
+                <span>{t('questionSlotsLeftBeforeThe', { remainingCapacity: evidenceCompletion.remainingCapacity })}</span>
               </div>
             </div>
             <div className="continuation-decision">
-              <strong>Recommended if you want a fuller profile</strong>
-              <p>The next batch targets planned and profile-priority competencies that still need repeated evidence.</p>
+              <strong>{t('recommendedIfYouWantA')}</strong>
+              <p>{t('theNextBatchTargetsPlanned')}</p>
               <div className="continue-targets">
                 {evidenceCompletion.targets.slice(0, 6).map((competency) => <span key={competency.id}>{competency.label}</span>)}
               </div>
               <div className="continuation-actions">
-                <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                  Add {evidenceCompletion.questionCount} evidence questions
-                </button>
+                <button type="button" className="primary" onClick={continueEvidenceCompletion}>{t('addEvidenceQuestions', { questionCount: evidenceCompletion.questionCount })}</button>
               </div>
             </div>
             <div className="continuation-summary">
-              <span>{coveragePlan.prioritySampled}/{coveragePlan.priorityTotal} priority sampled</span>
-              <span>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal} planned sampled</span>
-              <span>{coveragePlan.sampled}/24 total competencies sampled</span>
+              <span>{t('prioritySampled', { prioritySampled: coveragePlan.prioritySampled, priorityTotal: coveragePlan.priorityTotal })}</span>
+              <span>{t('plannedSampled', { plannedSampled: coveragePlan.plannedSampled, plannedTotal: coveragePlan.plannedTotal })}</span>
+              <span>{t('n24TotalCompetenciesSampled', { sampled: coveragePlan.sampled })}</span>
             </div>
           </article>
         )}
         <article className="result-card wide leaderboard-card analysis-primary">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">Persona leaderboard</p>
-              <h2>Top 10 · {cleanAverageLabel(scoreGroup.label)}</h2>
+              <p className="eyebrow">{t('personaLeaderboard')}</p>
+              <h2>{t('top10', { cleanAverageLabel: cleanAverageLabel(scoreGroup.label) })}</h2>
             </div>
-            <span>{personaLeaderboard.length} ranked run{personaLeaderboard.length === 1 ? '' : 's'}</span>
+            <span>{t('rankedRun', { length: personaLeaderboard.length, value: personaLeaderboard.length === 1 ? '' : 's' })}</span>
           </div>
           <div className="leaderboard-list">
             {personaLeaderboard.length ? personaLeaderboard.map((entry) => (
@@ -324,91 +318,81 @@ export default function ResultsScreen() {
                 <b>{entry.overall}/100</b>
                 <small>{new Date(entry.createdAt).toLocaleDateString()}</small>
               </div>
-            )) : <p>Your completed run will establish this persona leaderboard.</p>}
+            )) : <p>{t('yourCompletedRunWillEstablish')}</p>}
           </div>
-          <p className="context-line">MVP ranks saved runs for the same persona on this device. Production should use consented server-side cohort records and privacy-safe display names.</p>
+          <p className="context-line">{t('mvpRanksSavedRunsFor')}</p>
         </article>
         <article className="result-card wide telemetry-analysis-card analysis-primary">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">Telemetry and result analysis</p>
-              <h2>What the assessment tracks and why</h2>
+              <p className="eyebrow">{t('telemetryAndResultAnalysis')}</p>
+              <h2>{t('whatTheAssessmentTracksAnd')}</h2>
             </div>
-            <span>Local MVP log</span>
+            <span>{t('localMvpLog')}</span>
           </div>
           <div className="telemetry-grid">
             <div>
-              <h3>Currently tracked</h3>
+              <h3>{t('currentlyTracked')}</h3>
               {telemetryAnalysis.trackedNow.map((item) => <p key={item}>{item}</p>)}
             </div>
             <div>
-              <h3>Used for analysis</h3>
+              <h3>{t('usedForAnalysis')}</h3>
               {telemetryAnalysis.resultUse.map((item) => <p key={item}>{item}</p>)}
             </div>
             <div>
-              <h3>Improve next</h3>
+              <h3>{t('improveNext')}</h3>
               {telemetryAnalysis.improvements.map((item) => <p key={item}>{item}</p>)}
             </div>
           </div>
-          <p className="context-line">Agent suggestions should analyze survey feedback, item behavior, artifact zoom/open patterns, and cohort trends first. Human review remains required before changing scored content, artifacts, profile fields, or survey wording.</p>
+          <p className="context-line">{t('agentSuggestionsShouldAnalyzeSurvey')}</p>
         </article>
         <article id="assessment-feedback-survey" className="result-card wide assessment-feedback-gate report-primary report-order-survey">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">30-second feedback</p>
-              <h2>{detailedAnalysisUnlocked ? 'Thanks. Your detailed evidence is unlocked.' : 'Help improve the assessment and unlock your detailed evidence.'}</h2>
+              <p className="eyebrow">{t('n30SecondFeedback')}</p>
+              <h2>{detailedAnalysisUnlocked ? t('thanksYourDetailedEvidenceIs') : t('helpImproveTheAssessmentAnd')}</h2>
             </div>
-            <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Quick survey'}</span>
+            <span>{detailedAnalysisUnlocked ? t('unlocked') : t('quickSurvey')}</span>
           </div>
           {!detailedAnalysisUnlocked ? (
             <>
-              <p>Share whether the questions felt clear, realistic, and useful. In exchange, the report unlocks your question-by-question evidence, expected answers, timing, and local comparison data.</p>
+              <p>{t('shareWhetherTheQuestionsFelt')}</p>
               <div className="feedback-survey-grid">
-                <label>Question clarity
-                  <select value={feedbackDraft.clarity} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, clarity: event.target.value as AssessmentFeedbackSurvey['clarity'] }))}>
-                    <option value="clear">Clear</option><option value="mixed">Some were unclear</option><option value="confusing">Confusing</option>
-                  </select>
-                </label>
-                <label>Difficulty
-                  <select value={feedbackDraft.difficultyFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, difficultyFit: event.target.value as AssessmentFeedbackSurvey['difficultyFit'] }))}>
-                    <option value="right">About right</option><option value="too-easy">Too easy</option><option value="too-hard">Too hard</option>
-                  </select>
-                </label>
-                <label>Artifacts
-                  <select value={feedbackDraft.artifactQuality} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, artifactQuality: event.target.value as AssessmentFeedbackSurvey['artifactQuality'] }))}>
-                    <option value="realistic">Realistic and relevant</option><option value="mixed">Mixed quality</option><option value="poor">Poor or irrelevant</option>
-                  </select>
-                </label>
-                <label>Assessment length
-                  <select value={feedbackDraft.lengthFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, lengthFit: event.target.value as AssessmentFeedbackSurvey['lengthFit'] }))}>
-                    <option value="right">About right</option><option value="short">Too short</option><option value="long">Too long</option>
-                  </select>
-                </label>
+                <label>{t.rich('questionClarity', { select: () => <select value={feedbackDraft.clarity} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, clarity: event.target.value as AssessmentFeedbackSurvey['clarity'] }))}>
+                    <option value="clear">{t('clear')}</option><option value="mixed">{t('someWereUnclear')}</option><option value="confusing">{t('confusing')}</option>
+                  </select> })}</label>
+                <label>{t.rich('difficulty2', { select: () => <select value={feedbackDraft.difficultyFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, difficultyFit: event.target.value as AssessmentFeedbackSurvey['difficultyFit'] }))}>
+                    <option value="right">{t('aboutRight')}</option><option value="too-easy">{t('tooEasy')}</option><option value="too-hard">{t('tooHard')}</option>
+                  </select> })}</label>
+                <label>{t.rich('artifacts', { select: () => <select value={feedbackDraft.artifactQuality} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, artifactQuality: event.target.value as AssessmentFeedbackSurvey['artifactQuality'] }))}>
+                    <option value="realistic">{t('realisticAndRelevant')}</option><option value="mixed">{t('mixedQuality')}</option><option value="poor">{t('poorOrIrrelevant')}</option>
+                  </select> })}</label>
+                <label>{t.rich('assessmentLength', { select: () => <select value={feedbackDraft.lengthFit} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, lengthFit: event.target.value as AssessmentFeedbackSurvey['lengthFit'] }))}>
+                    <option value="right">{t('aboutRight')}</option><option value="short">{t('tooShort')}</option><option value="long">{t('tooLong')}</option>
+                  </select> })}</label>
               </div>
-              <label className="written-response">Suggestions for improvement
-                <textarea value={feedbackDraft.suggestions} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, suggestions: event.target.value }))} placeholder="Optional: name a confusing question, unrealistic artifact, or missing topic." />
-              </label>
-              <button className="primary" type="button" onClick={submitAssessmentFeedback}>Submit feedback and unlock analysis</button>
+              <label className="written-response">{t.rich('suggestionsForImprovement', { textarea: () => <textarea value={feedbackDraft.suggestions} onChange={(event) => setFeedbackDraft((draft) => ({ ...draft, suggestions: event.target.value }))} placeholder={t('optionalNameAConfusingQuestion')} /> })}</label>
+              <button className="primary" type="button" onClick={submitAssessmentFeedback}>{t('submitFeedbackAndUnlockAnalysis')}</button>
             </>
           ) : (
             <>
-              <p>Your feedback is saved for item-quality review. You can now open Test analysis to inspect how each question contributed to the result.</p>
-              <button className="secondary dark" type="button" onClick={() => setReportTab('analysis')}>Open detailed analysis</button>
+              <p>{t('yourFeedbackIsSavedFor')}</p>
+              <button className="secondary dark" type="button" onClick={() => setReportTab('analysis')}>{t('openDetailedAnalysis')}</button>
             </>
           )}
         </article>
         <article className="result-card wide assessment-feedback-gate analysis-primary">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">Question-level analysis</p>
-              <h2>{detailedAnalysisUnlocked ? 'Your detailed evidence is unlocked.' : 'Feedback unlock required.'}</h2>
+              <p className="eyebrow">{t('questionLevelAnalysis')}</p>
+              <h2>{detailedAnalysisUnlocked ? t('yourDetailedEvidenceIsUnlocked') : t('feedbackUnlockRequired')}</h2>
             </div>
-            <span>{detailedAnalysisUnlocked ? 'Unlocked' : 'Locked'}</span>
+            <span>{detailedAnalysisUnlocked ? t('unlocked') : t('locked')}</span>
           </div>
           {!detailedAnalysisUnlocked ? (
             <>
-              <p>Complete the quick feedback survey in the Report tab to unlock your question-by-question evidence, expected answers, timing, and local comparison data.</p>
-              <button className="primary" type="button" onClick={() => setReportTab('report')}>Go to feedback survey</button>
+              <p>{t('completeTheQuickFeedbackSurvey')}</p>
+              <button className="primary" type="button" onClick={() => setReportTab('report')}>{t('goToFeedbackSurvey')}</button>
             </>
           ) : (
             <div className="question-analysis-list">
@@ -418,16 +402,16 @@ export default function ResultsScreen() {
                   <details key={`${answer.question.id}-${index}`}>
                     <summary>
                       <span>{index + 1}</span>
-                      <strong>{answer.question.domain} · {difficultyLabels[answer.question.difficulty]} · {answer.question.interaction ?? 'single'}</strong>
+                      <strong>{answer.question.domain} · {difficultyLabels[answer.question.difficulty]} · {answer.question.interaction ?? t('single')}</strong>
                       <b>{getReadinessScore(answer.option.score, answer.question.difficulty)}/100</b>
-                      <small>{formatDuration(answer.behavior?.durationMs)} · {answer.behavior?.hesitation ?? 'timing unavailable'}</small>
+                      <small>{formatDuration(answer.behavior?.durationMs)} · {answer.behavior?.hesitation ?? t('timingUnavailable')}</small>
                     </summary>
-                    <p><strong>Question:</strong> {answer.question.prompt}</p>
-                    <p><strong>Your answer:</strong> {answer.textResponse?.trim() || answer.option.label}</p>
-                    <p><strong>Expected evidence:</strong> {getCorrectAnswerSummary(answer.question)}</p>
-                    <p><strong>Measured:</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
-                    <p><strong>Behavior:</strong> {answer.behavior?.interactionCount ?? 0} interactions, {answer.behavior?.revisionCount ?? 0} revisions.</p>
-                    <p><strong>Local comparison:</strong> {benchmark ? `${benchmark.averageScore}/100 average across ${benchmark.attempts} attempt${benchmark.attempts === 1 ? '' : 's'}; ${formatDuration(benchmark.averageDurationMs)} average time.` : 'No comparison data yet.'}</p>
+                    <p><strong>{t('question2')}</strong> {answer.question.prompt}</p>
+                    <p><strong>{t('yourAnswer2')}</strong> {answer.textResponse?.trim() || answer.option.label}</p>
+                    <p><strong>{t('expectedEvidence2')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
+                    <p><strong>{t('measured2')}</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
+                    <p>{t.rich('behaviorInteractionsRevisions', { strong: (chunks) => <strong>{chunks}</strong>, value: answer.behavior?.interactionCount ?? 0, value2: answer.behavior?.revisionCount ?? 0 })}</p>
+                    <p><strong>{t('localComparison')}</strong> {benchmark ? `${benchmark.averageScore}/100 average across ${benchmark.attempts} attempt${benchmark.attempts === 1 ? '' : 's'}; ${formatDuration(benchmark.averageDurationMs)} average time.` : t('noComparisonDataYet')}</p>
                   </details>
                 );
               })}
@@ -437,21 +421,21 @@ export default function ResultsScreen() {
         <article className="result-card wide ai-generated-report report-primary report-order-generated">
           <div className="report-heading">
             <div>
-              <p className="eyebrow">Personalized AI report</p>
+              <p className="eyebrow">{t('personalizedAiReport')}</p>
               <h2>{generatedReport.headline}</h2>
             </div>
             <span>{cleanAverageLabel(scoreGroup.label)}</span>
           </div>
           <p>{generatedReport.summary}</p>
           <div className="report-section">
-            <h3>What this means</h3>
+            <h3>{t('whatThisMeans')}</h3>
             <div className="evidence-grid">
               {generatedReport.analysis.map((item) => <p key={item}>{item}</p>)}
             </div>
           </div>
         </article>
         <article className="result-card wide report-primary report-order-domain">
-          <h2>Domain scorecard</h2>
+          <h2>{t('domainScorecard')}</h2>
           <div className="demo-domain-grid">
             {(Object.keys(results.domainScores) as DomainId[]).map((domain) => {
               const target = getTargetScore(domain, radarProfiles);
@@ -466,36 +450,36 @@ export default function ResultsScreen() {
                   onClick={() => selectReportDomain(domain, 'radar')}
                 >
                   <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
-                  <strong>{assessed ? `${results.domainScores[domain]}/100` : 'Not assessed'}</strong>
-                  {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label="Not assessed" />}
-                  <small>{assessed ? (gap > 0 ? `${gap} points below target` : 'At or above target') : 'No question sampled this domain yet'}</small>
+                  <strong>{assessed ? `${results.domainScores[domain]}/100` : t('notAssessed')}</strong>
+                  {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label={t('notAssessed')} />}
+                  <small>{assessed ? (gap > 0 ? `${gap} points below target` : t('atOrAboveTarget')) : t('noQuestionSampledThisDomain')}</small>
                 </button>
               );
             })}
           </div>
         </article>
         <article className="result-card wide coverage-plan analysis-primary">
-          <h2>Assessment coverage plan</h2>
+          <h2>{t('assessmentCoveragePlan')}</h2>
           <p>{coveragePlan.testFrame}</p>
           <div className="coverage-stats">
             <div>
-              <span>Profile</span>
+              <span>{t('profile')}</span>
               <strong>{coveragePlan.contextLabel}</strong>
             </div>
             <div>
-              <span>Sampled</span>
+              <span>{t('sampled')}</span>
               <strong>{coveragePlan.sampled}/24</strong>
             </div>
             <div>
-              <span>Role priority</span>
+              <span>{t('rolePriority')}</span>
               <strong>{coveragePlan.prioritySampled}/{coveragePlan.priorityTotal}</strong>
             </div>
             <div>
-              <span>Planned route</span>
+              <span>{t('plannedRoute')}</span>
               <strong>{coveragePlan.plannedSampled}/{coveragePlan.plannedTotal}</strong>
             </div>
           </div>
-          <div className="domain-target-grid" aria-label="Profile domain targets">
+          <div className="domain-target-grid" aria-label={t('profileDomainTargets')}>
             {(Object.keys(domains) as DomainId[]).map((domain) => (
               <div key={domain}>
                 <span>{domain}</span>
@@ -515,23 +499,20 @@ export default function ResultsScreen() {
           </div>
         </article>
         <article className="result-card wide profile-insights analysis-primary">
-          <h2>User profile signals</h2>
+          <h2>{t('userProfileSignals')}</h2>
           {userProfileSurvey ? (
             <>
-              <p>
-                Latest profile context: <strong>{userProfileSurvey.context}</strong>. These tags can personalize question routing,
-                artifact selection, course recommendations, and cohort analytics.
-              </p>
+              <p>{t.rich('latestProfileContextTheseTags', { strong: () => <strong>{userProfileSurvey.context}</strong> })}</p>
               <div className="profile-tag-grid">
                 {userProfileSurvey.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
             </>
           ) : (
-            <p>No optional profile survey saved yet. The assessment can still run, but personalization will rely only on selected audience, function, industry, or role.</p>
+            <p>{t('noOptionalProfileSurveySaved')}</p>
           )}
         </article>
         <article className="result-card wide analysis-primary">
-          <h2>Domain evidence quality</h2>
+          <h2>{t('domainEvidenceQuality')}</h2>
           <div className="domain-evidence-grid">
             {domainEvidenceSummary.map((item) => (
               <button
@@ -541,16 +522,16 @@ export default function ResultsScreen() {
                 onClick={() => selectReportDomain(item.domain, 'domain')}
               >
                 <span>{item.domain} · {domains[item.domain].short}</span>
-                <strong>{item.evidenceCount ? `${item.score}/100` : 'Not sampled'}</strong>
-                <p>{Number(item.evidenceCount.toFixed(2))} evidence signal{item.evidenceCount === 1 ? '' : 's'} · {item.confidence}</p>
+                <strong>{item.evidenceCount ? `${item.score}/100` : t('notSampled')}</strong>
+                <p>{t('evidenceSignal', { Number: Number(item.evidenceCount.toFixed(2)), value: item.evidenceCount === 1 ? '' : 's', confidence: item.confidence })}</p>
               </button>
             ))}
           </div>
         </article>
         <article className="result-card wide domain-drilldown report-primary report-order-competencies">
-          <h2>{domains[selectedRadarDomain].name} competency drilldown</h2>
+          <h2>{t('competencyDrilldown', { name: domains[selectedRadarDomain].name })}</h2>
           <p>{selectedRadarDomain} · {domains[selectedRadarDomain].name}</p>
-          <div className="drilldown-domain-tabs" aria-label="Choose a domain for competency drilldown">
+          <div className="drilldown-domain-tabs" aria-label={t('chooseADomainForCompetency')}>
             {(Object.keys(domains) as DomainId[]).map((domain) => (
               <button
                 key={domain}
@@ -570,22 +551,22 @@ export default function ResultsScreen() {
                 <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label, domain: competency.domain })}>
                   <span>{competency.id}</span>
                   <strong>{competency.label}</strong>
-                  <b>{competency.evidenceCount ? `${competency.score}/100` : 'Not sampled'}</b>
-                  <small>{competency.statusLabel} · {competency.evidenceCount} evidence · {competency.confidence} confidence</small>
+                  <b>{competency.evidenceCount ? `${competency.score}/100` : t('notSampled')}</b>
+                  <small>{t('evidenceConfidence2', { statusLabel: competency.statusLabel, evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
                 </summary>
-                <p>{competency.rationale} Skills: {competency.skills.join(', ')}</p>
+                <p>{t('skills', { rationale: competency.rationale, skills: competency.skills.join(', ') })}</p>
               </details>
             ))}
           </div>
         </article>
         <article className="result-card wide score-analytics analysis-primary">
-          <h2>Saved score analytics</h2>
+          <h2>{t('savedScoreAnalytics')}</h2>
           <div className="evidence-grid">
-            <p><strong>Saved runs</strong> {scoreLogAnalytics.totalRuns} completed assessment run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'} on this device.</p>
-            <p><strong>Individual profiles</strong> {scoreLogAnalytics.individualProfiles || 'No'} local profile{scoreLogAnalytics.individualProfiles === 1 ? '' : 's'} with saved signals.</p>
-            <p><strong>Question signals</strong> {scoreLogAnalytics.signalSnapshots || 'No'} item-level signal snapshot{scoreLogAnalytics.signalSnapshots === 1 ? '' : 's'} saved for trend analysis.</p>
-            <p><strong>Average overall</strong> {scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : 'No saved score distribution yet.'}</p>
-            <p><strong>Stored dimensions</strong> Anonymous profile ID, survey tags, audience, function, industry, executive role, domain scores, competency scores, evidence-mode scores, question difficulty, item type, assessment mode, date, and group key.</p>
+            <p>{t.rich('savedRunsCompletedAssessmentRun', { strong: (chunks) => <strong>{chunks}</strong>, totalRuns: scoreLogAnalytics.totalRuns, value: scoreLogAnalytics.totalRuns === 1 ? '' : 's' })}</p>
+            <p>{t.rich('individualProfilesLocalProfileWith', { strong: (chunks) => <strong>{chunks}</strong>, value: scoreLogAnalytics.individualProfiles || t('no'), value2: scoreLogAnalytics.individualProfiles === 1 ? '' : 's' })}</p>
+            <p>{t.rich('questionSignalsItemLevelSignal', { strong: (chunks) => <strong>{chunks}</strong>, value: scoreLogAnalytics.signalSnapshots || t('no'), value2: scoreLogAnalytics.signalSnapshots === 1 ? '' : 's' })}</p>
+            <p><strong>{t('averageOverall')}</strong> {scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : t('noSavedScoreDistributionYet')}</p>
+            <p>{t.rich('storedDimensionsAnonymousProfileId', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
           </div>
           <div className="analytics-chips">
             {scoreLogAnalytics.byMode.map((item) => (
@@ -597,36 +578,36 @@ export default function ResultsScreen() {
           </div>
         </article>
         <article className="result-card report-primary report-order-strengths">
-          <h2>Strengths</h2>
+          <h2>{t('strengths')}</h2>
           {results.strongest.filter((domain) => assessedDomains.includes(domain)).map((domain) => (
             <p key={domain}><strong>{domains[domain].short}</strong> {results.domainScores[domain]}/100</p>
           ))}
-          {!results.strongest.some((domain) => assessedDomains.includes(domain)) && <p>Not enough sampled evidence yet. Continue the test to establish strengths.</p>}
+          {!results.strongest.some((domain) => assessedDomains.includes(domain)) && <p>{t('notEnoughSampledEvidenceYet')}</p>}
         </article>
         <article className="result-card report-primary report-order-gaps">
-          <h2>Priority gaps</h2>
+          <h2>{t('priorityGaps')}</h2>
           {results.weakest.map((domain) => (
-            <p key={domain}><strong>{domains[domain].short}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : 'Not assessed yet'}</p>
+            <p key={domain}><strong>{domains[domain].short}</strong> {assessedDomains.includes(domain) ? `${results.domainScores[domain]}/100` : t('notAssessedYet')}</p>
           ))}
         </article>
         <article className="result-card wide analysis-primary">
-          <h2>Knowledge vs practical skill</h2>
+          <h2>{t('knowledgeVsPracticalSkill')}</h2>
           <div className="evidence-mode-grid">
             {evidenceModeSummary.map((item) => (
               <div key={item.mode}>
                 <span>{item.label}</span>
-                <strong>{item.count ? `${item.score}/100` : 'Not sampled'}</strong>
-                <p>{item.count} scored signal{item.count === 1 ? '' : 's'}</p>
+                <strong>{item.count ? `${item.score}/100` : t('notSampled')}</strong>
+                <p>{t('scoredSignal', { count: item.count, value: item.count === 1 ? '' : 's' })}</p>
               </div>
             ))}
           </div>
         </article>
         <article className="result-card wide analysis-primary">
-          <h2>Readiness badges</h2>
+          <h2>{t('readinessBadges')}</h2>
           <div className="badge-grid">
             {earnedBadges.map((badge) => (
               <div key={badge.domain} className={badge.earned ? 'earned' : ''}>
-                <span>{badge.earned ? 'Earned' : 'In progress'}</span>
+                <span>{badge.earned ? t('earned') : t('inProgress')}</span>
                 <strong>{badge.title}</strong>
                 <p>{badge.domain} · {badge.score}/100 · {badge.detail}</p>
               </div>
@@ -634,38 +615,38 @@ export default function ResultsScreen() {
           </div>
         </article>
         <article className="result-card wide analysis-primary">
-          <h2>Competency and skill scores</h2>
+          <h2>{t('competencyAndSkillScores')}</h2>
           <div className="competency-table">
             {coveragePlan.coverage.map((competency) => (
               <details key={competency.id} open={competency.evidenceCount > 0 && competency.score < 65}>
                 <summary>
                   <span>{competency.domain}</span>
                   <strong>{competency.label}</strong>
-                  <b>{competency.evidenceCount ? `${competency.score}/100` : 'Not sampled'}</b>
-                  <small>{competency.statusLabel} · {competency.evidenceCount} evidence · {competency.confidence} confidence</small>
+                  <b>{competency.evidenceCount ? `${competency.score}/100` : t('notSampled')}</b>
+                  <small>{t('evidenceConfidence2', { statusLabel: competency.statusLabel, evidenceCount: competency.evidenceCount, confidence: competency.confidence })}</small>
                 </summary>
-                <p>{competency.rationale} Skills: {competency.skills.join(', ')}</p>
+                <p>{t('skills', { rationale: competency.rationale, skills: competency.skills.join(', ') })}</p>
               </details>
             ))}
           </div>
         </article>
         <article className="result-card wide report-primary report-order-learning">
-          <h2>{mode === 'executive' ? 'Executive learning path' : mode === 'premium' ? 'Premium learning path' : 'Recommended learning path'}</h2>
+          <h2>{mode === 'executive' ? t('executiveLearningPath') : mode === 'premium' ? t('premiumLearningPath') : t('recommendedLearningPath')}</h2>
           <div className="personalized-exploration">
             <div>
-              <span>Tools to explore</span>
+              <span>{t('toolsToExplore')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.tools.map((tool) => <span key={tool}>{tool}</span>)}
               </div>
             </div>
             <div>
-              <span>Concepts to strengthen</span>
+              <span>{t('conceptsToStrengthen')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.concepts.map((concept) => <span key={concept}>{concept}</span>)}
               </div>
             </div>
             <div>
-              <span>Practice next</span>
+              <span>{t('practiceNext')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.practice.map((activity) => <span key={activity}>{activity}</span>)}
               </div>
@@ -683,7 +664,7 @@ export default function ResultsScreen() {
           <div className="learning-list bootcamp-inline-list">
             {bootcampRecommendations.slice(0, 2).map((bootcamp) => (
               <div key={bootcamp.id}>
-                <span>{bootcamp.duration} · {bootcamp.level} workshop</span>
+                <span>{t('workshop', { duration: bootcamp.duration, level: bootcamp.level })}</span>
                 <strong>{bootcamp.title}</strong>
                 <p>{bootcamp.whyTakeIt}</p>
               </div>
@@ -691,7 +672,7 @@ export default function ResultsScreen() {
           </div>
         </article>
         <article className="result-card wide report-primary report-order-courses">
-          <h2>Thailand course recommendations</h2>
+          <h2>{t('thailandCourseRecommendations')}</h2>
           <div className="course-list">
             {courseRecommendations.map((course) => (
               <article key={course.id}>
@@ -701,18 +682,19 @@ export default function ResultsScreen() {
                   <p>{course.fit}</p>
                 </div>
                 <dl>
-                  <div><dt>Format</dt><dd>{course.format}</dd></div>
-                  <div><dt>Price</dt><dd>{course.price}</dd></div>
-                  <div><dt>Maps to</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
+                  <div><dt>{t('format')}</dt><dd>{course.format}</dd></div>
+                  <div><dt>{t('price')}</dt><dd>{course.price}</dd></div>
+                  <div><dt>{t('mapsTo')}</dt><dd>{course.domains.join(', ')} · {course.skills.slice(0, 4).join(', ')}</dd></div>
                 </dl>
               </article>
             ))}
           </div>
         </article>
         <article className="result-card wide report-primary report-order-bootcamps">
-          <h2>Recommended bootcamps and workshops</h2>
+          <h2>{t('recommendedBootcampsAndWorkshops')}</h2>
           <p className="context-line">
-            Suggested when the assessment shows a skill gap that needs guided practice, team alignment, or role-specific workflow design.
+            
+            {t('suggestedWhenTheAssessmentShows')}
           </p>
           <div className="bootcamp-list">
             {bootcampRecommendations.map((bootcamp, index) => (
@@ -723,34 +705,34 @@ export default function ResultsScreen() {
                   <b>{bootcamp.domains.join(', ')}</b>
                 </summary>
                 <div className="bootcamp-detail-grid">
-                  <p><strong>For who</strong> {bootcamp.forWho}</p>
-                  <p><strong>Why take it</strong> {bootcamp.whyTakeIt}</p>
+                  <p><strong>{t('forWho')}</strong> {bootcamp.forWho}</p>
+                  <p><strong>{t('whyTakeIt')}</strong> {bootcamp.whyTakeIt}</p>
                   <div>
-                    <strong>Expected learning outputs</strong>
+                    <strong>{t('expectedLearningOutputs')}</strong>
                     <ul>
                       {bootcamp.expectedOutputs.map((output) => <li key={output}>{output}</li>)}
                     </ul>
                   </div>
                   <div>
-                    <strong>Workshop labs</strong>
+                    <strong>{t('workshopLabs')}</strong>
                     <ul>
                       {bootcamp.labs.map((lab) => <li key={lab}>{lab}</li>)}
                     </ul>
                   </div>
-                  <p><strong>Framework alignment</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
-                  <p><strong>Best fit roles</strong> {bootcamp.roles.join(', ')}</p>
+                  <p><strong>{t('frameworkAlignment')}</strong> {bootcamp.mappedFrameworks.join('; ')}</p>
+                  <p><strong>{t('bestFitRoles')}</strong> {bootcamp.roles.join(', ')}</p>
                 </div>
               </details>
             ))}
           </div>
         </article>
         <article className="result-card wide analysis-primary">
-          <h2>Where to improve next</h2>
+          <h2>{t('whereToImproveNext')}</h2>
           <div className="improvement-brief">
             {improvementBrief.map((item) => (
               <div key={item.domain}>
                 <span>{item.domain} · {domains[item.domain].name}</span>
-                <strong>{item.score}/100 now · target {item.target}/100</strong>
+                <strong>{t('n100NowTarget100', { score: item.score, target: item.target })}</strong>
                 <p>{item.gapText}: {item.action}</p>
               </div>
             ))}
@@ -758,11 +740,11 @@ export default function ResultsScreen() {
         </article>
         {(mode === 'premium' || mode === 'executive') && (
           <article className="result-card wide analysis-primary">
-            <h2>Evidence summary</h2>
+            <h2>{t('evidenceSummary')}</h2>
             <div className="evidence-grid">
-              <p><strong>Adaptive coverage</strong> {mode === 'executive' ? 'Executive-weighted D5/D4/D6 coverage plus D1-D3 calibration checks.' : 'D1-D6 sampled with extra attention to low-confidence domains.'}</p>
-              <p><strong>Scenario context</strong> {mode === 'executive' ? `Recommendations tuned for ${executiveLabels[executiveRole].toLowerCase()} oversight decisions.` : `Recommendations tuned for ${functionLabels[functionTrack].toLowerCase()} and ${industryLabels[industryTrack].toLowerCase()}.`}</p>
-              <p><strong>Target status</strong> Research-informed targets are role/audience-weighted and source-backed. Group averages come from saved New Horizon runs on this device.</p>
+              <p><strong>{t('adaptiveCoverage')}</strong> {mode === 'executive' ? t('executiveWeightedD5D4D6') : t('d1D6SampledWithExtra')}</p>
+              <p><strong>{t('scenarioContext')}</strong> {mode === 'executive' ? `Recommendations tuned for ${executiveLabels[executiveRole].toLowerCase()} oversight decisions.` : `Recommendations tuned for ${functionLabels[functionTrack].toLowerCase()} and ${industryLabels[industryTrack].toLowerCase()}.`}</p>
+              <p>{t.rich('targetStatusResearchInformedTargets', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             </div>
             <div className="source-list">
               {targetEvidenceSources.map((source) => (
@@ -776,20 +758,21 @@ export default function ResultsScreen() {
         )}
       </div>
       {reportTab === 'report' && !detailedAnalysisUnlocked && feedbackPromptOpen && (
-        <aside className="feedback-nudge-card" aria-label="Feedback invitation">
+        <aside className="feedback-nudge-card" aria-label={t('feedbackInvitation')}>
           <button
             type="button"
             className="nudge-close"
-            aria-label="Dismiss feedback invitation"
+            aria-label={t('dismissFeedbackInvitation')}
             onClick={() => setFeedbackPromptOpen(false)}
           >
-            &times;
+            
+            {t('times')}
           </button>
-          <span>30-second exchange</span>
-          <strong>Unlock your detailed evidence trail</strong>
-          <p>Answer 4 quick feedback questions to see your response, expected evidence, time spent, difficulty, and local comparison for each item.</p>
+          <span>{t('n30SecondExchange')}</span>
+          <strong>{t('unlockYourDetailedEvidenceTrail')}</strong>
+          <p>{t('answer4QuickFeedbackQuestions')}</p>
           <div className="profile-pulse-actions">
-            <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>Later</button>
+            <button type="button" className="secondary dark" onClick={() => setFeedbackPromptOpen(false)}>{t('later')}</button>
             <button
               type="button"
               className="primary"
@@ -798,23 +781,24 @@ export default function ResultsScreen() {
                 document.getElementById('assessment-feedback-survey')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
               }}
             >
-              Give feedback
+              
+              {t('giveFeedback')}
             </button>
           </div>
         </aside>
       )}
       <div className="upgrade-panel">
         <div>
-          <h2>Ready for a deeper profile?</h2>
-          <p>Unlock skill-level analysis, role context, multimodal review, and premium diagnostic continuation.</p>
+          <h2>{t('readyForADeeperProfile')}</h2>
+          <p>{t('unlockSkillLevelAnalysisRole')}</p>
         </div>
         <div className="hero-actions">
           <button className="primary" onClick={() => mode === 'practice' ? showHomeSection('labs') : startAssessment(mode)}>
-            {mode === 'practice' ? 'Back to Activities' : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
+            {mode === 'practice' ? t('backToActivities') : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
           </button>
-          {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Start Full Free Assessment</button>}
-          {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>Start Premium Diagnostic</button>}
-          {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>Try Free Version</button>}
+          {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>{t('startFullFreeAssessment')}</button>}
+          {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>{t('startPremiumDiagnostic')}</button>}
+          {mode === 'premium' && <button className="secondary dark" onClick={() => setStep('onboarding')}>{t('tryFreeVersion')}</button>}
         </div>
       </div>
     </section>

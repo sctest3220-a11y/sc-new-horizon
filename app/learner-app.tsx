@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { questionTranslationsTh } from './questionTranslations.th';
@@ -12538,6 +12539,7 @@ function selectNextQuestion(
 }
 
 function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
+  const t = useTranslations('components');
   return (
     <figure className={`visual-stimulus evidence-board ${stimulus.kind}`}>
       <div className="visual-header">
@@ -12548,11 +12550,11 @@ function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
         {stimulus.callout && (
           <div className="visual-callout">
             <span>{stimulus.callout}</span>
-            <small>headline signal</small>
+            <small>{t('headlineSignal')}</small>
           </div>
         )}
         {stimulus.metrics && (
-          <div className="visual-metrics" aria-label="Key evidence metrics">
+          <div className="visual-metrics" aria-label={t('keyEvidenceMetrics')}>
             {stimulus.metrics.map((metric) => (
               <div key={`${metric.label}-${metric.value}`} className={`metric-pill ${metric.status ?? 'warn'}`}>
                 <span>{metric.label}</span>
@@ -12562,7 +12564,7 @@ function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
           </div>
         )}
         {stimulus.chartBars && (
-          <div className="visual-chart" aria-label="Evidence chart">
+          <div className="visual-chart" aria-label={t('evidenceChart')}>
             {stimulus.chartBars.map((bar) => (
               <div className="chart-row" key={`${bar.label}-${bar.value}`}>
                 <div className="chart-label">
@@ -12586,7 +12588,7 @@ function VisualStimulusCard({ stimulus }: { stimulus: VisualStimulus }) {
           ))}
         </div>
         {stimulus.flags && (
-          <div className="visual-flags" aria-label="Items to inspect">
+          <div className="visual-flags" aria-label={t('itemsToInspect')}>
             {stimulus.flags.map((flag) => (
               <span key={flag}>{flag}</span>
             ))}
@@ -12605,6 +12607,7 @@ function StimulusFigure({
   stimulus: NonNullable<Question['stimulus']>;
   onArtifactAction?: (action: 'reader' | 'zoom' | 'external', zoomLevel?: number) => void;
 }) {
+  const t = useTranslations('components');
   const [readerOpen, setReaderOpen] = useState(false);
   const [zoom, setZoom] = useState<'fit' | 1 | 1.5 | 2>('fit');
   const zoomOptions: Array<'fit' | 1 | 1.5 | 2> = ['fit', 1, 1.5, 2];
@@ -12628,9 +12631,9 @@ function StimulusFigure({
         <div className="stimulus-toolbar">
           <div>
             <div className="stimulus-label">{stimulus.label}</div>
-            <p className="stimulus-purpose"><span>Inspect for</span>: {stimulus.caption}</p>
+            <p className="stimulus-purpose"><span>{t('inspectFor')}</span>: {stimulus.caption}</p>
           </div>
-          <button type="button" className="secondary dark" onClick={openReader}>Read full size</button>
+          <button type="button" className="secondary dark" onClick={openReader}>{t('readFullSize')}</button>
         </div>
         <button type="button" className="stimulus-media" onClick={openReader} aria-label={`Open ${stimulus.label} full size`}>
           {/* Preserve each SVG/PNG artifact's own aspect ratio instead of forcing a Next image size. */}
@@ -12644,7 +12647,7 @@ function StimulusFigure({
           <section className="artifact-reader" role="dialog" aria-modal="true" aria-label={`${stimulus.label} full-size artifact`}>
             <div className="artifact-reader-toolbar">
               <div>
-                <span>Artifact reader</span>
+                <span>{t('artifactReader')}</span>
                 <strong>{stimulus.label}</strong>
               </div>
               <div className="artifact-reader-actions">
@@ -12655,11 +12658,11 @@ function StimulusFigure({
                     className={zoom === nextZoom ? 'selected' : ''}
                     onClick={() => updateZoom(nextZoom)}
                   >
-                    {nextZoom === 'fit' ? 'Fit' : `${nextZoom}x`}
+                    {nextZoom === 'fit' ? t('fit') : `${nextZoom}x`}
                   </button>
                 ))}
-                <a className="secondary dark" href={stimulus.src} target="_blank" rel="noreferrer" onClick={() => onArtifactAction?.('external', getZoomTelemetryValue(zoom))}>Open file</a>
-                <button type="button" className="primary" onClick={() => setReaderOpen(false)}>Close</button>
+                <a className="secondary dark" href={stimulus.src} target="_blank" rel="noreferrer" onClick={() => onArtifactAction?.('external', getZoomTelemetryValue(zoom))}>{t('openFile')}</a>
+                <button type="button" className="primary" onClick={() => setReaderOpen(false)}>{t('close')}</button>
               </div>
             </div>
             <div className={`artifact-reader-canvas ${zoom === 'fit' ? 'fit-window' : ''}`}>
@@ -12713,6 +12716,7 @@ function RadarChart({
   selectedDomain?: DomainId;
   onSelectDomain?: (domain: DomainId) => void;
 }) {
+  const t = useTranslations('components');
   const axis = Object.keys(domains) as DomainId[];
   const center = 150;
   const radius = 86;
@@ -12753,7 +12757,7 @@ function RadarChart({
 
   return (
     <div className="radar-panel">
-      <svg viewBox="0 0 300 300" role="img" aria-label="Six-domain AI readiness radar graph" className="radar">
+      <svg viewBox="0 0 300 300" role="img" aria-label={t('sixDomainAiReadinessRadar')} className="radar">
         {[0.25, 0.5, 0.75, 1].map((ring) => (
           <polygon
             key={ring}
@@ -12804,7 +12808,7 @@ function RadarChart({
           </text>
         ))}
       </svg>
-      <div className="radar-legend" aria-label="Radar domain key">
+      <div className="radar-legend" aria-label={t('radarDomainKey')}>
         {axis.map((domain) => (
           <button
             key={domain}
@@ -12819,11 +12823,11 @@ function RadarChart({
         ))}
       </div>
       {hasUnassessedDomains && (
-        <p className="radar-note">Domains without sampled evidence are left unplotted and marked as Not assessed in the scorecard.</p>
+        <p className="radar-note">{t('domainsWithoutSampledEvidenceAre')}</p>
       )}
       {benchmarks.length > 0 && (
-        <div className="benchmark-legend" aria-label="Target comparison key">
-          <span><i className="user-line" />Your score</span>
+        <div className="benchmark-legend" aria-label={t('targetComparisonKey')}>
+          <span>{t.rich('yourScore', { i: () => <i className="user-line" /> })}</span>
           {benchmarks.map((benchmark) => (
             <span key={benchmark.label}>
               <i className={benchmark.tone} />
@@ -12844,6 +12848,7 @@ function CompetencyRadar({
   domain: DomainId;
   competencies: Array<CompetencyDefinition & { score?: number; evidenceCount?: number; confidence?: string }>;
 }) {
+  const t = useTranslations('components');
   const center = 150;
   const radius = 78;
   const safeCompetencies = competencies.length > 0 ? competencies : getCompetenciesForDomain(domain);
@@ -12870,9 +12875,9 @@ function CompetencyRadar({
   return (
     <div className="competency-radar-panel">
       <div>
-        <span>{domain} competency radar</span>
+        <span>{t('competencyRadar', { domain: domain })}</span>
         <strong>{domains[domain].short}</strong>
-        <p>{scoredCount} of {safeCompetencies.length} competencies sampled in this run.</p>
+        <p>{t('ofCompetenciesSampledInThis', { scoredCount: scoredCount, length: safeCompetencies.length })}</p>
       </div>
       <svg viewBox="0 0 300 300" role="img" aria-label={`${domains[domain].name} competency radar graph`} className="competency-radar">
         {[0.25, 0.5, 0.75, 1].map((ring) => (
@@ -12910,7 +12915,7 @@ function CompetencyRadar({
           <p key={competency.id}>
             <span>C{index + 1}</span>
             <strong>{competency.label}</strong>
-            <b>{(competency.evidenceCount ?? 0) > 0 ? `${competency.score}/100` : 'Not sampled'}</b>
+            <b>{(competency.evidenceCount ?? 0) > 0 ? `${competency.score}/100` : t('notSampled')}</b>
           </p>
         ))}
       </div>
@@ -12989,6 +12994,7 @@ function evaluateLab(config: LabConfig, state: { draft: string; selections: stri
 }
 
 export function useAppController() {
+  const t = useTranslations('app');
   // The screen comes from the URL (app/learner-routes-model.ts). Answer feedback
   // is a phase of the assessment run, so it is the one step held in state.
   const pathname = usePathname();
@@ -13575,10 +13581,10 @@ export function useAppController() {
     const questionComment = questionFeedbackComments[commentKey] ?? '';
     const hasDraftChange = draftKind !== null || Boolean(questionComment.trim());
     return (
-      <div className={`question-feedback-strip ${placement}`} aria-label="Question feedback">
+      <div className={`question-feedback-strip ${placement}`} aria-label={t('questionFeedback')}>
         <div>
-          <span>Quick feedback</span>
-          <strong>{savedKind && draftKind === null ? 'Saved for item review' : placement === 'reveal' ? 'Was this item useful?' : 'Help improve this item'}</strong>
+          <span>{t('quickFeedback')}</span>
+          <strong>{savedKind && draftKind === null ? t('savedForItemReview') : placement === 'reveal' ? t('wasThisItemUseful') : t('helpImproveThisItem')}</strong>
         </div>
         <div className="question-feedback-actions">
           <button
@@ -13587,7 +13593,8 @@ export function useAppController() {
             aria-pressed={activeKind === 'like'}
             onClick={() => toggleQuestionFeedbackDraft(question.id, 'like')}
           >
-            Useful
+            
+            {t('useful')}
           </button>
           <button
             type="button"
@@ -13595,16 +13602,17 @@ export function useAppController() {
             aria-pressed={activeKind === 'unclear'}
             onClick={() => toggleQuestionFeedbackDraft(question.id, 'unclear')}
           >
-            Unclear
+            
+            {t('unclear')}
           </button>
         </div>
         <label>
-          <span>Optional note</span>
+          <span>{t('optionalNote')}</span>
           <input
             key={`${behaviorSessionId}:${question.id}:${placement}`}
             value={questionComment}
             onChange={(event) => setQuestionFeedbackComments((existing) => ({ ...existing, [commentKey]: event.target.value }))}
-            placeholder="Artifact irrelevant, answer too obvious, wording unclear..."
+            placeholder={t('artifactIrrelevantAnswerTooObvious')}
             autoComplete="off"
           />
         </label>
@@ -13614,7 +13622,7 @@ export function useAppController() {
           disabled={!hasDraftChange}
           onClick={() => submitQuestionFeedback(question, placement)}
         >
-          {draftKind === 'clear' && !questionComment.trim() ? 'Clear' : 'Save'}
+          {draftKind === 'clear' && !questionComment.trim() ? t('clear') : t('save')}
         </button>
       </div>
     );

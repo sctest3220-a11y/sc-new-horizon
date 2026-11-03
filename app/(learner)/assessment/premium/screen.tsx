@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   type ExecutiveRole,
   type FunctionTrack,
@@ -11,6 +12,7 @@ import {
 import { useApp } from '../../../learner-app-context';
 
 export default function PremiumOnboardingScreen() {
+  const t = useTranslations('premium');
   const {
     executiveRole,
     functionTrack,
@@ -25,14 +27,14 @@ export default function PremiumOnboardingScreen() {
   return (
     <section className="workspace">
       <div className="workspace-header">
-        <p className="eyebrow">Premium diagnostic</p>
-        <h1>Add context for a deeper profile.</h1>
-        <p>Premium uses the same AILF spine, then adapts interpretation by function and industry.</p>
+        <p className="eyebrow">{t('premiumDiagnostic')}</p>
+        <h1>{t('addContextForADeeper')}</h1>
+        <p>{t('premiumUsesTheSameAilf')}</p>
       </div>
       <div className="setup-columns">
         <div>
-          <h2>Function</h2>
-          <div className="choice-grid" role="radiogroup" aria-label="Function track">
+          <h2>{t('function')}</h2>
+          <div className="choice-grid" role="radiogroup" aria-label={t('functionTrack')}>
             {(Object.keys(functionLabels) as FunctionTrack[]).map((id) => (
               <button
                 key={id}
@@ -47,8 +49,8 @@ export default function PremiumOnboardingScreen() {
           </div>
         </div>
         <div>
-          <h2>Industry</h2>
-          <div className="choice-grid" role="radiogroup" aria-label="Industry track">
+          <h2>{t('industry')}</h2>
+          <div className="choice-grid" role="radiogroup" aria-label={t('industryTrack')}>
             {(Object.keys(industryLabels) as IndustryTrack[]).map((id) => (
               <button
                 key={id}
@@ -63,8 +65,8 @@ export default function PremiumOnboardingScreen() {
           </div>
         </div>
         <div>
-          <h2>Role context</h2>
-          <div className="choice-grid executive-grid" role="radiogroup" aria-label="Role context">
+          <h2>{t('roleContext')}</h2>
+          <div className="choice-grid executive-grid" role="radiogroup" aria-label={t('roleContext')}>
             {(Object.keys(executiveLabels) as ExecutiveRole[]).map((id) => (
               <button
                 key={id}
@@ -80,29 +82,29 @@ export default function PremiumOnboardingScreen() {
         </div>
       </div>
       <div className="premium-summary">
-        <strong>Premium pilot includes</strong>
-        <span>20 adaptive questions, function/industry/role context, research-informed target comparison, evidence summary, domain radar, skill-gap signals, and a premium learning path.</span>
+        <strong>{t('premiumPilotIncludes')}</strong>
+        <span>{t('n20AdaptiveQuestionsFunctionIndustry')}</span>
       </div>
       <article className="profile-builder-card compact">
         <div>
-          <p className="eyebrow">Profile builder</p>
-          <h2>Premium profile signals</h2>
+          <p className="eyebrow">{t('profileBuilder')}</p>
+          <h2>{t('premiumProfileSignals')}</h2>
           <p>
-            Before the diagnostic starts, New Horizon asks about current tools, similar-role tools, workflows, risks, and learning interests.
-            Those tags personalize item routing, artifacts, tool suggestions, and the learning path.
+            
+            {t('beforeTheDiagnosticStartsNew')}
           </p>
         </div>
         <div className="profile-builder-steps">
           <span>{functionLabels[functionTrack]}</span>
           <span>{industryLabels[industryTrack]}</span>
           <span>{executiveLabels[executiveRole]}</span>
-          <span>Tool awareness</span>
-          <span>Learning intent</span>
+          <span>{t('toolAwareness')}</span>
+          <span>{t('learningIntent')}</span>
         </div>
       </article>
       <div className="workspace-actions">
-        <button className="secondary dark" onClick={() => setStep('home')}>Back</button>
-        <button className="primary" onClick={() => openProfileSurvey('premium')}>Build Profile and Begin Premium Diagnostic</button>
+        <button className="secondary dark" onClick={() => setStep('home')}>{t('back')}</button>
+        <button className="primary" onClick={() => openProfileSurvey('premium')}>{t('buildProfileAndBeginPremium')}</button>
       </div>
     </section>
   );

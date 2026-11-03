@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   type DomainId,
   HelpBubble,
@@ -29,6 +30,7 @@ import {
 import { useApp, useRequireFlowState } from '../../../learner-app-context';
 
 export default function AssessmentRunScreen() {
+  const t = useTranslations('run');
   const {
     activeConfig,
     adaptiveReadout,
@@ -101,18 +103,16 @@ export default function AssessmentRunScreen() {
                 <div>
                   <p className="eyebrow">{activeConfig.label}</p>
                   <h1>{domains[current.domain].short}</h1>
-                  {continuationFocus && <p className="context-line">Continuation: {continuationFocus.label}</p>}
+                  {continuationFocus && <p className="context-line">{t('continuation', { label: continuationFocus.label })}</p>}
                 </div>
                 <div className="progress-block">
-                  <span>
-                    Question {progress} of {activeConfig.totalQuestions}
-                    <HelpBubble label="Telemetry help: progress">
-                      Progress is logged so the system can tell whether users complete, abandon, or continue after required milestones.
-                    </HelpBubble>
-                  </span>
+                  <span>{t.rich('questionOf', { progress: progress, totalQuestions: activeConfig.totalQuestions, HelpBubble: () => <HelpBubble label={t('telemetryHelpProgress')}>
+                      
+                      {t('progressIsLoggedSoThe')}
+                    </HelpBubble> })}</span>
                   <div className="progress-track"><span style={{ width: `${(progress / activeConfig.totalQuestions) * 100}%` }} /></div>
-                  <div className="question-language-toggle" aria-label="Question language">
-                    <small>Question language</small>
+                  <div className="question-language-toggle" aria-label={t('questionLanguage')}>
+                    <small>{t('questionLanguage')}</small>
                     <div>
                       <button
                         type="button"
@@ -120,7 +120,8 @@ export default function AssessmentRunScreen() {
                         onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'en' })}
                         aria-pressed={questionLanguage === 'en'}
                       >
-                        EN
+                        
+                        {t('en')}
                       </button>
                       <button
                         type="button"
@@ -128,9 +129,10 @@ export default function AssessmentRunScreen() {
                         onClick={() => setQuestionLanguageOverride({ questionId: current.id, language: 'th' })}
                         aria-pressed={questionLanguage === 'th'}
                         disabled={!currentThaiAvailable}
-                        aria-label={currentThaiAvailable ? 'Show question in Thai' : 'Thai translation unavailable for this question'}
+                        aria-label={currentThaiAvailable ? t('showQuestionInThai') : t('thaiTranslationUnavailableForThis')}
                       >
-                        TH
+                        
+                        {t('th')}
                       </button>
                     </div>
                   </div>
@@ -139,61 +141,57 @@ export default function AssessmentRunScreen() {
               {assessmentDisplaySettings.showQuestionMeta && <div className="question-meta">
                 <span>
                   {current.domain}
-                  <HelpBubble label="Telemetry help: domain">
-                    Domain identifies which D1-D6 capability area this question contributes evidence to.
+                  <HelpBubble label={t('telemetryHelpDomain')}>
+                    
+                    {t('domainIdentifiesWhichD1D6')}
                   </HelpBubble>
                 </span>
-                <span className={`difficulty-pill ${current.difficulty}`}>
-                  Difficulty: {difficultyLabels[current.difficulty]}
-                  <HelpBubble label="Telemetry help: difficulty">
-                    Difficulty is stored with the answer so harder correct or partially correct work can count differently from easy work.
-                  </HelpBubble>
-                </span>
+                <span className={`difficulty-pill ${current.difficulty}`}>{t.rich('difficulty', { difficultyLabel: difficultyLabels[current.difficulty], HelpBubble: () => <HelpBubble label={t('telemetryHelpDifficulty')}>
+                    
+                    {t('difficultyIsStoredWithThe')}
+                  </HelpBubble> })}</span>
                 <span>
                   {current.type}
-                  <HelpBubble label="Telemetry help: item type">
-                    Item type shows whether this is a report review, media check, fraud task, scenario, or similar evidence format.
+                  <HelpBubble label={t('telemetryHelpItemType')}>
+                    
+                    {t('itemTypeShowsWhetherThis')}
                   </HelpBubble>
                 </span>
                 <span>
-                  {current.interaction ?? 'single'}
-                  <HelpBubble label="Telemetry help: interaction format">
-                    Interaction format helps compare single choice, multi-select, matching, ranking, written, and multi-part questions fairly.
+                  {current.interaction ?? t('single')}
+                  <HelpBubble label={t('telemetryHelpInteractionFormat')}>
+                    
+                    {t('interactionFormatHelpsCompareSingle')}
                   </HelpBubble>
                 </span>
               </div>}
-              {assessmentDisplaySettings.showTelemetry && <div className="live-telemetry-strip" aria-label="Live telemetry help">
-                <span>
-                  Time on question
-                  <HelpBubble label="Telemetry help: time on question">
-                    Time is used to spot confusing wording, hard-to-read artifacts, and questions that need calibration review.
-                  </HelpBubble>
-                </span>
-                <span>
-                  Answer interactions
-                  <HelpBubble label="Telemetry help: answer interactions">
-                    Clicks, selections, revisions, and text edits help estimate hesitation and whether the question format is clear.
-                  </HelpBubble>
-                </span>
-                <span>
-                  Artifact use
-                  <HelpBubble label="Telemetry help: artifact use">
-                    Opening, zooming, or launching artifacts flags which screenshots, workflows, or documents may need larger or clearer versions.
-                  </HelpBubble>
-                </span>
+              {assessmentDisplaySettings.showTelemetry && <div className="live-telemetry-strip" aria-label={t('liveTelemetryHelp')}>
+                <span>{t.rich('timeOnQuestion', { HelpBubble: () => <HelpBubble label={t('telemetryHelpTimeOnQuestion')}>
+                    
+                    {t('timeIsUsedToSpot')}
+                  </HelpBubble> })}</span>
+                <span>{t.rich('answerInteractions', { HelpBubble: () => <HelpBubble label={t('telemetryHelpAnswerInteractions')}>
+                    
+                    {t('clicksSelectionsRevisionsAndText')}
+                  </HelpBubble> })}</span>
+                <span>{t.rich('artifactUse', { HelpBubble: () => <HelpBubble label={t('telemetryHelpArtifactUse')}>
+                    
+                    {t('openingZoomingOrLaunchingArtifacts')}
+                  </HelpBubble> })}</span>
               </div>}
               {assessmentDisplaySettings.showFocus && <div className="question-focus-strip">
-                <span>{difficultyLabels[current.difficulty]} task</span>
+                <span>{t('task', { difficultyLabel: difficultyLabels[current.difficulty] })}</span>
                 <strong>{getQuestionFocus(current)}</strong>
                 <small>{difficultyDescriptions[current.difficulty]}</small>
               </div>}
               {assessmentDisplaySettings.showScoredEvidence && <details className="measure-details">
                 <summary>
-                  <span>Scored evidence</span>
+                  <span>{t('scoredEvidence')}</span>
                   <strong>
                     {getEvidenceMode(current)} · {currentMeasures.map((measure) => measure.domain).join(' / ')}
-                    <HelpBubble label="Telemetry help: scored evidence">
-                      Scored evidence records whether the item mostly tests knowing, doing, or a hybrid task, then maps it to competencies.
+                    <HelpBubble label={t('telemetryHelpScoredEvidence')}>
+                      
+                      {t('scoredEvidenceRecordsWhetherThe')}
                     </HelpBubble>
                   </strong>
                 </summary>
@@ -206,7 +204,7 @@ export default function AssessmentRunScreen() {
                     </div>
                   ))}
                 </div>
-                <div className="skill-chip-row" aria-label="Scored skill tags">
+                <div className="skill-chip-row" aria-label={t('scoredSkillTags')}>
                   {currentSkills.map((skill) => <span key={skill}>{skill}</span>)}
                 </div>
               </details>}
@@ -218,9 +216,9 @@ export default function AssessmentRunScreen() {
                     {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
                   </div>
                   <div className="reliance-prompt">
-                    <span>Make the call</span>
+                    <span>{t('makeTheCall')}</span>
                     <h2>{shownQuestion.prompt}</h2>
-                    <div className="reliance-options" aria-label="Reliance decision">
+                    <div className="reliance-options" aria-label={t('relianceDecision')}>
                       {displayedOptions.map((option) => {
                         const choice = getRelianceChoice(option);
                         return (
@@ -238,14 +236,14 @@ export default function AssessmentRunScreen() {
               {!useRelianceStage && (
                 <>
                   <div className="task-brief">
-                    <span>Task brief</span>
+                    <span>{t('taskBrief')}</span>
                     <p>{getTaskInstruction(current)}</p>
                   </div>
                   <div className="scenario-panel">
-                    <span>Scenario</span>
+                    <span>{t('scenario')}</span>
                     <p className="context">{shownQuestion.context}</p>
                     {(currentDisplayStimulus || shownQuestion.visualStimulus || currentDisplayVisualStimulus) && (
-                      <div className="scenario-artifact" aria-label="Evidence embedded in the question">
+                      <div className="scenario-artifact" aria-label={t('evidenceEmbeddedInTheQuestion')}>
                         {currentDisplayStimulus && <StimulusFigure stimulus={currentDisplayStimulus} onArtifactAction={(action, zoomLevel) => trackArtifactAction(current, action, zoomLevel)} />}
                         {!currentDisplayStimulus && shownQuestion.visualStimulus && <VisualStimulusCard stimulus={shownQuestion.visualStimulus} />}
                         {!currentDisplayStimulus && currentDisplayVisualStimulus && <VisualStimulusCard stimulus={currentDisplayVisualStimulus} />}
@@ -280,12 +278,12 @@ export default function AssessmentRunScreen() {
                       </button>
                     ))}
                   </div>
-                  <button className="primary submit-answer" onClick={submitMultiSelect}>Submit Selected Answers</button>
+                  <button className="primary submit-answer" onClick={submitMultiSelect}>{t('submitSelectedAnswers')}</button>
                 </div>
               )}
               {current.interaction === 'rank' && (
                 <div className="interaction-panel">
-                  <div className="rank-list" aria-label="Drag-order response">
+                  <div className="rank-list" aria-label={t('dragOrderResponse')}>
                     {rankOrder.map((itemId, index) => {
                       const item = shownQuestion.rankItems?.find((rankItem) => rankItem.id === itemId);
                       return (
@@ -302,14 +300,14 @@ export default function AssessmentRunScreen() {
                           <span>{index + 1}</span>
                           <strong>{item?.label}</strong>
                           <div>
-                            <button onClick={() => moveRankItem(index, index - 1)} aria-label={`Move ${item?.label} up`}>Up</button>
-                            <button onClick={() => moveRankItem(index, index + 1)} aria-label={`Move ${item?.label} down`}>Down</button>
+                            <button onClick={() => moveRankItem(index, index - 1)} aria-label={`Move ${item?.label} up`}>{t('up')}</button>
+                            <button onClick={() => moveRankItem(index, index + 1)} aria-label={`Move ${item?.label} down`}>{t('down')}</button>
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                  <button className="primary submit-answer" onClick={submitRankOrder}>Submit Order</button>
+                  <button className="primary submit-answer" onClick={submitRankOrder}>{t('submitOrder')}</button>
                 </div>
               )}
               {current.interaction === 'match' && (
@@ -322,7 +320,7 @@ export default function AssessmentRunScreen() {
                           value={matchSelections[pair.id] ?? ''}
                           onChange={(event) => chooseMatch(pair.id, event.target.value)}
                         >
-                          <option value="">Choose match</option>
+                          <option value="">{t('chooseMatch')}</option>
                           {(displayedMatchChoices[pair.id] ?? pair.choices).map((choice) => (
                             <option key={choice} value={choice}>{choice}</option>
                           ))}
@@ -330,7 +328,7 @@ export default function AssessmentRunScreen() {
                       </label>
                     ))}
                   </div>
-                  <button className="primary submit-answer" onClick={submitMatches}>Submit Matches</button>
+                  <button className="primary submit-answer" onClick={submitMatches}>{t('submitMatches')}</button>
                 </div>
               )}
               {current.interaction === 'parts' && (
@@ -339,7 +337,7 @@ export default function AssessmentRunScreen() {
                     {displayedParts.map((part, partIndex) => (
                       <section className="part-card" key={part.id}>
                         <div className="part-header">
-                          <span>Part {partIndex + 1}</span>
+                          <span>{t('part', { value: partIndex + 1 })}</span>
                           <strong>{part.domain} · {domains[part.domain].short}</strong>
                         </div>
                         <p>{part.prompt}</p>
@@ -364,89 +362,82 @@ export default function AssessmentRunScreen() {
                     onClick={submitPartAnswers}
                     disabled={(current.parts ?? []).some((part) => !partSelections[part.id])}
                   >
-                    Submit Mini-Parts
+                    
+                    {t('submitMiniParts')}
                   </button>
                 </div>
               )}
               {current.interaction === 'text' && (
                 <div className="interaction-panel">
                   <label className="written-response">
-                    <span>Your written answer</span>
+                    <span>{t('yourWrittenAnswer')}</span>
                     <textarea
                       value={textResponse}
                       onChange={(event) => updateTextResponse(event.target.value)}
-                      placeholder="Write 3-5 sentences explaining the evidence, action, and customer response you would use."
+                      placeholder={t('write35SentencesExplaining')}
                     />
                   </label>
-                  <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>Submit Written Answer</button>
+                  <button className="primary submit-answer" onClick={submitTextAnswer} disabled={!textResponse.trim()}>{t('submitWrittenAnswer')}</button>
                 </div>
               )}
               {renderQuestionFeedback(current)}
             </article>
-            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Adaptive psychometric indicators">
+            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label={t('adaptivePsychometricIndicators')}>
               <div className={`adaptive-card difficulty-card ${current.difficulty}`}>
-                <span>
-                  Current item difficulty
-                  <HelpBubble label="Telemetry help: current item difficulty">
-                    Current difficulty is the seeded challenge level for this item before large-scale pilot calibration.
-                  </HelpBubble>
-                </span>
+                <span>{t.rich('currentItemDifficulty', { HelpBubble: () => <HelpBubble label={t('telemetryHelpCurrentItemDifficulty')}>
+                    
+                    {t('currentDifficultyIsTheSeeded')}
+                  </HelpBubble> })}</span>
                 <strong>{difficultyLabels[current.difficulty]}</strong>
                 <p>{difficultyDescriptions[current.difficulty]}</p>
               </div>
               <div className="adaptive-card highlight">
-                <span>
-                  Ability estimate theta
-                  <HelpBubble label="Telemetry help: theta">
-                    Theta is a pilot ability estimate from prior answers. It helps choose harder, easier, or coverage-focused next questions.
-                  </HelpBubble>
-                </span>
+                <span>{t.rich('abilityEstimateTheta', { HelpBubble: () => <HelpBubble label={t('telemetryHelpTheta')}>
+                    
+                    {t('thetaIsAPilotAbility')}
+                  </HelpBubble> })}</span>
                 <strong>{formatAbility(adaptiveReadout.theta)}</strong>
-                <p>Pilot estimate from {adaptiveReadout.answeredCount} answered items.</p>
+                <p>{t('pilotEstimateFromAnsweredItems', { answeredCount: adaptiveReadout.answeredCount })}</p>
               </div>
               <div className="indicator-grid">
                 <div>
-                  <span>Target level<HelpBubble label="Telemetry help: target level">Target level is the next difficulty pressure after the previous answer and coverage needs.</HelpBubble></span>
+                  <span>{t.rich('targetLevel', { HelpBubble: () => <HelpBubble label={t('telemetryHelpTargetLevel')}>{t('targetLevelIsTheNext')}</HelpBubble> })}</span>
                   <strong>{adaptiveReadout.targetDifficulty}</strong>
                 </div>
                 <div>
-                  <span>Item b<HelpBubble label="Telemetry help: item difficulty b">Item b is the seeded psychometric difficulty value used to compare the item with the current ability estimate.</HelpBubble></span>
+                  <span>{t.rich('itemB', { HelpBubble: () => <HelpBubble label={t('telemetryHelpItemDifficultyB')}>{t('itemBIsTheSeeded')}</HelpBubble> })}</span>
                   <strong>{formatAbility(adaptiveReadout.b)}</strong>
                 </div>
                 <div>
-                  <span>Item a<HelpBubble label="Telemetry help: item discrimination a">Item a estimates how strongly this item should separate lower and higher readiness users.</HelpBubble></span>
+                  <span>{t.rich('itemA', { HelpBubble: () => <HelpBubble label={t('telemetryHelpItemDiscriminationA')}>{t('itemAEstimatesHowStrongly')}</HelpBubble> })}</span>
                   <strong>{adaptiveReadout.a.toFixed(2)}</strong>
                 </div>
                 <div>
-                  <span>Guess c<HelpBubble label="Telemetry help: guessing c">Guess c is the estimated chance someone could get credit without the underlying skill, lower for richer formats.</HelpBubble></span>
+                  <span>{t.rich('guessC', { HelpBubble: () => <HelpBubble label={t('telemetryHelpGuessingC')}>{t('guessCIsTheEstimated')}</HelpBubble> })}</span>
                   <strong>{adaptiveReadout.c.toFixed(2)}</strong>
                 </div>
                 <div>
-                  <span>Info<HelpBubble label="Telemetry help: item information">Information estimates how useful this item is for reducing uncertainty at the current ability level.</HelpBubble></span>
+                  <span>{t.rich('info', { HelpBubble: () => <HelpBubble label={t('telemetryHelpItemInformation')}>{t('informationEstimatesHowUsefulThis')}</HelpBubble> })}</span>
                   <strong>{adaptiveReadout.information}</strong>
                 </div>
                 <div>
-                  <span>SEM<HelpBubble label="Telemetry help: standard error">SEM is standard error of measurement. Lower means the current estimate is becoming more stable.</HelpBubble></span>
+                  <span>{t.rich('sem', { HelpBubble: () => <HelpBubble label={t('telemetryHelpStandardError')}>{t('semIsStandardErrorOf')}</HelpBubble> })}</span>
                   <strong>{adaptiveReadout.sem}</strong>
                 </div>
               </div>
               <div className="adaptive-card">
-                <span>
-                  Why this question?
-                  <HelpBubble label="Telemetry help: routing reason">
-                    Routing combines prior score, difficulty movement, domain coverage, and profile-priority competencies.
-                  </HelpBubble>
-                </span>
+                <span>{t.rich('whyThisQuestion', { HelpBubble: () => <HelpBubble label={t('telemetryHelpRoutingReason')}>
+                    
+                    {t('routingCombinesPriorScoreDifficulty')}
+                  </HelpBubble> })}</span>
                 <p>{adaptiveReadout.adaptationReason}</p>
               </div>
               <div className="adaptive-card">
-                <span>
-                  Coverage pressure
-                  <HelpBubble label="Telemetry help: coverage confidence">
-                    Coverage confidence estimates whether enough relevant competencies have been tested to trust the result.
-                  </HelpBubble>
-                </span>
-                <p>Next target: {adaptiveReadout.targetDomain} · {domains[adaptiveReadout.targetDomain].short}. Confidence {adaptiveReadout.confidence}%.</p>
+                <span>{t.rich('coveragePressure', { HelpBubble: () => <HelpBubble label={t('telemetryHelpCoverageConfidence')}>
+                    
+                    {t('coverageConfidenceEstimatesWhetherEnough')}
+                  </HelpBubble> })}</span>
+                <p>{t('nextTargetConfidence', { targetDomain: adaptiveReadout.targetDomain, short: domains[adaptiveReadout.targetDomain].short, confidence: adaptiveReadout.confidence })}</p>
               </div>
               <div className="domain-meter-list">
                 {(Object.keys(domains) as DomainId[]).map((domain) => {
@@ -468,34 +459,34 @@ export default function AssessmentRunScreen() {
         <section className="assessment-shell">
           <div className="feedback-workbench">
             <article className="feedback-card">
-              <p className="eyebrow">Answer review</p>
+              <p className="eyebrow">{t('answerReview')}</p>
               {assessmentDisplaySettings.showAnswerReveal ? <>
                 <h1>{lastAnswer.option.score}/100</h1>
-                <p className="result-level">{lastAnswer.option.score >= 82 ? 'Strong evidence' : lastAnswer.option.score >= 64 ? 'Partial evidence' : 'Needs review'}</p>
-              </> : <p className="result-level">Answer recorded. Continue when you are ready.</p>}
-              {assessmentDisplaySettings.showAnswerReveal && <div className="score-explanation-panel" aria-label="Score explanation">
-                <span>Score explanation</span>
+                <p className="result-level">{lastAnswer.option.score >= 82 ? t('strongEvidence') : lastAnswer.option.score >= 64 ? t('partialEvidence') : t('needsReview')}</p>
+              </> : <p className="result-level">{t('answerRecordedContinueWhenYou')}</p>}
+              {assessmentDisplaySettings.showAnswerReveal && <div className="score-explanation-panel" aria-label={t('scoreExplanation')}>
+                <span>{t('scoreExplanation')}</span>
                 <p>{getRawScoreMethod(lastAnswer)}</p>
                 {getScoreExplanation(lastAnswer).map((item) => <p key={item}>{item}</p>)}
-                <p><strong>Practice cue</strong> {getAnswerPracticeCue(lastAnswer)}</p>
+                <p><strong>{t('practiceCue')}</strong> {getAnswerPracticeCue(lastAnswer)}</p>
               </div>}
               {assessmentDisplaySettings.showAnswerReveal && <div className="feedback-grid">
                 <div>
-                  <span>Your answer</span>
+                  <span>{t('yourAnswer')}</span>
                   <p>{lastAnswer.textResponse || localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).label}</p>
                 </div>
                 <div>
-                  <span>Expected answer</span>
+                  <span>{t('expectedAnswer')}</span>
                   <p>{getCorrectAnswerSummary(localizeQuestion(lastAnswer.question, appLanguage, showDraftThai))}</p>
                 </div>
               </div>}
               {assessmentDisplaySettings.showAnswerReveal && <div className="rubric-panel">
-                <span>Rubric and calibration</span>
+                <span>{t('rubricAndCalibration')}</span>
                 <p>{getCalibrationSummary(lastAnswer.question, lastAnswer)}</p>
                 <p>{localizeAnswerOption(lastAnswer, appLanguage, showDraftThai).feedback}</p>
               </div>}
               {assessmentDisplaySettings.showAnswerReveal && assessmentDisplaySettings.showScoredEvidence && <div className="rubric-panel">
-                <span>Measured competencies</span>
+                <span>{t('measuredCompetencies')}</span>
                 <div className="measure-grid compact">
                   {getQuestionMeasures(lastAnswer.question).map((measure) => (
                     <div key={measure.id}>
@@ -512,9 +503,9 @@ export default function AssessmentRunScreen() {
                     const hit = lastAnswer.rubricHits?.some((rubricHit) => rubricHit.id === criterion.id);
                     return (
                       <div key={criterion.id} className={hit ? 'hit' : ''}>
-                        <span>{hit ? 'Detected' : 'Missing'}</span>
+                        <span>{hit ? t('detected') : t('missing')}</span>
                         <strong>{criterion.label}</strong>
-                        <small>{criterion.points} pts</small>
+                        <small>{t('pts', { points: criterion.points })}</small>
                       </div>
                     );
                   })}
@@ -531,7 +522,7 @@ export default function AssessmentRunScreen() {
                   </div>
                   {continuationRecommendation.targetLabels.length > 0 && (
                     <div className="continue-targets">
-                      <strong>Next focus</strong>
+                      <strong>{t('nextFocus')}</strong>
                       {continuationRecommendation.targetLabels.map((label) => <span key={label}>{label}</span>)}
                     </div>
                   )}
@@ -540,56 +531,52 @@ export default function AssessmentRunScreen() {
                       type="button"
                       className="primary"
                       onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
-                    >
-                      Continue with {continuationRecommendation.questionCount} targeted questions
-                    </button>
-                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
+                    >{t('continueWithTargetedQuestions', { questionCount: continuationRecommendation.questionCount })}</button>
+                    <button type="button" className="secondary" onClick={continueAfterFeedback}>{t('viewReportNow')}</button>
                   </div>
                 </div>
               )}
               {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
                 <div className="continue-callout recommended">
-                  <p className="eyebrow">Evidence completion route</p>
-                  <h2>Keep going until relevant competencies are high-confidence</h2>
+                  <p className="eyebrow">{t('evidenceCompletionRoute')}</p>
+                  <h2>{t('keepGoingUntilRelevantCompetencies')}</h2>
                   <p>{evidenceCompletion.summary}</p>
                   <div className="continue-reasons">
-                    <span>{evidenceCompletion.unsampled} relevant competencies still unsampled</span>
-                    <span>{evidenceCompletion.lowConfidence} sampled competencies below high confidence</span>
-                    <span>Maximum cap: {Math.min(60, allAssessmentItems.length)} total questions</span>
+                    <span>{t('relevantCompetenciesStillUnsampled', { unsampled: evidenceCompletion.unsampled })}</span>
+                    <span>{t('sampledCompetenciesBelowHighConfidence', { lowConfidence: evidenceCompletion.lowConfidence })}</span>
+                    <span>{t('maximumCapTotalQuestions', { Math: Math.min(60, allAssessmentItems.length) })}</span>
                   </div>
                   <div className="continue-targets">
-                    <strong>Next focus</strong>
+                    <strong>{t('nextFocus')}</strong>
                     {evidenceCompletion.targets.slice(0, 5).map((competency) => <span key={competency.id}>{competency.label}</span>)}
                   </div>
                   <div className="continue-primary-actions">
-                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                      Add {evidenceCompletion.questionCount} evidence questions
-                    </button>
-                    <button type="button" className="secondary" onClick={continueAfterFeedback}>View report now</button>
+                    <button type="button" className="primary" onClick={continueEvidenceCompletion}>{t('addEvidenceQuestions', { questionCount: evidenceCompletion.questionCount })}</button>
+                    <button type="button" className="secondary" onClick={continueAfterFeedback}>{t('viewReportNow')}</button>
                   </div>
                 </div>
               )}
               {/* Always rendered: the adaptive panel below is hidden unless psychometrics are enabled. */}
               <button className="primary submit-answer" onClick={continueAfterFeedback}>
-                {pendingQuestion ? 'Continue to Next Question' : 'View Results'}
+                {pendingQuestion ? t('continueToNextQuestion') : t('viewResults')}
               </button>
             </article>
-            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label="Next adaptive step">
+            {assessmentDisplaySettings.showPsychometrics && <aside className="adaptive-panel" aria-label={t('nextAdaptiveStep')}>
               <div className={`movement-card ${difficultyMovement.tone}`}>
                 <span>{difficultyMovement.label}</span>
                 <p>{difficultyMovement.detail}</p>
               </div>
               <div className="adaptive-card highlight">
-                <span>Updated theta</span>
+                <span>{t('updatedTheta')}</span>
                 <strong>{formatAbility(estimateTheta(answers))}</strong>
-                <p>Updated after {answers.length} answered items.</p>
+                <p>{t('updatedAfterAnsweredItems', { length: answers.length })}</p>
               </div>
               <div className="adaptive-card">
-                <span>Next step</span>
+                <span>{t('nextStep')}</span>
                 <p>
                   {pendingQuestion
                     ? `Next item: ${pendingQuestion.domain} · ${domains[pendingQuestion.domain].short} · ${pendingQuestion.difficulty} · ${pendingQuestion.type}.`
-                    : 'Assessment complete. Results are ready.'}
+                    : t('assessmentCompleteResultsAreReady')}
                 </p>
                 {pendingQuestion && (
                   <div className="difficulty-compare">
@@ -603,16 +590,15 @@ export default function AssessmentRunScreen() {
                 <div className="adaptive-card continuation-inline">
                   <span>{continuationRecommendation.confidenceLabel}</span>
                   <strong>{results.confidence}%</strong>
-                  <p>
-                    {continuationRecommendation.reasons[0]} The recommended route adds {continuationRecommendation.questionCount} targeted questions.
-                  </p>
+                  <p>{t('theRecommendedRouteAddsTargeted', { value: continuationRecommendation.reasons[0], questionCount: continuationRecommendation.questionCount })}</p>
                   <div className="continuation-actions">
                     <button
                       type="button"
                       className="primary"
                       onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
                     >
-                      Continue recommended route
+                      
+                      {t('continueRecommendedRoute')}
                     </button>
                     <button
                       type="button"
@@ -624,7 +610,8 @@ export default function AssessmentRunScreen() {
                         targetCompetencyIds: continuationTargets.priorityGapIds,
                       }, 8)}
                     >
-                      Keep going: role gaps
+                      
+                      {t('keepGoingRoleGaps')}
                     </button>
                     <button
                       type="button"
@@ -635,27 +622,24 @@ export default function AssessmentRunScreen() {
                         targetDomain: selectedRadarDomain,
                         targetCompetencyIds: continuationTargets.domainIds,
                       })}
-                    >
-                      Keep going: {selectedRadarDomain} deep dive
-                    </button>
+                    >{t('keepGoingDeepDive', { selectedRadarDomain: selectedRadarDomain })}</button>
                   </div>
                   <div className="continuation-summary">
-                    <span>{continuationTargets.confidenceIds.length} confidence targets</span>
-                    <span>{continuationTargets.priorityGapIds.length} role-priority gaps</span>
-                    <span>{continuationTargets.domainIds.length} {selectedRadarDomain} follow-ups</span>
+                    <span>{t('confidenceTargets', { length: continuationTargets.confidenceIds.length })}</span>
+                    <span>{t('rolePriorityGaps', { length: continuationTargets.priorityGapIds.length })}</span>
+                    <span>{t('followUps', { length: continuationTargets.domainIds.length, selectedRadarDomain: selectedRadarDomain })}</span>
                   </div>
                 </div>
               )}
               {!pendingQuestion && !showContinuationPanel && showEvidenceCompletionPanel && (
                 <div className="adaptive-card continuation-inline">
-                  <span>Evidence completion</span>
+                  <span>{t('evidenceCompletion')}</span>
                   <strong>{results.confidence}%</strong>
-                  <p>
-                    {evidenceCompletion.summary} Add {evidenceCompletion.questionCount} evidence questions to improve coverage.
-                  </p>
+                  <p>{t('addEvidenceQuestionsToImprove', { summary: evidenceCompletion.summary, questionCount: evidenceCompletion.questionCount })}</p>
                   <div className="continuation-actions">
                     <button type="button" className="primary" onClick={continueEvidenceCompletion}>
-                      Keep going
+                      
+                      {t('keepGoing')}
                     </button>
                   </div>
                 </div>

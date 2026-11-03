@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { notFound, useParams } from 'next/navigation';
 import {
@@ -11,6 +12,7 @@ import { isLabKind } from '../../../learner-routes-model';
 import { useApp } from '../../../learner-app-context';
 
 export default function LabScreen() {
+  const t = useTranslations('lab');
   const {
     activeLab,
     openLab,
@@ -43,9 +45,9 @@ export default function LabScreen() {
   return (
     <section className="lab-shell">
       <div className="lab-top">
-        <button className="secondary" onClick={() => setStep('learningLabs')} type="button">Back to Labs</button>
+        <button className="secondary" onClick={() => setStep('learningLabs')} type="button">{t('backToLabs')}</button>
         <div>
-          <p className="eyebrow">Learn by doing</p>
+          <p className="eyebrow">{t('learnByDoing')}</p>
           <h1>{activeLab.title}</h1>
           <p>{activeLab.brief}</p>
         </div>
@@ -58,7 +60,7 @@ export default function LabScreen() {
 
       <div className="lab-workbench">
         <article className="lab-artifact">
-          <span>Practice artifact</span>
+          <span>{t('practiceArtifact')}</span>
           <h2>{activeLab.artifact.title}</h2>
           <div className="lab-artifact-rows">
             {activeLab.artifact.rows.map((row) => (
@@ -71,7 +73,7 @@ export default function LabScreen() {
         <article className="lab-task">
           {activeLab.kind === 'prompt' && (
             <>
-              <span>Build the prompt</span>
+              <span>{t('buildThePrompt')}</span>
               <h2>{activeLab.prompt}</h2>
               <textarea
                 value={labDraft}
@@ -79,7 +81,7 @@ export default function LabScreen() {
                   setLabDraft(event.target.value);
                   setLabFeedbackVisible(false);
                 }}
-                placeholder="Example: Act as a customer support assistant. Use only the ticket facts and refund policy below..."
+                placeholder={t('exampleActAsACustomer')}
               />
               <button
                 className="secondary"
@@ -89,7 +91,8 @@ export default function LabScreen() {
                 }}
                 type="button"
               >
-                Show Example Prompt
+                
+                {t('showExamplePrompt')}
               </button>
               <div className="lab-checklist">
                 {(activeLab.checklist ?? []).map((item) => (
@@ -101,8 +104,8 @@ export default function LabScreen() {
 
           {(activeLab.kind === 'proof' || activeLab.kind === 'media') && (
             <>
-              <span>Select checks</span>
-              <h2>Which actions belong in your verification routine?</h2>
+              <span>{t('selectChecks')}</span>
+              <h2>{t('whichActionsBelongInYour')}</h2>
               <div className="lab-choice-list">
                 {(activeLab.choices ?? []).map((choice) => (
                   <button
@@ -120,8 +123,8 @@ export default function LabScreen() {
 
           {activeLab.kind === 'next' && (
             <>
-              <span>Choose next action</span>
-              <h2>What would you do first?</h2>
+              <span>{t('chooseNextAction')}</span>
+              <h2>{t('whatWouldYouDoFirst')}</h2>
               <div className="lab-choice-list">
                 {(activeLab.choices ?? []).map((choice) => (
                   <button
@@ -139,8 +142,8 @@ export default function LabScreen() {
 
           {activeLab.kind === 'workflow' && (
             <>
-              <span>Order the workflow</span>
-              <h2>Move the steps into the safest launch sequence.</h2>
+              <span>{t('orderTheWorkflow')}</span>
+              <h2>{t('moveTheStepsIntoThe')}</h2>
               <div className="lab-order-list">
                 {labOrder.map((itemId, index) => {
                   const item = activeLab.items?.find((labItem) => labItem.id === itemId);
@@ -148,8 +151,8 @@ export default function LabScreen() {
                     <div key={itemId}>
                       <strong>{index + 1}</strong>
                       <p>{item?.label}</p>
-                      <button onClick={() => moveLabOrder(index, -1)} disabled={index === 0} type="button">Up</button>
-                      <button onClick={() => moveLabOrder(index, 1)} disabled={index === labOrder.length - 1} type="button">Down</button>
+                      <button onClick={() => moveLabOrder(index, -1)} disabled={index === 0} type="button">{t('up')}</button>
+                      <button onClick={() => moveLabOrder(index, 1)} disabled={index === labOrder.length - 1} type="button">{t('down')}</button>
                     </div>
                   );
                 })}
@@ -159,8 +162,8 @@ export default function LabScreen() {
 
           {(activeLab.kind === 'trust' || activeLab.kind === 'ownership') && (
             <>
-              <span>Match controls</span>
-              <h2>{activeLab.kind === 'trust' ? 'Which control fits each risk?' : 'Who should own each step?'}</h2>
+              <span>{t('matchControls')}</span>
+              <h2>{activeLab.kind === 'trust' ? t('whichControlFitsEachRisk') : t('whoShouldOwnEachStep')}</h2>
               <div className="lab-match-list">
                 {(activeLab.items ?? []).map((item) => (
                   <label key={item.id}>
@@ -172,7 +175,7 @@ export default function LabScreen() {
                         setLabFeedbackVisible(false);
                       }}
                     >
-                      <option value="">Choose</option>
+                      <option value="">{t('choose')}</option>
                       {(activeLab.matchChoices ?? []).map((choice) => (
                         <option key={choice} value={choice}>{choice}</option>
                       ))}
@@ -184,32 +187,32 @@ export default function LabScreen() {
           )}
 
           <div className="lab-actions">
-            <button className="primary" disabled={!labCanSubmit} onClick={() => setLabFeedbackVisible(true)} type="button">Check My Work</button>
-            <button className="secondary" onClick={() => startAssessment('free')} type="button">Start Full Assessment</button>
+            <button className="primary" disabled={!labCanSubmit} onClick={() => setLabFeedbackVisible(true)} type="button">{t('checkMyWork')}</button>
+            <button className="secondary" onClick={() => startAssessment('free')} type="button">{t('startFullAssessment')}</button>
           </div>
         </article>
 
         <aside className="lab-feedback">
-          <span>Lab feedback</span>
+          <span>{t('labFeedback')}</span>
           {labFeedbackVisible ? (
             <>
-              {activeLab.kind === 'prompt' ? <><strong>{labEvaluation.strengths.length}/{(activeLab.checklist ?? []).length} checklist cues found</strong><p>English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.</p></> : <strong>{labEvaluation.score}/100</strong>}
+              {activeLab.kind === 'prompt' ? <><strong>{t('checklistCuesFound', { length: labEvaluation.strengths.length, length2: (activeLab.checklist ?? []).length })}</strong><p>{t('englishKeywordHintsOnlyThis')}</p></> : <strong>{labEvaluation.score}/100</strong>}
               <p>{labEvaluation.summary}</p>
               <div>
-                <h3>What worked</h3>
+                <h3>{t('whatWorked')}</h3>
                 {(labEvaluation.strengths.length ? labEvaluation.strengths : ['No strong evidence yet. Try adding one concrete check or control.']).map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </div>
               <div>
-                <h3>Improve next</h3>
+                <h3>{t('improveNext')}</h3>
                 {(labEvaluation.misses.length ? labEvaluation.misses : ['You covered the key requirements for this lab.']).map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </div>
             </>
           ) : (
-            <p>Complete the lab and check your work. Feedback will explain what you handled well and what to improve before the full assessment.</p>
+            <p>{t('completeTheLabAndCheck')}</p>
           )}
         </aside>
       </div>

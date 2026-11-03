@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   RadarChart,
   audienceLabels,
@@ -13,6 +14,7 @@ import {
 import { useApp } from '../../learner-app-context';
 
 export default function DashboardScreen() {
+  const t = useTranslations('dashboard');
   const {
     audience,
     authEmail,
@@ -45,68 +47,68 @@ export default function DashboardScreen() {
     <section className="dashboard-shell">
       <div className="dashboard-hero">
         <div>
-          <p className="eyebrow">Registered user landing page</p>
-          <h1>Your AI readiness dashboard.</h1>
+          <p className="eyebrow">{t('registeredUserLandingPage')}</p>
+          <h1>{t('yourAiReadinessDashboard')}</h1>
           <p>
-            This is the logged-in home experience for New Horizon. It brings together profile signals,
-            assessment progress, recommended tools and concepts, learning actions, and a personalized AI Watch feed.
+            
+            {t('thisIsTheLoggedIn')}
           </p>
         </div>
         <div className="dashboard-identity">
-          <span>{authProfile ? 'Signed in' : isSupabaseConfigured() ? 'Sign in available' : 'Auth setup needed'}</span>
+          <span>{authProfile ? t('signedIn') : isSupabaseConfigured() ? t('signInAvailable') : t('authSetupNeeded')}</span>
           <strong>{authProfile?.name ?? userProfileSurvey?.context ?? (mode === 'executive' ? executiveLabels[executiveRole] : mode === 'premium' ? functionLabels[functionTrack] : audienceLabels[audience])}</strong>
           <p>{authProfile?.email ?? localProfileId}</p>
           {authProfile ? (
             <>
-              <button className="primary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Update profile signals</button>
-              <button className="secondary" type="button" onClick={signOutUser}>Sign out</button>
+              <button className="primary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>{t('updateProfileSignals')}</button>
+              <button className="secondary" type="button" onClick={signOutUser}>{t('signOut')}</button>
             </>
           ) : (
             <div className="auth-actions">
-              <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>Continue with Google</button>
+              <button className="primary" type="button" onClick={() => startGoogleSignIn(setAuthMessage)}>{t('continueWithGoogle')}</button>
               <div className="email-auth-row">
                 <input
                   type="email"
                   value={authEmail}
                   onChange={(event) => setAuthEmail(event.target.value)}
                   placeholder="you@example.com"
-                  aria-label="Email for magic link"
+                  aria-label={t('emailForMagicLink')}
                 />
-                <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>Email link</button>
+                <button className="secondary" type="button" onClick={() => sendEmailMagicLink(authEmail, setAuthMessage)}>{t('emailLink')}</button>
               </div>
-              <button className="secondary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Continue as guest</button>
+              <button className="secondary" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>{t('continueAsGuest')}</button>
             </div>
           )}
-          <small>{authMessage || (isSupabaseConfigured() ? 'Google profile seeds email, name, avatar URL, and provider ID. Role/function signals still come from New Horizon.' : 'Set Supabase public env vars to activate Google and email login.')}</small>
+          <small>{authMessage || (isSupabaseConfigured() ? t('googleProfileSeedsEmailName') : t('setSupabasePublicEnvVars'))}</small>
         </div>
       </div>
 
       <div className="dashboard-grid">
         <article className="dashboard-card profile-overview">
-          <span>Profile signals</span>
-          <h2>{userProfileSurvey ? userProfileSurvey.tags.length : 0} saved tags</h2>
+          <span>{t('profileSignals')}</span>
+          <h2>{t('savedTags', { value: userProfileSurvey ? userProfileSurvey.tags.length : 0 })}</h2>
           {userProfileSurvey ? (
             <div className="profile-tag-grid">
               {userProfileSurvey.tags.slice(0, 10).map((tag) => <span key={tag}>{tag}</span>)}
             </div>
           ) : (
-            <p>No profile survey saved yet. Registered users should be prompted to update tools, workflows, peer-tool awareness, and learning interests.</p>
+            <p>{t('noProfileSurveySavedYet')}</p>
           )}
         </article>
 
         <article className="dashboard-card progress-overview">
-          <span>Progress</span>
-          <h2>{scoreLogAnalytics.totalRuns} saved run{scoreLogAnalytics.totalRuns === 1 ? '' : 's'}</h2>
+          <span>{t('progress')}</span>
+          <h2>{t('savedRun', { totalRuns: scoreLogAnalytics.totalRuns, value: scoreLogAnalytics.totalRuns === 1 ? '' : 's' })}</h2>
           <div className="dashboard-stats">
-            <div><strong>{scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : 'New'}</strong><small>average readiness</small></div>
-            <div><strong>{scoreLogAnalytics.signalSnapshots || 0}</strong><small>question signals</small></div>
-            <div><strong>{coveragePlan.sampled}/24</strong><small>competencies sampled</small></div>
+            <div><strong>{scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : t('new')}</strong><small>{t('averageReadiness')}</small></div>
+            <div><strong>{scoreLogAnalytics.signalSnapshots || 0}</strong><small>{t('questionSignals')}</small></div>
+            <div><strong>{coveragePlan.sampled}/24</strong><small>{t('competenciesSampled')}</small></div>
           </div>
-          <button className="secondary dark" type="button" onClick={() => setStep('onboarding')}>Take assessment</button>
+          <button className="secondary dark" type="button" onClick={() => setStep('onboarding')}>{t('takeAssessment')}</button>
         </article>
 
         <article className="dashboard-card radar-overview">
-          <span>Readiness profile</span>
+          <span>{t('readinessProfile')}</span>
           <RadarChart
             scores={results.domainScores}
             benchmarks={radarProfiles}
@@ -116,23 +118,23 @@ export default function DashboardScreen() {
         </article>
 
         <article className="dashboard-card recommendation-overview">
-          <span>Personalized recommendations</span>
-          <h2>Explore next</h2>
+          <span>{t('personalizedRecommendations')}</span>
+          <h2>{t('exploreNext')}</h2>
           <div className="personalized-exploration dashboard-exploration">
             <div>
-              <span>Tools</span>
+              <span>{t('tools')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.tools.slice(0, 5).map((tool) => <span key={tool}>{tool}</span>)}
               </div>
             </div>
             <div>
-              <span>Concepts</span>
+              <span>{t('concepts')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.concepts.slice(0, 5).map((concept) => <span key={concept}>{concept}</span>)}
               </div>
             </div>
             <div>
-              <span>Practice</span>
+              <span>{t('practice')}</span>
               <div className="profile-tag-grid">
                 {personalizedExploration.practice.slice(0, 3).map((activity) => <span key={activity}>{activity}</span>)}
               </div>
@@ -141,19 +143,19 @@ export default function DashboardScreen() {
         </article>
 
         <article className="dashboard-card did-you-know-dashboard">
-          <span>Did you know?</span>
+          <span>{t('didYouKnow')}</span>
           <h2>{personalizedDidYouKnow.topic}</h2>
           <p>{personalizedDidYouKnow.fact}</p>
           <small>{personalizedDidYouKnow.whyItMatters}</small>
           <div className="dashboard-card-actions">
-            <button className="secondary dark" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>Learn more</button>
-            <button className="text-button" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>Retune profile</button>
+            <button className="secondary dark" type="button" onClick={() => followDidYouKnow(personalizedDidYouKnow)}>{t('learnMore')}</button>
+            <button className="text-button" type="button" onClick={() => openProfileSurvey(mode === 'practice' ? 'free' : mode)}>{t('retuneProfile')}</button>
           </div>
         </article>
 
         <article className="dashboard-card learning-overview">
-          <span>Learning path</span>
-          <h2>Recommended courses</h2>
+          <span>{t('learningPath')}</span>
+          <h2>{t('recommendedCourses')}</h2>
           <div className="dashboard-course-list">
             {courseRecommendations.slice(0, 3).map((course) => (
               <a key={course.id} href={course.url} target="_blank" rel="noreferrer">
@@ -165,8 +167,8 @@ export default function DashboardScreen() {
         </article>
 
         <article className="dashboard-card news-overview">
-          <span>Personalized AI Watch</span>
-          <h2>Signals for your gaps</h2>
+          <span>{t('personalizedAiWatch')}</span>
+          <h2>{t('signalsForYourGaps')}</h2>
           <div className="dashboard-news-list">
             {(dashboardNews.length ? dashboardNews : trendFeed.slice(0, 4)).map((item) => (
               <a key={item.title} href={item.url} target="_blank" rel="noreferrer">
@@ -175,7 +177,7 @@ export default function DashboardScreen() {
               </a>
             ))}
           </div>
-          <button className="secondary dark" type="button" onClick={() => setStep('news')}>Open AI Watch</button>
+          <button className="secondary dark" type="button" onClick={() => setStep('news')}>{t('openAiWatch')}</button>
         </article>
       </div>
     </section>
