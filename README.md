@@ -73,6 +73,7 @@ AI Watch and connected Labs: [the first local release](docs/AI_WATCH_LABS_LOCAL_
 
 Detailed telemetry and agent documentation:
 
+- [`AI Watch / Labs product roadmap`](docs/AI_WATCH_LABS_ENGAGEMENT_ROADMAP.md) — ranked product functions, feature status, delivery phases, and next-step exit criteria
 - [`docs/LEGAL_PRIVACY_PDPA_TERMS.md`](docs/LEGAL_PRIVACY_PDPA_TERMS.md)
 - [`docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md`](docs/FEATURE_CATALOG_BY_USER_AND_RELEASE.md)
 - [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)

@@ -4,6 +4,7 @@
 
 - Reconciled the AI Watch/Labs roadmap with the current local implementation, October assessment/inventory release work, pilot operations workspace, awareness curation tooling, and the living feature catalog.
 - Added a function-level roadmap covering Discover, Understand, Practise, Personalize, Operate, and Govern, with explicit local, hosted-pilot, production, and scale gates.
+- Ranked the roadmap into P0 launch blockers, P1 hosted-pilot work, P2 production hardening, and P3 scale/future work, with progress and exit conditions for each capability.
 - Recorded the GitHub source boundary: the connected account exposed `sctest3220-a11y/CuriosityOS`, a separate child-companion project with no New Horizon pull requests, so its hardware decisions were excluded from New Horizon planning.
 
 ## Manual awareness-news scout — 29 September 2026
