@@ -2,9 +2,40 @@
 
 See [awareness curation and embedded source media](AI_WATCH_AWARENESS_CURATION.md) for the September 29 requirement and local implementation: shared Watch/Did you know stories, evidence labels, and media embedded within each story.
 
-Status: First local slice implemented as `watch-labs-local-v1`; later phases remain proposed. Not approved for hosted release.
-Prepared: 28 September 2026.
+Status: Local slice implemented as `watch-labs-local-v1`; hosted release remains gated by the go-live controls below.
+Prepared: 28 September 2026. Consolidated review: 3 November 2026.
 Scope: Give users recurring value while the assessment question refresh proceeds separately.
+
+## Consolidated product status — 3 November 2026
+
+This roadmap was reconciled against the current local implementation, the latest local commits, `LATEST_CHANGES.md`, the living feature catalog, and the connected GitHub account. The connected GitHub account currently exposes `sctest3220-a11y/CuriosityOS`, which is a separate product and has no New Horizon pull requests; its child-companion hardware decisions are intentionally excluded. The New Horizon remotes exist in the local checkout but are not available through that GitHub connector, so no GitHub-only New Horizon feature is claimed here without local evidence.
+
+### Current product surface
+
+| Capability | Current function | Product status | Next decision or gate |
+| --- | --- | --- | --- |
+| AI Watch | Shows curated articles, videos, and short videos with publisher attribution, media filters, source links, click-to-load playback, explicit interests, For you/Explore/Saved views, topic controls, recommendation reasons, and local persistence. | **MVP - Built / local** | Move to shared editorial records only after source approval, correction, expiry, takedown, and freshness monitoring are durable. |
+| Connected AI Labs | Links selected stories to bilingual practice Labs for agent approval boundaries and evidence checking; supports criterion feedback, revision, saved notes/drafts/takeaways, and return-to-story navigation. | **MVP - Built / local** | Replace checklist-like feedback with versioned criterion evaluation, abstention, EN/TH cases, and hosted history. |
+| Awareness curation | Manual bounded discovery records candidates, source media leads, dates, URL deduplication, metadata fingerprints, and fetch/robots failures. | **Pilot tooling** | Add durable candidate/review states, approved-source schedules, stale-run alerting, and human publication approval. |
+| Assessment and inventory | 863-item local assessment pool, 3,328-item draft review inventory, bilingual question-level switching, artifact QA, review filters, versioned feedback, and production-release manifests. | **MVP - Built / review** | Finish human review, freeze a release, then import server-side with scoring/rubric/profile/config version capture. |
+| Pilot operations | Local admin workspace configures pilot owner, dates, cohort, access code, language, limits, adaptive continuation, answer reveal, quick feedback, report survey, readiness gates, KPIs, issue queue, and CSV export. | **MVP - Built / local** | Add authenticated shared persistence, audited decisions, invitations, role enforcement, and server analytics before real pilots. |
+| Agent Ops | Supervised workflow canvas shows handoffs, branches, blocked steps, QA routing, schedules, guardrails, outputs, and human approval. | **MVP - Built / simulated** | Connect only bounded asynchronous jobs with budgets, retries, provenance, approval gates, and kill switches; no autonomous publishing. |
+
+### Function-level roadmap priorities
+
+1. **Discover:** stabilize approved-source intake, story clustering, evidence/limitation fields, content versions, language availability, and correction propagation.
+2. **Understand:** keep original-source attribution, verified media metadata, accessible text alternatives, and honest labels for editorial snapshots versus live updates.
+3. **Practise:** ship a small set of high-value Labs with explicit inputs, outputs, criteria, feedback, revision, and saved takeaways; do not equate completion with mastery.
+4. **Personalize:** use deterministic eligibility, relevance, utility, diversity, and explanation reason codes. Explicit interests and hard mutes outrank inferred assessment signals.
+5. **Operate:** move local browser state to authenticated server records for preferences, saves, Lab history, pilot configuration, review feedback, telemetry, and audit events.
+6. **Govern:** version content, translations, rubrics, scoring, prompts, model/evaluator decisions, and release approvals; provide correction, withdrawal, export, deletion, retention, and consent controls.
+
+### Release sequence
+
+- **Now — local validation:** complete the October assessment/inventory release checks, validate the pilot operations flows, and measure Watch-to-Lab usefulness with transparent local telemetry.
+- **Next — hosted pilot:** implement server persistence, authentication/authorization, consent and retention, editorial review queue, source-failure monitoring, and accessible EN/TH content QA.
+- **After pilot — production:** add reliability targets, alerting, support/incident procedures, billing/entitlements where needed, provider cost controls, rollback, and longitudinal learning evidence.
+- **Scale only on evidence:** introduce queues, worker pools, advanced analytics, or additional model infrastructure only when measured volume, latency, backlog, or cost requires it.
 
 ## Product direction
 

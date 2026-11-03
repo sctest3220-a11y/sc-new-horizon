@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Product roadmap reconciliation — 3 November 2026
+
+- Reconciled the AI Watch/Labs roadmap with the current local implementation, October assessment/inventory release work, pilot operations workspace, awareness curation tooling, and the living feature catalog.
+- Added a function-level roadmap covering Discover, Understand, Practise, Personalize, Operate, and Govern, with explicit local, hosted-pilot, production, and scale gates.
+- Recorded the GitHub source boundary: the connected account exposed `sctest3220-a11y/CuriosityOS`, a separate child-companion project with no New Horizon pull requests, so its hardware decisions were excluded from New Horizon planning.
+
 ## Manual awareness-news scout — 29 September 2026
 
 - Added executable, bounded source discovery for awareness-provoking stories, AI trends and new technologies, driven by shared JSON editorial instructions.
