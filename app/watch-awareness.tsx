@@ -23,7 +23,7 @@ export default function AwarenessFlash({ stories, language, ownerId, onOpenWatch
   const eligible = selectAwarenessStories(stories, preferences);
   const story = eligible[index % eligible.length];
   if (!story?.awareness) return null;
-  return <article className="watch-learning wl-awareness wl-story" data-no-translate lang={language} aria-label={t('didYouKnowInThe')}>
+  return <article className="watch-learning wl-awareness wl-story" lang={language} aria-label={t('didYouKnowInThe')}>
     <p className="wl-eyebrow">{t('didYouKnowInThe')}</p>
     <h2>{story.awareness.hook[language]}</h2>
     <p className="wl-small">{awarenessLabels[story.awareness.kind][language]} · {t('sourceChecked')} {formatSourceDate(story.awareness.checkedAt, language)}</p>

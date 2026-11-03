@@ -81,8 +81,4 @@ describe('WatchLabs', () => {
     expect(props.onViewChange).toHaveBeenCalledWith('labs');
   });
 
-  it('marks its subtree so the legacy translation pass leaves it alone', () => {
-    const { container } = renderWatch();
-    expect(container.querySelector('section.watch-learning')?.hasAttribute('data-no-translate')).toBe(true);
-  });
 });

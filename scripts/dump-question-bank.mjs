@@ -19,7 +19,7 @@ globalThis.__dump = { domains, difficultyLabels, difficultyDescriptions, compete
   functionLabels, industryLabels, executiveLabels, functionPriorityCompetencies, industryPriorityCompetencies,
   executivePriorityCompetencies, questionBank, executiveQuestionBank, executiveAssessmentQuestionBank, allAssessmentItems,
   generalRelianceQuestions, horizonRelianceQuestions, executiveRelianceQuestions, functionalQuestionBank,
-  competencyDepthQuestionBank, marketTrendQuestionBank, advancedCompetencyQuestionBank, thaiUiCopy,
+  competencyDepthQuestionBank, marketTrendQuestionBank, advancedCompetencyQuestionBank,
   hiddenArtifactQuestionIds: [...hiddenArtifactQuestionIds], modeConfig, questionTranslationsTh, localizeQuestion, scoreTextAnswer };`;
 const js = ts.transpileModule(translationsSource + constantsOnly + appended, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.React } }).outputText;
 const sandbox = { console, Math, Date, Set, Map, RegExp, Array, Object, String, Number, Boolean, JSON, process: { env: {} } };
@@ -34,4 +34,4 @@ out.questions = [...new Map([...d.questionBank, ...d.executiveAssessmentQuestion
 const outPath = process.argv[2] ?? 'exports/question-bank-dump.json';
 await fs.mkdir(path.dirname(outPath), { recursive: true });
 await fs.writeFile(outPath, JSON.stringify(out));
-console.log(JSON.stringify({ outPath, questions: out.questions.length, thaiUiEntries: Object.keys(d.thaiUiCopy).length }));
+console.log(JSON.stringify({ outPath, questions: out.questions.length }));

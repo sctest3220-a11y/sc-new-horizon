@@ -99,7 +99,7 @@ export default function WatchLabs({ stories, language, ownerId, view, onViewChan
   function resetPreferences() { patch({ interests: [], mutedTopics: [], minutes: 5, goal: 'learn', media: 'all' }); setNotice(t('preferencesResetYourSavesAnd')); }
 
   return (
-    <section className="watch-learning" data-no-translate lang={language} aria-label={view === 'watch' ? 'AI Watch' : 'AI Labs'}>
+    <section className="watch-learning" lang={language} aria-label={view === 'watch' ? 'AI Watch' : 'AI Labs'}>
       <div className="wl-storage" role="status">
         {storageStatus === 'loading' ? t('loadingYourLearningSpace') : storageStatus === 'memory'
           ? t('browserStorageIsUnavailableYour')
