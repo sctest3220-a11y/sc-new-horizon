@@ -79,6 +79,30 @@ Detailed telemetry and agent documentation:
 - [`docs/B2C_B2B_USER_ADMINISTRATION.md`](docs/B2C_B2B_USER_ADMINISTRATION.md)
 - [`docs/ADMIN_SETTINGS_CONFIGURATION.md`](docs/ADMIN_SETTINGS_CONFIGURATION.md)
 - [`docs/TRANSLATION_PROVIDER_STRATEGY.md`](docs/TRANSLATION_PROVIDER_STRATEGY.md)
+
+## Production platform setup
+
+The production platform should be introduced in phases. The minimum viable production stack is **Vercel or Cloudflare Workers, Supabase, Supabase Auth and Storage, a managed job runner, one approved AI provider, consent-aware analytics, error monitoring, and a server-side Admin Control Center**.
+
+| Phase | Setup | Purpose / exit condition |
+| --- | --- | --- |
+| **P0 — Go-live foundation** | Vercel or Cloudflare Workers, Supabase PostgreSQL, Auth, Storage, managed secrets, domains, backups, RLS, tenant isolation, basic admin, privacy controls | Secure multi-user foundation with authentication, ownership, consent, retention, export, deletion, and audit controls. |
+| **P1 — Hosted pilot** | Persisted assessment sessions, pilot operations, AI Watch editorial queue, Labs history, server telemetry, managed scheduled jobs, one approved AI provider | Real pilot users can use the product across devices while admins can review content, readiness, usage, and failures. |
+| **P2 — Production** | AI gateway such as LiteLLM, LLM tracing/evaluation such as Langfuse, bounded agent workers, reliability monitoring, cost controls, billing, rollback, and support operations | AI-assisted features are versioned, budgeted, observable, human-approved, and operationally supportable. |
+| **P3 — Scale / evidence-based** | Temporal, LangGraph, ClickHouse, dedicated worker pools, Kubernetes/KEDA, advanced crawling, or optional typed-decision models | Add only when measured workflow duration, queue volume, analytics load, latency, or cost exceeds the earlier architecture. |
+
+### Required production services
+
+- **Cloud hosting:** deploy the Next.js application, API routes, previews, and production domains.
+- **System of record:** use Supabase/PostgreSQL for users, tenants, assessments, questions, reports, feedback, approvals, configuration versions, and audit events.
+- **Authentication and storage:** use Supabase Auth for sessions and recovery, plus protected object storage for artifacts, exports, and report files.
+- **AI API layer:** keep provider keys server-side; record model, prompt, rubric, input version, output, latency, cost, approval status, limits, retries, and fallback decisions.
+- **Jobs and agents:** use deterministic code for validation, aggregation, deduplication, thresholds, and routing. Use bounded workers for drafting or interpretation, with typed inputs/outputs, idempotency keys, timeouts, retry limits, cancellation, and human approval before material changes.
+- **Admin Control Center:** provide assessment settings, profiles/routing, reports/entitlements, AI providers/models/budgets, agent schedules and kill switches, Watch editorial review, translation QA, pilot operations, feature flags, configuration rollback, cost analytics, and audit logs.
+- **Analytics and monitoring:** add consent-aware product analytics, server-side event tables, error tracking, uptime/provider monitoring, spend alerts, database monitoring, and privacy-safe aggregate dashboards.
+- **Security and compliance:** implement RLS and tenant-isolation tests, role permissions, secret rotation, rate limits, dependency scanning, PDPA notices and consent, retention, export/deletion workflows, subprocessors, incident response, and admin access auditing.
+
+Agents observe, analyze, test, and propose. They must not silently publish scored content, change scoring, alter permissions, or approve their own output. See [Agent Platform Tooling Strategy](docs/AGENT_PLATFORM_TOOLING_STRATEGY.md), [Deployment Notes](docs/DEPLOYMENT.md), and [Admin Settings and Configuration](docs/ADMIN_SETTINGS_CONFIGURATION.md) for the detailed operating contracts.
 - [`docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md`](docs/TRANSLATION_ROUTING_GO_LIVE_CHECKLIST.md)
 - [`docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md`](docs/REWRITE_TRANSLATION_SANDBOX_WORKFLOW.md)
 - [`docs/AGENT_WORKFLOWS_ORCHESTRATION.md`](docs/AGENT_WORKFLOWS_ORCHESTRATION.md)
