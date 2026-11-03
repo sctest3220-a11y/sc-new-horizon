@@ -53,7 +53,6 @@ export default function LearnerShell({ children }: { children: React.ReactNode }
                 <p className="eyebrow">{t('optionalProfileSurvey')}</p>
                 <h1 id="profile-survey-title">{t('personalizeYourAssessment')}</h1>
                 <p>
-                  
                   {t('tellUsWhatYouAlready')}
                 </p>
               </div>

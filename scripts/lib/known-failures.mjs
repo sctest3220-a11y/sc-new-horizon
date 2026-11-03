@@ -11,9 +11,3 @@
 // from 19329c9 while keeping the 255 added items.
 export const liveExportReviewLoss =
   'known failure: reviewed live drafts lost in 41338d6 (docs/TESTING.md, Known failures)';
-
-// The learner-app catalogs were generated from the old thaiUiCopy table; the
-// messages it did not cover still hold their English text in th.json. Removed
-// once those Thai drafts are written (feat/language-switcher, step 3).
-export const thaiDraftsPending =
-  'known failure: Thai drafts pending for messages not in the old thaiUiCopy table';

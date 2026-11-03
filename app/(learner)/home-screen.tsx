@@ -93,7 +93,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('aiPoweredReadinessAssessment')}</p>
             <h1>{t('measurePracticalAiReadiness')}</h1>
             <p className="lede">
-              
               {t('newHorizonIsAnAdaptive')}
             </p>
             <div className="hero-actions">
@@ -182,7 +181,6 @@ export default function HomeScreen() {
               <p className="eyebrow">{t('peerChallenge')}</p>
               <h2 id="peer-board-title">{t('whereWouldYouLandToday')}</h2>
               <p>
-                
                 {t('compareAgainstTheVisibleTop')}
               </p>
             </div>
@@ -260,7 +258,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('learnByDoing')}</p>
             <h2>{t('practiceTheActivitiesTheAssessment')}</h2>
             <p>
-              
               {t('eachActivityBoxMapsTo')}
             </p>
           </div>
@@ -293,7 +290,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('thePlatform')}</p>
             <h2>{t('aFieldTestForThe')}</h2>
             <p>
-              
               {t('newHorizonTurnsAiReadiness')}
             </p>
           </div>
@@ -317,7 +313,6 @@ export default function HomeScreen() {
               <p className="eyebrow">{t('scoringAndAdaptiveTesting')}</p>
               <h2>{t('scoresRewardHarderEvidenceNot')}</h2>
               <p>
-                
                 {t('newHorizonSeparatesRawAnswer')}
               </p>
             </div>
@@ -353,7 +348,6 @@ export default function HomeScreen() {
               <p className="eyebrow">{t('globalFrameworkCrosswalk')}</p>
               <h2>{t('mappedToReputableAiLiteracy')}</h2>
               <p>
-                
                 {t('newHorizonIsNotClaiming')}
               </p>
             </div>
@@ -382,7 +376,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('progressSystem')}</p>
             <h2>{t('makeReadinessFeelEarned')}</h2>
             <p>
-              
               {t('gamificationShouldRewardCarefulJudgment')}
             </p>
           </div>
@@ -433,7 +426,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('yourResults')}</p>
             <h2>{t('radarProfileGapsAndNext')}</h2>
             <p>
-              
               {t('mvpResultsAreIndicativeNot')}
             </p>
             <div className="hero-actions">
@@ -467,7 +459,6 @@ export default function HomeScreen() {
             <p className="eyebrow">{t('premiumAssessment')}</p>
             <h2>{t('deeperDiagnosisForPeopleWho')}</h2>
             <p>
-              
               {t('theMvpPremiumPilotAdds')}
             </p>
           </div>

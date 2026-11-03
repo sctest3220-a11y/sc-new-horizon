@@ -51,7 +51,6 @@ export default function AdminScreen() {
             <p className="eyebrow">{t('adminLogin')}</p>
             <h1>{t('assessmentIntelligenceConsole')}</h1>
             <p>
-              
               {t('adminUsersShouldSeeAggregate')}
             </p>
           </div>
@@ -87,7 +86,6 @@ export default function AdminScreen() {
               <p className="eyebrow">{t('adminDashboard')}</p>
               <h1>{t('assessmentAnalyticsAcrossUsersAnd')}</h1>
               <p>
-                
                 {t('trackReadinessByCohortFunction')}
               </p>
             </div>
@@ -113,12 +111,10 @@ export default function AdminScreen() {
                   <h2>{t('analyticsReadinessChecklist')}</h2>
                 </div>
                 <button className="secondary dark" type="button" onClick={exportPilotReviewCsv} disabled={!adminAnalytics.totalQuestionSignals}>
-                  
                   {t('exportPilotReviewCsv')}
                 </button>
               </div>
               <p>
-                
                 {t('thisPanelSeparatesPilotLocal')}
               </p>
               <div className="telemetry-grid readiness-grid">
@@ -179,7 +175,6 @@ export default function AdminScreen() {
                             disabled={draft.status === 'approved'}
                             onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'approved')}
                           >
-                            
                             {t('approve')}
                           </button>
                           <button
@@ -188,7 +183,6 @@ export default function AdminScreen() {
                             disabled={draft.status === 'rejected'}
                             onClick={() => updateAgentDraftStatus(latestSupervisedAgentRun.id, draft.id, 'rejected')}
                           >
-                            
                             {t('reject')}
                           </button>
                         </div>
@@ -256,7 +250,7 @@ export default function AdminScreen() {
                             >
                               <span>{node.eyebrow}</span>
                               <strong>{agent.name}</strong>
-                              <small>{t.rich('stage', { b: () => <b aria-hidden="true" />, status: agent.status, outputCount: agent.outputCount, value: agent.outputCount === 1 ? '' : 's' })}</small>
+                              <small>{t.rich('stage', { b: () => <b aria-hidden="true" />, status: agent.status, outputCount: agent.outputCount })}</small>
                             </button>
                           );
                         })}
@@ -354,7 +348,6 @@ export default function AdminScreen() {
               <span>{t('continuousImprovement')}</span>
               <h2>{t('supervisedAssessmentQualityEngine')}</h2>
               <p>
-                
                 {t('telemetryAndEndOfAssessment')}
               </p>
               <div className="admin-kpi-grid compact-kpis">
@@ -474,9 +467,9 @@ export default function AdminScreen() {
                 <div>
                   <h3>{t('n10LearningReportEngagement')}</h3>
                   {assessmentQualityAnalytics.reportEngagementRows.length ? assessmentQualityAnalytics.reportEngagementRows.map((row) => (
-                    <p key={row.area}><strong>{row.area}</strong><small>{t('click', { count: row.count, value: row.count === 1 ? '' : 's' })}</small></p>
+                    <p key={row.area}><strong>{row.area}</strong><small>{t('click', { count: row.count })}</small></p>
                   )) : <p>{t('noReportEngagementClicksYet')}</p>}
-                  <p><strong>{t('recommendationSignals')}</strong><small>{t('courseToolCoverageContinuationClick', { recommendationSignals: assessmentQualityAnalytics.recommendationSignals, value: assessmentQualityAnalytics.recommendationSignals === 1 ? '' : 's' })}</small></p>
+                  <p><strong>{t('recommendationSignals')}</strong><small>{t('courseToolCoverageContinuationClick', { recommendationSignals: assessmentQualityAnalytics.recommendationSignals })}</small></p>
                 </div>
               </div>
             </article>
@@ -490,7 +483,6 @@ export default function AdminScreen() {
                 <span>{t('pendingDrafts', { pendingAgentDraftCount: pendingAgentDraftCount })}</span>
               </div>
               <p>
-                
                 {t('agentsShouldUseTelemetryAnd')}
               </p>
               <div className="telemetry-grid">
@@ -542,7 +534,7 @@ export default function AdminScreen() {
                     <label>{row.domain} · {row.label}</label>
                     <meter min="0" max="100" value={row.average} />
                     <strong>{adminAnalytics.totalRuns ? `${row.average}/100` : t('noData')}</strong>
-                    <small>{t('questionSignal', { evidence: row.evidence, value: row.evidence === 1 ? '' : 's' })}</small>
+                    <small>{t('questionSignal', { evidence: row.evidence })}</small>
                   </div>
                 ))}
               </div>
@@ -553,7 +545,7 @@ export default function AdminScreen() {
               <h2>{t('cohortAverages')}</h2>
               <div className="admin-list">
                 {adminAnalytics.groupRows.length ? adminAnalytics.groupRows.map((row) => (
-                  <p key={row.key}><strong>{row.label}</strong><small>{t('runs100Latest', { count: row.count, average: row.average, value: row.lastRun ? new Date(row.lastRun).toLocaleDateString() : 'n/a' })}</small></p>
+                  <p key={row.key}><strong>{row.label}</strong><small>{t('runs100Latest', { count: row.count, average: row.average, lastRun: row.lastRun ? new Date(row.lastRun).toLocaleDateString() : t('notAvailable') })}</small></p>
                 )) : <p>{t('noSavedCohortDataYet')}</p>}
               </div>
             </article>
@@ -593,7 +585,7 @@ export default function AdminScreen() {
               <h2>{t('itemDifficultyBehavior')}</h2>
               <div className="admin-list compact">
                 {adminAnalytics.difficultyRows.map((row) => (
-                  <p key={row.label}><strong>{row.label}</strong><small>{t('signals', { count: row.count, value: row.count ? `${row.average}/100` : t('noData2') })}</small></p>
+                  <p key={row.label}><strong>{row.label}</strong><small>{t('signals', { count: row.count, average: row.count ? `${row.average}/100` : t('noData2') })}</small></p>
                 ))}
               </div>
             </article>

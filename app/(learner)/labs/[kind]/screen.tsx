@@ -91,7 +91,6 @@ export default function LabScreen() {
                 }}
                 type="button"
               >
-                
                 {t('showExamplePrompt')}
               </button>
               <div className="lab-checklist">

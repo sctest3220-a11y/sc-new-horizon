@@ -50,7 +50,6 @@ export default function DashboardScreen() {
           <p className="eyebrow">{t('registeredUserLandingPage')}</p>
           <h1>{t('yourAiReadinessDashboard')}</h1>
           <p>
-            
             {t('thisIsTheLoggedIn')}
           </p>
         </div>
@@ -86,7 +85,7 @@ export default function DashboardScreen() {
       <div className="dashboard-grid">
         <article className="dashboard-card profile-overview">
           <span>{t('profileSignals')}</span>
-          <h2>{t('savedTags', { value: userProfileSurvey ? userProfileSurvey.tags.length : 0 })}</h2>
+          <h2>{t('savedTags', { count: userProfileSurvey ? userProfileSurvey.tags.length : 0 })}</h2>
           {userProfileSurvey ? (
             <div className="profile-tag-grid">
               {userProfileSurvey.tags.slice(0, 10).map((tag) => <span key={tag}>{tag}</span>)}
@@ -98,7 +97,7 @@ export default function DashboardScreen() {
 
         <article className="dashboard-card progress-overview">
           <span>{t('progress')}</span>
-          <h2>{t('savedRun', { totalRuns: scoreLogAnalytics.totalRuns, value: scoreLogAnalytics.totalRuns === 1 ? '' : 's' })}</h2>
+          <h2>{t('savedRun', { totalRuns: scoreLogAnalytics.totalRuns })}</h2>
           <div className="dashboard-stats">
             <div><strong>{scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : t('new')}</strong><small>{t('averageReadiness')}</small></div>
             <div><strong>{scoreLogAnalytics.signalSnapshots || 0}</strong><small>{t('questionSignals')}</small></div>

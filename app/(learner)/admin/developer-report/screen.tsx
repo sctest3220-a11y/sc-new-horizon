@@ -25,7 +25,6 @@ export default function DeveloperReportScreen() {
           <p className="result-level">{t('aiReadiness', { level: fullStackDeveloperReport.level })}</p>
           <p>{t('simulatedPremiumTechnicalTrackReport', { profile: fullStackDeveloperReport.profile.toLowerCase(), confidence: fullStackDeveloperReport.confidence })}</p>
           <p className="context-line">
-            
             {t('strongestSignalD2PracticalTooling')}
           </p>
         </div>
@@ -136,13 +135,12 @@ export default function DeveloperReportScreen() {
           <div className="improvement-brief">
             {fullStackDeveloperReport.projects.map((project, index) => (
               <div key={project}>
-                <span>{t('project', { value: index + 1 })}</span>
+                <span>{t('project', { number: index + 1 })}</span>
                 <strong>{project}</strong>
               </div>
             ))}
           </div>
           <p className="context-line">
-            
             {t('mvpPreviewThisReportUses')}
           </p>
         </article>

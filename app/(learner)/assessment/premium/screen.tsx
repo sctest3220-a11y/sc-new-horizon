@@ -90,7 +90,6 @@ export default function PremiumOnboardingScreen() {
           <p className="eyebrow">{t('profileBuilder')}</p>
           <h2>{t('premiumProfileSignals')}</h2>
           <p>
-            
             {t('beforeTheDiagnosticStartsNew')}
           </p>
         </div>

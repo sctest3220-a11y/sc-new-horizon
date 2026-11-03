@@ -96,10 +96,10 @@ export default function ResultsScreen() {
           <p className="eyebrow">{mode === 'executive' ? t('premiumLeadershipDiagnostic') : mode === 'premium' ? t('premiumDiagnosticPilot') : mode === 'practice' ? t('practiceActivityResult') : t('indicativeMvpResult')}</p>
           <h1>{results.overall}</h1>
           <p className="result-level">{t('aiReadiness', { level: results.level })}</p>
-          <p>{t('basedOnForEvidenceConfidence', { length: answers.length, value: mode === 'practice' ? t('practiceActivity') : t('adaptiveResponses'), value2: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase(), confidence: results.confidence })}</p>
+          <p>{t('basedOnForEvidenceConfidence', { count: answers.length, responseKind: mode === 'practice' ? t('practiceActivity') : t('adaptiveResponses'), audience: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : audienceLabels[audience].toLowerCase(), confidence: results.confidence })}</p>
           <p className="context-line">{getScoreBandDescription(results.overall, results.level)}</p>
           {mode === 'premium' && (
-            <p className="context-line">{t('contextIn', { functionLabel: functionLabels[functionTrack], value: industryLabels[industryTrack].toLowerCase() })}</p>
+            <p className="context-line">{t('contextIn', { functionLabel: functionLabels[functionTrack], industry: industryLabels[industryTrack].toLowerCase() })}</p>
           )}
           {mode === 'executive' && (
             <p className="context-line">{t('contextProfileWeightedTowardD5', { executiveLabel: executiveLabels[executiveRole] })}</p>
@@ -121,7 +121,6 @@ export default function ResultsScreen() {
           className={reportTab === 'report' ? 'selected' : ''}
           onClick={() => setReportTab('report')}
         >
-          
           {t('summary')}
         </button>
         {paidReport && reportAccessSettings.paid.questionAnalysis && (<button
@@ -131,7 +130,6 @@ export default function ResultsScreen() {
           className={reportTab === 'analysis' ? 'selected' : ''}
           onClick={() => setReportTab('analysis')}
         >
-          
           {t('questionReview')}
         </button>)}
       </div>
@@ -142,7 +140,7 @@ export default function ResultsScreen() {
           <div className="evidence-grid">
             <p>{t.rich('yourScoreASampledReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
-            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, value: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase() })}</p>
+            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase() })}</p>
           </div>
         </article>
         <article className="result-card wide score-calculation-card analysis-primary">
@@ -151,14 +149,14 @@ export default function ResultsScreen() {
               <p className="eyebrow">{t('scoreCalculation')}</p>
               <h2>{t('howThisResultWasDerived')}</h2>
             </div>
-            <span>{t('answeredItem', { length: answers.length, value: answers.length === 1 ? '' : 's' })}</span>
+            <span>{t('answeredItem', { count: answers.length })}</span>
           </div>
           <div className="calculation-summary-grid">
             <p>{t.rich('questionRawAnswerScoreComes', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             <p>{t.rich('difficultyRawScoreIsConverted', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             <p>{t.rich('competencyCompetencyScoreIsThe', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             <p>{t.rich('domainDomainScoreIsReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
-            <p>{t.rich('assessmentDomainAverageIs6', { strong: (chunks) => <strong>{chunks}</strong>, value: Object.values(results.domainScores).join(' + '), domainAverage: results.domainAverage, rawAverage: results.answerQuality.rawAverage, Math: Math.round(results.answerQuality.factor * 100), domainAverage2: results.domainAverage, Math2: Math.round(results.answerQuality.factor * 100), overall: results.overall })}</p>
+            <p>{t.rich('assessmentDomainAverageIs6', { strong: (chunks) => <strong>{chunks}</strong>, domainScores: Object.values(results.domainScores).join(' + '), domainAverage: results.domainAverage, rawAverage: results.answerQuality.rawAverage, evidenceFactor: Math.round(results.answerQuality.factor * 100), overall: results.overall })}</p>
             <p>{t.rich('timingConfidenceTimeHesitationItem', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
           </div>
           <details className="calculation-details" open>
@@ -251,7 +249,6 @@ export default function ResultsScreen() {
                   className="primary"
                   onClick={() => continueAssessment(continuationRecommendation.route, continuationRecommendation.questionCount)}
                 >
-                  
                   {t('continueRecommendedRoute')}
                 </button>
                 <button
@@ -308,7 +305,7 @@ export default function ResultsScreen() {
               <p className="eyebrow">{t('personaLeaderboard')}</p>
               <h2>{t('top10', { cleanAverageLabel: cleanAverageLabel(scoreGroup.label) })}</h2>
             </div>
-            <span>{t('rankedRun', { length: personaLeaderboard.length, value: personaLeaderboard.length === 1 ? '' : 's' })}</span>
+            <span>{t('rankedRun', { count: personaLeaderboard.length })}</span>
           </div>
           <div className="leaderboard-list">
             {personaLeaderboard.length ? personaLeaderboard.map((entry) => (
@@ -410,7 +407,7 @@ export default function ResultsScreen() {
                     <p><strong>{t('yourAnswer2')}</strong> {answer.textResponse?.trim() || answer.option.label}</p>
                     <p><strong>{t('expectedEvidence2')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
                     <p><strong>{t('measured2')}</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
-                    <p>{t.rich('behaviorInteractionsRevisions', { strong: (chunks) => <strong>{chunks}</strong>, value: answer.behavior?.interactionCount ?? 0, value2: answer.behavior?.revisionCount ?? 0 })}</p>
+                    <p>{t.rich('behaviorInteractionsRevisions', { strong: (chunks) => <strong>{chunks}</strong>, interactions: answer.behavior?.interactionCount ?? 0, revisions: answer.behavior?.revisionCount ?? 0 })}</p>
                     <p><strong>{t('localComparison')}</strong> {benchmark ? `${benchmark.averageScore}/100 average across ${benchmark.attempts} attempt${benchmark.attempts === 1 ? '' : 's'}; ${formatDuration(benchmark.averageDurationMs)} average time.` : t('noComparisonDataYet')}</p>
                   </details>
                 );
@@ -523,7 +520,7 @@ export default function ResultsScreen() {
               >
                 <span>{item.domain} · {domains[item.domain].short}</span>
                 <strong>{item.evidenceCount ? `${item.score}/100` : t('notSampled')}</strong>
-                <p>{t('evidenceSignal', { Number: Number(item.evidenceCount.toFixed(2)), value: item.evidenceCount === 1 ? '' : 's', confidence: item.confidence })}</p>
+                <p>{t('evidenceSignal', { evidenceCount: Number(item.evidenceCount.toFixed(2)), confidence: item.confidence })}</p>
               </button>
             ))}
           </div>
@@ -562,9 +559,9 @@ export default function ResultsScreen() {
         <article className="result-card wide score-analytics analysis-primary">
           <h2>{t('savedScoreAnalytics')}</h2>
           <div className="evidence-grid">
-            <p>{t.rich('savedRunsCompletedAssessmentRun', { strong: (chunks) => <strong>{chunks}</strong>, totalRuns: scoreLogAnalytics.totalRuns, value: scoreLogAnalytics.totalRuns === 1 ? '' : 's' })}</p>
-            <p>{t.rich('individualProfilesLocalProfileWith', { strong: (chunks) => <strong>{chunks}</strong>, value: scoreLogAnalytics.individualProfiles || t('no'), value2: scoreLogAnalytics.individualProfiles === 1 ? '' : 's' })}</p>
-            <p>{t.rich('questionSignalsItemLevelSignal', { strong: (chunks) => <strong>{chunks}</strong>, value: scoreLogAnalytics.signalSnapshots || t('no'), value2: scoreLogAnalytics.signalSnapshots === 1 ? '' : 's' })}</p>
+            <p>{t.rich('savedRunsCompletedAssessmentRun', { strong: (chunks) => <strong>{chunks}</strong>, totalRuns: scoreLogAnalytics.totalRuns })}</p>
+            <p>{t.rich('individualProfilesLocalProfileWith', { strong: (chunks) => <strong>{chunks}</strong>, count: scoreLogAnalytics.individualProfiles })}</p>
+            <p>{t.rich('questionSignalsItemLevelSignal', { strong: (chunks) => <strong>{chunks}</strong>, count: scoreLogAnalytics.signalSnapshots })}</p>
             <p><strong>{t('averageOverall')}</strong> {scoreLogAnalytics.totalRuns ? `${scoreLogAnalytics.averageOverall}/100` : t('noSavedScoreDistributionYet')}</p>
             <p>{t.rich('storedDimensionsAnonymousProfileId', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
           </div>
@@ -597,7 +594,7 @@ export default function ResultsScreen() {
               <div key={item.mode}>
                 <span>{item.label}</span>
                 <strong>{item.count ? `${item.score}/100` : t('notSampled')}</strong>
-                <p>{t('scoredSignal', { count: item.count, value: item.count === 1 ? '' : 's' })}</p>
+                <p>{t('scoredSignal', { count: item.count })}</p>
               </div>
             ))}
           </div>
@@ -693,7 +690,6 @@ export default function ResultsScreen() {
         <article className="result-card wide report-primary report-order-bootcamps">
           <h2>{t('recommendedBootcampsAndWorkshops')}</h2>
           <p className="context-line">
-            
             {t('suggestedWhenTheAssessmentShows')}
           </p>
           <div className="bootcamp-list">
@@ -765,8 +761,7 @@ export default function ResultsScreen() {
             aria-label={t('dismissFeedbackInvitation')}
             onClick={() => setFeedbackPromptOpen(false)}
           >
-            
-            {t('times')}
+            &times;
           </button>
           <span>{t('n30SecondExchange')}</span>
           <strong>{t('unlockYourDetailedEvidenceTrail')}</strong>
@@ -781,7 +776,6 @@ export default function ResultsScreen() {
                 document.getElementById('assessment-feedback-survey')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
               }}
             >
-              
               {t('giveFeedback')}
             </button>
           </div>

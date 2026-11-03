@@ -42,7 +42,6 @@ export default function OnboardingScreen() {
           <p className="eyebrow">{t('profileBuilderAndSignals')}</p>
           <h2>{t('profileIsBuiltBeforeDuring')}</h2>
           <p>
-            
             {t('beforeTheTestNewHorizon')}
           </p>
         </div>

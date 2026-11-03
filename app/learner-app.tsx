@@ -12277,11 +12277,17 @@ function getTranslationStatus(question: Question): TranslationStatus | undefined
   return hasCompleteInlineThai ? 'reviewed' : undefined;
 }
 
+// Question translations by language; English is the source text. A new
+// language adds its generated table here. The inline `…Th` fields on the
+// questions are a Thai-only fallback.
+const questionTranslations: Partial<Record<AppLanguage, typeof questionTranslationsTh>> = { th: questionTranslationsTh };
+
 function localizeQuestion(question: Question, language: AppLanguage, includeDrafts = false): Question {
-  const status = getTranslationStatus(question);
+  const t = questionTranslations[language]?.[question.id];
+  if (language === 'en') return question;
+  const status = language === 'th' ? getTranslationStatus(question) : t?.status;
   // `draft` Thai (machine/template drafts not yet through native review) is shown only to pilot users who opted in.
-  if (language !== 'th' || !status || (status === 'draft' && !includeDrafts)) return question;
-  const t = questionTranslationsTh[question.id];
+  if (!status || (status === 'draft' && !includeDrafts)) return question;
   const pick = (...values: Array<string | undefined>) => values.find((value) => value !== undefined && value !== '');
   return {
     ...question,
@@ -13006,7 +13012,6 @@ export function useAppController() {
   const [openedLabKind, setOpenedLabKind] = useState<LabKind | null>(null);
   const [browserStateReady, setBrowserStateReady] = useState(false);
   const { language: appLanguage, setLanguage: setAppLanguage } = useLanguage();
-  const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai, setShowDraftThai] = useState(false);
   const [assessmentDisplaySettings, setAssessmentDisplaySettings] = useState(defaultAssessmentDisplaySettings);
   const [reportAccessSettings, setReportAccessSettings] = useState(defaultReportAccessSettings);
@@ -13436,10 +13441,8 @@ export function useAppController() {
   );
   const currentTranslationStatus = getTranslationStatus(current);
   const currentThaiAvailable = Boolean(currentTranslationStatus && (currentTranslationStatus !== 'draft' || showDraftThai));
-  const defaultQuestionLanguage: AppLanguage = appLanguage === 'th' && !currentThaiAvailable ? 'en' : appLanguage;
-  const questionLanguage = questionLanguageOverride?.questionId === current.id
-    ? questionLanguageOverride.language
-    : defaultQuestionLanguage;
+  // Questions follow the app language; one with no usable translation falls back to English.
+  const questionLanguage: AppLanguage = appLanguage === 'th' && !currentThaiAvailable ? 'en' : appLanguage;
   const shownQuestion = useMemo(() => localizeQuestion(current, questionLanguage, showDraftThai), [current, questionLanguage, showDraftThai]);
   // Match choices are stored as the strings shown, so a language switch invalidates them (state reset during render).
   const [matchSelectionsLanguage, setMatchSelectionsLanguage] = useState<AppLanguage>(questionLanguage);
@@ -13593,7 +13596,6 @@ export function useAppController() {
             aria-pressed={activeKind === 'like'}
             onClick={() => toggleQuestionFeedbackDraft(question.id, 'like')}
           >
-            
             {t('useful')}
           </button>
           <button
@@ -13602,7 +13604,6 @@ export function useAppController() {
             aria-pressed={activeKind === 'unclear'}
             onClick={() => toggleQuestionFeedbackDraft(question.id, 'unclear')}
           >
-            
             {t('unclear')}
           </button>
         </div>
@@ -14540,7 +14541,6 @@ export function useAppController() {
     setLabFeedbackVisible,
     setLabMatches,
     setLandingLeaderboardPeriod,
-    setQuestionLanguageOverride,
     setReportTab,
     setSelectedAgentId,
     setSelectedDemoDomain,

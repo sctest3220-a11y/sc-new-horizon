@@ -6,7 +6,6 @@ import { createRequire } from 'node:module';
 import { createTranslator } from 'next-intl';
 import { languages } from '../app/language-model.ts';
 import { untranslatedAllowlist } from './lib/i18n-allowlist.mjs';
-import { thaiDraftsPending } from './lib/known-failures.mjs';
 
 // Every visible string in the learner app comes from the message catalogs in
 // i18n/messages, and every catalog has the same messages as en.json. See
@@ -94,7 +93,7 @@ function scanSources() {
       return null;
     };
     (function visit(node) {
-      if (ts.isJsxText(node) && /[A-Za-z]{2}/.test(node.text) && !untranslatedAllowlist.has(node.text.trim())) hardCoded.push(`${where(node)} "${node.text.trim().slice(0, 60)}"`);
+      if (ts.isJsxText(node) && /[A-Za-z]{2}/.test(node.text.replace(/&[a-zA-Z]+;/g, '')) && !untranslatedAllowlist.has(node.text.trim())) hardCoded.push(`${where(node)} "${node.text.trim().slice(0, 60)}"`);
       if (ts.isStringLiteral(node) && /[A-Za-z]{2}/.test(node.text) && !isEmail(node.text) && !untranslatedAllowlist.has(node.text) && isRendered(node, sourceFile)) hardCoded.push(`${where(node)} "${node.text.slice(0, 60)}"`);
       if (ts.isCallExpression(node) && ['t', 't.rich', 't.markup'].includes(node.expression.getText(sourceFile)) && node.arguments[0] && ts.isStringLiteral(node.arguments[0])) {
         const namespace = namespaceOf(node);
@@ -142,7 +141,7 @@ test('every key the code uses exists, and every message is used', () => {
   assert.deepEqual(unused, [], 'messages no code uses');
 });
 
-test('every non-English message is translated', { todo: thaiDraftsPending }, () => {
+test('every non-English message is translated', () => {
   const untranslated = languages.filter((language) => language !== 'en').flatMap((language) =>
     Object.entries(flat[language])
       .filter(([key, message]) => message === flat.en[key] && !untranslatedAllowlist.has(flat.en[key].trim()))
