@@ -63,9 +63,12 @@ Comparing them as numbers or dates breaks the moment the format gains a suffix.
 `WatchState` and `Bilingual` in `app/watch-model.ts`, and the question types at
 the top of `app/learner-app.tsx`. There is no shared `types.ts`.
 
-**Bilingual data is `{ en, th }` in new code, and `xxx` / `xxxTh` sibling
-fields in question data.** New components take a `language` prop and pick a
-side with a small `t(en, th)` helper (`app/watch-labs.tsx`). Don't add new
+**Interface copy lives in the message catalogs; content data is
+`Localized<T>` or goes through the content catalog; question data keeps its
+`xxx` / `xxxTh` sibling fields.** Screens call `useTranslations('<screen>')`;
+components that take a `language` prop build the same translator with
+`watchTranslator(language)` (`app/watch-labs.tsx`) and pick data with
+`pick(text, language)`. Don't add new
 `*Th` siblings outside question data.
 
 **Imports are relative.** `tsconfig.json` defines `@/*`, but no file uses it;

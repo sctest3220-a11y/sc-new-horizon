@@ -79,7 +79,9 @@ edit can pass review and then disagree with the source the script reads.
 | `exports/production/releases/<id>/` | `scripts/prepare-production-release.mjs` |
 
 **User-facing text is bilingual, English and Thai.** Every new string needs
-both. How each surface handles Thai is in `app/CLAUDE.md`. Thai copy is simple
+both, in the catalogs under `i18n/` (rule 5 in `app/CLAUDE.md`). The user's
+choice is saved in this browser for now (`new-horizon-language-v1`); it
+moves to the user's record once auth exists. Thai copy is simple
 Thailand Thai. Market terms such as AI, Agent, Prompt, RAG and API stay in
 English.
 

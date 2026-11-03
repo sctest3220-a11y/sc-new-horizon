@@ -1,5 +1,46 @@
 # Question Bank Localisation (Thai)
 
+## The app's language system — 3 November 2026
+
+The learner app shows one language at a time, chosen by the user and saved in
+this browser (`localStorage['new-horizon-language-v1']`). A first visit
+follows the browser's language without saving it. Three places hold the
+text:
+
+| Text | Where | Keyed by |
+| --- | --- | --- |
+| Interface copy | `i18n/messages/<code>.json` (ICU messages, read with next-intl) | A key per screen namespace; `en.json` is the source of truth |
+| Content written as data | `i18n/content/<code>.json` | The exact English source text |
+| Questions | `app/questionTranslations.th.ts` and inline `…Th` fields (this document) | The question id |
+
+The Thai in the first two was mostly drafted on 3 November 2026 and is listed
+for native review in [`THAI_UI_COPY_REVIEW.md`](THAI_UI_COPY_REVIEW.md).
+
+### Adding a language
+
+1. Add its code to `languages` in `app/language-model.ts`. TypeScript then
+   flags every `Localized<T>` value that lacks it.
+2. Copy `i18n/messages/en.json` to `i18n/messages/<code>.json`, translate the
+   values (keep every `{argument}` and `<tag>`), and add it to
+   `i18n/messages/index.ts`. `scripts/test-i18n-coverage.mjs` lists missing or
+   untranslated keys.
+3. Add `i18n/content/<code>.json` and register it in `i18n/content/index.ts`.
+   Render each learner screen in the new language in `app/screens.test.tsx`
+   (copy the `Thai content` cases); they list every content string without a
+   translation.
+4. Questions: add a generated translation table to `questionTranslations` in
+   `app/learner-app.tsx` (next to `localizeQuestion`). Until it exists,
+   questions show in English with a note.
+5. Add the language's font in `app/layout.tsx` if Geist lacks its script, and
+   a button in the header language toggle (`app/(learner)/learner-shell.tsx`).
+
+### Moving the preference to the user's record
+
+When sign-in exists, add a `LanguagePreferenceStore` that reads and writes
+the Go API, and pass it to `LanguageProvider`. To render the right language
+on the server (no English flash on a cold load), read the preference from a
+cookie or the session in `i18n/request.ts`.
+
 ## Current English/Thai localization update - 6 October 2026
 
 Last updated: **6 October 2026**. The English/Thai feedback update is saved in **2026.10.06 V.0** and was merged into `main` through PR #18 (`1740cf8`). The content update was committed as `85c7fb4`; the dated snapshot was committed as `1b378a4`.

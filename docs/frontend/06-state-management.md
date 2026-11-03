@@ -97,7 +97,8 @@ migrate.
 - Pass props down first. Siblings that need the same state get it from their
   common parent.
 - Use React context only for values most of the tree reads and that rarely
-  change: language, the signed-in identity. Context re-renders every consumer
+  change: language (`LanguageProvider` in `app/language.tsx`), the signed-in
+  identity. Context re-renders every consumer
   on each change, so a frequently changing value in context slows every
   screen.
 - Reach for `useReducer` when one action changes several fields together, as

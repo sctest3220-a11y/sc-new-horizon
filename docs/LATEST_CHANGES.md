@@ -1,5 +1,13 @@
 # Latest Changes
 
+## English/Thai language switcher — 3 November 2026
+
+- One saved language preference now drives the whole learner app: every screen, the assessment questions, AI Labs and AI Watch. It is stored in this browser (`new-horizon-language-v1`, the existing key) and a first visit follows the browser's language. Switching EN/TH on a question card switches and saves the app language.
+- Interface text comes from next-intl message catalogs (`i18n/messages/`), content data from a content catalog (`i18n/content/`), and questions from their reviewed translations. The old DOM-rewriting pass and `thaiUiCopy` are gone.
+- Report, telemetry, continuation and answer-feedback sentences are full ICU messages, so Thai word order and plurals are correct. Lists use the locale's conjunction, and AI Watch dates use the reader's locale (Thai calendar in Thai).
+- The prompt Lab recognises a prompt written in Thai.
+- Most Thai is a draft for native review: see `docs/THAI_UI_COPY_REVIEW.md` and `exports/thai-ui-copy-review.csv`. Admin console content, AI Watch headlines and some question figure labels stay in English for now.
+
 ## Each learner screen has its own URL — 2 November 2026
 
 - The screens that `app/page.tsx` switched between with in-memory state are now routes: `/`, `/dashboard`, `/watch`, `/labs`, `/labs/<kind>`, `/assessment`, `/assessment/premium`, `/assessment/run`, `/results`, `/admin` and `/admin/developer-report`. Each has its own page title, a working back button and a shareable link.

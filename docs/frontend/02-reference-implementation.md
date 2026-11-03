@@ -60,8 +60,8 @@ test pins this.
    `../app/<feature>-model.ts` directly as `scripts/test-watch-labs.mjs` does.
    Cover every use case and its edge cases, and reach at least 90% of lines,
    branches and functions (`docs/TESTING.md`).
-3. Write the component in `app/<feature>.tsx` with `'use client'`, a
-   `language` prop and `data-no-translate`. Start from the default and restore
+3. Write the component in `app/<feature>.tsx` with `'use client'` and its
+   text in the message catalogs (`i18n/messages/*.json`). Start from the default and restore
    after mount behind `ready`. Test it in `app/<feature>.test.tsx`, modelled on
    `app/watch-labs.test.tsx`: each state, each control, what is saved, and
    both languages.

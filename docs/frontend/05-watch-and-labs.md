@@ -49,8 +49,7 @@ Navigation: primary nav links to `/watch` and `/labs` (internally `step` `'news'
   - the three-interest limit;
   - corrupt and unavailable storage;
   - Thai copy;
-  - switching to Labs;
-  - `data-no-translate`.
+  - switching to Labs.
 - **`scripts/test-crawl-ai-watch.py`**: offline crawler tests.
 
 All three run in `pnpm test` and in CI (`.github/workflows/test.yml`). Both

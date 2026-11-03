@@ -72,17 +72,25 @@ a flaky test.
    `"creating an existing version fails without changing its snapshot or
    registry"`; the production release throws are in
    `scripts/prepare-production-release.mjs`, which no test covers.)
-5. **Every user-facing string ships in English and Thai, through the mechanism
-   its surface owns.**
-   - Interface text in the `app/(learner)/` screens: add the English→Thai
-     pair to `thaiUiCopy` in `app/learner-app.tsx`.
-   - Watch/Labs and any new component: render both languages from props
-     (`Bilingual = { en, th }`) inside a `data-no-translate` subtree, so the
-     legacy DOM pass does not rewrite it.
-   - Question text: never in `thaiUiCopy`.
+5. **Every user-facing string ships in every language, through one of three
+   places.** The language is one saved preference (`app/language.tsx`,
+   `app/language-model.ts`); nothing rewrites the DOM.
+   - Interface copy (headings, buttons, labels, sentences built from values):
+     a message in `i18n/messages/en.json` and `th.json`, read with
+     `useTranslations('<screen>')`. Values go in ICU arguments, never by
+     string concatenation; counts use ICU plurals.
+   - Content written as data in `app/learner-app.tsx` (labels, survey options,
+     lab text, catalogs): rendered through `tc()` from `useContent()`, with
+     its translation in `i18n/content/th.json` keyed by the English text.
+     Data built for a component's props can be `Localized<T>` instead, as
+     Watch and the connected Labs do.
+   - Question text: only through `localizeQuestion` and the reviewed
+     question translations. Never through the catalogs above.
 
-   (`scripts/test-watch-labs.mjs`, `"both Labs include complete bilingual
-   evidence, choices, and feedback"`; nothing checks `thaiUiCopy` coverage.)
+   (`scripts/test-i18n-coverage.mjs`: no hard-coded visible text, catalogs
+   share keys and ICU arguments; `app/screens.test.tsx`, `"every content
+   string on … has a Thai translation"`; `scripts/test-watch-labs.mjs`,
+   `"both Labs include complete bilingual evidence, choices, and feedback"`.)
 6. **Embedded video is `youtube-nocookie`, click-to-load and never autoplays.
    News media is hotlinked from the publisher, never downloaded or generated.**
    This is a privacy and rights decision recorded in
@@ -135,6 +143,8 @@ flow and its D1 storage are outside the Event Demo (`docs/SCOPE.md`, Decided). C
 | Tests for a component | `app/<feature>.test.tsx` (Vitest + React Testing Library), modelled on `app/watch-labs.test.tsx` |
 | Styles for a feature | `app/<feature>.css`, imported by the component (like `app/watch-labs.css`); shared tokens and legacy classes stay in `app/globals.css` |
 | Calls to the Go API | One module, `app/api-client.ts`. Create it with the first endpoint; it does not exist yet. Components never call `fetch` on the Go API directly. |
+| Interface copy for a screen | `i18n/messages/en.json` and `th.json` under the screen's namespace; never a literal in JSX |
+| Thai for content data | `i18n/content/th.json`, keyed by the exact English source text |
 | A new admin page | `app/admin/<name>/page.tsx` |
 | Build or data scripts and their helpers | `scripts/<verb>-<thing>.mjs`, shared helpers in `scripts/lib/` |
 | Question, translation, artifact or inventory content | Nowhere this phase. The bank is frozen. |
@@ -193,7 +203,9 @@ What a green run can hide:
 | Changing a setting in `/admin/pilot-operations` does nothing in the quiz | Only the diagnostics toggles reach the quiz. Report access is saved under a different key than the quiz reads, and the question counts come from `modeConfig`. See `docs/frontend/03-assessment-engine.md`. |
 | `/admin/question-inventory/results` shows fewer reviews than D1 has | The results page builds its feedback breakdown from this browser's `localStorage` only. It never reads `question_feedback`. |
 | Reviewer feedback re-posted by dev sync lands as `legacy-unversioned` | `review-sync.tsx` re-posts any `new-horizon-review*` key without its `contentVersion`. Known; the inventory is frozen. |
-| Thai text in a new component turns into a different Thai string, or into English | The legacy `applyUiLanguage` pass rewrote it. Wrap the component in `data-no-translate` and render both languages yourself. |
+| `scripts/test-i18n-coverage.mjs` fails with "no visible text … is hard-coded" | A JSX text, text attribute or rendered string literal is outside `t()`. Add a message to both catalogs. Brand names and codes go on the allowlist in `scripts/lib/i18n-allowlist.mjs`. |
+| A Thai screen test fails with a list of English strings | Content reached `tc()` without a Thai entry. Add it to `i18n/content/th.json` with the exact English as the key. If the English is a sentence with numbers in it, it should be a message with arguments instead. |
+| Text switches language only after a reload | It was computed once (a `useMemo`, or a value saved at answer time) without the translator in its dependencies. Add `t`/`tc` to the dependency list, or translate at render. |
 | `/?view=watch` stays on the home page, or AI Watch is blank, in an automated check | The redirect and the saved-state restore both run after the first animation frame, and a hidden browser pane never fires one. Wait for it, and show the pane or use a headless browser. |
 | The question and the answer feedback show at the same time on `/assessment/run` | Both phases share one URL, so `screen.tsx` must keep its `step === 'assessment'` / `step === 'feedback'` checks. Pinned by `"answering shows feedback in place of the question, then the next question"` in `app/screens.test.tsx`. |
 | A logic test fails with `ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX` or module-not-found | `scripts/test-*.mjs` loads `app/*-model.ts` directly with Node's type stripping. Keep enums, namespaces, parameter properties and runtime imports out of logic modules. |
