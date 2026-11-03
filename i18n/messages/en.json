@@ -1,0 +1,15 @@
+{
+  "titles": {
+    "home": "New Horizon | AI Readiness Assessment",
+    "dashboard": "Dashboard | New Horizon",
+    "admin": "Admin console | New Horizon",
+    "developerReport": "Developer report | New Horizon",
+    "news": "AI Watch | New Horizon",
+    "learningLabs": "AI Labs | New Horizon",
+    "lab": "Practice lab | New Horizon",
+    "onboarding": "Assessment | New Horizon",
+    "premiumOnboarding": "Premium diagnostic | New Horizon",
+    "assessment": "Assessment in progress | New Horizon",
+    "results": "Your results | New Horizon"
+  }
+}

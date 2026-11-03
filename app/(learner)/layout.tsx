@@ -1,3 +1,4 @@
+import { LanguageProvider } from '../language';
 import { LearnerAppProvider } from '../learner-app-context';
 import LearnerShell from './learner-shell';
 
@@ -5,8 +6,10 @@ import LearnerShell from './learner-shell';
 // The question-inventory and pilot-operations pages sit outside this group.
 export default function LearnerLayout({ children }: { children: React.ReactNode }) {
   return (
-    <LearnerAppProvider>
-      <LearnerShell>{children}</LearnerShell>
-    </LearnerAppProvider>
+    <LanguageProvider>
+      <LearnerAppProvider>
+        <LearnerShell>{children}</LearnerShell>
+      </LearnerAppProvider>
+    </LanguageProvider>
   );
 }

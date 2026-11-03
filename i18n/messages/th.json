@@ -1,0 +1,15 @@
+{
+  "titles": {
+    "home": "New Horizon | แบบประเมินความพร้อมด้าน AI",
+    "dashboard": "แดชบอร์ด | New Horizon",
+    "admin": "Console ผู้ดูแล | New Horizon",
+    "developerReport": "รายงานนักพัฒนา | New Horizon",
+    "news": "AI Watch | New Horizon",
+    "learningLabs": "AI Labs | New Horizon",
+    "lab": "แล็บฝึกปฏิบัติ | New Horizon",
+    "onboarding": "แบบประเมิน | New Horizon",
+    "premiumOnboarding": "การประเมินแบบ Premium | New Horizon",
+    "assessment": "กำลังทำแบบประเมิน | New Horizon",
+    "results": "ผลการประเมินของคุณ | New Horizon"
+  }
+}

@@ -5,6 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { questionTranslationsTh } from './questionTranslations.th';
 import { productionQuestionRelease } from './productionQuestionRelease';
 import { parseStoredList, parseStoredRecord } from './page-storage-model';
+import type { AppLanguage } from './language-model';
+import { useLanguage } from './language';
 import { labPath, legacyRedirect, pathForStep, stepForPath, type AppStep, type LabKind } from './learner-routes-model';
 import type { WatchStory as NewsFeedItem } from './watch-model';
 
@@ -43,7 +45,6 @@ type IndustryTrack = 'general' | 'education' | 'financial' | 'healthcare' | 'ret
 type ExecutiveRole = 'ceo' | 'board' | 'people' | 'finance' | 'technology' | 'transformation';
 type EvidenceMode = 'knowing' | 'doing' | 'hybrid';
 type LandingLeaderboardPeriod = 'day' | 'week';
-type AppLanguage = 'en' | 'th';
 type MicroProfilePulse = {
   id: string;
   title: string;
@@ -641,7 +642,6 @@ const executiveLabels: Record<ExecutiveRole, string> = {
 };
 
 const userProfileStorageKey = 'new-horizon-user-profile-v1';
-const languageStorageKey = 'new-horizon-language-v1';
 // Pilot flag: set localStorage['new-horizon-thai-drafts-v1'] = '1' to see `draft` Thai (template items, unreviewed) in the TH view.
 const thaiDraftStorageKey = 'new-horizon-thai-drafts-v1';
 
@@ -12999,7 +12999,7 @@ export function useAppController() {
   const [assessmentActive, setAssessmentActive] = useState(false);
   const [openedLabKind, setOpenedLabKind] = useState<LabKind | null>(null);
   const [browserStateReady, setBrowserStateReady] = useState(false);
-  const [appLanguage, setAppLanguage] = useState<AppLanguage>('en');
+  const { language: appLanguage, setLanguage: setAppLanguage } = useLanguage();
   const [questionLanguageOverride, setQuestionLanguageOverride] = useState<{ questionId: string; language: AppLanguage } | null>(null);
   const [showDraftThai, setShowDraftThai] = useState(false);
   const [assessmentDisplaySettings, setAssessmentDisplaySettings] = useState(defaultAssessmentDisplaySettings);
@@ -13230,7 +13230,6 @@ export function useAppController() {
       const legacyTarget = legacyRedirect(window.location.pathname, window.location.search);
       if (legacyTarget) router.replace(legacyTarget);
       if (previewQuestionId) setAssessmentActive(true);
-      setAppLanguage(readLocalStorage(languageStorageKey) === 'th' ? 'th' : 'en');
       setShowDraftThai(readLocalStorage(thaiDraftStorageKey) === '1');
       setMode(restoredMode);
       setAssessmentTargetTotal(modeConfig[restoredMode].totalQuestions);
@@ -13259,7 +13258,6 @@ export function useAppController() {
 
   useEffect(() => {
     if (!browserStateReady) return;
-    writeLocalStorage(languageStorageKey, appLanguage);
     applyUiLanguage(appLanguage);
     const observer = new MutationObserver(() => {
       window.requestAnimationFrame(() => applyUiLanguage(appLanguage));

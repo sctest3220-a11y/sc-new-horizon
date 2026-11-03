@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { useSyncExternalStore, type ComponentProps } from 'react';
 import { describe, expect, it, vi } from 'vitest';
+import { LanguageProvider } from './language';
 import { LearnerAppProvider } from './learner-app-context';
 import LearnerShell from './(learner)/learner-shell';
 import HomePage from './(learner)/page';
@@ -89,11 +90,13 @@ function CurrentRoute() {
 async function renderApp(url = '/') {
   window.history.replaceState(null, '', url);
   const view = render(
-    <LearnerAppProvider>
-      <LearnerShell>
-        <CurrentRoute />
-      </LearnerShell>
-    </LearnerAppProvider>,
+    <LanguageProvider>
+      <LearnerAppProvider>
+        <LearnerShell>
+          <CurrentRoute />
+        </LearnerShell>
+      </LearnerAppProvider>
+    </LanguageProvider>,
   );
   // Saved state is restored after the first animation frame.
   await screen.findByRole('navigation', { name: 'Primary navigation' });
@@ -227,5 +230,44 @@ describe('app screens', () => {
     window.localStorage.setItem('new-horizon-language-v1', 'th');
     await renderApp();
     expect(await heading('วัดความพร้อมด้าน AI ที่ใช้ได้จริง')).toBeTruthy();
+  });
+});
+
+describe('language preference', () => {
+  const languageButton = (label: 'EN' | 'TH') => screen.getByRole('button', { name: label });
+
+  it('a first visit from a Thai browser shows Thai and saves nothing', async () => {
+    vi.spyOn(window.navigator, 'languages', 'get').mockReturnValue(['th-TH', 'en']);
+    await renderApp();
+    expect(await heading('วัดความพร้อมด้าน AI ที่ใช้ได้จริง')).toBeTruthy();
+    expect(document.documentElement.lang).toBe('th');
+    expect(window.localStorage.getItem('new-horizon-language-v1')).toBeNull();
+  });
+
+  it('a saved English choice wins over a Thai browser', async () => {
+    vi.spyOn(window.navigator, 'languages', 'get').mockReturnValue(['th-TH']);
+    window.localStorage.setItem('new-horizon-language-v1', 'en');
+    await renderApp();
+    expect(await heading('Measure practical AI readiness.')).toBeTruthy();
+    expect(document.documentElement.lang).toBe('en');
+  });
+
+  it('choosing Thai in the header saves it and survives a remount', async () => {
+    const view = await renderApp();
+    fireEvent.click(languageButton('TH'));
+    expect(await heading('วัดความพร้อมด้าน AI ที่ใช้ได้จริง')).toBeTruthy();
+    expect(window.localStorage.getItem('new-horizon-language-v1')).toBe('th');
+    expect(languageButton('TH').getAttribute('aria-pressed')).toBe('true');
+    view.unmount();
+    await renderApp();
+    expect(await heading('วัดความพร้อมด้าน AI ที่ใช้ได้จริง')).toBeTruthy();
+  });
+
+  it('the tab title follows the language and the route', async () => {
+    window.localStorage.setItem('new-horizon-language-v1', 'th');
+    await renderApp('/dashboard');
+    await waitFor(() => expect(document.title).toBe('แดชบอร์ด | New Horizon'));
+    fireEvent.click(languageButton('EN'));
+    await waitFor(() => expect(document.title).toBe('Dashboard | New Horizon'));
   });
 });

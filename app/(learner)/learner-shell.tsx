@@ -1,12 +1,14 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import {
   type AppLanguage,
 } from '../learner-app';
 import { useApp } from '../learner-app-context';
-import { pathForStep, type AppStep } from '../learner-routes-model';
+import { pathForStep, stepForPath, type AppStep } from '../learner-routes-model';
 
 const primaryNavigation: { step: Exclude<AppStep, 'lab'>; label: string }[] = [
   { step: 'home', label: 'Home' },
@@ -31,6 +33,14 @@ export default function LearnerShell({ children }: { children: React.ReactNode }
     toggleSurveyAnswer,
   } = useApp();
   const pathname = usePathname();
+  const titles = useTranslations('titles');
+  const routeStep = stepForPath(pathname);
+
+  // Route metadata is rendered on the server in the default language, so the
+  // tab title follows the chosen language here.
+  useEffect(() => {
+    document.title = titles(routeStep);
+  }, [routeStep, titles]);
 
   return (
     <main>
