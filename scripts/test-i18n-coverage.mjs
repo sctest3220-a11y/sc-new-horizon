@@ -75,6 +75,7 @@ function isRendered(node, sourceFile) {
 function scanSources() {
   const hardCoded = [];
   const usedKeys = new Set();
+  const literalKeys = new Set(); // keys passed to t() as literals; each must exist
   for (const file of sourceFiles) {
     const source = fs.readFileSync(new URL(file, root), 'utf8');
     const sourceFile = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -92,20 +93,29 @@ function scanSources() {
       }
       return null;
     };
+    const namespaces = new Set();
+    const literals = new Set();
     (function visit(node) {
+      if (ts.isStringLiteral(node)) literals.add(node.text);
+      if (ts.isCallExpression(node) && node.expression.getText(sourceFile) === 'useTranslations' && node.arguments[0] && ts.isStringLiteral(node.arguments[0])) namespaces.add(node.arguments[0].text);
       if (ts.isJsxText(node) && /[A-Za-z]{2}/.test(node.text.replace(/&[a-zA-Z]+;/g, '')) && !untranslatedAllowlist.has(node.text.trim())) hardCoded.push(`${where(node)} "${node.text.trim().slice(0, 60)}"`);
+      if ((ts.isTemplateExpression(node) || ts.isNoSubstitutionTemplateLiteral(node)) && /[A-Za-z]{3}/.test(node.getText(sourceFile).replace(/\$\{[^}]*\}/g, '')) && isRendered(node, sourceFile)) hardCoded.push(`${where(node)} ${node.getText(sourceFile).slice(0, 60)}`);
       if (ts.isStringLiteral(node) && /[A-Za-z]{2}/.test(node.text) && !isEmail(node.text) && !untranslatedAllowlist.has(node.text) && isRendered(node, sourceFile)) hardCoded.push(`${where(node)} "${node.text.slice(0, 60)}"`);
       if (ts.isCallExpression(node) && ['t', 't.rich', 't.markup'].includes(node.expression.getText(sourceFile)) && node.arguments[0] && ts.isStringLiteral(node.arguments[0])) {
         const namespace = namespaceOf(node);
-        usedKeys.add(namespace ? `${namespace}.${node.arguments[0].text}` : `?${where(node)}`);
+        const key = namespace ? `${namespace}.${node.arguments[0].text}` : `?${where(node)}`;
+        usedKeys.add(key);
+        literalKeys.add(key);
       }
       ts.forEachChild(node, visit);
     })(sourceFile);
+    // Keys looked up through a variable (t(label)) appear as string literals elsewhere in the file.
+    for (const namespace of namespaces) for (const literal of literals) usedKeys.add(`${namespace}.${literal}`);
   }
-  return { hardCoded, usedKeys };
+  return { hardCoded, usedKeys, literalKeys };
 }
 
-const { hardCoded, usedKeys } = scanSources();
+const { hardCoded, usedKeys, literalKeys } = scanSources();
 
 test('no visible text in the learner app is hard-coded outside the catalogs', () => {
   assert.deepEqual(hardCoded, []);
@@ -132,9 +142,9 @@ test('every message is non-empty, valid ICU, and uses the same arguments in ever
 });
 
 test('every key the code uses exists, and every message is used', () => {
-  const unresolved = [...usedKeys].filter((key) => key.startsWith('?'));
+  const unresolved = [...literalKeys].filter((key) => key.startsWith('?'));
   assert.deepEqual(unresolved, [], 't() calls without a useTranslations namespace');
-  const missing = [...usedKeys].filter((key) => !(key in flat.en));
+  const missing = [...literalKeys].filter((key) => !(key in flat.en));
   assert.deepEqual(missing, [], 'keys used in code but missing from en.json');
   // Titles are looked up by route (titles(routeStep)), not by a literal key.
   const unused = Object.keys(flat.en).filter((key) => !key.startsWith('titles.') && !usedKeys.has(key));

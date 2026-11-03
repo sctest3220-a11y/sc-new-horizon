@@ -82,7 +82,7 @@ export default function DeveloperReportScreen() {
                   <span style={{ color: domains[domain].color }}>{domain} · {domains[domain].short}</span>
                   <strong>{fullStackDeveloperReport.scores[domain]}/100</strong>
                   <meter min="0" max="100" value={fullStackDeveloperReport.scores[domain]} />
-                  <small>{gap > 0 ? `${gap} points below target` : t('atOrAboveTarget')}</small>
+                  <small>{gap > 0 ? t('pointsBelowTarget', { gap }) : t('atOrAboveTarget')}</small>
                 </button>
               );
             })}

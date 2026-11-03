@@ -290,8 +290,8 @@ export default function AssessmentRunScreen() {
                           <span>{index + 1}</span>
                           <strong>{item?.label}</strong>
                           <div>
-                            <button onClick={() => moveRankItem(index, index - 1)} aria-label={`Move ${item?.label} up`}>{t('up')}</button>
-                            <button onClick={() => moveRankItem(index, index + 1)} aria-label={`Move ${item?.label} down`}>{t('down')}</button>
+                            <button onClick={() => moveRankItem(index, index - 1)} aria-label={t('moveItemUp', { item: item?.label ?? '' })}>{t('up')}</button>
+                            <button onClick={() => moveRankItem(index, index + 1)} aria-label={t('moveItemDown', { item: item?.label ?? '' })}>{t('down')}</button>
                           </div>
                         </div>
                       );
@@ -560,7 +560,7 @@ export default function AssessmentRunScreen() {
                 <span>{t('nextStep')}</span>
                 <p>
                   {pendingQuestion
-                    ? `Next item: ${pendingQuestion.domain} · ${domains[pendingQuestion.domain].short} · ${pendingQuestion.difficulty} · ${pendingQuestion.type}.`
+                    ? t('nextItem', { domain: pendingQuestion.domain, domainName: domains[pendingQuestion.domain].short, difficulty: pendingQuestion.difficulty, type: pendingQuestion.type })
                     : t('assessmentCompleteResultsAreReady')}
                 </p>
                 {pendingQuestion && (

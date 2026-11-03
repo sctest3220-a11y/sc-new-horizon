@@ -10,15 +10,15 @@ import {
 import { useApp } from '../learner-app-context';
 import { pathForStep, stepForPath, type AppStep } from '../learner-routes-model';
 
-const primaryNavigation: { step: Exclude<AppStep, 'lab'>; label: string }[] = [
-  { step: 'home', label: 'Home' },
-  { step: 'onboarding', label: 'Assessment' },
-  { step: 'premiumOnboarding', label: 'Premium' },
-  { step: 'learningLabs', label: 'AI Labs' },
-  { step: 'news', label: 'AI Watch' },
-  { step: 'dashboard', label: 'Dashboard' },
-  { step: 'admin', label: 'Admin' },
-];
+const primaryNavigation = [
+  { step: 'home', label: 'navHome' },
+  { step: 'onboarding', label: 'navAssessment' },
+  { step: 'premiumOnboarding', label: 'navPremium' },
+  { step: 'learningLabs', label: 'navLabs' },
+  { step: 'news', label: 'navWatch' },
+  { step: 'dashboard', label: 'navDashboard' },
+  { step: 'admin', label: 'navAdmin' },
+] as const satisfies readonly { step: Exclude<AppStep, 'lab'>; label: string }[];
 
 export default function LearnerShell({ children }: { children: React.ReactNode }) {
   const t = useTranslations('shell');
@@ -107,7 +107,7 @@ export default function LearnerShell({ children }: { children: React.ReactNode }
             const href = pathForStep(step);
             return (
               <Link key={step} href={href} aria-current={pathname === href ? 'page' : undefined}>
-                {label}
+                {t(label)}
               </Link>
             );
           })}

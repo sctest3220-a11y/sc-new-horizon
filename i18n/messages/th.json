@@ -30,7 +30,14 @@
     "language": "ภาษา",
     "en": "EN",
     "th": "TH",
-    "start": "เริ่ม"
+    "start": "เริ่ม",
+    "navHome": "หน้าแรก",
+    "navAssessment": "แบบประเมิน",
+    "navPremium": "Premium",
+    "navLabs": "AI Labs",
+    "navWatch": "AI Watch",
+    "navDashboard": "Dashboard",
+    "navAdmin": "Admin"
   },
   "home": {
     "optionalProfilePulse": "คำถาม Profile สั้นๆ",
@@ -117,7 +124,38 @@
     "premiumAssessment": "Premium Assessment",
     "deeperDiagnosisForPeopleWho": "วิเคราะห์ลึกขึ้นสำหรับคนที่ต้องการมากกว่าคะแนน",
     "theMvpPremiumPilotAdds": "Premium Pilot ของ MVP เพิ่มบริบท Function, Industry และบทบาท การประเมินแบบปรับตามผู้ใช้ที่ยาวขึ้น การทบทวนหลักฐาน ภาษาที่แม่นยำ เส้นทางสู่ภาวะผู้นำ และแผนการเรียนรู้ที่ละเอียดขึ้น",
-    "pilotGradeNowDesignedFor": "ตอนนี้อยู่ในระดับ Pilot และออกแบบมาเพื่อใช้ Psychometrics ที่ปรับเทียบแล้วเมื่อเก็บข้อมูลคำตอบได้เพียงพอ"
+    "pilotGradeNowDesignedFor": "ตอนนี้อยู่ในระดับ Pilot และออกแบบมาเพื่อใช้ Psychometrics ที่ปรับเทียบแล้วเมื่อเก็บข้อมูลคำตอบได้เพียงพอ",
+    "rawArtifacts": "Artifact ดิบ",
+    "invoicesReportsPoliciesSourcePackets": "Invoice, Report, Policy, Source Packet, Workflow",
+    "questionFormats2": "รูปแบบคำถาม",
+    "singleMultiSelectMatchingDrag": "ตัวเลือกเดียว, หลายตัวเลือก, จับคู่, เรียงลำดับ, เขียนตอบ, คำถามย่อย",
+    "adaptiveEngine": "Adaptive Engine",
+    "domainCoveragePlusDifficultyUp": "ครอบคลุม Domain และปรับระดับความยากหลังแต่ละคำตอบ",
+    "decisionOutput": "ผลลัพธ์เพื่อใช้ตัดสินใจ",
+    "d1D6RadarGroupAverage": "Radar D1-D6, ค่าเฉลี่ยกลุ่ม, เป้าหมายวิจัย, Learning Path",
+    "howAnswersDifficultyCompetenciesDomains": "คำตอบ ระดับความยาก Competency Domain และ Confidence กลายเป็นคะแนนอย่างไร",
+    "globalFrameworks": "Framework ระดับโลก",
+    "howNewHorizonMapsTo": "New Horizon เชื่อมกับ UNESCO, OECD, NIST, EU AI Act, DigComp, ISO และ AI Verify อย่างไร",
+    "adaptiveTesting": "Adaptive Testing",
+    "whyTheTestContinuesWhen": "ทำไมระบบจึงแนะนำให้ทำต่อเมื่อ Coverage หรือ Confidence ยังไม่พอ",
+    "evidenceOverOpinion": "หลักฐานสำคัญกว่าความเห็น",
+    "theAssessmentAsksUsersTo": "Assessment ให้ผู้ใช้พิสูจน์ว่าอะไรควรเชื่อ ปฏิเสธ แก้ไข หรือส่งต่อให้คนรับผิดชอบ",
+    "adaptiveUnderTheHood": "ระบบปรับคำถามอยู่เบื้องหลัง",
+    "difficultyAndDomainFocusMove": "ระดับความยากและ Domain จะเปลี่ยนตามคะแนนโดยประมาณและช่องว่างของหลักฐาน",
+    "usefulAfterTheScore": "มีประโยชน์หลังรู้คะแนน",
+    "resultsPointToCompetenciesPractical": "ผลลัพธ์ชี้ไปที่ Competency, ทักษะใช้งานจริง, Benchmark และทางเลือกการเรียนรู้",
+    "buildALightProfile": "สร้าง Profile แบบสั้น",
+    "chooseYourAudienceRoleTools": "เลือกกลุ่มผู้ใช้ บทบาท เครื่องมือ ความสนใจ และความคุ้นเคยกับเครื่องมือ",
+    "answerAdaptiveScenarios": "ตอบสถานการณ์ที่ปรับตามคุณ",
+    "questionsCreateDomainCompetencySkill": "คำถามสร้างสัญญาณด้าน Domain, Competency, ทักษะ, ระดับความยาก และพฤติกรรม",
+    "decideWhetherToKeepGoing": "ตัดสินใจว่าจะทำต่อไหม",
+    "ifConfidenceOrCoverageIs": "ถ้าความมั่นใจหรือความครอบคลุมยังต่ำ ระบบจะแนะนำคำถามเจาะจงก่อนสรุปผล",
+    "followALearningPath": "ไปตาม Learning Path",
+    "seeToolsConceptsLabsAnd": "ดู Tool, Concept, Lab และ Course ที่ตรงกับ Profile และช่องว่างของคุณ",
+    "functionContext": "บริบทตาม Function",
+    "industryScenarios": "สถานการณ์ตาม Industry",
+    "leadershipRoleContext": "บริบทบทบาทผู้นำ",
+    "premiumLearningPlan": "แผนการเรียนรู้ Premium"
   },
   "dashboard": {
     "registeredUserLandingPage": "หน้าแรกสำหรับผู้ใช้ที่ลงทะเบียน",
@@ -325,7 +363,16 @@
     "recentTrend": "แนวโน้มล่าสุด",
     "latestAssessmentRuns": "Run ของ Assessment ล่าสุด",
     "noSavedRunsYetComplete": "ยังไม่มี Run ที่บันทึกไว้ ทำ Assessment ให้เสร็จเพื่อแสดงแนวโน้มใน Admin",
-    "notAvailable": "ไม่มี"
+    "notAvailable": "ไม่มี",
+    "whichArtifactsTriggerZoomOpen": "Artifact ใดที่ทำให้ผู้ใช้ซูม เปิดไฟล์ และใช้เวลาตอบนาน",
+    "whichQuestionsLookConfusingBecause": "คำถามใดดูสับสน เพราะผู้ใช้แก้คำตอบบ่อยหรือตอบช้า",
+    "whichCompetenciesRemainUnsampledOr": "Competency ใดยังไม่ถูกวัดหรือยังมีความเชื่อมั่นต่ำหลังตอบ 20 ข้อ",
+    "whichSurveyCommentsPointTo": "ความเห็นใน Survey ใดชี้ถึง Artifact ที่ไม่สมจริง ถ้อยคำที่ไม่ชัด หรือหัวข้อที่ขาดไป",
+    "approveRejectOrRewriteEach": "อนุมัติ ปฏิเสธ หรือเขียนข้อเสนอของแต่ละ Agent ใหม่",
+    "versionScoredItemsSoHistorical": "กำหนดเวอร์ชันให้ Item ที่ใช้คิดคะแนน เพื่อให้อธิบายคะแนนย้อนหลังได้",
+    "reviewNewArtifactsForReadability": "ตรวจ Artifact ใหม่ด้านความอ่านง่ายและความเกี่ยวข้องก่อนเผยแพร่",
+    "keepProfileCollectionTransparentAnd": "เก็บข้อมูล Profile อย่างโปร่งใสและให้เป็นประโยชน์ต่อผู้เรียน",
+    "savedQuestionSignals": "บันทึกสัญญาณระดับคำถามแล้ว {count, plural, other {# รายการ}}"
   },
   "developerReport": {
     "generatedReportPreview": "ตัวอย่าง Report ที่สร้างขึ้น",
@@ -347,7 +394,8 @@
     "toolsAndPlatformsToExplore": "Tool และ Platform ที่น่าลองใช้",
     "practiceProjects": "โปรเจกต์สำหรับฝึก",
     "project": "โปรเจกต์ {number}",
-    "mvpPreviewThisReportUses": "MVP Preview: Report นี้ใช้หลักฐานจาก Assessment จำลองร่วมกับการ Crawl Course ในเครื่องด้วย Playwright เวอร์ชัน Production ควรสร้าง Report ฝั่ง Server โดยใช้ข้อมูลผู้ใช้ที่ได้รับความยินยอม เก็บ Report แยกตามเวอร์ชัน มี audit log และควบคุม Provider Key"
+    "mvpPreviewThisReportUses": "MVP Preview: Report นี้ใช้หลักฐานจาก Assessment จำลองร่วมกับการ Crawl Course ในเครื่องด้วย Playwright เวอร์ชัน Production ควรสร้าง Report ฝั่ง Server โดยใช้ข้อมูลผู้ใช้ที่ได้รับความยินยอม เก็บ Report แยกตามเวอร์ชัน มี audit log และควบคุม Provider Key",
+    "pointsBelowTarget": "ต่ำกว่าเป้าหมาย {gap} คะแนน"
   },
   "lab": {
     "backToLabs": "กลับไปที่ Labs",
@@ -375,7 +423,9 @@
     "englishKeywordHintsOnlyThis": "ตรวจเฉพาะคำสำคัญภาษาอังกฤษ ไม่ได้ประเมินความหมาย การเขียนภาษาไทย หรือความเชี่ยวชาญ",
     "whatWorked": "สิ่งที่ทำได้ดี",
     "improveNext": "ควรปรับปรุงต่อ",
-    "completeTheLabAndCheck": "ทำ Lab ให้เสร็จแล้วตรวจคำตอบ Feedback จะอธิบายว่าคุณทำอะไรได้ดี และควรปรับปรุงอะไรก่อนทำ Assessment ฉบับเต็ม"
+    "completeTheLabAndCheck": "ทำ Lab ให้เสร็จแล้วตรวจคำตอบ Feedback จะอธิบายว่าคุณทำอะไรได้ดี และควรปรับปรุงอะไรก่อนทำ Assessment ฉบับเต็ม",
+    "noStrongEvidenceYetTry": "ยังไม่มีหลักฐานที่ชัดเจน ลองเพิ่มการตรวจสอบหรือมาตรการควบคุมที่เป็นรูปธรรมอย่างน้อยหนึ่งข้อ",
+    "youCoveredTheKeyRequirements": "คุณครอบคลุมข้อกำหนดสำคัญของ Lab นี้แล้ว"
   },
   "onboarding": {
     "freeAssessment": "Assessment ฟรี",
@@ -538,7 +588,10 @@
     "addEvidenceQuestionsToImprove": "{summary} เพิ่ม {questionCount} คำถามเก็บหลักฐานเพื่อให้ครอบคลุมมากขึ้น",
     "keepGoing": "ทำต่อ",
     "switchToEnglish": "แสดงแอปเป็นภาษาอังกฤษ",
-    "switchToThai": "แสดงแอปเป็นภาษาไทย"
+    "switchToThai": "แสดงแอปเป็นภาษาไทย",
+    "moveItemUp": "เลื่อน {item} ขึ้น",
+    "moveItemDown": "เลื่อน {item} ลง",
+    "nextItem": "ข้อถัดไป: {domain} · {domainName} · {difficulty} · {type}"
   },
   "results": {
     "premiumLeadershipDiagnostic": "Premium Diagnostic สำหรับผู้บริหาร",
@@ -733,7 +786,16 @@
     "backToActivities": "กลับไปที่กิจกรรม",
     "startFullFreeAssessment": "เริ่ม Assessment ฟรีแบบเต็ม",
     "startPremiumDiagnostic": "เริ่ม Premium Diagnostic",
-    "tryFreeVersion": "ลองเวอร์ชันฟรี"
+    "tryFreeVersion": "ลองเวอร์ชันฟรี",
+    "retakeAssessment": "ทำ Assessment {mode, select, executive {Executive} premium {Premium} other {ฟรี}} อีกครั้ง",
+    "groupAverageFor": "{detail} สำหรับ{group}",
+    "noSavedGroupYet": "ยังไม่มีข้อมูล{group}ที่บันทึกไว้ ผลรอบนี้จะเป็นจุดเริ่มต้นของค่าเฉลี่ยกลุ่ม",
+    "readinessPointsAcross": "{points} คะแนนความพร้อม จากสัญญาณหลักฐานถ่วงน้ำหนัก {count, plural, other {# รายการ}}",
+    "benchmarkAverage": "เฉลี่ย {averageScore}/100 จาก {attempts, plural, other {# ครั้ง}} ใช้เวลาเฉลี่ย {duration}",
+    "pointsBelowTarget": "ต่ำกว่าเป้าหมาย {gap} คะแนน",
+    "recommendationsTunedExecutive": "คำแนะนำปรับให้เหมาะกับการตัดสินใจกำกับดูแลของ{role}",
+    "recommendationsTunedFunction": "คำแนะนำปรับให้เหมาะกับ {functionLabel} และ {industry}",
+    "functionInIndustry": "{functionLabel} ใน{industry}"
   },
   "components": {
     "headlineSignal": "ข้อมูลหลัก",
@@ -753,7 +815,12 @@
     "yourScore": "<i></i>คะแนนของคุณ",
     "competencyRadar": "Radar ของ Competency ใน {domain}",
     "ofCompetenciesSampledInThis": "ประเมิน Competency แล้ว {scoredCount} จาก {length} รายการในรอบนี้",
-    "notSampled": "ยังไม่ได้ประเมิน"
+    "notSampled": "ยังไม่ได้ประเมิน",
+    "openArtifactFullSize": "เปิด {label} แบบเต็มขนาด",
+    "fullSizeArtifact": "Artifact {label} แบบเต็มขนาด",
+    "drillIntoDomain": "ดูรายละเอียด {domain} {name}",
+    "competencyRadarGraph": "กราฟ Radar ของ Competency ใน{name}",
+    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {ยังไม่ได้วัด}}"
   },
   "app": {
     "questionFeedback": "Feedback ของคำถาม",

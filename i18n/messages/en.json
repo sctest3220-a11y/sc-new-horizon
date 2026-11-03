@@ -30,7 +30,14 @@
     "language": "Language",
     "en": "EN",
     "th": "TH",
-    "start": "Start"
+    "start": "Start",
+    "navHome": "Home",
+    "navAssessment": "Assessment",
+    "navPremium": "Premium",
+    "navLabs": "AI Labs",
+    "navWatch": "AI Watch",
+    "navDashboard": "Dashboard",
+    "navAdmin": "Admin"
   },
   "home": {
     "optionalProfilePulse": "Optional profile pulse",
@@ -117,7 +124,38 @@
     "premiumAssessment": "Premium assessment",
     "deeperDiagnosisForPeopleWho": "Deeper diagnosis for people who want more than a score.",
     "theMvpPremiumPilotAdds": "The MVP premium pilot adds function, industry, role context, a longer adaptive run, evidence review, precision language, leadership pathways, and a richer learning plan.",
-    "pilotGradeNowDesignedFor": "Pilot-grade now, designed for calibrated psychometrics after response data is collected."
+    "pilotGradeNowDesignedFor": "Pilot-grade now, designed for calibrated psychometrics after response data is collected.",
+    "rawArtifacts": "Raw artifacts",
+    "invoicesReportsPoliciesSourcePackets": "Invoices, reports, policies, source packets, workflows",
+    "questionFormats2": "Question formats",
+    "singleMultiSelectMatchingDrag": "Single, multi-select, matching, drag-order, written response, mini-parts",
+    "adaptiveEngine": "Adaptive engine",
+    "domainCoveragePlusDifficultyUp": "Domain coverage plus difficulty up/down after each answer",
+    "decisionOutput": "Decision output",
+    "d1D6RadarGroupAverage": "D1-D6 radar, group average, research target, learning path",
+    "howAnswersDifficultyCompetenciesDomains": "How answers, difficulty, competencies, domains, and confidence become the score.",
+    "globalFrameworks": "Global frameworks",
+    "howNewHorizonMapsTo": "How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.",
+    "adaptiveTesting": "Adaptive testing",
+    "whyTheTestContinuesWhen": "Why the test continues when coverage or confidence is not strong enough.",
+    "evidenceOverOpinion": "Evidence over opinion",
+    "theAssessmentAsksUsersTo": "The assessment asks users to prove what they trust, reject, revise, or escalate.",
+    "adaptiveUnderTheHood": "Adaptive under the hood",
+    "difficultyAndDomainFocusMove": "Difficulty and domain focus move as the score estimate and coverage gaps change.",
+    "usefulAfterTheScore": "Useful after the score",
+    "resultsPointToCompetenciesPractical": "Results point to competencies, practical skills, benchmarks, and real learning options.",
+    "buildALightProfile": "Build a light profile",
+    "chooseYourAudienceRoleTools": "Choose your audience, role, tools, interests, and peer-tool awareness.",
+    "answerAdaptiveScenarios": "Answer adaptive scenarios",
+    "questionsCreateDomainCompetencySkill": "Questions create domain, competency, skill, difficulty, and behavior signals.",
+    "decideWhetherToKeepGoing": "Decide whether to keep going",
+    "ifConfidenceOrCoverageIs": "If confidence or coverage is weak, add targeted questions before final results.",
+    "followALearningPath": "Follow a learning path",
+    "seeToolsConceptsLabsAnd": "See tools, concepts, labs, and courses matched to your profile and gaps.",
+    "functionContext": "Function context",
+    "industryScenarios": "Industry scenarios",
+    "leadershipRoleContext": "Leadership role context",
+    "premiumLearningPlan": "Premium learning plan"
   },
   "dashboard": {
     "registeredUserLandingPage": "Registered user landing page",
@@ -325,7 +363,16 @@
     "recentTrend": "Recent trend",
     "latestAssessmentRuns": "Latest assessment runs",
     "noSavedRunsYetComplete": "No saved runs yet. Complete assessments to populate admin trends.",
-    "notAvailable": "n/a"
+    "notAvailable": "n/a",
+    "whichArtifactsTriggerZoomOpen": "Which artifacts trigger zoom/open-file behavior and long answer time?",
+    "whichQuestionsLookConfusingBecause": "Which questions look confusing because users revise often or answer slowly?",
+    "whichCompetenciesRemainUnsampledOr": "Which competencies remain unsampled or low-confidence after 20 questions?",
+    "whichSurveyCommentsPointTo": "Which survey comments point to unrealistic artifacts, unclear wording, or missing topics?",
+    "approveRejectOrRewriteEach": "Approve, reject, or rewrite each agent proposal.",
+    "versionScoredItemsSoHistorical": "Version scored items so historical scores stay explainable.",
+    "reviewNewArtifactsForReadability": "Review new artifacts for readability and relevance before release.",
+    "keepProfileCollectionTransparentAnd": "Keep profile collection transparent and useful to the learner.",
+    "savedQuestionSignals": "{count, plural, one {# saved question signal} other {# saved question signals}}"
   },
   "developerReport": {
     "generatedReportPreview": "Generated report preview",
@@ -347,7 +394,8 @@
     "toolsAndPlatformsToExplore": "Tools and platforms to explore",
     "practiceProjects": "Practice projects",
     "project": "Project {number}",
-    "mvpPreviewThisReportUses": "MVP preview: this report uses simulated assessment evidence plus the local Playwright course crawl. Production should generate reports server-side with consented user data, stored report versions, audit logs, and provider-key controls."
+    "mvpPreviewThisReportUses": "MVP preview: this report uses simulated assessment evidence plus the local Playwright course crawl. Production should generate reports server-side with consented user data, stored report versions, audit logs, and provider-key controls.",
+    "pointsBelowTarget": "{gap} points below target"
   },
   "lab": {
     "backToLabs": "Back to Labs",
@@ -375,7 +423,9 @@
     "englishKeywordHintsOnlyThis": "English keyword hints only. This does not evaluate meaning, Thai writing, or mastery.",
     "whatWorked": "What worked",
     "improveNext": "Improve next",
-    "completeTheLabAndCheck": "Complete the lab and check your work. Feedback will explain what you handled well and what to improve before the full assessment."
+    "completeTheLabAndCheck": "Complete the lab and check your work. Feedback will explain what you handled well and what to improve before the full assessment.",
+    "noStrongEvidenceYetTry": "No strong evidence yet. Try adding one concrete check or control.",
+    "youCoveredTheKeyRequirements": "You covered the key requirements for this lab."
   },
   "onboarding": {
     "freeAssessment": "Free assessment",
@@ -538,7 +588,10 @@
     "addEvidenceQuestionsToImprove": "{summary} Add {questionCount} evidence questions to improve coverage.",
     "keepGoing": "Keep going",
     "switchToEnglish": "Show the app in English",
-    "switchToThai": "Show the app in Thai"
+    "switchToThai": "Show the app in Thai",
+    "moveItemUp": "Move {item} up",
+    "moveItemDown": "Move {item} down",
+    "nextItem": "Next item: {domain} · {domainName} · {difficulty} · {type}."
   },
   "results": {
     "premiumLeadershipDiagnostic": "Premium leadership diagnostic",
@@ -733,7 +786,16 @@
     "backToActivities": "Back to Activities",
     "startFullFreeAssessment": "Start Full Free Assessment",
     "startPremiumDiagnostic": "Start Premium Diagnostic",
-    "tryFreeVersion": "Try Free Version"
+    "tryFreeVersion": "Try Free Version",
+    "retakeAssessment": "Retake {mode, select, executive {Executive} premium {Premium} other {Free}} Assessment",
+    "groupAverageFor": "{detail} for {group}.",
+    "noSavedGroupYet": "No saved {group} yet; this run will start the group average.",
+    "readinessPointsAcross": "{points} readiness points across {count, plural, one {# weighted evidence signal} other {# weighted evidence signals}}.",
+    "benchmarkAverage": "{averageScore}/100 average across {attempts, plural, one {# attempt} other {# attempts}}; {duration} average time.",
+    "pointsBelowTarget": "{gap} points below target",
+    "recommendationsTunedExecutive": "Recommendations tuned for {role} oversight decisions.",
+    "recommendationsTunedFunction": "Recommendations tuned for {functionLabel} and {industry}.",
+    "functionInIndustry": "{functionLabel} in {industry}"
   },
   "components": {
     "headlineSignal": "headline signal",
@@ -753,7 +815,12 @@
     "yourScore": "<i></i>Your score",
     "competencyRadar": "{domain} competency radar",
     "ofCompetenciesSampledInThis": "{scoredCount} of {length} competencies sampled in this run.",
-    "notSampled": "Not sampled"
+    "notSampled": "Not sampled",
+    "openArtifactFullSize": "Open {label} full size",
+    "fullSizeArtifact": "{label} full-size artifact",
+    "drillIntoDomain": "Drill into {domain} {name}",
+    "competencyRadarGraph": "{name} competency radar graph",
+    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {not sampled}}"
   },
   "app": {
     "questionFeedback": "Question feedback",

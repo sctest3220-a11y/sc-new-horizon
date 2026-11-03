@@ -12641,7 +12641,7 @@ function StimulusFigure({
           </div>
           <button type="button" className="secondary dark" onClick={openReader}>{t('readFullSize')}</button>
         </div>
-        <button type="button" className="stimulus-media" onClick={openReader} aria-label={`Open ${stimulus.label} full size`}>
+        <button type="button" className="stimulus-media" onClick={openReader} aria-label={t('openArtifactFullSize', { label: stimulus.label })}>
           {/* Preserve each SVG/PNG artifact's own aspect ratio instead of forcing a Next image size. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={stimulus.src} alt={stimulus.alt} loading="lazy" decoding="async" />
@@ -12650,7 +12650,7 @@ function StimulusFigure({
       </figure>
       {readerOpen && (
         <div className="artifact-reader-backdrop" role="presentation">
-          <section className="artifact-reader" role="dialog" aria-modal="true" aria-label={`${stimulus.label} full-size artifact`}>
+          <section className="artifact-reader" role="dialog" aria-modal="true" aria-label={t('fullSizeArtifact', { label: stimulus.label })}>
             <div className="artifact-reader-toolbar">
               <div>
                 <span>{t('artifactReader')}</span>
@@ -12794,7 +12794,7 @@ function RadarChart({
                 className="radar-hotspot"
                 onClick={() => onSelectDomain(point.domain)}
               >
-                <title>{`Drill into ${point.domain} ${domains[point.domain].name}`}</title>
+                <title>{t('drillIntoDomain', { domain: point.domain, name: domains[point.domain].name })}</title>
               </circle>
             )}
           </g>
@@ -12885,7 +12885,7 @@ function CompetencyRadar({
         <strong>{domains[domain].short}</strong>
         <p>{t('ofCompetenciesSampledInThis', { scoredCount: scoredCount, length: safeCompetencies.length })}</p>
       </div>
-      <svg viewBox="0 0 300 300" role="img" aria-label={`${domains[domain].name} competency radar graph`} className="competency-radar">
+      <svg viewBox="0 0 300 300" role="img" aria-label={t('competencyRadarGraph', { name: domains[domain].name })} className="competency-radar">
         {[0.25, 0.5, 0.75, 1].map((ring) => (
           <polygon
             key={ring}
@@ -12907,7 +12907,7 @@ function CompetencyRadar({
           return (
             <g key={point.competency.id}>
               <circle cx={pointX} cy={pointY} r={(point.competency.evidenceCount ?? 0) > 0 ? '5' : '3'} fill={domains[domain].color}>
-                <title>{`${point.competency.label}: ${(point.competency.evidenceCount ?? 0) > 0 ? `${score}/100` : 'not sampled'}`}</title>
+                <title>{t('competencyPoint', { label: point.competency.label, sampled: (point.competency.evidenceCount ?? 0) > 0 ? 'yes' : 'no', score })}</title>
               </circle>
               <text x={point.labelX} y={point.labelY} textAnchor={point.labelAnchor} dominantBaseline="middle" className="competency-radar-label">
                 C{index + 1}

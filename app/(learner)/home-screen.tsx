@@ -110,10 +110,10 @@ export default function HomeScreen() {
             </div>
             <div className="assessment-snapshot" aria-label={t('assessmentPlatformSnapshot')}>
               {[
-                ['Raw artifacts', 'Invoices, reports, policies, source packets, workflows'],
-                ['Question formats', 'Single, multi-select, matching, drag-order, written response, mini-parts'],
-                ['Adaptive engine', 'Domain coverage plus difficulty up/down after each answer'],
-                ['Decision output', 'D1-D6 radar, group average, research target, learning path'],
+                [t('rawArtifacts'), t('invoicesReportsPoliciesSourcePackets')],
+                [t('questionFormats2'), t('singleMultiSelectMatchingDrag')],
+                [t('adaptiveEngine'), t('domainCoveragePlusDifficultyUp')],
+                [t('decisionOutput'), t('d1D6RadarGroupAverage')],
               ].map(([title, body]) => (
                 <div key={title}>
                   <span>{title}</span>
@@ -138,9 +138,9 @@ export default function HomeScreen() {
 
         <section className="home-menu-tabs" aria-label={t('homeGuideMenu')}>
           {[
-            ['Scoring model', 'How answers, difficulty, competencies, domains, and confidence become the score.', 'scoring-model'],
-            ['Global frameworks', 'How New Horizon maps to UNESCO, OECD, NIST, EU AI Act, DigComp, ISO, and AI Verify.', 'global-frameworks'],
-            ['Adaptive testing', 'Why the test continues when coverage or confidence is not strong enough.', 'process'],
+            [t('scoringModel'), t('howAnswersDifficultyCompetenciesDomains'), 'scoring-model'],
+            [t('globalFrameworks'), t('howNewHorizonMapsTo'), 'global-frameworks'],
+            [t('adaptiveTesting'), t('whyTheTestContinuesWhen'), 'process'],
           ].map(([title, body, target]) => (
             <a key={title} href={`#${target}`}>
               <span>{title}</span>
@@ -295,9 +295,9 @@ export default function HomeScreen() {
           </div>
           <div className="card-grid">
             {[
-              ['Evidence over opinion', 'The assessment asks users to prove what they trust, reject, revise, or escalate.'],
-              ['Adaptive under the hood', 'Difficulty and domain focus move as the score estimate and coverage gaps change.'],
-              ['Useful after the score', 'Results point to competencies, practical skills, benchmarks, and real learning options.'],
+              [t('evidenceOverOpinion'), t('theAssessmentAsksUsersTo')],
+              [t('adaptiveUnderTheHood'), t('difficultyAndDomainFocusMove')],
+              [t('usefulAfterTheScore'), t('resultsPointToCompetenciesPractical')],
             ].map(([title, body]) => (
               <article className="info-card" key={title}>
                 <h3>{title}</h3>
@@ -394,10 +394,10 @@ export default function HomeScreen() {
           <h2>{t('oneClearFlowFromAssessment')}</h2>
           <div className="steps">
             {[
-              ['01', 'Build a light profile', 'Choose your audience, role, tools, interests, and peer-tool awareness.'],
-              ['02', 'Answer adaptive scenarios', 'Questions create domain, competency, skill, difficulty, and behavior signals.'],
-              ['03', 'Decide whether to keep going', 'If confidence or coverage is weak, add targeted questions before final results.'],
-              ['04', 'Follow a learning path', 'See tools, concepts, labs, and courses matched to your profile and gaps.'],
+              ['01', t('buildALightProfile'), t('chooseYourAudienceRoleTools')],
+              ['02', t('answerAdaptiveScenarios'), t('questionsCreateDomainCompetencySkill')],
+              ['03', t('decideWhetherToKeepGoing'), t('ifConfidenceOrCoverageIs')],
+              ['04', t('followALearningPath'), t('seeToolsConceptsLabsAnd')],
             ].map(([num, title, body]) => (
               <article className="step-card" key={num}>
                 <span>{num}</span>
@@ -463,7 +463,7 @@ export default function HomeScreen() {
             </p>
           </div>
           <div className="premium-grid">
-            {['Function context', 'Industry scenarios', 'Leadership role context', 'Premium learning plan'].map((item) => (
+            {[t('functionContext'), t('industryScenarios'), t('leadershipRoleContext'), t('premiumLearningPlan')].map((item) => (
               <article className="info-card" key={item}>
                 <h3>{item}</h3>
                 <p>{t('pilotGradeNowDesignedFor')}</p>

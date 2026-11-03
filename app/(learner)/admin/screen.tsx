@@ -407,7 +407,7 @@ export default function AdminScreen() {
                   <span>{t('assessmentQuality')}</span>
                   <h2>{t('n10PointQualityAnalysisSuite')}</h2>
                 </div>
-                <small>{adminAnalytics.totalQuestionSignals ? `${adminAnalytics.totalQuestionSignals} saved question signals` : t('insufficientDataUntilUsersComplete')}</small>
+                <small>{adminAnalytics.totalQuestionSignals ? t('savedQuestionSignals', { count: adminAnalytics.totalQuestionSignals }) : t('insufficientDataUntilUsersComplete')}</small>
               </div>
               <div className="quality-suite-grid">
                 <div>
@@ -493,19 +493,19 @@ export default function AdminScreen() {
                 <div>
                   <h3>{t('analysisQuestions')}</h3>
                   {[
-                    'Which artifacts trigger zoom/open-file behavior and long answer time?',
-                    'Which questions look confusing because users revise often or answer slowly?',
-                    'Which competencies remain unsampled or low-confidence after 20 questions?',
-                    'Which survey comments point to unrealistic artifacts, unclear wording, or missing topics?',
+                    t('whichArtifactsTriggerZoomOpen'),
+                    t('whichQuestionsLookConfusingBecause'),
+                    t('whichCompetenciesRemainUnsampledOr'),
+                    t('whichSurveyCommentsPointTo'),
                   ].map((item) => <p key={item}>{item}</p>)}
                 </div>
                 <div>
                   <h3>{t('humanDecision')}</h3>
                   {[
-                    'Approve, reject, or rewrite each agent proposal.',
-                    'Version scored items so historical scores stay explainable.',
-                    'Review new artifacts for readability and relevance before release.',
-                    'Keep profile collection transparent and useful to the learner.',
+                    t('approveRejectOrRewriteEach'),
+                    t('versionScoredItemsSoHistorical'),
+                    t('reviewNewArtifactsForReadability'),
+                    t('keepProfileCollectionTransparentAnd'),
                   ].map((item) => <p key={item}>{item}</p>)}
                 </div>
               </div>

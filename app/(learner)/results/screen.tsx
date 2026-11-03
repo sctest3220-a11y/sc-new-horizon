@@ -139,8 +139,8 @@ export default function ResultsScreen() {
           <h2>{t('scoreInterpretation')}</h2>
           <div className="evidence-grid">
             <p>{t.rich('yourScoreASampledReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
-            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? `${groupAverageProfile.detail} for ${scoreGroup.label.toLowerCase()}.` : `No saved ${scoreGroup.label.toLowerCase()} yet; this run will start the group average.`}</p>
-            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? `${functionLabels[functionTrack].toLowerCase()} in ${industryLabels[industryTrack].toLowerCase()}` : audienceLabels[audience].toLowerCase() })}</p>
+            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? t('groupAverageFor', { detail: groupAverageProfile.detail, group: scoreGroup.label.toLowerCase() }) : t('noSavedGroupYet', { group: scoreGroup.label.toLowerCase() })}</p>
+            <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? executiveLabels[executiveRole].toLowerCase() : mode === 'premium' ? t('functionInIndustry', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() }) : audienceLabels[audience].toLowerCase() })}</p>
           </div>
         </article>
         <article className="result-card wide score-calculation-card analysis-primary">
@@ -193,7 +193,7 @@ export default function ResultsScreen() {
                   <strong>{domains[row.domain].short}</strong>
                   <b>{row.score}/100</b>
                   <small>{row.calculation}</small>
-                  <p>{row.count ? `${row.points} readiness points across ${row.count} weighted evidence signal${row.count === 1 ? '' : 's'}.` : t('noSampledEvidenceInThis')}</p>
+                  <p>{row.count ? t('readinessPointsAcross', { points: row.points, count: row.count }) : t('noSampledEvidenceInThis')}</p>
                 </div>
               ))}
             </div>
@@ -408,7 +408,7 @@ export default function ResultsScreen() {
                     <p><strong>{t('expectedEvidence2')}</strong> {getCorrectAnswerSummary(answer.question)}</p>
                     <p><strong>{t('measured2')}</strong> {getQuestionMeasures(answer.question).map((competency) => competency.label).join(', ')}</p>
                     <p>{t.rich('behaviorInteractionsRevisions', { strong: (chunks) => <strong>{chunks}</strong>, interactions: answer.behavior?.interactionCount ?? 0, revisions: answer.behavior?.revisionCount ?? 0 })}</p>
-                    <p><strong>{t('localComparison')}</strong> {benchmark ? `${benchmark.averageScore}/100 average across ${benchmark.attempts} attempt${benchmark.attempts === 1 ? '' : 's'}; ${formatDuration(benchmark.averageDurationMs)} average time.` : t('noComparisonDataYet')}</p>
+                    <p><strong>{t('localComparison')}</strong> {benchmark ? t('benchmarkAverage', { averageScore: benchmark.averageScore, attempts: benchmark.attempts, duration: formatDuration(benchmark.averageDurationMs) }) : t('noComparisonDataYet')}</p>
                   </details>
                 );
               })}
@@ -449,7 +449,7 @@ export default function ResultsScreen() {
                   <span style={{ color: selectedRadarDomain === domain ? undefined : domains[domain].color }}>{domain} · {domains[domain].short}</span>
                   <strong>{assessed ? `${results.domainScores[domain]}/100` : t('notAssessed')}</strong>
                   {assessed ? <meter min="0" max="100" value={results.domainScores[domain]} /> : <div className="unassessed-meter" aria-label={t('notAssessed')} />}
-                  <small>{assessed ? (gap > 0 ? `${gap} points below target` : t('atOrAboveTarget')) : t('noQuestionSampledThisDomain')}</small>
+                  <small>{assessed ? (gap > 0 ? t('pointsBelowTarget', { gap }) : t('atOrAboveTarget')) : t('noQuestionSampledThisDomain')}</small>
                 </button>
               );
             })}
@@ -739,7 +739,7 @@ export default function ResultsScreen() {
             <h2>{t('evidenceSummary')}</h2>
             <div className="evidence-grid">
               <p><strong>{t('adaptiveCoverage')}</strong> {mode === 'executive' ? t('executiveWeightedD5D4D6') : t('d1D6SampledWithExtra')}</p>
-              <p><strong>{t('scenarioContext')}</strong> {mode === 'executive' ? `Recommendations tuned for ${executiveLabels[executiveRole].toLowerCase()} oversight decisions.` : `Recommendations tuned for ${functionLabels[functionTrack].toLowerCase()} and ${industryLabels[industryTrack].toLowerCase()}.`}</p>
+              <p><strong>{t('scenarioContext')}</strong> {mode === 'executive' ? t('recommendationsTunedExecutive', { role: executiveLabels[executiveRole].toLowerCase() }) : t('recommendationsTunedFunction', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() })}</p>
               <p>{t.rich('targetStatusResearchInformedTargets', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
             </div>
             <div className="source-list">
@@ -788,7 +788,7 @@ export default function ResultsScreen() {
         </div>
         <div className="hero-actions">
           <button className="primary" onClick={() => mode === 'practice' ? showHomeSection('labs') : startAssessment(mode)}>
-            {mode === 'practice' ? t('backToActivities') : `Retake ${mode === 'executive' ? 'Executive' : mode === 'premium' ? 'Premium' : 'Free'} Assessment`}
+            {mode === 'practice' ? t('backToActivities') : t('retakeAssessment', { mode })}
           </button>
           {mode === 'practice' && <button className="secondary dark" onClick={() => setStep('onboarding')}>{t('startFullFreeAssessment')}</button>}
           {mode === 'free' && <button className="secondary dark" onClick={() => setStep('premiumOnboarding')}>{t('startPremiumDiagnostic')}</button>}

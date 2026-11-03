@@ -199,13 +199,13 @@ export default function LabScreen() {
               <p>{labEvaluation.summary}</p>
               <div>
                 <h3>{t('whatWorked')}</h3>
-                {(labEvaluation.strengths.length ? labEvaluation.strengths : ['No strong evidence yet. Try adding one concrete check or control.']).map((item) => (
+                {(labEvaluation.strengths.length ? labEvaluation.strengths : [t('noStrongEvidenceYetTry')]).map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </div>
               <div>
                 <h3>{t('improveNext')}</h3>
-                {(labEvaluation.misses.length ? labEvaluation.misses : ['You covered the key requirements for this lab.']).map((item) => (
+                {(labEvaluation.misses.length ? labEvaluation.misses : [t('youCoveredTheKeyRequirements')]).map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </div>
