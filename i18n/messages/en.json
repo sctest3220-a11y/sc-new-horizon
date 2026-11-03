@@ -797,7 +797,8 @@
     "recommendationsTunedExecutive": "Recommendations tuned for {role} oversight decisions.",
     "recommendationsTunedFunction": "Recommendations tuned for {functionLabel} and {industry}.",
     "functionInIndustry": "{functionLabel} in {industry}",
-    "evidenceReadout": "{count, plural, =0 {All planned and profile-priority competencies have high-confidence evidence for this route.} one {# relevant competency still needs stronger evidence before the profile should be treated as high-confidence.} other {# relevant competencies still need stronger evidence before the profile should be treated as high-confidence.}}"
+    "evidenceReadout": "{count, plural, =0 {All planned and profile-priority competencies have high-confidence evidence for this route.} one {# relevant competency still needs stronger evidence before the profile should be treated as high-confidence.} other {# relevant competencies still need stronger evidence before the profile should be treated as high-confidence.}}",
+    "savedRunsOnDevice": "{count, plural, one {# saved run on this device} other {# saved runs on this device}}"
   },
   "components": {
     "headlineSignal": "headline signal",
@@ -822,7 +823,8 @@
     "fullSizeArtifact": "{label} full-size artifact",
     "drillIntoDomain": "Drill into {domain} {name}",
     "competencyRadarGraph": "{name} competency radar graph",
-    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {not sampled}}"
+    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {not sampled}}",
+    "savedRunsOnDevice": "{count, plural, one {# saved run on this device} other {# saved runs on this device}}"
   },
   "app": {
     "questionFeedback": "Question feedback",

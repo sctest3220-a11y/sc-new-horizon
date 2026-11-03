@@ -797,7 +797,8 @@
     "recommendationsTunedExecutive": "คำแนะนำปรับให้เหมาะกับการตัดสินใจกำกับดูแลของ{role}",
     "recommendationsTunedFunction": "คำแนะนำปรับให้เหมาะกับ {functionLabel} และ {industry}",
     "functionInIndustry": "{functionLabel} ใน{industry}",
-    "evidenceReadout": "{count, plural, =0 {Competency ที่วางแผนไว้และที่สำคัญต่อ Profile ทั้งหมดมีหลักฐานที่มีความเชื่อมั่นสูงแล้วสำหรับเส้นทางนี้} other {ยังมี Competency ที่เกี่ยวข้อง # ด้านที่ต้องการหลักฐานที่ชัดขึ้น ก่อนจะถือว่า Profile นี้มีความเชื่อมั่นสูง}}"
+    "evidenceReadout": "{count, plural, =0 {Competency ที่วางแผนไว้และที่สำคัญต่อ Profile ทั้งหมดมีหลักฐานที่มีความเชื่อมั่นสูงแล้วสำหรับเส้นทางนี้} other {ยังมี Competency ที่เกี่ยวข้อง # ด้านที่ต้องการหลักฐานที่ชัดขึ้น ก่อนจะถือว่า Profile นี้มีความเชื่อมั่นสูง}}",
+    "savedRunsOnDevice": "บันทึกไว้ในเครื่องนี้ {count, plural, other {# ครั้ง}}"
   },
   "components": {
     "headlineSignal": "ข้อมูลหลัก",
@@ -822,7 +823,8 @@
     "fullSizeArtifact": "Artifact {label} แบบเต็มขนาด",
     "drillIntoDomain": "ดูรายละเอียด {domain} {name}",
     "competencyRadarGraph": "กราฟ Radar ของ Competency ใน{name}",
-    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {ยังไม่ได้วัด}}"
+    "competencyPoint": "{label}: {sampled, select, yes {{score}/100} other {ยังไม่ได้วัด}}",
+    "savedRunsOnDevice": "บันทึกไว้ในเครื่องนี้ {count, plural, other {# ครั้ง}}"
   },
   "app": {
     "questionFeedback": "Feedback ของคำถาม",
@@ -836,8 +838,8 @@
     "artifactIrrelevantAnswerTooObvious": "Artifact ไม่เกี่ยวข้อง, คำตอบเดาง่าย, คำถามไม่ชัดเจน...",
     "clear": "ชัดเจน",
     "save": "บันทึก",
-    "labIncluded": "มี {item} แล้ว",
-    "labAdd": "เพิ่ม {item}",
+    "labIncluded": "มี{item}แล้ว",
+    "labAdd": "เพิ่ม{item}",
     "labStep": "{position}. {label}",
     "labShouldBe": "{label} → {correct}",
     "answerSelectedOptions": "{count, plural, =0 {ไม่ได้เลือกตัวเลือก} other {เลือก # ตัวเลือก}}",

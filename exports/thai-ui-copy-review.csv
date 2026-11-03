@@ -1,4 +1,5 @@
 file,key,english,thai,status
+i18n/content/th.json,0 raw -> 0 readiness,0 raw -> 0 readiness,คะแนนดิบ 0 → ความพร้อม 0,draft 2026-11-03
 i18n/content/th.json,1 day,1 day,1 วัน,draft 2026-11-03
 i18n/content/th.json,1 day or 2 half-days,1 day or 2 half-days,1 วัน หรือครึ่งวัน 2 ครั้ง,draft 2026-11-03
 i18n/content/th.json,1-3 days by role,1-3 days by role,1-3 วัน ตามบทบาท,draft 2026-11-03
@@ -195,6 +196,8 @@ i18n/content/th.json,Blank or unattempted responses receive 0 raw score and 0 re
 i18n/content/th.json,"Blended online, bootcamp, hackathon, internship","Blended online, bootcamp, hackathon, internship",ผสมผสานออนไลน์ Bootcamp Hackathon และฝึกงาน,draft 2026-11-03
 i18n/content/th.json,Board,Board,คณะกรรมการบริษัท,draft 2026-11-03
 i18n/content/th.json,Board / Investor,Board / Investor,คณะกรรมการบริษัท / นักลงทุน,draft 2026-11-03
+i18n/content/th.json,Board / Investor group,Board / Investor group,กลุ่ม คณะกรรมการบริษัท / นักลงทุน,draft 2026-11-03
+i18n/content/th.json,Board / Investor group average,Board / Investor group average,ค่าเฉลี่ยกลุ่ม คณะกรรมการบริษัท / นักลงทุน,draft 2026-11-03
 i18n/content/th.json,Board member,Board member,กรรมการบริษัท,draft 2026-11-03
 i18n/content/th.json,Board-grade evidence review,Board-grade evidence review,การทบทวนหลักฐานในระดับที่นำเสนอคณะกรรมการบริษัทได้,draft 2026-11-03
 i18n/content/th.json,Board-ready measurement view,Board-ready measurement view,มุมมองการวัดผลที่พร้อมนำเสนอคณะกรรมการบริษัท,draft 2026-11-03
@@ -214,13 +217,21 @@ i18n/content/th.json,"Builds the baseline mental model needed before users rely 
 i18n/content/th.json,CDO,CDO,CDO,draft 2026-11-03
 i18n/content/th.json,CEO,CEO,CEO,draft 2026-11-03
 i18n/content/th.json,CEO / Managing Director,CEO / Managing Director,CEO / กรรมการผู้จัดการ,draft 2026-11-03
+i18n/content/th.json,CEO / Managing Director group,CEO / Managing Director group,กลุ่ม CEO / กรรมการผู้จัดการ,draft 2026-11-03
+i18n/content/th.json,CEO / Managing Director group average,CEO / Managing Director group average,ค่าเฉลี่ยกลุ่ม CEO / กรรมการผู้จัดการ,draft 2026-11-03
 i18n/content/th.json,CFO,CFO,CFO,draft 2026-11-03
 i18n/content/th.json,CFO / Risk leader,CFO / Risk leader,CFO / ผู้นำด้านความเสี่ยง,draft 2026-11-03
+i18n/content/th.json,CFO / Risk leader group,CFO / Risk leader group,กลุ่ม CFO / ผู้นำด้านความเสี่ยง,draft 2026-11-03
+i18n/content/th.json,CFO / Risk leader group average,CFO / Risk leader group average,ค่าเฉลี่ยกลุ่ม CFO / ผู้นำด้านความเสี่ยง,draft 2026-11-03
 i18n/content/th.json,CHRO,CHRO,CHRO,draft 2026-11-03
 i18n/content/th.json,CHRO / People leader,CHRO / People leader,CHRO / ผู้นำด้านบุคลากร,draft 2026-11-03
+i18n/content/th.json,CHRO / People leader group,CHRO / People leader group,กลุ่ม CHRO / ผู้นำด้านบุคลากร,draft 2026-11-03
+i18n/content/th.json,CHRO / People leader group average,CHRO / People leader group average,ค่าเฉลี่ยกลุ่ม CHRO / ผู้นำด้านบุคลากร,draft 2026-11-03
 i18n/content/th.json,CHULA MOOC,CHULA MOOC,CHULA MOOC,draft 2026-11-03
 i18n/content/th.json,CIO,CIO,CIO,draft 2026-11-03
 i18n/content/th.json,CIO / CDO / CTO,CIO / CDO / CTO,CIO / CDO / CTO,draft 2026-11-03
+i18n/content/th.json,CIO / CDO / CTO group,CIO / CDO / CTO group,กลุ่ม CIO / CDO / CTO,draft 2026-11-03
+i18n/content/th.json,CIO / CDO / CTO group average,CIO / CDO / CTO group average,ค่าเฉลี่ยกลุ่ม CIO / CDO / CTO,draft 2026-11-03
 i18n/content/th.json,CNN on YouTube,CNN on YouTube,CNN บน YouTube,draft 2026-11-03
 i18n/content/th.json,CRM,CRM,CRM,draft 2026-11-03
 i18n/content/th.json,CRM case notes,CRM case notes,บันทึกเคสใน CRM,draft 2026-11-03
@@ -303,6 +314,18 @@ i18n/content/th.json,Cursor,Cursor,Cursor,draft 2026-11-03
 i18n/content/th.json,Cursor Agent,Cursor Agent,Cursor Agent,draft 2026-11-03
 i18n/content/th.json,Cursor or Windsurf agents,Cursor or Windsurf agents,Agent ของ Cursor หรือ Windsurf,draft 2026-11-03
 i18n/content/th.json,Customer Service,Customer Service,บริการลูกค้า,draft 2026-11-03
+i18n/content/th.json,Customer Service / Education,Customer Service / Education,บริการลูกค้า / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Customer Service / Education average,Customer Service / Education average,ค่าเฉลี่ย บริการลูกค้า / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Customer Service / Financial services,Customer Service / Financial services,บริการลูกค้า / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Customer Service / Financial services average,Customer Service / Financial services average,ค่าเฉลี่ย บริการลูกค้า / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Customer Service / General,Customer Service / General,บริการลูกค้า / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Customer Service / General average,Customer Service / General average,ค่าเฉลี่ย บริการลูกค้า / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Customer Service / Healthcare,Customer Service / Healthcare,บริการลูกค้า / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Customer Service / Healthcare average,Customer Service / Healthcare average,ค่าเฉลี่ย บริการลูกค้า / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Customer Service / Public sector,Customer Service / Public sector,บริการลูกค้า / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Customer Service / Public sector average,Customer Service / Public sector average,ค่าเฉลี่ย บริการลูกค้า / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Customer Service / Retail & ecommerce,Customer Service / Retail & ecommerce,บริการลูกค้า / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Customer Service / Retail & ecommerce average,Customer Service / Retail & ecommerce average,ค่าเฉลี่ย บริการลูกค้า / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,Customer data may be copied into the wrong tool,Customer data may be copied into the wrong tool,ข้อมูลลูกค้าอาจถูกคัดลอกไปยังเครื่องมือที่ไม่ถูกต้อง,draft 2026-11-03
 i18n/content/th.json,Customer experience,Customer experience,ประสบการณ์ลูกค้า,draft 2026-11-03
 i18n/content/th.json,Customer impact,Customer impact,ผลกระทบต่อลูกค้า,draft 2026-11-03
@@ -372,12 +395,25 @@ i18n/content/th.json,"Each answered artifact, written response, and multi-part i
 i18n/content/th.json,"Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.","Each item starts with the selected option, matching accuracy, ranking accuracy, multi-select credit, written rubric hits, or mini-part scores. Blank responses score 0.",แต่ละข้อเริ่มจากคะแนนของตัวเลือกที่เลือก ความถูกต้องของการจับคู่ ความถูกต้องของการเรียงลำดับ คะแนนจากการเลือกหลายข้อ เกณฑ์การให้คะแนนที่ตอบตรงในคำตอบแบบเขียน หรือคะแนนคำถามย่อย คำตอบที่เว้นว่างได้ 0 คะแนน,draft 2026-11-03
 i18n/content/th.json,Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.,Each scored signal maps to one or more competencies. The competency score is the average of readiness evidence collected for that competency.,สัญญาณที่นำไปคิดคะแนนแต่ละรายการเชื่อมกับ Competency อย่างน้อยหนึ่งรายการ คะแนน Competency คือค่าเฉลี่ยของ Readiness Evidence ที่เก็บได้สำหรับ Competency นั้น,draft 2026-11-03
 i18n/content/th.json,Education,Education,การศึกษา,draft 2026-11-03
+i18n/content/th.json,Educator average,Educator average,ค่าเฉลี่ยกลุ่มผู้สอน,draft 2026-11-03
 i18n/content/th.json,Email assistant,Email assistant,ผู้ช่วยอีเมล,draft 2026-11-03
 i18n/content/th.json,Email drafting,Email drafting,การร่างอีเมล,draft 2026-11-03
 i18n/content/th.json,Employee complaints,Employee complaints,ข้อร้องเรียนของพนักงาน,draft 2026-11-03
 i18n/content/th.json,Employee trust,Employee trust,ความไว้วางใจของพนักงาน,draft 2026-11-03
 i18n/content/th.json,Engagement analysis,Engagement analysis,การวิเคราะห์ Engagement,draft 2026-11-03
 i18n/content/th.json,Engineering & Data,Engineering & Data,วิศวกรรมและข้อมูล,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Education,Engineering & Data / Education,วิศวกรรมและข้อมูล / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Education average,Engineering & Data / Education average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Financial services,Engineering & Data / Financial services,วิศวกรรมและข้อมูล / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Financial services average,Engineering & Data / Financial services average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / General,Engineering & Data / General,วิศวกรรมและข้อมูล / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / General average,Engineering & Data / General average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Healthcare,Engineering & Data / Healthcare,วิศวกรรมและข้อมูล / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Healthcare average,Engineering & Data / Healthcare average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Public sector,Engineering & Data / Public sector,วิศวกรรมและข้อมูล / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Public sector average,Engineering & Data / Public sector average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Retail & ecommerce,Engineering & Data / Retail & ecommerce,วิศวกรรมและข้อมูล / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Engineering & Data / Retail & ecommerce average,Engineering & Data / Retail & ecommerce average,ค่าเฉลี่ย วิศวกรรมและข้อมูล / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,"Enterprise AI adoption is moving faster than governance in many organizations, especially where autonomous agents can act in operational systems.","Enterprise AI adoption is moving faster than governance in many organizations, especially where autonomous agents can act in operational systems.",ในหลายองค์กร การนำ AI มาใช้เดินหน้าเร็วกว่าการกำกับดูแล โดยเฉพาะในจุดที่ AI agent แบบอัตโนมัติสามารถดำเนินการในระบบปฏิบัติงานได้,draft 2026-11-03
 i18n/content/th.json,Enterprise governance in place,Enterprise governance in place,มีการกำกับดูแลระดับองค์กรแล้ว,draft 2026-11-03
 i18n/content/th.json,Escalation and correction path,Escalation and correction path,ช่องทางส่งต่อและแก้ไข,draft 2026-11-03
@@ -406,7 +442,18 @@ i18n/content/th.json,Facilitate prompt repair,Facilitate prompt repair,นำก
 i18n/content/th.json,Facilitator guide,Facilitator guide,คู่มือผู้ดำเนินกิจกรรม,draft 2026-11-03
 i18n/content/th.json,Feedback and improvement loop,Feedback and improvement loop,วงจรรับ Feedback และปรับปรุง,draft 2026-11-03
 i18n/content/th.json,Finance,Finance,การเงิน,draft 2026-11-03
+i18n/content/th.json,Finance / Education,Finance / Education,การเงิน / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Finance / Education average,Finance / Education average,ค่าเฉลี่ย การเงิน / การศึกษา,draft 2026-11-03
 i18n/content/th.json,Finance / Financial services,Finance / Financial services,การเงิน / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Finance / Financial services average,Finance / Financial services average,ค่าเฉลี่ย การเงิน / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Finance / General,Finance / General,การเงิน / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Finance / General average,Finance / General average,ค่าเฉลี่ย การเงิน / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Finance / Healthcare,Finance / Healthcare,การเงิน / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Finance / Healthcare average,Finance / Healthcare average,ค่าเฉลี่ย การเงิน / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Finance / Public sector,Finance / Public sector,การเงิน / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Finance / Public sector average,Finance / Public sector average,ค่าเฉลี่ย การเงิน / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Finance / Retail & ecommerce,Finance / Retail & ecommerce,การเงิน / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Finance / Retail & ecommerce average,Finance / Retail & ecommerce average,ค่าเฉลี่ย การเงิน / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,Finance users with similar jobs often explore these. Which do you know or want to learn?,Finance users with similar jobs often explore these. Which do you know or want to learn?,ผู้ใช้สายการเงินที่ทำงานคล้ายกันมักศึกษาเรื่องเหล่านี้ คุณรู้จักหรืออยากเรียนรู้เรื่องใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,Finance variance explanation,Finance variance explanation,การอธิบายผลต่าง (variance) ทางการเงิน,draft 2026-11-03
 i18n/content/th.json,Financial services,Financial services,บริการทางการเงิน,draft 2026-11-03
@@ -446,6 +493,18 @@ i18n/content/th.json,General average,General average,ค่าเฉลี่ย
 i18n/content/th.json,General target,General target,เป้าหมายกลุ่มทั่วไป,draft 2026-11-03
 i18n/content/th.json,General user,General user,ผู้ใช้ทั่วไป,draft 2026-11-03
 i18n/content/th.json,General users who need practical prompting foundations before deeper adaptive assessment.,General users who need practical prompting foundations before deeper adaptive assessment.,ผู้ใช้ทั่วไปที่ต้องการพื้นฐานการเขียน prompt ที่ใช้ได้จริง ก่อนทำ Assessment แบบปรับตามผู้ใช้ที่ลึกขึ้น,draft 2026-11-03
+i18n/content/th.json,General work / Education,General work / Education,งานทั่วไป / การศึกษา,draft 2026-11-03
+i18n/content/th.json,General work / Education average,General work / Education average,ค่าเฉลี่ย งานทั่วไป / การศึกษา,draft 2026-11-03
+i18n/content/th.json,General work / Financial services,General work / Financial services,งานทั่วไป / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,General work / Financial services average,General work / Financial services average,ค่าเฉลี่ย งานทั่วไป / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,General work / General,General work / General,งานทั่วไป / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,General work / General average,General work / General average,ค่าเฉลี่ย งานทั่วไป / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,General work / Healthcare,General work / Healthcare,งานทั่วไป / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,General work / Healthcare average,General work / Healthcare average,ค่าเฉลี่ย งานทั่วไป / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,General work / Public sector,General work / Public sector,งานทั่วไป / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,General work / Public sector average,General work / Public sector average,ค่าเฉลี่ย งานทั่วไป / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,General work / Retail & ecommerce,General work / Retail & ecommerce,งานทั่วไป / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,General work / Retail & ecommerce average,General work / Retail & ecommerce average,ค่าเฉลี่ย งานทั่วไป / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,"General, student, creator, and non-technical professional users who need a broad practical AI-literacy path.","General, student, creator, and non-technical professional users who need a broad practical AI-literacy path.",ผู้ใช้ทั่วไป นักเรียนนักศึกษา ครีเอเตอร์ และผู้ทำงานสายที่ไม่ใช่เทคนิค ที่ต้องการเส้นทาง AI literacy เชิงปฏิบัติแบบรอบด้าน,draft 2026-11-03
 i18n/content/th.json,Generate first-draft ideas -> AI can help; human sets direction | Approve a sensitive customer refund -> Human owns the decision | Rewrite a note for tone -> AI can draft; human checks meaning,Generate first-draft ideas -> AI can help; human sets direction | Approve a sensitive customer refund -> Human owns the decision | Rewrite a note for tone -> AI can draft; human checks meaning,สร้างไอเดียฉบับร่างแรก -> AI ช่วยได้ คนกำหนดทิศทาง | อนุมัติการคืนเงินลูกค้าที่อ่อนไหว -> คนเป็นผู้ตัดสินใจ | เขียนบันทึกใหม่ให้น้ำเสียงเหมาะสม -> AI ร่างได้ คนตรวจความหมาย,draft 2026-11-03
 i18n/content/th.json,Generative AI Foundations,Generative AI Foundations,Generative AI Foundations,draft 2026-11-03
@@ -470,6 +529,18 @@ i18n/content/th.json,Governance rollout,Governance rollout,การนำกา
 i18n/content/th.json,Growth,Growth,การเติบโต,draft 2026-11-03
 i18n/content/th.json,HR,HR,HR,draft 2026-11-03
 i18n/content/th.json,HR & People,HR & People,HR และบุคลากร,draft 2026-11-03
+i18n/content/th.json,HR & People / Education,HR & People / Education,HR และบุคลากร / การศึกษา,draft 2026-11-03
+i18n/content/th.json,HR & People / Education average,HR & People / Education average,ค่าเฉลี่ย HR และบุคลากร / การศึกษา,draft 2026-11-03
+i18n/content/th.json,HR & People / Financial services,HR & People / Financial services,HR และบุคลากร / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,HR & People / Financial services average,HR & People / Financial services average,ค่าเฉลี่ย HR และบุคลากร / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,HR & People / General,HR & People / General,HR และบุคลากร / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,HR & People / General average,HR & People / General average,ค่าเฉลี่ย HR และบุคลากร / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,HR & People / Healthcare,HR & People / Healthcare,HR และบุคลากร / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,HR & People / Healthcare average,HR & People / Healthcare average,ค่าเฉลี่ย HR และบุคลากร / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,HR & People / Public sector,HR & People / Public sector,HR และบุคลากร / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,HR & People / Public sector average,HR & People / Public sector average,ค่าเฉลี่ย HR และบุคลากร / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,HR & People / Retail & ecommerce,HR & People / Retail & ecommerce,HR และบุคลากร / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,HR & People / Retail & ecommerce average,HR & People / Retail & ecommerce average,ค่าเฉลี่ย HR และบุคลากร / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,HR policy and fairness review,HR policy and fairness review,การทบทวนนโยบาย HR และความเป็นธรรม,draft 2026-11-03
 i18n/content/th.json,HR teams with similar work often explore these. Which do you know or want to learn?,HR teams with similar work often explore these. Which do you know or want to learn?,ทีม HR ที่ทำงานคล้ายกันมักศึกษาเรื่องเหล่านี้ คุณรู้จักหรืออยากเรียนรู้เรื่องใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,Hallucinated case history,Hallucinated case history,ประวัติเคสที่ AI กุขึ้น (hallucination),draft 2026-11-03
@@ -588,7 +659,19 @@ i18n/content/th.json,"Many teams see productivity gains before they can prove bu
 i18n/content/th.json,Map controls to AI risks,Map controls to AI risks,จับคู่มาตรการควบคุมกับความเสี่ยงด้าน AI,draft 2026-11-03
 i18n/content/th.json,"Map review points, quality metrics, exception paths, and adoption measures for high-value workflows.","Map review points, quality metrics, exception paths, and adoption measures for high-value workflows.",กำหนดจุดตรวจทาน ตัวชี้วัดคุณภาพ เส้นทางจัดการกรณียกเว้น และตัวชี้วัดการนำไปใช้ สำหรับ Workflow ที่มีมูลค่าสูง,draft 2026-11-03
 i18n/content/th.json,Marketing,Marketing,การตลาด,draft 2026-11-03
+i18n/content/th.json,Marketing / Education,Marketing / Education,การตลาด / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Marketing / Education average,Marketing / Education average,ค่าเฉลี่ย การตลาด / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Marketing / Financial services,Marketing / Financial services,การตลาด / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Marketing / Financial services average,Marketing / Financial services average,ค่าเฉลี่ย การตลาด / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Marketing / General,Marketing / General,การตลาด / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Marketing / General average,Marketing / General average,ค่าเฉลี่ย การตลาด / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Marketing / Healthcare,Marketing / Healthcare,การตลาด / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Marketing / Healthcare average,Marketing / Healthcare average,ค่าเฉลี่ย การตลาด / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Marketing / Public sector,Marketing / Public sector,การตลาด / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Marketing / Public sector average,Marketing / Public sector average,ค่าเฉลี่ย การตลาด / ภาครัฐ,draft 2026-11-03
 i18n/content/th.json,Marketing / Retail,Marketing / Retail,การตลาด / ค้าปลีก,draft 2026-11-03
+i18n/content/th.json,Marketing / Retail & ecommerce,Marketing / Retail & ecommerce,การตลาด / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Marketing / Retail & ecommerce average,Marketing / Retail & ecommerce average,ค่าเฉลี่ย การตลาด / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,Marketing content and synthetic media review,Marketing content and synthetic media review,การตรวจทานคอนเทนต์การตลาดและสื่อสังเคราะห์,draft 2026-11-03
 i18n/content/th.json,Marketing teams like yours often use these. Which do you know or want to learn?,Marketing teams like yours often use these. Which do you know or want to learn?,ทีมการตลาดแบบเดียวกับคุณมักใช้เครื่องมือเหล่านี้ คุณรู้จักหรืออยากเรียนรู้เครื่องมือใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,"Marketing users whose profile signals include creative/campaign work or whose scores show weak media provenance, claims, or ROI judgment.","Marketing users whose profile signals include creative/campaign work or whose scores show weak media provenance, claims, or ROI judgment.",ผู้ใช้สายการตลาดที่สัญญาณใน Profile บ่งชี้ว่าทำงานด้านครีเอทีฟ/แคมเปญ หรือคะแนนแสดงว่ายังอ่อนด้านการพิจารณาที่มาของสื่อ (provenance) ข้อกล่าวอ้าง หรือ ROI,draft 2026-11-03
@@ -684,7 +767,18 @@ i18n/content/th.json,OpenAI API,OpenAI API,OpenAI API,draft 2026-11-03
 i18n/content/th.json,OpenAI Agents SDK,OpenAI Agents SDK,OpenAI Agents SDK,draft 2026-11-03
 i18n/content/th.json,Operating model,Operating model,โมเดลการดำเนินงาน,draft 2026-11-03
 i18n/content/th.json,Operations,Operations,งานปฏิบัติการ,draft 2026-11-03
+i18n/content/th.json,Operations / Education,Operations / Education,งานปฏิบัติการ / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Operations / Education average,Operations / Education average,ค่าเฉลี่ย งานปฏิบัติการ / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Operations / Financial services,Operations / Financial services,งานปฏิบัติการ / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Operations / Financial services average,Operations / Financial services average,ค่าเฉลี่ย งานปฏิบัติการ / บริการทางการเงิน,draft 2026-11-03
 i18n/content/th.json,Operations / General,Operations / General,งานปฏิบัติการ / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Operations / General average,Operations / General average,ค่าเฉลี่ย งานปฏิบัติการ / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Operations / Healthcare,Operations / Healthcare,งานปฏิบัติการ / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Operations / Healthcare average,Operations / Healthcare average,ค่าเฉลี่ย งานปฏิบัติการ / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Operations / Public sector,Operations / Public sector,งานปฏิบัติการ / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Operations / Public sector average,Operations / Public sector average,ค่าเฉลี่ย งานปฏิบัติการ / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Operations / Retail & ecommerce,Operations / Retail & ecommerce,งานปฏิบัติการ / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Operations / Retail & ecommerce average,Operations / Retail & ecommerce average,ค่าเฉลี่ย งานปฏิบัติการ / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,Operations teams with similar work often use these. Which do you know or want to learn?,Operations teams with similar work often use these. Which do you know or want to learn?,ทีมปฏิบัติการที่ทำงานลักษณะคล้ายกันมักใช้เครื่องมือเหล่านี้ คุณรู้จักหรืออยากเรียนรู้เครื่องมือใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,Optional deeper check,Optional deeper check,การตรวจเชิงลึกเพิ่มเติม (ไม่บังคับ),draft 2026-11-03
 i18n/content/th.json,Outside this short route,Outside this short route,อยู่นอกเส้นทางแบบสั้นนี้,draft 2026-11-03
@@ -737,6 +831,7 @@ i18n/content/th.json,Practical Application & Tooling,Practical Application & Too
 i18n/content/th.json,"Practical agent-building path for users weak in workflows, agents, and value realization.","Practical agent-building path for users weak in workflows, agents, and value realization.","เส้นทางฝึกสร้าง Agent เชิงปฏิบัติสำหรับผู้ใช้ที่ยังอ่อนด้าน Workflow, Agent และการสร้างมูลค่าให้เกิดขึ้นจริง",draft 2026-11-03
 i18n/content/th.json,"Practical tool use, prompt design, workflow integration, output refinement, and job-relevant application.","Practical tool use, prompt design, workflow integration, output refinement, and job-relevant application.",การใช้เครื่องมือเชิงปฏิบัติ การออกแบบ prompt การผสานเข้ากับ Workflow การปรับปรุงผลลัพธ์ และการประยุกต์ใช้ที่เกี่ยวข้องกับงาน,draft 2026-11-03
 i18n/content/th.json,Practice activity,Practice activity,กิจกรรมฝึกปฏิบัติ,draft 2026-11-03
+i18n/content/th.json,Practice activity average,Practice activity average,ค่าเฉลี่ยกิจกรรมฝึก,draft 2026-11-03
 i18n/content/th.json,"Practice chart forensics, citation-support checks, synthetic media response, and confidence calibration.","Practice chart forensics, citation-support checks, synthetic media response, and confidence calibration.",ฝึกตรวจพิสูจน์กราฟ การตรวจว่าการอ้างอิงรองรับข้อความจริง การรับมือสื่อสังเคราะห์ และการปรับระดับความมั่นใจให้สมเหตุสมผล,draft 2026-11-03
 i18n/content/th.json,"Practice next: compare your answer with the expected evidence, then name the missing check, control, or workflow step.","Practice next: compare your answer with the expected evidence, then name the missing check, control, or workflow step.",ฝึกต่อ: เปรียบเทียบคำตอบของคุณกับหลักฐานที่คาดหวัง แล้วระบุการตรวจสอบ มาตรการควบคุม หรือขั้นตอนใน Workflow ที่ขาดไป,draft 2026-11-03
 i18n/content/th.json,"Practice reusable prompt patterns, review checklists, and human-in-the-loop design.","Practice reusable prompt patterns, review checklists, and human-in-the-loop design.",ฝึกรูปแบบ prompt ที่นำกลับมาใช้ซ้ำได้ Checklist สำหรับตรวจทาน และการออกแบบที่มีการตรวจทานโดยคน (Human-in-the-loop),draft 2026-11-03
@@ -859,7 +954,19 @@ i18n/content/th.json,SOP copilots,SOP copilots,SOP copilot,draft 2026-11-03
 i18n/content/th.json,SOP drafting,SOP drafting,การร่าง SOP,draft 2026-11-03
 i18n/content/th.json,SOPs,SOPs,SOP,draft 2026-11-03
 i18n/content/th.json,Sales,Sales,ฝ่ายขาย,draft 2026-11-03
+i18n/content/th.json,Sales / Education,Sales / Education,ฝ่ายขาย / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Sales / Education average,Sales / Education average,ค่าเฉลี่ย ฝ่ายขาย / การศึกษา,draft 2026-11-03
+i18n/content/th.json,Sales / Financial services,Sales / Financial services,ฝ่ายขาย / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Sales / Financial services average,Sales / Financial services average,ค่าเฉลี่ย ฝ่ายขาย / บริการทางการเงิน,draft 2026-11-03
+i18n/content/th.json,Sales / General,Sales / General,ฝ่ายขาย / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Sales / General average,Sales / General average,ค่าเฉลี่ย ฝ่ายขาย / ทั่วไป,draft 2026-11-03
+i18n/content/th.json,Sales / Healthcare,Sales / Healthcare,ฝ่ายขาย / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Sales / Healthcare average,Sales / Healthcare average,ค่าเฉลี่ย ฝ่ายขาย / การแพทย์และสุขภาพ,draft 2026-11-03
+i18n/content/th.json,Sales / Public sector,Sales / Public sector,ฝ่ายขาย / ภาครัฐ,draft 2026-11-03
+i18n/content/th.json,Sales / Public sector average,Sales / Public sector average,ค่าเฉลี่ย ฝ่ายขาย / ภาครัฐ,draft 2026-11-03
 i18n/content/th.json,Sales / Retail,Sales / Retail,ฝ่ายขาย / ค้าปลีก,draft 2026-11-03
+i18n/content/th.json,Sales / Retail & ecommerce,Sales / Retail & ecommerce,ฝ่ายขาย / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
+i18n/content/th.json,Sales / Retail & ecommerce average,Sales / Retail & ecommerce average,ค่าเฉลี่ย ฝ่ายขาย / ค้าปลีกและอีคอมเมิร์ซ,draft 2026-11-03
 i18n/content/th.json,Sales CRM forecast check,Sales CRM forecast check,ตรวจการคาดการณ์ใน CRM ฝ่ายขาย,draft 2026-11-03
 i18n/content/th.json,Sales teams with similar needs often use these. Which do you know or want to learn?,Sales teams with similar needs often use these. Which do you know or want to learn?,ทีมขายที่มีความต้องการคล้ายกันมักใช้เครื่องมือเหล่านี้ คุณรู้จักหรืออยากเรียนรู้เครื่องมือใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,Salesforce Einstein,Salesforce Einstein,Salesforce Einstein,draft 2026-11-03
@@ -907,6 +1014,7 @@ i18n/content/th.json,"Strong evidence in D1-D6 awards badges such as Source Chec
 i18n/content/th.json,Strong free workforce option after low D1/D2 results.,Strong free workforce option after low D1/D2 results.,ตัวเลือกฟรีที่แข็งแรงสำหรับบุคลากร หลังได้ผล D1/D2 ต่ำ,draft 2026-11-03
 i18n/content/th.json,"Strong global baseline for general users, leaders, and professionals who need a concise AI readiness foundation.","Strong global baseline for general users, leaders, and professionals who need a concise AI readiness foundation.",ค่าฐาน (baseline) ระดับสากลที่แข็งแรงสำหรับผู้ใช้ทั่วไป ผู้นำ และผู้เชี่ยวชาญ ที่ต้องการพื้นฐานความพร้อมด้าน AI แบบกระชับ,draft 2026-11-03
 i18n/content/th.json,Strong users should know how to challenge “newer model is better” claims before choosing a tool for real work.,Strong users should know how to challenge “newer model is better” claims before choosing a tool for real work.,ผู้ใช้ที่เก่งควรรู้วิธีตั้งคำถามกับข้อกล่าวอ้างว่า “โมเดลใหม่กว่าดีกว่า” ก่อนเลือกเครื่องมือมาใช้กับงานจริง,draft 2026-11-03
+i18n/content/th.json,Student average,Student average,ค่าเฉลี่ยกลุ่มนักเรียน/นักศึกษา,draft 2026-11-03
 i18n/content/th.json,Submitted matching response,Submitted matching response,ส่งคำตอบแบบจับคู่แล้ว,draft 2026-11-03
 i18n/content/th.json,Submitted ordered sequence,Submitted ordered sequence,ส่งลำดับที่เรียงแล้ว,draft 2026-11-03
 i18n/content/th.json,Suggested replies,Suggested replies,คำตอบที่แนะนำ,draft 2026-11-03
@@ -927,6 +1035,7 @@ i18n/content/th.json,TDGA Public Training and e-Learning,TDGA Public Training an
 i18n/content/th.json,Talent readiness,Talent readiness,ความพร้อมของบุคลากร,draft 2026-11-03
 i18n/content/th.json,Task ownership,Task ownership,การกำหนดเจ้าของงาน,draft 2026-11-03
 i18n/content/th.json,Task ownership lab,Task ownership lab,Lab การกำหนดเจ้าของงาน,draft 2026-11-03
+i18n/content/th.json,Team average,Team average,ค่าเฉลี่ยกลุ่มทีม,draft 2026-11-03
 i18n/content/th.json,Team request: prepare a customer refund decision,Team request: prepare a customer refund decision,คำขอจากทีม: เตรียมการตัดสินใจคืนเงินให้ลูกค้า,draft 2026-11-03
 i18n/content/th.json,"Teams responsible for AI policy, vendor review, privacy, model risk, auditability, and human oversight.","Teams responsible for AI policy, vendor review, privacy, model risk, auditability, and human oversight.",ทีมที่รับผิดชอบนโยบาย AI การตรวจสอบผู้ให้บริการ ความเป็นส่วนตัว ความเสี่ยงของโมเดล ความสามารถในการตรวจสอบย้อนหลัง และการควบคุมดูแลโดยคน,draft 2026-11-03
 i18n/content/th.json,Technical / General,Technical / General,สายเทคนิค / ทั่วไป,draft 2026-11-03
@@ -970,6 +1079,8 @@ i18n/content/th.json,Track whether users open the full-size reader before answer
 i18n/content/th.json,Trainer,Trainer,ผู้ฝึกอบรม,draft 2026-11-03
 i18n/content/th.json,Training,Training,การฝึกอบรม,draft 2026-11-03
 i18n/content/th.json,Transformation sponsor,Transformation sponsor,ผู้สนับสนุนการเปลี่ยนแปลงองค์กร,draft 2026-11-03
+i18n/content/th.json,Transformation sponsor group,Transformation sponsor group,กลุ่ม ผู้สนับสนุนการเปลี่ยนแปลงองค์กร,draft 2026-11-03
+i18n/content/th.json,Transformation sponsor group average,Transformation sponsor group average,ค่าเฉลี่ยกลุ่ม ผู้สนับสนุนการเปลี่ยนแปลงองค์กร,draft 2026-11-03
 i18n/content/th.json,Transformation team,Transformation team,ทีมเปลี่ยนแปลงองค์กร,draft 2026-11-03
 i18n/content/th.json,Transformation teams often learn from these patterns. Which should we track for your profile?,Transformation teams often learn from these patterns. Which should we track for your profile?,ทีม Transformation มักเรียนรู้จากรูปแบบเหล่านี้ เราควรติดตามรูปแบบใดสำหรับ Profile ของคุณ?,draft 2026-11-03
 i18n/content/th.json,Trust,Trust,ความไว้วางใจ,draft 2026-11-03
@@ -1071,6 +1182,7 @@ i18n/content/th.json,Which sales systems do you use with AI?,Which sales systems
 i18n/content/th.json,Which service risk worries you most?,Which service risk worries you most?,ความเสี่ยงด้านบริการใดที่คุณกังวลที่สุด?,draft 2026-11-03
 i18n/content/th.json,Which support tools do you use?,Which support tools do you use?,คุณใช้เครื่องมือซัพพอร์ตใดบ้าง?,draft 2026-11-03
 i18n/content/th.json,Which technical AI capability are you interested to build next?,Which technical AI capability are you interested to build next?,คุณสนใจพัฒนาความสามารถด้าน AI เชิงเทคนิคด้านใดต่อไป?,draft 2026-11-03
+i18n/content/th.json,Work average,Work average,ค่าเฉลี่ยกลุ่มงาน,draft 2026-11-03
 i18n/content/th.json,Workflow Builder,Workflow Builder,Workflow Builder,draft 2026-11-03
 i18n/content/th.json,Workflow idea: let an AI agent respond to refund emails automatically,Workflow idea: let an AI agent respond to refund emails automatically,ไอเดีย Workflow: ให้ AI agent ตอบอีเมลขอคืนเงินโดยอัตโนมัติ,draft 2026-11-03
 i18n/content/th.json,Workflow lab,Workflow lab,Workflow Lab,draft 2026-11-03
@@ -1480,6 +1592,7 @@ i18n/messages/th.json,components.notSampled,Not sampled,ยังไม่ได
 i18n/messages/th.json,components.ofCompetenciesSampledInThis,{scoredCount} of {length} competencies sampled in this run.,ประเมิน Competency แล้ว {scoredCount} จาก {length} รายการในรอบนี้,draft 2026-11-03
 i18n/messages/th.json,components.openArtifactFullSize,Open {label} full size,เปิด {label} แบบเต็มขนาด,draft 2026-11-03
 i18n/messages/th.json,components.radarDomainKey,Radar domain key,คำอธิบาย Domain ใน Radar,draft 2026-11-03
+i18n/messages/th.json,components.savedRunsOnDevice,"{count, plural, one {# saved run on this device} other {# saved runs on this device}}","บันทึกไว้ในเครื่องนี้ {count, plural, other {# ครั้ง}}",draft 2026-11-03
 i18n/messages/th.json,components.sixDomainAiReadinessRadar,Six-domain AI readiness radar graph,กราฟ Radar ความพร้อมด้าน AI 6 Domain,draft 2026-11-03
 i18n/messages/th.json,components.targetComparisonKey,Target comparison key,คำอธิบายการเทียบกับเป้าหมาย,draft 2026-11-03
 i18n/messages/th.json,continuation.confidenceLow,Low confidence,ความเชื่อมั่นต่ำ,draft 2026-11-03
@@ -1683,6 +1796,7 @@ i18n/messages/th.json,results.rolePriority,Role priority,ความสำค�
 i18n/messages/th.json,results.sampled,Sampled,ทดสอบแล้ว,draft 2026-11-03
 i18n/messages/th.json,results.sampledCompetenciesBelowHighConfidence,{lowConfidence} sampled competencies below high confidence,Competency ที่ทดสอบแล้วแต่ความมั่นใจยังไม่สูง {lowConfidence} รายการ,draft 2026-11-03
 i18n/messages/th.json,results.savedRunsCompletedAssessmentRun,"<strong>Saved runs</strong> {totalRuns, plural, one {# completed assessment run} other {# completed assessment runs}} on this device.","<strong>Run ที่บันทึก</strong> {totalRuns, plural, other {Assessment ที่ทำเสร็จ # ครั้ง}} ในเครื่องนี้",draft 2026-11-03
+i18n/messages/th.json,results.savedRunsOnDevice,"{count, plural, one {# saved run on this device} other {# saved runs on this device}}","บันทึกไว้ในเครื่องนี้ {count, plural, other {# ครั้ง}}",draft 2026-11-03
 i18n/messages/th.json,results.scoredSignal,"{count, plural, one {# scored signal} other {# scored signals}}","{count, plural, other {สัญญาณที่คิดคะแนน # รายการ}}",draft 2026-11-03
 i18n/messages/th.json,results.skills,{rationale} Skills: {skills},{rationale} Skill: {skills},draft 2026-11-03
 i18n/messages/th.json,results.storedDimensionsAnonymousProfileId,"<strong>Stored dimensions</strong> Anonymous profile ID, survey tags, audience, function, industry, executive role, domain scores, competency scores, evidence-mode scores, question difficulty, item type, assessment mode, date, and group key.","<strong>ข้อมูลที่จัดเก็บ</strong> Profile ID แบบไม่ระบุตัวตน, Tag จาก Survey, Audience, Function, Industry, บทบาทผู้บริหาร, คะแนน Domain, คะแนน Competency, คะแนนตามรูปแบบหลักฐาน, ระดับความยากของคำถาม, ประเภทคำถาม, โหมด Assessment, วันที่ และ Group Key",draft 2026-11-03
@@ -1975,8 +2089,8 @@ i18n/messages/th.json,admin.trackedSessions,tracked sessions,Session ที่�
 i18n/messages/th.json,admin.userGroups,User groups,กลุ่มผู้ใช้,existing app copy
 i18n/messages/th.json,app.artifactIrrelevantAnswerTooObvious,"Artifact irrelevant, answer too obvious, wording unclear...","Artifact ไม่เกี่ยวข้อง, คำตอบเดาง่าย, คำถามไม่ชัดเจน...",existing app copy
 i18n/messages/th.json,app.clear,Clear,ชัดเจน,existing app copy
-i18n/messages/th.json,app.labAdd,Add {item},เพิ่ม {item},existing app copy
-i18n/messages/th.json,app.labIncluded,Included {item},มี {item} แล้ว,existing app copy
+i18n/messages/th.json,app.labAdd,Add {item},เพิ่ม{item},existing app copy
+i18n/messages/th.json,app.labIncluded,Included {item},มี{item}แล้ว,existing app copy
 i18n/messages/th.json,app.questionFeedback,Question feedback,Feedback ของคำถาม,existing app copy
 i18n/messages/th.json,app.quickFeedback,Quick feedback,Feedback สั้นๆ,existing app copy
 i18n/messages/th.json,app.save,Save,บันทึก,existing app copy

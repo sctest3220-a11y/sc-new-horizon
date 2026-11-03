@@ -28,6 +28,8 @@ import { useApp, useRequireFlowState } from '../../learner-app-context';
 
 export default function ResultsScreen() {
   const tc = useContent();
+  // Score formulas are language-neutral; only the worded ones ("No evidence = 0") are translated.
+  const formula = (text: string) => (/^round\(/.test(text) ? text : tc(text));
   const t = useTranslations('results');
   const {
     activeLearningCatalog,
@@ -145,7 +147,7 @@ export default function ResultsScreen() {
           <h2>{t('scoreInterpretation')}</h2>
           <div className="evidence-grid">
             <p>{t.rich('yourScoreASampledReadiness', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
-            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? t('groupAverageFor', { detail: tc(groupAverageProfile.detail), group: tc(scoreGroup.label.toLowerCase()) }) : t('noSavedGroupYet', { group: tc(scoreGroup.label.toLowerCase()) })}</p>
+            <p><strong>{t('groupAverage')}</strong> {groupAverageProfile ? t('groupAverageFor', { detail: groupAverageProfile.runCount !== undefined ? t('savedRunsOnDevice', { count: groupAverageProfile.runCount }) : tc(groupAverageProfile.detail), group: tc(scoreGroup.label.toLowerCase()) }) : t('noSavedGroupYet', { group: tc(scoreGroup.label.toLowerCase()) })}</p>
             <p>{t.rich('targetProfileResearchInformedTarget', { strong: (chunks) => <strong>{chunks}</strong>, profile: mode === 'executive' ? tc(executiveLabels[executiveRole].toLowerCase()) : tc(mode === 'premium' ? t('functionInIndustry', { functionLabel: functionLabels[functionTrack].toLowerCase(), industry: industryLabels[industryTrack].toLowerCase() }) : audienceLabels[audience].toLowerCase()) })}</p>
           </div>
         </article>
@@ -175,7 +177,7 @@ export default function ResultsScreen() {
                     <span>Q{index + 1}</span>
                     <strong>{tc(row.domain ?? '')} · {tc(difficultyLabels[row.difficulty])} · {tc(row.interaction ?? '')}</strong>
                     <b>{t('rawReadiness', { rawScore: row.rawScore, readinessScore: row.readinessScore })}</b>
-                    <small>{row.calculation}</small>
+                    <small>{formula(row.calculation)}</small>
                     {answer && (
                       <>
                         {/* Question text has its own reviewed translations (localizeQuestion), not the content catalog. */}
@@ -199,7 +201,7 @@ export default function ResultsScreen() {
                   <span>{tc(row.domain ?? '')}</span>
                   <strong>{tc(domains[row.domain].short)}</strong>
                   <b>{row.score}/100</b>
-                  <small>{row.calculation}</small>
+                  <small>{formula(row.calculation)}</small>
                   <p>{row.count ? t('readinessPointsAcross', { points: row.points, count: row.count }) : t('noSampledEvidenceInThis')}</p>
                 </div>
               ))}
@@ -310,7 +312,7 @@ export default function ResultsScreen() {
           <div className="report-heading">
             <div>
               <p className="eyebrow">{t('personaLeaderboard')}</p>
-              <h2>{t('top10', { cleanAverageLabel: cleanAverageLabel(scoreGroup.label) })}</h2>
+              <h2>{t('top10', { cleanAverageLabel: tc(cleanAverageLabel(scoreGroup.label)) })}</h2>
             </div>
             <span>{t('rankedRun', { count: personaLeaderboard.length })}</span>
           </div>
@@ -428,7 +430,7 @@ export default function ResultsScreen() {
               <p className="eyebrow">{t('personalizedAiReport')}</p>
               <h2>{tc(generatedReport.headline)}</h2>
             </div>
-            <span>{cleanAverageLabel(scoreGroup.label)}</span>
+            <span>{tc(cleanAverageLabel(scoreGroup.label))}</span>
           </div>
           <p>{tc(generatedReport.summary)}</p>
           <div className="report-section">
@@ -553,7 +555,7 @@ export default function ResultsScreen() {
             {selectedDomainCompetencies.map((competency) => (
               <details key={competency.id} open={competency.evidenceCount > 0}>
                 <summary onClick={() => appendBehaviorEvent({ type: 'report_interest', reportArea: 'competency', label: competency.label, domain: competency.domain })}>
-                  <span>{tc(competency.id)}</span>
+                  <span>{competency.id}</span>
                   <strong>{tc(competency.label)}</strong>
                   <b>{competency.evidenceCount ? `${competency.score}/100` : t('notSampled')}</b>
                   <small>{t('evidenceConfidence2', { statusLabel: tc(competency.statusLabel), evidenceCount: competency.evidenceCount, confidence: tc(competency.confidence) })}</small>

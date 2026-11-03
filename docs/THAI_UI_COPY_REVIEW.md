@@ -14,10 +14,10 @@ The full list is [`exports/thai-ui-copy-review.csv`](../exports/thai-ui-copy-rev
 
 | Where it lives | Status | Strings |
 | --- | --- | --- |
-| Interface messages, `i18n/messages/th.json` | Draft, 3 November 2026 | 618 |
+| Interface messages, `i18n/messages/th.json` | Draft, 3 November 2026 | 620 |
 | Interface messages | Existing app copy (the old `thaiUiCopy` table) | 356 |
 | Interface messages | Same in both languages (brand, codes, punctuation patterns) | 23 |
-| Content, `i18n/content/th.json` | Draft, 3 November 2026 | 1,304 |
+| Content, `i18n/content/th.json` | Draft, 3 November 2026 | 1,416 |
 | Content | Reviewed 14 September 2026 (competency and skill names) | 119 |
 | Content | Existing app copy | 19 |
 

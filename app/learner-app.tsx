@@ -224,6 +224,8 @@ type QuestionPart = {
 type BenchmarkProfile = {
   label: string;
   detail: string;
+  /** Set for averages of saved runs, so the detail can be shown as a translated count. */
+  runCount?: number;
   tone: 'group' | 'target' | 'peer' | 'role' | 'industry';
   scores: Record<DomainId, number>;
 };
@@ -10248,6 +10250,7 @@ function averageScoreLog(entries: ScoreLogEntry[], groupKey: string): BenchmarkP
   return {
     label: normalizeDisplayGroupLabel(groupEntries[0].groupLabel),
     detail: `${groupEntries.length} saved run${groupEntries.length === 1 ? '' : 's'} on this device`,
+    runCount: groupEntries.length,
     tone: 'group',
     scores,
   };
@@ -12436,7 +12439,7 @@ function RadarChart({
             <span key={benchmark.label}>
               <i className={benchmark.tone} />
               {tc(benchmark.label)}
-              <small>{tc(benchmark.detail)}</small>
+              <small>{benchmark.runCount !== undefined ? t('savedRunsOnDevice', { count: benchmark.runCount }) : tc(benchmark.detail)}</small>
             </span>
           ))}
         </div>
