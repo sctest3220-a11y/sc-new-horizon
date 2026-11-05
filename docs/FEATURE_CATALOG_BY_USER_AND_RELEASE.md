@@ -127,6 +127,12 @@ Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LAB
 | Accessibility-complete keyboard/screen-reader assessment | B2C/B2B member | **MVP - Go-live** | Must be verified across all question formats and artifact controls. |
 | Versioned server-side assessment delivery | B2C/B2B member | **MVP - Go-live** | Preserves question, rubric, scoring, profile, and configuration versions. |
 | Proctored/high-integrity delivery | B2B member | **Future** | Only if required by credentialing or high-stakes use cases. |
+| Assessment blueprint and outcome mapping | Assessment/Organization Manager | **MVP - Go-live** | Links questions to competencies, functions/profiles, learning outcomes, and reports for coverage and evidence traceability. |
+| Multi-evaluator marking and moderation | Assessment Manager/Reviewer | **Production** | Supports evaluator assignment, rubric marking, moderation, disagreement resolution, re-evaluation, and result finalization. |
+| Resilient assessment delivery | B2C/B2B member | **MVP - Go-live** | Autosave, reconnection handling, pause/resume, unsaved-response alerts, and a documented low-connectivity strategy. |
+| Secure browser, identity verification, and anomaly review | B2B member/Assessment Manager | **Production** | Conditional integrity controls for high-stakes delivery; requires privacy, accessibility, and proportionality review. |
+| Real-time campaign operations dashboard | Assessment Manager/Manager | **MVP - Go-live** | Live participation, completion, failure, provider-health, and issue monitoring with alerts. |
+| Assessment APIs, webhooks, and portable export | Organization Admin/Auditor | **MVP - Go-live** | Export/import of questions, metadata, attempts, scores, feedback, reports, consent, and audit evidence; supports future integrations. |
 
 ## Scoring, Results, and Learning
 
@@ -142,6 +148,10 @@ Implementation details: [AI Watch and Connected Labs local release](AI_WATCH_LAB
 | Question-by-question score explanation | B2C/B2B member | **MVP - Built** | Shows prompt, response, expected evidence, raw score, readiness score, and competency. |
 | Strengths and priority gaps | B2C/B2B member | **MVP - Built** | Avoids labeling unassessed competencies as weaknesses. |
 | Personalized learning path | B2C/B2B member | **MVP - Built** | Derived from weak evidence, profile, and assessment context. |
+| Versioned role and skill graph | B2B member/Manager/Learning Manager | **Production** | Connects roles, functions, competencies, evidence, assessments, and learning resources. |
+| Continuous competency progression | B2C/B2B member/Manager | **Production** | Tracks evidence and improvement across assessments, Labs, learning activities, and reassessments. |
+| Stakeholder and indirect-outcome surveys | B2B member/Manager/Learning Manager | **Production** | Extends learner feedback to managers, facilitators, and organizations and links it to outcome evidence. |
+| Accreditation and compliance evidence packs | Organization Admin/Auditor | **Production** | Packages mappings, evidence, approvals, improvement actions, and version history for governance review. |
 | Recommended courses, labs, and tools | B2C/B2B member | **MVP - Built** | Current catalog is local/static. |
 | Recommended bootcamps and workshops | B2C/B2B member | **MVP - Built** | Includes audience, rationale, outcomes, labs, and framework alignment. |
 | End-of-assessment survey and detailed evidence unlock | B2C/B2B member | **MVP - Built** | Prototype exchange uses browser-local state. |

@@ -1,5 +1,11 @@
 # Latest Changes
 
+## Competitive assessment-platform review — 5 November 2026
+
+- Compared New Horizon with DigiAssess and a 2026 AI-skills-assessment platform comparison.
+- Added roadmap and feature-catalog entries for blueprint/outcome mapping, evaluator moderation, resilient delivery, APIs and portable exports, real-time campaign operations, skill graphs, continuous competency tracking, stakeholder surveys, accreditation evidence packs, and conditional integrity controls.
+- Kept video/speech, coding, clinical, and test-center delivery as deferred future capabilities unless a defined market requires them.
+
 ## Product roadmap reconciliation — 3 November 2026
 
 - Reconciled the AI Watch/Labs roadmap with the current local implementation, October assessment/inventory release work, pilot operations workspace, awareness curation tooling, and the living feature catalog.

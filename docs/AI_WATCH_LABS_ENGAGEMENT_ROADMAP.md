@@ -64,6 +64,25 @@ LLM APIs are optional, server-side assistants. They propose, classify, summarize
 - **After pilot — production:** add reliability targets, alerting, support/incident procedures, billing/entitlements where needed, provider cost controls, rollback, and longitudinal learning evidence.
 - **Scale only on evidence:** introduce queues, worker pools, advanced analytics, or additional model infrastructure only when measured volume, latency, backlog, or cost requires it.
 
+## Competitive review additions — 5 November 2026
+
+Review of DigiAssess and a 2026 comparison of AI skills-assessment platforms identified several capabilities worth making explicit in the New Horizon roadmap. The references emphasize the full assessment lifecycle—design, governance, delivery, evaluation, analytics, evidence, and improvement—plus blueprinting, moderation, resilience, interoperability, integrity controls, and continuous competency evidence. New Horizon already covers much of the adaptive assessment, evidence scoring, telemetry, learning, privacy, and governance foundation; the additions below close the clearest gaps without expanding into unrelated clinical or university-platform scope.
+
+| Priority | Capability to add | Purpose and use cases | Target phase |
+| --- | --- | --- | --- |
+| P1 | Assessment blueprint and outcome mapping | Link question → competency → function/profile → learning outcome → report. Use for coverage checks, adaptive routing, learning recommendations, and B2B outcome reporting. | Hosted pilot |
+| P1 | Evaluation and moderation workflow | Assign multiple evaluators, support rubric marking, moderation, disagreement resolution, re-evaluation, result finalization, and audit history. | Hosted pilot |
+| P1 | Interoperability and data portability | Provide APIs, webhooks, and export packages for questions, metadata, attempts, scores, feedback, reports, consent, and audit evidence; prepare later LMS/LXP/HRIS integrations. | Hosted pilot / Production |
+| P1 | Resilient assessment delivery | Add autosave, reconnection handling, pause/resume, unsaved-response alerts, and a documented offline strategy for low-connectivity environments. | Hosted pilot |
+| P1 | Real-time campaign operations | Provide live participation, completion, failure, provider-health, and issue dashboards with alerts for assessment managers. | Hosted pilot |
+| P2 | Versioned role and skill graph | Formalize relationships between roles, functions, competencies, evidence, assessments, and learning resources. | Production |
+| P2 | Continuous competency tracking | Track version-aware progression across assessments, Labs, learning activities, and reassessments. | Production |
+| P2 | Indirect outcome and stakeholder surveys | Extend the end-of-assessment survey to managers, learners, facilitators, and organizations, linked to competency and learning-outcome evidence. | Production |
+| P2 | Accreditation and compliance evidence packs | Assemble mappings, evidence, approvals, improvement actions, and version history into exportable governance reports. | Production |
+| P2 | Optional assessment-integrity controls | For high-stakes B2B use only: secure browser, identity verification, anomaly review, and privacy-safe monitoring. | Production / conditional |
+| P2 | Richer simulation assessment | Extend artifact questions into role simulations and workflow tasks before considering generic coding or gamification. | Production |
+| P3 | Video, speech, coding, clinical, and test-center features | These are specialized directions rather than current New Horizon needs; pursue only after a defined market, evidence, and operating model exists. | Future / deferred |
+
 ## Product direction
 
 Make New Horizon a place to understand a useful AI development, try the related skill, and return to build on it. AI Watch is the discovery entrance; AI Labs is the practice destination; assessment provides an optional diagnostic baseline. Visitors should not have to complete an assessment to use Watch or begin a starter Lab.
