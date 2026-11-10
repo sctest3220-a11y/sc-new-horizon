@@ -9,6 +9,11 @@ import { createHash } from 'node:crypto';
 
 export const QUESTION_FORMATS = ['single', 'multi', 'rank', 'match', 'written', 'multi-part'];
 export const PROMOTION_STATES = ['draft', 'reviewed', 'pilot-ready', 'pilot-tested', 'approved', 'published', 'monitored'];
+export const QUESTION_BANKS = {
+  live: 'exports/production/releases/*/release-questions.json',
+  existingDraft: 'exports/review-inventory/questions.json',
+  agentGenerated: 'exports/agent-question-bank/questions.json',
+};
 
 const th = {
   singlePrompt: 'ทีมต้องการใช้ AI สรุปคำร้องเรียนลูกค้า ควรตรวจอะไรเป็นอันดับแรก',
@@ -69,11 +74,14 @@ export function generateQuestionDrafts({ formats = QUESTION_FORMATS, includeArti
   if (formats.includes('match')) add('risk-signals', 'match', { en: { context: en.matchContext, prompt: en.matchPrompt, pairs: en.matchPairs, explanation: 'Each signal points to a distinct control concern.' }, th: { context: th.matchContext, prompt: th.matchPrompt, pairs: th.matchPairs, explanation: 'สัญญาณแต่ละรายการชี้ไปยังประเด็นควบคุมที่แตกต่างกัน' } });
   if (formats.includes('written')) add('evidence-plan', 'written', { en: { context: en.writtenContext, prompt: en.writtenPrompt, rubricKeywords: en.writtenKeywords, explanation: 'A strong plan checks evidence, states limitations, preserves human approval, and records the basis.' }, th: { context: th.writtenContext, prompt: th.writtenPrompt, rubricKeywords: th.writtenKeywords, explanation: 'แผนที่ดีต้องตรวจหลักฐาน ระบุข้อจำกัด มีการอนุมัติของมนุษย์ และบันทึกที่มา' } });
   if (formats.includes('multi-part')) add('permission-boundary', 'multi-part', { en: { context: en.partContext, prompt: en.partPrompt, parts: [{ id: 'diagnosis', prompt: 'What is the primary issue?', options: ['Unauthorised evidence access', 'Slow generation', 'A spelling error'], correctOptionIds: ['a'] }, { id: 'control', prompt: 'What should happen next?', options: ['Block the citation and review access', 'Send the email automatically', 'Grant broader access'], correctOptionIds: ['a'] }] }, th: { context: th.partContext, prompt: th.partPrompt, parts: [{ id: 'diagnosis', prompt: 'ปัญหาหลักคืออะไร', options: ['การเข้าถึงหลักฐานโดยไม่มีสิทธิ์', 'การสร้างคำตอบช้า', 'การสะกดคำผิด'], correctOptionIds: ['a'] }, { id: 'control', prompt: 'ควรทำอะไรต่อไป', options: ['บล็อกการอ้างอิงและตรวจสิทธิ์', 'ส่งอีเมลอัตโนมัติ', 'เพิ่มสิทธิ์ให้กว้างขึ้น'], correctOptionIds: ['a'] }] } });
-  return { schemaVersion: 1, agent: 'Assessment Item Generator + Stimulus Builder', generatedAt: new Date().toISOString(), status: 'draft', liveIntegration: false, humanApprovalRequired: true, drafts, safety: { externalProviderCalled: false, published: false, duplicatePolicy: 'stable content hash rejects repeated drafts' } };
+  return { schemaVersion: 1, agent: 'Assessment Item Generator + Stimulus Builder', generatedAt: new Date().toISOString(), status: 'draft', bank: 'agent-generated', source: 'assessment-item-generator', storage: { exportPath: QUESTION_BANKS.agentGenerated, excludedFrom: [QUESTION_BANKS.live, QUESTION_BANKS.existingDraft], mergePolicy: 'never-merge-automatically' }, liveIntegration: false, humanApprovalRequired: true, drafts, safety: { externalProviderCalled: false, published: false, duplicatePolicy: 'stable content hash rejects repeated drafts' } };
 }
 
 export function validateQuestionBank(result) {
   const errors = [];
+  if (result.bank !== 'agent-generated') errors.push('bank: must be agent-generated');
+  if (result.storage?.exportPath !== QUESTION_BANKS.agentGenerated) errors.push('storage: wrong agent export path');
+  if (result.storage?.mergePolicy !== 'never-merge-automatically') errors.push('storage: automatic merge is not allowed');
   const ids = new Set();
   for (const draft of result.drafts ?? []) {
     if (ids.has(draft.id)) errors.push(`${draft.id}: duplicate id`); ids.add(draft.id);

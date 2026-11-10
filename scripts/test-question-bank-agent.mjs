@@ -1,10 +1,14 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { generateQuestionDrafts, validateQuestionBank } from '../agent/question-bank-agent.mjs';
+import { generateQuestionDrafts, QUESTION_BANKS, validateQuestionBank } from '../agent/question-bank-agent.mjs';
 
 test('generates bilingual drafts across every supported format', () => {
   const bank = generateQuestionDrafts();
   assert.equal(bank.drafts.length, 6);
+  assert.equal(bank.bank, 'agent-generated');
+  assert.equal(bank.storage.exportPath, QUESTION_BANKS.agentGenerated);
+  assert.deepEqual(bank.storage.excludedFrom, [QUESTION_BANKS.live, QUESTION_BANKS.existingDraft]);
+  assert.equal(bank.storage.mergePolicy, 'never-merge-automatically');
   assert.deepEqual(validateQuestionBank(bank), { valid: true, errors: [], count: 6 });
   for (const draft of bank.drafts) {
     assert.equal(draft.status, 'draft');
@@ -12,6 +16,14 @@ test('generates bilingual drafts across every supported format', () => {
     assert.ok(draft.artifact.en.evidence.length > 0);
     assert.ok(draft.artifact.th.evidence.length > 0);
   }
+});
+
+test('rejects a result relabelled as live or existing review inventory', () => {
+  const bank = generateQuestionDrafts();
+  bank.bank = 'live';
+  const validation = validateQuestionBank(bank);
+  assert.equal(validation.valid, false);
+  assert.ok(validation.errors.includes('bank: must be agent-generated'));
 });
 
 test('supports bounded format selection and keeps publication disabled', () => {
