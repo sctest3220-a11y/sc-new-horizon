@@ -17,7 +17,8 @@
     "inventory:cloudflare:build": "node scripts/build-inventory-cloudflare.mjs",
     "inventory:cloudflare:test": "node scripts/test-inventory-cloudflare.mjs",
     "inventory:feedback:import": "node scripts/import-inventory-feedback.mjs",
-    "test:question-bank-agent": "node --test scripts/test-question-bank-agent.mjs"
+    "test:question-bank-agent": "node --test scripts/test-question-bank-agent.mjs",
+    "generate:question-bank-review": "node scripts/generate-question-bank-review.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
